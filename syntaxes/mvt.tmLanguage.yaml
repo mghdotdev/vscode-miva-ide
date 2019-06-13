@@ -1,0 +1,352 @@
+%YAML 1.2
+---
+name: Miva Template Language (MVT)
+scopeName: text.html.mvt
+
+patterns:
+- include: '#mvt-all'
+- include: text.html.basic
+
+repository:
+  mvt-all:
+    patterns:
+    - comment: MVT Comment
+      begin: <mvt:comment>
+      beginCaptures:
+        '0': {name: punctuation.definition.comment.mvt}
+      end: </mvt:comment>
+      endCaptures:
+        '0': {name: punctuation.definition.comment.mvt}
+      name: comment.block.mvt
+      
+    - comment: MVT Tags - Block
+      begin: (</?)(?i:(mvt)(:)(call|foreach|if|while)\b)
+      beginCaptures:
+        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+      end: ((?:[ ]?/)?>)
+      endCaptures:
+        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+      name: meta.tag.block.any.mvt
+      patterns:
+      - include: '#mvt-attributes'
+
+    - comment: MVT Tags - Inline
+      begin: (</?)(?i:(mvt)(:)(assign|callcontinue|callstop|else|elseif|eval|exit|foreachcontinue|foreachstop|item|miva|whilecontinue|whilestop)\b)
+      beginCaptures:
+        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+      end: ((?:[ ]?/)?>)
+      endCaptures:
+        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+      name: meta.tag.inline.any.mvt
+      patterns:
+      - include: '#mvt-attributes'
+
+    - comment: MVT Tags (mvt:do)
+      begin: (</?)(?i:(mvt)(:)(do)\b)
+      beginCaptures:
+        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+      end: ((?:[ ]?/)?>)
+      endCaptures:
+        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+      name: meta.tag.inline.do.mvt
+      patterns:
+      - include: '#mvt-attributes'
+
+    - comment: MVT Entities
+      include: '#mvt-entities'
+
+  mvt-source:
+    patterns:
+    ## Numbers
+    - comment: Numbers
+      name: constant.numeric.mvt
+      match: \b(([0-9]+(\.[0-9]+)?))\b
+
+    ## Strings
+    - comment: Single Quote String
+      begin: \'
+      beginCaptures:
+        '0': {name: punctuation.definition.string.begin.mvt}
+      end: \'
+      endCaptures:
+        '0': {name: punctuation.definition.string.end.mvt}
+      name: string.quoted.single
+      patterns:
+      - include: '#string-content'
+
+    ## Operators
+    - comment: Arithmetic Operators
+      name: keyword.operator.arithmetic.mvt
+      match: (\b(?i:POW|MOD|ROUND)\b)
+    - comment: Arithmetic Operators (Symbols)
+      name: keyword.operator.arithmetic.mvt
+      match: ((?<!\S)(\+|\-|\*|\/)\B)
+    - comment: Arithmetic Operators (Increment and Decrement)
+      name: keyword.operator.arithmetic.mvt
+      match: (\b(\+\+|\-\-)\B)
+
+    - comment: Comparison Operators
+      name: keyword.operator.comparison.mvt
+      match: (\b(?i:EQ|GT|GE|LT|NE|LE)\b)
+
+    - comment: Logical Operators
+      name: keyword.operator.logical.mvt
+      match: (\b(?i:NOT|AND|OR|ISNULL|NULL)\b)
+
+    - comment: Text Operators
+      name: keyword.operator.string.mvt
+      match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
+    - comment: Text Operators (Symbols)
+      name: keyword.operator.string.mvt
+      match: ((?<!\S)(\$)\B)
+
+    ## Booleans
+    - comment: True
+      name: constant.language.boolean.true.mvt
+      match: (\b(?i:true)\b)
+    - comment: False
+      name: constant.language.boolean.false.mvt
+      match: (\b(?i:false)\b)
+
+    ## Variables
+    - comment: Local Variable
+      name: variable.language.local.mvt
+      match: (l\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+    - comment: Local Variable (NO L)
+      name: variable.language.local.mvt
+      match: ([A-Za-z0-9_]+)([a-zA-Z0-9_\[\]]+(:)[a-zA-Z0-9:_\.]*)
+
+    - comment: Global Variable
+      name: variable.language.global.mvt
+      match: (g\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+    - comment: System Variable
+      name: variable.language.system.mvt
+      match: (s\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+    - comment: Variable AFTER Array Bracket []
+      name: variable.language.array-continue.mvt
+      match: (?<=\])(:)([a-zA-Z0-9:_\.]*)
+
+  mvt-variable-generic:
+    comment: MVT Variable Generic (No l. g. s.)
+    name: variable.language.generic.mvt
+    match: ([A-Za-z_]+)([a-zA-Z0-9:_\.]*)
+
+  mvt-functions-assign:
+    comment: MVT Functions (mvt:assign)
+    name: support.function.assign.mvt
+
+    ##### New in 5.28 #####
+    # min
+    # max
+    # file_overwrite
+    # evp_pkey_free
+    # miva_variable_type
+
+    ##### New in 5.24 #####
+    # miva_setprocessname
+    # miva_async_sleep
+    # miva_csv_encode
+    # miva_html_strip
+    # miva_cdata_encode
+    # file_touch
+    # miva_struct_merge
+    # miva_struct_merge_ref
+    # indexofl
+    # indexofli
+    # miva_array_filter
+    # miva_array_filter_ref
+    # miva_ieee754_normalize
+    # rsa_load_publickey_engine
+    # rsa_load_privatekey_engine
+    # crypto_rand_set_rand_engine
+
+    match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+
+  mvt-functions-do:
+    comment: MVT Functions (mvt:do)
+    name: support.function.do.mvt
+    match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+    captures: 
+      
+  mvt-functions-item:
+    patterns:
+    - comment: ReadyTheme Functions
+      name: support.function.readytheme.mvt
+      match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+
+    - comment: Custom Field Functions
+      name: support.function.customfield.mvt
+      match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+    
+    - comment: Toolkit Functions
+      name: support.function.toolkit.mvt
+      match: (?<!\w|\|)([a-zA-Z_][a-zA-Z0-9_]*)(?=\|)
+
+    - comment: RyToolbelt Functions
+      name: support.function.toolbelt.mvt
+      match: (?<!\w|\|)([a-zA-Z_][a-zA-Z0-9_]*)(?=\|)
+
+  mvt-item-names:
+    patterns:
+    - comment: ReadyTheme Class
+      name: support.class.mvt
+      match: \b(?i:readytheme)\b
+
+    - comment: ReadyTheme Class
+      name: support.class.mvt
+      match: \b(?i:customfields)\b
+
+    - comment: Toolkit Class
+      name: support.class.mvt
+      match: \b(?i:toolkit)\b
+
+    - comment: RyToolbelt Functions
+      name: support.class.mvt
+      match: \b(?i:ry_toolbelt)\b
+
+  mvt-attributes:
+    patterns:
+    - comment: Generic Attributes
+      match: \b([a-zA-Z\-:]+)
+      name: entity.other.attribute-name.html
+
+    - comment: Name Attribute
+      begin: (?i)(?<=name\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.name
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-item-names'
+
+    - comment: Param Attribute
+      begin: (?i)(?<=param\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.param
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-functions-item'
+
+    - comment: Value Attribute
+      begin: (?i)(?<=value\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.value
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-functions-assign'
+      - include: '#mvt-functions-do'
+
+    - comment: Expression Attribute
+      begin: (?i)(?<=expr\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.expr
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-functions-assign'
+
+    - comment: Iterator Attribute
+      begin: (?i)(?<=iterator\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.iterator
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-variable-generic'
+
+    - comment: Array Attribute
+      begin: (?i)(?<=array\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.array
+      patterns:
+      - include: '#mvt-source'
+      - include: '#mvt-variable-generic'
+
+    - comment: File Attribute
+      begin: (?i)(?<=file\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.file
+      patterns:
+      - include: '#mvt-source'
+
+    - comment: MVT:Call Attributes
+      begin: (?i)(?<=method\=|action\=|content-type\=|fields\=|certpass\=|files\=|certtype\=|cerfile\=|timeout\=|headers\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.call
+      patterns:
+      - include: '#mvt-source'
+
+    - comment: Output Attribute
+      begin: (?i)(?<=output\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.output
+      patterns:
+      - include: '#mvt-source'
+
+    - comment: Compresswhitespace Attribute
+      begin: (?i)(?<=compresswhitespace\=)(\")
+      beginCaptures:
+        '0': {name: embedded.begin.mvt}
+      end: \"
+      endCaptures:
+        '0': {name: embedded.end.mvt}
+      name: source.mvt.embedded.html source.mvt.attribute-value.compresswhitespace
+      patterns:
+      - include: '#mvt-source'
+
+  mvt-entities:
+    comment: MVT Entities
+    match: (&)(mvt|mvte|mvta)([a-zA-Z0-9:\-_\[\]]+)(;)
+    name: constant.character.entity.mvt
+
+  string-content:
+    patterns:
+    - match: \\\s*\n
+      name: constant.character.escape.newline.js
+    - match: \\(x[\da-fA-F]{2}|u[\da-fA-F]{4}|.)
+      name: constant.character.escape.js

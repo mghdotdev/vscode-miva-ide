@@ -1,0 +1,40 @@
+{
+    "name": "vscode-miva-ide",
+    "displayName": "Miva IDE",
+    "description": "Syntax highlighting, snippets and tools for building websites with Miva.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.35.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "scripts": {
+        "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "mvt",
+                "aliases": [
+                    "Miva Template Language (MVT)",
+                    "mvt"
+                ],
+                "extensions": [
+                    ".mvt"
+                ],
+                "configuration": "./configurations/mvt.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "mvt",
+                "scopeName": "text.html.mvt",
+                "path": "./syntaxes/mvt.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "js-yaml": "^3.13.1"
+    }
+}
