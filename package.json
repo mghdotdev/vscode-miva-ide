@@ -10,7 +10,7 @@
         "Programming Languages"
     ],
     "scripts": {
-        "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json"
+        "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json && npx js-yaml syntaxes/mvt.injection.tmLanguage.yaml > syntaxes/mvt.injection.tmLanguage.json"
     },
     "contributes": {
         "languages": [
@@ -31,6 +31,13 @@
                 "language": "mvt",
                 "scopeName": "text.html.mvt",
                 "path": "./syntaxes/mvt.tmLanguage.json"
+            },
+            {
+                "scopeName": "mvt.injection",
+                "injectTo": [
+                    "text.html.mvt"
+                ],
+                "path": "./syntaxes/mvt.injection.tmLanguage.json"
             }
         ]
     },
