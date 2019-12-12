@@ -5,9 +5,6 @@
   "patterns": [
     {
       "include": "#mvt-all"
-    },
-    {
-      "include": "text.html.basic"
     }
   ],
   "repository": {
@@ -22,11 +19,6 @@
             }
           },
           "end": "</mvt:comment>",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.mvt"
-            }
-          },
           "name": "comment.block.mvt"
         },
         {
