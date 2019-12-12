@@ -85,9 +85,11 @@ repository:
     - comment: Arithmetic Operators
       name: keyword.operator.arithmetic.mvt
       match: (\b(?i:POW|MOD|ROUND)\b)
+    
     - comment: Arithmetic Operators (Symbols)
       name: keyword.operator.arithmetic.mvt
       match: ((?<!\S)(\+|\-|\*|\/)\B)
+    
     - comment: Arithmetic Operators (Increment and Decrement)
       name: keyword.operator.arithmetic.mvt
       match: (\b(\+\+|\-\-)\B)
@@ -98,11 +100,16 @@ repository:
 
     - comment: Logical Operators
       name: keyword.operator.logical.mvt
-      match: (\b(?i:NOT|AND|OR|ISNULL|NULL)\b)
+      match: (\b(?i:NOT|AND|OR|ISNULL)\b)
+      
+    - comment: Constants
+      name: constant.language.null.mvt
+      match: (\b(?i:NULL)\b)
 
     - comment: Text Operators
       name: keyword.operator.string.mvt
       match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
+
     - comment: Text Operators (Symbols)
       name: keyword.operator.string.mvt
       match: ((?<!\S)(\$)\B)
@@ -118,7 +125,7 @@ repository:
     ## Variables
     - comment: Local Variable
       name: variable.language.local.mvt
-      match: (l\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+      match: ((l|local)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
 
     - comment: Local Variable (NO L)
       name: variable.language.local.mvt
@@ -126,11 +133,11 @@ repository:
 
     - comment: Global Variable
       name: variable.language.global.mvt
-      match: (g\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+      match: ((g|global)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
 
     - comment: System Variable
       name: variable.language.system.mvt
-      match: (s\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+      match: ((s|system)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
 
     - comment: Variable AFTER Array Bracket []
       name: variable.language.array-continue.mvt
@@ -324,5 +331,201 @@ repository:
     patterns:
     - match: \\\s*\n
       name: constant.character.escape.newline.js
-    - match: \\(x[\da-fA-F]{2}|u[\da-fA-F]{4}|.)
+    - match: \\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)
       name: constant.character.escape.js
+
+
+
+
+
+
+
+
+
+
+# =-======================== Source ========================-= #
+  source-mvt:
+    - include: source-brackets
+    - include: source-group
+    - include: source-variables
+    - include: source-string-single
+    - include: source-numbers
+    - include: source-operators
+    - include: source-constants
+
+# =-======== Operators - Source ========-= #
+  source-operators:
+    # Arithmetic Operators
+    - match: (\b(?i:POW|MOD|ROUND)\b)
+      scope: keyword.operator.arithmetic.mvt
+
+    # Arithmetic Operators (Symbols)
+    - match: >-
+        (?x)
+          --   | # decrement
+          \+\+ | # increment
+          /    | # division
+          \*   | # multiplication
+          \+   | # addition
+          -    | # subtraction
+      scope: keyword.operator.arithmetic.mvt
+
+    # Comparison Operators
+    - match: (\b(?i:EQ|GT|GE|LT|NE|LE)\b)
+      scope: keyword.operator.comparison.mvt
+
+    # Logical Operators
+    - match: (\b(?i:NOT|AND|OR|ISNULL)\b)
+      scope: keyword.operator.logical.mvt
+
+    # Text Operators
+    - match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
+      scope: keyword.operator.string.mvt
+
+    # Text Operators (Symbols)
+    - match: >-
+        (?x)
+          \$
+      scope: keyword.operator.string.mvt
+
+
+  # =-======== Constants - Source ========-= #
+  source-constants:
+    # NULL
+    - match: \b(?i:NULL)\b
+      scope: constant.language.null.mvt
+
+  # =-======== Numbers - Source ========-= #
+  source-numbers:
+    - match: \b(([0-9]+(\.[0-9]+)?))\b
+      scope: constant.numeric.mvt
+
+
+  # =-======== Variables - Source ========-= #
+  source-variables:
+    # Variables Base
+    - match: '\b(g|global)(\.)'
+      captures:
+        1: variable.language.global.namespace.mvt
+        2: variable.language.global.separator.mvt
+      push:
+        - match: '({{identifier}})'
+          scope: variable.language.global.name.mvt
+        - match: '(:?)({{identifier}})'
+          captures:
+            1: variable.language.global.name.separator.mvt
+            2: variable.language.global.name.member.mvt
+        - match: \b
+          pop: true
+
+    - match: '\b(l|local)(\.)'
+      captures:
+        1: variable.language.local.namespace.mvt
+        2: variable.language.local.separator.mvt
+      push:
+        - match: '({{identifier}})'
+          scope: variable.language.local.name.mvt
+        - match: '(:?)({{identifier}})'
+          captures:
+            1: variable.language.local.name.separator.mvt
+            2: variable.language.local.name.member.mvt
+        - match: \b
+          pop: true
+
+    - match: '\b(s|system)(\.)'
+      captures:
+        1: variable.language.system.namespace.mvt
+        2: variable.language.system.separator.mvt
+      push:
+        - match: '({{identifier}})'
+          scope: variable.language.system.name.mvt
+        - match: '(:?)({{identifier}})'
+          captures:
+            1: variable.language.system.name.separator.mvt
+            2: variable.language.system.name.member.mvt
+        - match: \b
+          pop: true
+
+    # Variables Cont. (continue after square brackets)
+    - match: '(?<=\])(:)({{identifier}})'
+      captures:
+        1: variable.language.separator.mvt
+        2: variable.language.member.mvt
+      push:
+        - match: '(:?)({{identifier}})'
+          captures:
+            1: variable.language.separator.mvt
+            2: variable.language.member.mvt
+        - match: \b
+          pop: true
+
+    # POSX
+    - match: \b(?i:POS)[0-9]+\b
+      scope: variable.language.posx.mvt
+
+  # =-======== Strings - Source ========-= #
+  source-string-single:
+    - match: "'"
+      scope: punctuation.definition.string.begin.mvt
+      push:
+        - meta_scope: string.quoted.single.mvt
+        - match: "'"
+          pop: true
+        - include: source-string-escapes
+
+  source-string-escapes:
+    - match: \\\s*\n
+      scope: constant.character.escape.newline.js
+    - match: '\\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)'
+      scope: constant.character.escape.js
+
+
+  # =-======== Brackets / Group (Parenthesis) - Source ========-= #
+  source-brackets-no-functions:
+    - match: \[
+      scope: puncuation.definition.brackets.mvt
+      push:
+        - meta_scope: meta.brackets.mvt
+        - match: \]
+          scope: puncuation.terminator.bracket.mvt
+          pop: true
+        - include: source-mvt
+    - match: \]
+      scope: invalid.illegal.stray-bracket-end
+
+  source-brackets:
+    - match: \[
+      scope: puncuation.definition.brackets.mvt
+      push:
+        - meta_scope: meta.brackets.mvt
+        - match: \]
+          scope: puncuation.terminator.bracket.mvt
+          pop: true
+        - include: source-mvt
+        - include: source-functions-builtins
+    - match: \]
+      scope: invalid.illegal.stray-bracket-end
+
+  source-group-no-functions:
+    - match: \(
+      scope: puncuation.definition.group.mvt
+      push:
+        - meta_scope: meta.group.mvt
+        - match: \)
+          scope: puncuation.terminator.group.mvt
+          pop: true
+        - include: source-mvt
+    - match: \)
+      scope: invalid.illegal.stray-group-end
+
+  source-group:
+    - match: \(
+      scope: puncuation.definition.group.mvt
+      push:
+        - meta_scope: meta.group.mvt
+        - match: \)
+          scope: puncuation.terminator.group.mvt
+          pop: true
+        - include: source-mvt
+        - include: source-functions-builtins
+    - match: \)
