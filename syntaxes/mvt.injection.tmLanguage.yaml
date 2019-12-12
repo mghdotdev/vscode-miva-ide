@@ -43,13 +43,12 @@ repository:
       - include: '#tag-else'
       - include: '#tag-elseif'
       - include: '#tag-eval'
-      - include: '#tag-exit'
       - include: '#tag-foreach'
-      # - include: '#tag-if'
-      # - include: '#tag-inline'
-      # - include: '#tag-item'
-      # - include: '#tag-miva'
-      # - include: '#tag-while'
+      - include: '#tag-if'
+      - include: '#tag-inline'
+      - include: '#tag-item'
+      - include: '#tag-miva'
+      - include: '#tag-while'
 
   tag-assign:
     patterns:
@@ -59,14 +58,14 @@ repository:
           2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
           3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
           4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-        end: '(\/>)'
+        end: '(\/?>)'
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.assign.mvt
-        # patterns:
+        patterns:
         #   - include: '#assign-name-attribute'
         #   - include: '#value-attribute'
-        #   - include: '#illegal-attributes'
+          - include: '#illegal-attributes'
   
   tag-call:
     patterns:
@@ -80,7 +79,7 @@ repository:
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.call.mvt
-        # patterns:
+        patterns:
         #   - include: '#action-attribute'
         #   - include: '#cerfile-attribute'
         #   - include: '#certpass-attribute'
@@ -88,10 +87,10 @@ repository:
         #   - include: '#content-type-attribute'
         #   - include: '#fields-attribute'
         #   - include: '#files-attribute'
-        #   - include: '#headers-attribute'
+          - include: '#headers-attribute'
         #   - include: '#method-attribute'
-        #   - include: '#timeout-attribute'
-        #   - include: '#illegal-attributes'
+          - include: '#timeout-attribute'
+          - include: '#illegal-attributes'
         
   tag-capture:
     patterns:
@@ -105,9 +104,9 @@ repository:
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.capture.mvt
-        # patterns:
+        patterns:
         #   - include: '#variable-attribute'
-        #   - include: '#illegal-attributes'
+          - include: '#illegal-attributes'
     
   tag-do:
     patterns:
@@ -117,15 +116,15 @@ repository:
           2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
           3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
           4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-        end: '(\/>)'
+        end: '(\/?>)'
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.do.mvt
-        # patterns:
+        patterns:
         #   - include: '#file-attribute'
         #   - include: '#name-attribute'
         #   - include: '#value-attribute'
-        #   - include: '#illegal-attributes'
+          - include: '#illegal-attributes'
   
   tag-else:
     patterns:
@@ -170,28 +169,13 @@ repository:
           2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
           3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
           4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-        end: '(\/>)'
-        endCaptures:
-          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-        name: meta.tag.inline.eval.mvt
-        # patterns:
-        #   - include: '#expr-attribute'
-        #   - include: '#illegal-attributes'
-  
-  tag-exit:
-    patterns:
-      - begin: '(?i)(<)(mvt)(:)(exit)\b'
-        beginCaptures:
-          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
-          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
-          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
-          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
         end: '(\/?>)'
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-        name: meta.tag.inline.exit.mvt
-        # patterns:
-        #   - include: '#illegal-attributes'
+        name: meta.tag.inline.eval.mvt
+        patterns:
+        #   - include: '#expr-attribute'
+          - include: '#illegal-attributes'
 
   tag-foreach:
     patterns:
@@ -205,10 +189,177 @@ repository:
         endCaptures:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.foreach.mvt
-        # patterns:
+        patterns:
         #   - include: '#array-attribute'
         #   - include: '#iterator-attribute'
-        #   - include: '#illegal-attributes'
+          - include: '#illegal-attributes'
+  
+  tag-if:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(if)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.if.mvt
+        patterns:
+        #   - include: '#expr-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-inline:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(callcontinue|callstop|exit|foreachcontinue|foreachstop|whilecontinue|whilestop)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.inline.mvt
+        patterns:
+          - include: '#illegal-attributes'
+  
+  tag-item:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(item)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.item.mvt
+        patterns:
+        #   - include: '#item-name-attribute'
+        #   - include: '#param-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-miva:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(miva)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.miva.mvt
+        patterns:
+          - include: '#compresswhitespace-attribute'
+          - include: '#output-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-while:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(while)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.while.mvt
+        patterns:
+        #   - include: '#expr-attribute'
+          - include: '#illegal-attributes'
+
+
+  # =-======================== Tag Attributes ========================-= #
+  illegal-attributes:
+    patterns:
+      - match: '(?<=[^=])\b([a-zA-Z0-9\:\-\_]+)\s*(=?)'
+        name: invalid.illegal.attribute-name.mvt
+
+  certfile-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(certfile)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.certfile.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.certfile.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          # - include: '#source-functions-builtins'
+
+  compresswhitespace-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(compresswhitespace)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.expr.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          1: {name: punctuation.definition.string.end.mvt}
+        contentName: string.quoted.single.mvt
+        patterns:
+          - match: '\b(off|on)\b'
+            name: string.quoted.single.mvt
+          - match: '[^"]'
+            name: invalid.illegal.identifier.mvt
+
+  headers-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(headers)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.headers.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.headers.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          # - include: '#source-functions-builtins'
+
+  output-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(output)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.expr.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          1: {name: punctuation.definition.string.end.mvt}
+        contentName: string.quoted.single.mvt
+        patterns:
+          - match: '\b(off|on)\b'
+            name: string.quoted.single.mvt
+          - match: '[^"]'
+            name: invalid.illegal.identifier.mvt
+  
+    timeout-attribute:
+      patterns:
+        - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
+          beginCaptures:
+            1: {name: entity.other.attribute-name.timeout.mvt}
+            2: {name: punctuation.separator.key-value.mvt}
+            3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
+          end: '(")'
+          endCaptures:
+            1: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
+          contentName: attribute-value.timeout.mvt source.mvt
+          patterns:
+            - include: '#source-mvt'
+            # - include: '#source-functions-builtins'
 
   # =-======================== Source ========================-= #
   source-mvt:

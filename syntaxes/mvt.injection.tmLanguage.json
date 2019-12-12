@@ -56,6 +56,27 @@
         },
         {
           "include": "#tag-elseif"
+        },
+        {
+          "include": "#tag-eval"
+        },
+        {
+          "include": "#tag-foreach"
+        },
+        {
+          "include": "#tag-if"
+        },
+        {
+          "include": "#tag-inline"
+        },
+        {
+          "include": "#tag-item"
+        },
+        {
+          "include": "#tag-miva"
+        },
+        {
+          "include": "#tag-while"
         }
       ]
     },
@@ -77,13 +98,18 @@
               "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
             }
           },
-          "end": "(\\/>)",
+          "end": "(\\/?>)",
           "endCaptures": {
             "1": {
               "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
             }
           },
-          "name": "meta.tag.inline.assign.mvt"
+          "name": "meta.tag.inline.assign.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
         }
       ]
     },
@@ -111,7 +137,15 @@
               "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
             }
           },
-          "name": "meta.tag.block.call.mvt"
+          "name": "meta.tag.block.call.mvt",
+          "patterns": [
+            {
+              "include": "#headers-attribute"
+            },
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
         }
       ]
     },
@@ -139,7 +173,12 @@
               "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
             }
           },
-          "name": "meta.tag.block.capture.mvt"
+          "name": "meta.tag.block.capture.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
         }
       ]
     },
@@ -161,13 +200,18 @@
               "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
             }
           },
-          "end": "(\\/>)",
+          "end": "(\\/?>)",
           "endCaptures": {
             "1": {
               "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
             }
           },
-          "name": "meta.tag.inline.do.mvt"
+          "name": "meta.tag.inline.do.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
         }
       ]
     },
@@ -234,6 +278,354 @@
             {
               "match": "\\/",
               "name": "invalid.illegal.slash.mvt"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-eval": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(eval)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.eval.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-foreach": {
+      "patterns": [
+        {
+          "begin": "(</?)(?i:(mvt)(:)(foreach)\\b)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.foreach.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-if": {
+      "patterns": [
+        {
+          "begin": "(</?)(?i:(mvt)(:)(if)\\b)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.if.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-inline": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(callcontinue|callstop|exit|foreachcontinue|foreachstop|whilecontinue|whilestop)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.inline.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-item": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(item)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.item.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-miva": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(miva)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.miva.mvt",
+          "patterns": [
+            {
+              "include": "#compresswhitespace-attribute"
+            },
+            {
+              "include": "#output-attribute"
+            },
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-while": {
+      "patterns": [
+        {
+          "begin": "(</?)(?i:(mvt)(:)(while)\\b)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.while.mvt",
+          "patterns": [
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "illegal-attributes": {
+      "patterns": [
+        {
+          "match": "(?<=[^=])\\b([a-zA-Z0-9\\:\\-\\_]+)\\s*(=?)",
+          "name": "invalid.illegal.attribute-name.mvt"
+        }
+      ]
+    },
+    "output-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(output)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.expr.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "string.quoted.single.mvt",
+          "patterns": [
+            {
+              "match": "\\b(off|on)\\b",
+              "name": "string.quoted.single.mvt"
+            },
+            {
+              "match": "[^\"]",
+              "name": "invalid.illegal.identifier.mvt"
+            }
+          ]
+        }
+      ]
+    },
+    "compresswhitespace-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(compresswhitespace)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.expr.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "string.quoted.single.mvt",
+          "patterns": [
+            {
+              "match": "\\b(off|on)\\b",
+              "name": "string.quoted.single.mvt"
+            },
+            {
+              "match": "[^\"]",
+              "name": "invalid.illegal.identifier.mvt"
+            }
+          ]
+        }
+      ]
+    },
+    "headers-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(headers)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.headers.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.headers.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
             }
           ]
         }
