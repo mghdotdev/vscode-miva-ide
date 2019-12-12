@@ -41,6 +41,18 @@
       "patterns": [
         {
           "include": "#tag-assign"
+        },
+        {
+          "include": "#tag-call"
+        },
+        {
+          "include": "#tag-capture"
+        },
+        {
+          "include": "#tag-do"
+        },
+        {
+          "include": "#tag-else"
         }
       ]
     },
@@ -69,6 +81,124 @@
             }
           },
           "name": "meta.tag.inline.assign.mvt"
+        }
+      ]
+    },
+    "tag-call": {
+      "patterns": [
+        {
+          "begin": "(</?)(?i:(mvt)(:)(call)\\b)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.call.mvt"
+        }
+      ]
+    },
+    "tag-capture": {
+      "patterns": [
+        {
+          "begin": "(</?)(?i:(mvt)(:)(capture)\\b)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.capture.mvt"
+        }
+      ]
+    },
+    "tag-do": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(do)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(\\/>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.do.mvt"
+        }
+      ]
+    },
+    "tag-else": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(else)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.else.mvt",
+          "patterns": [
+            {
+              "match": "\\/",
+              "name": "invalid.illegal.slash.mvt"
+            }
+          ]
         }
       ]
     },

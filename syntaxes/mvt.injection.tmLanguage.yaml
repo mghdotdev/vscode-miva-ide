@@ -38,18 +38,18 @@ repository:
     patterns:
       - include: '#tag-assign'
       - include: '#tag-call'
+      - include: '#tag-capture'
       - include: '#tag-do'
-      # - include: '#tag-else'
+      - include: '#tag-else'
       # - include: '#tag-elseif'
       # - include: '#tag-eval'
       # - include: '#tag-exit'
       # - include: '#tag-foreach'
       # - include: '#tag-if'
       # - include: '#tag-inline'
+      # - include: '#tag-item'
       # - include: '#tag-miva'
       # - include: '#tag-while'
-      # - include: '#tag-item'
-      # - include: '#tag-capture'
 
   tag-assign:
     patterns:
@@ -69,29 +69,80 @@ repository:
         #   - include: '#illegal-attributes'
   
   tag-call:
-    - begin: '(</?)(?i:(mvt)(:)(call)\b)'
-      beginCaptures:
-        1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
-        2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
-        3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
-        4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-      end: '(>)'
-      endCaptures:
-        1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-      name: meta.tag.block.call.mvt
-      # patterns:
-      #   - include: '#method-attribute'
-      #   - include: '#action-attribute'
-      #   - include: '#content-type-attribute'
-      #   - include: '#fields-attribute'
-      #   - include: '#certpass-attribute'
-      #   - include: '#files-attribute'
-      #   - include: '#certtype-attribute'
-      #   - include: '#cerfile-attribute'
-      #   - include: '#timeout-attribute'
-      #   - include: '#headers-attribute'
-      #   - include: '#illegal-attributes'
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(call)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.call.mvt
+        # patterns:
+        #   - include: '#action-attribute'
+        #   - include: '#cerfile-attribute'
+        #   - include: '#certpass-attribute'
+        #   - include: '#certtype-attribute'
+        #   - include: '#content-type-attribute'
+        #   - include: '#fields-attribute'
+        #   - include: '#files-attribute'
+        #   - include: '#headers-attribute'
+        #   - include: '#method-attribute'
+        #   - include: '#timeout-attribute'
+        #   - include: '#illegal-attributes'
         
+  tag-capture:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(capture)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.capture.mvt
+        # patterns:
+        #   - include: '#variable-attribute'
+        #   - include: '#illegal-attributes'
+    
+  tag-do:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(do)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.do.mvt
+        # patterns:
+        #   - include: '#file-attribute'
+        #   - include: '#name-attribute'
+        #   - include: '#value-attribute'
+        #   - include: '#illegal-attributes'
+  
+  tag-else:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(else)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.else.mvt
+        patterns:
+          - match: '\/'
+            name: invalid.illegal.slash.mvt
+        #  - include: '#illegal-attributes'
 
   # =-======================== Source ========================-= #
   source-mvt:
