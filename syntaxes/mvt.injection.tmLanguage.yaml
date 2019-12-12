@@ -41,10 +41,10 @@ repository:
       - include: '#tag-capture'
       - include: '#tag-do'
       - include: '#tag-else'
-      # - include: '#tag-elseif'
-      # - include: '#tag-eval'
-      # - include: '#tag-exit'
-      # - include: '#tag-foreach'
+      - include: '#tag-elseif'
+      - include: '#tag-eval'
+      - include: '#tag-exit'
+      - include: '#tag-foreach'
       # - include: '#tag-if'
       # - include: '#tag-inline'
       # - include: '#tag-item'
@@ -143,6 +143,72 @@ repository:
           - match: '\/'
             name: invalid.illegal.slash.mvt
         #  - include: '#illegal-attributes'
+    
+  tag-elseif:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(elseif)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.elseif.mvt
+        patterns:
+          - match: '\/'
+            name: invalid.illegal.slash.mvt
+        #  - include: '#expr-attribute'
+        #  - include: '#illegal-attributes'
+  
+  tag-eval:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(eval)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.eval.mvt
+        # patterns:
+        #   - include: '#expr-attribute'
+        #   - include: '#illegal-attributes'
+  
+  tag-exit:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(exit)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.exit.mvt
+        # patterns:
+        #   - include: '#illegal-attributes'
+
+  tag-foreach:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(foreach)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.foreach.mvt
+        # patterns:
+        #   - include: '#array-attribute'
+        #   - include: '#iterator-attribute'
+        #   - include: '#illegal-attributes'
 
   # =-======================== Source ========================-= #
   source-mvt:
