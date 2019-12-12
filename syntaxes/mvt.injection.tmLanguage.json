@@ -107,6 +107,16 @@
           "name": "meta.tag.inline.assign.mvt",
           "patterns": [
             {
+              "match": "(=)",
+              "name": "meta.preprocessor.attribute-assignment.mvt"
+            },
+            {
+              "include": "#assign-name-attribute"
+            },
+            {
+              "include": "#value-attribute"
+            },
+            {
               "include": "#illegal-attributes"
             }
           ]
@@ -140,7 +150,34 @@
           "name": "meta.tag.block.call.mvt",
           "patterns": [
             {
+              "include": "#action-attribute"
+            },
+            {
+              "include": "#cerfile-attribute"
+            },
+            {
+              "include": "#certpass-attribute"
+            },
+            {
+              "include": "#certtype-attribute"
+            },
+            {
+              "include": "#content-type-attribute"
+            },
+            {
+              "include": "#fields-attribute"
+            },
+            {
+              "include": "#files-attribute"
+            },
+            {
               "include": "#headers-attribute"
+            },
+            {
+              "include": "#method-attribute"
+            },
+            {
+              "include": "#timeout-attribute"
             },
             {
               "include": "#illegal-attributes"
@@ -176,6 +213,9 @@
           "name": "meta.tag.block.capture.mvt",
           "patterns": [
             {
+              "include": "#variable-attribute"
+            },
+            {
               "include": "#illegal-attributes"
             }
           ]
@@ -208,6 +248,15 @@
           },
           "name": "meta.tag.inline.do.mvt",
           "patterns": [
+            {
+              "include": "#file-attribute"
+            },
+            {
+              "include": "#name-attribute"
+            },
+            {
+              "include": "#value-attribute"
+            },
             {
               "include": "#illegal-attributes"
             }
@@ -244,6 +293,9 @@
             {
               "match": "\\/",
               "name": "invalid.illegal.slash.mvt"
+            },
+            {
+              "include": "#illegal-attributes"
             }
           ]
         }
@@ -278,6 +330,12 @@
             {
               "match": "\\/",
               "name": "invalid.illegal.slash.mvt"
+            },
+            {
+              "include": "#expr-attribute"
+            },
+            {
+              "include": "#illegal-attributes"
             }
           ]
         }
@@ -309,6 +367,9 @@
           },
           "name": "meta.tag.inline.eval.mvt",
           "patterns": [
+            {
+              "include": "#expr-attribute"
+            },
             {
               "include": "#illegal-attributes"
             }
@@ -343,6 +404,12 @@
           "name": "meta.tag.block.foreach.mvt",
           "patterns": [
             {
+              "include": "#array-attribute"
+            },
+            {
+              "include": "#iterator-attribute"
+            },
+            {
               "include": "#illegal-attributes"
             }
           ]
@@ -375,6 +442,9 @@
           },
           "name": "meta.tag.block.if.mvt",
           "patterns": [
+            {
+              "include": "#expr-attribute"
+            },
             {
               "include": "#illegal-attributes"
             }
@@ -441,6 +511,12 @@
           },
           "name": "meta.tag.inline.item.mvt",
           "patterns": [
+            {
+              "include": "#item-name-attribute"
+            },
+            {
+              "include": "#param-attribute"
+            },
             {
               "include": "#illegal-attributes"
             }
@@ -514,6 +590,9 @@
           "name": "meta.tag.block.while.mvt",
           "patterns": [
             {
+              "include": "#expr-attribute"
+            },
+            {
               "include": "#illegal-attributes"
             }
           ]
@@ -528,36 +607,34 @@
         }
       ]
     },
-    "output-attribute": {
+    "certfile-attribute": {
       "patterns": [
         {
-          "begin": "(?i)(?<=[^=])\\b(output)\\s*(=?)\\s*(\")",
+          "begin": "(?i)(?<=[^=])\\b(certfile)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.expr.mvt"
+              "name": "entity.other.attribute-name.certfile.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "\"",
+          "end": "(\")",
           "endCaptures": {
             "1": {
-              "name": "punctuation.definition.string.end.mvt"
+              "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "string.quoted.single.mvt",
+          "contentName": "attribute-value.certfile.mvt source.mvt",
           "patterns": [
             {
-              "match": "\\b(off|on)\\b",
-              "name": "string.quoted.single.mvt"
+              "include": "#source-mvt"
             },
             {
-              "match": "[^\"]",
-              "name": "invalid.illegal.identifier.mvt"
+              "include": "#source-functions-builtins"
             }
           ]
         }
@@ -630,6 +707,204 @@
           ]
         }
       ]
+    },
+    "value-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(value)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.value.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.value.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "item-name-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.name.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.name.mvt source.mvt support.class.module.mvt"
+        }
+      ]
+    },
+    "assign-name-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.name.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.name.mvt source.mvt assign.declaration.mvt",
+          "patterns": [
+            {
+              "include": "#source-variables"
+            },
+            {
+              "include": "#source-string-single"
+            },
+            {
+              "include": "#source-numbers"
+            }
+          ]
+        }
+      ]
+    },
+    "name-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.name.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.name.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-variables"
+            },
+            {
+              "include": "#source-string-single"
+            },
+            {
+              "include": "#source-numbers"
+            }
+          ]
+        }
+      ]
+    },
+    "output-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(output)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.expr.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "string.quoted.single.mvt",
+          "patterns": [
+            {
+              "match": "\\b(off|on)\\b",
+              "name": "string.quoted.single.mvt"
+            },
+            {
+              "match": "[^\"]",
+              "name": "invalid.illegal.identifier.mvt"
+            }
+          ]
+        }
+      ],
+      "timeout-attribute": {
+        "patterns": [
+          {
+            "begin": "(?i)(?<=[^=])\\b(timeout)\\s*(=?)\\s*(\")",
+            "beginCaptures": {
+              "1": {
+                "name": "entity.other.attribute-name.timeout.mvt"
+              },
+              "2": {
+                "name": "punctuation.separator.key-value.mvt"
+              },
+              "3": {
+                "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt"
+              }
+            },
+            "end": "(\")",
+            "endCaptures": {
+              "1": {
+                "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt"
+              }
+            },
+            "contentName": "attribute-value.timeout.mvt source.mvt",
+            "patterns": [
+              {
+                "include": "#source-mvt"
+              },
+              {
+                "include": "#source-functions-builtins"
+              }
+            ]
+          }
+        ]
+      }
     },
     "source-mvt": {
       "patterns": [
@@ -751,6 +1026,36 @@
         {
           "match": "\\\\(x[\\da-fA-F][\\da-fA-F]|u[\\da-fA-F][\\da-fA-F][\\da-fA-F][\\da-fA-F]|.)",
           "name": "constant.character.escape.js"
+        }
+      ]
+    },
+    "source-functions-builtins": {
+      "patterns": [
+        {
+          "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "support.function.builtin.mvt"
+            },
+            "2": {
+              "name": "puncuation.definition.group.mvt"
+            }
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.group.mvt"
+            }
+          },
+          "name": "meta.function.builtin.declaration.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
         }
       ]
     }

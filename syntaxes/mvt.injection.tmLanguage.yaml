@@ -63,8 +63,8 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.assign.mvt
         patterns:
-        #   - include: '#assign-name-attribute'
-        #   - include: '#value-attribute'
+          - include: '#assign-name-attribute'
+          - include: '#value-attribute'
           - include: '#illegal-attributes'
   
   tag-call:
@@ -80,15 +80,15 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.call.mvt
         patterns:
-        #   - include: '#action-attribute'
-        #   - include: '#cerfile-attribute'
-        #   - include: '#certpass-attribute'
-        #   - include: '#certtype-attribute'
-        #   - include: '#content-type-attribute'
-        #   - include: '#fields-attribute'
-        #   - include: '#files-attribute'
+          - include: '#action-attribute'
+          - include: '#cerfile-attribute'
+          - include: '#certpass-attribute'
+          - include: '#certtype-attribute'
+          - include: '#content-type-attribute'
+          - include: '#fields-attribute'
+          - include: '#files-attribute'
           - include: '#headers-attribute'
-        #   - include: '#method-attribute'
+          - include: '#method-attribute'
           - include: '#timeout-attribute'
           - include: '#illegal-attributes'
         
@@ -105,7 +105,7 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.capture.mvt
         patterns:
-        #   - include: '#variable-attribute'
+          - include: '#variable-attribute'
           - include: '#illegal-attributes'
     
   tag-do:
@@ -121,9 +121,9 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.do.mvt
         patterns:
-        #   - include: '#file-attribute'
-        #   - include: '#name-attribute'
-        #   - include: '#value-attribute'
+          - include: '#file-attribute'
+          - include: '#name-attribute'
+          - include: '#value-attribute'
           - include: '#illegal-attributes'
   
   tag-else:
@@ -141,7 +141,7 @@ repository:
         patterns:
           - match: '\/'
             name: invalid.illegal.slash.mvt
-        #  - include: '#illegal-attributes'
+          - include: '#illegal-attributes'
     
   tag-elseif:
     patterns:
@@ -158,8 +158,8 @@ repository:
         patterns:
           - match: '\/'
             name: invalid.illegal.slash.mvt
-        #  - include: '#expr-attribute'
-        #  - include: '#illegal-attributes'
+          - include: '#expr-attribute'
+          - include: '#illegal-attributes'
   
   tag-eval:
     patterns:
@@ -174,7 +174,7 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.eval.mvt
         patterns:
-        #   - include: '#expr-attribute'
+          - include: '#expr-attribute'
           - include: '#illegal-attributes'
 
   tag-foreach:
@@ -190,8 +190,8 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.foreach.mvt
         patterns:
-        #   - include: '#array-attribute'
-        #   - include: '#iterator-attribute'
+          - include: '#array-attribute'
+          - include: '#iterator-attribute'
           - include: '#illegal-attributes'
   
   tag-if:
@@ -207,7 +207,7 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.if.mvt
         patterns:
-        #   - include: '#expr-attribute'
+          - include: '#expr-attribute'
           - include: '#illegal-attributes'
   
   tag-inline:
@@ -238,8 +238,8 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.inline.item.mvt
         patterns:
-        #   - include: '#item-name-attribute'
-        #   - include: '#param-attribute'
+          - include: '#item-name-attribute'
+          - include: '#param-attribute'
           - include: '#illegal-attributes'
   
   tag-miva:
@@ -272,7 +272,7 @@ repository:
           1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
         name: meta.tag.block.while.mvt
         patterns:
-        #   - include: '#expr-attribute'
+          - include: '#expr-attribute'
           - include: '#illegal-attributes'
 
 
@@ -295,7 +295,7 @@ repository:
         contentName: attribute-value.certfile.mvt source.mvt
         patterns:
           - include: '#source-mvt'
-          # - include: '#source-functions-builtins'
+          - include: '#source-functions-builtins'
 
   compresswhitespace-attribute:
     patterns:
@@ -327,7 +327,70 @@ repository:
         contentName: attribute-value.headers.mvt source.mvt
         patterns:
           - include: '#source-mvt'
-          # - include: '#source-functions-builtins'
+          - include: '#source-functions-builtins'
+  
+  value-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(value)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.value.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.value.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  item-name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt support.class.module.mvt
+  
+  assign-name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt assign.declaration.mvt
+        patterns:
+          - include: '#source-variables'
+          - include: '#source-string-single'
+          - include: '#source-numbers'
+          # - include: '#source-brackets-no-functions'
+          # - include: '#source-group-no-functions'
+
+  name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt
+        patterns:
+          - include: '#source-variables'
+          - include: '#source-string-single'
+          - include: '#source-numbers'
+          # - include: '#source-brackets-no-functions'
+          # - include: '#source-group-no-functions'
 
   output-attribute:
     patterns:
@@ -359,7 +422,7 @@ repository:
           contentName: attribute-value.timeout.mvt source.mvt
           patterns:
             - include: '#source-mvt'
-            # - include: '#source-functions-builtins'
+            - include: '#source-functions-builtins'
 
   # =-======================== Source ========================-= #
   source-mvt:
@@ -456,6 +519,21 @@ repository:
     - match: '\\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)'
       name: constant.character.escape.js
 
+
+  # =-======== Functions - Source ========-= #
+  source-functions-builtins:
+    patterns:
+      - begin: '\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(\()'
+        beginCaptures:
+          1: {name: support.function.builtin.mvt}
+          2: {name: puncuation.definition.group.mvt}
+        end: '(\))'
+        endCaptures:
+          1: {name: puncuation.terminator.group.mvt}
+        name: meta.function.builtin.declaration.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
 
   # =-======== Brackets / Group (Parenthesis) - Source ========-= #
   # source-brackets-no-functions:
