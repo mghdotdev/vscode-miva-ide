@@ -136,6 +136,10 @@ repository:
       name: variable.language.array-continue.mvt
       match: (?<=\])(:)([a-zA-Z0-9:_\.]*)
 
+    - comment: POSX
+      match: \b(?i:POS)[0-9]+\b
+      name: variable.language.posx.mvt
+
   mvt-variable-generic:
     comment: MVT Variable Generic (No l. g. s.)
     name: variable.language.generic.mvt

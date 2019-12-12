@@ -214,6 +214,11 @@
           "comment": "Variable AFTER Array Bracket []",
           "name": "variable.language.array-continue.mvt",
           "match": "(?<=\\])(:)([a-zA-Z0-9:_\\.]*)"
+        },
+        {
+          "comment": "POSX",
+          "match": "\\b(?i:POS)[0-9]+\\b",
+          "name": "variable.language.posx.mvt"
         }
       ]
     },
