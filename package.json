@@ -10,8 +10,11 @@
         "Programming Languages"
     ],
     "scripts": {
-        "build-syntax": "node ./syntaxes/build.js"
+        "build-syntax": "node ./syntaxes/build.js",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w"
     },
+    "main": "./client/MVT/out/extension.js",
     "contributes": {
         "configuration": {
             "title": "Miva IDE",
@@ -78,6 +81,7 @@
         "onLanguage:mvt"
     ],
     "devDependencies": {
+        "@types/node": "^12.12.17",
         "glob": "^7.1.6",
         "js-yaml": "^3.13.1",
         "typescript": "^3.7.3"
