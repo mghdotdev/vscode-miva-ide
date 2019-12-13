@@ -642,7 +642,7 @@
           "begin": "(?i)(?<=[^=])\\b(compresswhitespace)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.expr.mvt"
+              "name": "entity.other.attribute-name.compresswhitespace.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
@@ -704,6 +704,204 @@
         }
       ]
     },
+    "method-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(method)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.method.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.method.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "fields-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(fields)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.fields.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.fields.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "content-type-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(content-type)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.content-type.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.content-type.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "certtype-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(certtype)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.certtype.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.certtype.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "certpass-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(certpass)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.certpass.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.certpass.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "files-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(files)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.files.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.files.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
     "expr-attribute": {
       "patterns": [
         {
@@ -726,6 +924,72 @@
             }
           },
           "contentName": "attribute-value.expr.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "cerfile-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(cerfile)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.cerfile.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.cerfile.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.cerfile.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "action-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(action)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.action.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.action.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1001,7 +1265,7 @@
           "begin": "(?i)(?<=[^=])\\b(output)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.expr.mvt"
+              "name": "entity.other.attribute-name.output.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
