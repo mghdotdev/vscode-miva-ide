@@ -1,97 +1,97 @@
 {
     "mvt:read_basket": {
 		"prefix": "mvt:read_basket",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Basket( '${1:basket_field_code}', ${2:g.variable} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Basket( '${1:basket_field_code}', ${2:g.variable} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_basket": {
 		"prefix": "mvt:write_basket",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Basket( '${1:basket_field_code}', '${2:value}' )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Basket( '${1:basket_field_code}', '${2:value}' )\" />",
 		"description": "Debug",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_category_code": {
 		"prefix": "mvt:read_category_code",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Category_Code( ${1:'category_code'}, '${2:custom_field_code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Category_Code( ${1:'category_code'}, '${2:custom_field_code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_category_id": {
 		"prefix": "mvt:read_category_id",
-		"body": "<mvt:item name=\"customfields\" param=\"Read_Category_ID( ${1:1}, '${2:custom_field_code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Category_ID( ${1:1}, '${2:custom_field_code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_customer_id": {
 		"prefix": "mvt:read_customer_id",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Customer_ID( ${1:666}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Customer_ID( ${1:666}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_customer_login": {
 		"prefix": "mvt:read_customer_login",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Customer_Login( ${1:'test@test.com'}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Customer_Login( ${1:'test@test.com'}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_order": {
 		"prefix": "mvt:read_order",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Order( ${1:666}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Order( ${1:666}, '${2:custom_field_code}', ${3:l.settings:customfields} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_product_code": {
 		"prefix": "mvt:read_product_code",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Product_Code( ${1:'product_code'}, '${2:custom_field_code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Product_Code( ${1:'product_code'}, '${2:custom_field_code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:read_product_id": {
 		"prefix": "mvt:read_product_id",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Read_Product_ID( ${1:1}, '${2:custom_field_code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Read_Product_ID( ${1:1}, '${2:custom_field_code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_category_code": {
 		"prefix": "mvt:write_category_code",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Category_Code( ${1:'category_code'}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Category_Code( ${1:'category_code'}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_category_id": {
 		"prefix": "mvt:write_category_id",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Category_ID( ${1:1}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Category_ID( ${1:1}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_customer_id": {
 		"prefix": "mvt:write_customer_id",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Customer_ID( ${1:666}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Customer_ID( ${1:666}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_customer_login": {
 		"prefix": "mvt:write_customer_login",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Customer_Login( ${1:'test@test.com'}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Customer_Login( ${1:'test@test.com'}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_order": {
 		"prefix": "mvt:write_order",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Order( ${1:g.order:id}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Order( ${1:g.order:id}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_product_code": {
 		"prefix": "mvt:write_product_code",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Product_Code( ${1:'product_code'}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Product_Code( ${1:'product_code'}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	},
 	"mvt:write_product_id": {
 		"prefix": "mvt:write_product_id",
-		"body": "\n<mvt:item name=\"customfields\" param=\"Write_Product_ID( ${1:g.product:id}, '${2:custom_field_code}', ${3:'value'} )\" />\n",
+		"body": "<mvt:item name=\"customfields\" param=\"Write_Product_ID( ${1:g.product:id}, '${2:custom_field_code}', ${3:'value'} )\" />",
 		"description": "Customfield",
 		"scope": "text.mvt - source.mvt - string"
 	}

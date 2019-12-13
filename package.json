@@ -26,6 +26,14 @@
                 "language": "mvt",
                 "path": "./snippets/MVT/debugging.snippets.json"
             },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/other.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/builtins.snippets.json"
+            }
         ],
         "languages": [
             {

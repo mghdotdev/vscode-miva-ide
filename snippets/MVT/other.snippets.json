@@ -1,0 +1,32 @@
+{
+	"mvt:concat": {
+		"prefix": "mvt:concat",
+		"body": "<mvt:assign name=\"${1:g.variable}\" value=\"${1:g.variable} ${2:$} ${3:l.variable}\" />",
+		"description": "Other",
+		"scope": "text.mvt - source.mvt - string"
+	},
+	"mvt:fileread": {
+		"prefix": "mvt:fileread",
+		"body": "<mvt:assign name=\"g.file_read\" value=\"file_read('/credit.csv','data', g.data)\" />\n\n  <mvt:if expr=\" g.file_read NE -1 \">\n    The file was read!\n  <mvt:else>\n    There was an error reading the file\n  </mvt:if>\n \n  <mvt:assign name=\"g.counter\" value=\"1\" />\n  <mvt:assign name=\"l.settings:line\" value=\"gettoken( g.data, asciichar(10), g.counter )\" />\n\n  <mvt:while expr=\"NOT ISNULL l.settings:line\">\n \n      <mvt:if expr=\"'bheyde' CIN l.settings:line\">\n\n      <mvt:assign name=\"l.settings:credit:login\"  value=\"gettoken( l.settings:line, asciichar(44), 1 ) \" />\n      <mvt:assign name=\"l.settings:credit:name\"   value=\"gettoken( l.settings:line, asciichar(44), 2 ) \" />\n      <mvt:assign name=\"l.settings:credit:amount\" value=\"gettoken( l.settings:line, asciichar(44), 3 ) \" />\n      \n      Login:  &mvt:credit:login;<br>\n      Name:   &mvt:credit:name;<br>\n      amount: &mvt:credit:amount;<br>\n  \n \n    </mvt:if>\n \n     \n      <mvt:assign name=\"g.counter\" value=\"g.counter + 1\" />\n      <mvt:assign name=\"l.settings:line\" value=\"gettoken( g.data, asciichar(10), g.counter )\" />\n \n               \n  </mvt:while>",
+		"description": "Other",
+		"scope": "text.mvt - source.mvt - string"
+	},
+	"mvt:filewrite": {
+		"prefix": "mvt:filewrite",
+		"body": "<mvt:assign name=\"g.filename\" \tvalue=\"'Export.csv'\" />\n<mvt:assign name=\"g.filepath\" \tvalue=\"'/test/'\" />\n<mvt:assign name=\"g.newline\" \tvalue=\"asciichar(10)\" />\n\n<mvt:assign name=\"g.headerrow\" \tvalue=\"'Product_Code,Product_Name,Product_Price' $ g.new_line\" />\n\n<mvt:assign name=\"g.file_exists\" value=\"sexists(g.filepath $ g.filename)\" />\n\n<mvt:if expr=\"g.file_exists EQ 1\">\n\n\t<mvt:assign name=\"g.file_deleted\" value=\"sdelete(g.filepath $ g.filename)\" />\n\n\t<mvt:if expr=\"g.file_deleted EQ 1\">\n\t\t<mvt:assign name=\"g.file_created\" value=\"file_create(g.filepath $ g.filename,'script', g.headerrow)\" />\n\t</mvt:if>\n\n<mvt:else>\n\n\t<mvt:assign name=\"g.file_created\" value=\"file_create(g.filepath $ g.filename,'script', g.headerrow)\" />\n\n</mvt:if>\n\n\n<mvt:if expr=\"g.file_deleted EQ 1\">\n\tThe File Was Deleted <br>\n</mvt:if>\n\n<mvt:if expr=\"g.file_created NE -1\">\n\tThe File Was Created <br>\n<mvt:else>\n\tThere was an error <br>\n</mvt:if>",
+		"description": "Other",
+		"scope": "text.mvt - source.mvt - string"
+	},
+	"mvt:gettoken": {
+		"prefix": "mvt:gettoken",
+		"body": "<mvt:assign name=\"${1:g.first}\" value=\"gettoken(${2:g.list}, ${3:','} , ${4:1})\" />",
+		"description": "Other",
+		"scope": "text.mvt - source.mvt - string"
+	},
+	"mvt:glosub": {
+		"prefix": "mvt:glosub",
+		"body": "<mvt:assign name=\"g.new_string\" value=\"glosub(${1:g.string}, ${2:'Miva Merchant'} , ${3:'Miva'})\" />",
+		"description": "Other",
+		"scope": "text.mvt - source.mvt - string"
+	}
+}
