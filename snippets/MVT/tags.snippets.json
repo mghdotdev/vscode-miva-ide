@@ -7,7 +7,7 @@
 	},
 	"mvt:call": {
 		"prefix": "mvt:call",
-		"body": "<mvt:call action=\"$1\" method=\"$2\">\n\t${3:<mvt:eval expr=\"s.callvalue\" />}\n</mvt:call>\n<!-- @@ &mvt:global:MvCALL_Error; -->",
+		"body": "<mvt:call action=\"$1\" method=\"${2|'GET','POST','HEAD','XML','RAW','OPTIONS','PUT','DELETE','TRACE','CONNECT'|}\">\n\t${3:<mvt:eval expr=\"s.callvalue\" />}\n</mvt:call>\n${4:<!-- @@ &mvt:global:MvCALL_Error; -->}",
 		"description": "Tag - Call",
 		"scope": "text.mvt - source.mvt - string"
 	},
@@ -97,7 +97,7 @@
 	},
 	"mvt:miva": {
 		"prefix": "mvt:miva",
-		"body": "<mvt:miva output=\"${1:on}\" compresswhitespace=\"${2:on}\" />",
+		"body": "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />",
 		"description": "Tag - Miva",
 		"scope": "text.mvt - source.mvt - string"
 	},
