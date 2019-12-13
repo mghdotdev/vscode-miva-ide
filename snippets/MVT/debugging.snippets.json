@@ -22,11 +22,5 @@
 		"body": "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
 		"description": "Debug",
 		"scope": "text.mvt - source.mvt - string"
-	},
-	"mvt:var_dump": {
-		"prefix": "mvt:var_dump",
-		"body": "<mvt:assign name=\"g.var\" value=\"miva_array_serialize(${1:array})\" />\r\n<!-- @@ &mvt:global:var; -->",
-		"description": "Debug",
-		"scope": "text.mvt - source.mvt - string"
 	}
 }

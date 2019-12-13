@@ -141,17 +141,17 @@
     },
     "crypto_hmac_md5": {
         "prefix": "crypto_hmac_md5",
-        "body": "crypto_hmac_md5( ${1:buffer var}, ${2:key}, ${3:format}, ${4:result var} )$0",
+        "body": "crypto_hmac_md5( ${1:buffer var}, ${2:key}, ${3|'hex','binary'|}, ${4:result var} )$0",
         "scope": "source.mvt"
     },
     "crypto_hmac_sha1": {
         "prefix": "crypto_hmac_sha1",
-        "body": "crypto_hmac_sha1( ${1:value}, ${2:key}, ${3:output_format}, ${4:output} )$0",
+        "body": "crypto_hmac_sha1( ${1:value}, ${2:key}, ${3|'hex','binary'|}, ${4:output} )$0",
         "scope": "source.mvt"
     },
     "crypto_hmac_sha256": {
         "prefix": "crypto_hmac_sha256",
-        "body": "crypto_hmac_sha256( ${1:buffer var}, ${2:key}, ${3:format}, ${4:result var} )$0",
+        "body": "crypto_hmac_sha256( ${1:buffer var}, ${2:key}, ${3|'hex','binary'|}, ${4:result var} )$0",
         "scope": "source.mvt"
     },
     "crypto_last_error": {
@@ -176,7 +176,7 @@
     },
     "crypto_md5_file": {
         "prefix": "crypto_md5_file",
-        "body": "crypto_md5_file( ${1:file}, ${2:location}, ${3:hash var} )$0",
+        "body": "crypto_md5_file( ${1:file}, ${2|'script','data'|}, ${3:hash var} )$0",
         "scope": "source.mvt"
     },
     "crypto_next_error": {
@@ -186,12 +186,12 @@
     },
     "crypto_pbkdf1": {
         "prefix": "crypto_pbkdf1",
-        "body": "crypto_pbkdf1( ${1:digestname}, ${2:password}, ${3:salt}, ${4:iterations}, ${5:dklen}, ${6:dk var} )$0",
+        "body": "crypto_pbkdf1( ${1|'md2','md5','sha1'|}, ${2:password}, ${3:salt}, ${4:iterations}, ${5:dklen}, ${6:dk var} )$0",
         "scope": "source.mvt"
     },
     "crypto_pbkdf2": {
         "prefix": "crypto_pbkdf2",
-        "body": "crypto_pbkdf2( ${1:digestname}, ${2:password}, ${3:salt}, ${4:iterations}, ${5:dklen}, ${6:dk var} )$0",
+        "body": "crypto_pbkdf2( ${1|'md2','md5','sha1'|}, ${2:password}, ${3:salt}, ${4:iterations}, ${5:dklen}, ${6:dk var} )$0",
         "scope": "source.mvt"
     },
     "crypto_rand_bytes": {
@@ -206,12 +206,12 @@
     },
     "crypto_sha1": {
         "prefix": "crypto_sha1",
-        "body": "crypto_sha1( ${1:buffer var}, ${2:format}, ${3:result var} )$0",
+        "body": "crypto_sha1( ${1:buffer var}, ${2|'hex','binary'|}, ${3:result var} )$0",
         "scope": "source.mvt"
     },
     "crypto_sha256": {
         "prefix": "crypto_sha256",
-        "body": "crypto_sha256( ${1:buffer var}, ${2:format}, ${3:result var} )$0",
+        "body": "crypto_sha256( ${1:buffer var}, ${2|'hex','binary'|}, ${3:result var} )$0",
         "scope": "source.mvt"
     },
     "crypto_xor": {
@@ -231,7 +231,7 @@
     },
     "dir": {
         "prefix": "dir",
-        "body": "dir( ${1:path}, ${2:location}, ${3:entries var} )$0",
+        "body": "dir( ${1:path}, ${2|'script','data'|}, ${3:entries var} )$0",
         "scope": "source.mvt"
     },
     "encodeattribute": {
@@ -261,12 +261,12 @@
     },
     "evp_pkey_load_mem": {
         "prefix": "evp_pkey_load_mem",
-        "body": "evp_pkey_load_mem( ${1:data}, ${2:format}, ${3:passphrase}, ${4:pkey var} )$0",
+        "body": "evp_pkey_load_mem( ${1:data}, 'pkcs12', ${2:passphrase}, ${3:pkey var} )$0",
         "scope": "source.mvt"
     },
     "evp_pkey_load_pubkey_mem": {
         "prefix": "evp_pkey_load_pubkey_mem",
-        "body": "evp_pkey_load_pubkey_mem( ${1:data}, ${2:format}, ${3:pkey var} )$0",
+        "body": "evp_pkey_load_pubkey_mem( ${1:data}, ${2|'pem','der'|}, ${3:pkey var} )$0",
         "scope": "source.mvt"
     },
     "evp_pkey_load_pubkey_x509": {
@@ -301,37 +301,37 @@
     },
     "file_append": {
         "prefix": "file_append",
-        "body": "file_append( ${1:path}, '${2:data/script}${2/(d$)|(da$)|(s$)|(sc$)|.*/?1:ata:?2:ta:?3:cript:?4:ript/}', ${3:data var} )$0",
+        "body": "file_append( ${1:path}, ${2|'data','script'|}, ${3:data var} )$0",
         "scope": "source.mvt"
     },
     "file_create": {
         "prefix": "file_create",
-        "body": "file_create( ${1:path}, '${2:data/script}${2/(d$)|(da$)|(s$)|(sc$)|.*/?1:ata:?2:ta:?3:cript:?4:ript/}', ${3:data var} )$0",
+        "body": "file_create( ${1:path}, ${2|'data','script'|}, ${3:data var} )$0",
         "scope": "source.mvt"
     },
     "file_overwrite": {
         "prefix": "file_overwrite",
-        "body": "file_overwrite( ${1:path}, '${2:data/script}${2/(d$)|(da$)|(s$)|(sc$)|.*/?1:ata:?2:ta:?3:cript:?4:ript/}', ${3:data var} )$0",
+        "body": "file_overwrite( ${1:path}, ${2|'data','script'|}, ${3:data var} )$0",
         "scope": "source.mvt"
     },
     "file_read": {
         "prefix": "file_read",
-        "body": "file_read( ${1:path}, '${2:data/script}${2/(d$)|(da$)|(s$)|(sc$)|.*/?1:ata:?2:ta:?3:cript:?4:ript/}', ${3:data var} )$0",
+        "body": "file_read( ${1:path}, ${2|'data','script'|}, ${3:data var} )$0",
         "scope": "source.mvt"
     },
     "file_read_bytes": {
         "prefix": "file_read_bytes",
-        "body": "file_read_bytes( ${1:path}, '${2:data/script}${2/(d$)|(da$)|(s$)|(sc$)|.*/?1:ata:?2:ta:?3:cript:?4:ript/}', ${3:offset}, ${4:length}, ${5:data} )$0",
+        "body": "file_read_bytes( ${1:path}, ${2|'data','script'|}, ${3:offset}, ${4:length}, ${5:data} )$0",
         "scope": "source.mvt"
     },
     "file_set_time": {
         "prefix": "file_set_time",
-        "body": "file_set_time( ${1:path}, ${2:location}, ${3:modified} )$0",
+        "body": "file_set_time( ${1:path}, ${2|'data','script'|}, ${3:modified} )$0",
         "scope": "source.mvt"
     },
     "file_touch": {
         "prefix": "file_touch",
-        "body": "file_touch( ${1:file}, ${2:location} )$0",
+        "body": "file_touch( ${1:file}, ${2|'data','script'|} )$0",
         "scope": "source.mvt"
     },
     "fisdir": {
@@ -746,7 +746,7 @@
     },
     "miva_joinstring": {
         "prefix": "miva_joinstring",
-        "body": "miva_joinstring( ${1:input var}, ${2:join_with}, ${3:flags} )$0",
+        "body": "miva_joinstring( ${1:input var}, ${2:join_with}, ${3|'trim','ltrim','rtrim','lower','upper','insensitive'|} )$0",
         "scope": "source.mvt"
     },
     "miva_json_decode": {
@@ -771,7 +771,7 @@
     },
     "miva_openlog": {
         "prefix": "miva_openlog",
-        "body": "miva_openlog( ${1:ident}, ${2:logopt}, ${3:facility} )$0",
+        "body": "miva_openlog( ${1:ident}, ${2|'PID','CONS','ODELAY','NDELAY','NOWAIT','PERROR'|}, ${3|'USER','LOCAL0','LOCAL1','LOCAL2','LOCAL3','LOCAL4','LOCAL5','LOCAL6','LOCAL7'|} )$0",
         "scope": "source.mvt"
     },
     "miva_output_flush": {
@@ -801,7 +801,7 @@
     },
     "miva_setlogmask": {
         "prefix": "miva_setlogmask",
-        "body": "miva_setlogmask( ${1:maskpri} )$0",
+        "body": "miva_setlogmask( ${1|'EMERG','ALERT','CRIT','ERR','WARNING','NOTICE','INFO','DEBUG'|} )$0",
         "scope": "source.mvt"
     },
     "miva_setprocessname": {
@@ -816,7 +816,7 @@
     },
     "miva_splitstring": {
         "prefix": "miva_splitstring",
-        "body": "miva_splitstring( ${1:string}, ${2:sep}, ${3:output var}, ${4:flags} )$0",
+        "body": "miva_splitstring( ${1:string}, ${2:sep}, ${3:output var}, ${4|'trim','ltrim','rtrim','lower','upper','insensitive'|} )$0",
         "scope": "source.mvt"
     },
     "miva_struct_members": {
@@ -861,7 +861,7 @@
     },
     "miva_writelog": {
         "prefix": "miva_writelog",
-        "body": "miva_writelog( ${1:priority}, ${2:message} )$0",
+        "body": "miva_writelog( ${1'EMERG','ALERT','CRIT','ERR','WARNING','NOTICE','INFO','DEBUG','USER','LOCAL0','LOCAL1','LOCAL2','LOCAL3','LOCAL4','LOCAL5','LOCAL6','LOCAL7'}, ${2:message} )$0",
         "scope": "source.mvt"
     },
     "mktime_t": {
@@ -921,17 +921,17 @@
     },
     "rsa_generate_keypair": {
         "prefix": "rsa_generate_keypair",
-        "body": "rsa_generate_keypair( ${1:pubkey_file}, ${2:privkey_file}, ${3:bits}, ${4:e}, ${5:passphrase} )$0",
+        "body": "rsa_generate_keypair( ${1:pubkey_file}, ${2:privkey_file}, ${3:bits}, ${4|3,17,65537|}, ${5:passphrase} )$0",
         "scope": "source.mvt"
     },
     "rsa_generate_keypair_mem": {
         "prefix": "rsa_generate_keypair_mem",
-        "body": "rsa_generate_keypair_mem( ${1:pubkey var}, ${2:privkey var}, ${3:bits}, ${4:e}, ${5:passphrase} )$0",
+        "body": "rsa_generate_keypair_mem( ${1:pubkey var}, ${2:privkey var}, ${3:bits}, ${4|3,17,65537|}, ${5:passphrase} )$0",
         "scope": "source.mvt"
     },
     "rsa_generate_keypair_mem_cipher": {
         "prefix": "rsa_generate_keypair_mem_cipher",
-        "body": "rsa_generate_keypair_mem_cipher( ${1:pubkey var}, ${2:privkey var}, ${3:bits}, ${4:e}, ${5:passphrase}, ${6:ciphername} )$0",
+        "body": "rsa_generate_keypair_mem_cipher( ${1:pubkey var}, ${2:privkey var}, ${3:bits}, ${4|3,17,65537|}, ${5:passphrase}, ${6:ciphername} )$0",
         "scope": "source.mvt"
     },
     "rsa_load_privatekey": {
@@ -1126,17 +1126,17 @@
     },
     "tar_create": {
         "prefix": "tar_create",
-        "body": "tar_create( ${1:file}, ${2:file_loc}, ${3:dir}, ${4:dir_loc}, ${5:flags} )$0",
+        "body": "tar_create( ${1:file}, ${2|'data','script'|}, ${3:dir}, ${4|'data','script'|}, ${5|'','compress'|} )$0",
         "scope": "source.mvt"
     },
     "tar_directory": {
         "prefix": "tar_directory",
-        "body": "tar_directory( ${1:file}, ${2:location}, ${3:desc var} )$0",
+        "body": "tar_directory( ${1:file}, ${2:|'data','script'|}, ${3:desc var} )$0",
         "scope": "source.mvt"
     },
     "tar_extract": {
         "prefix": "tar_extract",
-        "body": "tar_extract( ${1:file}, ${2:file_loc}, ${3:dir}, ${4:dir_loc} )$0",
+        "body": "tar_extract( ${1:file}, ${2:|'data','script'|}, ${3:dir}, ${4:|'data','script'|} )$0",
         "scope": "source.mvt"
     },
     "time_t_dayofmonth": {
@@ -1206,12 +1206,12 @@
     },
     "wdownload": {
         "prefix": "wdownload",
-        "body": "wdownload( ${1:url}, ${2:filepath}, ${3:location}, ${4:callback}, ${5:callbackdata var} )$0",
+        "body": "wdownload( ${1:url}, ${2:filepath}, ${3|'data','script'|}, ${4:callback}, ${5:callbackdata var} )$0",
         "scope": "source.mvt"
     },
     "wget": {
         "prefix": "wget",
-        "body": "wget( ${1:url}, ${2:filepath}, ${3:location} )$0",
+        "body": "wget( ${1:url}, ${2:filepath}, ${3|'data','script'|} )$0",
         "scope": "source.mvt"
     },
     "x509_create": {
@@ -1221,7 +1221,7 @@
     },
     "x509_digest": {
         "prefix": "x509_digest",
-        "body": "x509_digest( ${1:x509 var}, ${2:digestname}, ${3:digest var} )$0",
+        "body": "x509_digest( ${1:x509 var}, ${2|'md5','sha256'|}, ${3:digest var} )$0",
         "scope": "source.mvt"
     },
     "x509_free": {
@@ -1256,7 +1256,7 @@
     },
     "x509_pubkey_digest": {
         "prefix": "x509_pubkey_digest",
-        "body": "x509_pubkey_digest( ${1:x509 var}, ${2:digestname}, ${3:digest var} )$0",
+        "body": "x509_pubkey_digest( ${1:x509 var}, ${2|'md5','sha256'|}, ${3:digest var} )$0",
         "scope": "source.mvt"
     },
     "x509_rsa_publickey": {
@@ -1271,7 +1271,7 @@
     },
     "xml_parse": {
         "prefix": "xml_parse",
-        "body": "xml_parse( ${1:filepath}, ${2:location}, ${3:output var} )$0",
+        "body": "xml_parse( ${1:filepath}, ${2|'data','script'|}, ${3:output var} )$0",
         "scope": "source.mvt"
     },
     "xml_parse_error": {
@@ -1291,7 +1291,7 @@
     },
     "xml_parse_section_init": {
         "prefix": "xml_parse_section_init",
-        "body": "xml_parse_section_init( ${1:filepath}, ${2:location}, ${3:level} )$0",
+        "body": "xml_parse_section_init( ${1:filepath}, ${2|'data','script'|}, ${3:level} )$0",
         "scope": "source.mvt"
     },
     "xml_parse_section_setstate": {
