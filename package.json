@@ -13,6 +13,24 @@
         "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json && npx js-yaml syntaxes/mvt.injection.tmLanguage.yaml > syntaxes/mvt.injection.tmLanguage.json"
     },
     "contributes": {
+        "snippets": [
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/tags.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/customfields.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/debugging.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/builtins.snippets.json"
+            }
+        ],
         "languages": [
             {
                 "id": "mvt",
