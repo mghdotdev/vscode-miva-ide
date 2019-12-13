@@ -5,324 +5,794 @@ scopeName: mvt.injection
 injectionSelector: 'L:text.html.mvt'
 
 patterns:
-- include: '#mvt-all'
+
+  # MVT Comments
+  - include: '#comments'
+
+  # MVT Entities
+  - include: '#entities'
+
+  # MVT Tags
+  - include: '#tags'
 
 repository:
-  mvt-all:
+ 
+  # =-======================== Comments ========================-= #
+  comments:
     patterns:
-    - comment: MVT Comment
-      begin: '<mvt:comment>'
-      beginCaptures:
-        '0': {name: punctuation.definition.comment.mvt}
-      end: '</mvt:comment>'
-      name: comment.block.mvt
-      
-    - comment: MVT Tags - Block
-      begin: (</?)(?i:(mvt)(:)(call|foreach|if|while)\b)
-      beginCaptures:
-        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
-        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
-        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
-        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-      end: ((?:[ ]?/)?>)
-      endCaptures:
-        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-      name: meta.tag.block.any.mvt
-      patterns:
-      - include: '#mvt-attributes'
-
-    - comment: MVT Tags - Inline
-      begin: (</?)(?i:(mvt)(:)(assign|callcontinue|callstop|else|elseif|eval|exit|foreachcontinue|foreachstop|item|miva|whilecontinue|whilestop)\b)
-      beginCaptures:
-        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
-        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
-        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
-        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-      end: ((?:[ ]?/)?>)
-      endCaptures:
-        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-      name: meta.tag.inline.any.mvt
-      patterns:
-      - include: '#mvt-attributes'
-
-    - comment: MVT Tags (mvt:do)
-      begin: (</?)(?i:(mvt)(:)(do)\b)
-      beginCaptures:
-        '1': {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
-        '2': {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
-        '3': {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
-        '4': {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
-      end: ((?:[ ]?/)?>)
-      endCaptures:
-        '1': {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
-      name: meta.tag.inline.do.mvt
-      patterns:
-      - include: '#mvt-attributes'
-
-    - comment: MVT Entities
-      include: '#mvt-entities'
-
-  mvt-source:
+      - comment: MVT Comment
+        begin: '<mvt:comment>'
+        beginCaptures:
+          '0': {name: punctuation.definition.comment.mvt}
+        end: '</mvt:comment>'
+        name: comment.block.mvt
+  
+  # =-======================== Entities ========================-= #
+  entities:
     patterns:
-    ## Numbers
-    - comment: Numbers
-      name: constant.numeric.mvt
-      match: \b(([0-9]+(\.[0-9]+)?))\b
+      - match: (?i)(&)(mvt)(a|e|j|s)?(:)([a-zA-Z_][a-zA-Z0-9_:\[\]]*)(;)
+        name: constant.character.entity.mvt
 
-    ## Strings
-    - comment: Single Quote String
-      begin: \'
-      beginCaptures:
-        '0': {name: punctuation.definition.string.begin.mvt}
-      end: \'
-      endCaptures:
-        '0': {name: punctuation.definition.string.end.mvt}
-      name: string.quoted.single
-      patterns:
-      - include: '#string-content'
-
-    ## Operators
-    - comment: Arithmetic Operators
-      name: keyword.operator.arithmetic.mvt
-      match: (\b(?i:POW|MOD|ROUND)\b)
-    - comment: Arithmetic Operators (Symbols)
-      name: keyword.operator.arithmetic.mvt
-      match: ((?<!\S)(\+|\-|\*|\/)\B)
-    - comment: Arithmetic Operators (Increment and Decrement)
-      name: keyword.operator.arithmetic.mvt
-      match: (\b(\+\+|\-\-)\B)
-
-    - comment: Comparison Operators
-      name: keyword.operator.comparison.mvt
-      match: (\b(?i:EQ|GT|GE|LT|NE|LE)\b)
-
-    - comment: Logical Operators
-      name: keyword.operator.logical.mvt
-      match: (\b(?i:NOT|AND|OR|ISNULL|NULL)\b)
-
-    - comment: Text Operators
-      name: keyword.operator.string.mvt
-      match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
-    - comment: Text Operators (Symbols)
-      name: keyword.operator.string.mvt
-      match: ((?<!\S)(\$)\B)
-
-    ## Booleans
-    - comment: True
-      name: constant.language.boolean.true.mvt
-      match: (\b(?i:true)\b)
-    - comment: False
-      name: constant.language.boolean.false.mvt
-      match: (\b(?i:false)\b)
-
-    ## Variables
-    - comment: Local Variable
-      name: variable.language.local.mvt
-      match: (l\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
-
-    - comment: Local Variable (NO L)
-      name: variable.language.local.mvt
-      match: ([A-Za-z0-9_]+)([a-zA-Z0-9_\[\]]+(:)[a-zA-Z0-9:_\.]*)
-
-    - comment: Global Variable
-      name: variable.language.global.mvt
-      match: (g\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
-
-    - comment: System Variable
-      name: variable.language.system.mvt
-      match: (s\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
-
-    - comment: Variable AFTER Array Bracket []
-      name: variable.language.array-continue.mvt
-      match: (?<=\])(:)([a-zA-Z0-9:_\.]*)
-
-    - comment: POSX
-      match: \b(?i:POS)[0-9]+\b
-      name: variable.language.posx.mvt
-
-  mvt-variable-generic:
-    comment: MVT Variable Generic (No l. g. s.)
-    name: variable.language.generic.mvt
-    match: ([A-Za-z_]+)([a-zA-Z0-9:_\.]*)
-
-  mvt-functions-assign:
-    comment: MVT Functions (mvt:assign)
-    name: support.function.assign.mvt
-    match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
-
-  mvt-functions-do:
-    comment: MVT Functions (mvt:do)
-    name: support.function.do.mvt
-    match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
-    captures: 
-      
-  mvt-functions-item:
+  # =-======================== Tags ========================-= #
+  tags:
     patterns:
-    - comment: ReadyTheme Functions
-      name: support.function.readytheme.mvt
-      match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+      - include: '#tag-assign'
+      - include: '#tag-call'
+      - include: '#tag-capture'
+      - include: '#tag-do'
+      - include: '#tag-else'
+      - include: '#tag-elseif'
+      - include: '#tag-eval'
+      - include: '#tag-foreach'
+      - include: '#tag-if'
+      - include: '#tag-inline'
+      - include: '#tag-item'
+      - include: '#tag-miva'
+      - include: '#tag-while'
 
-    - comment: Custom Field Functions
-      name: support.function.customfield.mvt
-      match: \b([a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()
+  tag-assign:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(assign)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.assign.mvt
+        patterns:
+          - include: '#assign-name-attribute'
+          - include: '#value-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-call:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(call)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.call.mvt
+        patterns:
+          - include: '#action-attribute'
+          - include: '#cerfile-attribute'
+          - include: '#certpass-attribute'
+          - include: '#certtype-attribute'
+          - include: '#content-type-attribute'
+          - include: '#fields-attribute'
+          - include: '#files-attribute'
+          - include: '#headers-attribute'
+          - include: '#method-attribute'
+          - include: '#timeout-attribute'
+          - include: '#illegal-attributes'
+        
+  tag-capture:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(capture)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.capture.mvt
+        patterns:
+          - include: '#variable-attribute'
+          - include: '#illegal-attributes'
     
-    - comment: Toolkit Functions
-      name: support.function.toolkit.mvt
-      match: (?<!\w|\|)([a-zA-Z_][a-zA-Z0-9_]*)(?=\|)
-
-    - comment: RyToolbelt Functions
-      name: support.function.toolbelt.mvt
-      match: (?<!\w|\|)([a-zA-Z_][a-zA-Z0-9_]*)(?=\|)
-
-  mvt-item-names:
+  tag-do:
     patterns:
-    - comment: ReadyTheme Class
-      name: support.class.mvt
-      match: \b(?i:readytheme)\b
-
-    - comment: ReadyTheme Class
-      name: support.class.mvt
-      match: \b(?i:customfields)\b
-
-    - comment: Toolkit Class
-      name: support.class.mvt
-      match: \b(?i:toolkit)\b
-
-    - comment: RyToolbelt Functions
-      name: support.class.mvt
-      match: \b(?i:ry_toolbelt)\b
-
-  mvt-attributes:
+      - begin: '(?i)(<)(mvt)(:)(do)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.do.mvt
+        patterns:
+          - include: '#file-attribute'
+          - include: '#name-attribute'
+          - include: '#value-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-else:
     patterns:
-    - comment: Generic Attributes
-      match: \b([a-zA-Z\-:]+)
-      name: entity.other.attribute-name.html
+      - begin: '(?i)(<)(mvt)(:)(else)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.else.mvt
+        patterns:
+          - match: '\/'
+            name: invalid.illegal.slash.mvt
+          - include: '#illegal-attributes'
+    
+  tag-elseif:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(elseif)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.elseif.mvt
+        patterns:
+          - match: '\/'
+            name: invalid.illegal.slash.mvt
+          - include: '#expr-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-eval:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(eval)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.eval.mvt
+        patterns:
+          - include: '#expr-attribute'
+          - include: '#illegal-attributes'
 
-    - comment: Name Attribute
-      begin: (?i)(?<=name\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.name
+  tag-foreach:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(foreach)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.foreach.mvt
+        patterns:
+          - include: '#array-attribute'
+          - include: '#iterator-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-if:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(if)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.if.mvt
+        patterns:
+          - include: '#expr-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-inline:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(callcontinue|callstop|exit|foreachcontinue|foreachstop|whilecontinue|whilestop)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.inline.mvt
+        patterns:
+          - include: '#illegal-attributes'
+  
+  tag-item:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(item)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.item.mvt
+        patterns:
+          - include: '#item-name-attribute'
+          - include: '#param-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-miva:
+    patterns:
+      - begin: '(?i)(<)(mvt)(:)(miva)\b'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(\/?>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.inline.miva.mvt
+        patterns:
+          - include: '#compresswhitespace-attribute'
+          - include: '#output-attribute'
+          - include: '#illegal-attributes'
+  
+  tag-while:
+    patterns:
+      - begin: '(</?)(?i:(mvt)(:)(while)\b)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt}
+          2: {name: storage.type.namespace.mvt meta.preprocessor.namespace.mvt}
+          3: {name: storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt}
+          4: {name: storage.type.localname.mvt meta.preprocessor.localname.mvt}
+        end: '(>)'
+        endCaptures:
+          1: {name: punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt}
+        name: meta.tag.block.while.mvt
+        patterns:
+          - include: '#expr-attribute'
+          - include: '#illegal-attributes'
+
+
+  # =-======================== Tag Attributes ========================-= #
+  illegal-attributes:
+    patterns:
+      - match: '(?<=[^=])\b([a-zA-Z0-9\:\-\_]+)\s*(=?)'
+        name: invalid.illegal.attribute-name.mvt
+
+  certfile-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(certfile)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.certfile.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.certfile.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  compresswhitespace-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(compresswhitespace)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.compresswhitespace.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          1: {name: punctuation.definition.string.end.mvt}
+        contentName: string.quoted.single.mvt
+        patterns:
+          - match: '\b(off|on)\b'
+            name: string.quoted.single.mvt
+          - match: '[^"]'
+            name: invalid.illegal.identifier.mvt
+
+  headers-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(headers)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.headers.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.headers.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  method-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(method)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.method.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.method.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  fields-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(fields)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.fields.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.fields.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  content-type-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(content-type)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.content-type.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.content-type.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  certtype-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(certtype)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.certtype.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.certtype.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  certpass-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(certpass)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.certpass.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.certpass.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  files-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(files)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.files.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.files.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  expr-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(expr)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.expr.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.expr.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  cerfile-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(cerfile)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.cerfile.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.cerfile.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  action-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(action)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.action.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.action.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  param-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(param)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.param.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.param.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-component'
+
+  file-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(file)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.file.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.file.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  array-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(array)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.array.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.array.mvt source.mvt variable.language.implied.mvt
+  
+  iterator-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(iterator)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.iterator.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.iterator.mvt source.mvt variable.language.implied.mvt
+  
+  value-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(value)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.value.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.value.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  item-name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt support.class.module.mvt
+  
+  assign-name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt assign.declaration.mvt
+        patterns:
+          - include: '#source-variables'
+          - include: '#source-string-single'
+          - include: '#source-numbers'
+          - include: '#source-brackets-no-functions'
+          - include: '#source-group-no-functions'
+
+  name-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.name.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.name.mvt source.mvt
+        patterns:
+          - include: '#source-variables'
+          - include: '#source-string-single'
+          - include: '#source-numbers'
+          - include: '#source-brackets-no-functions'
+          - include: '#source-group-no-functions'
+
+  output-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(output)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.output.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          1: {name: punctuation.definition.string.end.mvt}
+        contentName: string.quoted.single.mvt
+        patterns:
+          - match: '\b(off|on)\b'
+            name: string.quoted.single.mvt
+          - match: '[^"]'
+            name: invalid.illegal.identifier.mvt
+  
+    timeout-attribute:
       patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-item-names'
+        - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
+          beginCaptures:
+            1: {name: entity.other.attribute-name.timeout.mvt}
+            2: {name: punctuation.separator.key-value.mvt}
+            3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
+          end: '(")'
+          endCaptures:
+            1: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
+          contentName: attribute-value.timeout.mvt source.mvt
+          patterns:
+            - include: '#source-mvt'
+            - include: '#source-functions-builtins'
 
-    - comment: Param Attribute
-      begin: (?i)(?<=param\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.param
-      patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-functions-item'
+  # =-======================== Source ========================-= #
+  source-mvt:
+    patterns:
+      - include: '#source-brackets'
+      - include: '#source-group'
+      - include: '#source-string-single'
+      - include: '#source-variables'
+      - include: '#source-numbers'
+      - include: '#source-operators'
+      - include: '#source-constants'
 
-    - comment: Value Attribute
-      begin: (?i)(?<=value\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.value
-      patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-functions-assign'
-      - include: '#mvt-functions-do'
+  # =-======== Operators - Source ========-= #
+  source-operators:
+    patterns:
+      # Arithmetic Operators
+      - match: (\b(?i:POW|MOD|ROUND)\b)
+        name: keyword.operator.arithmetic.mvt
 
-    - comment: Expression Attribute
-      begin: (?i)(?<=expr\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.expr
-      patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-functions-assign'
+      # Arithmetic Operators (Symbols)
+      - match: --|\+\+|/|\*|\+|-
+        name: keyword.operator.arithmetic.mvt
 
-    - comment: Iterator Attribute
-      begin: (?i)(?<=iterator\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.iterator
-      patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-variable-generic'
+      # Comparison Operators
+      - match: (\b(?i:EQ|GT|GE|LT|NE|LE)\b)
+        name: keyword.operator.comparison.mvt
 
-    - comment: Array Attribute
-      begin: (?i)(?<=array\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.array
-      patterns:
-      - include: '#mvt-source'
-      - include: '#mvt-variable-generic'
+      # Logical Operators
+      - match: (\b(?i:NOT|AND|OR|ISNULL)\b)
+        name: keyword.operator.logical.mvt
 
-    - comment: File Attribute
-      begin: (?i)(?<=file\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.file
-      patterns:
-      - include: '#mvt-source'
+      # Text Operators
+      - match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
+        name: keyword.operator.string.mvt
 
-    - comment: MVT:Call Attributes
-      begin: (?i)(?<=method\=|action\=|content-type\=|fields\=|certpass\=|files\=|certtype\=|cerfile\=|timeout\=|headers\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.call
-      patterns:
-      - include: '#mvt-source'
+      # Text Operators (Symbols)
+      - match: \$
+        name: keyword.operator.string.mvt
 
-    - comment: Output Attribute
-      begin: (?i)(?<=output\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.output
-      patterns:
-      - include: '#mvt-source'
 
-    - comment: Compresswhitespace Attribute
-      begin: (?i)(?<=compresswhitespace\=)(\")
-      beginCaptures:
-        '0': {name: embedded.begin.mvt}
-      end: \"
-      endCaptures:
-        '0': {name: embedded.end.mvt}
-      name: source.mvt.embedded.html source.mvt.attribute-value.compresswhitespace
-      patterns:
-      - include: '#mvt-source'
+  # =-======== Constants - Source ========-= #
+  source-constants:
+    patterns:
+      # NULL
+      - match: \b(?i:NULL)\b
+        name: constant.language.null.mvt
 
-  mvt-entities:
-    comment: MVT Entities
-    match: (&)(mvt|mvte|mvta)([a-zA-Z0-9:\-_\[\]]+)(;)
-    name: constant.character.entity.mvt
+  # =-======== Numbers - Source ========-= #
+  source-numbers:
+    patterns:
+      - match: \b(([0-9]+(\.[0-9]+)?))\b
+        name: constant.numeric.mvt
 
-  string-content:
+
+  # =-======== Variables - Source ========-= #
+  source-variables:
+    patterns:
+      # Variables Base
+      - name: variable.language.local.mvt
+        match: ((l|local)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+      - name: variable.language.global.mvt
+        match: ((g|global)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+      - name: variable.language.system.mvt
+        match: ((s|system)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*)
+
+      # Variables Cont. (continue after square brackets)
+      - match: (?<=\])(:)([a-zA-Z0-9:_\.]*)
+        name: variable.language.array-continue.mvt
+
+      # POSX
+      - match: \b(?i:POS)[0-9]+\b
+        name: variable.language.posx.mvt
+
+  # =-======== Strings - Source ========-= #
+  source-string-single:
+    patterns:
+      - begin: "'"
+        beginCaptures:
+          '0': {name: punctuation.definition.string.begin.mvt}
+        end: "'"
+        endCaptures:
+          '0': {name: punctuation.definition.string.end.mvt}
+        name: string.quoted.single
+        patterns:
+        - include: '#source-string-escapes'
+
+  source-string-escapes:
     patterns:
     - match: \\\s*\n
       name: constant.character.escape.newline.js
-    - match: \\(x[\da-fA-F]{2}|u[\da-fA-F]{4}|.)
+      
+    - match: '\\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)'
       name: constant.character.escape.js
+
+
+  # =-======== Functions - Source ========-= #
+  source-functions-component:
+    patterns:
+      - begin: '\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(\()'
+        beginCaptures:
+          1: {name: support.function.component.mvt}
+          2: {name: puncuation.definition.group.mvt}
+        end: '(\))'
+        endCaptures:
+          1: {name: puncuation.terminator.group.mvt}
+        name: meta.function.component.declaration.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+  
+  source-functions-builtins:
+    patterns:
+      - begin: '\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(\()'
+        beginCaptures:
+          1: {name: support.function.builtin.mvt}
+          2: {name: puncuation.definition.group.mvt}
+        end: '(\))'
+        endCaptures:
+          1: {name: puncuation.terminator.group.mvt}
+        name: meta.function.builtin.declaration.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  # =-======== Brackets / Group (Parenthesis) - Source ========-= #
+  source-brackets-no-functions:
+    patterns:
+      - begin: '\['
+        beginCaptures:
+          1: {name: puncuation.definition.brackets.mvt}
+        end: '\]'
+        endCaptures:
+          1: {name: puncuation.terminator.bracket.mvt}
+        name: meta.brackets.mvt
+        patterns:
+          - match: '\]'
+            name: invalid.illegal.stray-bracket-end
+          - include: '#source-mvt'
+  
+  source-brackets:
+    patterns:
+      - begin: '\['
+        beginCaptures:
+          1: {name: puncuation.definition.brackets.mvt}
+        end: '\]'
+        endCaptures:
+          1: {name: puncuation.terminator.bracket.mvt}
+        name: meta.brackets.mvt
+        patterns:
+          - match: '\]'
+            name: invalid.illegal.stray-bracket-end
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  source-group-no-functions:
+    patterns:
+      - begin: '\('
+        beginCaptures:
+          1: {name: puncuation.definition.group.mvt}
+        end: '\)'
+        endCaptures:
+          1: {name: puncuation.terminator.group.mvt}
+        name: meta.group.mvt
+        patterns:
+          - match: '\)'
+            name: invalid.illegal.stray-group-end
+          - include: '#source-mvt'
+
+  source-group:
+    patterns:
+      - begin: '\('
+        beginCaptures:
+          1: {name: puncuation.definition.group.mvt}
+        end: '\)'
+        endCaptures:
+          1: {name: puncuation.terminator.group.mvt}
+        name: meta.group.mvt
+        patterns:
+          - match: '\)'
+            name: invalid.illegal.stray-group-end
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
