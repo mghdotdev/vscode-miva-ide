@@ -107,10 +107,6 @@
           "name": "meta.tag.inline.assign.mvt",
           "patterns": [
             {
-              "match": "(=)",
-              "name": "meta.preprocessor.attribute-assignment.mvt"
-            },
-            {
               "include": "#assign-name-attribute"
             },
             {
@@ -708,6 +704,155 @@
         }
       ]
     },
+    "expr-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(expr)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.expr.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.expr.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "param-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(param)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.param.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.param.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-component"
+            }
+          ]
+        }
+      ]
+    },
+    "file-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(file)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.file.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.file.mvt source.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "array-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(array)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.array.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.array.mvt source.mvt variable.language.implied.mvt"
+        }
+      ]
+    },
+    "iterator-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(iterator)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.iterator.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.iterator.mvt source.mvt variable.language.implied.mvt"
+        }
+      ]
+    },
     "value-attribute": {
       "patterns": [
         {
@@ -797,6 +942,12 @@
             },
             {
               "include": "#source-numbers"
+            },
+            {
+              "include": "#source-brackets-no-functions"
+            },
+            {
+              "include": "#source-group-no-functions"
             }
           ]
         }
@@ -833,6 +984,12 @@
             },
             {
               "include": "#source-numbers"
+            },
+            {
+              "include": "#source-brackets-no-functions"
+            },
+            {
+              "include": "#source-group-no-functions"
             }
           ]
         }
@@ -908,6 +1065,12 @@
     },
     "source-mvt": {
       "patterns": [
+        {
+          "include": "#source-brackets"
+        },
+        {
+          "include": "#source-group"
+        },
         {
           "include": "#source-string-single"
         },
@@ -1029,6 +1192,36 @@
         }
       ]
     },
+    "source-functions-component": {
+      "patterns": [
+        {
+          "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "support.function.component.mvt"
+            },
+            "2": {
+              "name": "puncuation.definition.group.mvt"
+            }
+          },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.group.mvt"
+            }
+          },
+          "name": "meta.function.component.declaration.mvt",
+          "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
     "source-functions-builtins": {
       "patterns": [
         {
@@ -1049,6 +1242,124 @@
           },
           "name": "meta.function.builtin.declaration.mvt",
           "patterns": [
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "source-brackets-no-functions": {
+      "patterns": [
+        {
+          "begin": "\\[",
+          "beginCaptures": {
+            "1": {
+              "name": "puncuation.definition.brackets.mvt"
+            }
+          },
+          "end": "\\]",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.bracket.mvt"
+            }
+          },
+          "name": "meta.brackets.mvt",
+          "patterns": [
+            {
+              "match": "\\]",
+              "name": "invalid.illegal.stray-bracket-end"
+            },
+            {
+              "include": "#source-mvt"
+            }
+          ]
+        }
+      ]
+    },
+    "source-brackets": {
+      "patterns": [
+        {
+          "begin": "\\[",
+          "beginCaptures": {
+            "1": {
+              "name": "puncuation.definition.brackets.mvt"
+            }
+          },
+          "end": "\\]",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.bracket.mvt"
+            }
+          },
+          "name": "meta.brackets.mvt",
+          "patterns": [
+            {
+              "match": "\\]",
+              "name": "invalid.illegal.stray-bracket-end"
+            },
+            {
+              "include": "#source-mvt"
+            },
+            {
+              "include": "#source-functions-builtins"
+            }
+          ]
+        }
+      ]
+    },
+    "source-group-no-functions": {
+      "patterns": [
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "puncuation.definition.group.mvt"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.group.mvt"
+            }
+          },
+          "name": "meta.group.mvt",
+          "patterns": [
+            {
+              "match": "\\)",
+              "name": "invalid.illegal.stray-group-end"
+            },
+            {
+              "include": "#source-mvt"
+            }
+          ]
+        }
+      ]
+    },
+    "source-group": {
+      "patterns": [
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "1": {
+              "name": "puncuation.definition.group.mvt"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "1": {
+              "name": "puncuation.terminator.group.mvt"
+            }
+          },
+          "name": "meta.group.mvt",
+          "patterns": [
+            {
+              "match": "\\)",
+              "name": "invalid.illegal.stray-group-end"
+            },
             {
               "include": "#source-mvt"
             },
