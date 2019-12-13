@@ -404,6 +404,21 @@ repository:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
 
+  files-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(files)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.files.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '(")'
+        endCaptures:
+          1: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.files.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
   expr-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(expr)\s*(=?)\s*(")'
