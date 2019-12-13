@@ -13,6 +13,12 @@
         "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json && npx js-yaml syntaxes/mvt.injection.tmLanguage.yaml > syntaxes/mvt.injection.tmLanguage.json"
     },
     "contributes": {
+        "snippets": [
+            {
+                "language": "mvt",
+                "path": "./snippets/mvt.snippets.json"
+            }
+        ],
         "languages": [
             {
                 "id": "mvt",
