@@ -16,8 +16,16 @@
         "snippets": [
             {
                 "language": "mvt",
-                "path": "./snippets/mvt.snippets.json"
-            }
+                "path": "./snippets/MVT/tags.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/customfields.snippets.json"
+            },
+            {
+                "language": "mvt",
+                "path": "./snippets/MVT/debugging.snippets.json"
+            },
         ],
         "languages": [
             {
