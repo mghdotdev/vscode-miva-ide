@@ -10,9 +10,24 @@
         "Programming Languages"
     ],
     "scripts": {
-        "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json && npx js-yaml syntaxes/mvt.injection.tmLanguage.yaml > syntaxes/mvt.injection.tmLanguage.json"
+        "build-syntax": "node ./syntaxes/build.js"
     },
     "contributes": {
+        "configuration": {
+            "title": "Miva IDE",
+            "properties": {
+                "MVT.showWarningOnToolkitUsage": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a warning when the 'toolkit' item is referenced within the template."
+                },
+                "MVT.showWarningOnToolbeltUsage": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a warning when the 'toolbelt' item is referenced within the template."
+                }
+            }
+        },
         "snippets": [
             {
                 "language": "mvt",
@@ -59,7 +74,17 @@
             }
         ]
     },
+    "activationEvents": [
+        "onLanguage:mvt"
+    ],
     "devDependencies": {
-        "js-yaml": "^3.13.1"
+        "glob": "^7.1.6",
+        "js-yaml": "^3.13.1",
+        "typescript": "^3.7.3"
+    },
+    "dependencies": {
+        "vscode": "^1.1.36",
+        "vscode-languageclient": "^5.2.1",
+        "vscode-languageserver": "^5.2.1"
     }
 }
