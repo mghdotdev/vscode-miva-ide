@@ -1,3 +1,5 @@
+import patterns from './patterns';
+
 import {
 	createConnection,
 	TextDocuments,
@@ -9,7 +11,9 @@ import {
 	DidChangeConfigurationNotification,
 	CompletionItem,
 	CompletionItemKind,
-	TextDocumentPositionParams
+	TextDocumentPositionParams,
+	Position,
+	Range
 } from 'vscode-languageserver';
 
 // Create a connection for the server. The connection uses Node's IPC as a transport.
@@ -182,9 +186,39 @@ connection.onCompletion(
 		// console.log( 'TextDocument', TextDocument );
 
 		const completionDocument: TextDocument = <TextDocument>documents.get( _textDocumentPosition.textDocument.uri );
-		
-		console.log( '_textDocumentPosition', _textDocumentPosition );
-		console.log( 'completionDocument', completionDocument );
+
+		const cursorPosition = Position.create( _textDocumentPosition.position.line, _textDocumentPosition.position.character );
+		const cursorPositionOffset: number = <number>completionDocument.offsetAt( cursorPosition );
+
+		const left = completionDocument.getText(
+			Range.create(
+				completionDocument.positionAt( cursorPositionOffset - 500 ),
+				cursorPosition
+			)
+		);
+
+		const right = completionDocument.getText(
+			Range.create(
+				cursorPosition,
+				completionDocument.positionAt( cursorPositionOffset + 500 )
+			)
+		);
+
+		console.log( 'left', left );
+		console.log( '================================================================================================' );
+		console.log( 'right', right );
+
+		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_VALUE_ATTR.test( right )) {
+
+			console.log( 'in the shit yo' );
+
+			if ( patterns.LEFT_IN_MVTDO_TAG.test( right ) && patterns.RIGHT_IN_MVTDO_TAG.test( left ) ) {
+				
+				console.log( 'show completions' );
+
+			}
+
+		}
 
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
