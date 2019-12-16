@@ -208,11 +208,11 @@ connection.onCompletion(
 		console.log( '================================================================================================' );
 		console.log( 'right', right );
 
-		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_VALUE_ATTR.test( right )) {
+		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right )) {
 
 			console.log( 'in the shit yo' );
 
-			if ( patterns.LEFT_IN_MVTDO_TAG.test( right ) && patterns.RIGHT_IN_MVTDO_TAG.test( left ) ) {
+			if ( patterns.LEFT_IN_MVTDO_TAG.test( right ) && patterns.RIGHT_IN_TAG.test( left ) ) {
 				
 				console.log( 'show completions' );
 
