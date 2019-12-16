@@ -16,9 +16,10 @@ export function activate( context: ExtensionContext ) {
 	let serverModule = context.asAbsolutePath(
 		path.join( 'server', 'MVT', 'out', 'server.js' )
 	);
+
 	// The debug options for the server
 	// --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
-	let debugOptions = { execArgv: [ '--nolazy', '--inspect=6009' ] };
+	let debugOptions = { execArgv: [ '--nolazy', '--inspect=5858' ] };
 
 	// If the extension is launched in debug mode then the debug server options are used
 	// Otherwise the run options are used
@@ -37,7 +38,7 @@ export function activate( context: ExtensionContext ) {
 		documentSelector: [ { scheme: 'file', language: 'mvt' } ],
 		synchronize: {
 			// Notify the server about file changes to '.clientrc files contained in the workspace
-			fileEvents: workspace.createFileSystemWatcher( '**/.clientrc' )
+			// fileEvents: workspace.createFileSystemWatcher( '**/.clientrc' )
 		}
 	};
 

@@ -78,10 +78,12 @@ let globalSettings: Object = defaultSettings;
 let documentSettings: Map<string, Thenable<Object>> = new Map();
 
 connection.onDidChangeConfiguration(change => {
+
 	if ( hasConfigurationCapability ) {
 		// Reset all cached document settings
 		documentSettings.clear();
-	} else {
+	}
+	else {
 		globalSettings = <Object>(
 			( change.settings.MVT || defaultSettings )
 		);
@@ -89,6 +91,7 @@ connection.onDidChangeConfiguration(change => {
 
 	// Revalidate all open text documents
 	documents.all().forEach( checkForDeprecatedModules );
+
 });
 
 function getDocumentSettings(resource: string): Thenable<Object> {
@@ -108,7 +111,9 @@ function getDocumentSettings(resource: string): Thenable<Object> {
 
 // Only keep settings for open documents
 documents.onDidClose(e => {
+	
 	documentSettings.delete( e.document.uri );
+
 });
 
 // The content of a text document has changed. This event is emitted
@@ -120,15 +125,10 @@ documents.onDidChangeContent(change => {
 });
 
 async function checkForDeprecatedModules( textDocument: TextDocument ): Promise<void> {
+
 	// In this simple example we get the settings for every validate run.
 	let settings = await getDocumentSettings( textDocument.uri );
 	let moduleNames: Array<String> = [];
-
-	if ( !(<any>settings).showWarningOnToolbeltUsage && !(<any>settings).showWarningOnToolkitUsage ) {
-		
-		return;
-
-	}
 
 	if ( (<any>settings).showWarningOnToolkitUsage ) {
 		moduleNames.push( 'toolkit' );
@@ -167,14 +167,25 @@ async function checkForDeprecatedModules( textDocument: TextDocument ): Promise<
 
 }
 
-connection.onDidChangeWatchedFiles(_change => {
+/* connection.onDidChangeWatchedFiles(_change => {
+
 	// Monitored files have change in VSCode
 	connection.console.log('We received an file change event');
-});
+
+}); */
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
 	(_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+
+		// console.log( '_textDocumentPosition', _textDocumentPosition );
+		// console.log( 'TextDocument', TextDocument );
+
+		const completionDocument: TextDocument = <TextDocument>documents.get( _textDocumentPosition.textDocument.uri );
+		
+		console.log( '_textDocumentPosition', _textDocumentPosition );
+		console.log( 'completionDocument', completionDocument );
+
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
 		// info and always provide the same completion items.
@@ -190,6 +201,7 @@ connection.onCompletion(
 				data: 2
 			}
 		];
+
 	}
 );
 
@@ -197,14 +209,18 @@ connection.onCompletion(
 // the completion list.
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
+
 		if (item.data === 1) {
 			item.detail = 'TypeScript details';
 			item.documentation = 'TypeScript documentation';
-		} else if (item.data === 2) {
+		}
+		else if (item.data === 2) {
 			item.detail = 'JavaScript details';
 			item.documentation = 'JavaScript documentation';
 		}
+
 		return item;
+
 	}
 );
 
