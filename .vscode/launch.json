@@ -18,7 +18,8 @@
 			"type": "node",
 			"request": "attach",
 			"name": "Attach to Server",
-			"port": 5858,
+			"protocol": "inspector",
+			"port": 6009,
 			"restart": true,
 			"outFiles": ["${workspaceRoot}/server/MVT/out/**/*.js"]
 		}

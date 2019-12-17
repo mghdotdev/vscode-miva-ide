@@ -1,8 +1,5 @@
 import patterns from './patterns';
-import { promisify } from 'util';
-import * as fs from 'fs';
-import * as path from 'path';
-
+import MerchantFunctions from './MerchantFunctions';
 import {
 	createConnection,
 	TextDocuments,
@@ -13,46 +10,15 @@ import {
 	InitializeParams,
 	DidChangeConfigurationNotification,
 	CompletionItem,
-	CompletionItemKind,
 	TextDocumentPositionParams,
 	Position,
-	Range,
-	InsertTextFormat
+	Range
 } from 'vscode-languageserver';
 
-const readFile = promisify( fs.readFile );
-let merchantFunctions: any[];
-let merchantFunctionCompletions: CompletionItem[];
 
-readFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) )
-.then(( buffer ) => {
+MerchantFunctions.init();
 
-	merchantFunctions = JSON.parse( buffer.toString() );
-
-	merchantFunctionCompletions = merchantFunctions.reduce(( completions: CompletionItem[], file ):CompletionItem[] => {
-
-		let functions = file?.functions.map(( fn: any ):CompletionItem => {
-
-			const parameters = fn?.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
-
-				return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index < arr.length ) ? '' : ' ' }`;
-
-			}, '');
-
-			return {
-				label: fn?.name,
-				kind: CompletionItemKind.Function,
-				insertText: `${ fn?.name }(${ parameters })`,
-				insertTextFormat: InsertTextFormat.Snippet
-			};
-
-		});
-
-		return completions.concat( functions );
-
-	}, []);
-
-});
+console.log( MerchantFunctions );
 
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -247,13 +213,16 @@ connection.onCompletion(
 		console.log( '================================================================================================' );
 		console.log( 'right', right ); */
 
-		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
+		if ( patterns.LEFT_IN_MVTDO_TAG.test( left ) && patterns.RIGHT_IN_TAG.test( right ) ) {
+			
+			if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-			if ( patterns.LEFT_IN_MVTDO_TAG.test( left ) && patterns.RIGHT_IN_TAG.test( right ) ) {
+				completions = completions.concat( MerchantFunctions.getCompletions( 'value', textDocumentPosition.position ) );
 
-				completions = completions.concat( merchantFunctionCompletions );
+			}
+			else if ( patterns.LEFT_IN_FILE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-				console.log( 'completions', completions );
+				completions = completions.concat( MerchantFunctions.getCompletions( 'file', textDocumentPosition.position ) );
 
 			}
 
@@ -274,14 +243,9 @@ connection.onCompletion(
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
 
-		if (item.data === 1) {
-			item.detail = 'TypeScript details';
-			item.documentation = 'TypeScript documentation';
-		}
-		else if (item.data === 2) {
-			item.detail = 'JavaScript details';
-			item.documentation = 'JavaScript documentation';
-		}
+		// console.log( 'ITEM =>', item )
+
+		console.log( 'selected' );
 
 		return item;
 
