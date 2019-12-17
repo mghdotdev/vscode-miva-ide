@@ -139,7 +139,7 @@ const mf: MerchantFunctions = {
 
 	},
 
-	getCompletions( type: string, position: Position ): CompletionItem[] {
+	getCompletions( type: string, cursorPosition: Position, filePosition?: Position ): CompletionItem[] {
 
 		let collection = ( type == 'file' ) ? this.fileCompletions : this.valueCompletions;
 
@@ -148,10 +148,23 @@ const mf: MerchantFunctions = {
 				...value,
 				textEdit: TextEdit.replace(
 					Range.create(
-						Position.create( position.line, ( position.character - 1 ) ), Position.create( position.line, position.character )
+						Position.create( cursorPosition.line, ( cursorPosition.character - 1 ) ),
+						cursorPosition
 					),
 					value.data.textEdit
-				)
+				),
+				...( filePosition ) ?
+						{
+							additionalTextEdits: [
+								TextEdit.insert(
+									filePosition,
+									value.data.files[ 0 ]
+								)
+							]
+						}
+						:
+						{}
+				
 			};
 		});
 

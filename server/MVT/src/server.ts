@@ -18,8 +18,6 @@ import {
 
 MerchantFunctions.init();
 
-console.log( MerchantFunctions );
-
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 let connection = createConnection( ProposedFeatures.all );
@@ -217,12 +215,18 @@ connection.onCompletion(
 			
 			if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-				completions = completions.concat( MerchantFunctions.getCompletions( 'value', textDocumentPosition.position ) );
+				let res = patterns.LEFT_FIND_FILE_ATTR.exec( left );
+				let diff = 0;
+				if ( res ) {
+					diff = (res.index + res[0].length) - left.length;
+				}
+				
+				completions = completions.concat( MerchantFunctions.getCompletions( 'value', cursorPosition, completionDocument.positionAt( cursorPositionOffset + diff ) ) );
 
 			}
 			else if ( patterns.LEFT_IN_FILE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-				completions = completions.concat( MerchantFunctions.getCompletions( 'file', textDocumentPosition.position ) );
+				completions = completions.concat( MerchantFunctions.getCompletions( 'file', cursorPosition ) );
 
 			}
 
@@ -242,10 +246,6 @@ connection.onCompletion(
 // the completion list.
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
-
-		// console.log( 'ITEM =>', item )
-
-		console.log( 'selected' );
 
 		return item;
 
