@@ -1,4 +1,7 @@
 import patterns from './patterns';
+import { promisify } from 'util';
+import * as fs from 'fs';
+import * as path from 'path';
 
 import {
 	createConnection,
@@ -13,8 +16,43 @@ import {
 	CompletionItemKind,
 	TextDocumentPositionParams,
 	Position,
-	Range
+	Range,
+	InsertTextFormat
 } from 'vscode-languageserver';
+
+const readFile = promisify( fs.readFile );
+let merchantFunctions: any[];
+let merchantFunctionCompletions: CompletionItem[];
+
+readFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) )
+.then(( buffer ) => {
+
+	merchantFunctions = JSON.parse( buffer.toString() );
+
+	merchantFunctionCompletions = merchantFunctions.reduce(( completions: CompletionItem[], file ):CompletionItem[] => {
+
+		let functions = file?.functions.map(( fn: any ):CompletionItem => {
+
+			const parameters = fn?.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
+
+				return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index < arr.length ) ? '' : ' ' }`;
+
+			}, '');
+
+			return {
+				label: fn?.name,
+				kind: CompletionItemKind.Function,
+				insertText: `${ fn?.name }(${ parameters })`,
+				insertTextFormat: InsertTextFormat.Snippet
+			};
+
+		});
+
+		return completions.concat( functions );
+
+	}, []);
+
+});
 
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
@@ -132,7 +170,7 @@ async function checkForDeprecatedModules( textDocument: TextDocument ): Promise<
 
 	// In this simple example we get the settings for every validate run.
 	let settings = await getDocumentSettings( textDocument.uri );
-	let moduleNames: Array<String> = [];
+	let moduleNames: String[] = [];
 
 	if ( (<any>settings).showWarningOnToolkitUsage ) {
 		moduleNames.push( 'toolkit' );
@@ -180,14 +218,15 @@ async function checkForDeprecatedModules( textDocument: TextDocument ): Promise<
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
-	(_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
+	( textDocumentPosition: TextDocumentPositionParams ): CompletionItem[] => {
 
-		// console.log( '_textDocumentPosition', _textDocumentPosition );
-		// console.log( 'TextDocument', TextDocument );
+		let completions: CompletionItem[] = [];
 
-		const completionDocument: TextDocument = <TextDocument>documents.get( _textDocumentPosition.textDocument.uri );
+		// START ==== MV DO STUFF
 
-		const cursorPosition = Position.create( _textDocumentPosition.position.line, _textDocumentPosition.position.character );
+		const completionDocument: TextDocument = <TextDocument>documents.get( textDocumentPosition.textDocument.uri );
+
+		const cursorPosition = Position.create( textDocumentPosition.position.line, textDocumentPosition.position.character );
 		const cursorPositionOffset: number = <number>completionDocument.offsetAt( cursorPosition );
 
 		const left = completionDocument.getText(
@@ -204,37 +243,28 @@ connection.onCompletion(
 			)
 		);
 
-		console.log( 'left', left );
+		/* console.log( 'left', left );
 		console.log( '================================================================================================' );
-		console.log( 'right', right );
+		console.log( 'right', right ); */
 
-		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right )) {
+		if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-			console.log( 'in the shit yo' );
+			if ( patterns.LEFT_IN_MVTDO_TAG.test( left ) && patterns.RIGHT_IN_TAG.test( right ) ) {
 
-			if ( patterns.LEFT_IN_MVTDO_TAG.test( right ) && patterns.RIGHT_IN_TAG.test( left ) ) {
-				
-				console.log( 'show completions' );
+				completions = completions.concat( merchantFunctionCompletions );
+
+				console.log( 'completions', completions );
 
 			}
 
 		}
 
+		// END ==== MV DO STUFF
+
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
 		// info and always provide the same completion items.
-		return [
-			{
-				label: 'TypeScript',
-				kind: CompletionItemKind.Text,
-				data: 1
-			},
-			{
-				label: 'JavaScript',
-				kind: CompletionItemKind.Text,
-				data: 2
-			}
-		];
+		return completions;
 
 	}
 );
@@ -257,26 +287,6 @@ connection.onCompletionResolve(
 
 	}
 );
-
-/*
-connection.onDidOpenTextDocument((params) => {
-	// A text document got opened in VSCode.
-	// params.textDocument.uri uniquely identifies the document. For documents store on disk this is a file URI.
-	// params.textDocument.text the initial full content of the document.
-	connection.console.log(`${params.textDocument.uri} opened.`);
-});
-connection.onDidChangeTextDocument((params) => {
-	// The content of a text document did change in VSCode.
-	// params.textDocument.uri uniquely identifies the document.
-	// params.contentChanges describe the content changes to the document.
-	connection.console.log(`${params.textDocument.uri} changed: ${JSON.stringify(params.contentChanges)}`);
-});
-connection.onDidCloseTextDocument((params) => {
-	// A text document got closed in VSCode.
-	// params.textDocument.uri uniquely identifies the document.
-	connection.console.log(`${params.textDocument.uri} closed.`);
-});
-*/
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events
