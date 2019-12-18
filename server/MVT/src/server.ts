@@ -207,20 +207,23 @@ connection.onCompletion(
 			)
 		);
 
-		/* console.log( 'left', left );
-		console.log( '================================================================================================' );
-		console.log( 'right', right ); */
-
 		if ( patterns.LEFT_IN_MVTDO_TAG.test( left ) && patterns.RIGHT_IN_TAG.test( right ) ) {
 			
 			if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
+
+				const foundFileAttribute = patterns.MVTDO_TEXT_BEFORE_FILE_ATTR.exec( left ) || [];
+				const fileAttributePosition = completionDocument.positionAt( cursorPositionOffset - foundFileAttribute[2].length );
 				
-				completions = completions.concat( MerchantFunctions.getCompletions( 'value', cursorPosition ) );
+				completions = completions.concat(
+					MerchantFunctions.getCompletions( 'value', cursorPosition, fileAttributePosition )
+				);
 
 			}
 			else if ( patterns.LEFT_IN_FILE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
 
-				completions = completions.concat( MerchantFunctions.getCompletions( 'file', cursorPosition ) );
+				completions = completions.concat(
+					MerchantFunctions.getCompletions( 'file', cursorPosition )
+				);
 
 			}
 
@@ -241,10 +244,14 @@ connection.onCompletion(
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
 
+		// console.log( item );
+
 		return item;
 
 	}
 );
+
+
 
 // Make the text document manager listen on the connection
 // for open, change and close text document events

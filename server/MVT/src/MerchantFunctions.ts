@@ -7,8 +7,11 @@ import {
 	InsertTextFormat,
 	TextEdit,
 	Position,
-	Range
+	Range,
+	Command,
+	TextDocument
 } from 'vscode-languageserver';
+import patterns from './patterns';
 
 const readFile = promisify( fs.readFile );
 let buffer: Promise<Buffer>;
@@ -111,7 +114,7 @@ const mf: MerchantFunctions = {
 			insertTextFormat: InsertTextFormat.PlainText,
 			data: {
 				type: 'file',
-				textEdit: file.distro_path
+				snippet: file.distro_path
 			}
 		};
 
@@ -128,31 +131,46 @@ const mf: MerchantFunctions = {
 		return {
 			label: fn.name,
 			kind: CompletionItemKind.Function,
-			// textEdit: TextEdit.insert( Position.create(  ), ),
 			insertTextFormat: InsertTextFormat.Snippet,
 			data: {
+				name: fn.name,
 				type: 'function',
-				textEdit: `${ fn.name }(${ parameters })`,
+				snippet: `${ fn.name }(${ parameters })`,
 				files: [ file.distro_path ]
 			}
 		};
 
 	},
 
-	getCompletions( type: string, cursorPosition: Position ): CompletionItem[] {
+	getCompletions( type: string, cursorPosition: Position, fileAttributePosition?: any ): CompletionItem[] {
 
 		let collection = ( type == 'file' ) ? this.fileCompletions : this.valueCompletions;
 
 		return Array.from( collection.values() ).map(( value ) => {
+
 			return {
 				...value,
-				textEdit: TextEdit.replace(
-					Range.create(
-						Position.create( cursorPosition.line, ( cursorPosition.character - 1 ) ),
-						cursorPosition
-					),
-					value.data.textEdit
-				)
+				...( type == 'file' ) ?
+					{
+						insertText: value.data.snippet
+					}
+					:
+					{
+						/* sortText: value.data.name,
+						textEdit: TextEdit.replace(
+							Range.create(
+								Position.create( cursorPosition.line, cursorPosition.character + value.data.files[0].length - 1 ),
+								Position.create( cursorPosition.line, cursorPosition.character + value.data.files[0].length )
+							),
+							`${ value.data.snippet }" />`
+						),
+						additionalTextEdits: [
+							TextEdit.insert(
+								fileAttributePosition,
+								value.data.files[0]
+							)
+						] */
+					}
 			};
 		});
 
@@ -161,48 +179,3 @@ const mf: MerchantFunctions = {
 };
 
 export default mf;
-
-
-
-
-
-/* 
-
-
-const readFile = promisify( fs.readFile );
-let merchantFunctions: any[];
-let merchantFunctionCompletions: CompletionItem[];
-
-readFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) )
-.then(( buffer ) => {
-
-	merchantFunctions = JSON.parse( buffer.toString() );
-
-	merchantFunctionCompletions = merchantFunctions.reduce(( completions: CompletionItem[], file ):CompletionItem[] => {
-
-		let functions = file?.functions.map(( fn: any ):CompletionItem => {
-
-			const parameters = fn?.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
-
-				return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index < arr.length ) ? '' : ' ' }`;
-
-			}, '');
-
-			return {
-				label: fn?.name,
-				kind: CompletionItemKind.Function,
-				insertText: `${ fn?.name }(${ parameters })`,
-				insertTextFormat: InsertTextFormat.Snippet
-			};
-
-		});
-
-		return completions.concat( functions );
-
-	}, []);
-
-});
-
-
-
-*/
