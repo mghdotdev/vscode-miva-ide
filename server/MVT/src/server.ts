@@ -214,14 +214,8 @@ connection.onCompletion(
 		if ( patterns.LEFT_IN_MVTDO_TAG.test( left ) && patterns.RIGHT_IN_TAG.test( right ) ) {
 			
 			if ( patterns.LEFT_IN_VALUE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {
-
-				let res = patterns.LEFT_FIND_FILE_ATTR.exec( left );
-				let diff = 0;
-				if ( res ) {
-					diff = (res.index + res[0].length) - left.length;
-				}
 				
-				completions = completions.concat( MerchantFunctions.getCompletions( 'value', cursorPosition, completionDocument.positionAt( cursorPositionOffset + diff ) ) );
+				completions = completions.concat( MerchantFunctions.getCompletions( 'value', cursorPosition ) );
 
 			}
 			else if ( patterns.LEFT_IN_FILE_ATTR.test( left ) && patterns.RIGHT_IN_ATTR.test( right ) ) {

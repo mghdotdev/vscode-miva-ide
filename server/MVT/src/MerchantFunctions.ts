@@ -139,7 +139,7 @@ const mf: MerchantFunctions = {
 
 	},
 
-	getCompletions( type: string, cursorPosition: Position, filePosition?: Position ): CompletionItem[] {
+	getCompletions( type: string, cursorPosition: Position ): CompletionItem[] {
 
 		let collection = ( type == 'file' ) ? this.fileCompletions : this.valueCompletions;
 
@@ -152,19 +152,7 @@ const mf: MerchantFunctions = {
 						cursorPosition
 					),
 					value.data.textEdit
-				),
-				...( filePosition ) ?
-						{
-							additionalTextEdits: [
-								TextEdit.insert(
-									filePosition,
-									value.data.files[ 0 ]
-								)
-							]
-						}
-						:
-						{}
-				
+				)
 			};
 		});
 
