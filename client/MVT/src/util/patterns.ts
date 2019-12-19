@@ -1,5 +1,5 @@
 export default {
-	LEFT_IN_VALUE_ATTR: /value\s*?=\s*?"\s*?(.){1}$/i,
+	/* LEFT_IN_VALUE_ATTR: /value\s*?=\s*?"\s*?(.){1}$/i,
 	LEFT_IN_FILE_ATTR: /file\s*?=\s*?"\s*?(.){1}$/i,
 	LEFT_IN_MVTDO_TAG: /(?=<mvt:do)[^>]*?$/i,
 
@@ -12,5 +12,7 @@ export default {
 	RIGHT_FIND_TAG_ENDING: /^[^<]*?>/i,
 	
 	RIGHT_IN_ATTR: /^\s*?"/,
-	RIGHT_IN_TAG: /^[^<]*?(?=>)/
+	RIGHT_IN_TAG: /^[^<]*?(?=>)/ */
+
+	MVTDO_TEXT_BEFORE_FILE_ATTR: /(?=<mvt:do)([^>]*?file\s*=\s*"[^">]*?)([^>]*?)$/i,
 };

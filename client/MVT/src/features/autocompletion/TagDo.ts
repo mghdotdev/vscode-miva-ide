@@ -1,10 +1,21 @@
 import patterns from '../../util/patterns';
 import merchantFunctionFiles from './functions-merchant.json';
-import * as vscode from 'vscode';
+import {
+	CompletionItem,
+	SnippetString,
+	CompletionItemKind,
+	languages,
+	TextDocument,
+	Position,
+	commands,
+	TextEditor,
+	TextEditorEdit,
+	Range
+} from 'vscode';
 
 let valueCompletions = [];
 
-function formatValueCompletion( fn: any, file: any ):vscode.CompletionItem {
+function formatValueCompletion( fn: any, file: any ):CompletionItem {
 
 	const parameters = fn.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
 
@@ -14,8 +25,8 @@ function formatValueCompletion( fn: any, file: any ):vscode.CompletionItem {
 	
 	return {
 		label: fn.name,
-		insertText: new vscode.SnippetString( `${ fn.name }(${ parameters })` ),
-		kind: vscode.CompletionItemKind.Function,
+		insertText: new SnippetString( `${ fn.name }(${ parameters })` ),
+		kind: CompletionItemKind.Function,
 		detail: file.distro_path
 	};
 
@@ -32,10 +43,10 @@ merchantFunctionFiles.forEach(file => {
 
 });
 
-let valueCompletionProvider = vscode.languages.registerCompletionItemProvider(
+let valueCompletionProvider = languages.registerCompletionItemProvider(
 	'mvt',
 	{
-		provideCompletionItems( document: vscode.TextDocument, position: vscode.Position ) {
+		provideCompletionItems( document: TextDocument, position: Position ) {
 
 			return valueCompletions.map(valueCompletion => {
 
@@ -43,9 +54,7 @@ let valueCompletionProvider = vscode.languages.registerCompletionItemProvider(
 					command: 'mivaIde.mvt.insertFileName',
 					arguments: [
 						{
-							fileName: valueCompletion.detail,
-							position,
-							document
+							fileName: valueCompletion.detail
 						}
 					]
 				};
@@ -58,9 +67,25 @@ let valueCompletionProvider = vscode.languages.registerCompletionItemProvider(
 	}
 );
 
-let insertFileNameCommand = vscode.commands.registerCommand( 'mivaIde.mvt.insertFileName', args => {
+let insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
 
-	console.log( args );
+	const left = textEditor.document.getText(
+		new Range(
+			textEditor.selection.active,
+			new Position( textEditor.selection.active.line, 0 )
+		)
+	) || '';
+
+	const match = patterns.MVTDO_TEXT_BEFORE_FILE_ATTR.exec( left ) || [];
+
+	if ( match ) {
+
+		let test = edit.insert(
+			textEditor.selection.active.translate( 0, -match[2].length ),
+			payload.fileName
+		);
+
+	}
 
 });
 
