@@ -87,8 +87,6 @@
         "typescript": "^3.7.3"
     },
     "dependencies": {
-        "@types/vscode": "^1.41.0",
-        "vscode-languageclient": "^5.2.1",
-        "vscode-languageserver": "^5.2.1"
+        "@types/vscode": "^1.41.0"
     }
 }
