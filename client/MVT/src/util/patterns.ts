@@ -14,5 +14,6 @@ export default {
 	RIGHT_IN_ATTR: /^\s*?"/,
 	RIGHT_IN_TAG: /^[^<]*?(?=>)/ */
 
-	MVTDO_TEXT_BEFORE_FILE_ATTR: /(?=<mvt:do)([^>]*?file\s*=\s*"[^">]*?)([^>]*?)$/i,
+	MVTDO_LEFT_FILE_ATTR: /(?<=file\s*=\s*\")[^<]*?$/i,
+	MVTDO_RIGHT_FILE_ATTR: /^[^>]*?file\s*=\s*"/i
 };

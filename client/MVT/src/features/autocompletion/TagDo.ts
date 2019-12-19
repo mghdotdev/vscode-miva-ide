@@ -13,7 +13,8 @@ import {
 	Range
 } from 'vscode';
 
-let valueCompletions = [];
+const valueCompletions = [];
+const boundryAmount = 500;
 
 function formatValueCompletion( fn: any, file: any ):CompletionItem {
 
@@ -69,21 +70,41 @@ let valueCompletionProvider = languages.registerCompletionItemProvider(
 
 let insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
 
-	const left = textEditor.document.getText(
-		new Range(
-			textEditor.selection.active,
-			new Position( textEditor.selection.active.line, 0 )
-		)
-	) || '';
+	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
+	const leftOffset = cursorPositionOffset - boundryAmount;
+	const leftRange = new Range(
+		textEditor.document.positionAt( leftOffset ),
+		textEditor.selection.active
+	);
+	const left = textEditor.document.getText( leftRange ) || '';
+	const leftMatch = patterns.MVTDO_LEFT_FILE_ATTR.exec( left );
 
-	const match = patterns.MVTDO_TEXT_BEFORE_FILE_ATTR.exec( left ) || [];
-
-	if ( match ) {
-
-		let test = edit.insert(
-			textEditor.selection.active.translate( 0, -match[2].length ),
+	if ( leftMatch ) {
+		
+		edit.insert(
+			textEditor.document.positionAt( cursorPositionOffset - leftMatch[0].length ),
 			payload.fileName
 		);
+
+	}
+	else {
+
+		const rightOffset = cursorPositionOffset + boundryAmount;
+		const rightRange = new Range(
+			textEditor.selection.active,
+			textEditor.document.positionAt( rightOffset )
+		);
+		const right = textEditor.document.getText( rightRange ) || '';
+		const rightMatch = patterns.MVTDO_RIGHT_FILE_ATTR.exec( right );
+
+		if ( rightMatch ) {
+
+			edit.insert(
+				textEditor.document.positionAt( cursorPositionOffset + rightMatch[0].length ),
+				payload.fileName
+			);
+
+		}
 
 	}
 
