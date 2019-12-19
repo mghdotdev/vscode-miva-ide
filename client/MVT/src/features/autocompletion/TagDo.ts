@@ -28,7 +28,16 @@ function formatValueCompletion( fn: any, file: any ):CompletionItem {
 		label: fn.name,
 		insertText: new SnippetString( `${ fn.name }(${ parameters })` ),
 		kind: CompletionItemKind.Function,
-		detail: file.distro_path
+		detail: file.distro_path,
+		command: {
+			title: `Inject "${ file.distro_path }" into file attribute.`, 
+			command: 'mivaIde.mvt.insertFileName',
+			arguments: [
+				{
+					fileName: file.distro_path
+				}
+			]
+		}
 	};
 
 }
@@ -49,20 +58,34 @@ let valueCompletionProvider = languages.registerCompletionItemProvider(
 	{
 		provideCompletionItems( document: TextDocument, position: Position ) {
 
-			return valueCompletions.map(valueCompletion => {
-
-				valueCompletion.command = {
-					command: 'mivaIde.mvt.insertFileName',
-					arguments: [
-						{
-							fileName: valueCompletion.detail
-						}
-					]
-				};
-				
-				return valueCompletion;
-
-			});
+			// determine left side text range
+			const cursorPositionOffset = document.offsetAt( position );
+			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftRange = new Range(
+				document.positionAt( leftOffset ),
+				position
+			);
+			const left = document.getText( leftRange ) || '';
+			
+			// determine right side text range
+			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightRange = new Range(
+				position,
+				document.positionAt( rightOffset )
+			);
+			const right = document.getText( rightRange ) || '';
+			
+			// prevent showing completions if not in a mvt:do tag value attribute
+			if (
+				!patterns.LEFT_IN_MVTDO_TAG.test( left ) ||
+				!patterns.RIGHT_IN_TAG.test( right ) ||
+				!patterns.LEFT_IN_VALUE_ATTR.test( left )
+			) {
+				return [];
+			}
+			
+			// return completions if pass all tests
+			return valueCompletions;
 
 		}
 	}
