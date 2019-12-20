@@ -11,6 +11,7 @@
     ],
     "scripts": {
         "build-syntax": "node ./syntaxes/build.js",
+        "watch-syntax": "node ./syntaxes/watch.js",
         "compile": "tsc -b",
         "watch": "tsc -b -w"
     },
@@ -82,6 +83,7 @@
     ],
     "devDependencies": {
         "@types/node": "^12.12.17",
+        "chalk": "^3.0.0",
         "glob": "^7.1.6",
         "js-yaml": "^3.13.1",
         "typescript": "^3.7.3"
