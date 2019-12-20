@@ -54,3 +54,7 @@ else {
 	});
 
 }
+
+module.exports = {
+	buildFile
+};

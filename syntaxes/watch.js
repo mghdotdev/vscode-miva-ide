@@ -2,8 +2,8 @@ const yaml = require( 'js-yaml' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 const glob = require( 'glob' );
-const { exec } = require( 'child_process' );
 const chalk = require( 'chalk' );
+const { buildFile } = require( './build');
 
 const globPattern = './**/*.yaml';
 
@@ -13,15 +13,7 @@ function onWatch( eventType, filename ) {
 
 	console.log( chalk.green( `Watcher: Triggered for file: ${ chalk.underline( filename ) }` ) );
 
-	exec( `npm run build-syntax ${ path.resolve( __dirname, filename ) }`, ( err, stdout, stderr ) => {
-
-		if ( err ) {
-			console.error( err );
-		}
-
-		console.log( stdout );
-
-	});
+	buildFile( path.resolve( __dirname, filename ) );
 
 }
 

@@ -15,19 +15,14 @@
   ],
   "repository": {
     "comments": {
-      "patterns": [
-        {
-          "comment": "MVT Comment",
-          "begin": "<mvt:comment>",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.comment.mvt"
-            }
-          },
-          "end": "</mvt:comment>",
-          "name": "comment.block.mvt"
+      "begin": "<mvt:comment>",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.comment.mvt"
         }
-      ]
+      },
+      "end": "</mvt:comment>",
+      "name": "comment.block.mvt"
     },
     "entities": {
       "patterns": [
