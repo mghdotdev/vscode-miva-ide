@@ -15,6 +15,11 @@
         "compile": "tsc -b",
         "watch": "tsc -b -w"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mghweb/vscode-miva-ide.git"
+    },
+    "publisher": "mhegler",
     "main": "./client/MVT/out/extension.js",
     "contributes": {
         "configuration": {
@@ -86,7 +91,8 @@
         "chalk": "^3.0.0",
         "glob": "^7.1.6",
         "js-yaml": "^3.13.1",
-        "typescript": "^3.7.3"
+        "typescript": "^3.7.3",
+        "vsce": "^1.71.0"
     },
     "dependencies": {
         "@types/vscode": "^1.41.0"
