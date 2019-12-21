@@ -2,7 +2,7 @@
     "name": "vscode-miva-ide",
     "displayName": "Miva IDE",
     "description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "engines": {
         "vscode": "^1.35.0"
     },
@@ -10,9 +10,33 @@
         "Programming Languages"
     ],
     "scripts": {
-        "build": "npx js-yaml syntaxes/mvt.tmLanguage.yaml > syntaxes/mvt.tmLanguage.json && npx js-yaml syntaxes/mvt.injection.tmLanguage.yaml > syntaxes/mvt.injection.tmLanguage.json"
+        "build-syntax": "node ./syntaxes/build.js",
+        "watch-syntax": "node ./syntaxes/watch.js",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mghweb/vscode-miva-ide.git"
+    },
+    "publisher": "mhegler",
+    "main": "./client/MVT/out/extension.js",
     "contributes": {
+        "configuration": {
+            "title": "Miva IDE",
+            "properties": {
+                "MVT.showWarningOnToolkitUsage": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a warning when the 'toolkit' item is referenced within the template."
+                },
+                "MVT.showWarningOnToolbeltUsage": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a warning when the 'toolbelt' item is referenced within the template."
+                }
+            }
+        },
         "snippets": [
             {
                 "language": "mvt",
@@ -59,7 +83,18 @@
             }
         ]
     },
+    "activationEvents": [
+        "onLanguage:mvt"
+    ],
     "devDependencies": {
-        "js-yaml": "^3.13.1"
+        "@types/node": "^12.12.17",
+        "chalk": "^3.0.0",
+        "glob": "^7.1.6",
+        "js-yaml": "^3.13.1",
+        "typescript": "^3.7.3",
+        "vsce": "^1.71.0"
+    },
+    "dependencies": {
+        "@types/vscode": "^1.41.0"
     }
 }
