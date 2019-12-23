@@ -59,13 +59,22 @@
             {
                 "id": "mvt",
                 "aliases": [
-                    "Miva Template Language (MVT)",
-                    "mvt"
+                    "Miva Template Language (MVT)"
                 ],
                 "extensions": [
                     ".mvt"
                 ],
-                "configuration": "./configurations/mvt.configuration.json"
+                "configuration": "./configurations/MVT/mvt.configuration.json"
+            },
+            {
+                "id": "mv",
+                "aliases": [
+                    "Miva Script"
+                ],
+                "extensions": [
+                    ".mv"
+                ],
+                "configuration": "./configurations/MV/mv.configuration.json"
             }
         ],
         "grammars": [
@@ -80,6 +89,18 @@
                     "text.html.mvt"
                 ],
                 "path": "./syntaxes/MVT/mvt.injection.tmLanguage.json"
+            },
+            {
+                "language": "mv",
+                "scopeName": "text.html.mv",
+                "path": "./syntaxes/MV/mv.tmLanguage.json"
+            },
+            {
+                "scopeName": "mv.injection",
+                "injectTo": [
+                    "text.html.mv"
+                ],
+                "path": "./syntaxes/MV/mv.injection.tmLanguage.json"
             }
         ]
     },

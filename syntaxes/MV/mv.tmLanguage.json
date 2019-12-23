@@ -1,0 +1,9 @@
+{
+  "name": "Miva Script",
+  "scopeName": "text.html.mv",
+  "patterns": [
+    {
+      "include": "text.html.basic"
+    }
+  ]
+}

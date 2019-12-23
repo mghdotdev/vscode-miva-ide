@@ -1,0 +1,5 @@
+%YAML 1.2
+---
+name: MVT (Injection)
+scopeName: mvt.injection
+injectionSelector: 'L:text.html.mv'

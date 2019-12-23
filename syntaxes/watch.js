@@ -13,7 +13,7 @@ function onWatch( eventType, filename ) {
 
 	console.log( chalk.green( `Watcher: Triggered for file: ${ chalk.underline( filename ) }` ) );
 
-	buildFile( path.resolve( __dirname, filename ) );
+	buildFile( String( this ) );
 
 }
 
@@ -26,7 +26,7 @@ glob( globPattern, function( err, files ) {
 	
 	files.forEach(function( file ) {
 
-		fs.watch( file, { persistent: true }, onWatch );
+		fs.watch( file, { persistent: true }, onWatch.bind( file ) );
 
 	});
 
