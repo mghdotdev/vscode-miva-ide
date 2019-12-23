@@ -3,3 +3,8 @@
 name: MVT (Injection)
 scopeName: mvt.injection
 injectionSelector: 'L:text.html.mv'
+
+# patterns:
+#   - include: '#comments'
+#   - include: '#expression'
+#   - include: '#tags'
