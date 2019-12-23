@@ -72,14 +72,14 @@
             {
                 "language": "mvt",
                 "scopeName": "text.html.mvt",
-                "path": "./syntaxes/mvt.tmLanguage.json"
+                "path": "./syntaxes/MVT/mvt.tmLanguage.json"
             },
             {
                 "scopeName": "mvt.injection",
                 "injectTo": [
                     "text.html.mvt"
                 ],
-                "path": "./syntaxes/mvt.injection.tmLanguage.json"
+                "path": "./syntaxes/MVT/mvt.injection.tmLanguage.json"
             }
         ]
     },
