@@ -20,7 +20,7 @@
         "url": "https://github.com/mghweb/vscode-miva-ide.git"
     },
     "publisher": "mhegler",
-    "main": "./client/MVT/out/extension.js",
+    "main": "./client/MVT/out/mvtMain.js",
     "contributes": {
         "configuration": {
             "title": "Miva IDE",
@@ -95,6 +95,9 @@
         "vsce": "^1.71.0"
     },
     "dependencies": {
-        "@types/vscode": "^1.41.0"
+        "@types/vscode": "^1.41.0",
+        "vscode-languageclient": "^5.2.1",
+        "vscode-languageserver": "^5.2.1",
+        "vscode-uri": "^2.1.1"
     }
 }
