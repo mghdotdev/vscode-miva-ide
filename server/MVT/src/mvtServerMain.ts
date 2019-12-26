@@ -62,12 +62,19 @@ async function validateTextDocument( textDocument: TextDocument ) {
 		if ( textDocument.languageId === 'mvt' ) {
 
 			const settings = await getDocumentSettings( textDocument );
-		
+			const latestTextDocument = documents.get( textDocument.uri );
+
 			if ( languageFeatures.doValidation ) {
 
-				languageFeatures.doValidation( textDocument, settings );
+				let test = languageFeatures.doValidation( textDocument, settings );
+
+				console.log( 'TESTING!', test );
+
+				pushAll( diagnostics, languageFeatures.doValidation( textDocument, settings ) );
 
 			}
+
+			connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
 
 		}
 	}
@@ -135,8 +142,6 @@ const validationDelayMs = 500;
 
 let languageFeatures: LanguageFeatures;
 
-console.log( 'connection', connection );
-
 // After the server has started the client sends an initialize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilities
 connection.onInitialize(( params: InitializeParams ): InitializeResult => {
@@ -155,8 +160,6 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get settings() { return globalSettings },
 		get folders() { return workspaceFolders }
 	};
-
-	console.log( 'wtf' );
 
 	languageFeatures = getMVTFeatures( workspace, params.capabilities );
 
@@ -177,7 +180,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Incremental,
-		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/' ] } : undefined,
+		// completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/' ] } : undefined,
+		documentHighlightProvider: true
 	};
 
 	return { capabilities };
@@ -214,6 +218,18 @@ connection.onInitialized(() => {
 
 	}
 
+});
+
+// The content of a text document has changed. This event is emitted
+// when the text document first opened or when its content has changed.
+documents.onDidChangeContent(change => {
+	triggerValidation( change.document );
+});
+
+// a document has closed: clear all diagnostics
+documents.onDidClose(event => {
+	cleanPendingValidation( event.document );
+	connection.sendDiagnostics( { uri: event.document.uri, diagnostics: [] } );
 });
 
 // Listen on the connection

@@ -13,15 +13,18 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const text = document.getText();
 
+			console.log( 'validationTests', validationTests );
+
 			return validationTests.map(( validation ): Diagnostic => {
-				const match =  validation.match.exec( text );
+				const pattern = new RegExp( validation.match, 'ig' );
+				const match: RegExpExecArray = pattern.exec( text );
 				if ( match ) {
 					let message: MarkupContent = {
 						kind: MarkupKind.Markdown,
 						value: validation.problem.message
 					};
 					return {
-						range: Range.create( document.positionAt( match.index ), document.positionAt( match.index + match[ validation.matchIndex ] ) ),
+						range: Range.create( document.positionAt( match.index ), document.positionAt( match.index + match[ validation.matchIndex ].length ) ),
 						message: message.toString(),
 						severity: DiagnosticSeverity[ validation.problem.type ],
 						source: 'Miva IDE'

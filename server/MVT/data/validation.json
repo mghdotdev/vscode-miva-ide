@@ -1,6 +1,6 @@
 [
 	{
-		"match": "(?i)(?=<mvt:item)[^<]*?name\\s*?\"\\s*?=(tool(belt|kit))",
+		"match": "(?=<mvt:item)[^<]*?name\\s*?\"\\s*?=(toolbelt|toolkit)",
 		"matchIndex": 1,
 		"problem": {
 			"type": "Warning",
