@@ -1,0 +1,10 @@
+[
+	{
+		"match": "(?i)(?=<mvt:item)[^<]*?name\\s*?\"\\s*?=(tool(belt|kit))",
+		"matchIndex": 1,
+		"problem": {
+			"type": "Warning",
+			"message": "Consider replacing `$1` functionality with native Miva features."
+		}
+	}
+]

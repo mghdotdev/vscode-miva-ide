@@ -14,44 +14,28 @@ import {
 	Diagnostic
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
-import formatError from './util/formatError';
+import { formatError, pushAll } from './util/functions';
+import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
+import { getMVTFeatures } from './mvtFeatures';
 
 // ================================================================================================================================ //
 
-interface Settings {
-	mvt?: any;
-	css?: any;
-	html?: any;
-	javascript?: any;
-}
+function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
 
-interface Workspace {
-	readonly settings: Settings;
-	readonly folders: WorkspaceFolder[];
-}
+	let promise = documentSettings[ textDocument.uri ];
 
-function getDocumentSettings( textDocument: TextDocument, needsDocumentSettings: () => boolean ): Thenable<Settings | undefined> {
+	if ( !promise ) {
 
-	if ( needsDocumentSettings() ) {
+		const scopeUri = textDocument.uri;
+		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'mvt' }, { scopeUri, section: 'css' }, { scopeUri, section: 'html' }, { scopeUri, section: 'javascript' } ] };
 
-		let promise = documentSettings[ textDocument.uri ];
+		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { mvt: s[0], css: s[1], html: s[2], javascript: s[3] } ) );
 
-		if ( !promise ) {
-
-			const scopeUri = textDocument.uri;
-			const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'mvt' }, { scopeUri, section: 'css' }, { scopeUri, section: 'html' }, { scopeUri, section: 'javascript' } ] };
-
-			promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { mvt: s[0], css: s[1], html: s[2], javascript: s[3] } ) );
-
-			documentSettings[textDocument.uri] = promise;
-
-		}
-
-		return promise;
+		documentSettings[textDocument.uri] = promise;
 
 	}
-	
-	return Promise.resolve( undefined );
+
+	return promise;
 
 }
 
@@ -71,8 +55,26 @@ function triggerValidation( textDocument: TextDocument ): void {
 	}, validationDelayMs);
 }
 
-async function validateTextDocument (textDocument: TextDocument ) {
+async function validateTextDocument( textDocument: TextDocument ) {
 	try {
+		const version = textDocument.version;
+		const diagnostics: Diagnostic[] = [];
+		if ( textDocument.languageId === 'mvt' ) {
+
+			const settings = await getDocumentSettings( textDocument );
+		
+			if ( languageFeatures.doValidation ) {
+
+				languageFeatures.doValidation( textDocument, settings );
+
+			}
+
+		}
+	}
+	catch( e ) {
+		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
+	}
+	/* try {
 		const version = textDocument.version;
 		const diagnostics: Diagnostic[] = [];
 		if ( textDocument.languageId === 'mvt' ) {
@@ -90,16 +92,13 @@ async function validateTextDocument (textDocument: TextDocument ) {
 		}
 	} catch (e) {
 		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
-	}
+	} */
 }
 
 // ================================================================================================================================ //
 
 // Create a connection for the server
 const connection: IConnection = createConnection();
-
-console.log = connection.console.log.bind( connection.console );
-console.error = connection.console.error.bind( connection.console );
 
 process.on('unhandledRejection', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
@@ -125,6 +124,7 @@ let workspaceFoldersSupport = false;
 let globalSettings: Settings = {};
 let documentSettings: { [key: string]: Thenable<Settings> } = {};
 
+
 // remove document settings on close
 documents.onDidClose(e => {
 	delete documentSettings[ e.document.uri ];
@@ -132,6 +132,10 @@ documents.onDidClose(e => {
 
 const pendingValidationRequests: { [ uri: string ]: NodeJS.Timer } = {};
 const validationDelayMs = 500;
+
+let languageFeatures: LanguageFeatures;
+
+console.log( 'connection', connection );
 
 // After the server has started the client sends an initialize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilities
@@ -151,6 +155,10 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get settings() { return globalSettings },
 		get folders() { return workspaceFolders }
 	};
+
+	console.log( 'wtf' );
+
+	languageFeatures = getMVTFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
 		const keys = name.split( '.' );
@@ -207,3 +215,6 @@ connection.onInitialized(() => {
 	}
 
 });
+
+// Listen on the connection
+connection.listen();

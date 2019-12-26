@@ -109,13 +109,3 @@ export function deactivate(): Thenable<void> | undefined {
 	return;
 
 }
-
-// function readJSONFile( location: string ) {
-// 	try {
-// 		return JSON.parse( fs.readFileSync( location ).toString() );
-// 	}
-// 	catch( e ) {
-// 		console.log( `Problems reading ${ location }: ${ e }` );
-// 		return {};
-// 	}
-// }
