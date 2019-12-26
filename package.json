@@ -93,7 +93,10 @@
             {
                 "language": "mv",
                 "scopeName": "text.html.mv",
-                "path": "./syntaxes/MV/mv.tmLanguage.json"
+                "path": "./syntaxes/MV/mv.tmLanguage.json",
+                "embeddedLanguages": {
+                    "text.html.mv": "html"
+                }
             },
             {
                 "scopeName": "mv.injection",

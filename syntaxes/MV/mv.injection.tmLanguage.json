@@ -1,5 +1,37 @@
 {
-  "name": "MVT (Injection)",
-  "scopeName": "mvt.injection",
-  "injectionSelector": "L:text.html.mv"
+  "name": "Miva Script (Injection)",
+  "scopeName": "mv.injection",
+  "injectionSelector": "L:text.html.mv",
+  "patterns": [
+    {
+      "include": "#tags"
+    }
+  ],
+  "repository": {
+    "tags": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mv)([a-z]+?)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv"
+            },
+            "2": {
+              "name": "storage.type.namespace.mv meta.preprocessor.namespace.mv"
+            },
+            "3": {
+              "name": "storage.type.localname.mv meta.preprocessor.localname.mv"
+            }
+          },
+          "end": "(\\/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mv meta.preprocessor.end.mv"
+            }
+          },
+          "name": "meta.tag.inline.mv"
+        }
+      ]
+    }
+  }
 }
