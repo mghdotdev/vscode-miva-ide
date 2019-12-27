@@ -1,10 +1,28 @@
 [
 	{
-		"match": "(?=<mvt:item)[^<]*?name\\s*?\"\\s*?=(toolbelt|toolkit)",
+		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolkit)",
 		"matchIndex": 1,
+		"checkSetting": "MVT.lint.showWarningOnToolkitUsage",
 		"problem": {
 			"type": "Warning",
-			"message": "Consider replacing `$1` functionality with native Miva features."
+			"message": "[warning] - Consider replacing `toolkit` functionality with native Miva features."
+		}
+	},
+	{
+		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolbelt)",
+		"matchIndex": 1,
+		"checkSetting": "MVT.lint.showWarningOnToolbeltUsage",
+		"problem": {
+			"type": "Warning",
+			"message": "[warning] - Consider replacing `toolbelt` functionality with native Miva features."
+		}
+	},
+	{
+		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)([^\"]*)",
+		"matchIndex": 1,
+		"problem": {
+			"type": "Error",
+			"message": "[error] - `l.settings` is implied within the `array` attribute. Use `$2` instead."
 		}
 	}
 ]

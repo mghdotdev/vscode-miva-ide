@@ -1,10 +1,7 @@
 import { WorkspaceFolder, TextDocument, Diagnostic } from 'vscode-languageserver';
 
 export interface Settings {
-	mvt?: any;
-	css?: any;
-	html?: any;
-	javascript?: any;
+	MVT?: any;
 }
 
 export interface Workspace {

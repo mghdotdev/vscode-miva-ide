@@ -40,3 +40,11 @@ export function readJSONFile( location: string ) {
 		return {};
 	}
 }
+
+export function tokenize( text: string, matches: RegExpExecArray ): string {
+	let result = text;
+	for ( let i = 0; i < matches.length; i++ ) {
+		result = result.replace( new RegExp( `\\$${ i }`, 'g' ), matches[ i ] );
+	}
+	return result;
+}

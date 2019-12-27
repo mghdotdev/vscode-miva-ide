@@ -25,12 +25,12 @@
         "configuration": {
             "title": "Miva IDE",
             "properties": {
-                "MVT.showWarningOnToolkitUsage": {
+                "MVT.lint.showWarningOnToolkitUsage": {
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning when the 'toolkit' item is referenced within the template."
                 },
-                "MVT.showWarningOnToolbeltUsage": {
+                "MVT.lint.showWarningOnToolbeltUsage": {
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning when the 'toolbelt' item is referenced within the template."
@@ -96,6 +96,8 @@
     },
     "dependencies": {
         "@types/vscode": "^1.41.0",
+        "lodash.get": "^4.4.2",
+        "lodash.has": "^4.5.2",
         "vscode-languageclient": "^5.2.1",
         "vscode-languageserver": "^5.2.1",
         "vscode-uri": "^2.1.1"

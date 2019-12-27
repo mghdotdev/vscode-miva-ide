@@ -11,12 +11,14 @@ import {
 	ServerCapabilities,
 	TextDocumentSyncKind,
 	DidChangeWorkspaceFoldersNotification,
-	Diagnostic
+	Diagnostic,
+	DidChangeConfigurationNotification
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll } from './util/functions';
 import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
 import { getMVTFeatures } from './mvtFeatures';
+import _has from 'lodash.has';
 
 // ================================================================================================================================ //
 
@@ -27,11 +29,11 @@ function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
 	if ( !promise ) {
 
 		const scopeUri = textDocument.uri;
-		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'mvt' }, { scopeUri, section: 'css' }, { scopeUri, section: 'html' }, { scopeUri, section: 'javascript' } ] };
+		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' } ] };
 
-		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { mvt: s[0], css: s[1], html: s[2], javascript: s[3] } ) );
+		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0] } ) );
 
-		documentSettings[textDocument.uri] = promise;
+		documentSettings[ textDocument.uri ] = promise;
 
 	}
 
@@ -66,10 +68,6 @@ async function validateTextDocument( textDocument: TextDocument ) {
 
 			if ( languageFeatures.doValidation ) {
 
-				let test = languageFeatures.doValidation( textDocument, settings );
-
-				console.log( 'TESTING!', test );
-
 				pushAll( diagnostics, languageFeatures.doValidation( textDocument, settings ) );
 
 			}
@@ -81,25 +79,6 @@ async function validateTextDocument( textDocument: TextDocument ) {
 	catch( e ) {
 		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
 	}
-	/* try {
-		const version = textDocument.version;
-		const diagnostics: Diagnostic[] = [];
-		if ( textDocument.languageId === 'mvt' ) {
-			const modes = languageModes.getAllModesInDocument(textDocument);
-			const settings = await getDocumentSettings(textDocument, () => modes.some(m => !!m.doValidation));
-			const latestTextDocument = documents.get(textDocument.uri);
-			if (latestTextDocument && latestTextDocument.version === version) { // check no new version has come in after in after the async op
-				modes.forEach(mode => {
-					if (mode.doValidation && isValidationEnabled(mode.getId(), settings)) {
-						pushAll(diagnostics, mode.doValidation(latestTextDocument, settings));
-					}
-				});
-				connection.sendDiagnostics({ uri: latestTextDocument.uri, diagnostics });
-			}
-		}
-	} catch (e) {
-		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
-	} */
 }
 
 // ================================================================================================================================ //
@@ -115,27 +94,18 @@ process.on('uncaughtException', ( e: any ) => {
 });
 
 // Create a text document manager.
-const documents = new TextDocuments();
-
-// Make the text document manager listen on the connection
-// for open, change and close text document events
-documents.listen( connection );
+const documents: TextDocuments = new TextDocuments();
 
 // define workspace
 let workspaceFolders: WorkspaceFolder[] = [];
 
 let clientSnippetSupport = false;
 let workspaceFoldersSupport = false;
+let configurationSupport = false;
 
 // define settings
 let globalSettings: Settings = {};
-let documentSettings: { [key: string]: Thenable<Settings> } = {};
-
-
-// remove document settings on close
-documents.onDidClose(e => {
-	delete documentSettings[ e.document.uri ];
-});
+let documentSettings: { [ key: string ]: Thenable<Settings> } = {};
 
 const pendingValidationRequests: { [ uri: string ]: NodeJS.Timer } = {};
 const validationDelayMs = 500;
@@ -164,24 +134,17 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 	languageFeatures = getMVTFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
-		const keys = name.split( '.' );
-		let c: any = params.capabilities;
-		for ( let i = 0; c && i < keys.length; i++ ) {
-			if ( !c.hasOwnProperty( keys[ i ])  ) {
-				return def;
-			}
-			c = c[ keys[ i ] ];
-		}
-		return c;
+		return _has( params.capabilities, name ) || def;
 	}
 
 	clientSnippetSupport = getClientCapability( 'textDocument.completion.completionItem.snippetSupport', false );
 	workspaceFoldersSupport = getClientCapability( 'workspace.workspaceFolders', false );
+	configurationSupport = getClientCapability( 'workspace.configuration', false );
 
 	const capabilities: ServerCapabilities = {
-		textDocumentSync: TextDocumentSyncKind.Incremental,
-		// completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/' ] } : undefined,
-		documentHighlightProvider: true
+		textDocumentSync: TextDocumentSyncKind.Full,
+		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/' ] } : undefined,
+		// documentHighlightProvider: true
 	};
 
 	return { capabilities };
@@ -190,7 +153,13 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 connection.onInitialized(() => {
 
-	if (workspaceFoldersSupport) {
+	if ( configurationSupport ) {
+
+		connection.client.register( DidChangeConfigurationNotification.type, undefined );
+
+	}
+
+	if ( workspaceFoldersSupport ) {
 
 		connection.client.register( DidChangeWorkspaceFoldersNotification.type );
 
@@ -220,17 +189,42 @@ connection.onInitialized(() => {
 
 });
 
+// The settings have changed. Is send on server activation as well.
+connection.onDidChangeConfiguration(change  => {
+
+	globalSettings = change.settings;
+
+	documentSettings = {}; // reset all document settings
+
+	documents.all().forEach( triggerValidation );
+
+});
+
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
+	
 	triggerValidation( change.document );
+
 });
 
 // a document has closed: clear all diagnostics
 documents.onDidClose(event => {
+
 	cleanPendingValidation( event.document );
+
 	connection.sendDiagnostics( { uri: event.document.uri, diagnostics: [] } );
+
 });
+
+// remove document settings on close
+documents.onDidClose(e => {
+	delete documentSettings[ e.document.uri ];
+});
+
+// Make the text document manager listen on the connection
+// for open, change and close text document events
+documents.listen( connection );
 
 // Listen on the connection
 connection.listen();
