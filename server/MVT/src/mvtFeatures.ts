@@ -25,19 +25,18 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				// create the pattern to match
 				const pattern = new RegExp( validation.match, 'igm' );
-				const match = pattern.exec( text );
-				if ( match ) {
-					
-					// build diagnostic object if match was successful
-					return diagnostics.concat([
+				let match: RegExpExecArray;
+				let count = 0; 
+				while ( (match = pattern.exec( text )) && count < 1000 ) {
+					count++;
+					diagnostics.push(
 						{
 							range: Range.create( document.positionAt( match.index ), document.positionAt( match.index + match[ validation.matchIndex ].length ) ),
-							message: tokenize( validation.problem.message, match ),
+							message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
 							severity: DiagnosticSeverity[ validation.problem.type ],
 							source: 'Miva IDE'
 						}
-					]);
-
+					);
 				}
 
 				return diagnostics;

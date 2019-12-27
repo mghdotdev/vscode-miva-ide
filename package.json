@@ -34,6 +34,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning when the 'toolbelt' item is referenced within the template."
+                },
+                "MVT.lint.showWarningForUnencodedEntities": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show a warning when unencoded entities are referenced within the file."
                 }
             }
         },
