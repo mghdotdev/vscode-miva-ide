@@ -1,7 +1,14 @@
-import { WorkspaceFolder, TextDocument, Diagnostic } from 'vscode-languageserver';
+import {
+	WorkspaceFolder,
+	TextDocument,
+	Diagnostic,
+	Position,
+	CompletionList
+} from 'vscode-languageserver';
 
 export interface Settings {
 	MVT?: any;
+	MV?: any;
 }
 
 export interface Workspace {
@@ -11,6 +18,8 @@ export interface Workspace {
 
 export interface LanguageFeatures {
 
-	doValidation?: ( document: TextDocument, settings?: Settings ) => Diagnostic[];
+	doValidation?: ( document: TextDocument,
+		settings?: Settings ) => Diagnostic[];
+	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList
 
 }

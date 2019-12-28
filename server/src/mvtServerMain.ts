@@ -15,7 +15,7 @@ import {
 	DidChangeConfigurationNotification
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
-import { formatError, pushAll } from './util/functions';
+import { formatError, pushAll, runSafeAsync } from './util/functions';
 import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
 import { getMVTFeatures } from './mvtFeatures';
 import _has from 'lodash.has';
@@ -198,6 +198,27 @@ connection.onDidChangeConfiguration(change  => {
 
 	documents.all().forEach( triggerValidation );
 
+});
+
+// Handle completion event
+connection.onCompletion(async ( textDocumentPosition, token ) => {
+	return runSafeAsync(async () => {
+		
+		const document = documents.get( textDocumentPosition.textDocument.uri );
+		
+		if ( !document ) {
+			return null;
+		}
+
+		if ( languageFeatures && languageFeatures.doCompletion ) {
+
+			const settings = await getDocumentSettings( document );
+			const result = languageFeatures.doCompletion( document, textDocumentPosition.position, settings );
+			return result;
+
+		}
+
+	}, null, `Error while computing completions for ${ textDocumentPosition.textDocument.uri }`, token );
 });
 
 // The content of a text document has changed. This event is emitted

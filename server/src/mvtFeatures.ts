@@ -1,12 +1,12 @@
 import { Workspace, Settings, LanguageFeatures } from './util/interfaces';
-import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity } from 'vscode-languageserver';
+import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList } from 'vscode-languageserver';
 import { readJSONFile, tokenize } from './util/functions';
 import * as path from 'path';
 import _get from 'lodash.get';
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
-	const validationTests = readJSONFile( path.resolve( __dirname, 'data', 'validation.json' ) );
+	const validationTests = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
 
 	return {
 
@@ -42,6 +42,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				return diagnostics;
 
 			}, []);
+
+		},
+
+		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
 
 		}
 
