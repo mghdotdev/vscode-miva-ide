@@ -14,7 +14,7 @@
 		".vscode-test"
 	],
 	"references": [
-		{ "path": "./client/MVT" },
-		{ "path": "./server/MVT" }
+		{ "path": "./client" },
+		{ "path": "./server" }
 	]
 }

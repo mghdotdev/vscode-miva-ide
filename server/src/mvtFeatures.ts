@@ -6,7 +6,7 @@ import _get from 'lodash.get';
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
-	const validationTests = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
+	const validationTests = readJSONFile( path.resolve( __dirname, 'data', 'validation.json' ) );
 
 	return {
 

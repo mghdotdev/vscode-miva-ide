@@ -20,11 +20,14 @@ import {
 } from 'vscode-languageclient';
 import { EMPTY_ELEMENTS } from './mvtEmptyTagsShared';
 import * as path from 'path';
+import { readJSONFile } from './util/functions';
 
 export function activate( context: ExtensionContext ) {
 
 	// path to server module
-	let serverModule = context.asAbsolutePath( path.join( 'server', 'MVT', 'out', 'mvtServerMain.js' ) );
+	// let serverModule = context.asAbsolutePath( path.join( 'server', 'out', 'mvtServerMain.js' ) );
+	let serverMain = readJSONFile( context.asAbsolutePath( './server/package.json' ) ).main;
+	let serverModule = context.asAbsolutePath( path.join( 'server', serverMain ) );
 
 	// The debug options for the server
 	let debugOptions = { execArgv: [ '--nolazy', '--inspect=6045' ] };
