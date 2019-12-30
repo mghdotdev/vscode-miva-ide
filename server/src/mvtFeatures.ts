@@ -1,12 +1,16 @@
 import { Workspace, Settings, LanguageFeatures } from './util/interfaces';
 import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList } from 'vscode-languageserver';
-import { readJSONFile, tokenize } from './util/functions';
+import { readJSONFile, tokenize, getValueCompletions } from './util/functions';
+import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
+	const boundryAmount = 200;
 	const validationTests = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
+	const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
+	const doValueCompletions: CompletionList = getValueCompletions( merchantFunctionFiles );
 
 	return {
 
@@ -46,6 +50,36 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		},
 
 		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
+
+			let completions = CompletionList.create();
+
+			// determine left side text range
+			const cursorPositionOffset = document.offsetAt( position );
+			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftRange = Range.create(
+				document.positionAt( leftOffset ),
+				position
+			);
+			const left = document.getText( leftRange ) || '';
+			
+			// determine right side text range
+			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightRange = Range.create(
+				position,
+				document.positionAt( rightOffset )
+			);
+			const right = document.getText( rightRange ) || '';
+			
+			// prevent showing completions if not in a mvt:do tag value attribute
+			if (
+				!patterns.LEFT_IN_MVTDO_TAG.test( left ) ||
+				!patterns.RIGHT_IN_TAG.test( right ) ||
+				!patterns.LEFT_IN_VALUE_ATTR.test( left )
+			) {
+				return completions;
+			}
+
+			return doValueCompletions;
 
 		}
 

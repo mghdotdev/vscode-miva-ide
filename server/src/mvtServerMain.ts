@@ -12,7 +12,9 @@ import {
 	TextDocumentSyncKind,
 	DidChangeWorkspaceFoldersNotification,
 	Diagnostic,
-	DidChangeConfigurationNotification
+	DidChangeConfigurationNotification,
+	CompletionItem,
+	CancellationToken
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync } from './util/functions';
@@ -200,7 +202,7 @@ connection.onDidChangeConfiguration(change  => {
 
 });
 
-// Handle completion event
+// Handle completion events
 connection.onCompletion(async ( textDocumentPosition, token ) => {
 	return runSafeAsync(async () => {
 		
@@ -219,6 +221,9 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 		}
 
 	}, null, `Error while computing completions for ${ textDocumentPosition.textDocument.uri }`, token );
+});
+connection.onCompletionResolve(( item: CompletionItem, token: CancellationToken ) => {
+	return undefined;
 });
 
 // The content of a text document has changed. This event is emitted

@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { ResponseError, CancellationToken, ErrorCodes } from 'vscode-languageserver';
+import { ResponseError, CancellationToken, ErrorCodes, CompletionItem, CompletionItemKind, InsertTextFormat, CompletionList } from 'vscode-languageserver';
 
 export function formatError( message: string, err: any ): string {
 
@@ -73,4 +73,47 @@ export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMess
 
 function cancelValue<E>() {
 	return new ResponseError<E>( ErrorCodes.RequestCancelled, 'Request cancelled' );
+}
+
+function formatValueCompletion( fn: any, file: any ): CompletionItem {
+
+	const parameters = fn.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
+
+		return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index == (arr.length - 1) ) ? ' ' : '' }`;
+
+	}, '');
+	
+	return {
+		label: fn.name,
+		insertText: `${ fn.name }(${ parameters })`,
+		insertTextFormat: InsertTextFormat.Snippet,
+		kind: CompletionItemKind.Function,
+		detail: file.distro_path,
+		command: {
+			title: `Inject "${ file.distro_path }" into file attribute.`, 
+			command: 'mivaIde.MVT.insertFileName',
+			arguments: [
+				{
+					fileName: file.distro_path
+				}
+			]
+		}
+	};
+
+}
+
+export function getValueCompletions( merchantFunctionFiles ): CompletionList {
+
+	let doValueCompletions: CompletionList = CompletionList.create();
+
+	merchantFunctionFiles.forEach(file =>{
+		file.functions.forEach(fn => {
+
+			doValueCompletions.items.push( formatValueCompletion( fn, file ) );
+
+		});
+	});
+
+	return doValueCompletions;
+
 }
