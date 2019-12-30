@@ -91,10 +91,10 @@ function formatValueCompletion( fn: any, file: any ): CompletionItem {
 		detail: file.distro_path,
 		command: {
 			title: `Inject "${ file.distro_path }" into file attribute.`, 
-			command: 'mivaIde.MVT.insertFileName',
+			command: 'mivaIde.MVT.chooseFileName',
 			arguments: [
 				{
-					fileName: file.distro_path
+					fileNames: [ file.distro_path ]
 				}
 			]
 		}
@@ -104,16 +104,30 @@ function formatValueCompletion( fn: any, file: any ): CompletionItem {
 
 export function getValueCompletions( merchantFunctionFiles ): CompletionList {
 
-	let doValueCompletions: CompletionList = CompletionList.create();
+	let doValueCompletions: Map<string, CompletionItem> = new Map();
 
 	merchantFunctionFiles.forEach(file =>{
 		file.functions.forEach(fn => {
 
-			doValueCompletions.items.push( formatValueCompletion( fn, file ) );
+			let key = `${ fn.name }@${ fn.parameters.join( '|' ) }`;
+			let completion = doValueCompletions.get( key );
+
+			if ( completion ) {
+
+				// append to the fileNames argument
+				completion.command.arguments[0].fileNames.push( file.distro_path );
+
+			}
+			else {
+
+				// create the record if it doesn't exist
+				doValueCompletions.set( key, formatValueCompletion( fn, file ) );
+
+			}
 
 		});
 	});
 
-	return doValueCompletions;
+	return CompletionList.create( Array.from( doValueCompletions.values() ) );
 
 }

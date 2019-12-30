@@ -26,6 +26,19 @@
         "configuration": {
             "title": "Miva IDE",
             "properties": {
+                "MVT.defaultEncodingForVariableConversions": {
+                    "type": "string",
+                    "default": "e",
+                    "enum": ["None", "a", "e", "j", "s"],
+                    "enumDescriptions": [
+                        "Converts the variable with no encoding. WARNING: outputting a variable with no encoding is an XSS vulnerability.",
+                        "Outputs the variable with 'attribute' encoding. Suitable for urls.",
+                        "Ouputs a variable with 'entity' encoding. Suitable for HTML pages, form input elements, etc...",
+                        "Outputs a variable with 'javascript' encoding. Suitable for embedded JavaScript sections within an HTML page or JSON.",
+                        "Outputs a variable with 'slugify' encoding. Suitable for URL slugs or codes."
+                    ],
+                    "description": "The encoding type that will be used when converting a variable to an entity."
+                },
                 "MVT.lint.showWarningOnToolkitUsage": {
                     "type": "boolean",
                     "default": true,
@@ -36,10 +49,10 @@
                     "default": true,
                     "description": "Show a warning when the 'toolbelt' item is referenced within the template."
                 },
-                "MVT.lint.showWarningForUnencodedEntities": {
+                "MVT.lint.showWarningForUnencodedVariables": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Show a warning when unencoded entities are referenced within the file."
+                    "description": "Show a warning when unencoded entities and 'evals' are referenced within the file."
                 }
             }
         },

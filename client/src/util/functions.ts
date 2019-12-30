@@ -9,3 +9,11 @@ export function readJSONFile( location: string ) {
 		return {};
 	}
 }
+
+export function pushAll<T>( to: T[], from: T[] ) {
+	if ( from ) {
+		for ( const e of from ) {
+			to.push( e );
+		}
+	}
+}

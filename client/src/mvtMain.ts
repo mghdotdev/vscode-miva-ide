@@ -23,8 +23,8 @@ import {
 } from 'vscode-languageclient';
 import { EMPTY_ELEMENTS } from './mvtEmptyTagsShared';
 import * as path from 'path';
-import { readJSONFile } from './util/functions';
-import patterns from './util/patterns';
+import { readJSONFile, pushAll } from './util/functions';
+import mvtCommands from './mvtCommands';
 
 export function activate( context: ExtensionContext ) {
 
@@ -108,50 +108,9 @@ export function activate( context: ExtensionContext ) {
 			}
 		],
 	});
-
-	const boundryAmount = 200;
-	const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
-
-		const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
-		const leftOffset = cursorPositionOffset - boundryAmount;
-		const leftRange = new Range(
-			textEditor.document.positionAt( leftOffset ),
-			textEditor.selection.active
-		);
-		const left = textEditor.document.getText( leftRange ) || '';
-		const leftMatch = patterns.MVTDO_LEFT_FILE_ATTR.exec( left );
 	
-		if ( leftMatch ) {
-			
-			edit.insert(
-				textEditor.document.positionAt( cursorPositionOffset - leftMatch[0].length ),
-				payload.fileName
-			);
-	
-		}
-		else {
-	
-			const rightOffset = cursorPositionOffset + boundryAmount;
-			const rightRange = new Range(
-				textEditor.selection.active,
-				textEditor.document.positionAt( rightOffset )
-			);
-			const right = textEditor.document.getText( rightRange ) || '';
-			const rightMatch = patterns.MVTDO_RIGHT_FILE_ATTR.exec( right );
-	
-			if ( rightMatch ) {
-	
-				edit.insert(
-					textEditor.document.positionAt( cursorPositionOffset + rightMatch[0].length ),
-					payload.fileName
-				);
-	
-			}
-	
-		}
-	
-	});
-	context.subscriptions.push( insertFileNameCommand );
+	// push all commands to context
+	pushAll( context.subscriptions, mvtCommands );
 
 }
 
