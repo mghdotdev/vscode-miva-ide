@@ -4,4 +4,6 @@ export default {
 
 	RIGHT_IN_ATTR: /^\s*?"/,
 	RIGHT_IN_TAG: /^[^<]*?(?=>)/,
+
+	LEFT_AFTER_AMP: /&$/
 };

@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { ResponseError, CancellationToken, ErrorCodes, CompletionItem, CompletionItemKind, InsertTextFormat, CompletionList } from 'vscode-languageserver';
+import { ResponseError, CancellationToken, ErrorCodes, CompletionItem, CompletionItemKind, InsertTextFormat, CompletionList, MarkupContent, MarkupKind } from 'vscode-languageserver';
 
 export function formatError( message: string, err: any ): string {
 
@@ -75,7 +75,7 @@ function cancelValue<E>() {
 	return new ResponseError<E>( ErrorCodes.RequestCancelled, 'Request cancelled' );
 }
 
-function formatValueCompletion( fn: any, file: any ): CompletionItem {
+function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 
 	const parameters = fn.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
 
@@ -102,7 +102,7 @@ function formatValueCompletion( fn: any, file: any ): CompletionItem {
 
 }
 
-export function getValueCompletions( merchantFunctionFiles ): CompletionList {
+export function getDoValueCompletions( merchantFunctionFiles ): CompletionList {
 
 	let doValueCompletions: Map<string, CompletionItem> = new Map();
 
@@ -121,7 +121,7 @@ export function getValueCompletions( merchantFunctionFiles ): CompletionList {
 			else {
 
 				// create the record if it doesn't exist
-				doValueCompletions.set( key, formatValueCompletion( fn, file ) );
+				doValueCompletions.set( key, formatDoValueCompletion( fn, file ) );
 
 			}
 
@@ -130,4 +130,24 @@ export function getValueCompletions( merchantFunctionFiles ): CompletionList {
 
 	return CompletionList.create( Array.from( doValueCompletions.values() ) );
 
+}
+
+function parseCompletion( completion ) {
+
+	completion.kind = CompletionItemKind[ completion.kind ];
+	completion.documentation = <MarkupContent>{
+		kind: MarkupKind.Markdown,
+		value: completion.documentation
+	};
+
+	return completion;
+
+}
+
+export function parseCompletionFile( completions ) {
+	return completions.map(completion => {
+
+		return parseCompletion( completion );
+
+	});
 }

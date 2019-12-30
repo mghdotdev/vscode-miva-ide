@@ -1,6 +1,6 @@
-import { Workspace, Settings, LanguageFeatures } from './util/interfaces';
-import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList } from 'vscode-languageserver';
-import { readJSONFile, tokenize, getValueCompletions } from './util/functions';
+import { Workspace, Settings, LanguageFeatures, ValidationRule } from './util/interfaces';
+import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList, CompletionItem } from 'vscode-languageserver';
+import { readJSONFile, tokenize, getDoValueCompletions, parseCompletionFile } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
@@ -8,9 +8,10 @@ import _get from 'lodash.get';
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const boundryAmount = 200;
-	const validationTests = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
+	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
 	const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
-	const doValueCompletions: CompletionList = getValueCompletions( merchantFunctionFiles );
+	const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
+	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'entity-completions.json' ) ) );
 
 	return {
 
@@ -20,7 +21,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const text = document.getText();
 
 			// build diagnostics array
-			return validationTests.reduce(( diagnostics, validation ): Diagnostic => {
+			return validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): any => {
 
 				// validate configured setting to check - exit if not valid
 				if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
@@ -45,13 +46,11 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				return diagnostics;
 
-			}, []);
+			}, []);;
 
 		},
 
 		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
-
-			let completions = CompletionList.create();
 
 			// determine left side text range
 			const cursorPositionOffset = document.offsetAt( position );
@@ -70,16 +69,22 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			);
 			const right = document.getText( rightRange ) || '';
 			
-			// prevent showing completions if not in a mvt:do tag value attribute
+			// mvt:do tag value attribute completions
 			if (
-				!patterns.LEFT_IN_MVTDO_TAG.test( left ) ||
-				!patterns.RIGHT_IN_TAG.test( right ) ||
-				!patterns.LEFT_IN_VALUE_ATTR.test( left )
+				patterns.LEFT_IN_MVTDO_TAG.test( left ) &&
+				patterns.RIGHT_IN_TAG.test( right ) &&
+				patterns.LEFT_IN_VALUE_ATTR.test( left )
 			) {
-				return completions;
+				return doValueCompletions;
 			}
 
-			return doValueCompletions;
+			if (
+				patterns.LEFT_AFTER_AMP
+			) {
+				return CompletionList.create( entityCompletions );
+			}
+
+			return undefined;
 
 		}
 

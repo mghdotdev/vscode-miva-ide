@@ -56,6 +56,40 @@
                 }
             }
         },
+        "grammars": [
+            {
+                "language": "mvt",
+                "scopeName": "text.html.mvt",
+                "path": "./syntaxes/mvt.tmLanguage.json"
+            },
+            {
+                "scopeName": "mvt.injection",
+                "injectTo": [
+                    "text.html.mvt"
+                ],
+                "path": "./syntaxes/mvt.injection.tmLanguage.json"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "mivaIde.mvt.convertAndCopy",
+                "key": "cmd+shift+c",
+                "when": "textInputFocus"
+            }
+        ],
+        "languages": [
+            {
+                "id": "mvt",
+                "aliases": [
+                    "Miva Template Language (MVT)",
+                    "mvt"
+                ],
+                "extensions": [
+                    ".mvt"
+                ],
+                "configuration": "./configurations/mvt.configuration.json"
+            }
+        ],
         "snippets": [
             {
                 "language": "mvt",
@@ -72,33 +106,6 @@
             {
                 "language": "mvt",
                 "path": "./snippets/MVT/builtins.snippets.json"
-            }
-        ],
-        "languages": [
-            {
-                "id": "mvt",
-                "aliases": [
-                    "Miva Template Language (MVT)",
-                    "mvt"
-                ],
-                "extensions": [
-                    ".mvt"
-                ],
-                "configuration": "./configurations/mvt.configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "mvt",
-                "scopeName": "text.html.mvt",
-                "path": "./syntaxes/mvt.tmLanguage.json"
-            },
-            {
-                "scopeName": "mvt.injection",
-                "injectTo": [
-                    "text.html.mvt"
-                ],
-                "path": "./syntaxes/mvt.injection.tmLanguage.json"
             }
         ]
     },

@@ -1,5 +1,5 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, TextDocument, Uri } from 'vscode';
 
 const boundryAmount = 200;
 
@@ -64,7 +64,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 });
 
-/* function convertEntityToVariable( entity: string ) {
+function convertEntityToVariable( entity: string ) {
 
 	const globalMatch = patterns.ENTITY_GLOBAL.exec( entity );
 	const localMatch = patterns.ENTITY_LOCAL.exec( entity );
@@ -84,29 +84,25 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 }
 
-function convertVariableToEntity( variable: string ) {
+function convertVariableToEntity( variable: string, uri?: Uri ) {
+
+	const settings = workspace.getConfiguration( 'MVT', uri );
 
 	const globalMatch = patterns.VARIABLE_GLOBAL.exec( variable );
 	const localMatch = patterns.VARIABLE_LOCAL.exec( variable );
 
 	if ( globalMatch ) {
 
-		return `&mvt${ defaultEncoding }:global:${ globalMatch[1] };`;
+		return `&mvt${ settings.defaultEncodingForVariableConversions }:global:${ globalMatch[1] };`;
 
 	}
 	else if ( localMatch ) {
 
-		return `&mvt${ defaultEncoding }:${ localMatch[1] };`;
+		return `&mvt${ settings.defaultEncodingForVariableConversions }:${ localMatch[1] };`;
 
 	}
 
 	return false;
-
-} */
-
-function convertAndReplace( text: string ) {
-
-	
 
 }
 
@@ -118,7 +114,13 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.c
 
 		let text = textEditor.document.getText( new Range( selection.start, selection.end ) );
 
-		clipboardContents.push( convertAndReplace( text ) );
+		let conversion = convertEntityToVariable( text ) || convertVariableToEntity( text, textEditor.document.uri );
+
+		if ( conversion ) {
+
+			clipboardContents.push( conversion );
+
+		}
 
 	});
 
