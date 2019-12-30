@@ -1,0 +1,62 @@
+[
+	{
+		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolkit)",
+		"matchIndex": 1,
+		"checkSetting": "MVT.lint.showWarningOnToolkitUsage",
+		"problem": {
+			"type": "Warning",
+			"message": "Consider replacing `toolkit` functionality with native Miva features."
+		}
+	},
+	{
+		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolbelt)",
+		"matchIndex": 1,
+		"checkSetting": "MVT.lint.showWarningOnToolbeltUsage",
+		"problem": {
+			"type": "Warning",
+			"message": "Consider replacing `toolbelt` functionality with native Miva features."
+		}
+	},
+	{
+		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)([^\"]*)",
+		"matchIndex": 1,
+		"problem": {
+			"type": "Error",
+			"message": "`l.settings` is implied within the `array` attribute. Use `$2` instead."
+		}
+	},
+	{
+		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(g\\.)([^\"]*)",
+		"matchIndex": 1,
+		"problem": {
+			"type": "Error",
+			"message": "`g.` is not valid within the `array` attribute. Use `global:$2` instead."
+		}
+	},
+	{
+		"match": "(?<=<mvt:assign[^<]*?name\\s*?=\\s*?\")((g|l)\\.null)",
+		"matchIndex": 0,
+		"problem": {
+			"type": "Error",
+			"message": "NEVER assign `g.null` or `l.null` a value as it will overwrite the `NULL` keyword."
+		}
+	},
+	{
+		"match": "&mvt:",
+		"matchIndex": 0,
+		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
+		"problem": {
+			"type": "Warning",
+			"message": "Outputting a variable without encoding can lead to XSS vulnerabilities."
+		}
+	},
+	{
+		"match": "(?<=<mvt:eval[^<]*?expr\\s*?=\\s*?\")((g|l)\\.[^\"]+)",
+		"matchIndex": 0,
+		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
+		"problem": {
+			"type": "Warning",
+			"message": "Outputting a variable without encoding can lead to XSS vulnerabilities."
+		}
+	}
+]

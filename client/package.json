@@ -1,0 +1,8 @@
+{
+	"main": "./out/mvtServerMain.js",
+	"devDependencies": {},
+	"dependencies": {
+		"@types/vscode": "^1.41.0",
+		"vscode-languageclient": "^5.2.1"
+	}
+}
