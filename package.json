@@ -2,7 +2,7 @@
     "name": "vscode-miva-ide",
     "displayName": "Miva IDE",
     "description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "engines": {
         "vscode": "^1.35.0"
     },
@@ -13,30 +13,99 @@
         "build-syntax": "node ./syntaxes/build.js",
         "watch-syntax": "node ./syntaxes/watch.js",
         "compile": "tsc -b",
-        "watch": "tsc -b -w"
+        "watch": "tsc -b -w",
+        "postinstall": "cd client && npm install && cd ../server && npm install && cd .."
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/mghweb/vscode-miva-ide.git"
     },
+    "keywords": [
+        "snippets",
+        "autocompletion",
+        "ide",
+        "miva",
+        "language",
+        "mvt",
+        "mv",
+        "syntax"
+    ],
+    "icon": "./marketplace/icon.png",
     "publisher": "mhegler",
-    "main": "./client/MVT/out/extension.js",
+    "main": "./client/out/mvtMain.js",
     "contributes": {
         "configuration": {
             "title": "Miva IDE",
             "properties": {
-                "MVT.showWarningOnToolkitUsage": {
+                "MVT.defaultEncodingForVariableConversions": {
+                    "type": "string",
+                    "default": "e",
+                    "enum": ["None", "a", "e", "j", "s"],
+                    "enumDescriptions": [
+                        "Converts the variable with no encoding. WARNING: outputting a variable with no encoding is an XSS vulnerability.",
+                        "Outputs the variable with 'attribute' encoding. Suitable for urls.",
+                        "Ouputs a variable with 'entity' encoding. Suitable for HTML pages, form input elements, etc...",
+                        "Outputs a variable with 'javascript' encoding. Suitable for embedded JavaScript sections within an HTML page or JSON.",
+                        "Outputs a variable with 'slugify' encoding. Suitable for URL slugs or codes."
+                    ],
+                    "description": "The encoding type that will be used when converting a variable to an entity."
+                },
+                "MVT.lint.showWarningOnToolkitUsage": {
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning when the 'toolkit' item is referenced within the template."
                 },
-                "MVT.showWarningOnToolbeltUsage": {
+                "MVT.lint.showWarningOnToolbeltUsage": {
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning when the 'toolbelt' item is referenced within the template."
+                },
+                "MVT.lint.showWarningForUnencodedVariables": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Show a warning when unencoded entities and 'evals' are referenced within the file."
                 }
             }
         },
+        "configurationDefaults": {
+            "[mvt]": {
+                "editor.suggest.snippetsPreventQuickSuggestions": false
+            }
+        },
+        "grammars": [
+            {
+                "language": "mvt",
+                "scopeName": "text.html.mvt",
+                "path": "./syntaxes/mvt.tmLanguage.json"
+            },
+            {
+                "scopeName": "mvt.injection",
+                "injectTo": [
+                    "text.html.mvt"
+                ],
+                "path": "./syntaxes/mvt.injection.tmLanguage.json"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "mivaIde.mvt.convertAndCopy",
+                "key": "cmd+shift+c",
+                "when": "textInputFocus"
+            }
+        ],
+        "languages": [
+            {
+                "id": "mvt",
+                "aliases": [
+                    "Miva Template Language (MVT)",
+                    "mvt"
+                ],
+                "extensions": [
+                    ".mvt"
+                ],
+                "configuration": "./configurations/mvt.configuration.json"
+            }
+        ],
         "snippets": [
             {
                 "language": "mvt",
@@ -54,47 +123,20 @@
                 "language": "mvt",
                 "path": "./snippets/MVT/builtins.snippets.json"
             }
-        ],
-        "languages": [
-            {
-                "id": "mvt",
-                "aliases": [
-                    "Miva Template Language (MVT)",
-                    "mvt"
-                ],
-                "extensions": [
-                    ".mvt"
-                ],
-                "configuration": "./configurations/mvt.configuration.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "mvt",
-                "scopeName": "text.html.mvt",
-                "path": "./syntaxes/mvt.tmLanguage.json"
-            },
-            {
-                "scopeName": "mvt.injection",
-                "injectTo": [
-                    "text.html.mvt"
-                ],
-                "path": "./syntaxes/mvt.injection.tmLanguage.json"
-            }
         ]
     },
     "activationEvents": [
         "onLanguage:mvt"
     ],
     "devDependencies": {
-        "@types/node": "^12.12.17",
+        "@types/node": "^13.1.1",
         "chalk": "^3.0.0",
         "glob": "^7.1.6",
         "js-yaml": "^3.13.1",
-        "typescript": "^3.7.3",
+        "typescript": "^3.7.4",
         "vsce": "^1.71.0"
     },
     "dependencies": {
-        "@types/vscode": "^1.41.0"
+        "vscode-uri": "^2.1.1"
     }
 }
