@@ -2,7 +2,7 @@
     "name": "vscode-miva-ide",
     "displayName": "Miva IDE",
     "description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "engines": {
         "vscode": "^1.35.0"
     },
@@ -40,7 +40,13 @@
                 "MVT.defaultEncodingForVariableConversions": {
                     "type": "string",
                     "default": "e",
-                    "enum": ["None", "a", "e", "j", "s"],
+                    "enum": [
+                        "None",
+                        "a",
+                        "e",
+                        "j",
+                        "s"
+                    ],
                     "enumDescriptions": [
                         "Converts the variable with no encoding. WARNING: outputting a variable with no encoding is an XSS vulnerability.",
                         "Outputs the variable with 'attribute' encoding. Suitable for urls.",
