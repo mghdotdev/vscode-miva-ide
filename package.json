@@ -20,6 +20,17 @@
         "type": "git",
         "url": "https://github.com/mghweb/vscode-miva-ide.git"
     },
+    "keywords": [
+        "snippets",
+        "autocompletion",
+        "ide",
+        "miva",
+        "language",
+        "mvt",
+        "mv",
+        "syntax"
+    ],
+    "icon": "./marketplace/icon.png",
     "publisher": "mhegler",
     "main": "./client/out/mvtMain.js",
     "contributes": {
