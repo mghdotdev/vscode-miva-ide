@@ -14,6 +14,30 @@
           "begin": "(?i)(<)(mv)([a-z]+?)\\b",
           "beginCaptures": {
             "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.block.mvt"
+        },
+        {
+          "begin": "(?i)(<)(mv)([a-z]+?)\\b",
+          "beginCaptures": {
+            "1": {
               "name": "punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv"
             },
             "2": {

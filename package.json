@@ -82,14 +82,26 @@
             {
                 "language": "mvt",
                 "scopeName": "text.html.mvt",
-                "path": "./syntaxes/mvt.tmLanguage.json"
+                "path": "./syntaxes/MVT/mvt.tmLanguage.json"
             },
             {
                 "scopeName": "mvt.injection",
                 "injectTo": [
                     "text.html.mvt"
                 ],
-                "path": "./syntaxes/mvt.injection.tmLanguage.json"
+                "path": "./syntaxes/MVT/mvt.injection.tmLanguage.json"
+            },
+            {
+                "language": "mv",
+                "scopeName": "text.html.mv",
+                "path": "./syntaxes/MV/mv.tmLanguage.json"
+            },
+            {
+                "scopeName": "mv.injection",
+                "injectTo": [
+                    "text.html.mv"
+                ],
+                "path": "./syntaxes/MV/mv.injection.tmLanguage.json"
             }
         ],
         "keybindings": [
