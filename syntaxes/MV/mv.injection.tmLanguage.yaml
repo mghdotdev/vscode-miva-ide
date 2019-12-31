@@ -25,23 +25,23 @@ repository:
       # Inline Meta Tags
       - begin: '(?i)(<)(MIVA|(Mv)(LOCALIZED|LOCALIZED-TOKEN))(?=\s|/?>)'
         beginCaptures:
-          1: {name: punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv}
+          1: {name: punctuation.definition.tag.begin.mv}
           2: {name: entity.name.tag.mv meta.preprocessor.name.mv}
         end: '/?>'
         endCaptures:
-          0: {name: punctuation.definition.tag.end.mv meta.preprocessor.end.mv}
+          0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
           - include: '#text-attributes'
       
       # Block Meta Tags
-      - begin: '(?i)(</?)(Mv(ASSEMBLY|ASYNCHRONOUS|COMMERCE|LOCALIZED-TEXT))(?=\s|/?>)'
+      - begin: '(?i)(</?)(Mv(ASSEMBLY|ASYNCHRONOUS|COMMERCE|LOCALIZED-TEXT|CAPTURE))(?=\s|/?>)'
         beginCaptures:
-          1: {name: punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv}
+          1: {name: punctuation.definition.tag.begin.mv}
           2: {name: entity.name.tag.mv meta.preprocessor.name.mv}
         end: '>'
         endCaptures:
-          0: {name: punctuation.definition.tag.end.mv meta.preprocessor.end.mv}
+          0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
           - include: '#text-attributes'
@@ -154,8 +154,20 @@ repository:
         name: meta.tag.inline.$2.mv
         patterns:
           - include: '#text-attributes'
+      
+      # Block DB Tags
+      - begin: '(?i)(</?)(Mv(LOCKFILE))(?=\s|/?>)'
+        beginCaptures:
+          1: {name: punctuation.definition.tag.begin.mv}
+          2: {name: entity.name.tag.mv support.class.db.mv}
+        end: '>'
+        endCaptures:
+          0: {name: punctuation.definition.tag.end.mv}
+        name: meta.tag.block.$2.mv
+        patterns:
+          - include: '#text-attributes'
 
-      # Inline "Function" Tags
+      # Inline Execution Tags
       - begin: '(?i)(<)(Mv(EVAL|HIDE))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
@@ -167,8 +179,8 @@ repository:
         patterns:
           - include: '#text-attributes'
 
-      # Block "Function" Tags
-      - begin: '(?i)(</?)(Mv(CALL|LOCKFILE|POP|SMTP))(?=\s|/?>)'
+      # Block Execution Tags
+      - begin: '(?i)(</?)(Mv(CALL|POP|SMTP))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
           2: {name: entity.name.tag.mv}
