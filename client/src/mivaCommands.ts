@@ -1,9 +1,9 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, TextDocument, Uri } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri } from 'vscode';
 
 const boundryAmount = 200;
 
-const chooseFileNameCommand = commands.registerCommand( 'mivaIde.MVT.chooseFileName', async ( payload ) => {
+const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
 	let fileName;
 	if ( payload.fileNames.length < 2 ) {
@@ -15,12 +15,13 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.MVT.chooseFileN
 
 	}
 
-	commands.executeCommand( 'mivaIde.MVT.insertFileName', fileName );
+	commands.executeCommand( 'mivaIde.insertFileName', fileName );
 
 });
 
-const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
+const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
 
+	// const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
 	const leftOffset = cursorPositionOffset - boundryAmount;
 	const leftRange = new Range(
@@ -28,8 +29,9 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	const leftMatch = patterns.MVT.MVTDO_LEFT_FILE_ATTR.exec( left );
-
+	const leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	
+	// define helper method for inserting file name
 	function insertEdit( matchLength, fileName ) {
 
 		edit.insert(
@@ -39,6 +41,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 	}
 
+	// check & execute the insertion
 	if ( leftMatch ) {
 		
 		insertEdit( leftMatch[0].length, fileName );
@@ -52,7 +55,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 			textEditor.document.positionAt( rightOffset )
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
-		const rightMatch = patterns.MVT.MVTDO_RIGHT_FILE_ATTR.exec( right );
+		const rightMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
 
 		if ( rightMatch ) {
 
@@ -107,6 +110,11 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 }
 
 const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
 
 	let clipboardContents = [];
 

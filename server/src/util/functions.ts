@@ -91,7 +91,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		detail: file.distro_path,
 		command: {
 			title: `Inject "${ file.distro_path }" into file attribute.`, 
-			command: 'mivaIde.MVT.chooseFileName',
+			command: 'mivaIde.chooseFileName',
 			arguments: [
 				{
 					fileNames: [ file.distro_path ]
