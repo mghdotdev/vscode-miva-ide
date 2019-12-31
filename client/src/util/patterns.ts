@@ -10,6 +10,8 @@ export default {
 	},
 	MV: {
 
+		LEFT_BRACKET_DOT: /(?<=\[)\s*\]\.[^\[]*?$/
+
 	},
 	SHARED: {
 		

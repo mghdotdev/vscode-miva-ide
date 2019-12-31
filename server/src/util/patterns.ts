@@ -9,6 +9,7 @@ export default {
 	MV: {
 
 		LEFT_IN_MVDO_TAG: /(?=<MvDO)[^>]*?$/i,
+		LEFT_AFTER_BRACKET_DOT: /\[\s*\]\.$/i
 
 	},
 	SHARED: {

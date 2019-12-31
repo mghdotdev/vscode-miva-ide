@@ -117,11 +117,17 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			);
 			const right = document.getText( rightRange ) || '';
 			
-			// mvt:do tag value attribute completions
+			// MvDO tag value attribute completions
 			if (
 				patterns.MV.LEFT_IN_MVDO_TAG.test( left ) &&
 				patterns.SHARED.RIGHT_IN_TAG.test( right ) &&
 				patterns.SHARED.LEFT_IN_VALUE_ATTR.test( left )
+			) {
+				return doValueCompletions;
+			}
+
+			if (
+				patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )
 			) {
 				return doValueCompletions;
 			}

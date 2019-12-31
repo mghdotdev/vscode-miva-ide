@@ -21,7 +21,7 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName'
 
 const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
 
-	// const languageId = textEditor.document.languageId;
+	const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
 	const leftOffset = cursorPositionOffset - boundryAmount;
 	const leftRange = new Range(
@@ -29,7 +29,22 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	const leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	let leftMatch;
+
+	// check for bracket-dot syntax first - then tags
+	if ( languageId === 'mv' ) {
+
+		leftMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
+
+		if ( leftMatch ) {
+
+			insertEdit( leftMatch[0].length, ` ${ fileName } ` );
+			
+		}
+
+	}
+
+	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
 	
 	// define helper method for inserting file name
 	function insertEdit( matchLength, fileName ) {
