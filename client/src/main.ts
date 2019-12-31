@@ -19,7 +19,7 @@ import {
 	LanguageClientOptions,
 	LanguageClient
 } from 'vscode-languageclient';
-import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/emptyTagsShared';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/emptyTagsShared';
 import * as path from 'path';
 import { readJSONFile, pushAll } from './util/functions';
 import mivaCommands from './mivaCommands';
@@ -65,36 +65,36 @@ export function activate( context: ExtensionContext ) {
 	// set advanced language configurations
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
-			increaseIndentPattern: /<(?!\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|mvt:else)\b|[^>]*\/>)([-_\.A-Za-z0-9]+)(?=\s|>)\b[^>]*>(?!.*<\/\1>)|<!--(?!.*-->)|\{[^}"']*$/,
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MVT_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$ `),
 			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
 		},
 		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${MVT_EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${MVT_EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],
 	});
 	languages.setLanguageConfiguration('mv', {
 		indentationRules: {
-			increaseIndentPattern: /<(?!\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|mvt:else)\b|[^>]*\/>)([-_\.A-Za-z0-9]+)(?=\s|>)\b[^>]*>(?!.*<\/\1>)|<!--(?!.*-->)|\{[^}"']*$/,
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MV_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$` ),
 			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
 		},
 		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${MV_EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${MV_EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],
