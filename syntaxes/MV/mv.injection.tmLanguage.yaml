@@ -13,23 +13,20 @@ repository:
 
   comments:
     begin: '<MvCOMMENT>'
-    beginCaptures:
+    captures:
       0: {name: punctuation.definition.comment.mv}
     end: '</MvCOMMENT>'
-    endCaptures:
-      0: {name: punctuation.definition.comment.mv}
     name: comment.block.mv
 
   # =-======================== Text ========================-= #
   text-tags:
     patterns:
       # Block Tags
-      - begin: '(?i)(</?)(Mv)([a-z]+?)\b'
+      - begin: '(?i)(</?)(Mv)(?!COMMENT)([a-z]+?)\b'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv}
           2: {name: storage.type.namespace.mv meta.preprocessor.namespace.mv}
-          3: {name: storage.type.namespace.separator.mv meta.preprocessor.namespace.separator.mv}
-          4: {name: storage.type.localname.mv meta.preprocessor.localname.mv}
+          3: {name: storage.type.localname.mv meta.preprocessor.localname.mv}
         end: '(>)'
         endCaptures:
           1: {name: punctuation.definition.tag.end.mv meta.preprocessor.end.mv}
@@ -38,7 +35,7 @@ repository:
           - include: '#text-tag-components'
 
       # Inline Tags
-      - begin: '(?i)(<)(Mv)([a-z]+?)\b'
+      - begin: '(?i)(<)(Mv)(?!COMMENT)([a-z]+?)\b'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv}
           2: {name: storage.type.namespace.mv meta.preprocessor.namespace.mv}

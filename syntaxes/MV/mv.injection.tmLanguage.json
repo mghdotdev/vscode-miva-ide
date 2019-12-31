@@ -16,23 +16,18 @@
   "repository": {
     "comments": {
       "begin": "<MvCOMMENT>",
-      "beginCaptures": {
+      "captures": {
         "0": {
           "name": "punctuation.definition.comment.mv"
         }
       },
       "end": "</MvCOMMENT>",
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.definition.comment.mv"
-        }
-      },
       "name": "comment.block.mv"
     },
     "text-tags": {
       "patterns": [
         {
-          "begin": "(?i)(</?)(Mv)([a-z]+?)\\b",
+          "begin": "(?i)(</?)(Mv)(?!COMMENT)([a-z]+?)\\b",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv"
@@ -41,9 +36,6 @@
               "name": "storage.type.namespace.mv meta.preprocessor.namespace.mv"
             },
             "3": {
-              "name": "storage.type.namespace.separator.mv meta.preprocessor.namespace.separator.mv"
-            },
-            "4": {
               "name": "storage.type.localname.mv meta.preprocessor.localname.mv"
             }
           },
@@ -61,7 +53,7 @@
           ]
         },
         {
-          "begin": "(?i)(<)(Mv)([a-z]+?)\\b",
+          "begin": "(?i)(<)(Mv)(?!COMMENT)([a-z]+?)\\b",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv meta.preprocessor.begin.mv"
