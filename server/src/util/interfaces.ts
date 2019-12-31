@@ -3,7 +3,8 @@ import {
 	TextDocument,
 	Diagnostic,
 	Position,
-	CompletionList
+	CompletionList,
+	DocumentLink
 } from 'vscode-languageserver';
 
 export interface Settings {
@@ -21,7 +22,9 @@ export interface LanguageFeatures {
 	doValidation?: ( document: TextDocument,
 		settings?: Settings ) => Diagnostic[];
 		
-	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList
+	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
+
+	findDocumentLinks?: ( document: TextDocument ) => DocumentLink[];
 
 }
 

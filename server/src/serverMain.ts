@@ -14,10 +14,11 @@ import {
 	Diagnostic,
 	DidChangeConfigurationNotification,
 	CompletionItem,
-	CancellationToken
+	CancellationToken,
+	DocumentLink
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
-import { formatError, pushAll, runSafeAsync } from './util/functions';
+import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
 import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
 import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
@@ -149,7 +150,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Full,
-		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined
+		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
+		documentLinkProvider: { resolveProvider: false }
 	};
 
 	return { capabilities };
@@ -238,8 +240,33 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 
 	}, null, `Error while computing completions for ${ textDocumentPosition.textDocument.uri }`, token );
 });
-connection.onCompletionResolve(( item: CompletionItem, token: CancellationToken ) => {
+/* connection.onCompletionResolve(( item: CompletionItem, token: CancellationToken ) => {
 	return undefined;
+}); */
+
+connection.onDocumentLinks( (documentLinkParam, token ) => {
+	return runSafe(() => {
+
+		const document = documents.get( documentLinkParam.textDocument.uri );
+		const links: DocumentLink[] = [];
+
+		if ( document ) {
+			
+			if ( document.languageId == 'mv' ) {
+
+				if ( mvLanguageFeatures && mvLanguageFeatures.findDocumentLinks ) {
+
+					pushAll( links, mvLanguageFeatures.findDocumentLinks( document ) );
+
+				}
+
+			}
+			
+		}
+
+		return links;
+
+	}, [], `Error while document links for ${ documentLinkParam.textDocument.uri }`, token );
 });
 
 // The content of a text document has changed. This event is emitted

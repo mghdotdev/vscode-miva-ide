@@ -4,6 +4,7 @@
 	"dependencies": {
 		"lodash.get": "^4.4.2",
 		"lodash.has": "^4.5.2",
+		"vscode-html-languageservice": "^3.0.3",
 		"vscode-languageserver": "^5.2.1",
 		"vscode-uri": "^2.1.1"
 	}

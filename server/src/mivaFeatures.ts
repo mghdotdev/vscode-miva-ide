@@ -1,9 +1,12 @@
 import { Workspace, Settings, LanguageFeatures, ValidationRule } from './util/interfaces';
-import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList, CompletionItem } from 'vscode-languageserver';
+import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList, CompletionItem, DocumentLink } from 'vscode-languageserver';
 import { readJSONFile, tokenize, getDoValueCompletions, parseCompletionFile } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
+import { getLanguageService, TokenType } from 'vscode-html-languageservice';
+
+const test = getLanguageService();
 
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
@@ -133,6 +136,39 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			}
 
 			return undefined;
+
+		},
+
+		findDocumentLinks( document: TextDocument ): DocumentLink[] {
+
+			const newLinks: DocumentLink[] = [];
+			const scanner = test.createScanner( document.getText(), 0 );
+			let token = scanner.scan();
+			let lastAttributeName: string | undefined = undefined;
+
+			while ( token !== TokenType.EOS ) {
+
+				switch ( token ) {
+
+					case TokenType.AttributeName:
+						lastAttributeName = scanner.getTokenText().toLowerCase();
+						break;
+
+					case TokenType.AttributeValue:
+						if ( lastAttributeName == 'FILE' || lastAttributeName == 'file' ) {
+
+							console.log( 'works bitch!' );
+
+						}
+						break;
+
+				}
+
+				token = scanner.scan();
+
+			}
+
+			return newLinks;
 
 		}
 
