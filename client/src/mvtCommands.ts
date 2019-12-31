@@ -28,7 +28,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	const leftMatch = patterns.MVTDO_LEFT_FILE_ATTR.exec( left );
+	const leftMatch = patterns.MVT.MVTDO_LEFT_FILE_ATTR.exec( left );
 
 	function insertEdit( matchLength, fileName ) {
 
@@ -52,7 +52,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 			textEditor.document.positionAt( rightOffset )
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
-		const rightMatch = patterns.MVTDO_RIGHT_FILE_ATTR.exec( right );
+		const rightMatch = patterns.MVT.MVTDO_RIGHT_FILE_ATTR.exec( right );
 
 		if ( rightMatch ) {
 
@@ -66,8 +66,8 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 function convertEntityToVariable( entity: string ) {
 
-	const globalMatch = patterns.ENTITY_GLOBAL.exec( entity );
-	const localMatch = patterns.ENTITY_LOCAL.exec( entity );
+	const globalMatch = patterns.MVT.ENTITY_GLOBAL.exec( entity );
+	const localMatch = patterns.MVT.ENTITY_LOCAL.exec( entity );
 
 	if ( globalMatch ) {
 
@@ -88,8 +88,8 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	const settings = workspace.getConfiguration( 'MVT', uri );
 
-	const globalMatch = patterns.VARIABLE_GLOBAL.exec( variable );
-	const localMatch = patterns.VARIABLE_LOCAL.exec( variable );
+	const globalMatch = patterns.MVT.VARIABLE_GLOBAL.exec( variable );
+	const localMatch = patterns.MVT.VARIABLE_LOCAL.exec( variable );
 
 	if ( globalMatch ) {
 

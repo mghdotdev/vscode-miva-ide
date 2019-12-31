@@ -21,7 +21,7 @@ import {
 	CancellationToken,
 	LanguageClient
 } from 'vscode-languageclient';
-import { EMPTY_ELEMENTS } from './mvtEmptyTagsShared';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/emptyTagsShared';
 import * as path from 'path';
 import { readJSONFile, pushAll } from './util/functions';
 import mvtCommands from './mvtCommands';
@@ -44,12 +44,12 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Options to control the language client
-	let documentSelector = [ 'mvt' ];
+	let documentSelector = [ 'mvt', 'mv' ];
 	let embeddedLanguages = { html: true };
 	let clientOptions: LanguageClientOptions = {
 		documentSelector,
 		synchronize: {
-			configurationSection: [ 'html' ]
+			configurationSection: [ 'html', 'mvt', 'mv' ]
 		},
 		initializationOptions: {
 			embeddedLanguages
@@ -82,7 +82,7 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Create the language client and start the client.
-	let client = new LanguageClient( 'mvt', 'MVT Language Server', serverOptions, clientOptions );
+	let client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
 	client.registerProposedFeatures();
 	let clientDisposable = client.start();
 
@@ -98,12 +98,30 @@ export function activate( context: ExtensionContext ) {
 		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${MVT_EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${MVT_EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				action: { indentAction: IndentAction.Indent }
+			}
+		],
+	});
+	languages.setLanguageConfiguration('mv', {
+		indentationRules: {
+			increaseIndentPattern: /<(?!\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|mvt:else)\b|[^>]*\/>)([-_\.A-Za-z0-9]+)(?=\s|>)\b[^>]*>(?!.*<\/\1>)|<!--(?!.*-->)|\{[^}"']*$/,
+			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
+		},
+		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
+		onEnterRules: [
+			{
+				beforeText: new RegExp(`<(?!(?:${MV_EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
+				action: { indentAction: IndentAction.IndentOutdent }
+			},
+			{
+				beforeText: new RegExp(`<(?!(?:${MV_EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],

@@ -19,7 +19,7 @@ import {
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync } from './util/functions';
 import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
-import { getMVTFeatures } from './mvtFeatures';
+import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
 
 // ================================================================================================================================ //
@@ -31,9 +31,9 @@ function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
 	if ( !promise ) {
 
 		const scopeUri = textDocument.uri;
-		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' } ] };
+		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' }, { scopeUri, section: 'MV' } ] };
 
-		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0] } ) );
+		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0], MV: s[1] } ) );
 
 		documentSettings[ textDocument.uri ] = promise;
 
@@ -61,22 +61,24 @@ function triggerValidation( textDocument: TextDocument ): void {
 
 async function validateTextDocument( textDocument: TextDocument ) {
 	try {
-		const version = textDocument.version;
+
+		// const version = textDocument.version;
 		const diagnostics: Diagnostic[] = [];
+		const settings = await getDocumentSettings( textDocument );
+		const latestTextDocument = documents.get( textDocument.uri );
+
 		if ( textDocument.languageId === 'mvt' ) {
 
-			const settings = await getDocumentSettings( textDocument );
-			const latestTextDocument = documents.get( textDocument.uri );
+			if ( mvtLanguageFeatures.doValidation ) {
 
-			if ( languageFeatures.doValidation ) {
-
-				pushAll( diagnostics, languageFeatures.doValidation( textDocument, settings ) );
+				pushAll( diagnostics, mvtLanguageFeatures.doValidation( textDocument, settings ) );
 
 			}
 
 			connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
 
 		}
+
 	}
 	catch( e ) {
 		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
@@ -112,7 +114,8 @@ let documentSettings: { [ key: string ]: Thenable<Settings> } = {};
 const pendingValidationRequests: { [ uri: string ]: NodeJS.Timer } = {};
 const validationDelayMs = 500;
 
-let languageFeatures: LanguageFeatures;
+let mvtLanguageFeatures: LanguageFeatures;
+let mvLanguageFeatures: LanguageFeatures;
 
 // After the server has started the client sends an initialize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilities
@@ -133,7 +136,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	languageFeatures = getMVTFeatures( workspace, params.capabilities );
+	mvtLanguageFeatures = getMVTFeatures( workspace, params.capabilities );
+	mvLanguageFeatures = getMVFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
 		return _has( params.capabilities, name ) || def;
@@ -145,8 +149,7 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Full,
-		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
-		// documentHighlightProvider: true
+		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined
 	};
 
 	return { capabilities };
@@ -212,11 +215,24 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 			return null;
 		}
 
-		if ( languageFeatures && languageFeatures.doCompletion ) {
+		const settings = await getDocumentSettings( document );
 
-			const settings = await getDocumentSettings( document );
-			const result = languageFeatures.doCompletion( document, textDocumentPosition.position, settings );
-			return result;
+		if ( document.languageId == 'mvt' ) {
+
+			if ( mvtLanguageFeatures && mvtLanguageFeatures.doCompletion ) {
+
+				return mvtLanguageFeatures.doCompletion( document, textDocumentPosition.position, settings );
+	
+			}
+
+		}
+		else if ( document.languageId == 'mv' ) {
+
+			if ( mvLanguageFeatures && mvLanguageFeatures.doCompletion ) {
+
+				return mvLanguageFeatures.doCompletion( document, textDocumentPosition.position, settings );
+
+			}
 
 		}
 

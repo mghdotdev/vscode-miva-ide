@@ -71,15 +71,16 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			
 			// mvt:do tag value attribute completions
 			if (
-				patterns.LEFT_IN_MVTDO_TAG.test( left ) &&
-				patterns.RIGHT_IN_TAG.test( right ) &&
-				patterns.LEFT_IN_VALUE_ATTR.test( left )
+				patterns.MVT.LEFT_IN_MVTDO_TAG.test( left ) &&
+				patterns.MVT.RIGHT_IN_TAG.test( right ) &&
+				patterns.MVT.LEFT_IN_VALUE_ATTR.test( left )
 			) {
 				return doValueCompletions;
 			}
 
+			// entity completions
 			if (
-				patterns.LEFT_AFTER_AMP
+				patterns.MVT.LEFT_AFTER_AMP
 			) {
 				return CompletionList.create( entityCompletions );
 			}
@@ -89,4 +90,13 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		}
 
 	};
+
+}
+
+export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
+
+	return {
+
+	};
+
 }

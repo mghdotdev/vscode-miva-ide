@@ -4,4 +4,4 @@ name: Miva Script
 scopeName: text.html.mv
 
 patterns:
-- include: text.html.basic
+  - include: text.html.basic

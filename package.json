@@ -32,7 +32,7 @@
     ],
     "icon": "icon.png",
     "publisher": "mhegler",
-    "main": "./client/out/mvtMain.js",
+    "main": "./client/out/main.js",
     "contributes": {
         "configuration": {
             "title": "Miva IDE",
@@ -153,7 +153,8 @@
         ]
     },
     "activationEvents": [
-        "onLanguage:mvt"
+        "onLanguage:mvt",
+        "onLanguage:mv"
     ],
     "devDependencies": {
         "@types/node": "^13.1.1",

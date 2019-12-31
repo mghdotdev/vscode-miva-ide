@@ -1,5 +1,5 @@
 {
-	"main": "./out/mvtServerMain.js",
+	"main": "./out/serverMain.js",
 	"devDependencies": {},
 	"dependencies": {
 		"lodash.get": "^4.4.2",

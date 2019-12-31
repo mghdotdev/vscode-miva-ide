@@ -12,10 +12,10 @@ patterns:
 repository:
 
   comments:
-    begin: '<MvCOMMENT>'
+    begin: '(?i)<MvCOMMENT>'
     captures:
       0: {name: punctuation.definition.comment.mv}
-    end: '</MvCOMMENT>'
+    end: '(?i)</MvCOMMENT>'
     name: comment.block.mv
 
   # =-======================== Text ========================-= #

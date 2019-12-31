@@ -4,4 +4,4 @@ name: Miva Template Language (MVT)
 scopeName: text.html.mvt
 
 patterns:
-- include: text.html.basic
+  - include: text.html.basic
