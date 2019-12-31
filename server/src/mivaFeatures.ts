@@ -8,10 +8,10 @@ import _get from 'lodash.get';
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const boundryAmount = 200;
-	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'validation.json' ) );
+	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'validation.json' ) );
 	const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 	const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
-	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'entity-completions.json' ) ) );
+	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'entity-completions.json' ) ) );
 
 	return {
 
