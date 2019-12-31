@@ -32,7 +32,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv meta.preprocessor.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Block Meta Tags
       - begin: '(?i)(</?)(Mv(ASSEMBLY|ASYNCHRONOUS|COMMERCE|LOCALIZED-TEXT))(?=\s|/?>)'
@@ -44,7 +44,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv meta.preprocessor.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Inline Control Flow Tags
       - begin: '(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|CALL|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\s|/?>)'
@@ -56,31 +56,31 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Inline Storage Tags
       - begin: '(?i)(<)(Mv(ASSIGN|MEMBER|DIMENSION|REFERENCE))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
-          2: {name: entity.name.tag.mv meta.var.expr.mv storage.type.mv}
+          2: {name: entity.name.tag.mv meta.var.expr.mv}
         end: '/?>'
         endCaptures:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Block Storage Tags
       - begin: '(?i)(</?)(Mv((ASSIGN|REFERENCE)ARRAY))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
-          2: {name: entity.name.tag.mv meta.var.expr.mv storage.type.mv}
+          2: {name: entity.name.tag.mv meta.var.expr.mv}
         end: '>'
         endCaptures:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Block Control Conditional Tags
       - begin: '(?i)(</?)(Mv(IF|ELSE|ELSEIF|IFDEF|IFNDEF))(?=\s|/?>)'
@@ -92,7 +92,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Block Control Loop Tags
       - begin: '(?i)(</?)(Mv(WHILE|FOR|FOREACH))(?=\s|/?>)'
@@ -104,7 +104,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Block Function Definition Tag
       - begin: '(?i)(</?)(Mv(FUNCTION))(?=\s|/?>)'
@@ -116,10 +116,11 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attribute-function-name'
+          - include: '#text-attributes'
       
       # Block Import Tags
-      - begin: '(?i)(</?)(Mv(IMPORT))(?=\s|/?>)'
+      - begin: '(?i)(</?)(Mv(IMPORT|DO))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
           2: {name: entity.name.tag.mv keyword.control.import.mv}
@@ -128,7 +129,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Inline Import Tags
       - begin: '(?i)(<)(Mv(INCLUDE))(?=\s|/?>)'
@@ -140,7 +141,7 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
       
       # Inline DB Tags
       - begin: '(?i)(<)(Mv(ADD|CLOSE|CLOSEVIEW|COMMIT|CREATE|DBCOMMAND|DELETE|FILTER|FIND|GO|MAKEINDEX|EXPORT|OPEN|OPENVIEW|QUERY|PACK|PRIMARY|(RE|SET)INDEX|ROLLBACK|REVEALSTRUCTURE|TRANSACT|UNDELETE|UPDATE))(?=\s|/?>)'
@@ -152,33 +153,58 @@ repository:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
 
       # Inline "Function" Tags
-      - begin: '(?i)(<)(Mv(EVAL|DO|HIDE))(?=\s|/?>)'
+      - begin: '(?i)(<)(Mv(EVAL|HIDE))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
-          2: {name: entity.name.tag.mv support.function.mv}
+          2: {name: entity.name.tag.mv}
         end: '/?>'
         endCaptures:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.inline.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
 
       # Block "Function" Tags
       - begin: '(?i)(</?)(Mv(CALL|LOCKFILE|POP|SMTP))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
-          2: {name: entity.name.tag.mv support.function.mv}
+          2: {name: entity.name.tag.mv}
         end: '>'
         endCaptures:
           0: {name: punctuation.definition.tag.end.mv}
         name: meta.tag.block.$2.mv
         patterns:
-          - include: '#text-attribute'
+          - include: '#text-attributes'
   
-  text-attribute:
+  text-attribute-function-name:
+    begin: '(?i)(NAME)(?![\w:-])'
+    beginCaptures:
+      0: {name: entity.other.attribute-name.mv}
+    end: '(?=\s*+[^=\s])'
+    name: meta.attribute.NAME.mv
+    patterns:
+      - begin: '='
+        beginCaptures:
+          0: {name: punctuation.separator.key-value.mv}
+        end: '(?<=[^\s=])(?!\s*=)|(?=/?>)'
+        patterns:
+          # Quoted Function Name
+          - begin: '"'
+            beginCaptures:
+              0: {name: punctuation.definition.string.begin.mv}
+            end: '"'
+            endCaptures:
+              0: {punctuation.definition.string.end.mv}
+            name: entity.name.function.mv meta.definition.function.mv meta.function.mv
+          
+          # Invalid extra equals
+          - match: '='
+            name: invalid.illegal.unexpected-equals-sign.mv
+
+  text-attributes:
     begin: '([a-zA-Z-_]+)(?![\w:-])'
     beginCaptures:
       0: {name: entity.other.attribute-name.mv}

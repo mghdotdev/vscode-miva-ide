@@ -45,7 +45,7 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -68,7 +68,7 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -91,7 +91,7 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -102,7 +102,7 @@
               "name": "punctuation.definition.tag.begin.mv"
             },
             "2": {
-              "name": "entity.name.tag.mv meta.var.expr.mv storage.type.mv"
+              "name": "entity.name.tag.mv meta.var.expr.mv"
             }
           },
           "end": "/?>",
@@ -114,7 +114,7 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -125,7 +125,7 @@
               "name": "punctuation.definition.tag.begin.mv"
             },
             "2": {
-              "name": "entity.name.tag.mv meta.var.expr.mv storage.type.mv"
+              "name": "entity.name.tag.mv meta.var.expr.mv"
             }
           },
           "end": ">",
@@ -137,7 +137,7 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -160,7 +160,7 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -183,7 +183,7 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -206,12 +206,15 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attribute-function-name"
+            },
+            {
+              "include": "#text-attributes"
             }
           ]
         },
         {
-          "begin": "(?i)(</?)(Mv(IMPORT))(?=\\s|/?>)",
+          "begin": "(?i)(</?)(Mv(IMPORT|DO))(?=\\s|/?>)",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv"
@@ -229,7 +232,7 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -252,7 +255,7 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -275,18 +278,18 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
         {
-          "begin": "(?i)(<)(Mv(EVAL|DO|HIDE))(?=\\s|/?>)",
+          "begin": "(?i)(<)(Mv(EVAL|HIDE))(?=\\s|/?>)",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv"
             },
             "2": {
-              "name": "entity.name.tag.mv support.function.mv"
+              "name": "entity.name.tag.mv"
             }
           },
           "end": "/?>",
@@ -298,7 +301,7 @@
           "name": "meta.tag.inline.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         },
@@ -309,7 +312,7 @@
               "name": "punctuation.definition.tag.begin.mv"
             },
             "2": {
-              "name": "entity.name.tag.mv support.function.mv"
+              "name": "entity.name.tag.mv"
             }
           },
           "end": ">",
@@ -321,13 +324,55 @@
           "name": "meta.tag.block.$2.mv",
           "patterns": [
             {
-              "include": "#text-attribute"
+              "include": "#text-attributes"
             }
           ]
         }
       ]
     },
-    "text-attribute": {
+    "text-attribute-function-name": {
+      "begin": "(?i)(NAME)(?![\\w:-])",
+      "beginCaptures": {
+        "0": {
+          "name": "entity.other.attribute-name.mv"
+        }
+      },
+      "end": "(?=\\s*+[^=\\s])",
+      "name": "meta.attribute.NAME.mv",
+      "patterns": [
+        {
+          "begin": "=",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.separator.key-value.mv"
+            }
+          },
+          "end": "(?<=[^\\s=])(?!\\s*=)|(?=/?>)",
+          "patterns": [
+            {
+              "begin": "\"",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.string.begin.mv"
+                }
+              },
+              "end": "\"",
+              "endCaptures": {
+                "0": {
+                  "punctuation.definition.string.end.mv": null
+                }
+              },
+              "name": "entity.name.function.mv meta.definition.function.mv meta.function.mv"
+            },
+            {
+              "match": "=",
+              "name": "invalid.illegal.unexpected-equals-sign.mv"
+            }
+          ]
+        }
+      ]
+    },
+    "text-attributes": {
       "begin": "([a-zA-Z-_]+)(?![\\w:-])",
       "beginCaptures": {
         "0": {
