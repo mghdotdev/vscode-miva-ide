@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.3.0
+
+* Added Miva Script syntax highlighting.
+* Added Miva Script MvDO and `[].` autocompletion.
+* Added Go To Definition support for Miva Script and MVT.
+* Added "Find Symbol in Document" support for Miva Script.
+
 ## 0.2.0
 
 * Added the following settings:

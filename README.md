@@ -29,4 +29,4 @@ None.
 
 ## Release Notes
 
-See [CHANGELOG](https://github.com/mghweb/vscode-miva-ide/blob/master/CHANGELOG.md)
+See [CHANGELOG](https://github.com/mghweb/vscode-miva-ide/blob/master/CHANGELOG.md).
