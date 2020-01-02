@@ -4,7 +4,9 @@ import {
 	Diagnostic,
 	Position,
 	CompletionList,
-	DocumentLink
+	DocumentLink,
+	Definition,
+	SymbolInformation
 } from 'vscode-languageserver';
 
 export interface Settings {
@@ -17,6 +19,11 @@ export interface Workspace {
 	readonly folders: WorkspaceFolder[];
 }
 
+export interface Languages {
+	mv: LanguageFeatures,
+	mvt: LanguageFeatures
+}
+
 export interface LanguageFeatures {
 
 	doValidation?: ( document: TextDocument,
@@ -24,7 +31,9 @@ export interface LanguageFeatures {
 		
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
 
-	findDocumentLinks?: ( document: TextDocument ) => DocumentLink[];
+	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
+
+	findDefinition?: ( document: TextDocument, position: Position ) => Definition | null;
 
 }
 

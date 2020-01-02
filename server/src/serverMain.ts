@@ -15,11 +15,12 @@ import {
 	DidChangeConfigurationNotification,
 	CompletionItem,
 	CancellationToken,
-	DocumentLink
+	DocumentLink,
+	SymbolInformation
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
-import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
+import { Settings, Workspace, LanguageFeatures, Languages } from './util/interfaces';
 import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
 
@@ -67,18 +68,15 @@ async function validateTextDocument( textDocument: TextDocument ) {
 		const diagnostics: Diagnostic[] = [];
 		const settings = await getDocumentSettings( textDocument );
 		const latestTextDocument = documents.get( textDocument.uri );
+		const features = languages[ textDocument.languageId ];
 
-		if ( textDocument.languageId === 'mvt' ) {
+		if ( features && features.doValidation ) {
 
-			if ( mvtLanguageFeatures.doValidation ) {
-
-				pushAll( diagnostics, mvtLanguageFeatures.doValidation( textDocument, settings ) );
-
-			}
-
-			connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
+			pushAll( diagnostics, features.doValidation( textDocument, settings ) );
 
 		}
+
+		connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
 
 	}
 	catch( e ) {
@@ -115,8 +113,10 @@ let documentSettings: { [ key: string ]: Thenable<Settings> } = {};
 const pendingValidationRequests: { [ uri: string ]: NodeJS.Timer } = {};
 const validationDelayMs = 500;
 
-let mvtLanguageFeatures: LanguageFeatures;
-let mvLanguageFeatures: LanguageFeatures;
+let languages: Languages = {
+	mvt: null,
+	mv: null
+};
 
 // After the server has started the client sends an initialize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilities
@@ -137,8 +137,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	mvtLanguageFeatures = getMVTFeatures( workspace, params.capabilities );
-	mvLanguageFeatures = getMVFeatures( workspace, params.capabilities );
+	languages.mvt = getMVTFeatures( workspace, params.capabilities );
+	languages.mv = getMVFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
 		return _has( params.capabilities, name ) || def;
@@ -151,7 +151,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Full,
 		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
-		documentLinkProvider: { resolveProvider: false }
+		definitionProvider: true,
+		documentSymbolProvider: true
 	};
 
 	return { capabilities };
@@ -218,23 +219,11 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 		}
 
 		const settings = await getDocumentSettings( document );
+		const features = languages[ document.languageId ];
 
-		if ( document.languageId == 'mvt' ) {
+		if ( features && features.doCompletion ) {
 
-			if ( mvtLanguageFeatures && mvtLanguageFeatures.doCompletion ) {
-
-				return mvtLanguageFeatures.doCompletion( document, textDocumentPosition.position, settings );
-	
-			}
-
-		}
-		else if ( document.languageId == 'mv' ) {
-
-			if ( mvLanguageFeatures && mvLanguageFeatures.doCompletion ) {
-
-				return mvLanguageFeatures.doCompletion( document, textDocumentPosition.position, settings );
-
-			}
+			return features.doCompletion( document, textDocumentPosition.position, settings );
 
 		}
 
@@ -244,29 +233,48 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 	return undefined;
 }); */
 
-connection.onDocumentLinks( (documentLinkParam, token ) => {
+connection.onDocumentSymbol(( documentSymbolParms, token ) => {
 	return runSafe(() => {
 
-		const document = documents.get( documentLinkParam.textDocument.uri );
-		const links: DocumentLink[] = [];
+		const document = documents.get( documentSymbolParms.textDocument.uri );
+		const symbols: SymbolInformation[] = [];
 
 		if ( document ) {
-			
-			if ( document.languageId == 'mv' ) {
 
-				if ( mvLanguageFeatures && mvLanguageFeatures.findDocumentLinks ) {
+			const features = languages[ document.languageId ];
 
-					pushAll( links, mvLanguageFeatures.findDocumentLinks( document ) );
+			if ( features && features.findDocumentSymbols ) {
 
-				}
+				pushAll( symbols, features.findDocumentSymbols( document ) );
 
 			}
-			
 		}
 
-		return links;
+		return symbols;
 
-	}, [], `Error while document links for ${ documentLinkParam.textDocument.uri }`, token );
+	}, [], `Error while computing document symbols for ${documentSymbolParms.textDocument.uri}`, token);
+});
+
+connection.onDefinition(( definitionParams, token ) => {
+	return runSafe(() => {
+
+		const document = documents.get( definitionParams.textDocument.uri );
+		
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.findDefinition ) {
+
+				return features.findDefinition( document, definitionParams.position );
+				
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while computing definitions for ${ definitionParams.textDocument.uri }`, token );
 });
 
 // The content of a text document has changed. This event is emitted

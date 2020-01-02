@@ -1,12 +1,38 @@
-import { Workspace, Settings, LanguageFeatures, ValidationRule } from './util/interfaces';
-import { ClientCapabilities, TextDocument, Diagnostic, Range, DiagnosticSeverity, Position, CompletionList, CompletionItem, DocumentLink } from 'vscode-languageserver';
-import { readJSONFile, tokenize, getDoValueCompletions, parseCompletionFile } from './util/functions';
+import {
+	Workspace,
+	Settings,
+	LanguageFeatures,
+	ValidationRule
+} from './util/interfaces';
+import {
+	ClientCapabilities,
+	TextDocument,
+	Diagnostic,
+	Range,
+	DiagnosticSeverity,
+	Position,
+	CompletionList,
+	CompletionItem,
+	Definition,
+	SymbolInformation,
+	SymbolKind,
+	Location
+} from 'vscode-languageserver';
+import { 
+	readJSONFile,
+	tokenize,
+	getDoValueCompletions,
+	parseCompletionFile
+} from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
-import { getLanguageService, TokenType } from 'vscode-html-languageservice';
+import {
+	getLanguageService,
+	TokenType
+} from 'vscode-html-languageservice';
 
-const test = getLanguageService();
+const htmlLanguageService = getLanguageService();
 
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
@@ -139,37 +165,94 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 		},
 
-		findDocumentLinks( document: TextDocument ): DocumentLink[] {
+		findDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
-			const newLinks: DocumentLink[] = [];
-			const scanner = test.createScanner( document.getText(), 0 );
+			const results: SymbolInformation[] = [];
+
+			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 			let token = scanner.scan();
+			let lastTagName: string | undefined = undefined;
 			let lastAttributeName: string | undefined = undefined;
 
 			while ( token !== TokenType.EOS ) {
 
 				switch ( token ) {
 
+					case TokenType.StartTag:
+						lastTagName = scanner.getTokenText().toLowerCase();
+						break;
+
 					case TokenType.AttributeName:
 						lastAttributeName = scanner.getTokenText().toLowerCase();
 						break;
 
 					case TokenType.AttributeValue:
-						if ( lastAttributeName == 'FILE' || lastAttributeName == 'file' ) {
+						if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
 
-							console.log( 'works bitch!' );
+							results.push({
+								kind: SymbolKind.Variable,
+								name: scanner.getTokenText().replace( /"/g, '' ),
+								location: Location.create(
+									document.uri,
+									Range.create(
+										document.positionAt( scanner.getTokenOffset() + 1 ),
+										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+									)
+								)
+							});
 
 						}
+						else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
+
+							results.push({
+								kind: SymbolKind.Function,
+								name: scanner.getTokenText().replace( /"/g, '' ),
+								location: Location.create(
+									document.uri,
+									Range.create(
+										document.positionAt( scanner.getTokenOffset() + 1 ),
+										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+									)
+								)
+							});
+
+						}
+						/* else if ( (lastTagName === 'mvquery' || lastTagName === 'mvopenview') && lastAttributeName === 'name' ) {
+
+							results.push({
+								kind: SymbolKind.Namespace,
+								name: scanner.getTokenText().replace( /"/g, '' ),
+								location: Location.create(
+									document.uri,
+									Range.create(
+										document.positionAt( scanner.getTokenOffset() + 1 ),
+										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+									)
+								)
+							});
+
+						} */
 						break;
 
 				}
 
 				token = scanner.scan();
 
-			}
+			}			
 
-			return newLinks;
+			return results;
 
+		},
+
+		findDefinition( document: TextDocument, position: Position ): Definition | null {
+
+			const htmlDocument = htmlLanguageService.parseHTMLDocument( document );
+
+			const node = htmlDocument.findNodeAt( document.offsetAt( position ) );
+
+			console.log( 'node', node );
+
+			return null;
 		}
 
 	};

@@ -385,7 +385,8 @@
                   "punctuation.definition.string.end.mv": null
                 }
               },
-              "name": "entity.name.function.mv meta.definition.function.mv meta.function.mv"
+              "name": "string.quoted.double.mv",
+              "contentName": "entity.name.function.mv meta.definition.function.mv meta.function.mv"
             },
             {
               "match": "=",
