@@ -44,9 +44,11 @@ const htmlLanguageService = getLanguageService();
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
+let workspaceSymbols = [];
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
+	const mvtDocuments = getLanguageModelCache<TextDocument>( 10, 60, document => document );
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'validation.json' ) );
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'entity-completions.json' ) ) );
 
@@ -54,8 +56,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		doValidation( document: TextDocument, settings: Settings ): Diagnostic[] {
 
+			const mvtDocument = mvtDocuments.get( document );
+
 			// get full text of the document
-			const text = document.getText();
+			const text = mvtDocument.getText();
 
 			// build diagnostics array
 			return validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): any => {
@@ -73,7 +77,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					count++;
 					diagnostics.push(
 						{
-							range: Range.create( document.positionAt( match.index ), document.positionAt( match.index + match[ validation.matchIndex ].length ) ),
+							range: Range.create( mvtDocument.positionAt( match.index ), mvtDocument.positionAt( match.index + match[ validation.matchIndex ].length ) ),
 							message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
 							severity: DiagnosticSeverity[ validation.problem.type ],
 							source: 'Miva IDE'
@@ -89,22 +93,24 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
 
+			const mvtDocument = mvtDocuments.get( document );
+
 			// determine left side text range
-			const cursorPositionOffset = document.offsetAt( position );
+			const cursorPositionOffset = mvtDocument.offsetAt( position );
 			const leftOffset = cursorPositionOffset - boundryAmount;
 			const leftRange = Range.create(
-				document.positionAt( leftOffset ),
+				mvtDocument.positionAt( leftOffset ),
 				position
 			);
-			const left = document.getText( leftRange ) || '';
+			const left = mvtDocument.getText( leftRange ) || '';
 			
 			// determine right side text range
 			const rightOffset = cursorPositionOffset + boundryAmount;
 			const rightRange = Range.create(
 				position,
-				document.positionAt( rightOffset )
+				mvtDocument.positionAt( rightOffset )
 			);
-			const right = document.getText( rightRange ) || '';
+			const right = mvtDocument.getText( rightRange ) || '';
 			
 			// mvt:do tag value attribute completions
 			if (
@@ -124,11 +130,36 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			return undefined;
 
+		},
+
+		findDefinition( document: TextDocument, position: Position ): Definition | null {
+
+			const mvDocument = mvtDocuments.get( document );
+
+			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
+			const word = getWordAtOffset( line, position.character );
+
+			let symbols = workspaceSymbols.filter(( symbol ) => {
+
+				return ( symbol.name === word );
+
+			});
+
+			if ( symbols ) {
+
+				return symbols.map( symbol => symbol.location );
+
+			}
+
+			return null;
+
 		}
 
 	};
 
 }
+
+// ======================================================================================================================== //
 
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 	
@@ -196,9 +227,8 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
 export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
-	let mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+	const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
 
-	let workspaceSymbols = [];
 	workspace.folders.forEach(( folder ) => {
 
 		glob(
