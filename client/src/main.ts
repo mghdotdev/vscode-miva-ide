@@ -17,14 +17,12 @@ import {
 	ServerOptions,
 	TransportKind,
 	LanguageClientOptions,
-	ProvideCompletionItemsSignature,
-	CancellationToken,
 	LanguageClient
 } from 'vscode-languageclient';
-import { EMPTY_ELEMENTS } from './mvtEmptyTagsShared';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/emptyTagsShared';
 import * as path from 'path';
 import { readJSONFile, pushAll } from './util/functions';
-import mvtCommands from './mvtCommands';
+import mivaCommands from './mivaCommands';
 
 export function activate( context: ExtensionContext ) {
 
@@ -44,45 +42,20 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Options to control the language client
-	let documentSelector = [ 'mvt' ];
+	let documentSelector = [ 'mvt', 'mv' ];
 	let embeddedLanguages = { html: true };
 	let clientOptions: LanguageClientOptions = {
 		documentSelector,
 		synchronize: {
-			configurationSection: [ 'html' ]
+			configurationSection: [ 'html', 'mvt', 'mv' ]
 		},
 		initializationOptions: {
 			embeddedLanguages
-		},
-		/* middleware: {
-			// testing the replace / insert mode
-			provideCompletionItem( document: TextDocument, position: Position, context: CompletionContext, token: CancellationToken, next: ProvideCompletionItemsSignature) : ProviderResult<CompletionItem[] | CompletionList> {
-				function updateRanges( item: CompletionItem ) {
-					const range = item.range;
-					if ( range && range.end.isAfter( position ) && range.start.isBeforeOrEqual( position ) ) {
-						item.range2 = { inserting: new Range( range.start, position ), replacing: range };
-						item.range = undefined;
-					}
-				}
-				function updateProposals(r: CompletionItem[] | CompletionList | null | undefined): CompletionItem[] | CompletionList | null | undefined {
-					if (r) {
-						(Array.isArray(r) ? r : r.items).forEach(updateRanges);
-					}
-					return r;
-				}
-				const isThenable = <T>(obj: ProviderResult<T>): obj is Thenable<T> => obj && (<any>obj)['then'];
-
-				const r = next(document, position, context, token);
-				if (isThenable<CompletionItem[] | CompletionList | null | undefined>(r)) {
-					return r.then(updateProposals);
-				}
-				return updateProposals(r);
-			}
-		} */
+		}
 	};
 
 	// Create the language client and start the client.
-	let client = new LanguageClient( 'mvt', 'MVT Language Server', serverOptions, clientOptions );
+	let client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
 	client.registerProposedFeatures();
 	let clientDisposable = client.start();
 
@@ -92,25 +65,43 @@ export function activate( context: ExtensionContext ) {
 	// set advanced language configurations
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
-			increaseIndentPattern: /<(?!\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|mvt:else)\b|[^>]*\/>)([-_\.A-Za-z0-9]+)(?=\s|>)\b[^>]*>(?!.*<\/\1>)|<!--(?!.*-->)|\{[^}"']*$/,
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MVT_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$ `),
 			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
 		},
 		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${EMPTY_ELEMENTS.join('|')}))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${EMPTY_ELEMENTS.join('|')}))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				action: { indentAction: IndentAction.Indent }
+			}
+		],
+	});
+	languages.setLanguageConfiguration('mv', {
+		indentationRules: {
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MV_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$` ),
+			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
+		},
+		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
+		onEnterRules: [
+			{
+				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
+				action: { indentAction: IndentAction.IndentOutdent }
+			},
+			{
+				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],
 	});
 	
 	// push all commands to context
-	pushAll( context.subscriptions, mvtCommands );
+	pushAll( context.subscriptions, mivaCommands );
 
 }
 

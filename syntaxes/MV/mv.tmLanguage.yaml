@@ -1,0 +1,7 @@
+%YAML 1.2
+---
+name: Miva Script
+scopeName: text.html.mv
+
+patterns:
+  - include: text.html.basic

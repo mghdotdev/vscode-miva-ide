@@ -1,7 +1,20 @@
-import { readFileSync } from 'fs';
-import { ResponseError, CancellationToken, ErrorCodes, CompletionItem, CompletionItemKind, InsertTextFormat, CompletionList, MarkupContent, MarkupKind } from 'vscode-languageserver';
+import {
+	readFileSync
+} from 'fs';
+import {
+	ResponseError,
+	CancellationToken,
+	ErrorCodes,
+	CompletionItem,
+	CompletionItemKind,
+	InsertTextFormat,
+	CompletionList,
+	MarkupContent,
+	MarkupKind
+} from 'vscode-languageserver';
 
-export function formatError( message: string, err: any ): string {
+export function formatError( message: string,
+	err: any ): string {
 
 	if ( err instanceof Error ) {
 
@@ -71,6 +84,31 @@ export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMess
 	});
 }
 
+export function runSafe<T, E>( func: () => T, errorVal: T, errorMessage: string, token: CancellationToken ): Thenable<T | ResponseError<E>> {
+	return new Promise<T | ResponseError<E>>(( resolve ) => {
+		setImmediate(() => {
+			if ( token.isCancellationRequested ) {
+				resolve( cancelValue() );
+			}
+			else {
+				try {
+					let result = func();
+					if ( token.isCancellationRequested ) {
+						resolve( cancelValue() );
+						return;
+					} else {
+						resolve( result );
+					}
+
+				} catch ( e ) {
+					console.error(formatError( errorMessage, e) );
+					resolve( errorVal );
+				}
+			}
+		});
+	});
+}
+
 function cancelValue<E>() {
 	return new ResponseError<E>( ErrorCodes.RequestCancelled, 'Request cancelled' );
 }
@@ -91,7 +129,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		detail: file.distro_path,
 		command: {
 			title: `Inject "${ file.distro_path }" into file attribute.`, 
-			command: 'mivaIde.MVT.chooseFileName',
+			command: 'mivaIde.chooseFileName',
 			arguments: [
 				{
 					fileNames: [ file.distro_path ]
@@ -150,4 +188,28 @@ export function parseCompletionFile( completions ) {
 		return parseCompletion( completion );
 
 	});
+}
+
+export function getWordAtOffset( text: string, offset: number ): string | null {
+
+	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g;
+	let match;
+	let count = 0;
+
+	while ( match = wordPattern.exec( text ) || count > 1000 ) {
+
+		count++;
+
+		let wordOffset = match.index + match[0].length;
+
+		if ( offset >= match.index && offset <= wordOffset ) {
+
+			return match[0];
+
+		}
+
+	}
+
+	return null;
+
 }
