@@ -22,15 +22,22 @@ import {
 	readJSONFile,
 	tokenize,
 	getDoValueCompletions,
-	parseCompletionFile
+	parseCompletionFile,
+	getWordAtOffset,
+	pushAll
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
 import {
 	getLanguageService,
-	TokenType
+	TokenType,
+	HTMLDocument
 } from 'vscode-html-languageservice';
+import { getLanguageModelCache } from './util/languageModelCache';
+import glob from 'glob';
+import { readFileSync } from 'fs';
+import { URI } from 'vscode-uri';
 
 const htmlLanguageService = getLanguageService();
 
@@ -123,28 +130,117 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 }
 
+function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
+	
+	const results: SymbolInformation[] = [];
+
+	const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
+	let token = scanner.scan();
+	let lastTagName: string | undefined = undefined;
+	let lastAttributeName: string | undefined = undefined;
+
+	while ( token !== TokenType.EOS ) {
+
+		switch ( token ) {
+
+			case TokenType.StartTag:
+				lastTagName = scanner.getTokenText().toLowerCase();
+				break;
+
+			case TokenType.AttributeName:
+				lastAttributeName = scanner.getTokenText().toLowerCase();
+				break;
+
+			case TokenType.AttributeValue:
+				if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
+
+					results.push({
+						kind: SymbolKind.Variable,
+						name: scanner.getTokenText().replace( /"/g, '' ),
+						location: Location.create(
+							document.uri,
+							Range.create(
+								document.positionAt( scanner.getTokenOffset() + 1 ),
+								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+							)
+						)
+					});
+
+				}
+				else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
+
+					results.push({
+						kind: SymbolKind.Function,
+						name: scanner.getTokenText().replace( /"/g, '' ),
+						location: Location.create(
+							document.uri,
+							Range.create(
+								document.positionAt( scanner.getTokenOffset() + 1 ),
+								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+							)
+						)
+					});
+
+				}
+				break;
+
+		}
+
+		token = scanner.scan();
+
+	}			
+
+	return results;
+
+}
+
 export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
+
+	let mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+
+	let workspaceSymbols = [];
+	workspace.folders.forEach(( folder ) => {
+
+		glob(
+			`${ folder.uri.replace( 'file://', '' ) }${ path.sep }**${ path.sep }*.mv`,
+			( err, files ) => {
+
+				files.forEach(file => {
+
+					let fileContents = readFileSync( file ).toString();
+					let document = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
+
+					workspaceSymbols = workspaceSymbols.concat( _mvFindDocumentSymbols( document ) );
+
+				});
+
+			}
+		);
+
+	});
 
 	return {
 
 		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
 
+			const mvDocument = mvDocuments.get( document );
+
 			// determine left side text range
-			const cursorPositionOffset = document.offsetAt( position );
+			const cursorPositionOffset = mvDocument.offsetAt( position );
 			const leftOffset = cursorPositionOffset - boundryAmount;
 			const leftRange = Range.create(
-				document.positionAt( leftOffset ),
+				mvDocument.positionAt( leftOffset ),
 				position
 			);
-			const left = document.getText( leftRange ) || '';
+			const left = mvDocument.getText( leftRange ) || '';
 			
 			// determine right side text range
 			const rightOffset = cursorPositionOffset + boundryAmount;
 			const rightRange = Range.create(
 				position,
-				document.positionAt( rightOffset )
+				mvDocument.positionAt( rightOffset )
 			);
-			const right = document.getText( rightRange ) || '';
+			const right = mvDocument.getText( rightRange ) || '';
 			
 			// MvDO tag value attribute completions
 			if (
@@ -166,93 +262,32 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 		},
 
 		findDocumentSymbols( document: TextDocument ): SymbolInformation[] {
-
-			const results: SymbolInformation[] = [];
-
-			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
-			let token = scanner.scan();
-			let lastTagName: string | undefined = undefined;
-			let lastAttributeName: string | undefined = undefined;
-
-			while ( token !== TokenType.EOS ) {
-
-				switch ( token ) {
-
-					case TokenType.StartTag:
-						lastTagName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeName:
-						lastAttributeName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeValue:
-						if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
-
-							results.push({
-								kind: SymbolKind.Variable,
-								name: scanner.getTokenText().replace( /"/g, '' ),
-								location: Location.create(
-									document.uri,
-									Range.create(
-										document.positionAt( scanner.getTokenOffset() + 1 ),
-										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
-									)
-								)
-							});
-
-						}
-						else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
-
-							results.push({
-								kind: SymbolKind.Function,
-								name: scanner.getTokenText().replace( /"/g, '' ),
-								location: Location.create(
-									document.uri,
-									Range.create(
-										document.positionAt( scanner.getTokenOffset() + 1 ),
-										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
-									)
-								)
-							});
-
-						}
-						/* else if ( (lastTagName === 'mvquery' || lastTagName === 'mvopenview') && lastAttributeName === 'name' ) {
-
-							results.push({
-								kind: SymbolKind.Namespace,
-								name: scanner.getTokenText().replace( /"/g, '' ),
-								location: Location.create(
-									document.uri,
-									Range.create(
-										document.positionAt( scanner.getTokenOffset() + 1 ),
-										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
-									)
-								)
-							});
-
-						} */
-						break;
-
-				}
-
-				token = scanner.scan();
-
-			}			
-
-			return results;
+			
+			return _mvFindDocumentSymbols( mvDocuments.get( document ) );
 
 		},
 
 		findDefinition( document: TextDocument, position: Position ): Definition | null {
 
-			const htmlDocument = htmlLanguageService.parseHTMLDocument( document );
+			const mvDocument = mvDocuments.get( document );
 
-			const node = htmlDocument.findNodeAt( document.offsetAt( position ) );
+			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
+			const word = getWordAtOffset( line, position.character );
 
-			console.log( 'node', node );
+			let symbols = workspaceSymbols.filter(( symbol ) => {
+
+				return ( symbol.name === word );
+
+			});
+
+			if ( symbols ) {
+
+				return symbols.map( symbol => symbol.location );
+
+			}
 
 			return null;
+			
 		}
 
 	};

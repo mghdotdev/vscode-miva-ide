@@ -13,14 +13,11 @@ import {
 	DidChangeWorkspaceFoldersNotification,
 	Diagnostic,
 	DidChangeConfigurationNotification,
-	CompletionItem,
-	CancellationToken,
-	DocumentLink,
 	SymbolInformation
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
-import { Settings, Workspace, LanguageFeatures, Languages } from './util/interfaces';
+import { Settings, Workspace, Languages } from './util/interfaces';
 import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
 
@@ -122,8 +119,6 @@ let languages: Languages = {
 // in the passed params the rootPath of the workspace plus the client capabilities
 connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
-	const initializationOptions = params.initializationOptions;
-
 	workspaceFolders = (<any>params).workspaceFolders;
 	if ( !Array.isArray( workspaceFolders ) ) {
 		workspaceFolders = [];
@@ -152,7 +147,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		textDocumentSync: TextDocumentSyncKind.Full,
 		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
 		definitionProvider: true,
-		documentSymbolProvider: true
+		documentSymbolProvider: true,
+		workspaceSymbolProvider: true
 	};
 
 	return { capabilities };
@@ -252,7 +248,15 @@ connection.onDocumentSymbol(( documentSymbolParms, token ) => {
 
 		return symbols;
 
-	}, [], `Error while computing document symbols for ${documentSymbolParms.textDocument.uri}`, token);
+	}, [], `Error while computing document symbols for ${ documentSymbolParms.textDocument.uri }`, token );
+});
+
+connection.onWorkspaceSymbol(( workspaceSymbolParams, token ) => {
+	return runSafe(() => {
+
+		return [];
+
+	}, [], `Error while computing definitions for`, token );
 });
 
 connection.onDefinition(( definitionParams, token ) => {
