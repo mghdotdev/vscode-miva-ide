@@ -1,5 +1,5 @@
 {
-	"main": "./out/mvtServerMain.js",
+	"main": "./out/main.js",
 	"devDependencies": {},
 	"dependencies": {
 		"@types/vscode": "^1.41.0",

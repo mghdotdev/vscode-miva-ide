@@ -13,13 +13,12 @@ import {
 	DidChangeWorkspaceFoldersNotification,
 	Diagnostic,
 	DidChangeConfigurationNotification,
-	CompletionItem,
-	CancellationToken
+	SymbolInformation
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
-import { formatError, pushAll, runSafeAsync } from './util/functions';
-import { Settings, Workspace, LanguageFeatures } from './util/interfaces';
-import { getMVTFeatures } from './mvtFeatures';
+import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
+import { Settings, Workspace, Languages } from './util/interfaces';
+import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
 
 // ================================================================================================================================ //
@@ -31,9 +30,9 @@ function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
 	if ( !promise ) {
 
 		const scopeUri = textDocument.uri;
-		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' } ] };
+		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' }, { scopeUri, section: 'MV' } ] };
 
-		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0] } ) );
+		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0], MV: s[1] } ) );
 
 		documentSettings[ textDocument.uri ] = promise;
 
@@ -61,22 +60,21 @@ function triggerValidation( textDocument: TextDocument ): void {
 
 async function validateTextDocument( textDocument: TextDocument ) {
 	try {
-		const version = textDocument.version;
+
+		// const version = textDocument.version;
 		const diagnostics: Diagnostic[] = [];
-		if ( textDocument.languageId === 'mvt' ) {
+		const settings = await getDocumentSettings( textDocument );
+		const latestTextDocument = documents.get( textDocument.uri );
+		const features = languages[ textDocument.languageId ];
 
-			const settings = await getDocumentSettings( textDocument );
-			const latestTextDocument = documents.get( textDocument.uri );
+		if ( features && features.doValidation ) {
 
-			if ( languageFeatures.doValidation ) {
-
-				pushAll( diagnostics, languageFeatures.doValidation( textDocument, settings ) );
-
-			}
-
-			connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
+			pushAll( diagnostics, features.doValidation( textDocument, settings ) );
 
 		}
+
+		connection.sendDiagnostics( { uri: latestTextDocument.uri, diagnostics } );
+
 	}
 	catch( e ) {
 		console.error( formatError( `Error while validating ${ textDocument.uri }`, e ) );
@@ -112,13 +110,14 @@ let documentSettings: { [ key: string ]: Thenable<Settings> } = {};
 const pendingValidationRequests: { [ uri: string ]: NodeJS.Timer } = {};
 const validationDelayMs = 500;
 
-let languageFeatures: LanguageFeatures;
+let languages: Languages = {
+	mvt: null,
+	mv: null
+};
 
 // After the server has started the client sends an initialize request. The server receives
 // in the passed params the rootPath of the workspace plus the client capabilities
 connection.onInitialize(( params: InitializeParams ): InitializeResult => {
-
-	const initializationOptions = params.initializationOptions;
 
 	workspaceFolders = (<any>params).workspaceFolders;
 	if ( !Array.isArray( workspaceFolders ) ) {
@@ -133,7 +132,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	languageFeatures = getMVTFeatures( workspace, params.capabilities );
+	languages.mvt = getMVTFeatures( workspace, params.capabilities );
+	languages.mv = getMVFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
 		return _has( params.capabilities, name ) || def;
@@ -145,8 +145,10 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Full,
-		completionProvider: clientSnippetSupport ? { resolveProvider: true, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
-		// documentHighlightProvider: true
+		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
+		definitionProvider: true,
+		documentSymbolProvider: true,
+		workspaceSymbolProvider: true
 	};
 
 	return { capabilities };
@@ -212,18 +214,71 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 			return null;
 		}
 
-		if ( languageFeatures && languageFeatures.doCompletion ) {
+		const settings = await getDocumentSettings( document );
+		const features = languages[ document.languageId ];
 
-			const settings = await getDocumentSettings( document );
-			const result = languageFeatures.doCompletion( document, textDocumentPosition.position, settings );
-			return result;
+		if ( features && features.doCompletion ) {
+
+			return features.doCompletion( document, textDocumentPosition.position, settings );
 
 		}
 
 	}, null, `Error while computing completions for ${ textDocumentPosition.textDocument.uri }`, token );
 });
-connection.onCompletionResolve(( item: CompletionItem, token: CancellationToken ) => {
+/* connection.onCompletionResolve(( item: CompletionItem, token: CancellationToken ) => {
 	return undefined;
+}); */
+
+connection.onDocumentSymbol(( documentSymbolParms, token ) => {
+	return runSafe(() => {
+
+		const document = documents.get( documentSymbolParms.textDocument.uri );
+		const symbols: SymbolInformation[] = [];
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.findDocumentSymbols ) {
+
+				pushAll( symbols, features.findDocumentSymbols( document ) );
+
+			}
+		}
+
+		return symbols;
+
+	}, [], `Error while computing document symbols for ${ documentSymbolParms.textDocument.uri }`, token );
+});
+
+connection.onWorkspaceSymbol(( workspaceSymbolParams, token ) => {
+	return runSafe(() => {
+
+		return [];
+
+	}, [], `Error while computing definitions for`, token );
+});
+
+connection.onDefinition(( definitionParams, token ) => {
+	return runSafe(() => {
+
+		const document = documents.get( definitionParams.textDocument.uri );
+		
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.findDefinition ) {
+
+				return features.findDefinition( document, definitionParams.position );
+				
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while computing definitions for ${ definitionParams.textDocument.uri }`, token );
 });
 
 // The content of a text document has changed. This event is emitted

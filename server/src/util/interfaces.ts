@@ -3,7 +3,10 @@ import {
 	TextDocument,
 	Diagnostic,
 	Position,
-	CompletionList
+	CompletionList,
+	DocumentLink,
+	Definition,
+	SymbolInformation
 } from 'vscode-languageserver';
 
 export interface Settings {
@@ -16,12 +19,21 @@ export interface Workspace {
 	readonly folders: WorkspaceFolder[];
 }
 
+export interface Languages {
+	mv: LanguageFeatures,
+	mvt: LanguageFeatures
+}
+
 export interface LanguageFeatures {
 
 	doValidation?: ( document: TextDocument,
 		settings?: Settings ) => Diagnostic[];
 		
-	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList
+	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
+
+	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
+
+	findDefinition?: ( document: TextDocument, position: Position ) => Definition | null;
 
 }
 

@@ -1,9 +1,9 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, TextDocument, Uri } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri } from 'vscode';
 
 const boundryAmount = 200;
 
-const chooseFileNameCommand = commands.registerCommand( 'mivaIde.MVT.chooseFileName', async ( payload ) => {
+const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
 	let fileName;
 	if ( payload.fileNames.length < 2 ) {
@@ -15,12 +15,13 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.MVT.chooseFileN
 
 	}
 
-	commands.executeCommand( 'mivaIde.MVT.insertFileName', fileName );
+	commands.executeCommand( 'mivaIde.insertFileName', fileName );
 
 });
 
-const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
+const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
 
+	const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
 	const leftOffset = cursorPositionOffset - boundryAmount;
 	const leftRange = new Range(
@@ -28,8 +29,24 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	const leftMatch = patterns.MVTDO_LEFT_FILE_ATTR.exec( left );
+	let leftMatch;
 
+	// check for bracket-dot syntax first - then tags
+	if ( languageId === 'mv' ) {
+
+		leftMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
+
+		if ( leftMatch ) {
+
+			insertEdit( leftMatch[0].length, ` ${ fileName } ` );
+			
+		}
+
+	}
+
+	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	
+	// define helper method for inserting file name
 	function insertEdit( matchLength, fileName ) {
 
 		edit.insert(
@@ -39,6 +56,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 	}
 
+	// check & execute the insertion
 	if ( leftMatch ) {
 		
 		insertEdit( leftMatch[0].length, fileName );
@@ -52,7 +70,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 			textEditor.document.positionAt( rightOffset )
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
-		const rightMatch = patterns.MVTDO_RIGHT_FILE_ATTR.exec( right );
+		const rightMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
 
 		if ( rightMatch ) {
 
@@ -66,8 +84,8 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.i
 
 function convertEntityToVariable( entity: string ) {
 
-	const globalMatch = patterns.ENTITY_GLOBAL.exec( entity );
-	const localMatch = patterns.ENTITY_LOCAL.exec( entity );
+	const globalMatch = patterns.MVT.ENTITY_GLOBAL.exec( entity );
+	const localMatch = patterns.MVT.ENTITY_LOCAL.exec( entity );
 
 	if ( globalMatch ) {
 
@@ -88,8 +106,8 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	const settings = workspace.getConfiguration( 'MVT', uri );
 
-	const globalMatch = patterns.VARIABLE_GLOBAL.exec( variable );
-	const localMatch = patterns.VARIABLE_LOCAL.exec( variable );
+	const globalMatch = patterns.MVT.VARIABLE_GLOBAL.exec( variable );
+	const localMatch = patterns.MVT.VARIABLE_LOCAL.exec( variable );
 
 	if ( globalMatch ) {
 
@@ -107,6 +125,11 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 }
 
 const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
 
 	let clipboardContents = [];
 
