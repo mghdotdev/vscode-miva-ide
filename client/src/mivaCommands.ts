@@ -128,7 +128,7 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 }
 
-const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
