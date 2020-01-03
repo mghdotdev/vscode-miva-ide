@@ -217,7 +217,7 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 		commands.executeCommand( 'editor.action.blockComment' ).then(() => {
 
-			languages.setLanguageConfiguration( languageId, { comments: { blockComment: ( languageId == 'mv' ) ? [ '<MvCOMMENT>', '<MvCOMMENT>' ] : [ '<mvt:comment>', '<mvt:comment>' ] } } );
+			languages.setLanguageConfiguration( languageId, { comments: { blockComment: ( languageId == 'mv' ) ? [ '<MvCOMMENT>', '</MvCOMMENT>' ] : [ '<mvt:comment>', '</mvt:comment>' ] } } );
 
 		});		
 
