@@ -9,12 +9,21 @@ function buildFile( file ) {
 
 	console.log( chalk.green( `Builder: Converting yaml file to json ${ chalk.underline( file ) }` ) );
 
-	const pathInfo = path.parse( file );
-	const obj = yaml.safeLoad( fs.readFileSync( file, 'utf8' ) );
+	try {
 
-	if ( obj ) {
+		const pathInfo = path.parse( file );
+		const obj = yaml.safeLoad( fs.readFileSync( file, 'utf8' ) );
 
-		fs.writeFileSync( `${ pathInfo.dir + path.sep + pathInfo.name }.json`, JSON.stringify( obj, null, 2 ), 'utf8' );
+		if ( obj ) {
+
+			fs.writeFileSync( `${ pathInfo.dir + path.sep + pathInfo.name }.json`, JSON.stringify( obj, null, 2 ), 'utf8' );
+
+		}
+
+	}
+	catch( e ) {
+
+		console.error( chalk.red( `Builder: Unable to convert ${ file } due to:\n${ e }` ) );
 
 	}
 
