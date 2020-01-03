@@ -476,6 +476,8 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-component'
+          - include: '#source-item-param-variable'
+          - include: '#source-item-param-string'
 
   file-attribute:
     patterns:
@@ -684,6 +686,17 @@ repository:
       # POSX
       - match: \b(?i:POS)[0-9]+\b
         name: variable.language.posx.mvt
+  
+  source-item-param-string:
+    match: '[^"]+'
+    name: string.quoted.double.mvt
+  
+  source-item-param-variable:
+    match: '([^:]+)(:)(([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*))'
+    captures:
+      1: {name: support.function.item-param.mvt}
+      2: {name: punctuation.definition.separator.item-param.mvt}
+      3: {name: variable.language.item-param.mvt}
 
   # =-======== Strings - Source ========-= #
   source-string-single:
@@ -694,17 +707,17 @@ repository:
         end: "'"
         endCaptures:
           '0': {name: punctuation.definition.string.end.mvt}
-        name: string.quoted.single
+        name: string.quoted.single.mvt
         patterns:
         - include: '#source-string-escapes'
-
+  
   source-string-escapes:
     patterns:
     - match: \\\s*\n
-      name: constant.character.escape.newline.js
+      name: constant.character.escape.newline.mvt
       
     - match: '\\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)'
-      name: constant.character.escape.js
+      name: constant.character.escape.mvt
 
 
   # =-======== Functions - Source ========-= #
@@ -717,7 +730,6 @@ repository:
         end: '(\))'
         endCaptures:
           1: {name: puncuation.terminator.group.mvt}
-        name: meta.function.component.declaration.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -731,7 +743,6 @@ repository:
         end: '(\))'
         endCaptures:
           1: {name: puncuation.terminator.group.mvt}
-        name: meta.function.builtin.declaration.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
