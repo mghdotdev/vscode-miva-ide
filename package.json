@@ -93,6 +93,11 @@
                 "command": "mivaIde.MVT.convertToEntity",
                 "title": "Convert Variable → Entity",
                 "category": "MVT"
+            },
+            {
+                "command": "mivaIde.toggleHtmlComment",
+                "title": "Toggle HTML Comment",
+                "category": "Miva IDE"
             }
         ],
         "grammars": [
@@ -125,6 +130,11 @@
             {
                 "command": "mivaIde.mvt.convertAndCopy",
                 "key": "cmd+shift+c",
+                "when": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt)"
+            },
+            {
+                "command": "mivaIde.toggleHtmlComment",
+                "key": "cmd+alt+/",
                 "when": "textInputFocus"
             }
         ],

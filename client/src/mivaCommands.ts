@@ -98,6 +98,8 @@ function convertEntityToVariable( entity: string ) {
 
 	}
 
+	window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+
 	return false;
 
 }
@@ -120,11 +122,13 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	}
 
+	window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+
 	return false;
 
 }
 
-const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
@@ -155,7 +159,7 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.c
 
 });
 
-const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
@@ -179,7 +183,7 @@ const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.
 
 });
 
-const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
@@ -203,10 +207,36 @@ const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MV
 
 });
 
+const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtmlComment', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+
+	// exit if not MVT or MV
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mv' ) {
+		commands.executeCommand( 'editor.action.blockComment' );
+		return;
+	}
+
+	textEditor.selections.forEach(( selection ) => {
+
+		// let range = new Range( selection.start, selection.end );
+		// let text = textEditor.document.getText( range );
+		// let cleanedText = text.replace( /(<!--\s*)|(\s*-->)/g, '' );
+		// let replacement = ( cleanedText.length !== text.length ) ? cleanedText : `<!-- ${ text } -->`;
+
+		// edit.replace( range, replacement );
+
+		let text = textEditor.document.getText( new Range( selection.start.line, Math.max(selection.start.character - 5, 0), selection.end.line, (selection.end.character + 4) ) );
+
+		console.log( 'test', text );
+
+	});
+
+});
+
 export default [
 	chooseFileNameCommand,
 	insertFileNameCommand,
 	convertAndCopyCommand,
 	convertToEntityCommand,
-	convertToVariableCommand
+	convertToVariableCommand,
+	insertHtmlComment
 ];
