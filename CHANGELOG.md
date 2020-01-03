@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.0
+
+* Added Convert & Copy command to the Command Palette.
+* Added Convert to Variable / Convert to Entity commands.
+
 ## 0.3.0
 
 * Added Miva Script syntax highlighting.

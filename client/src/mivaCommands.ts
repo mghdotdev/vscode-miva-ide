@@ -155,8 +155,58 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.c
 
 });
 
+const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	textEditor.selections.forEach(( selection ) => {
+
+		let range = new Range( selection.start, selection.end );
+		let text = textEditor.document.getText( range );
+
+		let conversion = convertVariableToEntity( text, textEditor.document.uri );
+
+		if ( conversion ) {
+
+			edit.replace( range, conversion );
+
+		}
+
+	});
+
+});
+
+const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	textEditor.selections.forEach(( selection ) => {
+
+		let range = new Range( selection.start, selection.end );
+		let text = textEditor.document.getText( range );
+
+		let conversion = convertEntityToVariable( text );
+
+		if ( conversion ) {
+
+			edit.replace( range, conversion );
+
+		}
+
+	});
+
+});
+
 export default [
 	chooseFileNameCommand,
 	insertFileNameCommand,
-	convertAndCopyCommand
+	convertAndCopyCommand,
+	convertToEntityCommand,
+	convertToVariableCommand
 ];
