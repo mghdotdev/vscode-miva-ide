@@ -287,9 +287,9 @@ repository:
           1: {name: entity.other.attribute-name.certfile.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.certfile.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -319,9 +319,9 @@ repository:
           1: {name: entity.other.attribute-name.headers.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.headers.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -334,9 +334,9 @@ repository:
           1: {name: entity.other.attribute-name.method.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.method.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -349,9 +349,9 @@ repository:
           1: {name: entity.other.attribute-name.fields.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.fields.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -364,9 +364,9 @@ repository:
           1: {name: entity.other.attribute-name.content-type.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.content-type.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -379,9 +379,9 @@ repository:
           1: {name: entity.other.attribute-name.certtype.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.certtype.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -394,9 +394,9 @@ repository:
           1: {name: entity.other.attribute-name.certpass.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.certpass.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -409,9 +409,9 @@ repository:
           1: {name: entity.other.attribute-name.files.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.files.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -424,9 +424,9 @@ repository:
           1: {name: entity.other.attribute-name.expr.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.expr.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -439,9 +439,9 @@ repository:
           1: {name: entity.other.attribute-name.cerfile.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.cerfile.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -454,9 +454,9 @@ repository:
           1: {name: entity.other.attribute-name.action.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.action.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -469,9 +469,9 @@ repository:
           1: {name: entity.other.attribute-name.param.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.param.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -484,9 +484,9 @@ repository:
           1: {name: entity.other.attribute-name.file.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.file.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -499,9 +499,9 @@ repository:
           1: {name: entity.other.attribute-name.array.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.array.mvt source.mvt variable.language.implied.mvt
   
   iterator-attribute:
@@ -511,9 +511,9 @@ repository:
           1: {name: entity.other.attribute-name.iterator.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.iterator.mvt source.mvt variable.language.implied.mvt
   
   value-attribute:
@@ -523,9 +523,9 @@ repository:
           1: {name: entity.other.attribute-name.value.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.value.mvt source.mvt
         patterns:
           - include: '#source-mvt'
@@ -538,9 +538,9 @@ repository:
           1: {name: entity.other.attribute-name.name.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.name.mvt source.mvt support.class.module.mvt
   
   assign-name-attribute:
@@ -550,9 +550,9 @@ repository:
           1: {name: entity.other.attribute-name.name.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.name.mvt source.mvt assign.declaration.mvt
         patterns:
           - include: '#source-variables'
@@ -568,9 +568,9 @@ repository:
           1: {name: entity.other.attribute-name.name.mvt}
           2: {name: punctuation.separator.key-value.mvt}
           3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '(")'
+        end: '"'
         endCaptures:
-          1: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
+          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.name.mvt source.mvt
         patterns:
           - include: '#source-variables'
@@ -603,9 +603,9 @@ repository:
             1: {name: entity.other.attribute-name.timeout.mvt}
             2: {name: punctuation.separator.key-value.mvt}
             3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
-          end: '(")'
+          end: '"'
           endCaptures:
-            1: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
+            0: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
           contentName: attribute-value.timeout.mvt source.mvt
           patterns:
             - include: '#source-mvt'

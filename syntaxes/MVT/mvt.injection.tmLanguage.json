@@ -613,9 +613,9 @@
               "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -681,9 +681,9 @@
               "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -714,9 +714,9 @@
               "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -747,9 +747,9 @@
               "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -780,9 +780,9 @@
               "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -813,9 +813,9 @@
               "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -846,9 +846,9 @@
               "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -879,9 +879,9 @@
               "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -912,9 +912,9 @@
               "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -945,9 +945,9 @@
               "name": "attribute-value.cerfile.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -978,9 +978,9 @@
               "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1011,9 +1011,9 @@
               "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1044,9 +1044,9 @@
               "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1077,9 +1077,9 @@
               "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1102,9 +1102,9 @@
               "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1127,9 +1127,9 @@
               "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1160,9 +1160,9 @@
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1185,9 +1185,9 @@
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1227,9 +1227,9 @@
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
-          "end": "(\")",
+          "end": "\"",
           "endCaptures": {
-            "1": {
+            "0": {
               "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
@@ -1303,9 +1303,9 @@
                 "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt"
               }
             },
-            "end": "(\")",
+            "end": "\"",
             "endCaptures": {
-              "1": {
+              "0": {
                 "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt"
               }
             },

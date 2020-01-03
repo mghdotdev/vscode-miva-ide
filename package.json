@@ -175,7 +175,11 @@
             },
             {
                 "language": "mvt",
-                "path": "./snippets/MVT/builtins.snippets.json"
+                "path": "./snippets/builtins.snippets.json"
+            },
+            {
+                "language": "mv",
+                "path": "./snippets/builtins.snippets.json"
             }
         ]
     },
