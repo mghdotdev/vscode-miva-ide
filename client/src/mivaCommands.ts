@@ -1,5 +1,5 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, CharacterPair } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, CharacterPair, TextEdit, Position } from 'vscode';
 
 const boundryAmount = 200;
 
@@ -230,11 +230,37 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 });
 
+const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.calculatePosNumber', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	const left = textEditor.document.getText( new Range( new Position( 0, 0 ), textEditor.selection.active ) );
+
+	const openMatches = left.match( patterns.MVT.FOREACH_TAG_OPEN );
+	const closeMatches = left.match( patterns.MVT.FOREACH_TAG_CLOSE );
+
+	if ( openMatches ) {
+
+		let n = Math.max( openMatches.length - (( closeMatches ) ? closeMatches.length : 0), 0 );
+
+		if ( n > 0 ) {
+
+			edit.replace( new Range( textEditor.selection.start, textEditor.selection.end ), `l.pos${ n }` );
+
+		}
+
+	}
+
+});
+
 export default [
 	chooseFileNameCommand,
 	insertFileNameCommand,
 	convertAndCopyCommand,
 	convertToEntityCommand,
 	convertToVariableCommand,
-	insertHtmlComment
+	insertHtmlComment,
+	calculatePosNumberCommand
 ];

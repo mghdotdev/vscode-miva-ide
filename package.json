@@ -80,6 +80,11 @@
         },
         "commands": [
             {
+                "command": "mivaIde.toggleHtmlComment",
+                "title": "Toggle HTML Comment",
+                "category": "Miva IDE"
+            },
+            {
                 "command": "mivaIde.MVT.convertToVariable",
                 "title": "Convert Entity → Variable",
                 "category": "MVT"
@@ -95,9 +100,9 @@
                 "category": "MVT"
             },
             {
-                "command": "mivaIde.toggleHtmlComment",
-                "title": "Toggle HTML Comment",
-                "category": "Miva IDE"
+                "command": "mivaIde.MVT.calculatePosNumber",
+                "title": "Calculate POS Number",
+                "category": "MVT"
             }
         ],
         "grammars": [
