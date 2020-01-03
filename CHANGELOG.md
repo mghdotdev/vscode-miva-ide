@@ -4,6 +4,8 @@
 
 * Added Convert & Copy command to the Command Palette.
 * Added Convert to Variable / Convert to Entity commands.
+* Added support for secondary block comment (HTML comments).
+* Added command to insert HTML comment.
 
 ## 0.3.0
 
