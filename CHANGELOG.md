@@ -6,6 +6,9 @@
 * Added Convert to Variable / Convert to Entity commands.
 * Added support for secondary block comment (HTML comments).
 * Added command to insert HTML comment.
+* Added `l.posx` calculator function.
+* Fixed MVT/MV comment highlighting.
+* Fixed issue with snippet scopes.
 
 ## 0.3.0
 
