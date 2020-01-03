@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.4.0
+
+* Added Convert & Copy command to the Command Palette.
+* Added Convert to Variable / Convert to Entity commands.
+* Added support for secondary block comment (HTML comments).
+* Added command to insert HTML comment.
+* Added `l.posx` calculator function.
+* Fixed MVT/MV comment highlighting.
+* Fixed issue with snippet scopes.
+
 ## 0.3.0
 
 * Added Miva Script syntax highlighting.

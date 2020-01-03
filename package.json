@@ -78,6 +78,33 @@
                 "editor.suggest.snippetsPreventQuickSuggestions": false
             }
         },
+        "commands": [
+            {
+                "command": "mivaIde.toggleHtmlComment",
+                "title": "Toggle HTML Comment",
+                "category": "Miva IDE"
+            },
+            {
+                "command": "mivaIde.MVT.convertToVariable",
+                "title": "Convert Entity → Variable",
+                "category": "MVT"
+            },
+            {
+                "command": "mivaIde.MVT.convertAndCopy",
+                "title": "Convert Variable ↔ Entity & Copy",
+                "category": "MVT"
+            },
+            {
+                "command": "mivaIde.MVT.convertToEntity",
+                "title": "Convert Variable → Entity",
+                "category": "MVT"
+            },
+            {
+                "command": "mivaIde.MVT.calculatePosNumber",
+                "title": "Calculate POS Number",
+                "category": "MVT"
+            }
+        ],
         "grammars": [
             {
                 "language": "mvt",
@@ -108,6 +135,11 @@
             {
                 "command": "mivaIde.mvt.convertAndCopy",
                 "key": "cmd+shift+c",
+                "when": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt)"
+            },
+            {
+                "command": "mivaIde.toggleHtmlComment",
+                "key": "cmd+alt+/",
                 "when": "textInputFocus"
             }
         ],
@@ -148,7 +180,11 @@
             },
             {
                 "language": "mvt",
-                "path": "./snippets/MVT/builtins.snippets.json"
+                "path": "./snippets/builtins.snippets.json"
+            },
+            {
+                "language": "mv",
+                "path": "./snippets/builtins.snippets.json"
             }
         ]
     },

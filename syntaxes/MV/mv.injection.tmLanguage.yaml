@@ -2,7 +2,7 @@
 ---
 name: Miva Script (Injection)
 scopeName: mv.injection
-injectionSelector: 'L:text.html.mv'
+injectionSelector: 'L:text.html.mv -comment.block.mv'
 
 patterns:
   - include: '#comments'

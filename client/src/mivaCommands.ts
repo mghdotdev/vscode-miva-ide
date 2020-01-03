@@ -1,5 +1,5 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, CharacterPair, TextEdit, Position } from 'vscode';
 
 const boundryAmount = 200;
 
@@ -98,6 +98,8 @@ function convertEntityToVariable( entity: string ) {
 
 	}
 
+	window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+
 	return false;
 
 }
@@ -120,11 +122,13 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	}
 
+	window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+
 	return false;
 
 }
 
-const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit, payload ) => {
+const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
@@ -155,8 +159,108 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.mvt.c
 
 });
 
+const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	textEditor.selections.forEach(( selection ) => {
+
+		let range = new Range( selection.start, selection.end );
+		let text = textEditor.document.getText( range );
+
+		let conversion = convertVariableToEntity( text, textEditor.document.uri );
+
+		if ( conversion ) {
+
+			edit.replace( range, conversion );
+
+		}
+
+	});
+
+});
+
+const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+
+	// exit if not MVT
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	textEditor.selections.forEach(( selection ) => {
+
+		let range = new Range( selection.start, selection.end );
+		let text = textEditor.document.getText( range );
+
+		let conversion = convertEntityToVariable( text );
+
+		if ( conversion ) {
+
+			edit.replace( range, conversion );
+
+		}
+
+	});
+
+});
+
+const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtmlComment', ( textEditor: TextEditor ) => {
+
+	const languageId = textEditor.document.languageId;
+
+	if ( languageId === 'mvt' || languageId === 'mv' ) {
+		
+		languages.setLanguageConfiguration( languageId, { comments: { blockComment: [ '<!--', '-->' ] } } );
+
+		commands.executeCommand( 'editor.action.blockComment' ).then(() => {
+
+			languages.setLanguageConfiguration( languageId, { comments: { blockComment: ( languageId == 'mv' ) ? [ '<MvCOMMENT>', '</MvCOMMENT>' ] : [ '<mvt:comment>', '</mvt:comment>' ] } } );
+
+		});		
+
+	}
+	else {
+
+		commands.executeCommand( 'editor.action.blockComment' );
+
+	}
+
+});
+
+const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.calculatePosNumber', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+
+	if ( textEditor.document.languageId !== 'mvt' ) {
+		return;
+	}
+
+	const left = textEditor.document.getText( new Range( new Position( 0, 0 ), textEditor.selection.active ) );
+
+	const openMatches = left.match( patterns.MVT.FOREACH_TAG_OPEN );
+	const closeMatches = left.match( patterns.MVT.FOREACH_TAG_CLOSE );
+
+	if ( openMatches ) {
+
+		let n = Math.max( openMatches.length - (( closeMatches ) ? closeMatches.length : 0), 0 );
+
+		if ( n > 0 ) {
+
+			edit.replace( new Range( textEditor.selection.start, textEditor.selection.end ), `l.pos${ n }` );
+
+		}
+
+	}
+
+});
+
 export default [
 	chooseFileNameCommand,
 	insertFileNameCommand,
-	convertAndCopyCommand
+	convertAndCopyCommand,
+	convertToEntityCommand,
+	convertToVariableCommand,
+	insertHtmlComment,
+	calculatePosNumberCommand
 ];
