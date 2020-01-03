@@ -27,7 +27,6 @@ import mivaCommands from './mivaCommands';
 export function activate( context: ExtensionContext ) {
 
 	// path to server module
-	// let serverModule = context.asAbsolutePath( path.join( 'server', 'out', 'mvtServerMain.js' ) );
 	let serverMain = readJSONFile( context.asAbsolutePath( './server/package.json' ) ).main;
 	let serverModule = context.asAbsolutePath( path.join( 'server', serverMain ) );
 
@@ -42,7 +41,7 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Options to control the language client
-	let documentSelector = [ 'mvt', 'mv' ];
+	let documentSelector = [ { scheme: 'file', language: 'mvt' }, { scheme: 'file', language: 'mv' } ];
 	let embeddedLanguages = { html: true };
 	let clientOptions: LanguageClientOptions = {
 		documentSelector,
