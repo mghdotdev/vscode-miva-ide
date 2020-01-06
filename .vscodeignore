@@ -6,3 +6,4 @@
 **/*.ts
 **/*.map
 **/node_modules
+**/*.tsbuildinfo
