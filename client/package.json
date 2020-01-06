@@ -3,10 +3,6 @@
 	"engines": {
 		"vscode": "^1.40.0"
 	},
-	"scripts": {
-		"update-vscode": "vscode-install",
-		"postinstall": "vscode-install"
-	},
 	"devDependencies": {
 		"@types/vscode": "^1.41.0"
 	},
