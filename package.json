@@ -14,7 +14,8 @@
         "watch-syntax": "node ./syntaxes/watch.js",
         "compile": "tsc -b",
         "watch": "tsc -b -w",
-        "postinstall": "cd client && npm install && cd ../server && npm install && cd .."
+        "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+        "vscode:prepublish": "npm run compile"
     },
     "repository": {
         "type": "git",
