@@ -2,6 +2,6 @@
 .vscode-test/**
 .gitignore
 *.code-workspace
-tsconfig.json
-server/src/**
-client/src/**
+**/tsconfig.json
+**/*.ts
+**/*.map

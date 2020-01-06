@@ -1,5 +1,12 @@
 {
 	"main": "./out/main.js",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"scripts": {
+		"update-vscode": "vscode-install",
+		"postinstall": "vscode-install"
+	},
 	"devDependencies": {},
 	"dependencies": {
 		"@types/vscode": "^1.41.0",

@@ -1,5 +1,8 @@
 {
 	"main": "./out/serverMain.js",
+	"engines": {
+		"node": "*"
+	},
 	"devDependencies": {},
 	"dependencies": {
 		"glob": "^7.1.6",
