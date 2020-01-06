@@ -34,29 +34,29 @@
 		}
 	},
 	{
-		"match": "(?<=<mvt:assign[^<]*?name\\s*?=\\s*?\")((g|l)\\.null)",
+		"match": "(?<=<mvt:assign[^<]*?name\\s*?=\\s*?\")((g)\\.null)",
 		"matchIndex": 0,
 		"problem": {
 			"type": "Error",
-			"message": "NEVER assign `g.null` or `l.null` a value as it will overwrite the `NULL` keyword."
+			"message": "NEVER assign `g.null` a value as it will overwrite the `NULL` keyword."
 		}
 	},
 	{
-		"match": "&mvt:",
+		"match": "&mvt:global",
 		"matchIndex": 0,
 		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
 		"problem": {
 			"type": "Warning",
-			"message": "Outputting a variable without encoding can lead to XSS vulnerabilities."
+			"message": "Outputting a global variable without encoding can lead to XSS vulnerabilities."
 		}
 	},
 	{
-		"match": "(?<=<mvt:eval[^<]*?expr\\s*?=\\s*?\")((g|l)\\.[^\"]+)",
+		"match": "(?<=<mvt:eval[^<]*?expr\\s*?=\\s*?\")((g)\\.[^\"]+)",
 		"matchIndex": 0,
 		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
 		"problem": {
 			"type": "Warning",
-			"message": "Outputting a variable without encoding can lead to XSS vulnerabilities."
+			"message": "Outputting a global variable without encoding can lead to XSS vulnerabilities."
 		}
 	}
 ]
