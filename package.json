@@ -136,7 +136,7 @@
         ],
         "keybindings": [
             {
-                "command": "mivaIde.mvt.convertAndCopy",
+                "command": "mivaIde.MVT.convertAndCopy",
                 "key": "cmd+shift+c",
                 "when": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt)"
             },
