@@ -5,7 +5,6 @@ import {
 	ValidationRule
 } from './util/interfaces';
 import {
-	ClientCapabilities,
 	TextDocument,
 	Diagnostic,
 	Range,
@@ -16,35 +15,33 @@ import {
 	Definition,
 	SymbolInformation,
 	SymbolKind,
-	Location
+	Location,
+	ClientCapabilities
 } from 'vscode-languageserver';
 import { 
 	readJSONFile,
 	tokenize,
 	getDoValueCompletions,
 	parseCompletionFile,
-	getWordAtOffset,
-	pushAll
+	getWordAtOffset
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
 import _get from 'lodash.get';
 import {
 	getLanguageService,
-	TokenType,
-	HTMLDocument
+	TokenType
 } from 'vscode-html-languageservice';
 import { getLanguageModelCache } from './util/languageModelCache';
 import glob from 'glob';
 import { readFileSync } from 'fs';
-import { URI } from 'vscode-uri';
 
 const htmlLanguageService = getLanguageService();
 
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
-let workspaceSymbols = [];
+let workspaceSymbols: any[] = [];
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
@@ -91,7 +88,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
+		doCompletion( document: TextDocument, position: Position ): CompletionList {
 
 			const mvtDocument = mvtDocuments.get( document );
 
@@ -251,7 +248,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 	return {
 
-		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
+		doCompletion( document: TextDocument, position: Position ): CompletionList {
 
 			const mvDocument = mvDocuments.get( document );
 

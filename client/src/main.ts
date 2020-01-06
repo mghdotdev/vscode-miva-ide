@@ -1,17 +1,7 @@
 import {
 	ExtensionContext,
 	languages,
-	IndentAction,
-	CompletionContext,
-	TextDocument,
-	CompletionItem,
-	ProviderResult,
-	CompletionList,
-	Range,
-	Position,
-	commands,
-	TextEditor,
-	TextEditorEdit
+	IndentAction
 } from 'vscode';
 import {
 	ServerOptions,
