@@ -41,7 +41,12 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Options to control the language client
-	let documentSelector = [ { scheme: 'file', language: 'mvt' }, { scheme: 'file', language: 'mv' } ];
+	let documentSelector = [
+		{ scheme: 'file', language: 'mvt' },
+		{ scheme: 'untitled', language: 'mvt' },
+		{ scheme: 'file', language: 'mv' },
+		{ scheme: 'untitled', language: 'mv' }
+	];
 	let embeddedLanguages = { html: true };
 	let clientOptions: LanguageClientOptions = {
 		documentSelector,
