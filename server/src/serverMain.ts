@@ -2,7 +2,6 @@ import {
 	createConnection,
 	IConnection,
 	TextDocuments,
-	TextDocument,
 	ConfigurationParams,
 	ConfigurationRequest,
 	InitializeParams,
@@ -20,6 +19,7 @@ import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
 import { Settings, Workspace, Languages } from './util/interfaces';
 import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
+import { TextDocument } from 'vscode-languageserver-textdocument';
 
 // ================================================================================================================================ //
 
@@ -94,7 +94,7 @@ process.on('uncaughtException', ( e: any ) => {
 });
 
 // Create a text document manager.
-const documents: TextDocuments = new TextDocuments();
+const documents: TextDocuments<TextDocument> = new TextDocuments( TextDocument );
 
 // define workspace
 let workspaceFolders: WorkspaceFolder[] = [];

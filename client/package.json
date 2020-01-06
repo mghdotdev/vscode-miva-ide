@@ -1,15 +1,16 @@
 {
 	"main": "./out/main.js",
 	"engines": {
-		"vscode": "^1.33.0"
+		"vscode": "^1.40.0"
 	},
 	"scripts": {
 		"update-vscode": "vscode-install",
 		"postinstall": "vscode-install"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"@types/vscode": "^1.41.0"
+	},
 	"dependencies": {
-		"@types/vscode": "^1.41.0",
-		"vscode-languageclient": "^5.2.1"
+		"vscode-languageclient": "^6.0.0-next.9"
 	}
 }

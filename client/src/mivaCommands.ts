@@ -1,5 +1,5 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, CharacterPair, TextEdit, Position } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, Position } from 'vscode';
 
 const boundryAmount = 200;
 
@@ -47,7 +47,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
 	
 	// define helper method for inserting file name
-	function insertEdit( matchLength, fileName ) {
+	function insertEdit( matchLength: number, fileName: string ) {
 
 		edit.insert(
 			textEditor.document.positionAt( cursorPositionOffset - matchLength ),
@@ -128,14 +128,14 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 }
 
-const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertAndCopy', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
+const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertAndCopy', ( textEditor: TextEditor ) => {
 
 	// exit if not MVT
 	if ( textEditor.document.languageId !== 'mvt' ) {
 		return;
 	}
 
-	let clipboardContents = [];
+	let clipboardContents: string[] = [];
 
 	textEditor.selections.forEach(( selection ) => {
 

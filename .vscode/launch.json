@@ -1,4 +1,3 @@
-// A launch configuration that compiles the extension and then opens it inside a new window
 {
 	"version": "0.2.0",
 	"configurations": [
@@ -7,27 +6,27 @@
 			"request": "launch",
 			"name": "Launch Client",
 			"runtimeExecutable": "${execPath}",
-			"args": ["--extensionDevelopmentPath=${workspaceRoot}"],
-			"outFiles": ["${workspaceRoot}/client/MVT/out/**/*.js"],
-			"preLaunchTask": {
-				"type": "npm",
-				"script": "watch"
-			}
+			"args": ["--extensionDevelopmentPath=${workspaceFolder}" ],
+			"stopOnEntry": false,
+			"sourceMaps": true,
+			"outFiles": ["${workspaceFolder}/client/out/**/*.js"],
+			"preLaunchTask": "npm: watch"
 		},
 		{
-			"name": "Attach Language Server",
 			"type": "node",
 			"request": "attach",
-			"port": 6045,
+			"name": "Attach to Server",
+			"address": "localhost",
 			"protocol": "inspector",
+			"port": 6045,
 			"sourceMaps": true,
-			"outFiles": ["${workspaceFolder}/server/MVT/out/**/*.js"]
-		},
+			"outFiles": ["${workspaceFolder}/server/out/**/*.js"]
+		}
 	],
 	"compounds": [
 		{
-			"name": "Debug Client + Server",
-			"configurations": ["Launch Client", "Attach Language Server"]
+			"name": "Client + Server",
+			"configurations": ["Launch Client", "Attach to Server"]
 		}
-	],
+	]
 }
