@@ -18,6 +18,8 @@ export default {
 		
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,
+		
+		LEFT_VARIABLE_S: /s\.$/
 
 	}
 };

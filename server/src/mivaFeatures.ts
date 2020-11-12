@@ -120,11 +120,16 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// entity completions
 			if (
-				patterns.MVT.LEFT_AFTER_AMP
+				patterns.MVT.LEFT_AFTER_AMP.test( left )
 			) {
 				return CompletionList.create( entityCompletions );
 			}
 
+			if (
+				patterns.SHARED.LEFT_VARIABLE_S.test( left )
+			) {
+				return CompletionList.create( variableSCompletions )
+			}
 			return undefined;
 
 		},
