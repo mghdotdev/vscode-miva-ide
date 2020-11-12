@@ -2,22 +2,22 @@
 	{
 		"label": "apitype",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "API Type",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "arg1",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Argument 1",
+		"documentation": "Contains the route used for the current page load.",
 		"commitCharacters": []
 	},
 	{
 		"label": "arg2",
 		"kind": "Variable",
 		"detail": "Argument 2",
-		"documentation": "",
+		"documentation": "Contains any query parameters appended onto the route.",
 		"commitCharacters": []
 	},
 	{
@@ -37,239 +37,246 @@
 	{
 		"label": "callvalue",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "MvCALL Value",
+		"documentation": "Value of the current MvCALL response chunk.",
 		"commitCharacters": []
 	},
 	{
 		"label": "content_length",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Content-Length Header",
+		"documentation": "References the current page's `Content-Length` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "content_type",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Content-Type Header",
+		"documentation": "References the current page's `Content-Type` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "content_data",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Content Data",
+		"documentation": "The reference to data body sent to the current page request. Used when handling POST requests.",
 		"commitCharacters": []
 	},
 	{
 		"label": "document_root",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Document Root",
+		"documentation": "The real path to the HTTP root within the filesystem.",
 		"commitCharacters": []
 	},
 	{
 		"label": "documenturl",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Document URL",
+		"documentation": "The reference to the URI of the page being requested.",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_stm_mon",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Months",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_stm_wday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Day of Week",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_stm_zone",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Timezone",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_time_remaining",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Remaining",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_time_t",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Timestamp",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_hour",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Hours",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_isdst",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Daylight Savings Time",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_mday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Day of Month",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_min",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Minutes",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_mon",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Months",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_sec",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Seconds",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_usec",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Milliseconds",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_wday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Day of Week",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_yday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Day of Year",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "dyn_tm_year",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Local Time: Years",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "gateway_interface",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Gateway Interface",
+		"documentation": "The configured server gateway.\n\rExample: `CGI/1.1`",
 		"commitCharacters": []
 	},
 	{
 		"label": "globaltimeout",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Global Timeout",
+		"documentation": "The configured global timeout for the server in seconds. Used for MVT/Mv script execution.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_accept",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-Accept Header",
+		"documentation": "References the current page's `HTTP-Accept` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_accept_encoding",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-Accept-Encoding Header",
+		"documentation": "References the current page's `HTTP-Accept-Encoding` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_accept_language",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-Accept-Language Header",
+		"documentation": "References the current page's `HTTP-Accept-Language` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_cache_control",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-Cache-Control Header",
+		"documentation": "References the current page's `HTTP-Cache-Control` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_connection",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Connection",
+		"documentation": "The HTTP connection type.\r\nExample: `open` or `close`.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_cookie",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Cookie String",
+		"documentation": "String output of the page's cookies.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_host",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Host",
+		"documentation": "The hostname of the current page.\n\rExample: `www.example.com`",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_if_modified_since",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-If-Modified-Since Header",
+		"documentation": "References the current page's `HTTP-If-Modified-Since` header value.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_origin",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Origin",
+		"documentation": "The origin of the current page. Includes the host and protocol.\n\rExample: `https://www.example.com`",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_x_forwarded_proto",
+		"kind": "Variable",
+		"detail": "HTTP Forwarded Protocol",
+		"documentation": "The protocol of the current page.\n\rExample: `https` or `http`",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_referer",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Referer",
+		"documentation": "The reference to the previously visited URI.",
 		"commitCharacters": []
 	},
 	{
 		"label": "http_user_agent",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP-User-Agent Header",
+		"documentation": "References the current page's `HTTP-User-Agent` header value.",
 		"commitCharacters": []
 	},
 	{
@@ -282,56 +289,56 @@
 	{
 		"label": "http_x_real_ip",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "HTTP Real IP Address",
+		"documentation": "The IP address of the connected client.",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_charset",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Miva: Charset",
+		"documentation": "The charset of the current page.",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_config",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Miva: Config",
+		"documentation": "A structure containing various domain-level configurations for Miva Merchant software.",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_defaultdatabase",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Miva: Default Database",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_defaultlanguage",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Miva: Default Language",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_language",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Miva: Language",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "miva_sslavailable",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Miva: SSL Available",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "mivaversion",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Miva: Version",
 		"documentation": "",
 		"commitCharacters": []
 	},
@@ -373,43 +380,43 @@
 	{
 		"label": "query_string",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Query String",
+		"documentation": "The query parameters for the current page.",
 		"commitCharacters": []
 	},
 	{
 		"label": "redirect_query_string",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Redirect Query String",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "redirect_status",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Redirect Status Header",
+		"documentation": "The `Status` header of the redirected page.",
 		"commitCharacters": []
 	},
 	{
 		"label": "redirect_url",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Redirect URL",
+		"documentation": "The route redirected page. Same as `s.path_info` and `s.arg1` if not redirected.",
 		"commitCharacters": []
 	},
 	{
 		"label": "remote_addr",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Remote Address",
+		"documentation": "The IP address of the connected client.",
 		"commitCharacters": []
 	},
 	{
 		"label": "remote_port",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Remote Port",
+		"documentation": "The port of the connected client.",
 		"commitCharacters": []
 	},
 	{
@@ -464,49 +471,49 @@
 	{
 		"label": "server_name",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Server Name",
+		"documentation": "Same as `s.http_host`.",
 		"commitCharacters": []
 	},
 	{
 		"label": "server_port",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Server Port",
+		"documentation": "The configured HTTP server port.\n\rExample: `443`",
 		"commitCharacters": []
 	},
 	{
 		"label": "server_protocol",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Server Protocol",
+		"documentation": "The configured protocol and version for server requests.\n\rExample: `HTTP/1.0`",
 		"commitCharacters": []
 	},
 	{
 		"label": "server_software",
 		"kind": "Variable",
-		"detail": "",
-		"documentation": "",
+		"detail": "Server Software",
+		"documentation": "The configured HTTP server software.\n\rExample: `Apache`",
 		"commitCharacters": []
 	},
 	{
 		"label": "stm_mon",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Months",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "stm_wday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Day of Week",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "stm_zone",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Timezone",
 		"documentation": "",
 		"commitCharacters": []
 	},
@@ -520,35 +527,35 @@
 	{
 		"label": "time_t",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Timestamp",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_hour",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Hours",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_isdst",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Daylight Savings Time",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_mday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Day of Month",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_min",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Minutes",
 		"documentation": "",
 		"commitCharacters": []
 	},
@@ -562,35 +569,35 @@
 	{
 		"label": "tm_sec",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Seconds",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_usec",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Milliseconds",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_wday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Day of Week",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_yday",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Day of Year",
 		"documentation": "",
 		"commitCharacters": []
 	},
 	{
 		"label": "tm_year",
 		"kind": "Variable",
-		"detail": "",
+		"detail": "Server Time: Years",
 		"documentation": "",
 		"commitCharacters": []
 	},
