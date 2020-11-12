@@ -1,0 +1,604 @@
+[
+	{
+		"label": "apitype",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "arg1",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "arg2",
+		"kind": "Variable",
+		"detail": "Argument 2",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "auth_type",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "callerid",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "callvalue",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "content_length",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "content_type",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "content_data",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "document_root",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "documenturl",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_stm_mon",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_stm_wday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_stm_zone",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_time_remaining",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_time_t",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_hour",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_isdst",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_mday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_min",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_mon",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_sec",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_usec",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_wday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_yday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "dyn_tm_year",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "gateway_interface",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "globaltimeout",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_accept",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_accept_encoding",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_accept_language",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_cache_control",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_connection",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_cookie",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_host",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_if_modified_since",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_origin",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_referer",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_user_agent",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_x_accel_internal",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "http_x_real_ip",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_charset",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_config",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_defaultdatabase",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_defaultlanguage",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_language",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "miva_sslavailable",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "mivaversion",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "nargs",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "path_info",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "path_translated",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "process_id",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "process_name",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "query_string",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "redirect_query_string",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "redirect_status",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "redirect_url",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "remote_addr",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "remote_port",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "remote_user",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "request_method",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "request_uri",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "script_filename",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "script_name",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_addr",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_admin",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_name",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_port",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_protocol",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "server_software",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "stm_mon",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "stm_wday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "stm_zone",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "thread_id",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "time_t",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_hour",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_isdst",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_mday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_min",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_mon",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_sec",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_usec",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_wday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_yday",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "tm_year",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	},
+	{
+		"label": "unique_id",
+		"kind": "Variable",
+		"detail": "",
+		"documentation": "",
+		"commitCharacters": []
+	}
+]

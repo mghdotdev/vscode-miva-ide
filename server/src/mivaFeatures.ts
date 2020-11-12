@@ -48,6 +48,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	const mvtDocuments = getLanguageModelCache<TextDocument>( 10, 60, document => document );
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'validation.json' ) );
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'entity-completions.json' ) ) );
+	const variableSCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'variable-s-completions.json' ) ) );
 
 	return {
 
@@ -130,6 +131,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			) {
 				return CompletionList.create( variableSCompletions )
 			}
+
 			return undefined;
 
 		},
