@@ -126,10 +126,31 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				return CompletionList.create( entityCompletions );
 			}
 
+			// pre-defined system variables
 			if (
+				patterns.MVT.LEFT_IN_MVT_TAG.test( left ) &&
 				patterns.SHARED.LEFT_VARIABLE_S.test( left )
 			) {
 				return CompletionList.create( variableSCompletions )
+			}
+
+			// pre-defined system variables
+			if (
+				patterns.MVT.LEFT_IN_MVT_TAG.test( left ) &&
+				patterns.SHARED.LEFT_VARIABLE_G.test( left )
+			) {
+
+				const foundVariables = mvtDocument.getText().match( patterns.SHARED.VARIABLE_G );
+
+				return CompletionList.create(
+					foundVariables.map(variable => ({
+						"label": variable.replace( 'g.', '' ),
+						"kind": "Variable",
+						"detail": "",
+						"documentation": "",
+						"commitCharacters": []
+					}));
+				);
 			}
 
 			return undefined;
