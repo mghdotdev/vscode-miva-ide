@@ -3,6 +3,7 @@
 	"engines": {
 		"vscode": "^1.40.0"
 	},
+	"scripts": {},
 	"devDependencies": {
 		"@types/vscode": "^1.51.0"
 	},
