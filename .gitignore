@@ -3,3 +3,4 @@ out
 .vscode-test
 *.code-workspace
 */*.tsbuildinfo
+*.vsix

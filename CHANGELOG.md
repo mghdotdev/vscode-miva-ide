@@ -1,5 +1,13 @@
 # Change Log
 
+## v0.8.1
+
+* Added missing CHANGELOG updates
+
+## v0.8.0
+
+* Added `LSK > Path` feature which allows symbol sniffing to a specific folder for goto definition support.
+
 ## v0.7.0
 
 * Fixed `<mvt:capture>` syntax display bug
