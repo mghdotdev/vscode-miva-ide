@@ -5,7 +5,6 @@ import {
 	ValidationRule
 } from './util/interfaces';
 import {
-	TextDocument,
 	Diagnostic,
 	Range,
 	DiagnosticSeverity,
@@ -18,6 +17,9 @@ import {
 	Location,
 	ClientCapabilities
 } from 'vscode-languageserver';
+import {
+	TextDocument
+} from 'vscode-languageserver-textdocument';
 import { 
 	readJSONFile,
 	tokenize,
@@ -36,7 +38,7 @@ import {
 } from 'vscode-html-languageservice';
 import { getLanguageModelCache } from './util/languageModelCache';
 import glob from 'glob';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 
 const htmlLanguageService = getLanguageService();
 
@@ -44,6 +46,7 @@ const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
 let workspaceSymbols: any[] = [];
+let lskSymbols: any[] = [];
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
@@ -231,10 +234,11 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
 			const word = getWordAtOffset( line, position.character );
 
-			let symbols = workspaceSymbols.filter(( symbol ) => {
-
+			const symbols = [
+				...workspaceSymbols,
+				...lskSymbols
+			].filter(( symbol ) => {
 				return ( symbol.name === word );
-
 			});
 
 			if ( symbols ) {
@@ -320,6 +324,15 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+	
+	console.log('workspace.settings', workspace.settings);
+
+	/* if (workspace.settings.LSK.path) {
+		const lskPath = path.resolve(workspace.settings.LSK.path);
+		if (existsSync(lskPath)) {
+			debugger;
+		}
+	} */
 
 	workspace.folders.forEach(( folder ) => {
 
@@ -396,10 +409,11 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
 			const word = getWordAtOffset( line, position.character );
 
-			let symbols = workspaceSymbols.filter(( symbol ) => {
-
+			const symbols = [
+				...workspaceSymbols,
+				...lskSymbols
+			].filter(( symbol ) => {
 				return ( symbol.name === word );
-
 			});
 
 			if ( symbols ) {

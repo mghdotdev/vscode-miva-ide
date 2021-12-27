@@ -40,6 +40,10 @@
 		"configuration": {
 			"title": "Miva IDE",
 			"properties": {
+				"LSK.path": {
+					"type": "string",
+					"description": "Path to your LSK folder. Used for Goto Definition support."
+				},
 				"MVT.defaultEncodingForVariableConversions": {
 					"type": "string",
 					"default": "e",

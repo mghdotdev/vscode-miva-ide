@@ -41,7 +41,7 @@ export function activate( context: ExtensionContext ) {
 	let clientOptions: LanguageClientOptions = {
 		documentSelector,
 		synchronize: {
-			configurationSection: [ 'html', 'mvt', 'mv' ]
+			configurationSection: [ 'html', 'mvt', 'mv', 'lsk' ]
 		},
 		initializationOptions: {
 			embeddedLanguages
