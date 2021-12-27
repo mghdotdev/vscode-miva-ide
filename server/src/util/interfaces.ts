@@ -35,7 +35,7 @@ export interface LanguageFeatures {
 
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
 
-	findDefinition?: ( document: TextDocument, position: Position ) => Definition | null;
+	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
 
 }
 
