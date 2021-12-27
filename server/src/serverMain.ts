@@ -30,9 +30,9 @@ function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
 	if ( !promise ) {
 
 		const scopeUri = textDocument.uri;
-		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'MVT' }, { scopeUri, section: 'MV' } ] };
+		const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'LSK' }, { scopeUri, section: 'MVT' }, { scopeUri, section: 'MV' } ] };
 
-		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { MVT: s[0], MV: s[1] } ) );
+		promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { LSK: s[0], MVT: s[1], MV: s[2] } ) );
 
 		documentSettings[ textDocument.uri ] = promise;
 
@@ -260,17 +260,18 @@ connection.onWorkspaceSymbol(( workspaceSymbolParams, token ) => {
 });
 
 connection.onDefinition(( definitionParams, token ) => {
-	return runSafe(() => {
+	return runSafeAsync(async () => {
 
 		const document = documents.get( definitionParams.textDocument.uri );
 		
 		if ( document ) {
 
+			const settings = await getDocumentSettings( document );
 			const features = languages[ document.languageId ];
 
 			if ( features && features.findDefinition ) {
 
-				return features.findDefinition( document, definitionParams.position );
+				return features.findDefinition( document, definitionParams.position, settings );
 				
 			}
 

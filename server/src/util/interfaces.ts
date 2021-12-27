@@ -1,15 +1,17 @@
 import {
 	WorkspaceFolder,
-	TextDocument,
 	Diagnostic,
 	Position,
 	CompletionList,
-	DocumentLink,
 	Definition,
 	SymbolInformation
 } from 'vscode-languageserver';
+import {
+	TextDocument
+} from 'vscode-languageserver-textdocument';
 
 export interface Settings {
+	LSK?: any;
 	MVT?: any;
 	MV?: any;
 }
@@ -33,7 +35,7 @@ export interface LanguageFeatures {
 
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
 
-	findDefinition?: ( document: TextDocument, position: Position ) => Definition | null;
+	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
 
 }
 

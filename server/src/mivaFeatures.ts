@@ -5,7 +5,6 @@ import {
 	ValidationRule
 } from './util/interfaces';
 import {
-	TextDocument,
 	Diagnostic,
 	Range,
 	DiagnosticSeverity,
@@ -18,6 +17,9 @@ import {
 	Location,
 	ClientCapabilities
 } from 'vscode-languageserver';
+import {
+	TextDocument
+} from 'vscode-languageserver-textdocument';
 import { 
 	readJSONFile,
 	tokenize,
@@ -36,14 +38,16 @@ import {
 } from 'vscode-html-languageservice';
 import { getLanguageModelCache } from './util/languageModelCache';
 import glob from 'glob';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 
 const htmlLanguageService = getLanguageService();
 
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
+const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
 let workspaceSymbols: any[] = [];
+let lskSymbols: any[] = [];
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
@@ -224,17 +228,22 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		findDefinition( document: TextDocument, position: Position ): Definition | null {
+		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
 
 			const mvDocument = mvtDocuments.get( document );
 
 			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
 			const word = getWordAtOffset( line, position.character );
 
-			let symbols = workspaceSymbols.filter(( symbol ) => {
+			if (lskSymbols.length === 0) {
+				_createLskSymbols(settings);
+			}
 
+			const symbols = [
+				...workspaceSymbols,
+				...lskSymbols
+			].filter(( symbol ) => {
 				return ( symbol.name === word );
-
 			});
 
 			if ( symbols ) {
@@ -252,6 +261,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 }
 
 // ======================================================================================================================== //
+
+function _getMvDocumentSymbolsByUri (uri) {
+	const pattern = `${ uri.replace( 'file://', '' ) }${ path.sep }**${ path.sep }*.mv`;
+	const files = glob.sync(pattern);
+
+	return files.reduce((output, file) => {
+
+		let fileContents = readFileSync( file ).toString();
+		let document = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
+
+		return output.concat( _mvFindDocumentSymbols( document ) );
+
+	}, []);
+} 
 
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 	
@@ -317,28 +340,22 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
 }
 
+function _createLskSymbols (settings) {
+	const lskPath = _get(settings, 'LSK.path');
+	if (lskPath) {
+		const resolvedLskPath = path.resolve(lskPath).replace(new RegExp(`${path.sep}$`), '');
+		if (existsSync(lskPath)) {
+			lskSymbols = lskSymbols.concat( _getMvDocumentSymbolsByUri(resolvedLskPath) );
+		}
+	}
+}
+
 export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
-	const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+	_createLskSymbols(workspace.settings);
 
 	workspace.folders.forEach(( folder ) => {
-
-		glob(
-			`${ folder.uri.replace( 'file://', '' ) }${ path.sep }**${ path.sep }*.mv`,
-			( err, files ) => {
-
-				files.forEach(file => {
-
-					let fileContents = readFileSync( file ).toString();
-					let document = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
-
-					workspaceSymbols = workspaceSymbols.concat( _mvFindDocumentSymbols( document ) );
-
-				});
-
-			}
-		);
-
+		workspaceSymbols = workspaceSymbols.concat( _getMvDocumentSymbolsByUri(folder.uri) );
 	});
 
 	return {
@@ -389,17 +406,22 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 		},
 
-		findDefinition( document: TextDocument, position: Position ): Definition | null {
+		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
 
 			const mvDocument = mvDocuments.get( document );
 
 			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
 			const word = getWordAtOffset( line, position.character );
 
-			let symbols = workspaceSymbols.filter(( symbol ) => {
+			if (lskSymbols.length === 0) {
+				_createLskSymbols(settings);
+			}
 
+			const symbols = [
+				...workspaceSymbols,
+				...lskSymbols
+			].filter(( symbol ) => {
 				return ( symbol.name === word );
-
 			});
 
 			if ( symbols ) {
