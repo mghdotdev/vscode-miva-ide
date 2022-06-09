@@ -4,7 +4,7 @@
 			"MvASSIGN",
 			"<MvASSIGN"
 		],
-		"body": "<MvASSIGN NAME = \"${1:g.variable}\" VALUE = \"${2:l.value}\">",
+		"body": "<MvASSIGN NAME = \"${1:l.variable}\" VALUE = \"${2:l.value}\">",
 		"description": "Tag - Assign",
 		"scope": "mv"
 	},
@@ -85,7 +85,7 @@
 			"MvEVAL",
 			"<MvEVAL"
 		],
-		"body": "<MvEVAL EXPR = \"${1:g.value}\">",
+		"body": "<MvEVAL EXPR = \"${1:l.value}\">",
 		"description": "Tag - Eval",
 		"scope": "mv"
 	},
