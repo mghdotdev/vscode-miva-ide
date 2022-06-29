@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.9.0
+
+* Added LSK data up to 10.04.00
+* Added builtin function data up to empressa 5.36
+
 ## v0.8.1
 
 * Added missing CHANGELOG updates
