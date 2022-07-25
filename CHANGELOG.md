@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.1
+
+* Fixed issue with functions-merchant autocompletion data that caused the file name to not auto fill.
+
 ## v0.9.0
 
 * Added LSK data up to 10.04.00
