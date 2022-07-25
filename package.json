@@ -18,7 +18,7 @@
 		"watch-syntax": "node ./syntaxes/watch.js",
 		"watch": "tsc -b -w",
 		"webpack": "npm run clean && webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js",
-		"build": "npx vsce pack"
+		"build": "npx vsce package"
 	},
 	"repository": {
 		"type": "git",
