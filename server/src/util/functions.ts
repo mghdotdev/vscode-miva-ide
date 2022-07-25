@@ -126,13 +126,13 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		insertText: `${ fn.name }(${ parameters })`,
 		insertTextFormat: InsertTextFormat.Snippet,
 		kind: CompletionItemKind.Function,
-		detail: file.distro_path,
+		detail: file.distroPath,
 		command: {
-			title: `Inject "${ file.distro_path }" into file attribute.`, 
+			title: `Inject "${ file.distroPath }" into file attribute.`, 
 			command: 'mivaIde.chooseFileName',
 			arguments: [
 				{
-					fileNames: [ file.distro_path ]
+					fileNames: [ file.distroPath ]
 				}
 			]
 		}
@@ -153,7 +153,7 @@ export function getDoValueCompletions( merchantFunctionFiles ): CompletionList {
 			if ( completion ) {
 
 				// append to the fileNames argument
-				completion.command.arguments[0].fileNames.push( file.distro_path );
+				completion.command.arguments[0].fileNames.push( file.distroPath );
 
 			}
 			else {
