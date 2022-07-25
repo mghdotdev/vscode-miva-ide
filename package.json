@@ -17,7 +17,8 @@
 		"vscode:prepublish": "npm run webpack",
 		"watch-syntax": "node ./syntaxes/watch.js",
 		"watch": "tsc -b -w",
-		"webpack": "npm run clean && webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js"
+		"webpack": "npm run clean && webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js",
+		"build": "npx vsce pack"
 	},
 	"repository": {
 		"type": "git",
