@@ -3271,7 +3271,19 @@
 				]
 			},
 			{
+				"name": "AttributeTemplate_Insert_LowLevel",
+				"parameters": [
+					"attributetemplate var"
+				]
+			},
+			{
 				"name": "AttributeTemplate_Update",
+				"parameters": [
+					"attributetemplate var"
+				]
+			},
+			{
+				"name": "AttributeTemplate_Update_LowLevel",
 				"parameters": [
 					"attributetemplate var"
 				]
@@ -3357,7 +3369,19 @@
 				]
 			},
 			{
+				"name": "AttributeTemplateAttr_Insert_LowLevel",
+				"parameters": [
+					"attributetemplateattr var"
+				]
+			},
+			{
 				"name": "AttributeTemplateAttr_Update",
+				"parameters": [
+					"attributetemplateattr var"
+				]
+			},
+			{
+				"name": "AttributeTemplateAttr_Update_LowLevel",
 				"parameters": [
 					"attributetemplateattr var"
 				]
@@ -3453,7 +3477,19 @@
 				]
 			},
 			{
+				"name": "AttributeTemplateOption_Insert_LowLevel",
+				"parameters": [
+					"attributetemplateoption var"
+				]
+			},
+			{
 				"name": "AttributeTemplateOption_Update",
+				"parameters": [
+					"attributetemplateoption var"
+				]
+			},
+			{
+				"name": "AttributeTemplateOption_Update_LowLevel",
 				"parameters": [
 					"attributetemplateoption var"
 				]
@@ -6692,6 +6728,12 @@
 				]
 			},
 			{
+				"name": "InventorySettings_Update_LowLevel",
+				"parameters": [
+					"inventorysettings var"
+				]
+			},
+			{
 				"name": "InventorySettings_Load",
 				"parameters": [
 					"inventorysettings var"
@@ -6722,6 +6764,12 @@
 				]
 			},
 			{
+				"name": "InventoryProductSettings_Insert_LowLevel",
+				"parameters": [
+					"inventoryproductsettings var"
+				]
+			},
+			{
 				"name": "InventoryProductSettings_Update",
 				"parameters": [
 					"inventoryproductsettings var"
@@ -6747,6 +6795,12 @@
 				]
 			},
 			{
+				"name": "InventoryProductSettings_Delete_LowLevel",
+				"parameters": [
+					"product_id"
+				]
+			},
+			{
 				"name": "InventoryProductCount_Read",
 				"parameters": [
 					"inventoryproductcount var"
@@ -6760,6 +6814,13 @@
 				]
 			},
 			{
+				"name": "InventoryProductCount_Insert_LowLevel",
+				"parameters": [
+					"product_id",
+					"inventory"
+				]
+			},
+			{
 				"name": "InventoryProductCount_Update",
 				"parameters": [
 					"product_id",
@@ -6767,7 +6828,21 @@
 				]
 			},
 			{
+				"name": "InventoryProductCount_Update_LowLevel",
+				"parameters": [
+					"product_id",
+					"inventory"
+				]
+			},
+			{
 				"name": "InventoryProductCount_Adjust",
+				"parameters": [
+					"product_id",
+					"inventory"
+				]
+			},
+			{
+				"name": "InventoryProductCount_Adjust_LowLevel",
 				"parameters": [
 					"product_id",
 					"inventory"
@@ -6821,6 +6896,13 @@
 					"product var"
 				],
 				"description": "\n\\file\n### \tInventory system functions for shopping interface"
+			},
+			{
+				"name": "Runtime_Product_InventoryFields_Read_WithInventorySettings",
+				"parameters": [
+					"inventorysettings var",
+					"product var"
+				]
 			},
 			{
 				"name": "Inventory_Adjust",
@@ -8440,6 +8522,12 @@
 				]
 			},
 			{
+				"name": "PriceGroup_Insert_LowLevel",
+				"parameters": [
+					"pricegroup var"
+				]
+			},
+			{
 				"name": "PriceGroup_Update",
 				"parameters": [
 					"pricegroup var"
@@ -8868,7 +8956,21 @@
 				]
 			},
 			{
+				"name": "PriceGroupXQualifyingProduct_Insert_LowLevel",
+				"parameters": [
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
 				"name": "PriceGroupXQualifyingProduct_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "PriceGroupXQualifyingProduct_Delete_LowLevel",
 				"parameters": [
 					"pgrp_id",
 					"product_id"
@@ -8916,7 +9018,23 @@
 				]
 			},
 			{
+				"name": "PriceGroupXProductSubscription_Insert_LowLevel",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
 				"name": "PriceGroupXProductSubscription_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "PriceGroupXProductSubscription_Delete_LowLevel",
 				"parameters": [
 					"pgrp_id",
 					"product_id",
@@ -8973,7 +9091,23 @@
 				]
 			},
 			{
+				"name": "PriceGroupXExcludedProductSubscription_Insert_LowLevel",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
 				"name": "PriceGroupXExcludedProductSubscription_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "PriceGroupXExcludedProductSubscription_Delete_LowLevel",
 				"parameters": [
 					"pgrp_id",
 					"product_id",
@@ -9030,7 +9164,23 @@
 				]
 			},
 			{
+				"name": "PriceGroupXQualifyingProductSubscription_Insert_LowLevel",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
 				"name": "PriceGroupXQualifyingProductSubscription_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "PriceGroupXQualifyingProductSubscription_Delete_LowLevel",
 				"parameters": [
 					"pgrp_id",
 					"product_id",
@@ -10191,7 +10341,9 @@
 			},
 			{
 				"name": "JSON_Coupon",
-				"parameters": []
+				"parameters": [
+					"coupon var"
+				]
 			},
 			{
 				"name": "JSON_CouponList_Load_Query",
@@ -16435,6 +16587,12 @@
 				"parameters": [
 					"subscription var",
 					"productsubscriptionterm var"
+				]
+			},
+			{
+				"name": "SubscriptionTerm_Get_Days",
+				"parameters": [
+					"term var"
 				]
 			},
 			{
@@ -25502,6 +25660,12 @@
 				"parameters": []
 			},
 			{
+				"name": "JSON_ProductImage",
+				"parameters": [
+					"productimage var"
+				]
+			},
+			{
 				"name": "JSON_ProductImage_Add",
 				"parameters": []
 			}
@@ -25766,6 +25930,15 @@
 					"search_query var",
 					"count_query var",
 					"ondemandcolumns var"
+				]
+			},
+			{
+				"name": "JSON_BaseProductList_Load_Query_QueryCustomFields",
+				"parameters": [
+					"search_query var",
+					"filter var",
+					"count",
+					"total_count"
 				]
 			},
 			{
@@ -26047,6 +26220,105 @@
 			{
 				"name": "JSON_ProductVariant_Update",
 				"parameters": []
+			},
+			{
+				"name": "JSON_ProductVariant_Attributes_Load",
+				"parameters": [
+					"product var",
+					"attributes var",
+					"attribute_count var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Parts_Load",
+				"parameters": [
+					"parts var",
+					"part_count var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Attribute_Limits_Load",
+				"parameters": [
+					"product var",
+					"limits var",
+					"limit_count var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Attribute_Exclusions_Load",
+				"parameters": [
+					"product var",
+					"exclusions var",
+					"exclusion_count var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Validate_Error",
+				"parameters": [
+					"code",
+					"message",
+					"field",
+					"input_element var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Part_Validate_Input",
+				"parameters": [
+					"part var",
+					"input_element var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Attribute_Validate_Input_LowLevel",
+				"parameters": [
+					"product var",
+					"input var",
+					"input_element var",
+					"validated_attribute var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_AttributeTemplateAttribute_Validate_Input_LowLevel",
+				"parameters": [
+					"attribute var",
+					"input var",
+					"input_element var",
+					"validated_attributetemplateattribute var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Option_Validate_Input_LowLevel",
+				"parameters": [
+					"attribute var",
+					"attributetemplateattribute var",
+					"input var",
+					"input_element var",
+					"validated_option var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_Attribute_Validate_Input",
+				"parameters": [
+					"product var",
+					"input var",
+					"input_element var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_AttributeAndOption_Validate_Input",
+				"parameters": [
+					"product var",
+					"input var",
+					"input_element var"
+				]
+			},
+			{
+				"name": "JSON_ProductVariant_AttributeAndOptionalOption_Validate_Input",
+				"parameters": [
+					"product var",
+					"input var",
+					"input_element var"
+				]
 			},
 			{
 				"name": "JSON_ProductVariantPricing_Load",
@@ -27246,6 +27518,18 @@
 					"attribute var"
 				],
 				"description": "\n### \tInserts a record into the sNN_Attributes table\n\nIf  attribute references a record in the sNN_AttributeTemplates table, the reference count for the associated AttributeTemplate record is incremented.\n\n* __@param__ [in] attribute The Attribute record to be inserted\n\n\\return\t\t1 on success, 0 on error\n\n\\sa\t\t\tAttribute_Insert_LowLevel"
+			},
+			{
+				"name": "Attribute_Update",
+				"parameters": [
+					"attribute var"
+				]
+			},
+			{
+				"name": "Attribute_Update_Default",
+				"parameters": [
+					"attribute var"
+				]
 			},
 			{
 				"name": "Attribute_Update_Inventory",
@@ -29148,6 +29432,12 @@
 				"name": "Product_Decrement_PriceGroupCount_All",
 				"parameters": [
 					"pgrp_id"
+				]
+			},
+			{
+				"name": "Product_Decrement_CategoryCount_All",
+				"parameters": [
+					"cat_id"
 				]
 			},
 			{
@@ -31079,14 +31369,14 @@
 				"description": "\n### Inserts a record into the sNN_Attributes table\n\nUnlike Attribute_Insert(), this function does not increment the reference count of any associated AttributeTemplate record.\nThis function initializes the  id and  disp_order fields of  attribute.\n\n* __@param__ [in,out] attribute The Attribute record to be inserted\n\n\\return\t1 on success, 0 on error\n\n\\sa\t\tAttribute_Insert"
 			},
 			{
-				"name": "Attribute_Update",
+				"name": "Attribute_Update_LowLevel",
 				"parameters": [
 					"attribute var"
 				],
 				"description": "\n### Updates a single record in the sNN_Attributes table\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t1 on success, 0 on error"
 			},
 			{
-				"name": "Attribute_Update_Default",
+				"name": "Attribute_Update_Default_LowLevel",
 				"parameters": [
 					"attribute var"
 				],
@@ -31504,6 +31794,14 @@
 			{
 				"name": "BasketItemList_Load_Group",
 				"parameters": [
+					"group_id",
+					"basketitems var"
+				]
+			},
+			{
+				"name": "BasketItemList_Load_Basket_Group",
+				"parameters": [
+					"basket_id",
 					"group_id",
 					"basketitems var"
 				]
@@ -32556,14 +32854,14 @@
 				]
 			},
 			{
-				"name": "Option_Insert",
+				"name": "Option_Insert_LowLevel",
 				"parameters": [
 					"option var"
 				],
 				"description": "\n### Inserts an option into the sNN_Options table\n\n* __@param__ [in,out] option The Option record to be inserted.  The  id and  disp_order members are initialized by this function.\n\n\\return\t1 on success, 0 on error"
 			},
 			{
-				"name": "Option_Update",
+				"name": "Option_Update_LowLevel",
 				"parameters": [
 					"option var"
 				],
@@ -33686,6 +33984,12 @@
 				"name": "Product_Update_LastUpdated",
 				"parameters": [
 					"product_id"
+				]
+			},
+			{
+				"name": "Product_Update_LastUpdated_Product",
+				"parameters": [
+					"product var"
 				]
 			},
 			{
@@ -75281,6 +75585,16 @@
 				]
 			},
 			{
+				"name": "Write_Product_LowLevel",
+				"parameters": [
+					"module var",
+					"param",
+					"product var",
+					"custom_field",
+					"value"
+				]
+			},
+			{
 				"name": "Read_Category_ID",
 				"parameters": [
 					"module var",
@@ -78152,6 +78466,1649 @@
 		]
 	},
 	{
+		"distroPath": "g.Module_Root $ '/modules/util/productdata.mvc'",
+		"functions": [
+			{
+				"name": "Module_Description",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Install_Store",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Uninstall_Store",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Upgrade_Store",
+				"parameters": [
+					"module var",
+					"version"
+				]
+			},
+			{
+				"name": "Module_Provision_Store",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_ProductDataField_Add",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_ProductDataField_Update",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_ProductDataField_Delete",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Clientside",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Clientside_Output_File",
+				"parameters": [
+					"module var",
+					"filename"
+				]
+			},
+			{
+				"name": "Module_Clientside_File_Integrity",
+				"parameters": [
+					"module var",
+					"filename",
+					"minified"
+				]
+			},
+			{
+				"name": "Module_Clientside_Combined_Integrity",
+				"parameters": [
+					"module var",
+					"filename",
+					"minified"
+				]
+			},
+			{
+				"name": "ComponentModule_Tabs",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Validate",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Content",
+				"parameters": [
+					"module var",
+					"item",
+					"tab",
+					"load_fields",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Defaults",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Page_Assign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Page_Unassign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Initialize",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Prerender",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Render_Head",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Render_Start",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Render_End",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "FeedModule_Capabilities",
+				"parameters": [
+					"module var",
+					"capabilities var"
+				]
+			},
+			{
+				"name": "FeedModule_Fields",
+				"parameters": [
+					"module var",
+					"feed var"
+				]
+			},
+			{
+				"name": "FeedModule_Prompt",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "FeedModule_Field",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "FeedModule_Invalid",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "FeedModule_Validate",
+				"parameters": [
+					"module var",
+					"feed var"
+				]
+			},
+			{
+				"name": "FeedModule_Update",
+				"parameters": [
+					"module var",
+					"feed var"
+				]
+			},
+			{
+				"name": "FeedModule_Delete",
+				"parameters": [
+					"module var",
+					"feed var"
+				]
+			},
+			{
+				"name": "FeedModule_Output_Custom",
+				"parameters": [
+					"module var",
+					"feed var"
+				]
+			},
+			{
+				"name": "FeedModule_Provision_Settings",
+				"parameters": [
+					"module var",
+					"feed var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Tabs",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Validate",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Update",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Content",
+				"parameters": [
+					"module var",
+					"item",
+					"tab",
+					"load_fields",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Defaults",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Page_Assign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Page_Unassign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Initialize",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Prerender",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Render_Start",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Render_End",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Capabilities",
+				"parameters": [
+					"module var",
+					"capabilities var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Operations",
+				"parameters": [
+					"module var",
+					"operations var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Fields",
+				"parameters": [
+					"module var",
+					"task var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Invalid",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Prompt",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Field",
+				"parameters": [
+					"module var",
+					"field_id"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Validate",
+				"parameters": [
+					"module var",
+					"task var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Update",
+				"parameters": [
+					"module var",
+					"task var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Delete",
+				"parameters": [
+					"module var",
+					"task var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Execute",
+				"parameters": [
+					"module var",
+					"task var"
+				]
+			},
+			{
+				"name": "ScheduledTaskModule_Provision_Settings",
+				"parameters": [
+					"module var",
+					"task var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Tabs",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Validate",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Update",
+				"parameters": [
+					"module var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Content",
+				"parameters": [
+					"module var",
+					"item",
+					"tab",
+					"load_fields",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Defaults",
+				"parameters": [
+					"module var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Page_Assign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Page_Unassign",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Initialize",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Prerender",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Render_Start",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Render_End",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Provision",
+				"parameters": [
+					"module var",
+					"provide_xml var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Provision_CustomFields",
+				"parameters": [
+					"module var",
+					"provide_xml var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFieldComponentModule_Provision",
+				"parameters": [
+					"module var",
+					"provide_xml var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ProductDataFeedComponentModule_Provision",
+				"parameters": [
+					"module var",
+					"provide_xml var",
+					"settings var"
+				]
+			},
+			{
+				"name": "SkinsComponentModule_Description",
+				"parameters": [
+					"module var",
+					"item var"
+				]
+			},
+			{
+				"name": "SkinsComponentModule_Export_Item",
+				"parameters": [
+					"module var",
+					"item",
+					"output var"
+				]
+			},
+			{
+				"name": "ProductDataFieldSkinsComponentModule_Export_Item",
+				"parameters": [
+					"module var",
+					"item",
+					"output var"
+				]
+			},
+			{
+				"name": "ProductDataFeedSkinsComponentModule_Export_Item",
+				"parameters": [
+					"module var",
+					"item",
+					"output var"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Capabilities",
+				"parameters": [
+					"module var",
+					"code",
+					"capabilities var"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Name",
+				"parameters": [
+					"module var",
+					"code"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Value",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Value_Array",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code",
+					"values var"
+				]
+			},
+			{
+				"name": "Module_Product_Fields",
+				"parameters": [
+					"module var",
+					"fields var"
+				]
+			},
+			{
+				"name": "Module_Product_Set_Field",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code",
+					"value"
+				]
+			},
+			{
+				"name": "Module_Product_Set_Field_Array",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code",
+					"values var",
+					"value_count"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Query",
+				"parameters": [
+					"module var",
+					"query var",
+					"code"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Query_Search",
+				"parameters": [
+					"module var",
+					"query var",
+					"code",
+					"operator",
+					"value"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Query_OrderBy",
+				"parameters": [
+					"module var",
+					"query var",
+					"code",
+					"direction"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Query_OrderBy_LoadIndexRecord",
+				"parameters": [
+					"module var",
+					"loaded_record var",
+					"product_id",
+					"code"
+				]
+			},
+			{
+				"name": "ProductData_Product_Field_TableAndAlias",
+				"parameters": [
+					"module var",
+					"customfield_code",
+					"field_type var",
+					"table var",
+					"alias var"
+				]
+			},
+			{
+				"name": "ProductData_Product_Field_Query",
+				"parameters": [
+					"module var",
+					"query var",
+					"field_type",
+					"table",
+					"alias"
+				]
+			},
+			{
+				"name": "Module_Product_Field_Query_Value",
+				"parameters": [
+					"module var",
+					"view_name",
+					"code"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_Insert",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_Update",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_Delete",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_Copy",
+				"parameters": [
+					"module var",
+					"source_product var",
+					"dest_product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_LowStock",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Product_OutOfStock",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_Attribute_Insert",
+				"parameters": [
+					"module var",
+					"attribute var"
+				]
+			},
+			{
+				"name": "Module_Notify_Attribute_Update",
+				"parameters": [
+					"module var",
+					"attribute var"
+				]
+			},
+			{
+				"name": "Module_Notify_Attribute_Delete",
+				"parameters": [
+					"module var",
+					"attribute var"
+				]
+			},
+			{
+				"name": "Module_Notify_Option_Insert",
+				"parameters": [
+					"module var",
+					"option var"
+				]
+			},
+			{
+				"name": "Module_Notify_Option_Update",
+				"parameters": [
+					"module var",
+					"option var"
+				]
+			},
+			{
+				"name": "Module_Notify_Option_Delete",
+				"parameters": [
+					"module var",
+					"option var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplate_Insert",
+				"parameters": [
+					"module var",
+					"attributetemplate var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplate_Update",
+				"parameters": [
+					"module var",
+					"attributetemplate var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplate_Delete",
+				"parameters": [
+					"module var",
+					"attributetemplate var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateAttr_Insert",
+				"parameters": [
+					"module var",
+					"attributetemplateattr var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateAttr_Update",
+				"parameters": [
+					"module var",
+					"attributetemplateattr var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateAttr_Delete",
+				"parameters": [
+					"module var",
+					"attributetemplateattr var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateOption_Insert",
+				"parameters": [
+					"module var",
+					"attributetemplateoption var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateOption_Update",
+				"parameters": [
+					"module var",
+					"attributetemplateoption var"
+				]
+			},
+			{
+				"name": "Module_Notify_AttributeTemplateOption_Delete",
+				"parameters": [
+					"module var",
+					"attributetemplateoption var"
+				]
+			},
+			{
+				"name": "Module_Notify_RelatedProduct_Insert",
+				"parameters": [
+					"module var",
+					"product_id",
+					"relprod_id"
+				]
+			},
+			{
+				"name": "Module_Notify_RelatedProduct_Delete",
+				"parameters": [
+					"module var",
+					"product_id",
+					"relprod_id"
+				]
+			},
+			{
+				"name": "Module_Notify_InventorySettings_Update",
+				"parameters": [
+					"module var",
+					"inventorysettings var"
+				]
+			},
+			{
+				"name": "Module_Notify_InventoryProductSettings_Update",
+				"parameters": [
+					"module var",
+					"product_id",
+					"inventoryproductsettings var"
+				]
+			},
+			{
+				"name": "Module_Notify_InventoryProductCount_Update",
+				"parameters": [
+					"module var",
+					"product_id",
+					"inventory"
+				]
+			},
+			{
+				"name": "Module_Notify_InventoryProductCount_Adjust",
+				"parameters": [
+					"module var",
+					"product_id",
+					"adjust"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductImage_Insert",
+				"parameters": [
+					"module var",
+					"productimage var"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductImage_Update",
+				"parameters": [
+					"module var",
+					"original_productimage var",
+					"productimage var"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductImage_Delete",
+				"parameters": [
+					"module var",
+					"productimage var"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductVariant_Insert",
+				"parameters": [
+					"module var",
+					"product var",
+					"variant_id"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductVariant_Update",
+				"parameters": [
+					"module var",
+					"product var",
+					"variant_id"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductVariant_Delete",
+				"parameters": [
+					"module var",
+					"product var",
+					"variant_id"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductVariant_Generate",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_ProductVariant_Delete_All_Product",
+				"parameters": [
+					"module var",
+					"product var"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroup_Insert",
+				"parameters": [
+					"module var",
+					"pricegroup var"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroup_Copy",
+				"parameters": [
+					"module var",
+					"source_pricegroup var",
+					"dest_pricegroup var"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroup_Update",
+				"parameters": [
+					"module var",
+					"pricegroup var"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroup_Delete",
+				"parameters": [
+					"module var",
+					"pricegroup var"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXCustomer_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cust_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXCustomer_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cust_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXProduct_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXProduct_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedProduct_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedProduct_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXQualifyingProduct_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXQualifyingProduct_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXProductSubscription_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXProductSubscription_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedProductSubscription_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedProductSubscription_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXQualifyingProductSubscription_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXQualifyingProductSubscription_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"product_id",
+					"subterm_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXCategory_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cat_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXCategory_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cat_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedCategory_Insert",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cat_id"
+				]
+			},
+			{
+				"name": "Module_Notify_PriceGroupXExcludedCategory_Delete",
+				"parameters": [
+					"module var",
+					"pgrp_id",
+					"cat_id"
+				]
+			},
+			{
+				"name": "Module_Notify_Category_Insert",
+				"parameters": [
+					"module var",
+					"category var"
+				]
+			},
+			{
+				"name": "Module_Notify_Category_Update",
+				"parameters": [
+					"module var",
+					"category var"
+				]
+			},
+			{
+				"name": "Module_Notify_Category_Delete",
+				"parameters": [
+					"module var",
+					"category var"
+				]
+			},
+			{
+				"name": "Module_Notify_CategoryXProduct_Insert",
+				"parameters": [
+					"module var",
+					"cat_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_CategoryXProduct_Delete",
+				"parameters": [
+					"module var",
+					"cat_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "Module_Notify_URI_Insert",
+				"parameters": [
+					"module var",
+					"uri var"
+				]
+			},
+			{
+				"name": "Module_Notify_URI_Update",
+				"parameters": [
+					"module var",
+					"uri var"
+				]
+			},
+			{
+				"name": "Module_Notify_URI_Delete",
+				"parameters": [
+					"module var",
+					"uri var"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_Action",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_LeftNavigation",
+				"parameters": [
+					"module var",
+					"indent"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_Screen",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_Validate",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_Action_Privileges",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "StoreUtilityModule_Screen_Privileges",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Utility_Tabs",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Utility_Head",
+				"parameters": [
+					"module var",
+					"tab"
+				]
+			},
+			{
+				"name": "Module_Utility_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields"
+				]
+			},
+			{
+				"name": "Module_Utility_Validate",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Utility_Update",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_JSON",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_ProductDataField_Load",
+				"parameters": [
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "JSON_ProductDataFieldList_Load_Query",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_ProductDataField_Insert",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_ProductDataField_Update",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_ProductDataField_Delete",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_JSON_API",
+				"parameters": [
+					"module var",
+					"function"
+				]
+			},
+			{
+				"name": "JSON_API_ProductModified",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "ProductDataField_Read",
+				"parameters": [
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Insert",
+				"parameters": [
+					"module var",
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Create_Tables",
+				"parameters": [
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Insert_LowLevel",
+				"parameters": [
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Update",
+				"parameters": [
+					"productdatafield"
+				]
+			},
+			{
+				"name": "ProductDataField_Delete",
+				"parameters": [
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Delete_ID",
+				"parameters": [
+					"id"
+				]
+			},
+			{
+				"name": "ProductDataField_Load_ID",
+				"parameters": [
+					"id",
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Load_CustomFieldCode_Cached",
+				"parameters": [
+					"customfield_code",
+					"field_type var",
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Load_Code_Cached",
+				"parameters": [
+					"code",
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataField_Load_Code",
+				"parameters": [
+					"code",
+					"productdatafield var"
+				]
+			},
+			{
+				"name": "ProductDataFieldList_Load_All_Cached",
+				"parameters": [
+					"productdatafields var"
+				]
+			},
+			{
+				"name": "ProductDataFieldList_Load_All",
+				"parameters": [
+					"productdatafields var"
+				]
+			},
+			{
+				"name": "ProductDataFieldLookup_Load_Notification_Cached",
+				"parameters": [
+					"lookup var"
+				]
+			},
+			{
+				"name": "ProductDataFieldLookup_Load_Notification",
+				"parameters": [
+					"lookup var"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Read",
+				"parameters": [
+					"productdataqueue var"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Insert",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"status"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Insert_Ignore",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"status"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Delete",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"status"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Delete_All_Product",
+				"parameters": [
+					"field_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "ProductDataQueue_Load",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"status",
+					"productdataqueue var"
+				]
+			},
+			{
+				"name": "ProductDataQueueList_Load_Product",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"productdataqueues var"
+				]
+			},
+			{
+				"name": "ProductDataQueue_MarkForProcessing",
+				"parameters": [
+					"field_id"
+				]
+			},
+			{
+				"name": "ProductData_Read",
+				"parameters": [
+					"productdata var"
+				]
+			},
+			{
+				"name": "ProductData_InsertOrUpdate",
+				"parameters": [
+					"field_id",
+					"productdata var"
+				]
+			},
+			{
+				"name": "ProductData_Delete",
+				"parameters": [
+					"field_id",
+					"product_id"
+				]
+			},
+			{
+				"name": "ProductData_Load",
+				"parameters": [
+					"field_id",
+					"product_id",
+					"productdata var"
+				]
+			},
+			{
+				"name": "ProductData_Create_Item",
+				"parameters": [
+					"item_code",
+					"module_code"
+				]
+			},
+			{
+				"name": "ProductData_Notify_Product",
+				"parameters": [
+					"type",
+					"product_id",
+					"flags"
+				]
+			},
+			{
+				"name": "ProductData_Notify_CategoryProducts",
+				"parameters": [
+					"type",
+					"cat_id",
+					"flags"
+				]
+			},
+			{
+				"name": "ProductData_Notify_PriceGroupProducts",
+				"parameters": [
+					"pricegroup var"
+				]
+			},
+			{
+				"name": "ProductData_Notify_AttributeTemplateProducts",
+				"parameters": [
+					"attemp_id"
+				]
+			},
+			{
+				"name": "ProductDataField_Generate_Template",
+				"parameters": [
+					"module var",
+					"productdatafield var",
+					"page var"
+				]
+			},
+			{
+				"name": "ProductDataField_Page_Prepare",
+				"parameters": [
+					"page var",
+					"template var"
+				]
+			},
+			{
+				"name": "ProductDataField_Page_Reset",
+				"parameters": [
+					"page var"
+				]
+			},
+			{
+				"name": "ProductDataField_Page_Render",
+				"parameters": [
+					"page var",
+					"template var",
+					"output var"
+				]
+			},
+			{
+				"name": "ProductDataFeed_Generate_Template",
+				"parameters": [
+					"module var",
+					"feed var",
+					"page var"
+				]
+			},
+			{
+				"name": "ProductData_InventoryFields_Read",
+				"parameters": [
+					"inventorysettings var",
+					"product var"
+				]
+			},
+			{
+				"name": "ProductData_Query_CustomFields",
+				"parameters": [
+					"query var",
+					"customfields var",
+					"customfield_count"
+				]
+			},
+			{
+				"name": "ProductData_Query_CustomFields_GeneratePlan",
+				"parameters": [
+					"customfields var",
+					"customfield_count",
+					"plan var"
+				]
+			},
+			{
+				"name": "ProductData_Query_CustomFields_Read",
+				"parameters": [
+					"query var",
+					"view",
+					"product var"
+				]
+			}
+		]
+	},
+	{
 		"distroPath": "g.Module_Root $ '/modules/util/productdigitaldownloadcustomfields.mvc'",
 		"functions": [
 			{
@@ -79035,6 +80992,14 @@
 					"discount_state var",
 					"shipping_module var",
 					"shipping_method_code"
+				]
+			},
+			{
+				"name": "DiscountModule_Provision_Settings",
+				"parameters": [
+					"module var",
+					"pricegroup var",
+					"provide_xml var"
 				]
 			},
 			{
@@ -80507,6 +82472,10 @@
 				"parameters": [
 					"quote var"
 				]
+			},
+			{
+				"name": "Quote_Append_NavigationItem",
+				"parameters": []
 			}
 		]
 	},
@@ -81959,6 +83928,12 @@
 			},
 			{
 				"name": "StandardScheduledTasks_DeleteMivaPayTokens",
+				"parameters": [
+					"task var"
+				]
+			},
+			{
+				"name": "StandardScheduledTasks_PriceGroupValidityNotifications",
 				"parameters": [
 					"task var"
 				]
