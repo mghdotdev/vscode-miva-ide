@@ -10726,6 +10726,20 @@
 				]
 			},
 			{
+				"name": "DiscountState_Apply_PriceGroup_Exclusions",
+				"parameters": [
+					"discount_state var",
+					"pricegroup var"
+				]
+			},
+			{
+				"name": "DiscountState_Remove_PriceGroup_Exclusions",
+				"parameters": [
+					"discount_state var",
+					"pricegroup var"
+				]
+			},
+			{
 				"name": "DiscountState_Disable_Unused_Item_PriceGroups",
 				"parameters": [
 					"discount_state var"
@@ -10847,6 +10861,13 @@
 					"discount_state var",
 					"shipping_module var",
 					"shipping_method_code"
+				]
+			},
+			{
+				"name": "DiscountState_Copy",
+				"parameters": [
+					"source_state var",
+					"dest_state var"
 				]
 			},
 			{
