@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "0.9.1",
+	"version": "0.11.0",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -22,7 +22,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/mghweb/vscode-miva-ide.git"
+		"url": "https://github.com/mghdotdev/vscode-miva-ide.git"
 	},
 	"keywords": [
 		"snippets",
