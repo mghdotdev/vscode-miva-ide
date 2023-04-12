@@ -89,8 +89,8 @@
 				"editor.suggest.snippetsPreventQuickSuggestions": false
 			},
 			"files.associations": {
-				"**/css/*.mvt": "mvt-css",
-				"**/js/*.mvt": "mvt-js"
+				"**/css/*.mvt": "mvtcss",
+				"**/js/*.mvt": "mvtjs"
 			}
 		},
 		"commands": [
@@ -127,14 +127,14 @@
 				"path": "./syntaxes/MVT/mvt.tmLanguage.json"
 			},
 			{
-				"language": "mvt-css",
+				"language": "mvtcss",
 				"scopeName": "source.css.mvt",
-				"path": "./syntaxes/MVT/mvt-css.tmLanguage.json"
+				"path": "./syntaxes/MVT/mvtcss.tmLanguage.json"
 			},
 			{
-				"language": "mvt-js",
+				"language": "mvtjs",
 				"scopeName": "source.js.mvt",
-				"path": "./syntaxes/MVT/mvt-js.tmLanguage.json"
+				"path": "./syntaxes/MVT/mvtjs.tmLanguage.json"
 			},
 			{
 				"scopeName": "mvt.injection",
@@ -162,7 +162,7 @@
 			{
 				"command": "mivaIde.MVT.convertAndCopy",
 				"key": "cmd+shift+c",
-				"when": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvt-css || editorLangId == mvt-js)"
+				"when": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.toggleHtmlComment",
@@ -175,7 +175,8 @@
 				"id": "mvt",
 				"aliases": [
 					"Miva Template Language",
-					"MVT"
+					"MVT",
+					"MVT (HTML)"
 				],
 				"extensions": [
 					".mvt"
@@ -183,28 +184,28 @@
 				"configuration": "./configurations/MVT/mvt.configuration.json"
 			},
 			{
-				"id": "mvt-css",
+				"id": "mvtcss",
 				"aliases": [
 					"Miva Template Language (CSS)",
-					"MVT-CSS"
+					"MVT (CSS)"
 				],
 				"extensions": [
 					".mvt",
 					".css.mvt"
 				],
-				"configuration": "./configurations/MVT/mvt-css.configuration.json"
+				"configuration": "./configurations/MVT/mvtcss.configuration.json"
 			},
 			{
-				"id": "mvt-js",
+				"id": "mvtjs",
 				"aliases": [
 					"Miva Template Language (JS)",
-					"MVT-JS"
+					"MVT (JS)"
 				],
 				"extensions": [
 					".mvt",
 					".js.mvt"
 				],
-				"configuration": "./configurations/MVT/mvt-js.configuration.json"
+				"configuration": "./configurations/MVT/mvtjs.configuration.json"
 			},
 			{
 				"id": "mv",
@@ -236,35 +237,35 @@
 				"path": "./snippets/builtins.snippets.json"
 			},
 			{
-				"language": "mvt-css",
+				"language": "mvtcss",
 				"path": "./snippets/MVT/tags.snippets.json"
 			},
 			{
-				"language": "mvt-css",
+				"language": "mvtcss",
 				"path": "./snippets/MVT/customfields.snippets.json"
 			},
 			{
-				"language": "mvt-css",
+				"language": "mvtcss",
 				"path": "./snippets/MVT/debugging.snippets.json"
 			},
 			{
-				"language": "mvt-css",
+				"language": "mvtcss",
 				"path": "./snippets/builtins.snippets.json"
 			},
 			{
-				"language": "mvt-js",
+				"language": "mvtjs",
 				"path": "./snippets/MVT/tags.snippets.json"
 			},
 			{
-				"language": "mvt-js",
+				"language": "mvtjs",
 				"path": "./snippets/MVT/customfields.snippets.json"
 			},
 			{
-				"language": "mvt-js",
+				"language": "mvtjs",
 				"path": "./snippets/MVT/debugging.snippets.json"
 			},
 			{
-				"language": "mvt-js",
+				"language": "mvtjs",
 				"path": "./snippets/builtins.snippets.json"
 			},
 			{
@@ -275,8 +276,8 @@
 	},
 	"activationEvents": [
 		"onLanguage:mvt",
-		"onLanguage:mvt-css",
-		"onLanguage:mvt-js",
+		"onLanguage:mvtcss",
+		"onLanguage:mvtjs",
 		"onLanguage:mv"
 	],
 	"devDependencies": {

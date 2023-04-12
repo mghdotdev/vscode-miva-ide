@@ -24,8 +24,8 @@ export interface Workspace {
 export interface Languages {
 	mv: LanguageFeatures,
 	mvt: LanguageFeatures,
-	'mvt-css': LanguageFeatures,
-	'mvt-js': LanguageFeatures
+	mvtcss: LanguageFeatures,
+	mvtjs: LanguageFeatures
 }
 
 export interface LanguageFeatures {

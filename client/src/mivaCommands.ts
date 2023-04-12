@@ -131,7 +131,7 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertAndCopy', ( textEditor: TextEditor ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvtcss' && textEditor.document.languageId !== 'mvtjs' ) {
 		return;
 	}
 
@@ -162,7 +162,7 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvtcss' && textEditor.document.languageId !== 'mvtjs' ) {
 		return;
 	}
 
@@ -186,7 +186,7 @@ const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.
 const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvtcss' && textEditor.document.languageId !== 'mvtjs' ) {
 		return;
 	}
 
@@ -211,9 +211,9 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 	const languageId = textEditor.document.languageId;
 
-	if ( languageId === 'mvt' || languageId === 'mvt-css' || languageId === 'mvt-js' || languageId === 'mv' ) {
+	if ( languageId === 'mvt' || languageId === 'mvtcss' || languageId === 'mvtjs' || languageId === 'mv' ) {
 
-		const blockComment: CharacterPair = languageId === 'mvt-css' || languageId === 'mvt-js'
+		const blockComment: CharacterPair = languageId === 'mvtcss' || languageId === 'mvtjs'
 			?  [ '/*', '*/' ]
 			:  [ '<!--', '-->' ];
 
@@ -236,7 +236,7 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.calculatePosNumber', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
-	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvtcss' && textEditor.document.languageId !== 'mvtjs' ) {
 		return;
 	}
 

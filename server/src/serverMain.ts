@@ -112,8 +112,8 @@ const validationDelayMs = 500;
 
 let languages: Languages = {
 	mvt: null,
-	'mvt-css': null,
-	'mvt-js': null,
+	mvtcss: null,
+	mvtjs: null,
 	mv: null
 };
 
@@ -134,9 +134,10 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	languages.mvt = getMVTFeatures( workspace, params.capabilities );
-	languages['mvt-css'] = getMVTFeatures( workspace, params.capabilities );
-	languages['mvt-js'] = getMVTFeatures( workspace, params.capabilities );
+	const mvtFeatures = getMVTFeatures( workspace, params.capabilities );
+	languages.mvt = mvtFeatures;
+	languages.mvtcss = mvtFeatures;
+	languages.mvtjs = mvtFeatures;
 	languages.mv = getMVFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
