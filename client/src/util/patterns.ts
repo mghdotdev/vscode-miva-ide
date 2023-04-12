@@ -1,4 +1,4 @@
-export default {	
+export default {
 	MVT: {
 
 		ENTITY_LOCAL: /^&mvt[a-z]?:(?!global:)(.+?);$/i,
@@ -17,7 +17,7 @@ export default {
 
 	},
 	SHARED: {
-		
+
 		LEFT_FILE_ATTR: /(?<=file\s*=\s*\"(\s*\{)?)[^<]*?$/i,
 		RIGHT_FILE_ATTR: /^[^>]*?file\s*=\s*"(\s*\{)?/i,
 

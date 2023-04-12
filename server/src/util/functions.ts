@@ -11,7 +11,7 @@ import {
 	CompletionList,
 	MarkupContent,
 	MarkupKind
-} from 'vscode-languageserver';
+} from 'vscode-languageserver/node';
 
 export function formatError( message: string,
 	err: any ): string {

@@ -16,7 +16,7 @@ import {
 	SymbolKind,
 	Location,
 	ClientCapabilities
-} from 'vscode-languageserver';
+} from 'vscode-languageserver/node';
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
@@ -37,7 +37,7 @@ import {
 	TokenType
 } from 'vscode-html-languageservice';
 import { getLanguageModelCache } from './util/language-model-cache';
-import glob from 'glob';
+import {glob} from 'glob';
 import { readFileSync, existsSync } from 'fs';
 
 const htmlLanguageService = getLanguageService();
