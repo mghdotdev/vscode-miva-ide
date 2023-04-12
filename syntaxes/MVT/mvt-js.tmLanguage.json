@@ -1,0 +1,9 @@
+{
+  "name": "Miva Template Language (JS)",
+  "scopeName": "source.js.mvt",
+  "patterns": [
+    {
+      "include": "source.js"
+    }
+  ]
+}

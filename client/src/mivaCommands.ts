@@ -1,5 +1,5 @@
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, Position } from 'vscode';
+import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, Position, CharacterPair } from 'vscode';
 
 const boundryAmount = 200;
 
@@ -39,13 +39,13 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		if ( leftMatch ) {
 
 			insertEdit( leftMatch[0].length, ` ${ fileName } ` );
-			
+
 		}
 
 	}
 
 	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
-	
+
 	// define helper method for inserting file name
 	function insertEdit( matchLength: number, fileName: string ) {
 
@@ -58,7 +58,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 
 	// check & execute the insertion
 	if ( leftMatch ) {
-		
+
 		insertEdit( leftMatch[0].length, fileName );
 
 	}
@@ -131,7 +131,7 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertAndCopy', ( textEditor: TextEditor ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
 		return;
 	}
 
@@ -162,7 +162,7 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToEntity', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
 		return;
 	}
 
@@ -186,7 +186,7 @@ const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.
 const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.convertToVariable', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
 	// exit if not MVT
-	if ( textEditor.document.languageId !== 'mvt' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
 		return;
 	}
 
@@ -211,15 +211,19 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 	const languageId = textEditor.document.languageId;
 
-	if ( languageId === 'mvt' || languageId === 'mv' ) {
-		
-		languages.setLanguageConfiguration( languageId, { comments: { blockComment: [ '<!--', '-->' ] } } );
+	if ( languageId === 'mvt' || languageId === 'mvt-css' || languageId === 'mvt-js' || languageId === 'mv' ) {
+
+		const blockComment: CharacterPair = languageId === 'mvt-css' || languageId === 'mvt-js'
+			?  [ '/*', '*/' ]
+			:  [ '<!--', '-->' ];
+
+		languages.setLanguageConfiguration( languageId, { comments: { blockComment: blockComment } } );
 
 		commands.executeCommand( 'editor.action.blockComment' ).then(() => {
 
 			languages.setLanguageConfiguration( languageId, { comments: { blockComment: ( languageId == 'mv' ) ? [ '<MvCOMMENT>', '</MvCOMMENT>' ] : [ '<mvt:comment>', '</mvt:comment>' ] } } );
 
-		});		
+		});
 
 	}
 	else {
@@ -232,7 +236,7 @@ const insertHtmlComment = commands.registerTextEditorCommand( 'mivaIde.toggleHtm
 
 const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.calculatePosNumber', ( textEditor: TextEditor, edit: TextEditorEdit ) => {
 
-	if ( textEditor.document.languageId !== 'mvt' ) {
+	if ( textEditor.document.languageId !== 'mvt' && textEditor.document.languageId !== 'mvt-css' && textEditor.document.languageId !== 'mvt-js' ) {
 		return;
 	}
 
