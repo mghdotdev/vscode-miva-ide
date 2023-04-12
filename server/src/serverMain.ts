@@ -112,6 +112,8 @@ const validationDelayMs = 500;
 
 let languages: Languages = {
 	mvt: null,
+	mvtcss: null,
+	mvtjs: null,
 	mv: null
 };
 
@@ -132,7 +134,10 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	languages.mvt = getMVTFeatures( workspace, params.capabilities );
+	const mvtFeatures = getMVTFeatures( workspace, params.capabilities );
+	languages.mvt = mvtFeatures;
+	languages.mvtcss = mvtFeatures;
+	languages.mvtjs = mvtFeatures;
 	languages.mv = getMVFeatures( workspace, params.capabilities );
 
 	function getClientCapability<T>( name: string, def: T ) {
@@ -207,9 +212,9 @@ connection.onDidChangeConfiguration(change  => {
 // Handle completion events
 connection.onCompletion(async ( textDocumentPosition, token ) => {
 	return runSafeAsync(async () => {
-		
+
 		const document = documents.get( textDocumentPosition.textDocument.uri );
-		
+
 		if ( !document ) {
 			return null;
 		}
@@ -263,7 +268,7 @@ connection.onDefinition(( definitionParams, token ) => {
 	return runSafeAsync(async () => {
 
 		const document = documents.get( definitionParams.textDocument.uri );
-		
+
 		if ( document ) {
 
 			const settings = await getDocumentSettings( document );
@@ -272,7 +277,7 @@ connection.onDefinition(( definitionParams, token ) => {
 			if ( features && features.findDefinition ) {
 
 				return features.findDefinition( document, definitionParams.position, settings );
-				
+
 			}
 
 		}
@@ -285,7 +290,7 @@ connection.onDefinition(( definitionParams, token ) => {
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent(change => {
-	
+
 	triggerValidation( change.document );
 
 });

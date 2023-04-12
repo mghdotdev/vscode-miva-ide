@@ -1,0 +1,7 @@
+%YAML 1.2
+---
+name: Miva Template Language (CSS)
+scopeName: source.css.mvt
+
+patterns:
+  - include: source.css

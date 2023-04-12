@@ -34,6 +34,10 @@ export function activate( context: ExtensionContext ) {
 	let documentSelector = [
 		{ scheme: 'file', language: 'mvt' },
 		{ scheme: 'untitled', language: 'mvt' },
+		{ scheme: 'file', language: 'mvtcss' },
+		{ scheme: 'untitled', language: 'mvtcss' },
+		{ scheme: 'file', language: 'mvtjs' },
+		{ scheme: 'untitled', language: 'mvtjs' },
 		{ scheme: 'file', language: 'mv' },
 		{ scheme: 'untitled', language: 'mv' }
 	];
@@ -53,7 +57,7 @@ export function activate( context: ExtensionContext ) {
 	client.registerProposedFeatures();
 	let clientDisposable = client.start();
 
-	// push client to context 
+	// push client to context
 	context.subscriptions.push( clientDisposable );
 
 	// set advanced language configurations
@@ -93,7 +97,7 @@ export function activate( context: ExtensionContext ) {
 			}
 		],
 	});
-	
+
 	// push all commands to context
 	pushAll( context.subscriptions, mivaCommands );
 

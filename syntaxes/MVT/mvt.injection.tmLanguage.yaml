@@ -2,7 +2,10 @@
 ---
 name: MVT (Injection)
 scopeName: mvt.injection
-injectionSelector: 'L:text.html.mvt -comment.block.mvt'
+injectionSelector:
+  - 'L:text.html.mvt -comment.block.mvt'
+  - 'L:source.css.mvt -comment.block.mvt'
+  - 'L:source.js.mvt -comment.block.mvt'
 
 patterns:
 
@@ -16,7 +19,7 @@ patterns:
   - include: '#tags'
 
 repository:
- 
+
   # =-======================== Comments ========================-= #
   comments:
     begin: '(?i)<mvt:comment>'
@@ -24,7 +27,7 @@ repository:
       0: {name: punctuation.definition.comment.mvt}
     end: '(?i)</mvt:comment>'
     name: comment.block.mvt
-  
+
   # =-======================== Entities ========================-= #
   entities:
     patterns:
@@ -64,7 +67,7 @@ repository:
           - include: '#assign-name-attribute'
           - include: '#value-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-call:
     patterns:
       - begin: '(</?)(?i:(mvt)(:)(call)\b)'
@@ -89,7 +92,7 @@ repository:
           - include: '#method-attribute'
           - include: '#timeout-attribute'
           - include: '#illegal-attributes'
-        
+
   tag-capture:
     patterns:
       - begin: '(</?)(?i:(mvt)(:)(capture)\b)'
@@ -105,7 +108,7 @@ repository:
         patterns:
           - include: '#variable-attribute'
           - include: '#illegal-attributes'
-    
+
   tag-do:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(do)(?=\s|/?>)'
@@ -123,7 +126,7 @@ repository:
           - include: '#name-attribute'
           - include: '#value-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-else:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(else)(?=\s|/?>)'
@@ -140,7 +143,7 @@ repository:
           - match: '\/'
             name: invalid.illegal.slash.mvt
           - include: '#illegal-attributes'
-    
+
   tag-elseif:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(elseif)(?=\s|/?>)'
@@ -158,7 +161,7 @@ repository:
             name: invalid.illegal.slash.mvt
           - include: '#expr-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-eval:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(eval)(?=\s|/?>)'
@@ -191,7 +194,7 @@ repository:
           - include: '#array-attribute'
           - include: '#iterator-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-if:
     patterns:
       - begin: '(</?)(?i:(mvt)(:)(if)\b)'
@@ -207,7 +210,7 @@ repository:
         patterns:
           - include: '#expr-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-inline:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(callcontinue|callstop|exit|foreachcontinue|foreachstop|whilecontinue|whilestop)(?=\s|/?>)'
@@ -222,7 +225,7 @@ repository:
         name: meta.tag.inline.$4.mvt
         patterns:
           - include: '#illegal-attributes'
-  
+
   tag-item:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(item)(?=\s|/?>)'
@@ -239,7 +242,7 @@ repository:
           - include: '#item-name-attribute'
           - include: '#param-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-miva:
     patterns:
       - begin: '(?i)(<)(mvt)(:)(miva)(?=\s|/?>)'
@@ -256,7 +259,7 @@ repository:
           - include: '#compresswhitespace-attribute'
           - include: '#output-attribute'
           - include: '#illegal-attributes'
-  
+
   tag-while:
     patterns:
       - begin: '(</?)(?i:(mvt)(:)(while)\b)'
@@ -431,7 +434,7 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
-  
+
   cerfile-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(cerfile)\s*(=?)\s*(")'
@@ -461,7 +464,7 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
-  
+
   param-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(param)\s*(=?)\s*(")'
@@ -493,7 +496,7 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
-  
+
   array-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(array)\s*(=?)\s*(")'
@@ -505,7 +508,7 @@ repository:
         endCaptures:
           0: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.array.mvt source.mvt variable.language.implied.mvt
-  
+
   iterator-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(iterator)\s*(=?)\s*(")'
@@ -517,7 +520,7 @@ repository:
         endCaptures:
           0: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.iterator.mvt source.mvt variable.language.implied.mvt
-  
+
   value-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(value)\s*(=?)\s*(")'
@@ -532,7 +535,7 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
-  
+
   item-name-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
@@ -544,7 +547,7 @@ repository:
         endCaptures:
           0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
         contentName: attribute-value.name.mvt source.mvt support.class.module.mvt
-  
+
   assign-name-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
@@ -558,7 +561,7 @@ repository:
         contentName: attribute-value.name.mvt source.mvt assign.declaration.mvt
         patterns:
           - include: '#source-variables'
-  
+
   variable-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(variable)\s*(=?)\s*(")'
@@ -607,7 +610,7 @@ repository:
             name: string.quoted.single.mvt
           - match: '[^"]'
             name: invalid.illegal.identifier.mvt
-  
+
     timeout-attribute:
       patterns:
         - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
@@ -696,11 +699,11 @@ repository:
       # POSX
       - match: \b(?i:POS)[0-9]+\b
         name: variable.language.posx.mvt
-  
+
   source-item-param-string:
     match: '[^"]+'
     name: string.quoted.double.mvt
-  
+
   source-item-param-variable:
     match: '([^:]+)(:)(([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*))'
     captures:
@@ -720,12 +723,12 @@ repository:
         name: string.quoted.single.mvt
         patterns:
         - include: '#source-string-escapes'
-  
+
   source-string-escapes:
     patterns:
     - match: \\\s*\n
       name: constant.character.escape.newline.mvt
-      
+
     - match: '\\(x[\da-fA-F][\da-fA-F]|u[\da-fA-F][\da-fA-F][\da-fA-F][\da-fA-F]|.)'
       name: constant.character.escape.mvt
 
@@ -743,7 +746,7 @@ repository:
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
-  
+
   source-functions-builtins:
     patterns:
       - begin: '\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(\()'
@@ -771,7 +774,7 @@ repository:
           - match: '\]'
             name: invalid.illegal.stray-bracket-end
           - include: '#source-mvt'
-  
+
   source-brackets:
     patterns:
       - begin: '\['

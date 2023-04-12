@@ -23,14 +23,16 @@ export interface Workspace {
 
 export interface Languages {
 	mv: LanguageFeatures,
-	mvt: LanguageFeatures
+	mvt: LanguageFeatures,
+	mvtcss: LanguageFeatures,
+	mvtjs: LanguageFeatures
 }
 
 export interface LanguageFeatures {
 
 	doValidation?: ( document: TextDocument,
 		settings?: Settings ) => Diagnostic[];
-		
+
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
 
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];

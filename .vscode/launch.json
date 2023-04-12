@@ -7,7 +7,6 @@
 			"name": "Launch Client",
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceFolder}" ],
-			"stopOnEntry": false,
 			"sourceMaps": true,
 			"outFiles": ["${workspaceFolder}/client/out/**/*.js"],
 			"preLaunchTask": "npm: watch"
@@ -17,7 +16,6 @@
 			"request": "attach",
 			"name": "Attach to Server",
 			"address": "localhost",
-			"protocol": "inspector",
 			"port": 6045,
 			"sourceMaps": true,
 			"outFiles": ["${workspaceFolder}/server/out/**/*.js"]
