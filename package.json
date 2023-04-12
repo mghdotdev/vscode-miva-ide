@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "0.12.0",
+	"version": "0.12.2",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -91,6 +91,12 @@
 			"files.associations": {
 				"**/css/*.mvt": "mvtcss",
 				"**/js/*.mvt": "mvtjs"
+			},
+			"emmet.includeLanguages": {
+				"mv": "html",
+				"mvt": "html",
+				"mvtcss": "css",
+				"mvtjs": "javascript"
 			}
 		},
 		"commands": [
