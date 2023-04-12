@@ -1,48 +1,48 @@
-const yaml = require( 'js-yaml' );
-const fs = require( 'fs' );
-const path = require( 'path' );
-const glob = require( 'glob' );
-const { argv } = require( 'process' );
-const chalk = require( 'chalk' );
+const yaml = require('js-yaml');
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const {argv} = require('process');
+const chalk = require('chalk');
 
-function buildFile( file ) {
+function buildFile (file) {
 
-	console.log( chalk.green( `Builder: Converting yaml file to json ${ chalk.underline( file ) }` ) );
+	console.log(chalk.green(`Builder: Converting yaml file to json ${ chalk.underline(file) }`));
 
 	try {
 
-		const pathInfo = path.parse( file );
-		const obj = yaml.safeLoad( fs.readFileSync( file, 'utf8' ) );
+		const pathInfo = path.parse(file);
+		const obj = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
 
-		if ( obj ) {
+		if (obj) {
 
-			fs.writeFileSync( `${ pathInfo.dir + path.sep + pathInfo.name }.json`, JSON.stringify( obj, null, 2 ), 'utf8' );
+			fs.writeFileSync(`${ pathInfo.dir + path.sep + pathInfo.name }.json`, JSON.stringify(obj, null, 2), 'utf8');
 
 		}
 
 	}
-	catch( e ) {
+	catch (e) {
 
-		console.error( chalk.red( `Builder: Unable to convert ${ file } due to:\n${ e }` ) );
+		console.error(chalk.red(`Builder: Unable to convert ${ file } due to:\n${ e }`));
 
 	}
 
 }
 
-const inputFile = argv[ 2 ];
+const inputFile = argv[2];
 
-if ( inputFile ) {
+if (inputFile) {
 
-	fs.stat( inputFile, ( err, stats ) => {
+	fs.stat(inputFile, (err, stats) => {
 
-		if ( stats.isFile() ) {
+		if (stats.isFile()) {
 
-			buildFile( inputFile );
+			buildFile(inputFile);
 
 		}
 		else {
 
-			console.error( chalk.red( `Builder: Passed input ${ chalk.underline( inputFile ) } is not a valid file path.` ) );
+			console.error(chalk.red(`Builder: Passed input ${ chalk.underline(inputFile) } is not a valid file path.`));
 
 		}
 
@@ -51,15 +51,15 @@ if ( inputFile ) {
 }
 else {
 
-	glob( './**/*.yaml', function( err, files ) {
+	glob('./**/*.yaml', function (err, files) {
 
-		if ( err ) {
-			throw new Error( err );
+		if (err) {
+			throw new Error(err);
 			return;
 		}
-		
-		files.forEach( buildFile );
-	
+
+		files.forEach(buildFile);
+
 	});
 
 }
