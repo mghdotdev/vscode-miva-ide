@@ -20,7 +20,7 @@ import {
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
-import { 
+import {
 	readJSONFile,
 	tokenize,
 	getDoValueCompletions,
@@ -76,7 +76,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				// create the pattern to match
 				const pattern = new RegExp( validation.match, 'igm' );
 				let match: RegExpExecArray;
-				let count = 0; 
+				let count = 0;
 				while ( (match = pattern.exec( text )) && count < 1000 ) {
 					count++;
 					diagnostics.push(
@@ -107,7 +107,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				position
 			);
 			const left = mvtDocument.getText( leftRange ) || '';
-			
+
 			// determine right side text range
 			const rightOffset = cursorPositionOffset + boundryAmount;
 			const rightRange = Range.create(
@@ -115,7 +115,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				mvtDocument.positionAt( rightOffset )
 			);
 			const right = mvtDocument.getText( rightRange ) || '';
-			
+
 			// mvt:do tag value attribute completions
 			if (
 				patterns.MVT.LEFT_IN_MVTDO_TAG.test( left ) &&
@@ -274,10 +274,10 @@ function _getMvDocumentSymbolsByUri (uri) {
 		return output.concat( _mvFindDocumentSymbols( document ) );
 
 	}, []);
-} 
+}
 
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
-	
+
 	const results: SymbolInformation[] = [];
 
 	const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
@@ -334,7 +334,7 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
 		token = scanner.scan();
 
-	}			
+	}
 
 	return results;
 
@@ -372,7 +372,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				position
 			);
 			const left = mvDocument.getText( leftRange ) || '';
-			
+
 			// determine right side text range
 			const rightOffset = cursorPositionOffset + boundryAmount;
 			const rightRange = Range.create(
@@ -380,7 +380,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				mvDocument.positionAt( rightOffset )
 			);
 			const right = mvDocument.getText( rightRange ) || '';
-			
+
 			// MvDO tag value attribute completions
 			if (
 				patterns.MV.LEFT_IN_MVDO_TAG.test( left ) &&
@@ -401,7 +401,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 		},
 
 		findDocumentSymbols( document: TextDocument ): SymbolInformation[] {
-			
+
 			return _mvFindDocumentSymbols( mvDocuments.get( document ) );
 
 		},
@@ -431,7 +431,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			}
 
 			return null;
-			
+
 		}
 
 	};
