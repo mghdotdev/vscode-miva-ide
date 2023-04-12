@@ -1,16 +1,19 @@
 {
-	"main": "./out/serverMain.js",
+	"publishConfig": {
+		"access": "restricted"
+	},
+	"main": "./out/main.js",
 	"engines": {
 		"node": "*"
 	},
 	"devDependencies": {},
 	"dependencies": {
-		"glob": "^7.1.6",
+		"glob": "^10.0.0",
 		"lodash.get": "^4.4.2",
 		"lodash.has": "^4.5.2",
-		"vscode-html-languageservice": "^3.1.4",
-		"vscode-languageserver": "^6.1.1",
-		"vscode-languageserver-textdocument": "^1.0.1",
-		"vscode-uri": "^2.1.2"
+		"vscode-html-languageservice": "^5.0.4",
+		"vscode-languageserver": "^8.1.0",
+		"vscode-languageserver-textdocument": "^1.0.8",
+		"vscode-uri": "^3.0.7"
 	}
 }

@@ -34,7 +34,7 @@ export function formatError( message: string,
 	}
 
 	return message;
-	
+
 }
 
 export function pushAll<T>( to: T[], from: T[] ) {
@@ -110,7 +110,7 @@ export function runSafe<T, E>( func: () => T, errorVal: T, errorMessage: string,
 }
 
 function cancelValue<E>() {
-	return new ResponseError<E>( ErrorCodes.RequestCancelled, 'Request cancelled' );
+	return new ResponseError<E>( ErrorCodes.PendingResponseRejected, 'Request cancelled' );
 }
 
 function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
@@ -120,7 +120,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index == (arr.length - 1) ) ? ' ' : '' }`;
 
 	}, '');
-	
+
 	return {
 		label: fn.name,
 		insertText: `${ fn.name }(${ parameters })`,
@@ -128,7 +128,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		kind: CompletionItemKind.Function,
 		detail: file.distroPath,
 		command: {
-			title: `Inject "${ file.distroPath }" into file attribute.`, 
+			title: `Inject "${ file.distroPath }" into file attribute.`,
 			command: 'mivaIde.chooseFileName',
 			arguments: [
 				{
@@ -140,12 +140,12 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 
 }
 
-export function getDoValueCompletions( merchantFunctionFiles ): CompletionList {
+export function getDoValueCompletions( merchantFunctionFiles: any[] ): CompletionList {
 
 	let doValueCompletions: Map<string, CompletionItem> = new Map();
 
-	merchantFunctionFiles.forEach(file =>{
-		file.functions.forEach(fn => {
+	merchantFunctionFiles.forEach((file: any) =>{
+		file.functions.forEach((fn: any) => {
 
 			let key = `${ fn.name }@${ fn.parameters.join( '|' ) }`;
 			let completion = doValueCompletions.get( key );

@@ -8,11 +8,13 @@ import {
 	TransportKind,
 	LanguageClientOptions,
 	LanguageClient
-} from 'vscode-languageclient';
-import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/emptyTagsShared';
+} from 'vscode-languageclient/node';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/empty-tag-shared';
 import * as path from 'path';
 import { readJSONFile, pushAll } from './util/functions';
-import mivaCommands from './mivaCommands';
+import mivaCommands from './miva-commands';
+
+let client: LanguageClient;
 
 export function activate( context: ExtensionContext ) {
 
@@ -53,12 +55,12 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Create the language client and start the client.
-	let client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
+	client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
 	client.registerProposedFeatures();
-	let clientDisposable = client.start();
+	client.start();
 
 	// push client to context
-	context.subscriptions.push( clientDisposable );
+	context.subscriptions.push( client );
 
 	// set advanced language configurations
 	languages.setLanguageConfiguration('mvt', {
@@ -104,7 +106,7 @@ export function activate( context: ExtensionContext ) {
 }
 
 export function deactivate(): Thenable<void> | undefined {
-
+	client?.stop();
 	return;
 
 }

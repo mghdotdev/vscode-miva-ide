@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "0.12.0",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -10,15 +10,12 @@
 		"Programming Languages"
 	],
 	"scripts": {
-		"build-syntax": "node ./syntaxes/build.js",
-		"clean": "rimraf client/out && rimraf server/out",
-		"compile": "tsc -b",
-		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
-		"vscode:prepublish": "npm run webpack",
-		"watch-syntax": "node ./syntaxes/watch.js",
+		"vscode:prepublish": "npm run build",
+		"syntax:watch": "node ./syntaxes/watch.js",
+		"syntax:build": "node ./syntaxes/build.js",
 		"watch": "tsc -b -w",
-		"webpack": "npm run clean && webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js",
-		"build": "npx vsce package"
+		"build": "tsc -b",
+		"package": "npx vsce package"
 	},
 	"repository": {
 		"type": "git",
@@ -124,17 +121,17 @@
 			{
 				"language": "mvt",
 				"scopeName": "text.html.mvt",
-				"path": "./syntaxes/MVT/mvt.tmLanguage.json"
+				"path": "./syntaxes/mvt/mvt.tmLanguage.json"
 			},
 			{
 				"language": "mvtcss",
 				"scopeName": "source.css.mvt",
-				"path": "./syntaxes/MVT/mvtcss.tmLanguage.json"
+				"path": "./syntaxes/mvt/mvtcss.tmLanguage.json"
 			},
 			{
 				"language": "mvtjs",
 				"scopeName": "source.js.mvt",
-				"path": "./syntaxes/MVT/mvtjs.tmLanguage.json"
+				"path": "./syntaxes/mvt/mvtjs.tmLanguage.json"
 			},
 			{
 				"scopeName": "mvt.injection",
@@ -143,19 +140,19 @@
 					"source.css.mvt",
 					"source.js.mvt"
 				],
-				"path": "./syntaxes/MVT/mvt.injection.tmLanguage.json"
+				"path": "./syntaxes/mvt/mvt.injection.tmLanguage.json"
 			},
 			{
 				"language": "mv",
 				"scopeName": "text.html.mv",
-				"path": "./syntaxes/MV/mv.tmLanguage.json"
+				"path": "./syntaxes/mv/mv.tmLanguage.json"
 			},
 			{
 				"scopeName": "mv.injection",
 				"injectTo": [
 					"text.html.mv"
 				],
-				"path": "./syntaxes/MV/mv.injection.tmLanguage.json"
+				"path": "./syntaxes/mv/mv.injection.tmLanguage.json"
 			}
 		],
 		"keybindings": [
@@ -181,7 +178,7 @@
 				"extensions": [
 					".mvt"
 				],
-				"configuration": "./configurations/MVT/mvt.configuration.json"
+				"configuration": "./configurations/mvt/mvt.configuration.json"
 			},
 			{
 				"id": "mvtcss",
@@ -193,7 +190,7 @@
 					".mvt",
 					".css.mvt"
 				],
-				"configuration": "./configurations/MVT/mvtcss.configuration.json"
+				"configuration": "./configurations/mvt/mvtcss.configuration.json"
 			},
 			{
 				"id": "mvtjs",
@@ -205,7 +202,7 @@
 					".mvt",
 					".js.mvt"
 				],
-				"configuration": "./configurations/MVT/mvtjs.configuration.json"
+				"configuration": "./configurations/mvt/mvtjs.configuration.json"
 			},
 			{
 				"id": "mv",
@@ -216,21 +213,21 @@
 				"extensions": [
 					".mv"
 				],
-				"configuration": "./configurations/MV/mv.configuration.json"
+				"configuration": "./configurations/mv/mv.configuration.json"
 			}
 		],
 		"snippets": [
 			{
 				"language": "mvt",
-				"path": "./snippets/MVT/tags.snippets.json"
+				"path": "./snippets/mvt/tags.snippets.json"
 			},
 			{
 				"language": "mvt",
-				"path": "./snippets/MVT/customfields.snippets.json"
+				"path": "./snippets/mvt/customfields.snippets.json"
 			},
 			{
 				"language": "mvt",
-				"path": "./snippets/MVT/debugging.snippets.json"
+				"path": "./snippets/mvt/debugging.snippets.json"
 			},
 			{
 				"language": "mvt",
@@ -238,15 +235,15 @@
 			},
 			{
 				"language": "mvtcss",
-				"path": "./snippets/MVT/tags.snippets.json"
+				"path": "./snippets/mvt/tags.snippets.json"
 			},
 			{
 				"language": "mvtcss",
-				"path": "./snippets/MVT/customfields.snippets.json"
+				"path": "./snippets/mvt/customfields.snippets.json"
 			},
 			{
 				"language": "mvtcss",
-				"path": "./snippets/MVT/debugging.snippets.json"
+				"path": "./snippets/mvt/debugging.snippets.json"
 			},
 			{
 				"language": "mvtcss",
@@ -254,15 +251,15 @@
 			},
 			{
 				"language": "mvtjs",
-				"path": "./snippets/MVT/tags.snippets.json"
+				"path": "./snippets/mvt/tags.snippets.json"
 			},
 			{
 				"language": "mvtjs",
-				"path": "./snippets/MVT/customfields.snippets.json"
+				"path": "./snippets/mvt/customfields.snippets.json"
 			},
 			{
 				"language": "mvtjs",
-				"path": "./snippets/MVT/debugging.snippets.json"
+				"path": "./snippets/mvt/debugging.snippets.json"
 			},
 			{
 				"language": "mvtjs",
@@ -271,6 +268,10 @@
 			{
 				"language": "mv",
 				"path": "./snippets/builtins.snippets.json"
+			},
+			{
+				"language": "mv",
+				"path": "./snippets/mv/tags.snippets.json"
 			}
 		]
 	},
@@ -280,18 +281,17 @@
 		"onLanguage:mvtjs",
 		"onLanguage:mv"
 	],
+	"workspaces": [
+		"client",
+		"server"
+	],
 	"devDependencies": {
-		"@types/node": "^13.13.30",
-		"chalk": "^3.0.0",
-		"glob": "^7.1.6",
-		"js-yaml": "^3.14.0",
-		"merge-options": "^2.0.0",
-		"rimraf": "^3.0.2",
-		"ts-loader": "^6.2.2",
-		"typescript": "^3.9.7",
-		"vsce": "^1.81.1",
-		"webpack": "^4.44.2",
-		"webpack-cli": "^3.3.12"
-	},
-	"dependencies": {}
+		"@types/node": "^18.15.11",
+		"@vscode/vsce": "^2.18.0",
+		"chalk": "^5.0.2",
+		"glob": "^10.0.0",
+		"js-yaml": "^4.1.0",
+		"rimraf": "^5.0.0",
+		"typescript": "^5.0.4"
+	}
 }

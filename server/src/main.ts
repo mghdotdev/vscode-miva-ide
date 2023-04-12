@@ -1,6 +1,6 @@
 import {
 	createConnection,
-	IConnection,
+	Connection,
 	TextDocuments,
 	ConfigurationParams,
 	ConfigurationRequest,
@@ -12,12 +12,13 @@ import {
 	DidChangeWorkspaceFoldersNotification,
 	Diagnostic,
 	DidChangeConfigurationNotification,
-	SymbolInformation
-} from 'vscode-languageserver';
+	SymbolInformation,
+	ProposedFeatures
+} from 'vscode-languageserver/node';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
 import { Settings, Workspace, Languages } from './util/interfaces';
-import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
+import { getMVTFeatures, getMVFeatures } from './miva-features';
 import _has from 'lodash.has';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 
@@ -84,7 +85,7 @@ async function validateTextDocument( textDocument: TextDocument ) {
 // ================================================================================================================================ //
 
 // Create a connection for the server
-const connection: IConnection = createConnection();
+const connection: Connection = createConnection(ProposedFeatures.all);
 
 process.on('unhandledRejection', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );

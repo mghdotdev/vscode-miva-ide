@@ -36,7 +36,7 @@ import {
 	getLanguageService,
 	TokenType
 } from 'vscode-html-languageservice';
-import { getLanguageModelCache } from './util/languageModelCache';
+import { getLanguageModelCache } from './util/language-model-cache';
 import glob from 'glob';
 import { readFileSync, existsSync } from 'fs';
 
@@ -52,9 +52,9 @@ let lskSymbols: any[] = [];
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const mvtDocuments = getLanguageModelCache<TextDocument>( 10, 60, document => document );
-	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'validation.json' ) );
-	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'entity-completions.json' ) ) );
-	const variableSCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'MVT', 'variable-s-completions.json' ) ) );
+	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
+	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
+	const variableSCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'variable-s-completions.json' ) ) );
 
 	return {
 
