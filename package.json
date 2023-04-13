@@ -219,10 +219,6 @@
 		"snippets": [
 			{
 				"language": "mvt",
-				"path": "./snippets/mvt/tags.snippets.json"
-			},
-			{
-				"language": "mvt",
 				"path": "./snippets/mvt/customfields.snippets.json"
 			},
 			{
@@ -231,19 +227,11 @@
 			},
 			{
 				"language": "mvtcss",
-				"path": "./snippets/mvt/tags.snippets.json"
-			},
-			{
-				"language": "mvtcss",
 				"path": "./snippets/mvt/customfields.snippets.json"
 			},
 			{
 				"language": "mvtcss",
 				"path": "./snippets/mvt/debugging.snippets.json"
-			},
-			{
-				"language": "mvtjs",
-				"path": "./snippets/mvt/tags.snippets.json"
 			},
 			{
 				"language": "mvtjs",

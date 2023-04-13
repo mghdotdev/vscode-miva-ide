@@ -170,34 +170,56 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 }
 
-export function getBuiltinFunctionCompletions ( bultinFunctionData: any[] ): CompletionList {
-	const items = bultinFunctionData.map<CompletionItem>((builtinFunction: any) => {
-		return {
-			...builtinFunction,
-			kind: CompletionItemKind.Function,
-			insertTextFormat: InsertTextFormat.Snippet
-		}
-	});
-
-	return CompletionList.create( items );
+export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string, MarkupContent> {
+	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
+		return map.set(
+			completionItem.label,
+			{
+				kind: MarkupKind.Markdown,
+				value: completionItem.documentation
+			} as MarkupContent
+		);
+	}, new Map());
 }
 
-export function getBuiltinFunctionHoverSymbols ( builtinFunctionsData: any[] ): Map<string, MarkupContent> {
-	return builtinFunctionsData.reduce((map: Map<string, MarkupContent>, builtinFunction) => {
-		return map.set(builtinFunction.label, {
-			kind: MarkupKind.Markdown,
-			value: builtinFunction.documentation
-		});
+export function getHoverMapFromCompletionTagFile ( completions: any[] ): Map<string, MarkupContent> {
+	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
+		const [, baseTagName] = completionItem.label.split(':');
+
+		map.set(
+			baseTagName,
+			{
+				kind: MarkupKind.Markdown,
+				value: completionItem.documentation
+			} as MarkupContent
+		);
+
+		return map.set(
+			completionItem.label,
+			{
+				kind: MarkupKind.Markdown,
+				value: completionItem.documentation
+			} as MarkupContent
+		);
 	}, new Map());
 }
 
 export function parseCompletion( completion ) {
 
-	completion.kind = CompletionItemKind[ completion.kind ];
-	completion.documentation = <MarkupContent>{
-		kind: MarkupKind.Markdown,
-		value: completion.documentation
-	};
+	if (completion.kind) {
+		completion.kind = CompletionItemKind[ completion.kind ];
+	}
+
+	if (completion.documentation) {
+		completion.documentation = <MarkupContent>{
+			kind: MarkupKind.Markdown,
+			value: completion.documentation
+		};
+	}
+
+	if (completion.insertTextFormat) {
+		completion.insertTextFormat = InsertTextFormat[ completion.insertTextFormat ];
+	}
 
 	return completion;
 

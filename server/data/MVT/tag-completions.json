@@ -1,0 +1,13 @@
+[
+	{
+		"documentation": "[mvt:assign](https://docs.miva.com/template-language/mvtassign)  \n\n```<mvt:assign name=\"variable\" value=\"expression, string or number\" />```\n\nExecutes the expression contained within value and saves that value to the variable defined in the name attribute.",
+		"insertText": "<mvt:assign name=\"${1:l.variable}\" value=\"${2:l.value}\" />",
+		"insertTextFormat": "Snippet",
+		"label": "mvt:assign",
+		"kind": "Snippet",
+		"commitCharacters": [
+			">",
+			"/"
+		]
+	}
+]

@@ -26,8 +26,8 @@ import {
 	readJSONFile,
 	tokenize,
 	getDoValueCompletions,
-	getBuiltinFunctionCompletions,
-	getBuiltinFunctionHoverSymbols,
+	getHoverMapFromCompletionFile,
+	getHoverMapFromCompletionTagFile,
 	parseCompletionFile,
 	parseCompletion,
 	getWordAtOffset,
@@ -44,16 +44,24 @@ import { getLanguageModelCache } from './util/language-model-cache';
 import {glob} from 'glob';
 import { readFileSync, existsSync } from 'fs';
 
+// Define HTML Language Service helper
 const htmlLanguageService = getLanguageService();
 
-const boundryAmount = 200;
-const maxLineLength = 9999;
+// Constants
+const BOUNDARY_AMOUNT = 200;
+const MAX_LINE_LENGTH = 9999;
+
+// Completion data
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
-const builtinFunctionsData = readJSONFile( path.resolve( __dirname, '..', 'data', 'builtin-functions.json' ) );
-const builtinFunctionCompletions: CompletionList = getBuiltinFunctionCompletions( builtinFunctionsData );
-const builtinFunctionHoverSymbols: Map<string, MarkupContent> = getBuiltinFunctionHoverSymbols( builtinFunctionsData );
+const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
+const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
+const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
+
+// Document cache for MivaScript (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+
+// Symbol (variable, LSK function) containers
 let workspaceSymbols: any[] = [];
 let lskSymbols: any[] = [];
 
@@ -61,8 +69,13 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	const mvtDocuments = getLanguageModelCache<TextDocument>( 10, 60, document => document );
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
+
+	// MVT-specific completion data
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
 	const variableSCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'variable-s-completions.json' ) ) );
+	const mvtTagData = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'tag-completions.json' ) );
+	const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
+	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
 
 	return {
 
@@ -109,7 +122,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// determine left side text range
 			const cursorPositionOffset = mvtDocument.offsetAt( position );
-			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
 			const leftRange = Range.create(
 				mvtDocument.positionAt( leftOffset ),
 				position
@@ -117,7 +130,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const left = mvtDocument.getText( leftRange ) || '';
 
 			// determine right side text range
-			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
 			const rightRange = Range.create(
 				position,
 				mvtDocument.positionAt( rightOffset )
@@ -133,13 +146,14 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				return doValueCompletions;
 			}
 
-			// document-specific
+			// document-specific entity completions
 			if (
 				patterns.MVT.LEFT_AFTER_AMP.test( left )
 			) {
 				return CompletionList.create( entityCompletions );
 			}
 
+			// After an entity (&mv**)
 			if ( patterns.MVT.LEFT_AFTER_ENTITY_COLON.test( left ) ) {
 
 				// get full text
@@ -234,7 +248,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			}
 
-			return undefined;
+			return mvtTagCompletions;
 
 		},
 
@@ -242,7 +256,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const mvtDocument = mvtDocuments.get( document );
 
-			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
@@ -271,7 +285,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const mvtDocument = mvtDocuments.get( document );
 
 			// Get word
-			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
 
 			// Exit if word is null
@@ -281,7 +295,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// determine left side text range
 			const cursorPositionOffset = mvtDocument.offsetAt( position );
-			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
 			const leftRange = Range.create(
 				mvtDocument.positionAt( leftOffset ),
 				position
@@ -289,7 +303,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const left = mvtDocument.getText( leftRange ) || '';
 
 			// determine right side text range
-			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
 			const rightRange = Range.create(
 				position,
 				mvtDocument.positionAt( rightOffset )
@@ -301,11 +315,25 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			// Function Hover
 			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
 				// Builtin function lookup
-				const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
-				if (foundHoverSymbol) {
+				const foundBuiltinHover = builtinFunctionHoverMap.get(word);
+				if (foundBuiltinHover) {
 					return {
-						contents: foundHoverSymbol
+						contents: foundBuiltinHover
 					};
+				}
+			}
+
+			// Tag name hover
+			if (patterns.MVT.LEFT_IN_MVT_TAG_NAME.test(left)) {
+
+				console.log('WORD', word);
+
+				// Tag lookup
+				const foundTagHover = mvtTagHoverMap.get(word);
+				if (foundTagHover) {
+					return {
+						contents: foundTagHover
+					}
 				}
 			}
 
@@ -423,7 +451,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			// determine left side text range
 			const cursorPositionOffset = mvDocument.offsetAt( position );
-			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
 			const leftRange = Range.create(
 				mvDocument.positionAt( leftOffset ),
 				position
@@ -431,7 +459,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const left = mvDocument.getText( leftRange ) || '';
 
 			// determine right side text range
-			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
 			const rightRange = Range.create(
 				position,
 				mvDocument.positionAt( rightOffset )
@@ -479,7 +507,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const mvDocument = mvDocuments.get( document );
 
 			// Get word
-			const line = mvDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
+			const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
@@ -508,7 +536,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const mvDocument = mvDocuments.get( document );
 
 			// Get word
-			const line = mvDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
+			const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
 
 			// Exit if word is null
@@ -518,7 +546,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			// determine left side text range
 			const cursorPositionOffset = mvDocument.offsetAt( position );
-			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
 			const leftRange = Range.create(
 				mvDocument.positionAt( leftOffset ),
 				position
@@ -526,7 +554,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const left = mvDocument.getText( leftRange ) || '';
 
 			// determine right side text range
-			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
 			const rightRange = Range.create(
 				position,
 				mvDocument.positionAt( rightOffset )
@@ -538,7 +566,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			// Function Hover
 			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
 				// Builtin function lookup
-				const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
+				const foundHoverSymbol = builtinFunctionHoverMap.get(word);
 				if (foundHoverSymbol) {
 					return {
 						contents: foundHoverSymbol
