@@ -321,13 +321,11 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						contents: foundBuiltinHover
 					};
 				}
+
 			}
 
 			// Tag name hover
 			if (patterns.MVT.LEFT_IN_MVT_TAG_NAME.test(left)) {
-
-				console.log('WORD', word);
-
 				// Tag lookup
 				const foundTagHover = mvtTagHoverMap.get(word);
 				if (foundTagHover) {
