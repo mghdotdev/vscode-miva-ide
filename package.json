@@ -230,10 +230,6 @@
 				"path": "./snippets/mvt/debugging.snippets.json"
 			},
 			{
-				"language": "mvt",
-				"path": "./snippets/builtins.snippets.json"
-			},
-			{
 				"language": "mvtcss",
 				"path": "./snippets/mvt/tags.snippets.json"
 			},
@@ -246,10 +242,6 @@
 				"path": "./snippets/mvt/debugging.snippets.json"
 			},
 			{
-				"language": "mvtcss",
-				"path": "./snippets/builtins.snippets.json"
-			},
-			{
 				"language": "mvtjs",
 				"path": "./snippets/mvt/tags.snippets.json"
 			},
@@ -260,14 +252,6 @@
 			{
 				"language": "mvtjs",
 				"path": "./snippets/mvt/debugging.snippets.json"
-			},
-			{
-				"language": "mvtjs",
-				"path": "./snippets/builtins.snippets.json"
-			},
-			{
-				"language": "mv",
-				"path": "./snippets/builtins.snippets.json"
 			},
 			{
 				"language": "mv",

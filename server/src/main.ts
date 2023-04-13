@@ -13,7 +13,9 @@ import {
 	Diagnostic,
 	DidChangeConfigurationNotification,
 	SymbolInformation,
-	ProposedFeatures
+	ProposedFeatures,
+	HoverParams,
+	CancellationToken
 } from 'vscode-languageserver/node';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
@@ -154,7 +156,8 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
 		definitionProvider: true,
 		documentSymbolProvider: true,
-		workspaceSymbolProvider: true
+		workspaceSymbolProvider: true,
+		hoverProvider: true
 	};
 
 	return { capabilities };
@@ -286,6 +289,28 @@ connection.onDefinition(( definitionParams, token ) => {
 		return [];
 
 	}, null, `Error while computing definitions for ${ definitionParams.textDocument.uri }`, token );
+});
+
+connection.onHover(( hoverParams: HoverParams, token: CancellationToken ) => {
+	return runSafeAsync(async () => {
+
+		const document = documents.get( hoverParams.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.findDefinition ) {
+
+				return features.onHover( document, hoverParams.position );
+
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while hovering for XXX`, token);
 });
 
 // The content of a text document has changed. This event is emitted

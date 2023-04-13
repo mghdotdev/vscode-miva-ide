@@ -15,7 +15,9 @@ import {
 	SymbolInformation,
 	SymbolKind,
 	Location,
-	ClientCapabilities
+	ClientCapabilities,
+	Hover,
+	MarkupContent
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -24,6 +26,8 @@ import {
 	readJSONFile,
 	tokenize,
 	getDoValueCompletions,
+	getBuiltinFunctionCompletions,
+	getBuiltinFunctionHoverSymbols,
 	parseCompletionFile,
 	parseCompletion,
 	getWordAtOffset,
@@ -45,6 +49,9 @@ const htmlLanguageService = getLanguageService();
 const boundryAmount = 200;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
+const builtinFunctionsData = readJSONFile( path.resolve( __dirname, '..', 'data', 'builtin-functions.json' ) );
+const builtinFunctionCompletions: CompletionList = getBuiltinFunctionCompletions( builtinFunctionsData );
+const builtinFunctionHoverSymbols: Map<string, MarkupContent> = getBuiltinFunctionHoverSymbols( builtinFunctionsData );
 const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
 let workspaceSymbols: any[] = [];
 let lskSymbols: any[] = [];
@@ -222,6 +229,8 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				}
 
+				return builtinFunctionCompletions;
+
 			}
 
 			return undefined;
@@ -230,9 +239,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
 
-			const mvDocument = mvtDocuments.get( document );
+			const mvtDocument = mvtDocuments.get( document );
 
-			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, 9999 ) );
 			const word = getWordAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
@@ -250,6 +259,25 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				return symbols.map( symbol => symbol.location );
 
+			}
+
+			return null;
+
+		},
+
+		onHover (document: TextDocument, position: Position ): Hover | null {
+
+			const mvtDocument = mvtDocuments.get( document );
+
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, 9999 ) );
+			const word = getWordAtOffset( line, position.character );
+
+			const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
+
+			if (foundHoverSymbol) {
+				return {
+					contents: foundHoverSymbol
+				};
 			}
 
 			return null;
@@ -396,7 +424,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				return doValueCompletions;
 			}
 
-			return undefined;
+			return builtinFunctionCompletions;
 
 		},
 

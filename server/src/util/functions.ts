@@ -170,6 +170,27 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 }
 
+export function getBuiltinFunctionCompletions ( bultinFunctionData: any[] ): CompletionList {
+	const items = bultinFunctionData.map<CompletionItem>((builtinFunction: any) => {
+		return {
+			...builtinFunction,
+			kind: CompletionItemKind.Function,
+			insertTextFormat: InsertTextFormat.Snippet
+		}
+	});
+
+	return CompletionList.create( items );
+}
+
+export function getBuiltinFunctionHoverSymbols ( builtinFunctionsData: any[] ): Map<string, MarkupContent> {
+	return builtinFunctionsData.reduce((map: Map<string, MarkupContent>, builtinFunction) => {
+		return map.set(builtinFunction.label, {
+			kind: MarkupKind.Markdown,
+			value: builtinFunction.documentation
+		});
+	}, new Map());
+}
+
 export function parseCompletion( completion ) {
 
 	completion.kind = CompletionItemKind[ completion.kind ];

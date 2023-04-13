@@ -4,7 +4,8 @@ import {
 	Position,
 	CompletionList,
 	Definition,
-	SymbolInformation
+	SymbolInformation,
+	Hover
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -38,6 +39,8 @@ export interface LanguageFeatures {
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
 
 	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
+
+	onHover?: ( Document: TextDocument, position: Position ) => Hover | null
 
 }
 
