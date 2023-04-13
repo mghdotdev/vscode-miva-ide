@@ -47,6 +47,7 @@ import { readFileSync, existsSync } from 'fs';
 const htmlLanguageService = getLanguageService();
 
 const boundryAmount = 200;
+const maxLineLength = 9999;
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
 const builtinFunctionsData = readJSONFile( path.resolve( __dirname, '..', 'data', 'builtin-functions.json' ) );
@@ -241,7 +242,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const mvtDocument = mvtDocuments.get( document );
 
-			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, 9999 ) );
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
 			const word = getWordAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
@@ -269,15 +270,43 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const mvtDocument = mvtDocuments.get( document );
 
-			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, 9999 ) );
+			// Get word
+			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
 			const word = getWordAtOffset( line, position.character );
 
-			const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
+			// Exit if word is null
+			if (!word) {
+				return null;
+			}
 
-			if (foundHoverSymbol) {
-				return {
-					contents: foundHoverSymbol
-				};
+			// determine left side text range
+			const cursorPositionOffset = mvtDocument.offsetAt( position );
+			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftRange = Range.create(
+				mvtDocument.positionAt( leftOffset ),
+				position
+			);
+			const left = mvtDocument.getText( leftRange ) || '';
+
+			// determine right side text range
+			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightRange = Range.create(
+				position,
+				mvtDocument.positionAt( rightOffset )
+			);
+			const right = mvtDocument.getText( rightRange ) || '';
+
+			// Check for various hover scenarios
+
+			// Function Hover
+			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
+				// Builtin function lookup
+				const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
+				if (foundHoverSymbol) {
+					return {
+						contents: foundHoverSymbol
+					};
+				}
 			}
 
 			return null;
@@ -438,7 +467,8 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			const mvDocument = mvDocuments.get( document );
 
-			const line = mvDocument.getText( Range.create( position.line, -1, position.line, Number.MAX_VALUE ) );
+			// Get word
+			const line = mvDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
 			const word = getWordAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
@@ -456,6 +486,53 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 				return symbols.map( symbol => symbol.location );
 
+			}
+
+			return null;
+
+		},
+
+		onHover (document: TextDocument, position: Position ): Hover | null {
+
+			const mvDocument = mvDocuments.get( document );
+
+			// Get word
+			const line = mvDocument.getText( Range.create( position.line, 0, position.line, maxLineLength ) );
+			const word = getWordAtOffset( line, position.character );
+
+			// Exit if word is null
+			if (!word) {
+				return null;
+			}
+
+			// determine left side text range
+			const cursorPositionOffset = mvDocument.offsetAt( position );
+			const leftOffset = cursorPositionOffset - boundryAmount;
+			const leftRange = Range.create(
+				mvDocument.positionAt( leftOffset ),
+				position
+			);
+			const left = mvDocument.getText( leftRange ) || '';
+
+			// determine right side text range
+			const rightOffset = cursorPositionOffset + boundryAmount;
+			const rightRange = Range.create(
+				position,
+				mvDocument.positionAt( rightOffset )
+			);
+			const right = mvDocument.getText( rightRange ) || '';
+
+			// Check for various hover scenarios
+
+			// Function Hover
+			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
+				// Builtin function lookup
+				const foundHoverSymbol = builtinFunctionHoverSymbols.get(word);
+				if (foundHoverSymbol) {
+					return {
+						contents: foundHoverSymbol
+					};
+				}
 			}
 
 			return null;
