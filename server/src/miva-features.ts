@@ -447,13 +447,24 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				return doValueCompletions;
 			}
 
+			// If in an expression `{ ... }`
 			if (
-				patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )
+				patterns.MV.LEFT_IN_EXPRESSION.test(left) &&
+				patterns.MV.RIGHT_IN_EXPRESSION.test(right)
 			) {
-				return doValueCompletions;
+
+				// If after `[].` notation
+				if (
+					patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )
+				) {
+					return doValueCompletions;
+				}
+
+				return builtinFunctionCompletions;
+
 			}
 
-			return builtinFunctionCompletions;
+			return null;
 
 		},
 
