@@ -174,10 +174,7 @@ export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string
 	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
 		return map.set(
 			completionItem.label,
-			{
-				kind: MarkupKind.Markdown,
-				value: completionItem.documentation
-			} as MarkupContent
+			completionItem.documentation as MarkupContent
 		);
 	}, new Map());
 }
