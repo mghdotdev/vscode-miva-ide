@@ -74,6 +74,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	// MVT-specific completion data
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
+	const entityHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( entityCompletions );
 	const mvtTagData = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'tag-completions.json' ) );
 	const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
 	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
@@ -337,11 +338,21 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			}
 
 			// System variable hover
-			if (patterns.SHARED.LEFT_VARIABLE_S) {
+			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
 				const foundSystemVariableHover = systemVariableHoverMap.get(word);
 				if (foundSystemVariableHover) {
 					return {
 						contents: foundSystemVariableHover
+					};
+				}
+			}
+
+			// Entity hover
+			if (patterns.MVT.LEFT_AFTER_AMP_HOVER.test(left)) {
+				const foundEntityHover = entityHoverMap.get(word);
+				if (foundEntityHover) {
+					return {
+						contents: foundEntityHover
 					};
 				}
 			}
