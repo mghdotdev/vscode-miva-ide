@@ -57,6 +57,8 @@ const doValueCompletions: CompletionList = getDoValueCompletions( merchantFuncti
 const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
+const systemVariableCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'variable-s-completions.json' ) ) );
+const systemVariableHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( systemVariableCompletions );
 
 // Document cache for MivaScript (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
@@ -72,7 +74,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	// MVT-specific completion data
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
-	const variableSCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'variable-s-completions.json' ) ) );
 	const mvtTagData = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'tag-completions.json' ) );
 	const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
 	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
@@ -181,7 +182,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				// system variables
 				if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
-					return CompletionList.create( variableSCompletions );
+					return CompletionList.create( systemVariableCompletions );
 				}
 
 				// get full text
@@ -331,7 +332,17 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				if (foundTagHover) {
 					return {
 						contents: foundTagHover
-					}
+					};
+				}
+			}
+
+			// System variable hover
+			if (patterns.SHARED.LEFT_VARIABLE_S) {
+				const foundSystemVariableHover = systemVariableHoverMap.get(word);
+				if (foundSystemVariableHover) {
+					return {
+						contents: foundSystemVariableHover
+					};
 				}
 			}
 
