@@ -57,7 +57,7 @@ const doValueCompletions: CompletionList = getDoValueCompletions( merchantFuncti
 const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
-const systemVariableCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'variable-s-completions.json' ) ) );
+const systemVariableCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'system-variable-completions.json' ) ) );
 const systemVariableHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( systemVariableCompletions );
 
 // Document cache for MivaScript (this is globally defined since we use .mv documents in MVT for LSK lookups)
