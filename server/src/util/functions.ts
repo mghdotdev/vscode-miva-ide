@@ -12,6 +12,7 @@ import {
 	MarkupContent,
 	MarkupKind
 } from 'vscode-languageserver/node';
+import _cloneDeep from 'lodash.clonedeep';
 
 export function formatError( message: string,
 	err: any ): string {
@@ -201,7 +202,8 @@ export function getHoverMapFromCompletionTagFile ( completions: any[] ): Map<str
 	}, new Map());
 }
 
-export function parseCompletion( completion ) {
+export function parseCompletion( input: any ) {
+	const completion = _cloneDeep(input);
 
 	if (completion.kind) {
 		completion.kind = CompletionItemKind[ completion.kind ];

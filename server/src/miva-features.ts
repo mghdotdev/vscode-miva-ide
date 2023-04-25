@@ -17,7 +17,8 @@ import {
 	Location,
 	ClientCapabilities,
 	Hover,
-	MarkupContent
+	MarkupContent,
+	MarkupKind
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -43,6 +44,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import {glob} from 'glob';
 import { readFileSync, existsSync } from 'fs';
+import mvtTagData from './mvt/tags';
 
 // Define HTML Language Service helper
 const htmlLanguageService = getLanguageService();
@@ -75,9 +77,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	// MVT-specific completion data
 	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
 	const entityHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( entityCompletions );
-	const mvtTagData = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'tag-completions.json' ) );
-	const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
-	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
+	//const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
+	//const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
+
+	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
 
 	return {
 
@@ -326,23 +329,48 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			}
 
-			// Tag name hover
-			if (patterns.MVT.LEFT_IN_MVT_TAG_NAME.test(left)) {
-				// Tag lookup
-				const foundTagHover = mvtTagHoverMap.get(word);
-				if (foundTagHover) {
-					return {
-						contents: foundTagHover
-					};
-				}
-			}
-
 			// System variable hover
 			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
 				const foundSystemVariableHover = systemVariableHoverMap.get(word);
 				if (foundSystemVariableHover) {
 					return {
 						contents: foundSystemVariableHover
+					};
+				}
+			}
+
+			// Tag name hover
+			if (patterns.MVT.LEFT_IN_MVT_TAG.test(left)) {
+				// Determine which tag we are in
+				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME);
+
+				// Attempt to get tag from name
+				const foundTag = mvtTagData[tagName] || mvtTagData[word];
+				if (foundTag) {
+					const referenceLink = `\n\n[Documentation Reference](${foundTag.reference})`;
+
+					// Find attribute data on found tag name
+					const foundAttributes = foundTag.attributes;
+					if (foundAttributes) {
+						// Find attribute data with word
+						const foundAttribute = foundAttributes[word];
+
+						// Return hover for attribute if found
+						if (foundAttribute) {
+							return {
+								contents: {
+									kind: MarkupKind.Markdown,
+									value: foundTag.label + '[' + foundAttribute.label + ']' + '\n\n' + foundAttribute.documentation + referenceLink
+								}
+							};
+						}
+					}
+
+					return {
+						contents: {
+							kind: MarkupKind.Markdown,
+							value: foundTag.label + '\n\n' + foundTag.documentation + referenceLink
+						}
 					};
 				}
 			}
