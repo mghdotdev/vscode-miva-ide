@@ -17,8 +17,7 @@ import {
 	Location,
 	ClientCapabilities,
 	Hover,
-	MarkupContent,
-	MarkupKind
+	MarkupContent
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -28,11 +27,12 @@ import {
 	tokenize,
 	getDoValueCompletions,
 	getHoverMapFromCompletionFile,
-	getHoverMapFromCompletionTagFile,
 	parseCompletionFile,
 	parseCompletion,
 	getWordAtOffset,
-	unique
+	unique,
+	formatTagAttributeDocumentation,
+	formatTagDocumentation
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -347,8 +347,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				// Attempt to get tag from name
 				const foundTag = mvtTagData[tagName] || mvtTagData[word];
 				if (foundTag) {
-					const referenceLink = `\n\n[Documentation Reference](${foundTag.reference})`;
-
 					// Find attribute data on found tag name
 					const foundAttributes = foundTag.attributes;
 					if (foundAttributes) {
@@ -358,19 +356,13 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						// Return hover for attribute if found
 						if (foundAttribute) {
 							return {
-								contents: {
-									kind: MarkupKind.Markdown,
-									value: foundTag.label + '[' + foundAttribute.label + ']' + '\n\n' + foundAttribute.documentation + referenceLink
-								}
+								contents: formatTagAttributeDocumentation(foundTag, foundAttribute)
 							};
 						}
 					}
 
 					return {
-						contents: {
-							kind: MarkupKind.Markdown,
-							value: foundTag.label + '\n\n' + foundTag.documentation + referenceLink
-						}
+						contents: formatTagDocumentation(foundTag)
 					};
 				}
 			}

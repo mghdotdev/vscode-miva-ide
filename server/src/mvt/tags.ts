@@ -10,6 +10,7 @@ export default {
 			"/"
 		],
 		reference: 'https://docs.miva.com/template-language/mvtassign',
+		engine: '>=5.18',
 		attributes: {
 			name: {
 				documentation: `This can be a local or global variable as defined by l. or g.

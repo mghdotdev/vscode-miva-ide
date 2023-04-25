@@ -180,28 +180,6 @@ export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string
 	}, new Map());
 }
 
-export function getHoverMapFromCompletionTagFile ( completions: any[] ): Map<string, MarkupContent> {
-	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
-		const [, baseTagName] = completionItem.label.split(':');
-
-		map.set(
-			baseTagName,
-			{
-				kind: MarkupKind.Markdown,
-				value: completionItem.documentation
-			} as MarkupContent
-		);
-
-		return map.set(
-			completionItem.label,
-			{
-				kind: MarkupKind.Markdown,
-				value: completionItem.documentation
-			} as MarkupContent
-		);
-	}, new Map());
-}
-
 export function parseCompletion( input: any ) {
 	const completion = _cloneDeep(input);
 
@@ -227,6 +205,44 @@ export function parseCompletion( input: any ) {
 export function unique( value, index, self ) {
 	return self.indexOf( value ) === index;
 };
+
+function formatTagEngine (engine) {
+	return `_Requires Engine: ${engine}_`;
+}
+
+function formatTagTitle (title: string, tagName?: string) {
+	return tagName
+		? `#### ${tagName}[${title}]`
+		: `#### ${title}`;
+}
+
+function formatTagReference (reference) {
+	return `[Documentation Reference](${reference})`
+}
+
+export function formatTagDocumentation (tagData): MarkupContent {
+	return {
+		kind: MarkupKind.Markdown,
+		value: `${formatTagTitle(tagData.label)}
+
+${formatTagEngine(tagData.engine)}
+
+${tagData.documentation}
+
+${formatTagReference(tagData.reference)}`
+	};
+}
+
+export function formatTagAttributeDocumentation (tagData, attributeData): MarkupContent {
+	return {
+		kind: MarkupKind.Markdown,
+		value: `${formatTagTitle(attributeData.label, tagData.label)}
+
+${attributeData.documentation}
+
+${formatTagReference(tagData.reference)}`
+	};
+}
 
 export function parseCompletionFile( completions ) {
 	return completions.map(completion => {
