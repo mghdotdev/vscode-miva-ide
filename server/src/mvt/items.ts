@@ -19,7 +19,7 @@ const baseItemParamFunction: BaseItemParamData = {
 	paramType: 'function'
 };
 
-const itemData: Record<string, ItemData> = {
+const itemsData: Record<string, ItemData> = {
 	customfields: {
 		...baseItem,
 		documentation: `Custom Fields is a module that comes installed by default in the core software. In PR8U9, the custom fields module received a huge overhaul which now included many new features, and a new layout.
@@ -56,4 +56,4 @@ One of the key new features was allowing store morph code to call functions dire
 	}
 };
 
-export default itemData;
+export default itemsData;
