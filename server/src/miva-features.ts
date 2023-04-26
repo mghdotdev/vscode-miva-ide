@@ -17,7 +17,8 @@ import {
 	Location,
 	ClientCapabilities,
 	Hover,
-	MarkupContent
+	MarkupContent,
+	DocumentLink
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -34,7 +35,8 @@ import {
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
 	formatTagDocumentation,
-	formatItemParamDocumentation
+	formatItemParamDocumentation,
+	parseLinkTemplate
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -47,7 +49,7 @@ import { getLanguageModelCache } from './util/language-model-cache';
 import {glob} from 'glob';
 import { readFileSync, existsSync } from 'fs';
 import mvtTagData from './mvt/tags';
-import itemData from './mvt/items';
+import mvtItemData from './mvt/items';
 
 // Define HTML Language Service helper
 const htmlLanguageService = getLanguageService();
@@ -288,7 +290,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 										if (tagName === 'item') {
 											// Get item name
 											const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
-											const foundItem = itemData[itemName];
+											const foundItem = mvtItemData[itemName];
 
 											// Create completion list from params object
 											if (foundItem && foundItem.params) {
@@ -412,7 +414,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						if (tagName === 'item') {
 							// Get item name
 							const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
-							const foundItem = itemData[itemName];
+							const foundItem = mvtItemData[itemName];
 
 							// Get matching param
 							if (foundItem) {
@@ -483,6 +485,57 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			return null;
 
+		},
+
+		onDocumentLinks (document: TextDocument) {
+			const links: DocumentLink[] = [];
+
+			const {name: fileName} = path.parse(document.uri);
+
+			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
+			let token = scanner.scan();
+			let lastTagName: string | undefined = undefined;
+			let lastAttributeName: string | undefined = undefined;
+
+			while ( token !== TokenType.EOS ) {
+				switch ( token ) {
+
+					case TokenType.StartTag:
+						lastTagName = scanner.getTokenText().toLowerCase();
+						break;
+
+					case TokenType.AttributeName:
+						lastAttributeName = scanner.getTokenText().toLowerCase();
+						break;
+
+					case TokenType.AttributeValue:
+						if (lastTagName === 'mvt:item') {
+							// console.log(scanner.getTokenText().replace( /"/g, '' ), lastTagName, lastAttributeName, path.basename(document.uri))
+
+							const word = scanner.getTokenText().replace(/"/g, '');
+
+							if (lastAttributeName === 'name') {
+								const foundItem = mvtItemData[word];
+
+								if (foundItem && foundItem.link) {
+
+									const link = parseLinkTemplate(foundItem.link, {
+										fileName,
+										label: foundItem.label
+									});
+
+									/* TODO: RESOLVE LOCAL URL THEN CREATE LINK */
+
+								}
+							}
+						}
+						break;
+				}
+
+				token = scanner.scan();
+			}
+
+			return links;
 		}
 
 	};

@@ -343,3 +343,14 @@ export function getWordAtOffset( text: string, offset: number ): string | null {
 	return null;
 
 }
+
+export function parseLinkTemplate (template: string, data: Record<string, string>): string {
+	let output = template;
+
+	for (let [key, value] of Object.entries(data)) {
+		const regex = new RegExp(`{{${key}}}`, 'g');
+		output = output.replace(regex, value);
+	}
+
+	return output;
+}

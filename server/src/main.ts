@@ -15,7 +15,8 @@ import {
 	SymbolInformation,
 	ProposedFeatures,
 	HoverParams,
-	CancellationToken
+	CancellationToken,
+	DocumentLinkParams
 } from 'vscode-languageserver/node';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
@@ -157,7 +158,10 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		definitionProvider: true,
 		documentSymbolProvider: true,
 		workspaceSymbolProvider: true,
-		hoverProvider: true
+		hoverProvider: true,
+		documentLinkProvider: {
+			resolveProvider: true
+		}
 	};
 
 	return { capabilities };
@@ -300,7 +304,7 @@ connection.onHover(( hoverParams: HoverParams, token: CancellationToken ) => {
 
 			const features = languages[ document.languageId ];
 
-			if ( features && features.findDefinition ) {
+			if ( features && features.onHover ) {
 
 				return features.onHover( document, hoverParams.position );
 
@@ -310,7 +314,29 @@ connection.onHover(( hoverParams: HoverParams, token: CancellationToken ) => {
 
 		return [];
 
-	}, null, `Error while hovering for XXX`, token);
+	}, null, `Error while hovering on position: ${hoverParams.position.line}:${hoverParams.position.character}`, token);
+});
+
+connection.onDocumentLinks(( documentLinkParams: DocumentLinkParams, token: CancellationToken ) => {
+	return runSafeAsync(async () => {
+
+		const document = documents.get( documentLinkParams.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.onDocumentLinks ) {
+
+				return features.onDocumentLinks( document );
+
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while providing links for document: ${documentLinkParams.textDocument.uri}`, token);
 });
 
 // The content of a text document has changed. This event is emitted

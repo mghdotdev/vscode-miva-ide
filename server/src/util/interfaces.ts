@@ -5,7 +5,8 @@ import {
 	CompletionList,
 	Definition,
 	SymbolInformation,
-	Hover
+	Hover,
+	DocumentLink
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -40,7 +41,9 @@ export interface LanguageFeatures {
 
 	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
 
-	onHover?: ( Document: TextDocument, position: Position ) => Hover | null
+	onHover?: ( document: TextDocument, position: Position ) => Hover | null
+
+	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[] | null
 
 }
 
@@ -125,7 +128,8 @@ export interface ItemParamData extends BaseItemParamData {
 export interface BaseItemData {
 	insertTextFormat: string,
 	kind: string,
-	commitCharacters: string[]
+	commitCharacters: string[],
+	link?: string
 }
 
 export interface ItemData extends BaseItemData {

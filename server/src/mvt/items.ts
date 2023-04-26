@@ -10,6 +10,11 @@ const baseItem: BaseItemData = {
 	commitCharacters: []
 };
 
+const baseTemplateItem: BaseItemData = {
+	...baseItem,
+	link: './templates/{{fileName}}-{{label}}.mvt'
+}
+
 const baseItemParamFunction: BaseItemParamData = {
 	insertTextFormat: 'Snippet',
 	kind: 'Function',
@@ -53,6 +58,12 @@ One of the key new features was allowing store morph code to call functions dire
 				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
 			}
 		}
+	},
+	product_display: {
+		...baseTemplateItem,
+		documentation: '',
+		insertText: 'product_display',
+		label: 'product_display'
 	}
 };
 
