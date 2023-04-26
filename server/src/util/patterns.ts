@@ -7,6 +7,8 @@ export default {
 		LEFT_IN_MVT_TAG: /(?=<mvt:[a-z]+)[^>]*?$/i,
 		LEFT_IN_MVT_TAG_NAME: /(?<=<mvt:)[a-z]*?$/i,
 		LEFT_TAG_NAME: /(?<=<mvt:)([a-z]+)/i,
+		LEFT_IN_ATTR: /[a-z-]\s*=\s*"\s*([^"]*?)$/i,
+		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
 		ENTITIES_G: /(?<=&mvt[a-z]?:global:)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 		ENTITIES_LSETTINGS: /(?<=&mvt[a-z]?:)(?!global)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 	},

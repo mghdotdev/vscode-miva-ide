@@ -82,6 +82,76 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
 
+	// Helper function for "variable" completion target list
+	const getVariableCompletions = (left: string, mvtDocument: TextDocument): CompletionList | null => {
+		// system variables
+		if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
+			return CompletionList.create( systemVariableCompletions );
+		}
+
+		// get full text
+		const mvtDocumentText = mvtDocument.getText();
+
+		// global variables
+		if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
+
+			const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || [] );
+
+			return CompletionList.create(
+				foundVariables.filter( unique ).map((variable) => {
+					return parseCompletion({
+						"label": variable,
+						"kind": "Variable",
+						"detail": variable,
+						"documentation": "",
+						"commitCharacters": []
+					});
+				})
+			);
+
+		}
+
+		// l.settings variables
+		if ( patterns.SHARED.LEFT_VARIABLE_LSETTINGS.test( left ) ) {
+
+			const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || [] );
+
+			return CompletionList.create(
+				foundVariables.filter( unique ).map((variable) => {
+					return parseCompletion({
+						"label": variable,
+						"kind": "Variable",
+						"detail": variable,
+						"documentation": "",
+						"commitCharacters": []
+					});
+				})
+			);
+
+		}
+
+		// local variables
+		if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
+
+			const foundVariables = mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [];
+
+			return CompletionList.create(
+				foundVariables.filter( unique ).map((variable) => {
+					return parseCompletion({
+						"label": variable,
+						"kind": "Variable",
+						"detail": variable,
+						"documentation": "",
+						"commitCharacters": []
+					});
+				})
+			);
+
+		}
+
+		return null;
+	};
+
 	return {
 
 		doValidation( document: TextDocument, settings: Settings ): Diagnostic[] {
@@ -184,72 +254,49 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			// tag-specific
 			if ( patterns.MVT.LEFT_IN_MVT_TAG.test( left ) ) {
 
-				// system variables
-				if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
-					return CompletionList.create( systemVariableCompletions );
+				// Determine which tag we are in
+				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME);
+
+				// Attempt to get tag from name
+				const foundTag = mvtTagData[tagName];
+				if (foundTag) {
+					const foundTagAttributes = foundTag.attributes;
+					if (foundTagAttributes) {
+
+						// Tag attribute value completions
+						if (patterns.MVT.LEFT_IN_ATTR.test( left )) {
+							const [, attributeName] = left.match(patterns.MVT.LEFT_ATTR_NAME);
+
+							const foundAttribute = foundTag.attributes[attributeName];
+							if (foundAttribute) {
+								switch (foundAttribute.valueType) {
+									case 'variable':
+										return getVariableCompletions(left, mvtDocument);
+									default:
+									case 'expression': {
+										const variableCompletions = getVariableCompletions(left, mvtDocument);
+										if (variableCompletions) {
+											return variableCompletions;
+										}
+
+										return builtinFunctionCompletions;
+									}
+									case 'string':
+										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
+								}
+							}
+						}
+
+						// Tag attribute completions
+						return CompletionList.create( parseCompletionFile( Object.values( foundTagAttributes ) ) );
+					}
 				}
 
-				// get full text
-				const mvtDocumentText = mvtDocument.getText();
+				return null;
 
-				// global variables
-				if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
+				/*
 
-					const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || [] );
-
-					return CompletionList.create(
-						foundVariables.filter( unique ).map((variable) => {
-							return parseCompletion({
-								"label": variable,
-								"kind": "Variable",
-								"detail": variable,
-								"documentation": "",
-								"commitCharacters": []
-							});
-						})
-					);
-
-				}
-
-				// l.settings variables
-				if ( patterns.SHARED.LEFT_VARIABLE_LSETTINGS.test( left ) ) {
-
-					const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || [] );
-
-					return CompletionList.create(
-						foundVariables.filter( unique ).map((variable) => {
-							return parseCompletion({
-								"label": variable,
-								"kind": "Variable",
-								"detail": variable,
-								"documentation": "",
-								"commitCharacters": []
-							});
-						})
-					);
-
-				}
-
-				// local variables
-				if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
-
-					const foundVariables = mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [];
-
-					return CompletionList.create(
-						foundVariables.filter( unique ).map((variable) => {
-							return parseCompletion({
-								"label": variable,
-								"kind": "Variable",
-								"detail": variable,
-								"documentation": "",
-								"commitCharacters": []
-							});
-						})
-					);
-
-				}
-
-				return builtinFunctionCompletions;
+				return builtinFunctionCompletions; */
 
 			}
 

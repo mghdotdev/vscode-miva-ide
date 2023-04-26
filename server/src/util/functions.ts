@@ -220,6 +220,12 @@ function formatTagReference (reference) {
 	return `[Documentation Reference](${reference})`
 }
 
+function formatTagAttributeRequired (required: boolean, requiredMessage?: string) {
+	return required
+		? `_Required_`
+		: `_Optional: ${requiredMessage}_`;
+}
+
 export function formatTagDocumentation (tagData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
@@ -237,6 +243,8 @@ export function formatTagAttributeDocumentation (tagData, attributeData): Markup
 	return {
 		kind: MarkupKind.Markdown,
 		value: `${formatTagTitle(attributeData.label, tagData.label)}
+
+${formatTagAttributeRequired(attributeData.required, attributeData.requiredMessage)}
 
 ${attributeData.documentation}
 
