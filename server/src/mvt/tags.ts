@@ -77,7 +77,7 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 	},
 	call: {
 		...baseTag,
-		documentation: `Executes an HTTP call on the server. This function returns the response a single object at a time in a system variable called s.callvalue. A common practice is to eval this variable within the loop which will display the entire result.
+		documentation: `Executes an HTTP call on the server. This function returns the response a single object at a time in a system variable called \`s.callvalue\`. A common practice is to eval this variable within the loop which will display the entire result.
 
 [See this page](http://www.mivascript.com/item/MvCALL.html) for descriptions of all available system variables.
 
@@ -281,6 +281,22 @@ The ... loop terminates when the entire document has been received, or when an (
 				label: 'pin-digest'
 			}
 		}
+	},
+	callcontinue: {
+		...baseTag,
+		documentation: `Only used within a \`<mvt:call>\` tag. Terminates execution of any statements after and continues to the next iteration instead.`,
+		insertText: "<mvt:callcontinue />",
+		label: 'mvt:callcontinue',
+		reference: 'https://docs.miva.com/template-language/mvtcall',
+		engine: '>=5.22'
+	},
+	callstop: {
+		...baseTag,
+		documentation: `Only used within a \`<mvt:call>\` tag. Terminates the current \`<mvt:call>\` loop.`,
+		insertText: "<mvt:callstop />",
+		label: 'mvt:callstop',
+		reference: 'https://docs.miva.com/template-language/mvtcall',
+		engine: '>=5.22'
 	},
 	capture: {
 		...baseTag,
