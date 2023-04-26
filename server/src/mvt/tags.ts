@@ -47,6 +47,12 @@ const expr: TagAttributeData = {
 
 // Full tag data structure
 
+/**
+ * TODO: Missing tags
+ * 	- do
+ * 	- item
+ */
+
 const tagData: Record<string, TagData> = {
 	assign: {
 		...baseTag,
@@ -365,6 +371,122 @@ The ... loop terminates when the entire document has been received, or when an (
 		documentation: ``,
 		insertText: "<mvt:exit />",
 		label: 'mvt:exit'
+	},
+	foreach: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${0}\n</mvt:foreach>",
+		label: 'mvt:foreach',
+		reference: 'https://docs.miva.com/template-language/foreach',
+		attributes: {
+			iterator: {
+				...baseAttribute,
+				required: true,
+				documentation: ``,
+				insertText: 'iterator="${0}"',
+				label: 'iterator',
+				valueType: 'variable'
+			},
+			array: {
+				...baseAttribute,
+				required: true,
+				documentation: ``,
+				insertText: 'array="${0}"',
+				label: 'array',
+				valueType: 'variable'
+			}
+		}
+	},
+	foreachcontinue: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:foreachcontinue />",
+		label: 'mvt:foreachcontinue',
+		reference: 'https://docs.miva.com/template-language/foreach'
+	},
+	foreachstop: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:foreachstop />",
+		label: 'mvt:foreachstop',
+		reference: 'https://docs.miva.com/template-language/foreach'
+	},
+	miva: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />",
+		label: 'mvt:miva',
+		reference: 'http://www.mivascript.com/item/mivascript-tags/MIVA.html',
+		attributes: {
+			output: {
+				...baseAttribute,
+				required: false,
+				documentation: ``,
+				insertText: 'output="${0}"',
+				label: 'output',
+				valueType: 'string',
+				values: {
+					on: {
+						...baseAttributeValue,
+						documentation: ``,
+						insertText: "'on'",
+						label: "'on'"
+					},
+					off: {
+						...baseAttributeValue,
+						documentation: ``,
+						insertText: "'off'",
+						label: "'off'"
+					}
+				}
+			},
+			compresswhitespace: {
+				...baseAttribute,
+				required: false,
+				documentation: ``,
+				insertText: 'compresswhitespace="${0}"',
+				label: 'compresswhitespace',
+				valueType: 'string',
+				values: {
+					on: {
+						...baseAttributeValue,
+						documentation: ``,
+						insertText: "'on'",
+						label: "'on'"
+					},
+					off: {
+						...baseAttributeValue,
+						documentation: ``,
+						insertText: "'off'",
+						label: "'off'"
+					}
+				}
+			}
+		}
+	},
+	while: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:while expr=\"${1}\">\n\t${0}\n</mvt:while>",
+		label: 'mvt:while',
+		reference: 'https://docs.miva.com/template-language/while',
+		attributes: {
+			expr
+		}
+	},
+	whilecontinue: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:whilecontinue />",
+		label: 'mvt:whilecontinue',
+		reference: 'https://docs.miva.com/template-language/while'
+	},
+	whilestop: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:whilestop />",
+		label: 'mvt:whilestop',
+		reference: 'https://docs.miva.com/template-language/while'
 	}
 };
 
