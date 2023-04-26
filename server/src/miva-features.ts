@@ -284,6 +284,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 										return builtinFunctionCompletions;
 									}
+									case 'function': {
+										if (tagName === 'item') {
+											// Get item name
+											const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
+											const foundItem = itemData[itemName];
+
+											// Create completion list from params object
+											if (foundItem && foundItem.params) {
+												return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
+											}
+										}
+
+										return null;
+									}
 									case 'string':
 										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
 								}
