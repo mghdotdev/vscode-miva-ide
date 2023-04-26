@@ -82,7 +82,7 @@ repository:
         name: meta.tag.block.$4.mvt
         patterns:
           - include: '#action-attribute'
-          - include: '#cerfile-attribute'
+          - include: '#certfile-attribute'
           - include: '#certpass-attribute'
           - include: '#certtype-attribute'
           - include: '#content-type-attribute'
@@ -91,6 +91,8 @@ repository:
           - include: '#headers-attribute'
           - include: '#method-attribute'
           - include: '#timeout-attribute'
+          - include: '#pin-algorithm-attribute'
+          - include: '#pin-digest-attribute'
           - include: '#illegal-attributes'
 
   tag-capture:
@@ -435,21 +437,6 @@ repository:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
 
-  cerfile-attribute:
-    patterns:
-      - begin: '(?i)(?<=[^=])\b(cerfile)\s*(=?)\s*(")'
-        beginCaptures:
-          1: {name: entity.other.attribute-name.cerfile.mvt}
-          2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.begin.mvt}
-        end: '"'
-        endCaptures:
-          0: {name: attribute-value.cerfile.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.cerfile.mvt source.mvt
-        patterns:
-          - include: '#source-mvt'
-          - include: '#source-functions-builtins'
-
   action-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(action)\s*(=?)\s*(")'
@@ -611,20 +598,50 @@ repository:
           - match: '[^"]'
             name: invalid.illegal.identifier.mvt
 
-    timeout-attribute:
-      patterns:
-        - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
-          beginCaptures:
-            1: {name: entity.other.attribute-name.timeout.mvt}
-            2: {name: punctuation.separator.key-value.mvt}
-            3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
-          end: '"'
-          endCaptures:
-            0: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
-          contentName: attribute-value.timeout.mvt source.mvt
-          patterns:
-            - include: '#source-mvt'
-            - include: '#source-functions-builtins'
+  timeout-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.timeout.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          0: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.timeout.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  pin-algorithm-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(pin-algorithm)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.pin-algorithm.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          0: {name: attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.pin-algorithm.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
+
+  pin-digest-attribute:
+    patterns:
+      - begin: '(?i)(?<=[^=])\b(pin-digest)\s*(=?)\s*(")'
+        beginCaptures:
+          1: {name: entity.other.attribute-name.pin-digest.mvt}
+          2: {name: punctuation.separator.key-value.mvt}
+          3: {name: attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.begin.mvt}
+        end: '"'
+        endCaptures:
+          0: {name: attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.pin-digest.mvt source.mvt
+        patterns:
+          - include: '#source-mvt'
+          - include: '#source-functions-builtins'
 
   # =-======================== Source ========================-= #
   source-mvt:

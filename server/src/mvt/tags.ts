@@ -81,9 +81,9 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 			method: {
 				required: true,
 				documentation: `GET | POST | HEAD | XML | RAW | OPTIONS | PUT | DELETE | TRACE | CONNECT. In most cases use GET for simple page retrieval and use POST when when transmitting field data. If not specified and METHOD is XML, POST will have content type "text/xml." If not specified and METHOD is RAW, will have content type "text/plain".`,
-				insertText: 'value="${0}"',
+				insertText: 'method="${0}"',
 				insertTextFormat: 'Snippet',
-				label: 'value',
+				label: 'method',
 				kind: 'Enum',
 				commitCharacters: [
 					'=',

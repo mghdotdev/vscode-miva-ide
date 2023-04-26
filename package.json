@@ -11,8 +11,8 @@
 	],
 	"scripts": {
 		"vscode:prepublish": "npm run build",
-		"syntax:watch": "node ./syntaxes/watch.js",
-		"syntax:build": "node ./syntaxes/build.js",
+		"syntax:watch": "node ./syntaxes/watch.cjs",
+		"syntax:build": "node ./syntaxes/build.cjs",
 		"watch": "tsc -b -w",
 		"build": "tsc -b",
 		"package": "npx vsce package"
@@ -260,9 +260,9 @@
 	"devDependencies": {
 		"@types/node": "^18.15.11",
 		"@vscode/vsce": "^2.18.0",
-		"chalk": "^5.0.2",
+		"chalk": "^4.0.0",
 		"glob": "^7.2.2",
-		"js-yaml": "^4.1.0",
+		"js-yaml": "^3.14.0",
 		"typescript": "^5.0.4"
 	}
 }
