@@ -207,7 +207,9 @@ export function unique( value, index, self ) {
 };
 
 function formatTagEngine (engine) {
-	return `_Requires Engine: ${engine}_`;
+	return engine
+		? `_Requires Engine: ${engine}_`
+		: '';
 }
 
 function formatTagTitle (title: string, tagName?: string, value?: string) {
