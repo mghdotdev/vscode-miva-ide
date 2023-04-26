@@ -66,6 +66,8 @@ export interface TagAttributeValueData extends BaseTagAttributeValueData {
 	documentation: string,
 	insertText: string,
 	label: string
+	reference?: string,
+	engine?: string
 }
 
 export interface BaseTagAttributeData {
@@ -73,7 +75,7 @@ export interface BaseTagAttributeData {
 	insertTextFormat: string,
 	kind: string,
 	commitCharacters: string[],
-	valueType: 'variable' | 'expression' | 'string' | 'function',
+	valueType: 'variable' | 'expression' | 'string' | 'function'
 }
 
 export interface TagAttributeData extends BaseTagAttributeData {
@@ -81,13 +83,15 @@ export interface TagAttributeData extends BaseTagAttributeData {
 	documentation: string,
 	insertText: string,
 	label: string,
-	values?: Record<string, TagAttributeValueData>
+	values?: Record<string, TagAttributeValueData | ItemData>
+	reference?: string,
+	engine?: string
 }
 
 export interface BaseTagData {
 	insertTextFormat: string,
 	kind: string,
-	commitCharacters: string[],
+	commitCharacters: string[]
 }
 
 export interface TagData extends BaseTagData {
@@ -97,4 +101,35 @@ export interface TagData extends BaseTagData {
 	reference?: string,
 	engine?: string,
 	attributes?: Record<string, TagAttributeData>
+}
+
+export interface BaseItemParamData {
+	insertTextFormat: string,
+	kind: string,
+	commitCharacters: string[]
+}
+
+export interface ItemParamData extends BaseItemParamData {
+	documentation: string,
+	insertText: string,
+	label: string,
+	reference?: string,
+	engine?: string,
+	version?: string
+}
+
+export interface BaseItemData {
+	insertTextFormat: string,
+	kind: string,
+	commitCharacters: string[]
+}
+
+export interface ItemData extends BaseItemData {
+	documentation: string;
+	insertText: string,
+	label: string,
+	reference?: string,
+	engine?: string,
+	version?: string,
+	params?: Record<string, ItemParamData>
 }

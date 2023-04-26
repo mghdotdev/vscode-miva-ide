@@ -212,6 +212,12 @@ function formatTagEngine (engine) {
 		: '';
 }
 
+function formatTagVersion (version) {
+	return version
+		? `_Requires Miva: ${version}_`
+		: '';
+}
+
 function formatTagTitle (title: string, tagName?: string, value?: string) {
 	return tagName
 		? `#### ${tagName}[${title}${value ? `="${value}"` : ''}]`
@@ -235,6 +241,8 @@ export function formatTagDocumentation (tagData): MarkupContent {
 
 ${formatTagEngine(tagData.engine)}
 
+${formatTagVersion(tagData.version)}
+
 ${tagData.documentation}
 
 ${formatTagReference(tagData.reference)}`
@@ -246,11 +254,15 @@ export function formatTagAttributeDocumentation (tagData, attributeData): Markup
 		kind: MarkupKind.Markdown,
 		value: `${formatTagTitle(attributeData.label, tagData.label)}
 
+${formatTagEngine(attributeData.engine || tagData.engine)}
+
+${formatTagVersion(attributeData.version || tagData.version)}
+
 ${formatTagAttributeRequired(attributeData.required, attributeData.requiredMessage)}
 
 ${attributeData.documentation}
 
-${formatTagReference(tagData.reference)}`
+${formatTagReference(attributeData.reference || tagData.reference)}`
 	};
 }
 
@@ -259,9 +271,13 @@ export function formatTagAttributeValueDocumentation (tagData, attributeData, at
 		kind: MarkupKind.Markdown,
 		value: `${formatTagTitle(attributeData.label, tagData.label, attributeValueData.label)}
 
+${formatTagEngine(attributeValueData.engine || attributeData.engine || tagData.engine)}
+
+${formatTagVersion(attributeValueData.version || attributeData.version || tagData.version)}
+
 ${attributeValueData.documentation}
 
-${formatTagReference(tagData.reference)}`
+${formatTagReference(attributeValueData.reference || attributeData.reference || tagData.reference)}`
 	};
 }
 

@@ -5,6 +5,7 @@ import {
 	BaseTagAttributeData,
 	BaseTagAttributeValueData
 } from '../util/interfaces';
+import itemsData from './items';
 
 // Base object references
 
@@ -310,7 +311,6 @@ The ... loop terminates when the entire document has been received, or when an (
 		attributes: {
 			variable: {
 				...baseAttribute,
-				required: true,
 				documentation: `The variable that stores the capture result.`,
 				insertText: 'variable="${0}"',
 				label: 'variable',
@@ -366,16 +366,6 @@ These global variables reference a specific module file. The Limited Source Kit 
 			}
 		}
 	},
-	if: {
-		...baseTag,
-		documentation: ``,
-		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
-		label: 'mvt:if',
-		reference: 'https://docs.miva.com/template-language/if-statement',
-		attributes: {
-			expr
-		}
-	},
 	else: {
 		...baseTag,
 		documentation: ``,
@@ -419,7 +409,6 @@ These global variables reference a specific module file. The Limited Source Kit 
 		attributes: {
 			iterator: {
 				...baseAttribute,
-				required: true,
 				documentation: ``,
 				insertText: 'iterator="${0}"',
 				label: 'iterator',
@@ -427,7 +416,6 @@ These global variables reference a specific module file. The Limited Source Kit 
 			},
 			array: {
 				...baseAttribute,
-				required: true,
 				documentation: ``,
 				insertText: 'array="${0}"',
 				label: 'array',
@@ -448,6 +436,42 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:foreachstop />",
 		label: 'mvt:foreachstop',
 		reference: 'https://docs.miva.com/template-language/foreach'
+	},
+	if: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
+		label: 'mvt:if',
+		reference: 'https://docs.miva.com/template-language/if-statement',
+		attributes: {
+			expr
+		}
+	},
+	item: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />",
+		label: 'mvt:item',
+		attributes: {
+			name: {
+				...baseAttribute,
+				documentation: ``,
+				insertText: 'name="${0}"',
+				label: 'name',
+				valueType: 'string',
+				values: {
+					...itemsData
+				}
+			},
+			param: {
+				...baseAttribute,
+				required: false,
+				documentation: ``,
+				insertText: 'param="${0}"',
+				label: 'param',
+				valueType: 'function'
+			}
+		}
 	},
 	miva: {
 		...baseTag,
