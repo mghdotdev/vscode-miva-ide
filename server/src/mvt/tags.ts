@@ -45,13 +45,19 @@ const expr: TagAttributeData = {
 	label: 'expr'
 };
 
-// Full tag data structure
+const name: TagAttributeData = {
+	...baseAttribute,
+	documentation: `This can be a local or global variable as defined by l. or g.
 
-/**
- * TODO: Missing tags
- * 	- do
- * 	- item
- */
+examples: l.myvariable or g.myglobalvariable.
+
+If no prefix (l. or g.) is given it defaults to be a global variable.`,
+	insertText: 'name="${0}"',
+	label: 'name',
+	valueType: 'variable'
+};
+
+// Full tag data structure
 
 const tagData: Record<string, TagData> = {
 	assign: {
@@ -62,17 +68,7 @@ const tagData: Record<string, TagData> = {
 		reference: 'https://docs.miva.com/template-language/mvtassign',
 		engine: '>=5.18',
 		attributes: {
-			name: {
-				...baseAttribute,
-				documentation: `This can be a local or global variable as defined by l. or g.
-
-examples: l.myvariable or g.myglobalvariable.
-
-If no prefix (l. or g.) is given it defaults to be a global variable.`,
-				insertText: 'name="${0}"',
-				label: 'name',
-				valueType: 'variable'
-			},
+			name,
 			value: {
 				...baseAttribute,
 				documentation: `The value can either be an expression a string, a number or a combination of all three.`,
@@ -327,6 +323,48 @@ The ... loop terminates when the entire document has been received, or when an (
 		documentation: `Content within this tag will be ignored.`,
 		insertText: "<mvt:comment>\n|\n|\t${1}\n|\n</mvt:comment>",
 		label: 'mvt:comment'
+	},
+	do: {
+		...baseTag,
+		documentation: `Provides access to call native MivaScript functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
+		insertText: "<mvt:do file=\"$4\" ${2:name=\"${3:l.success}\"} value=\"$1\" />",
+		label: 'mvt:do',
+		reference: 'https://docs.miva.com/template-language/mvtdo',
+		engine: '>=5.22',
+		attributes: {
+			name: {
+				...name,
+				documentation: `This is a variable (l. or g. ) where any return value from the function called will be saved.`
+			},
+			value: {
+				...baseAttribute,
+				documentation: `This is the specific function to be executed along with any parameters it accepts.`,
+				insertText: 'value="${0}"',
+				label: 'value',
+				valueType: 'function'
+			},
+			file: {
+				...baseAttribute,
+				documentation: `This is the path to the compiled MivaScript file (.mvc) relative to the mm5 directory. It can be a string (wrapped in single quotes) or more commonly a global variable to one of Miva's built on libraries. See below for available libraries:
+
+__Miva Library Variables__
+
+These global variables reference a specific module file. The Limited Source Kit should be used as a reference to see which functions are in which module.
+
+| Variable | Path |
+| --- | --- |
+| g.Module_Library_Billing_DB | /mm5/5.00/lib/mbs.mvc |
+| g.Module_Library_Utilities | /mm5/5.00/lib/util.mvc |
+| g.Module_Library_Crypto | /mm5/5.00/lib/crypto.mvc |
+| g.Module_Library_DB | /mm5/5.00/lib/db.mvc |
+| g.Module_Library_DBAPI | /mm5/5.00/lib/dbapi.mvc |
+| g.Module_Library_Native_DBAPI | /mm5/5.00/lib/dbapi_mysql.mvc |
+				`,
+				insertText: 'file="${0}"',
+				label: 'file',
+				valueType: 'variable'
+			}
+		}
 	},
 	if: {
 		...baseTag,
