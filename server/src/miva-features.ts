@@ -400,10 +400,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME) || [];
 
 				// Attempt to get tag from name
-				const foundTag = mvtTagData[tagName] || mvtTagData[word];
+				const foundTagRegex = mvtTagData[tagName];
 
-				// Do stuff with found tag
-				if (foundTag) {
+				// Do stuff with found tag (via regex)
+				if (foundTagRegex) {
 
 					// Function Hover
 					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
@@ -425,7 +425,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						}
 
 						// Builtin function lookup
-						const foundBuiltinHover = builtinFunctionHoverMap.get(word);
+						const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
 						if (foundBuiltinHover) {
 							return {
 								contents: foundBuiltinHover
@@ -434,15 +434,15 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					}
 
 					// Find attribute data on found tag name
-					const foundAttributes = foundTag.attributes;
+					const foundAttributes = foundTagRegex.attributes;
 					if (foundAttributes) {
 						// Find attribute data with word
-						const foundAttribute = foundAttributes[word];
+						const foundAttribute = foundAttributes[wordLower];
 
 						// Return hover for attribute if found
 						if (foundAttribute) {
 							return {
-								contents: formatTagAttributeDocumentation(foundTag, foundAttribute)
+								contents: formatTagAttributeDocumentation(foundTagRegex, foundAttribute)
 							};
 						}
 
@@ -451,16 +451,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 							// Find attribute data with word
 							const [, attributeName] = left.match(patterns.MVT.LEFT_ATTR_NAME);
 							const foundAttribute = foundAttributes[attributeName];
-							const foundAttributeValue = foundAttribute?.values?.[word];
+							const foundAttributeValue = foundAttribute?.values?.[wordLower];
 
 							if (foundAttributeValue && foundAttributeValue.documentation) {
 								return {
-									contents: formatTagAttributeValueDocumentation(foundTag, foundAttribute, foundAttributeValue)
+									contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
 								};
 							}
 						}
 					}
+				}
 
+				// Do stuff with found tag (via word)
+				const foundTag = mvtTagData[wordLower];
+				if (foundTag) {
 					return {
 						contents: formatTagDocumentation(foundTag)
 					};
