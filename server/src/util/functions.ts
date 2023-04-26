@@ -223,7 +223,7 @@ function formatTagReference (reference) {
 function formatTagAttributeRequired (required: boolean, requiredMessage?: string) {
 	return required
 		? `_Required_`
-		: `_Optional: ${requiredMessage}_`;
+		: `_Optional${requiredMessage ? `: ${requiredMessage}` : ''}_`;
 }
 
 export function formatTagDocumentation (tagData): MarkupContent {
