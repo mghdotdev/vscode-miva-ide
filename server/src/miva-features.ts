@@ -32,6 +32,7 @@ import {
 	getWordAtOffset,
 	unique,
 	formatTagAttributeDocumentation,
+	formatTagAttributeValueDocumentation,
 	formatTagDocumentation
 } from './util/functions';
 import patterns from './util/patterns';
@@ -405,6 +406,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 							return {
 								contents: formatTagAttributeDocumentation(foundTag, foundAttribute)
 							};
+						}
+
+						// Return hover for attribute value if found
+						if (patterns.MVT.LEFT_IN_ATTR.test(left)) {
+							// Find attribute data with word
+							const [, attributeName] = left.match(patterns.MVT.LEFT_ATTR_NAME);
+							const foundAttribute = foundAttributes[attributeName];
+							const foundAttributeValue = foundAttribute?.values?.[word];
+
+							if (foundAttributeValue) {
+								return {
+									contents: formatTagAttributeValueDocumentation(foundTag, foundAttribute, foundAttributeValue)
+								};
+							}
 						}
 					}
 

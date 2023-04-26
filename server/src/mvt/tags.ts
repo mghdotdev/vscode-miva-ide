@@ -45,7 +45,11 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 		}
 	},
 	call: {
-		documentation: `Executes an HTTP call on the server. The response is read into the \`s.callvalue\` system variable. The response is chunked and template code inside the tag is iterated until the entire body is read. All parameters accept variables (g.url) or strings which must be wrapped in single quotes.
+		documentation: `Executes an HTTP call on the server. This function returns the response a single object at a time in a system variable called s.callvalue. A common practice is to eval this variable within the loop which will display the entire result.
+
+[See this page](http://www.mivascript.com/item/MvCALL.html) for descriptions of all available system variables.
+
+All parameters accept variables (g.url) or strings which must be wrapped in single quotes.
 
 - Use \`s.callvalue\` to access the response. To read the full body, concatenate \`s.callvalue\` into a variable assigned outside of the tag.
 - Use \`<mvt:callstop />\` to exit the response early.
@@ -87,8 +91,28 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 				],
 				valueType: 'string',
 				values: {
+					CONNECT: {
+						documentation: `The CONNECT method establishes a tunnel to the server identified by the target resource.`,
+						insertText: "'CONNECT'",
+						insertTextFormat: 'Snippet',
+						label: "'CONNECT'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
+					DELETE: {
+						documentation: `The DELETE method deletes the specified resource.`,
+						insertText: "'DELETE'",
+						insertTextFormat: 'Snippet',
+						label: "'DELETE'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
 					GET: {
-						documentation: ``,
+						documentation: `The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.`,
 						insertText: "'GET'",
 						insertTextFormat: 'Snippet',
 						label: "'GET'",
@@ -97,18 +121,8 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 							"'"
 						]
 					},
-					POST: {
-						documentation: ``,
-						insertText: "'POST'",
-						insertTextFormat: 'Snippet',
-						label: "'POST'",
-						kind: 'Enum',
-						commitCharacters: [
-							"'"
-						]
-					},
 					HEAD: {
-						documentation: ``,
+						documentation: `The HEAD method asks for a response identical to a GET request, but without the response body.`,
 						insertText: "'HEAD'",
 						insertTextFormat: 'Snippet',
 						label: "'HEAD'",
@@ -117,8 +131,18 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 							"'"
 						]
 					},
+					POST: {
+						documentation: `The POST method submits an entity to the specified resource, often causing a change in state or side effects on the server.`,
+						insertText: "'POST'",
+						insertTextFormat: 'Snippet',
+						label: "'POST'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
 					RAW: {
-						documentation: ``,
+						documentation: `Functionally the same as a POST, however it sets the Content-Type header to be \`text/plain\`.`,
 						insertText: "'RAW'",
 						insertTextFormat: 'Snippet',
 						label: "'RAW'",
@@ -127,18 +151,8 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 							"'"
 						]
 					},
-					XML: {
-						documentation: ``,
-						insertText: "'XML'",
-						insertTextFormat: 'Snippet',
-						label: "'XML'",
-						kind: 'Enum',
-						commitCharacters: [
-							"'"
-						]
-					},
 					OPTIONS: {
-						documentation: ``,
+						documentation: `The OPTIONS method describes the communication options for the target resource.`,
 						insertText: "'OPTIONS'",
 						insertTextFormat: 'Snippet',
 						label: "'OPTIONS'",
@@ -148,7 +162,7 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 						]
 					},
 					PUT: {
-						documentation: ``,
+						documentation: `The PUT method replaces all current representations of the target resource with the request payload.`,
 						insertText: "'PUT'",
 						insertTextFormat: 'Snippet',
 						label: "'PUT'",
@@ -157,18 +171,8 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 							"'"
 						]
 					},
-					DELETE: {
-						documentation: ``,
-						insertText: "'DELETE'",
-						insertTextFormat: 'Snippet',
-						label: "'DELETE'",
-						kind: 'Enum',
-						commitCharacters: [
-							"'"
-						]
-					},
 					TRACE: {
-						documentation: ``,
+						documentation: `The TRACE method performs a message loop-back test along the path to the target resource.`,
 						insertText: "'TRACE'",
 						insertTextFormat: 'Snippet',
 						label: "'TRACE'",
@@ -177,11 +181,11 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 							"'"
 						]
 					},
-					CONNECT: {
-						documentation: ``,
-						insertText: "'CONNECT'",
+					XML: {
+						documentation: `Functionally the same as a POST, however it sets the Content-Type header to be \`text/xml\`.`,
+						insertText: "'XML'",
 						insertTextFormat: 'Snippet',
-						label: "'CONNECT'",
+						label: "'XML'",
 						kind: 'Enum',
 						commitCharacters: [
 							"'"
@@ -219,10 +223,161 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 			},
 			files: {
 				required: false,
-				documentation: `Contains variables whose values are filenames that will be uploaded to the URL specified in ACTION.`,
+				documentation: `Contains variables whose values are filenames that will be uploaded to the URL specified in \`action\`.`,
 				insertText: 'files="${0}"',
 				insertTextFormat: 'Snippet',
 				label: 'files',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'expression'
+			},
+			certfile: {
+				required: false,
+				documentation: `Resolves to a location in the data directory containing a certificate or set of certificates.`,
+				insertText: 'certfile="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'certfile',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'expression'
+			},
+			certtype: {
+				required: false,
+				documentation: `Must be either 'PEM' or 'ASN1'.`,
+				insertText: 'certtype="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'certtype',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'string',
+				values: {
+					PEM: {
+						documentation: ``,
+						insertText: "'PEM'",
+						insertTextFormat: 'Snippet',
+						label: "'PEM'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
+					ANS1: {
+						documentation: ``,
+						insertText: "'ANS1'",
+						insertTextFormat: 'Snippet',
+						label: "'ANS1'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					}
+				}
+			},
+			certpass: {
+				required: false,
+				documentation: `Allows PEM-format certificates and/or private keys to be stored encrypted on disk. If specified, the value of \`certpass\` is used to decrypt the certificate and/or private key in the file specified by \`certfile\`.`,
+				insertText: 'certpass="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'certpass',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'expression'
+			},
+			timeout: {
+				required: false,
+				documentation: `This value is used if it is smaller than the configured \`MvCONFIG_CALL_TIMEOUT\` value.`,
+				insertText: 'timeout="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'timeout',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'expression'
+			},
+			headers: {
+				required: false,
+				documentation: `The value in this attribute will be placed after the Empresa-generated HTTP headers, but before the CRLF separating the HTTP headers and the body of the HTTP request.`,
+				insertText: 'headers="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'headers',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'expression'
+			},
+			'pin-algorithm': {
+				required: false,
+				documentation: `__[Requires 5.33 engine or above]__
+
+Is either an empty string (which disables pinning), or an OpenSSL digest algorithm identifier, such as "sha1", "md5" or "sha256".`,
+				insertText: 'pin-algorithm="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'pin-algorithm',
+				kind: 'Enum',
+				commitCharacters: [
+					'=',
+					'"'
+				],
+				valueType: 'string',
+				values: {
+					sha1: {
+						documentation: ``,
+						insertText: "'sha1'",
+						insertTextFormat: 'Snippet',
+						label: "'sha1'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
+					md5: {
+						documentation: ``,
+						insertText: "'md5'",
+						insertTextFormat: 'Snippet',
+						label: "'md5'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					},
+					sha256: {
+						documentation: ``,
+						insertText: "'sha256'",
+						insertTextFormat: 'Snippet',
+						label: "'sha256'",
+						kind: 'Enum',
+						commitCharacters: [
+							"'"
+						]
+					}
+				}
+			},
+			'pin-digest': {
+				required: false,
+				documentation: `__[Requires 5.33 engine or above]__
+
+Pin diesest is the binary "fingerprint" of the X509 certificate (as generated by X509_digest)
+
+The ... loop terminates when the entire document has been received, or when an (optional) is encountered. If is encountered, processing start back at the top continuing with the next item.`,
+				insertText: 'pin-digest="${0}"',
+				insertTextFormat: 'Snippet',
+				label: 'pin-digest',
 				kind: 'Enum',
 				commitCharacters: [
 					'=',

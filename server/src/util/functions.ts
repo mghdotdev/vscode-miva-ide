@@ -210,9 +210,9 @@ function formatTagEngine (engine) {
 	return `_Requires Engine: ${engine}_`;
 }
 
-function formatTagTitle (title: string, tagName?: string) {
+function formatTagTitle (title: string, tagName?: string, value?: string) {
 	return tagName
-		? `#### ${tagName}[${title}]`
+		? `#### ${tagName}[${title}${value ? `="${value}"` : ''}]`
 		: `#### ${title}`;
 }
 
@@ -247,6 +247,17 @@ export function formatTagAttributeDocumentation (tagData, attributeData): Markup
 ${formatTagAttributeRequired(attributeData.required, attributeData.requiredMessage)}
 
 ${attributeData.documentation}
+
+${formatTagReference(tagData.reference)}`
+	};
+}
+
+export function formatTagAttributeValueDocumentation (tagData, attributeData, attributeValueData): MarkupContent {
+	return {
+		kind: MarkupKind.Markdown,
+		value: `${formatTagTitle(attributeData.label, tagData.label, attributeValueData.label)}
+
+${attributeValueData.documentation}
 
 ${formatTagReference(tagData.reference)}`
 	};
