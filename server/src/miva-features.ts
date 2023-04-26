@@ -415,7 +415,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 							const foundAttribute = foundAttributes[attributeName];
 							const foundAttributeValue = foundAttribute?.values?.[word];
 
-							if (foundAttributeValue) {
+							if (foundAttributeValue && foundAttributeValue.documentation) {
 								return {
 									contents: formatTagAttributeValueDocumentation(foundTag, foundAttribute, foundAttributeValue)
 								};
