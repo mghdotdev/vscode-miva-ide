@@ -282,6 +282,30 @@ The ... loop terminates when the entire document has been received, or when an (
 			}
 		}
 	},
+	capture: {
+		...baseTag,
+		documentation: `This tag takes the evaluated contents between the mvt:capture tags and saves it to a variable`,
+		insertText: "<mvt:capture variable=\"${1}\">\n\t${0}\n</mvt:capture>",
+		label: 'mvt:capture',
+		reference: 'https://docs.miva.com/template-language/mvtcapture',
+		engine: '>=5.33',
+		attributes: {
+			variable: {
+				...baseAttribute,
+				required: true,
+				documentation: `The variable that stores the capture result.`,
+				insertText: 'variable="${0}"',
+				label: 'variable',
+				valueType: 'variable'
+			}
+		}
+	},
+	comment: {
+		...baseTag,
+		documentation: `Content within this tag will be ignored.`,
+		insertText: "<mvt:comment>\n|\n|\t${1}\n|\n</mvt:comment>",
+		label: 'mvt:comment'
+	},
 	if: {
 		...baseTag,
 		documentation: ``,

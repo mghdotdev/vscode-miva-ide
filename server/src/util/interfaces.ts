@@ -94,7 +94,7 @@ export interface TagData extends BaseTagData {
 	documentation: string,
 	insertText: string,
 	label: string,
-	reference: string,
-	engine: string,
+	reference?: string,
+	engine?: string,
 	attributes?: Record<string, TagAttributeData>
 }
