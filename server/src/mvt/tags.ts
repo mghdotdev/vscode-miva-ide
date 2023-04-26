@@ -429,14 +429,14 @@ The ... loop terminates when the entire document has been received, or when an (
 					on: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'on'",
-						label: "'on'"
+						insertText: "on",
+						label: "on"
 					},
 					off: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'off'",
-						label: "'off'"
+						insertText: "off",
+						label: "off"
 					}
 				}
 			},
@@ -451,14 +451,14 @@ The ... loop terminates when the entire document has been received, or when an (
 					on: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'on'",
-						label: "'on'"
+						insertText: "on",
+						label: "on"
 					},
 					off: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'off'",
-						label: "'off'"
+						insertText: "off",
+						label: "off"
 					}
 				}
 			}
