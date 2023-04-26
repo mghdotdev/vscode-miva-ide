@@ -325,21 +325,23 @@ The ... loop terminates when the entire document has been received, or when an (
 	if: {
 		...baseTag,
 		documentation: ``,
-		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n<mvt:else>\n\t${0}\n</mvt:if>",
+		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
 		label: 'mvt:if',
-		reference: 'https://docs.miva.com/template-language/mvtif',
-		engine: '>=5.18',
 		attributes: {
 			expr
 		}
 	},
+	else: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:else>",
+		label: 'mvt:else'
+	},
 	elseif: {
 		...baseTag,
 		documentation: ``,
-		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n<mvt:elseif expr=\"${3}\">\n\t${0}\n</mvt:if>",
+		insertText: "<mvt:elseif expr=\"${0}\">",
 		label: 'mvt:elseif',
-		reference: 'https://docs.miva.com/template-language/mvtif',
-		engine: '>=5.18',
 		attributes: {
 			expr
 		}
