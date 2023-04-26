@@ -15,7 +15,8 @@ const baseItemParamFunction: BaseItemParamData = {
 	kind: 'Function',
 	commitCharacters: [
 		'('
-	]
+	],
+	paramType: 'function'
 };
 
 const itemData: Record<string, ItemData> = {

@@ -33,7 +33,8 @@ import {
 	unique,
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
-	formatTagDocumentation
+	formatTagDocumentation,
+	formatItemParamDocumentation
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -46,6 +47,7 @@ import { getLanguageModelCache } from './util/language-model-cache';
 import {glob} from 'glob';
 import { readFileSync, existsSync } from 'fs';
 import mvtTagData from './mvt/tags';
+import itemData from './mvt/items';
 
 // Define HTML Language Service helper
 const htmlLanguageService = getLanguageService();
@@ -346,6 +348,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				return null;
 			}
 
+			// Get lowercase version of word
+			const wordLower = word.toLowerCase();
+
 			// determine left side text range
 			const cursorPositionOffset = mvtDocument.offsetAt( position );
 			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
@@ -365,18 +370,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// Check for various hover scenarios
 
-			// Function Hover
-			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-				// Builtin function lookup
-				const foundBuiltinHover = builtinFunctionHoverMap.get(word);
-				if (foundBuiltinHover) {
-					return {
-						contents: foundBuiltinHover
-					};
-				}
-
-			}
-
 			// System variable hover
 			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
 				const foundSystemVariableHover = systemVariableHoverMap.get(word);
@@ -390,11 +383,42 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			// Tag name hover
 			if (patterns.MVT.LEFT_IN_MVT_TAG.test(left)) {
 				// Determine which tag we are in
-				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME);
+				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME) || [];
 
 				// Attempt to get tag from name
 				const foundTag = mvtTagData[tagName] || mvtTagData[word];
+
+				// Do stuff with found tag
 				if (foundTag) {
+
+					// Function Hover
+					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
+
+						// Item functions
+						if (tagName === 'item') {
+							// Get item name
+							const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
+							const foundItem = itemData[itemName];
+
+							// Get matching param
+							if (foundItem) {
+								const foundParam = foundItem.params[wordLower];
+
+								return {
+									contents: formatItemParamDocumentation(foundItem, foundParam)
+								};
+							}
+						}
+
+						// Builtin function lookup
+						const foundBuiltinHover = builtinFunctionHoverMap.get(word);
+						if (foundBuiltinHover) {
+							return {
+								contents: foundBuiltinHover
+							};
+						}
+					}
+
 					// Find attribute data on found tag name
 					const foundAttributes = foundTag.attributes;
 					if (foundAttributes) {

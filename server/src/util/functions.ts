@@ -13,6 +13,7 @@ import {
 	MarkupKind
 } from 'vscode-languageserver/node';
 import _cloneDeep from 'lodash.clonedeep';
+import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string,
 	err: any ): string {
@@ -224,6 +225,21 @@ function formatTagTitle (title: string, tagName?: string, value?: string) {
 		: `#### ${title}`;
 }
 
+function formatItemTitle (type, title: string, itemName?: string) {
+	switch (type) {
+		case 'function':
+			return itemName
+				? `#### ${itemName}.${title}()`
+				: `#### ${title}`;
+		case 'link':
+			return itemName
+				? `#### ${itemName}=>${title}`
+				: `#### ${title}`;
+		default:
+			return `#### ${title}`
+	}
+}
+
 function formatTagReference (reference) {
 	return `[Documentation Reference](${reference})`
 }
@@ -249,7 +265,7 @@ ${formatTagReference(tagData.reference)}`
 	};
 }
 
-export function formatTagAttributeDocumentation (tagData, attributeData): MarkupContent {
+export function formatTagAttributeDocumentation (tagData: TagData, attributeData: TagAttributeData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
 		value: `${formatTagTitle(attributeData.label, tagData.label)}
@@ -266,7 +282,7 @@ ${formatTagReference(attributeData.reference || tagData.reference)}`
 	};
 }
 
-export function formatTagAttributeValueDocumentation (tagData, attributeData, attributeValueData): MarkupContent {
+export function formatTagAttributeValueDocumentation (tagData: TagData, attributeData: TagAttributeData, attributeValueData: TagAttributeValueData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
 		value: `${formatTagTitle(attributeData.label, tagData.label, attributeValueData.label)}
@@ -278,6 +294,21 @@ ${formatTagVersion(attributeValueData.version || attributeData.version || tagDat
 ${attributeValueData.documentation}
 
 ${formatTagReference(attributeValueData.reference || attributeData.reference || tagData.reference)}`
+	};
+}
+
+export function formatItemParamDocumentation (foundItem: ItemData, foundParam: ItemParamData): MarkupContent {
+	return {
+		kind: MarkupKind.Markdown,
+		value: `${formatItemTitle(foundParam.paramType, foundParam.label, foundItem.label)}
+
+${formatTagEngine(foundParam.engine || foundItem.engine)}
+
+${formatTagVersion(foundParam.version || foundItem.version)}
+
+${foundParam.documentation}
+
+${formatTagReference(foundParam.reference || foundItem.reference)}`
 	};
 }
 
