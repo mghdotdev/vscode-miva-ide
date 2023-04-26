@@ -40,7 +40,7 @@ const baseAttributeValue: BaseTagAttributeValueData = {
 
 const expr: TagAttributeData = {
 	...baseAttribute,
-	documentation: ``,
+	documentation: `This can either be an expression a string, a number, or a combination of all three.`,
 	insertText: 'expr="${0}"',
 	label: 'expr'
 };
@@ -327,6 +327,7 @@ The ... loop terminates when the entire document has been received, or when an (
 		documentation: ``,
 		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
 		label: 'mvt:if',
+		reference: 'https://docs.miva.com/template-language/if-statement',
 		attributes: {
 			expr
 		}
@@ -335,16 +336,35 @@ The ... loop terminates when the entire document has been received, or when an (
 		...baseTag,
 		documentation: ``,
 		insertText: "<mvt:else>",
-		label: 'mvt:else'
+		label: 'mvt:else',
+		reference: 'https://docs.miva.com/template-language/if-else'
 	},
 	elseif: {
 		...baseTag,
 		documentation: ``,
 		insertText: "<mvt:elseif expr=\"${0}\">",
 		label: 'mvt:elseif',
+		reference: 'https://docs.miva.com/template-language/if-else',
 		attributes: {
 			expr
 		}
+	},
+	eval: {
+		...baseTag,
+		documentation: `Executes the expression contained within expr attribute and outputs the expression's value directly to the page. It operates just like \`mvt:assign\` except that instead of saving the value/expression to a variable, it will output it directly to the page.`,
+		insertText: "<mvt:eval expr=\"${1:l.value}\" />",
+		label: 'mvt:eval',
+		reference: 'https://docs.miva.com/template-language/mvteval',
+		engine: '>=5.18',
+		attributes: {
+			expr
+		}
+	},
+	exit: {
+		...baseTag,
+		documentation: ``,
+		insertText: "<mvt:exit />",
+		label: 'mvt:exit'
 	}
 };
 
