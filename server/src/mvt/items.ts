@@ -42,7 +42,15 @@ One of the key new features was allowing store morph code to call functions dire
 				documentation: `Writes a custom field to the sNN_BasketInfo table.`,
 				insertText: "Write_Basket( '${1:_CODE_}', ${2:_VALUE_} )",
 				label: 'Write_Basket',
-				reference: 'https://docs.miva.com/template-language-custom-field-debugging'
+				reference: 'https://docs.miva.com/template-language/custom-basket-fields'
+			},
+			read_page_id: {
+				...baseItemParamFunction,
+				documentation: `Load a Page custom field by its \`id\`.`,
+				insertText: "Read_Page_ID( ${1:g.Page_ID}, '${2:_CODE_}', ${4:l.settings:${3:page}:customfield_values:customfields:$2} )",
+				label: 'Read_Page_ID',
+				version: '>=10.05.00',
+				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
 			}
 		}
 	}
