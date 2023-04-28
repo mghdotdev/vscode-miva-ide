@@ -7,6 +7,13 @@
 		"label": "abs"
 	},
 	{
+		"documentation": "[miva_json_encode](https://www.mivascript.com/item/mivascript-functions/miva_json_encode.html)  \n\nmiva_json_encode( variable, 'pretty' )\n\nConvert a Miva variable (array or structure) into a JSON string.",
+		"insertText": "miva_json_encode( ${1:variable}${2:, 'pretty'} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_json_encode"
+	},
+	{
 		"documentation": "[acos](https://www.mivascript.com/item/mivascript-functions/acos.html)  \n\nacos( number )\n\nReturns the arccosine of number. The results are returned in radians.\n\nReturns the results in radians.",
 		"insertText": "acos( ${1:number} )$0",
 		"insertTextFormat": "Snippet",
