@@ -192,7 +192,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				return diagnostics;
 
-			}, []);;
+			}, []);
 
 		},
 
