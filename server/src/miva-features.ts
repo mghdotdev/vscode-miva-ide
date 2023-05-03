@@ -319,7 +319,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			}
 
-			return mvtTagCompletions;
+			return CompletionList.create([
+				...mvtTagCompletions.items,
+				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+			]);
 
 		},
 
@@ -483,7 +486,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				}
 			}
 
-			return null;
+			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
 
 		},
 
