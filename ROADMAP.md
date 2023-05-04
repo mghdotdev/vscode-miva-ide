@@ -38,6 +38,7 @@ Our VSCode extension is a vital tool for working with all things Miva.
 	- Create / delete and push branches.
 	- Commit file changes and write notes.
 	- Status bar widget that informs the user what remote, branch and changeset they are currently working with.
+- Split Mivascript / MVT language service into separate packages. This will make it easier to maintain the intricacies of each language. Also, it aligns the Embedded Language extension guide: https://code.visualstudio.com/api/language-extensions/embedded-languages
 - A Mivascript/MVT parser class written in Node that will be used to add missing language server features including:
 	- Rename symbol: Allows users to highlight a variable and rename all references within the file.
 	- Code Actions: Allows users to automatically fix common issues in the current file.
