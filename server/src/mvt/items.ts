@@ -30,8 +30,6 @@ const itemsData: Record<string, ItemData> = {
 		documentation: `Custom Fields is a module that comes installed by default in the core software. In PR8U9, the custom fields module received a huge overhaul which now included many new features, and a new layout.
 
 One of the key new features was allowing store morph code to call functions directly inside the module through the use of \`<mvt:item />\` tags. The two main components are reading a custom field and writing to a custom field.`,
-		insertText: "customfields",
-		label: 'customfields',
 		reference: 'https://docs.miva.com/template-language/custom-field-reference-documentation',
 		version: '>=9.00.00',
 		params: {
@@ -60,10 +58,176 @@ One of the key new features was allowing store morph code to call functions dire
 		}
 	},
 	product_display: {
-		...baseTemplateItem,
-		documentation: '',
-		insertText: 'product_display',
-		label: 'product_display'
+		...baseItem,
+		documentation: ''
+	},
+	admin_order: {
+		...baseItem,
+		documentation: ``
+	},
+	urls: {
+		...baseItem,
+		documentation: ``
+	},
+	splitpayment: {
+		...baseItem,
+		documentation: ``
+	},
+	order: {
+		...baseItem,
+		documentation: ``
+	},
+	affiliate: {
+		...baseItem,
+		documentation: ``
+	},
+	category: {
+		...baseItem,
+		documentation: ``
+	},
+	category_tree: {
+		...baseItem,
+		documentation: ``
+	},
+	product: {
+		...baseItem,
+		documentation: ``
+	},
+	paymentsettings: {
+		...baseItem,
+		documentation: ``
+	},
+	facets: {
+		...baseItem,
+		documentation: ``
+	},
+	category_listing: {
+		...baseItem,
+		documentation: ``
+	},
+	all_products: {
+		...baseItem,
+		documentation: ``
+	},
+	related_products: {
+		...baseItem,
+		documentation: ``
+	},
+	search_results: {
+		...baseItem,
+		documentation: ``
+	},
+	customer: {
+		...baseItem,
+		documentation: ``
+	},
+	paymentcards: {
+		...baseItem,
+		documentation: ``
+	},
+	category_listing_imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	all_products_imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	related_products_imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	search_results_imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	product_display_imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	imagemachine: {
+		...baseItem,
+		documentation: ``
+	},
+	basket: {
+		...baseItem,
+		documentation: ``
+	},
+	paymentmethod: {
+		...baseItem,
+		documentation: ``
+	},
+	shipestimate_rates: {
+		...baseItem,
+		documentation: ``
+	},
+	payment: {
+		...baseItem,
+		documentation: ``
+	},
+	toe_subscription_fields: {
+		...baseItem,
+		documentation: ``
+	},
+	toe_subscriptions: {
+		...baseItem,
+		documentation: ``
+	},
+	toe_order_contents: {
+		...baseItem,
+		documentation: ``
+	},
+	toe_basket_contents: {
+		...baseItem,
+		documentation: ``
+	},
+	ga_tracking: {
+		...baseItem,
+		documentation: ``
+	},
+	ga_jsencode: {
+		...baseItem,
+		documentation: ``
+	},
+	ga_transaction: {
+		...baseItem,
+		documentation: ``
+	},
+	product_list: {
+		...baseItem,
+		documentation: ``
+	},
+	order_contents: {
+		...baseItem,
+		documentation: ``
+	},
+	productdatafield: {
+		...baseItem,
+		documentation: ``
+	},
+	productdatafeed: {
+		...baseItem,
+		documentation: ``
+	},
+	request_quote: {
+		...baseItem,
+		documentation: ``
+	},
+	quote_info: {
+		...baseItem,
+		documentation: ``
+	},
+	quote_content: {
+		...baseItem,
+		documentation: ``
+	},
+	quote_notes: {
+		...baseItem,
+		documentation: ``
+	},
+	quotehistory_list: {
+		...baseItem,
+		documentation: ``
 	}
 };
 
