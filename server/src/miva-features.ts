@@ -491,54 +491,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		},
 
 		onDocumentLinks (document: TextDocument) {
-			const links: DocumentLink[] = [];
-
-			const {name: fileName} = path.parse(document.uri);
-
-			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
-			let token = scanner.scan();
-			let lastTagName: string | undefined = undefined;
-			let lastAttributeName: string | undefined = undefined;
-
-			while ( token !== TokenType.EOS ) {
-				switch ( token ) {
-
-					case TokenType.StartTag:
-						lastTagName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeName:
-						lastAttributeName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeValue:
-						if (lastTagName === 'mvt:item') {
-							// console.log(scanner.getTokenText().replace( /"/g, '' ), lastTagName, lastAttributeName, path.basename(document.uri))
-
-							const word = scanner.getTokenText().replace(/"/g, '');
-
-							if (lastAttributeName === 'name') {
-								const foundItem = mvtItemData[word];
-
-								if (foundItem && foundItem.link) {
-
-									const link = parseLinkTemplate(foundItem.link, {
-										fileName,
-										label: foundItem.label
-									});
-
-									/* TODO: RESOLVE LOCAL URL THEN CREATE LINK */
-
-								}
-							}
-						}
-						break;
-				}
-
-				token = scanner.scan();
-			}
-
-			return links;
+			return null;
 		}
 
 	};
