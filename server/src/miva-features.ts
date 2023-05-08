@@ -294,9 +294,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 											// Create completion list from params object
 											if (foundItem && foundItem.params) {
-
-												console.log('break');
-
 												return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
 											}
 										}
