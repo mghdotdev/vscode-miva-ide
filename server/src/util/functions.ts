@@ -354,3 +354,7 @@ export function parseLinkTemplate (template: string, data: Record<string, string
 
 	return output;
 }
+
+export function safeMatch (str: string, pattern: RegExp): RegExpMatchArray | [] {
+	return str?.match(pattern) || [];
+}

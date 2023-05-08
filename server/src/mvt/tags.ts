@@ -13,7 +13,6 @@ const baseTag: BaseTagData = {
 	insertTextFormat: 'Snippet',
 	kind: 'TypeParameter',
 	commitCharacters: [
-		'>',
 		'/'
 	]
 };
@@ -57,6 +56,35 @@ If no prefix (l. or g.) is given it defaults to be a global variable.`,
 	label: 'name',
 	valueType: 'variable'
 };
+
+// Specific tag references
+
+const tagItem = {
+	...baseTag,
+	documentation: ``,
+	insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />",
+	label: 'mvt:item',
+	attributes: {
+		name: {
+			...baseAttribute,
+			documentation: ``,
+			insertText: 'name="${0}"',
+			label: 'name',
+			valueType: 'string',
+			values: {
+				...itemsData
+			}
+		},
+		param: {
+			...baseAttribute,
+			required: false,
+			documentation: ``,
+			insertText: 'param="${0}"',
+			label: 'param',
+			valueType: 'function'
+		}
+	}
+}
 
 // Full tag data structure
 
@@ -473,6 +501,18 @@ These global variables reference a specific module file. The Limited Source Kit 
 			}
 		}
 	},
+	...Object
+			.keys(itemsData)
+			.reduce((o, itemName) => {
+				return {
+					...o,
+					[`item-${itemName}`]: {
+						...tagItem,
+						insertText: `<mvt:item name="${itemName}" param="\${1}" />`,
+						label: `mvt:item:${itemName}`
+					}
+				}
+			}, {}),
 	miva: {
 		...baseTag,
 		documentation: ``,

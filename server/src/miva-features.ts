@@ -36,7 +36,7 @@ import {
 	formatTagAttributeValueDocumentation,
 	formatTagDocumentation,
 	formatItemParamDocumentation,
-	parseLinkTemplate
+	safeMatch
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -260,7 +260,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			if ( patterns.MVT.LEFT_IN_MVT_TAG.test( left ) ) {
 
 				// Determine which tag we are in
-				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME);
+				const [, tagName] = safeMatch(left, patterns.MVT.LEFT_TAG_NAME);
 
 				// Attempt to get tag from name
 				const foundTag = mvtTagData[tagName];
@@ -270,7 +270,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 						// Tag attribute value completions
 						if (patterns.MVT.LEFT_IN_ATTR.test( left )) {
-							const [, attributeName] = left.match(patterns.MVT.LEFT_ATTR_NAME);
+							const [, attributeName] = safeMatch(left, patterns.MVT.LEFT_ATTR_NAME);
 
 							const foundAttribute = foundTag.attributes[attributeName];
 							if (foundAttribute) {
@@ -294,6 +294,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 											// Create completion list from params object
 											if (foundItem && foundItem.params) {
+
+												console.log('break');
+
 												return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
 											}
 										}
@@ -402,7 +405,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			// Tag name hover
 			if (patterns.MVT.LEFT_IN_MVT_TAG.test(left)) {
 				// Determine which tag we are in
-				const [, tagName] = left.match(patterns.MVT.LEFT_TAG_NAME) || [];
+				const [, tagName] = safeMatch(left, patterns.MVT.LEFT_TAG_NAME);
 
 				// Attempt to get tag from name
 				const foundTagRegex = mvtTagData[tagName];
@@ -454,7 +457,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						// Return hover for attribute value if found
 						if (patterns.MVT.LEFT_IN_ATTR.test(left)) {
 							// Find attribute data with word
-							const [, attributeName] = left.match(patterns.MVT.LEFT_ATTR_NAME);
+							const [, attributeName] = safeMatch(left, patterns.MVT.LEFT_ATTR_NAME);
 							const foundAttribute = foundAttributes[attributeName];
 							const foundAttributeValue = foundAttribute?.values?.[wordLower];
 
