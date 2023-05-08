@@ -85,7 +85,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	//const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
 	//const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
 
-	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
+	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mvtDocument: TextDocument): CompletionList | null => {
@@ -294,20 +294,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 											// Create completion list from params object
 											if (foundItem && foundItem.params) {
-												return CompletionList.create( parseCompletionFile( foundItem.params ) );
+												return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
 											}
 										}
 
 										return null;
 									}
 									case 'string':
-										return CompletionList.create( parseCompletionFile( foundAttribute.values ) );
+										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
 								}
 							}
 						}
 
 						// Tag attribute completions
-						return CompletionList.create( parseCompletionFile( foundTagAttributes ) );
+						return CompletionList.create( parseCompletionFile( Object.values( foundTagAttributes ) ) );
 					}
 				}
 

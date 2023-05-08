@@ -312,20 +312,7 @@ ${formatTagReference(foundParam.reference || foundItem.reference)}`
 	};
 }
 
-export function parseCompletionFile( data ) {
-	const completions = Array.isArray(data)
-		? data
-		: Object.entries( data ).reduce((output, [key, value]: [string, any]) => {
-			return output.concat([
-				value.label
-					? value
-					: {
-						...value,
-						label: key
-					}
-			]);
-		}, []);
-
+export function parseCompletionFile( completions: any[] ) {
 	return completions.map(completion => {
 
 		return parseCompletion( completion );

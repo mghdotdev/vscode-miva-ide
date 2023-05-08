@@ -10,11 +10,6 @@ const baseItem: BaseItemData = {
 	commitCharacters: []
 };
 
-const baseTemplateItem: BaseItemData = {
-	...baseItem,
-	link: './templates/{{fileName}}-{{label}}.mvt'
-}
-
 const baseItemParamFunction: BaseItemParamData = {
 	insertTextFormat: 'Snippet',
 	kind: 'Function',
@@ -32,6 +27,7 @@ const itemsData: Record<string, ItemData> = {
 One of the key new features was allowing store morph code to call functions directly inside the module through the use of \`<mvt:item />\` tags. The two main components are reading a custom field and writing to a custom field.`,
 		reference: 'https://docs.miva.com/template-language/custom-field-reference-documentation',
 		version: '>=9.00.00',
+		label: 'customfields',
 		params: {
 			debug: {
 				...baseItemParamFunction,
@@ -57,177 +53,28 @@ One of the key new features was allowing store morph code to call functions dire
 			}
 		}
 	},
-	product_display: {
+	readytheme: {
 		...baseItem,
-		documentation: ''
-	},
-	admin_order: {
-		...baseItem,
-		documentation: ``
-	},
-	urls: {
-		...baseItem,
-		documentation: ``
-	},
-	splitpayment: {
-		...baseItem,
-		documentation: ``
-	},
-	order: {
-		...baseItem,
-		documentation: ``
-	},
-	affiliate: {
-		...baseItem,
-		documentation: ``
-	},
-	category: {
-		...baseItem,
-		documentation: ``
-	},
-	category_tree: {
-		...baseItem,
-		documentation: ``
-	},
-	product: {
-		...baseItem,
-		documentation: ``
-	},
-	paymentsettings: {
-		...baseItem,
-		documentation: ``
-	},
-	facets: {
-		...baseItem,
-		documentation: ``
-	},
-	category_listing: {
-		...baseItem,
-		documentation: ``
-	},
-	all_products: {
-		...baseItem,
-		documentation: ``
-	},
-	related_products: {
-		...baseItem,
-		documentation: ``
-	},
-	search_results: {
-		...baseItem,
-		documentation: ``
-	},
-	customer: {
-		...baseItem,
-		documentation: ``
-	},
-	paymentcards: {
-		...baseItem,
-		documentation: ``
-	},
-	category_listing_imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	all_products_imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	related_products_imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	search_results_imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	product_display_imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	imagemachine: {
-		...baseItem,
-		documentation: ``
-	},
-	basket: {
-		...baseItem,
-		documentation: ``
-	},
-	paymentmethod: {
-		...baseItem,
-		documentation: ``
-	},
-	shipestimate_rates: {
-		...baseItem,
-		documentation: ``
-	},
-	payment: {
-		...baseItem,
-		documentation: ``
-	},
-	toe_subscription_fields: {
-		...baseItem,
-		documentation: ``
-	},
-	toe_subscriptions: {
-		...baseItem,
-		documentation: ``
-	},
-	toe_order_contents: {
-		...baseItem,
-		documentation: ``
-	},
-	toe_basket_contents: {
-		...baseItem,
-		documentation: ``
-	},
-	ga_tracking: {
-		...baseItem,
-		documentation: ``
-	},
-	ga_jsencode: {
-		...baseItem,
-		documentation: ``
-	},
-	ga_transaction: {
-		...baseItem,
-		documentation: ``
-	},
-	product_list: {
-		...baseItem,
-		documentation: ``
-	},
-	order_contents: {
-		...baseItem,
-		documentation: ``
-	},
-	productdatafield: {
-		...baseItem,
-		documentation: ``
-	},
-	productdatafeed: {
-		...baseItem,
-		documentation: ``
-	},
-	request_quote: {
-		...baseItem,
-		documentation: ``
-	},
-	quote_info: {
-		...baseItem,
-		documentation: ``
-	},
-	quote_content: {
-		...baseItem,
-		documentation: ``
-	},
-	quote_notes: {
-		...baseItem,
-		documentation: ``
-	},
-	quotehistory_list: {
-		...baseItem,
-		documentation: ``
+		documentation: `ReadyThemes is functionality built into the core of Miva Merchant Version 9. It allows you build themes or integrate with an existing CSSUI store to better manage your Miva Merchant store from the admin. This includes updating your logo, managing social media links, managing promotional images, content, product lists, and navigation.
+
+There are 6 different tabs available within ReadyThemes which provide different functionality. Below are code samples and an item reference guide to help you build a new theme or customize an existing Miva Merchant store.`,
+		reference: 'https://docs.miva.com/template-language/readythemes-documentation',
+		version: '>=9.00.00',
+		label: 'readytheme',
+		params: {
+			contentsection: {
+				...baseItemParamFunction,
+				documentation: `Content Sections are a place to manage your sites content pages. Content such about us, policy pages, or other content needs.`,
+				insertText: "contentsection( ${1:code} )",
+				label: 'contentsection'
+			},
+			load_contentsection: {
+				...baseItemParamFunction,
+				documentation: `Load the variable data for a content section. This function does not render the template.`,
+				insertText: "Load_ContentSection( ${1:code}, ${2:output var} )",
+				label: 'Load_ContentSection'
+			}
+		}
 	}
 };
 

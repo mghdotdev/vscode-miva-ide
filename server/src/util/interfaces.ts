@@ -68,7 +68,7 @@ export interface BaseTagAttributeValueData {
 export interface TagAttributeValueData extends BaseTagAttributeValueData {
 	documentation: string,
 	insertText?: string,
-	label?: string
+	label: string
 	reference?: string,
 	engine?: string,
 	version?: string
@@ -86,7 +86,7 @@ export interface TagAttributeData extends BaseTagAttributeData {
 	requiredMessage?: string,
 	documentation: string,
 	insertText?: string,
-	label?: string,
+	label: string,
 	values?: Record<string, TagAttributeValueData | ItemData>
 	reference?: string,
 	engine?: string,
@@ -102,7 +102,7 @@ export interface BaseTagData {
 export interface TagData extends BaseTagData {
 	documentation: string,
 	insertText?: string,
-	label?: string,
+	label: string,
 	reference?: string,
 	engine?: string,
 	version?: string,
@@ -119,7 +119,7 @@ export interface BaseItemParamData {
 export interface ItemParamData extends BaseItemParamData {
 	documentation: string,
 	insertText?: string,
-	label?: string,
+	label: string,
 	reference?: string,
 	engine?: string,
 	version?: string
@@ -135,7 +135,7 @@ export interface BaseItemData {
 export interface ItemData extends BaseItemData {
 	documentation: string;
 	insertText?: string,
-	label?: string,
+	label: string,
 	reference?: string,
 	engine?: string,
 	version?: string,
