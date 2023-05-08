@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable no-invalid-this */
 const fs = require('fs');
 const glob = require('glob');
 const chalk = require('chalk');
