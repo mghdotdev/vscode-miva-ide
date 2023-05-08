@@ -719,7 +719,7 @@ repository:
 
   source-item-param-string:
     match: '[^"]+'
-    name: string.quoted.double.mvt
+    name: markup.quote.item-param.mvt
 
   source-item-param-variable:
     match: '([^:]+)(:)(([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*))'
