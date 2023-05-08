@@ -614,22 +614,22 @@
           "begin": "(?i)(?<=[^=])\\b(certfile)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.certfile.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.certfile.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -647,22 +647,22 @@
           "begin": "(?i)(?<=[^=])\\b(compresswhitespace)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.compresswhitespace.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.compresswhitespace.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.compresswhitespace.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.compresswhitespace.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "match": "(off|on)",
@@ -682,22 +682,22 @@
           "begin": "(?i)(?<=[^=])\\b(headers)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.headers.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.headers.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -715,22 +715,22 @@
           "begin": "(?i)(?<=[^=])\\b(method)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.method.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.method.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -748,22 +748,22 @@
           "begin": "(?i)(?<=[^=])\\b(fields)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.fields.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.fields.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -781,22 +781,22 @@
           "begin": "(?i)(?<=[^=])\\b(content-type)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.content-type.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.content-type.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -814,22 +814,22 @@
           "begin": "(?i)(?<=[^=])\\b(certtype)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.certtype.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.certtype.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -847,22 +847,22 @@
           "begin": "(?i)(?<=[^=])\\b(certpass)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.certpass.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.certpass.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -880,22 +880,22 @@
           "begin": "(?i)(?<=[^=])\\b(files)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.files.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.files.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -913,22 +913,22 @@
           "begin": "(?i)(?<=[^=])\\b(expr)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.expr.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.expr.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -946,22 +946,22 @@
           "begin": "(?i)(?<=[^=])\\b(action)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.action.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.action.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -979,22 +979,22 @@
           "begin": "(?i)(?<=[^=])\\b(param)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.param.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.param.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1018,22 +1018,22 @@
           "begin": "(?i)(?<=[^=])\\b(file)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.file.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.file.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1051,22 +1051,22 @@
           "begin": "(?i)(?<=[^=])\\b(array)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.array.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.array.mvt source.mvt variable.language.implied.mvt"
+          "contentName": "attribute-value.$1.mvt source.mvt variable.language.implied.mvt"
         }
       ]
     },
@@ -1076,22 +1076,22 @@
           "begin": "(?i)(?<=[^=])\\b(iterator)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.iterator.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.iterator.mvt source.mvt variable.language.implied.mvt"
+          "contentName": "attribute-value.$1.mvt source.mvt variable.language.implied.mvt"
         }
       ]
     },
@@ -1101,22 +1101,22 @@
           "begin": "(?i)(?<=[^=])\\b(value)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.value.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.value.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1134,22 +1134,22 @@
           "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.name.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.name.mvt source.mvt support.class.module.mvt"
+          "contentName": "attribute-value.$1.mvt source.mvt support.class.module.mvt"
         }
       ]
     },
@@ -1159,22 +1159,22 @@
           "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.name.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.name.mvt source.mvt assign.declaration.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt assign.declaration.mvt",
           "patterns": [
             {
               "include": "#source-variables"
@@ -1189,22 +1189,22 @@
           "begin": "(?i)(?<=[^=])\\b(variable)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.variable.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.variable.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.variable.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.variable.mvt source.mvt assign.declaration.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt assign.declaration.mvt",
           "patterns": [
             {
               "include": "#source-variables"
@@ -1219,22 +1219,22 @@
           "begin": "(?i)(?<=[^=])\\b(name)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.name.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.name.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-variables"
@@ -1261,22 +1261,22 @@
           "begin": "(?i)(?<=[^=])\\b(output)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.output.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.output.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.output.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.output.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "match": "(off|on)",
@@ -1296,22 +1296,22 @@
           "begin": "(?i)(?<=[^=])\\b(timeout)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.timeout.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.timeout.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1329,22 +1329,22 @@
           "begin": "(?i)(?<=[^=])\\b(pin-algorithm)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.pin-algorithm.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.pin-algorithm.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1362,22 +1362,22 @@
           "begin": "(?i)(?<=[^=])\\b(pin-digest)\\s*(=?)\\s*(\")",
           "beginCaptures": {
             "1": {
-              "name": "entity.other.attribute-name.pin-digest.mvt"
+              "name": "entity.other.attribute-name.$1.mvt"
             },
             "2": {
               "name": "punctuation.separator.key-value.mvt"
             },
             "3": {
-              "name": "attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.begin.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
             }
           },
           "end": "\"",
           "endCaptures": {
             "0": {
-              "name": "attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.end.mvt"
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
             }
           },
-          "contentName": "attribute-value.pin-digest.mvt source.mvt",
+          "contentName": "attribute-value.$1.mvt source.mvt",
           "patterns": [
             {
               "include": "#source-mvt"
@@ -1477,8 +1477,8 @@
           "name": "variable.language.array-continue.mvt"
         },
         {
-          "match": "\\b(?i:POS)[0-9]+\\b",
-          "name": "variable.language.posx.mvt"
+          "match": "\\b(?i:POS)([0-9]+)\\b",
+          "name": "variable.language.pos$1.mvt"
         }
       ]
     },

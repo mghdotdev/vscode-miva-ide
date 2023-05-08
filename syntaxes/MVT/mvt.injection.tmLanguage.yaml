@@ -289,13 +289,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(certfile)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.certfile.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.certfile.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.certfile.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -304,13 +304,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(compresswhitespace)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.compresswhitespace.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.compresswhitespace.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.compresswhitespace.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.compresswhitespace.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - match: '(off|on)'
             name: string.quoted.single.mvt
@@ -321,13 +321,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(headers)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.headers.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.headers.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.headers.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -336,13 +336,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(method)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.method.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.method.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.method.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -351,13 +351,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(fields)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.fields.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.fields.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.fields.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -366,13 +366,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(content-type)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.content-type.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.content-type.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.content-type.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -381,13 +381,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(certtype)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.certtype.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.certtype.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.certtype.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -396,13 +396,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(certpass)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.certpass.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.certpass.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.certpass.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -411,13 +411,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(files)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.files.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.files.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.files.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -426,13 +426,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(expr)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.expr.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.expr.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.expr.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -441,13 +441,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(action)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.action.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.action.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.action.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -456,13 +456,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(param)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.param.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.param.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.param.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-component'
@@ -473,13 +473,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(file)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.file.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.file.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.file.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -488,37 +488,37 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(array)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.array.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.array.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.array.mvt source.mvt variable.language.implied.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt variable.language.implied.mvt
 
   iterator-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(iterator)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.iterator.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.iterator.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.iterator.mvt source.mvt variable.language.implied.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt variable.language.implied.mvt
 
   value-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(value)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.value.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.value.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.value.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -527,25 +527,25 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.name.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.name.mvt source.mvt support.class.module.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt support.class.module.mvt
 
   assign-name-attribute:
     patterns:
       - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.name.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.name.mvt source.mvt assign.declaration.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt assign.declaration.mvt
         patterns:
           - include: '#source-variables'
 
@@ -553,13 +553,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(variable)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.variable.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.variable.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.variable.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.variable.mvt source.mvt assign.declaration.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt assign.declaration.mvt
         patterns:
           - include: '#source-variables'
 
@@ -567,13 +567,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(name)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.name.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.name.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.name.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-variables'
           - include: '#source-string-single'
@@ -585,13 +585,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(output)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.output.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.output.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.output.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.output.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - match: '(off|on)'
             name: string.quoted.single.mvt
@@ -602,13 +602,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(timeout)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.timeout.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.timeout.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.timeout.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -617,13 +617,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(pin-algorithm)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.pin-algorithm.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.pin-algorithm.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.pin-algorithm.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -632,13 +632,13 @@ repository:
     patterns:
       - begin: '(?i)(?<=[^=])\b(pin-digest)\s*(=?)\s*(")'
         beginCaptures:
-          1: {name: entity.other.attribute-name.pin-digest.mvt}
+          1: {name: entity.other.attribute-name.$1.mvt}
           2: {name: punctuation.separator.key-value.mvt}
-          3: {name: attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.begin.mvt}
+          3: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt}
         end: '"'
         endCaptures:
-          0: {name: attribute-value.pin-digest.mvt source.mvt punctuation.definition.string.end.mvt}
-        contentName: attribute-value.pin-digest.mvt source.mvt
+          0: {name: attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt}
+        contentName: attribute-value.$1.mvt source.mvt
         patterns:
           - include: '#source-mvt'
           - include: '#source-functions-builtins'
@@ -714,8 +714,8 @@ repository:
         name: variable.language.array-continue.mvt
 
       # POSX
-      - match: \b(?i:POS)[0-9]+\b
-        name: variable.language.posx.mvt
+      - match: \b(?i:POS)([0-9]+)\b
+        name: variable.language.pos$1.mvt
 
   source-item-param-string:
     match: '[^"]+'
