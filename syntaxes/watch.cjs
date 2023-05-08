@@ -1,7 +1,7 @@
 const fs = require('fs');
 const glob = require('glob');
 const chalk = require('chalk');
-const {buildFile} = require('./build');
+const {buildFile} = require('./build.cjs');
 
 const globPattern = './**/*.yaml';
 
