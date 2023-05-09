@@ -405,7 +405,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		onHover (document: TextDocument, position: Position ) {
+		onHover ( document: TextDocument, position: Position ) {
 
 			const mvtDocument = mvtDocuments.get( document );
 
@@ -542,8 +542,58 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		onDocumentLinks (document: TextDocument) {
+		onDocumentLinks ( document: TextDocument ) {
 			return [];
+		},
+
+		findDocumentSymbols ( document: TextDocument ) {
+
+			const symbols: SymbolInformation[] = [];
+
+			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
+			let token = scanner.scan();
+			let lastTagName: string | undefined = undefined;
+			let lastAttributeName: string | undefined = undefined;
+
+			while ( token !== TokenType.EOS ) {
+
+				switch ( token ) {
+
+					case TokenType.StartTag:
+						lastTagName = scanner.getTokenText().toLowerCase();
+						break;
+
+					case TokenType.AttributeName:
+						lastAttributeName = scanner.getTokenText().toLowerCase();
+						break;
+
+					case TokenType.AttributeValue:
+						if ( lastTagName === 'mvt:assign' && lastAttributeName === 'name' ) {
+
+							// Create references to variable symbols
+							symbols.push({
+								kind: SymbolKind.Variable,
+								name: scanner.getTokenText().replace( /"/g, '' ),
+								location: Location.create(
+									document.uri,
+									Range.create(
+										document.positionAt( scanner.getTokenOffset() + 1 ),
+										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+									)
+								)
+							});
+
+						}
+						break;
+
+				}
+
+				token = scanner.scan();
+
+			}
+
+			return symbols;
+
 		}
 
 	};
@@ -568,7 +618,7 @@ function _getMvDocumentSymbolsByUri (uri) {
 
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
-	const results: SymbolInformation[] = [];
+	const symbols: SymbolInformation[] = [];
 
 	const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 	let token = scanner.scan();
@@ -590,7 +640,7 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 			case TokenType.AttributeValue:
 				if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
 
-					results.push({
+					symbols.push({
 						kind: SymbolKind.Variable,
 						name: scanner.getTokenText().replace( /"/g, '' ),
 						location: Location.create(
@@ -605,7 +655,7 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 				}
 				else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
 
-					results.push({
+					symbols.push({
 						kind: SymbolKind.Function,
 						name: scanner.getTokenText().replace( /"/g, '' ),
 						location: Location.create(
@@ -626,7 +676,7 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
 	}
 
-	return results;
+	return symbols;
 
 }
 
