@@ -83,6 +83,7 @@ Each Content Section will be contained with a div tag with a class of "readythem
 				documentation: `Load the variable data for a content section. This function does not render the template.
 
 Note: if output is omitted or left blank the data is automatically loaded into \`l.settings:readytheme:loaded\``,
+				version: '>=9.00.01',
 				insertText: "Load_ContentSection( ${1:code}, ${2:output var} )",
 				label: 'Load_ContentSection'
 			},
@@ -99,6 +100,7 @@ Each Text Banner will be contained with a div tag with a class of "readytheme-ba
 				documentation: `Load the variable data for a banner. This function does not render the template.
 
 Note: if output is omitted or left blank the data is automatically loaded into \`l.settings:readytheme:loaded\``,
+				version: '>=9.00.01',
 				insertText: "Load_Banner( ${1:code}, ${2:output var} )",
 				label: 'Load_Banner'
 			},
@@ -115,6 +117,7 @@ Search Friendly Links will automatically be used in URLs if configured in Miva M
 				documentation: `Load the variable data for a image. This function does not render the template.
 
 Note: if output is omitted or left blank the data is automatically loaded into \`l.settings:readytheme:loaded\``,
+				version: '>=9.00.01',
 				insertText: "Load_Image( ${1:code}, ${2:output var} )",
 				label: 'Load_Image'
 			},
@@ -135,6 +138,7 @@ The layout of any product listing can be controlled though the Advanced Mode set
 				documentation: `Load the variable data for a product listing. This function does not render the template.
 
 Note: if output is omitted or left blank the data is automatically loaded into \`l.settings:readytheme:loaded\``,
+				version: '>=9.00.01',
 				insertText: "Load_ProductListing( ${1:code}, ${2:output var} )",
 				label: 'Load_ProductListing'
 			},
@@ -153,6 +157,7 @@ Urls for the links are automatically generated. In the event you need more contr
 				documentation: `Load the variable data for a navigation set. This function does not render the template.
 
 Note: if output is omitted or left blank the data is automatically loaded into \`l.settings:readytheme:loaded\``,
+				version: '>=9.00.01',
 				insertText: "Load_Navigationset( ${1:code}, ${2:output var} )",
 				label: 'Load_Navigationset'
 			},
