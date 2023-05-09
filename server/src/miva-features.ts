@@ -446,29 +446,24 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
+			const variable = getVariableAtOffset( line, position.character );
 
 			if (lskSymbols.length === 0) {
 				_createLskSymbols(settings);
 			}
 
-			// Global symbols
-			let symbols = [
+			const symbols = [
 				...workspaceSymbols,
-				...lskSymbols
+				...lskSymbols,
+				...documentSymbols
 			].filter(( symbol ) => {
-				return ( symbol.name === word );
+				return ( symbol.name === variable || symbol.name === word );
 			});
 
-			// Local symbols
-			if (documentSymbols?.length > 0) {
-				const variable = getVariableAtOffset( line, position.character );
-				symbols = symbols.concat(
-					documentSymbols.filter(symbol => symbol.name === variable)
-				);
-			}
+			if ( symbols ) {
 
-			if ( symbols?.length > 0 ) {
 				return symbols.map( symbol => symbol.location );
+
 			}
 
 			return null;

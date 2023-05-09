@@ -346,7 +346,7 @@ export function getWordAtOffset( text: string, offset: number ): string | null {
 
 export function getVariableAtOffset( text: string, offset: number ): string | null {
 
-	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\<\>\/\s]+)/g;
+	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\{\}\\\|\;\'\"\,\<\>\/\s]+)/g;
 	let match;
 	let count = 0;
 
