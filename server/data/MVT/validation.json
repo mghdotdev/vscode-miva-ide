@@ -20,7 +20,7 @@
 		"code": "TOOLBELT"
 	},
 	{
-		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)([^\"]*)",
+		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)",
 		"matchIndex": 1,
 		"problem": {
 			"type": "Error",

@@ -20,7 +20,6 @@ import {
 	ClientCapabilities,
 	Hover,
 	MarkupContent,
-	CodeActionParams,
 	CodeAction,
 	CodeActionKind
 } from 'vscode-languageserver/node';
@@ -191,7 +190,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 							severity: DiagnosticSeverity[ validation.problem.type ],
 							source: 'Miva IDE',
 							data: validation.data,
-							code: validation.code
+							code: validation.code,
 						}
 					);
 				}
@@ -202,18 +201,25 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		doCodeAction( document, range, context ) {
+		doCodeAction( document, codeActionRange, context ) {
 
 			const actions: CodeAction[] = [];
-			const mvtDocument = mvtDocuments.get( document );
-			const text = mvtDocument.getText(range);
 
+			const mvtDocument = mvtDocuments.get( document );
+			let range = codeActionRange;
+			let text = mvtDocument.getText(range);
 
 			// Loop through diagnostics and do something
 			for (let diagnostic of context?.diagnostics) {
 				const diagnosticData: ValidationData = diagnostic.data;
+
 				// If data exists then handle it
 				if (diagnosticData) {
+
+					if (!text) {
+						range = diagnostic.range;
+						text = mvtDocument.getText(range);
+					}
 
 					// Handle replacements
 					if (diagnosticData.type === ValidationDataType.REPLACEMENT) {
