@@ -58,15 +58,15 @@ export interface ValidationProblem {
 }
 
 export namespace ValidationCode {
-	export const TOOLKIT = 'TOOLKIT';
-	export const TOOLBELT = 'TOOLBELT';
+	export const NO_TOOLKIT = 'NO_TOOLKIT';
+	export const NO_TOOLBELT = 'NO_TOOLBELT';
 	export const FOREACH_LSETTINGS = 'FOREACH_LSETTINGS';
 	export const FOREACH_GLOBAL = 'FOREACH_GLOBAL';
 	export const GLOBAL_NULL_ASSIGNMENT = 'GLOBAL_NULL_ASSIGNMENT';
 	export const GLOBAL_ENCODING_ENTITY = 'GLOBAL_ENCODING_ENTITY';
 	export const GLOBAL_ENCODING_EVAL = 'GLOBAL_ENCODING_EVAL';
 };
-export type ValidationCode = 'TOOLKIT' | 'TOOLBELT' | 'FOREACH_LSETTINGS' | 'FOREACH_GLOBAL' | 'GLOBAL_NULL_ASSIGNMENT' | 'GLOBAL_ENCODING_ENTITY' | 'GLOBAL_ENCODING_EVAL';
+export type ValidationCode = 'NO_TOOLKIT' | 'NO_TOOLBELT' | 'FOREACH_LSETTINGS' | 'FOREACH_GLOBAL' | 'GLOBAL_NULL_ASSIGNMENT' | 'GLOBAL_ENCODING_ENTITY' | 'GLOBAL_ENCODING_EVAL';
 
 export interface ValidationDataReplacement {
 	text: string,

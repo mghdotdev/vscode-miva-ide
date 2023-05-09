@@ -7,7 +7,7 @@
 			"type": "Warning",
 			"message": "Consider replacing `toolkit` functionality with native Miva features."
 		},
-		"code": "TOOLKIT"
+		"code": "NO_TOOLKIT"
 	},
 	{
 		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolbelt)",
@@ -17,7 +17,7 @@
 			"type": "Warning",
 			"message": "Consider replacing `toolbelt` functionality with native Miva features."
 		},
-		"code": "TOOLBELT"
+		"code": "NO_TOOLBELT"
 	},
 	{
 		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)([^\"]*)",
