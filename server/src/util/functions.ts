@@ -344,6 +344,30 @@ export function getWordAtOffset( text: string, offset: number ): string | null {
 
 }
 
+export function getVariableAtOffset( text: string, offset: number ): string | null {
+
+	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\<\>\/\s]+)/g;
+	let match;
+	let count = 0;
+
+	while ( match = wordPattern.exec( text ) || count > 1000 ) {
+
+		count++;
+
+		let wordOffset = match.index + match[0].length;
+
+		if ( offset >= match.index && offset <= wordOffset ) {
+
+			return match[0];
+
+		}
+
+	}
+
+	return null;
+
+}
+
 export function parseLinkTemplate (template: string, data: Record<string, string>): string {
 	let output = template;
 

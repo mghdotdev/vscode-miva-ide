@@ -4,7 +4,8 @@ import {
 	LanguageFeatures,
 	ValidationRule,
 	ValidationDataType,
-	ValidationData
+	ValidationData,
+	MvtLanguageModel
 } from './util/interfaces';
 import {
 	Diagnostic,
@@ -39,7 +40,8 @@ import {
 	formatTagAttributeValueDocumentation,
 	formatTagDocumentation,
 	formatItemParamDocumentation,
-	safeMatch
+	safeMatch,
+	getVariableAtOffset
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -79,7 +81,68 @@ let lskSymbols: any[] = [];
 
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
-	const mvtDocuments = getLanguageModelCache<TextDocument>( 10, 60, document => document );
+	const findDocumentSymbols = ( document: TextDocument ) => {
+		const symbols: SymbolInformation[] = [];
+
+		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
+		let token = scanner.scan();
+		let lastTagName: string | undefined = undefined;
+		let lastAttributeName: string | undefined = undefined;
+
+		while ( token !== TokenType.EOS ) {
+
+			switch ( token ) {
+
+				case TokenType.StartTag:
+					lastTagName = scanner.getTokenText().toLowerCase();
+					break;
+
+				case TokenType.AttributeName:
+					lastAttributeName = scanner.getTokenText().toLowerCase();
+					break;
+
+				case TokenType.AttributeValue:
+					if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' ) ) {
+
+						// Get name
+						const name = scanner.getTokenText().replace( /"/g, '' );
+
+						// Only push if name is truthy
+						if (name) {
+							// Create references to variable symbols
+							symbols.push({
+								kind: SymbolKind.Variable,
+								name,
+								location: Location.create(
+									document.uri,
+									Range.create(
+										document.positionAt( scanner.getTokenOffset() + 1 ),
+										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+									)
+								)
+							});
+						}
+
+					}
+					break;
+
+			}
+
+			token = scanner.scan();
+
+		}
+
+		return symbols;
+	};
+
+	const mvtDocuments = getLanguageModelCache<MvtLanguageModel>( 10, 60, (document: TextDocument) => {
+		const symbols = findDocumentSymbols( document );
+
+		return {
+			symbols,
+			document
+		};
+	});
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
 
 	// MVT-specific completion data
@@ -164,7 +227,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		doValidation( document: TextDocument, settings: Settings ) {
 
-			const mvtDocument = mvtDocuments.get( document );
+			const {document: mvtDocument} = mvtDocuments.get( document );
 
 			// get full text of the document
 			const text = mvtDocument.getText();
@@ -205,7 +268,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			const actions: CodeAction[] = [];
 
-			const mvtDocument = mvtDocuments.get( document );
+			const {document: mvtDocument} = mvtDocuments.get( document );
 
 			// Loop through diagnostics and do something
 			for (let diagnostic of context?.diagnostics) {
@@ -249,7 +312,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		doCompletion( document: TextDocument, position: Position ): CompletionList {
 
-			const mvtDocument = mvtDocuments.get( document );
+			const {document: mvtDocument} = mvtDocuments.get( document );
 
 			// determine left side text range
 			const cursorPositionOffset = mvtDocument.offsetAt( position );
@@ -379,7 +442,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		findDefinition( document: TextDocument, position: Position, settings: Settings ) {
 
-			const mvtDocument = mvtDocuments.get( document );
+			const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
 			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
 			const word = getWordAtOffset( line, position.character );
@@ -388,17 +451,24 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				_createLskSymbols(settings);
 			}
 
-			const symbols = [
+			// Global symbols
+			let symbols = [
 				...workspaceSymbols,
 				...lskSymbols
 			].filter(( symbol ) => {
 				return ( symbol.name === word );
 			});
 
-			if ( symbols ) {
+			// Local symbols
+			if (documentSymbols?.length > 0) {
+				const variable = getVariableAtOffset( line, position.character );
+				symbols = symbols.concat(
+					documentSymbols.filter(symbol => symbol.name === variable)
+				);
+			}
 
+			if ( symbols?.length > 0 ) {
 				return symbols.map( symbol => symbol.location );
-
 			}
 
 			return null;
@@ -407,7 +477,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		onHover ( document: TextDocument, position: Position ) {
 
-			const mvtDocument = mvtDocuments.get( document );
+			const {document: mvtDocument} = mvtDocuments.get( document );
 
 			// Get word
 			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -547,53 +617,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		},
 
 		findDocumentSymbols ( document: TextDocument ) {
-
-			const symbols: SymbolInformation[] = [];
-
-			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
-			let token = scanner.scan();
-			let lastTagName: string | undefined = undefined;
-			let lastAttributeName: string | undefined = undefined;
-
-			while ( token !== TokenType.EOS ) {
-
-				switch ( token ) {
-
-					case TokenType.StartTag:
-						lastTagName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeName:
-						lastAttributeName = scanner.getTokenText().toLowerCase();
-						break;
-
-					case TokenType.AttributeValue:
-						if ( lastTagName === 'mvt:assign' && lastAttributeName === 'name' ) {
-
-							// Create references to variable symbols
-							symbols.push({
-								kind: SymbolKind.Variable,
-								name: scanner.getTokenText().replace( /"/g, '' ),
-								location: Location.create(
-									document.uri,
-									Range.create(
-										document.positionAt( scanner.getTokenOffset() + 1 ),
-										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
-									)
-								)
-							});
-
-						}
-						break;
-
-				}
-
-				token = scanner.scan();
-
-			}
+			const {symbols} = mvtDocuments.get( document );
 
 			return symbols;
-
 		}
 
 	};
