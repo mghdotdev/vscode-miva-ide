@@ -410,24 +410,23 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				// Do stuff with found tag (via regex)
 				if (foundTagRegex) {
 
+					// Item functions
+					if (tagName === 'item') {
+						// Get item name
+						const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
+						const foundItem = mvtItemData[itemName];
+
+						// Get matching param
+						if (foundItem) {
+							const foundParam = foundItem.params[wordLower];
+							return {
+								contents: formatItemParamDocumentation(foundItem, foundParam)
+							};
+						}
+					}
+
 					// Function Hover
 					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-
-						// Item functions
-						if (tagName === 'item') {
-							// Get item name
-							const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
-							const foundItem = mvtItemData[itemName];
-
-							// Get matching param
-							if (foundItem) {
-								const foundParam = foundItem.params[wordLower];
-
-								return {
-									contents: formatItemParamDocumentation(foundItem, foundParam)
-								};
-							}
-						}
 
 						// Builtin function lookup
 						const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);

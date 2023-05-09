@@ -233,7 +233,7 @@ function formatItemTitle (type, title: string, itemName?: string) {
 				: `#### ${title}`;
 		case 'link':
 			return itemName
-				? `#### ${itemName}=>${title}`
+				? `#### ${itemName} → ${title}`
 				: `#### ${title}`;
 		default:
 			return `#### ${title}`
