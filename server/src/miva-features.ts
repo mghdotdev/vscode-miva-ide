@@ -418,10 +418,12 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 						// Get matching param
 						if (foundItem) {
-							const foundParam = foundItem.params[wordLower];
-							return {
-								contents: formatItemParamDocumentation(foundItem, foundParam)
-							};
+							const foundParam = foundItem?.params[wordLower];
+							if (foundParam) {
+								return {
+									contents: formatItemParamDocumentation(foundItem, foundParam)
+								};
+							}
 						}
 					}
 
