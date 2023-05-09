@@ -206,8 +206,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const actions: CodeAction[] = [];
 
 			const mvtDocument = mvtDocuments.get( document );
-			let range = codeActionRange;
-			let text = mvtDocument.getText(range);
 
 			// Loop through diagnostics and do something
 			for (let diagnostic of context?.diagnostics) {
@@ -216,10 +214,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				// If data exists then handle it
 				if (diagnosticData) {
 
-					if (!text) {
-						range = diagnostic.range;
-						text = mvtDocument.getText(range);
-					}
+					// Get text from diagnostic range
+					const range = diagnostic.range;
+					const text = mvtDocument.getText(range);
 
 					// Handle replacements
 					if (diagnosticData.type === ValidationDataType.REPLACEMENT) {
