@@ -6,7 +6,8 @@
 		"problem": {
 			"type": "Warning",
 			"message": "Consider replacing `toolkit` functionality with native Miva features."
-		}
+		},
+		"code": "TOOLKIT"
 	},
 	{
 		"match": "(?<=<mvt:item[^<]*?name\\s*?=\\s*?\")(toolbelt)",
@@ -15,7 +16,8 @@
 		"problem": {
 			"type": "Warning",
 			"message": "Consider replacing `toolbelt` functionality with native Miva features."
-		}
+		},
+		"code": "TOOLBELT"
 	},
 	{
 		"match": "(?<=<mvt:foreach[^<]*?array\\s*?=\\s*?\")(l.settings\\:?)([^\"]*)",
@@ -23,6 +25,16 @@
 		"problem": {
 			"type": "Error",
 			"message": "`l.settings` is implied within the `array` attribute. Use `$2` instead."
+		},
+		"code": "FOREACH_LSETTINGS",
+		"data": {
+			"type": "REPLACEMENT",
+			"replacements": [
+				{
+					"text": "",
+					"message": "Remove `l.settings`"
+				}
+			]
 		}
 	},
 	{
@@ -31,6 +43,16 @@
 		"problem": {
 			"type": "Error",
 			"message": "`g.` is not valid within the `array` attribute. Use `global:$2` instead."
+		},
+		"code": "FOREACH_GLOBAL",
+		"data": {
+			"type": "REPLACEMENT",
+			"replacements": [
+				{
+					"text": "global:",
+					"message": "Replace `g.` with `global:`"
+				}
+			]
 		}
 	},
 	{
@@ -39,24 +61,83 @@
 		"problem": {
 			"type": "Error",
 			"message": "NEVER assign `g.null` a value as it will overwrite the `NULL` keyword."
+		},
+		"code": "GLOBAL_NULL_ASSIGNMENT",
+		"data": {
+			"type": "REPLACEMENT",
+			"replacements": [
+				{
+					"text": "l.null",
+					"message": "Replace with `l.null`"
+				},
+				{
+					"text": "s.null",
+					"message": "Replace with `s.null`",
+					"isPreferred": true
+				}
+			]
 		}
 	},
 	{
-		"match": "&mvt:global",
+		"match": "(?<=&)mvt(?=:global)",
 		"matchIndex": 0,
 		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
 		"problem": {
 			"type": "Warning",
 			"message": "Outputting a global variable without encoding can lead to XSS vulnerabilities."
+		},
+		"code": "GLOBAL_ENCODING_ENTITY",
+		"data": {
+			"type": "REPLACEMENT",
+			"replacements": [
+				{
+					"text": "mvte",
+					"message": "Convert to entity encoding"
+				},
+				{
+					"text": "mvta",
+					"message": "Convert to attribute encoding"
+				},
+				{
+					"text": "mvtj",
+					"message": "Convert to javascript encoding"
+				},
+				{
+					"text": "mvts",
+					"message": "Convert to slug encoding"
+				}
+			]
 		}
 	},
 	{
-		"match": "(?<=<mvt:eval[^<]*?expr\\s*?=\\s*?\")((g)\\.[^\"]+)",
+		"match": "(?<=<mvt:eval[^<]*?expr\\s*?=\\s*?\"\\s*)((g)\\.[a-zA-Z0-9\\[\\]_]+)",
 		"matchIndex": 0,
 		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
 		"problem": {
 			"type": "Warning",
 			"message": "Outputting a global variable without encoding can lead to XSS vulnerabilities."
+		},
+		"code": "GLOBAL_ENCODING_EVAL",
+		"data": {
+			"type": "REPLACEMENT",
+			"replacements": [
+				{
+					"text": "encodeentities( $0 )",
+					"message": "Convert to entity encoding"
+				},
+				{
+					"text": "encodeattribute( $0 )",
+					"message": "Convert to attribute encoding"
+				},
+				{
+					"text": "encodejavascriptstring( $0 )",
+					"message": "Convert to javascript encoding"
+				},
+				{
+					"text": "slugify( $0 )",
+					"message": "Convert to slug encoding"
+				}
+			]
 		}
 	}
 ]

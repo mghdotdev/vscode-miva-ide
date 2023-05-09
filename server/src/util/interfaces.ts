@@ -6,10 +6,13 @@ import {
 	Definition,
 	SymbolInformation,
 	Hover,
-	DocumentLink
+	DocumentLink,
+	CodeAction,
+	CodeActionContext
 } from 'vscode-languageserver/node';
 import {
-	TextDocument
+	TextDocument,
+	Range
 } from 'vscode-languageserver-textdocument';
 
 export interface Settings {
@@ -43,7 +46,9 @@ export interface LanguageFeatures {
 
 	onHover?: ( document: TextDocument, position: Position ) => Hover | null
 
-	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[] | null
+	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[]
+
+	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[]
 
 }
 
@@ -52,11 +57,40 @@ export interface ValidationProblem {
 	message: string
 }
 
+export namespace ValidationCode {
+	export const TOOLKIT = 'TOOLKIT';
+	export const TOOLBELT = 'TOOLBELT';
+	export const FOREACH_LSETTINGS = 'FOREACH_LSETTINGS';
+	export const FOREACH_GLOBAL = 'FOREACH_GLOBAL';
+	export const GLOBAL_NULL_ASSIGNMENT = 'GLOBAL_NULL_ASSIGNMENT';
+	export const GLOBAL_ENCODING_ENTITY = 'GLOBAL_ENCODING_ENTITY';
+	export const GLOBAL_ENCODING_EVAL = 'GLOBAL_ENCODING_EVAL';
+};
+export type ValidationCode = 'TOOLKIT' | 'TOOLBELT' | 'FOREACH_LSETTINGS' | 'FOREACH_GLOBAL' | 'GLOBAL_NULL_ASSIGNMENT' | 'GLOBAL_ENCODING_ENTITY' | 'GLOBAL_ENCODING_EVAL';
+
+export interface ValidationDataReplacement {
+	text: string,
+	message: string,
+	isPreferred?: boolean
+}
+
+export namespace ValidationDataType {
+	export const REPLACEMENT = 'REPLACEMENT';
+};
+export type ValidationDataType = 'REPLACEMENT';
+
+export interface ValidationData {
+	type: ValidationDataType,
+	replacements?: ValidationDataReplacement[]
+}
+
 export interface ValidationRule {
 	match: string,
 	matchIndex: number,
 	checkSetting?: string,
-	problem: ValidationProblem
+	problem: ValidationProblem,
+	code: ValidationCode,
+	data?: ValidationData
 }
 
 export interface BaseTagAttributeValueData {

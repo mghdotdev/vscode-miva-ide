@@ -16,7 +16,9 @@ import {
 	ProposedFeatures,
 	HoverParams,
 	CancellationToken,
-	DocumentLinkParams
+	DocumentLinkParams,
+	CodeActionParams,
+	CodeActionKind
 } from 'vscode-languageserver/node';
 import { URI } from 'vscode-uri';
 import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
@@ -161,6 +163,11 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		hoverProvider: true,
 		documentLinkProvider: {
 			resolveProvider: true
+		},
+		codeActionProvider: {
+			codeActionKinds: [
+				CodeActionKind.QuickFix
+			]
 		}
 	};
 
@@ -337,6 +344,27 @@ connection.onDocumentLinks(( documentLinkParams: DocumentLinkParams, token: Canc
 		return [];
 
 	}, null, `Error while providing links for document: ${documentLinkParams.textDocument.uri}`, token);
+});
+
+connection.onCodeAction(( params: CodeActionParams, token: CancellationToken ) => {
+	return runSafe(() => {
+
+		const document = documents.get( params.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.doCodeAction ) {
+
+				return features.doCodeAction( document, params.range, params.context );
+
+			}
+
+		}
+
+		return [];
+	}, null, `Error while providing code actions for document: ${params.textDocument.uri}`, token);
 });
 
 // The content of a text document has changed. This event is emitted

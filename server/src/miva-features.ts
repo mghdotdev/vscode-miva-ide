@@ -2,7 +2,9 @@ import {
 	Workspace,
 	Settings,
 	LanguageFeatures,
-	ValidationRule
+	ValidationRule,
+	ValidationDataType,
+	ValidationData
 } from './util/interfaces';
 import {
 	Diagnostic,
@@ -18,7 +20,9 @@ import {
 	ClientCapabilities,
 	Hover,
 	MarkupContent,
-	DocumentLink
+	CodeActionParams,
+	CodeAction,
+	CodeActionKind
 } from 'vscode-languageserver/node';
 import {
 	TextDocument
@@ -159,7 +163,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	return {
 
-		doValidation( document: TextDocument, settings: Settings ): Diagnostic[] {
+		doValidation( document: TextDocument, settings: Settings ) {
 
 			const mvtDocument = mvtDocuments.get( document );
 
@@ -185,7 +189,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 							range: Range.create( mvtDocument.positionAt( match.index ), mvtDocument.positionAt( match.index + match[ validation.matchIndex ].length ) ),
 							message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
 							severity: DiagnosticSeverity[ validation.problem.type ],
-							source: 'Miva IDE'
+							source: 'Miva IDE',
+							data: validation.data,
+							code: validation.code
 						}
 					);
 				}
@@ -194,6 +200,48 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			}, []);
 
+		},
+
+		doCodeAction( document, range, context ) {
+
+			const actions: CodeAction[] = [];
+			const mvtDocument = mvtDocuments.get( document );
+			const text = mvtDocument.getText(range);
+
+
+			// Loop through diagnostics and do something
+			for (let diagnostic of context?.diagnostics) {
+				const diagnosticData: ValidationData = diagnostic.data;
+				// If data exists then handle it
+				if (diagnosticData) {
+
+					// Handle replacements
+					if (diagnosticData.type === ValidationDataType.REPLACEMENT) {
+						for (let replacement of diagnosticData?.replacements) {
+
+							// Push action for each replacement
+							actions.push({
+								title: replacement.message,
+								diagnostics: [diagnostic],
+								isPreferred: replacement.isPreferred || false,
+								edit: {
+									changes: {
+										[document.uri]: [
+											{
+												newText: replacement.text.replace( '$0', text ),
+												range: range
+											}
+										]
+									}
+								},
+								kind: CodeActionKind.QuickFix
+							});
+						}
+					}
+				}
+			}
+
+			return actions;
 		},
 
 		doCompletion( document: TextDocument, position: Position ): CompletionList {
@@ -326,7 +374,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
+		findDefinition( document: TextDocument, position: Position, settings: Settings ) {
 
 			const mvtDocument = mvtDocuments.get( document );
 
@@ -354,7 +402,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		},
 
-		onHover (document: TextDocument, position: Position ): Hover | null {
+		onHover (document: TextDocument, position: Position ) {
 
 			const mvtDocument = mvtDocuments.get( document );
 
@@ -492,7 +540,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		},
 
 		onDocumentLinks (document: TextDocument) {
-			return null;
+			return [];
 		}
 
 	};
