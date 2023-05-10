@@ -30,7 +30,7 @@ export default {
 		LEFT_VARIABLE_L: /l(ocal)?\.(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
 		LEFT_VARIABLE_LSETTINGS: /l(ocal)?\.settings:(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
 		VARIABLES_G: /(?<=g(lobal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
-		VARIABLES_L: /(?<=l(ocal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
-		VARIABLES_LSETTINGS: /(?<=l(ocal)?\.settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig
+		VARIABLES_L: /(?<=l(ocal)?\.)(?!settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
+		VARIABLES_LSETTINGS: /(?<=l(ocal)?\.settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
 	}
 };
