@@ -456,10 +456,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 
-			console.log('entity', entity);
-			console.log('variable', variable);
-
-
 			if (lskSymbols.length === 0) {
 				_createLskSymbols(settings);
 			}
