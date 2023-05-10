@@ -467,7 +467,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			]
 				?.filter(( symbol ) => {
 					const nameLower: string = symbol.name.toLowerCase();
-					return entity === nameLower || nameLower === variable || nameLower === word;
+					return nameLower === entity || nameLower === variable || nameLower === word;
 				})
 				?.map( symbol => symbol.location );
 		},
