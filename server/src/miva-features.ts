@@ -41,7 +41,8 @@ import {
 	formatTagDocumentation,
 	formatItemParamDocumentation,
 	safeMatch,
-	getVariableAtOffset
+	getVariableAtOffset,
+	getEntityAtOffset
 } from './util/functions';
 import patterns from './util/patterns';
 import * as path from 'path';
@@ -102,13 +103,19 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					break;
 
 				case TokenType.AttributeValue:
-					if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' ) ) {
+					if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' || lastTagName === 'mvt:foreach' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' || lastAttributeName === 'iterator' ) ) {
 
 						// Get name
-						const name = scanner.getTokenText().replace( /"/g, '' );
+						let name = scanner.getTokenText().replace( /"/g, '' );
 
 						// Only push if name is truthy
 						if (name) {
+
+							// Add l.settings to iterator value
+							if (lastAttributeName === 'iterator') {
+								name = `l.settings:${name}`;
+							}
+
 							// Create references to variable symbols
 							symbols.push({
 								kind: SymbolKind.Variable,
@@ -445,8 +452,13 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
 			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
-			const word = getWordAtOffset( line, position.character );
-			const variable = getVariableAtOffset( line, position.character );
+			const word = getWordAtOffset( line, position.character )?.toLowerCase();
+			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
+			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
+
+			console.log('entity', entity);
+			console.log('variable', variable);
+
 
 			if (lskSymbols.length === 0) {
 				_createLskSymbols(settings);
@@ -457,7 +469,8 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				...lskSymbols,
 				...documentSymbols
 			].filter(( symbol ) => {
-				return ( symbol.name === variable || symbol.name === word );
+				const nameLower: string = symbol.name.toLowerCase();
+				return ( entity === nameLower || nameLower === variable || nameLower === word );
 			});
 
 			if ( symbols ) {

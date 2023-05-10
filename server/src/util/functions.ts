@@ -312,7 +312,7 @@ ${formatTagReference(foundParam.reference || foundItem.reference)}`
 	};
 }
 
-export function parseCompletionFile( completions: any[] ) {
+export function parseCompletionFile ( completions: any[] ) {
 	return completions.map(completion => {
 
 		return parseCompletion( completion );
@@ -320,7 +320,7 @@ export function parseCompletionFile( completions: any[] ) {
 	});
 }
 
-export function getWordAtOffset( text: string, offset: number ): string | null {
+export function getWordAtOffset ( text: string, offset: number ): string | null {
 
 	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g;
 	let match;
@@ -344,7 +344,7 @@ export function getWordAtOffset( text: string, offset: number ): string | null {
 
 }
 
-export function getVariableAtOffset( text: string, offset: number ): string | null {
+export function getVariableAtOffset ( text: string, offset: number ): string | null {
 
 	const wordPattern = /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\{\}\\\|\;\'\"\,\<\>\/\s]+)/g;
 	let match;
@@ -358,7 +358,44 @@ export function getVariableAtOffset( text: string, offset: number ): string | nu
 
 		if ( offset >= match.index && offset <= wordOffset ) {
 
-			return match[0];
+			// Get string match from cursor position rounded to the closest ':' character
+			const text: string = match[0].replace(/\[[0-9]+\]/g, '');
+			const cursorPos = offset - match.index;
+			const end = text.indexOf(':', cursorPos);
+			const variable = text.slice(0, end > -1 ? end : text.length);
+
+			return variable;
+		}
+
+	}
+
+	return null;
+
+}
+
+export function getEntityAtOffset ( text: string, offset: number ): string | null {
+
+	const wordPattern = /(-?\d*\.\d\w*)|(?<=mvt[a-z]?:)([^\`\~\!\@\$\^\&\*\(\)\=\+\{\}\\\|\;\'\"\,\<\>\/\s]+)/g;
+	let match;
+	let count = 0;
+
+	while ( match = wordPattern.exec( text ) || count > 1000 ) {
+
+		count++;
+
+		let wordOffset = match.index + match[0].length;
+
+		if ( offset >= match.index && offset <= wordOffset ) {
+
+			// Get string match from cursor position rounded to the closest ':' character
+			const text: string = match[0].replace(/\[[0-9]+\]/g, '');;
+			const cursorPos = offset - match.index;
+			const end = text.indexOf(':', cursorPos);
+			const entity = text.slice(0, end > -1 ? end : text.length);
+
+			return entity.startsWith('global:')
+				? `g.${entity.replace('global:', '')}`
+				: `l.settings:${entity}`;
 
 		}
 
