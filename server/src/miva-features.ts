@@ -460,23 +460,16 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				_createLskSymbols(settings);
 			}
 
-			const symbols = [
+			return [
 				...workspaceSymbols,
 				...lskSymbols,
 				...documentSymbols
-			].filter(( symbol ) => {
-				const nameLower: string = symbol.name.toLowerCase();
-				return ( entity === nameLower || nameLower === variable || nameLower === word );
-			});
-
-			if ( symbols ) {
-
-				return symbols.map( symbol => symbol.location );
-
-			}
-
-			return null;
-
+			]
+				?.filter(( symbol ) => {
+					const nameLower: string = symbol.name.toLowerCase();
+					return entity === nameLower || nameLower === variable || nameLower === word;
+				})
+				?.map( symbol => symbol.location );
 		},
 
 		onHover ( document: TextDocument, position: Position ) {
