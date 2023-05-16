@@ -2,7 +2,7 @@
 
 Our VSCode extension is a vital tool for web development on the Miva platform. It provides the following benefits:
 
-1. Improved code quality. Developers benefit from built-in best practices provided automatically to them via diagnostic tools, snippets and syntax highlighting. This increases confidence in our code since the extension will catch common errors before we even upload the changes to Miva.
+1. Improved code quality. Developers benefit from built-in best practices provided automatically to them via diagnostic tools, snippets and syntax highlighting. This increases confidence in our code since the extension will catch common errors before we even upload the changes to Miva. Also, it encourages developers to adhere to our code standards.
 2. Increased productivity. Developers can organize their code easily using the VSCode "Explorer" view. Our extension enhances this feature by allowing Go-To Definition support as well as Go-To Symbols (variables, functions, etc...).
 3. Increased efficiency. By providing keyboard shortcuts, code auto-completion and useful templates developers can focus directly on coding the customer's unique business rules and focus less on syntax or having to read external documentation.
 
@@ -26,7 +26,7 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 
 ## Future Versions
 
-### v0.X.0 (3-5 hrs)
+### v0.X.0 (2-5 hrs per version upgrade)
 
 This is the existing development flow. When new LSK or Empressa versions are released I simply update the code completion data to include the new functions.
 
@@ -43,7 +43,10 @@ This version will focus on adding missing Language Extension features and enhanc
 - Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
 - Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
 - Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, I am able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
-- Add Document Links language feature. This feature allows
+
+### v1.X.X (TBD)
+
+Continue to update completion data when new LSK or Empressa versions are released. Also, fix any bugs or issues as they arise.
 
 ### v2.0.0 (TBD)
 
@@ -59,4 +62,6 @@ This is a semi-rewrite of the extension. It will use a newly created Language Se
 	- Rename symbol: Allows users to highlight a variable and rename all references within the file.
 	- Code Actions: Allows users to automatically fix common issues in the current file.
 	- Document Links: Provide links to templates from the `<mvt:item>` tag / readtheme functions.
+	- Document Formatting: Automatically format the code to follow our coding standards (spacing, indentation, etc...).
+	- Linting: Show basic syntax errors and pre-compilation errors before having to test your code on the server.
 	- See all features here: https://code.visualstudio.com/api/language-extensions/programmatic-language-features
