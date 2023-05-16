@@ -1,6 +1,10 @@
 # Miva IDE (VSCode) Roadmap
 
-Our VSCode extension is a vital tool for working with all things Miva.
+Our VSCode extension is a vital tool for web development on the Miva platform. It provides the following benefits:
+
+1. Improved code quality. Developers benefit from built-in best practices provided automatically to them via diagnostic tools, snippets and syntax highlighting. This increases confidence in our code since the extension will catch common errors before we even upload the changes to Miva.
+2. Increased productivity. Developers can organize their code easily using the VSCode "Explorer" view. Our extension enhances this feature by allowing Go-To Definition support as well as Go-To Symbols (variables, functions, etc...).
+3. Increased efficiency. By providing keyboard shortcuts, code auto-completion and useful templates developers can focus directly on coding the customer's unique business rules and focus less on syntax or having to read external documentation.
 
 ## Existing Features
 
