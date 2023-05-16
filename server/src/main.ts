@@ -249,10 +249,10 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 	return undefined;
 }); */
 
-connection.onDocumentSymbol(( documentSymbolParms, token ) => {
+connection.onDocumentSymbol(( documentSymbolParams, token ) => {
 	return runSafe(() => {
 
-		const document = documents.get( documentSymbolParms.textDocument.uri );
+		const document = documents.get( documentSymbolParams.textDocument.uri );
 		const symbols: SymbolInformation[] = [];
 
 		if ( document ) {
@@ -268,7 +268,7 @@ connection.onDocumentSymbol(( documentSymbolParms, token ) => {
 
 		return symbols;
 
-	}, [], `Error while computing document symbols for ${ documentSymbolParms.textDocument.uri }`, token );
+	}, [], `Error while computing document symbols for ${ documentSymbolParams.textDocument.uri }`, token );
 });
 
 connection.onWorkspaceSymbol(( workspaceSymbolParams, token ) => {
