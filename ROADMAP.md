@@ -38,6 +38,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 This version will focus on adding missing Language Extension features and enhancing existing ones. Even after version 1.0 we will still bring over new updates to LSK and Empressa via the same method as before.
 
+- Upgraded internal tooling dependencies (vscode CLI, typescript, etc...). This improves overall extension health by keeping it's tooling on the latest versions.
 - Improved tag completion, enhanced documentation and context. Enhance where the tag completions display and when. Right now you can complete mvt tags WITHIN other mvt tags. This enchancement would prevent the ability to complete where you're not supposed to. Add symbol hover documentation directly from [docs.miva.com](https://docs.miva.com).
 - Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
 - Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
