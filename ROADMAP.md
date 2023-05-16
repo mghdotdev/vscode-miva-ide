@@ -26,16 +26,27 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 
 ## Future Versions
 
-### v1.0.0
+### v0.X.0 (3-5 hrs)
 
-- Improved tag completion
-
-### v1.X.X
+This is the existing development flow. When new LSK or Empressa versions are released we simply update the code completion data to include the new functions.
 
 - Add additional `<mvt:do>`/`<MvDO>` function completions as future LSK versions are released.
 - Add additional built-in function completions & documentation as future Miva Empressa engines are released.
 
-### v2.0.0
+
+### v1.0.0 (75-100 hrs)
+
+This version will focus on adding missing Language Extension features and enhancing existing ones. Even after version 1.0 we will still bring over new updates to LSK and Empressa via the same method as before.
+
+- Improved tag completion, enhanced documentation and context. Enhance where the tag completions display and when. Right now you can complete mvt tags WITHIN other mvt tags. This enchancement would prevent the ability to complete where you're not supposed to. Add symbol hover documentation directly from [docs.miva.com](https://docs.miva.com).
+- Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
+- Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
+- Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, we are able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
+- Add Document Links language feature. This feature allows
+
+### v2.0.0 (TBD)
+
+This is a semi-rewrite of the extension. It will use a newly created Language Service package to handle most of the file parsing. The parsed file generated from the package will improve overall performance, allow us to add missing Language Extension features and provide an easier to maintain extension for future changes. Also, we will focus on adding a `mmt` integration directly into the extension.
 
 - Full `mmt` support via VSCode's Source Control API. This will allow users interact with `mmt` via the VSCode user interface. Features include:
 	- Automatic file diffing.
@@ -43,7 +54,7 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 	- Commit file changes and write notes.
 	- Status bar widget that informs the user what remote, branch and changeset they are currently working with.
 - Split Mivascript / MVT language service into separate packages. This will make it easier to maintain the intricacies of each language. Also, it aligns the Embedded Language extension guide: https://code.visualstudio.com/api/language-extensions/embedded-languages
-- A Mivascript/MVT parser class written in Node that will be used to add missing language server features including:
+- A Mivascript/MVT parser class written in Node that will be used to improve existing parsing performance add missing language server features including:
 	- Rename symbol: Allows users to highlight a variable and rename all references within the file.
 	- Code Actions: Allows users to automatically fix common issues in the current file.
 	- Document Links: Provide links to templates from the `<mvt:item>` tag / readtheme functions.
