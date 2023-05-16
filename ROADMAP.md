@@ -28,7 +28,7 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 
 ### v0.X.0 (3-5 hrs)
 
-This is the existing development flow. When new LSK or Empressa versions are released we simply update the code completion data to include the new functions.
+This is the existing development flow. When new LSK or Empressa versions are released I simply update the code completion data to include the new functions.
 
 - Add additional `<mvt:do>`/`<MvDO>` function completions as future LSK versions are released.
 - Add additional built-in function completions & documentation as future Miva Empressa engines are released.
@@ -36,18 +36,18 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.0.0 (75-100 hrs)
 
-This version will focus on adding missing Language Extension features and enhancing existing ones. Even after version 1.0 we will still bring over new updates to LSK and Empressa via the same method as before.
+This version will focus on adding missing Language Extension features and enhancing existing ones. Even after version 1.0 I will still bring over new updates to LSK and Empressa via the same method as before.
 
 - Upgraded internal tooling dependencies (vscode CLI, typescript, etc...). This improves overall extension health by keeping it's tooling on the latest versions.
 - Improved tag completion, enhanced documentation and context. Enhance where the tag completions display and when. Right now you can complete mvt tags WITHIN other mvt tags. This enchancement would prevent the ability to complete where you're not supposed to. Add symbol hover documentation directly from [docs.miva.com](https://docs.miva.com).
 - Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
 - Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
-- Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, we are able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
+- Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, I am able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
 - Add Document Links language feature. This feature allows
 
 ### v2.0.0 (TBD)
 
-This is a semi-rewrite of the extension. It will use a newly created Language Service package to handle most of the file parsing. The parsed file generated from the package will improve overall performance, allow us to add missing Language Extension features and provide an easier to maintain extension for future changes. Also, we will focus on adding a `mmt` integration directly into the extension.
+This is a semi-rewrite of the extension. It will use a newly created Language Service package to handle most of the file parsing. The parsed file generated from the package will improve overall performance, allow me to add missing Language Extension features and provide an easier to maintain extension for future changes. Also, I will focus on adding a `mmt` integration directly into the extension.
 
 - Full `mmt` support via VSCode's Source Control API. This will allow users interact with `mmt` via the VSCode user interface. Features include:
 	- Automatic file diffing.
