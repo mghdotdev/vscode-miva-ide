@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -10,7 +10,7 @@
 		"Programming Languages"
 	],
 	"scripts": {
-		"vscode:prepublish": "npm i && cd client && npm i && cd ../server && npm i && cd .. && npm run build",
+		"vscode:prepublish": "npm run build",
 		"syntax:watch": "node ./syntaxes/watch.cjs",
 		"syntax:build": "node ./syntaxes/build.cjs",
 		"watch": "tsc -b -w",
@@ -228,6 +228,10 @@
 		"onLanguage:mvtcss",
 		"onLanguage:mvtjs",
 		"onLanguage:mv"
+	],
+	"workspaces": [
+		"client",
+		"server"
 	],
 	"devDependencies": {
 		"@types/node": "^18.15.11",
