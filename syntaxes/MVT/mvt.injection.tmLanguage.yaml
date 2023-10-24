@@ -31,7 +31,7 @@ repository:
   # =-======================== Entities ========================-= #
   entities:
     patterns:
-      - match: (?i)(&)(mvt)(a|e|j|s)?(:)([a-zA-Z_][a-zA-Z0-9_-:\[\]]*)(;)
+      - match: (?i)(&)(mvt)(a|e|j|s)?(:)([a-zA-Z_][a-zA-Z0-9_:\[\]-]*)(;)
         name: constant.character.entity.mvt
 
   # =-======================== Tags ========================-= #
@@ -701,16 +701,16 @@ repository:
     patterns:
       # Variables Base
       - name: variable.language.local.mvt
-        match: ((l|local)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\.]*)
+        match: ((l|local)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.-]*)
 
       - name: variable.language.global.mvt
-        match: ((g|global)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\.]*)
+        match: ((g|global)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.-]*)
 
       - name: variable.language.system.mvt
-        match: ((s|system)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\.]*)
+        match: ((s|system)\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\.-]*)
 
       # Variables Cont. (continue after square brackets)
-      - match: (?<=\])(:)([a-zA-Z0-9:_-\.]*)
+      - match: (?<=\])(:)([a-zA-Z0-9:_\.-]*)
         name: variable.language.array-continue.mvt
 
       # POSX
@@ -722,7 +722,7 @@ repository:
     name: markup.quote.item-param.mvt
 
   source-item-param-variable:
-    match: '([^:]+)(:)(([A-Za-z0-9_]+)([a-zA-Z0-9:_\.]*))'
+    match: '([^:]+)(:)(([A-Za-z0-9_]+)([a-zA-Z0-9:_\.-]*))'
     captures:
       1: {name: support.function.item-param.mvt}
       2: {name: punctuation.definition.separator.item-param.mvt}

@@ -557,18 +557,18 @@
       "patterns": [
         {
           "name": "variable.language.local.mv",
-          "match": "\\b((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:-\\.]*)"
+          "match": "\\b((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:\\.-]*)"
         },
         {
           "name": "variable.language.global.mv",
-          "match": "\\b((g|global)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\\.]*)"
+          "match": "\\b((g|global)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.-]*)"
         },
         {
           "name": "variable.language.system.mv",
-          "match": "\\b((s|system)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\\.]*)"
+          "match": "\\b((s|system)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.-]*)"
         },
         {
-          "match": "(?<=\\])(:)([a-zA-Z0-9:_\\.]*)",
+          "match": "(?<=\\])(:)([a-zA-Z0-9:_\\.-]*)",
           "name": "variable.language.array-continue.mv"
         },
         {
