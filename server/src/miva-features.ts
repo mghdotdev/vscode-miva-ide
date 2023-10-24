@@ -1,61 +1,61 @@
+import { existsSync, readFileSync } from 'fs';
+import { glob } from 'glob';
+import _get from 'lodash.get';
+import * as path from 'path';
 import {
-	Workspace,
-	Settings,
-	LanguageFeatures,
-	ValidationRule,
-	ValidationDataType,
-	ValidationData,
-	MvtLanguageModel
-} from './util/interfaces';
-import {
-	Diagnostic,
-	Range,
-	DiagnosticSeverity,
-	Position,
-	CompletionList,
-	CompletionItem,
-	Definition,
-	SymbolInformation,
-	SymbolKind,
-	Location,
-	ClientCapabilities,
-	Hover,
-	MarkupContent,
-	CodeAction,
-	CodeActionKind
-} from 'vscode-languageserver/node';
+	TokenType,
+	getLanguageService
+} from 'vscode-html-languageservice/lib/esm/htmlLanguageService';
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 import {
-	readJSONFile,
-	tokenize,
-	getDoValueCompletions,
-	getHoverMapFromCompletionFile,
-	parseCompletionFile,
-	parseCompletion,
-	getWordAtOffset,
-	unique,
+	ClientCapabilities,
+	CodeAction,
+	CodeActionKind,
+	CompletionItem,
+	CompletionList,
+	Definition,
+	Diagnostic,
+	DiagnosticSeverity,
+	Hover,
+	Location,
+	MarkupContent,
+	Position,
+	Range,
+	SymbolInformation,
+	SymbolKind
+} from 'vscode-languageserver/node';
+import mvtItemData from './mvt/items';
+import mvtTagData from './mvt/tags';
+import {
+	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
 	formatTagDocumentation,
-	formatItemParamDocumentation,
-	safeMatch,
+	getDoValueCompletions,
+	getEntityAtOffset,
+	getHoverMapFromCompletionFile,
 	getVariableAtOffset,
-	getEntityAtOffset
+	getWordAtOffset,
+	parseCompletion,
+	parseCompletionFile,
+	readJSONFile,
+	safeMatch,
+	tokenize,
+	unique
 } from './util/functions';
-import patterns from './util/patterns';
-import * as path from 'path';
-import _get from 'lodash.get';
 import {
-	getLanguageService,
-	TokenType
-} from 'vscode-html-languageservice';
+	LanguageFeatures,
+	MvtLanguageModel,
+	Settings,
+	ValidationData,
+	ValidationDataType,
+	ValidationRule,
+	Workspace
+} from './util/interfaces';
 import { getLanguageModelCache } from './util/language-model-cache';
-import {glob} from 'glob';
-import { readFileSync, existsSync } from 'fs';
-import mvtTagData from './mvt/tags';
-import mvtItemData from './mvt/items';
+import patterns from './util/patterns';
 
 // Define HTML Language Service helper
 const htmlLanguageService = getLanguageService();

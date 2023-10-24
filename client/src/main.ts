@@ -1,18 +1,18 @@
+import * as path from 'path';
 import {
 	ExtensionContext,
-	languages,
-	IndentAction
+	IndentAction,
+	languages
 } from 'vscode';
 import {
-	ServerOptions,
-	TransportKind,
+	LanguageClient,
 	LanguageClientOptions,
-	LanguageClient
+	ServerOptions,
+	TransportKind
 } from 'vscode-languageclient/node';
-import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/empty-tag-shared';
-import * as path from 'path';
-import { readJSONFile, pushAll } from './util/functions';
 import mivaCommands from './miva-commands';
+import { MVT_EMPTY_ELEMENTS, MVT_NON_CLOSING_TAGS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS } from './util/empty-tag-shared';
+import { pushAll, readJSONFile } from './util/functions';
 
 let client: LanguageClient;
 

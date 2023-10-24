@@ -6,7 +6,11 @@
 	"engines": {
 		"vscode": "^1.77.0"
 	},
-	"scripts": {},
+	"scripts": {
+		"esbuild": "npx esbuild ./src/main.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"build": "npm run esbuild -- --sourcemap",
+		"watch": "npm run esbuild -- --sourcemap --watch=forever"
+	},
 	"devDependencies": {
 		"@types/vscode": "^1.77.0"
 	},

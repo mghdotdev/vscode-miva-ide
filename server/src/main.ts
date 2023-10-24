@@ -1,31 +1,31 @@
-import {
-	createConnection,
-	Connection,
-	TextDocuments,
-	ConfigurationParams,
-	ConfigurationRequest,
-	InitializeParams,
-	InitializeResult,
-	WorkspaceFolder,
-	ServerCapabilities,
-	TextDocumentSyncKind,
-	DidChangeWorkspaceFoldersNotification,
-	Diagnostic,
-	DidChangeConfigurationNotification,
-	SymbolInformation,
-	ProposedFeatures,
-	HoverParams,
-	CancellationToken,
-	DocumentLinkParams,
-	CodeActionParams,
-	CodeActionKind
-} from 'vscode-languageserver/node';
-import { URI } from 'vscode-uri';
-import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
-import { Settings, Workspace, Languages } from './util/interfaces';
-import { getMVTFeatures, getMVFeatures } from './miva-features';
 import _has from 'lodash.has';
 import { TextDocument } from 'vscode-languageserver-textdocument';
+import {
+	CancellationToken,
+	CodeActionKind,
+	CodeActionParams,
+	ConfigurationParams,
+	ConfigurationRequest,
+	Connection,
+	Diagnostic,
+	DidChangeConfigurationNotification,
+	DidChangeWorkspaceFoldersNotification,
+	DocumentLinkParams,
+	HoverParams,
+	InitializeParams,
+	InitializeResult,
+	ProposedFeatures,
+	ServerCapabilities,
+	SymbolInformation,
+	TextDocumentSyncKind,
+	TextDocuments,
+	WorkspaceFolder,
+	createConnection
+} from 'vscode-languageserver/node';
+import { URI } from 'vscode-uri';
+import { getMVFeatures, getMVTFeatures } from './miva-features';
+import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
+import { Languages, Settings, Workspace } from './util/interfaces';
 
 // ================================================================================================================================ //
 

@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
 		"forceConsistentCasingInFileNames": true,
-		"module": "CommonJS",
+		"module": "commonjs",
 		"outDir": "out",
 		"rootDir": "src",
 		"sourceMap": true,
 		"strict": false,
-		"target": "es6",
-		"moduleResolution": "node"
+		"target": "ES2019",
+		"lib": ["ES2019", "WebWorker"]
 	},
 	"include": [
 		"src"
