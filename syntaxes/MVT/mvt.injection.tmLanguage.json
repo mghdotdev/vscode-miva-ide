@@ -1462,18 +1462,18 @@
       "patterns": [
         {
           "name": "variable.language.local.mvt",
-          "match": "((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.]*)"
+          "match": "((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\\.]*)"
         },
         {
           "name": "variable.language.global.mvt",
-          "match": "((g|global)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.]*)"
+          "match": "((g|global)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\\.]*)"
         },
         {
           "name": "variable.language.system.mvt",
-          "match": "((s|system)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.]*)"
+          "match": "((s|system)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_-\\.]*)"
         },
         {
-          "match": "(?<=\\])(:)([a-zA-Z0-9:_\\.]*)",
+          "match": "(?<=\\])(:)([a-zA-Z0-9:_-\\.]*)",
           "name": "variable.language.array-continue.mvt"
         },
         {
