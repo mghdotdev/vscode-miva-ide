@@ -1,9 +1,9 @@
 import {
-	TagAttributeData,
-	TagData,
-	BaseTagData,
 	BaseTagAttributeData,
-	BaseTagAttributeValueData
+	BaseTagAttributeValueData,
+	BaseTagData,
+	TagAttributeData,
+	TagData
 } from '../util/interfaces';
 import itemsData from './items';
 
@@ -93,22 +93,29 @@ const tagData: Record<string, TagData> = {
 		...baseTag,
 		documentation: '',
 		kind: 'Function',
-		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2:<!--\r\n@@${1/(l\\.(settings:?)?|g\\.|s\\.)([a-zA-Z0-9:_\\.\\[\\]]*)/$3/g}\r\n===${1/./=/g}}\r\n&mvt:_mvps_debug;\r\n${3:-->}",
-		label: 'mvps-debug'
+		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
+		label: 'mvt-debug'
+	},
+	debug_json: {
+		...baseTag,
+		documentation: '',
+		kind: 'Function',
+		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
+		label: 'mvt-debug-json'
 	},
 	testuser: {
 		...baseTag,
 		documentation: '',
 		kind: 'Function',
 		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvps-testuser'
+		label: 'mvt-testuser'
 	},
 	testvar: {
 		...baseTag,
 		documentation: '',
 		kind: 'Function',
 		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvps-testvar'
+		label: 'mvt-testvar'
 	},
 	assign: {
 		...baseTag,
