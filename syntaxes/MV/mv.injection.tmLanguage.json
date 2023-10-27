@@ -557,7 +557,7 @@
       "patterns": [
         {
           "name": "variable.language.local.mv",
-          "match": "\\b((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:\\.-]*)"
+          "match": "\\b((l|local)\\.)([A-Za-z0-9_]+)([a-zA-Z0-9:_\\.-]*)"
         },
         {
           "name": "variable.language.global.mv",
