@@ -135,7 +135,7 @@
 				"path": "./syntaxes/mvt/mvtjs.tmLanguage.json"
 			},
 			{
-				"scopeName": "mvt.injection",
+				"scopeName": "text.mvt.injection",
 				"injectTo": [
 					"text.html.mvt",
 					"source.css.mvt",
@@ -149,7 +149,7 @@
 				"path": "./syntaxes/mv/mv.tmLanguage.json"
 			},
 			{
-				"scopeName": "mv.injection",
+				"scopeName": "source.mv.injection",
 				"injectTo": [
 					"text.html.mv"
 				],

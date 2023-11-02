@@ -1,6 +1,6 @@
 {
   "name": "MVT (Injection)",
-  "scopeName": "mvt.injection",
+  "scopeName": "text.mvt.injection",
   "injectionSelector": [
     "L:text.html.mvt -comment.block.mvt",
     "L:source.css.mvt -comment.block.mvt",

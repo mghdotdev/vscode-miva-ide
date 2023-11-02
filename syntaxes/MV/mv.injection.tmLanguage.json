@@ -1,6 +1,6 @@
 {
   "name": "Miva Script (Injection)",
-  "scopeName": "mv.injection",
+  "scopeName": "source.mv.injection",
   "injectionSelector": "L:text.html.mv -comment.block.mv",
   "patterns": [
     {
