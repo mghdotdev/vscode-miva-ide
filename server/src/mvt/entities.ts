@@ -1,3 +1,4 @@
+import { CompletionItemKind } from 'vscode-languageserver';
 import {
 	BaseEntityData,
 	EntityData
@@ -5,7 +6,7 @@ import {
 
 const baseEntityData: BaseEntityData = {
 	commitCharacters: [':'],
-	kind: 'Keyword'
+	kind: CompletionItemKind.Keyword
 };
 
 const entityData: Record<string, EntityData> = {

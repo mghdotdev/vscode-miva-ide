@@ -5,6 +5,7 @@ import {
 import {
 	CodeAction,
 	CodeActionContext,
+	CompletionItemKind,
 	CompletionList,
 	Definition,
 	Diagnostic,
@@ -99,7 +100,7 @@ export interface ValidationRule {
 
 export interface BaseTagAttributeValueData {
 	insertTextFormat: string;
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 }
 
@@ -115,7 +116,7 @@ export interface TagAttributeValueData extends BaseTagAttributeValueData {
 export interface BaseTagAttributeData {
 	required: boolean;
 	insertTextFormat: string;
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 	valueType: 'variable' | 'expression' | 'string' | 'function';
 }
@@ -133,7 +134,7 @@ export interface TagAttributeData extends BaseTagAttributeData {
 
 export interface BaseTagData {
 	insertTextFormat: string;
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 }
 
@@ -149,7 +150,7 @@ export interface TagData extends BaseTagData {
 
 export interface BaseItemParamData {
 	insertTextFormat: string;
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 	paramType: 'function' | 'link' | 'variable';
 }
@@ -165,7 +166,7 @@ export interface ItemParamData extends BaseItemParamData {
 
 export interface BaseItemData {
 	insertTextFormat: string;
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 	link?: string;
 }
@@ -181,7 +182,7 @@ export interface ItemData extends BaseItemData {
 }
 
 export interface BaseEntityData {
-	kind: string;
+	kind: CompletionItemKind;
 	commitCharacters: string[];
 }
 
@@ -190,4 +191,14 @@ export interface EntityData extends BaseEntityData {
 	detail: string;
 	documentation: string;
 	preselect?: boolean
+}
+
+export interface BaseSystemVariableData {
+	kind: CompletionItemKind;
+}
+
+export interface SystemVariableData extends BaseSystemVariableData {
+	label: string;
+	detail: string;
+	documentation: string;
 }

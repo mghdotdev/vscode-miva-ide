@@ -1,3 +1,4 @@
+import { CompletionItemKind } from 'vscode-languageserver';
 import {
 	BaseTagAttributeData,
 	BaseTagAttributeValueData,
@@ -11,7 +12,7 @@ import itemsData from './items';
 
 const baseTag: BaseTagData = {
 	insertTextFormat: 'Snippet',
-	kind: 'TypeParameter',
+	kind: CompletionItemKind.TypeParameter,
 	commitCharacters: [
 		'/'
 	]
@@ -20,7 +21,7 @@ const baseTag: BaseTagData = {
 const baseAttribute: BaseTagAttributeData = {
 	required: true,
 	insertTextFormat: 'Snippet',
-	kind: 'Enum',
+	kind: CompletionItemKind.Enum,
 	commitCharacters: [
 		'=',
 		'"'
@@ -30,7 +31,7 @@ const baseAttribute: BaseTagAttributeData = {
 
 const baseAttributeValue: BaseTagAttributeValueData = {
 	insertTextFormat: 'Snippet',
-	kind: 'Enum',
+	kind: CompletionItemKind.Enum,
 	commitCharacters: [
 		"'"
 	]
@@ -92,28 +93,28 @@ const tagData: Record<string, TagData> = {
 	debug: {
 		...baseTag,
 		documentation: '',
-		kind: 'Function',
+		kind: CompletionItemKind.Function,
 		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
 		label: 'mvt-debug'
 	},
 	debug_json: {
 		...baseTag,
 		documentation: '',
-		kind: 'Function',
+		kind: CompletionItemKind.Function,
 		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
 		label: 'mvt-debug-json'
 	},
 	testuser: {
 		...baseTag,
 		documentation: '',
-		kind: 'Function',
+		kind: CompletionItemKind.Function,
 		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
 		label: 'mvt-testuser'
 	},
 	testvar: {
 		...baseTag,
 		documentation: '',
-		kind: 'Function',
+		kind: CompletionItemKind.Function,
 		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
 		label: 'mvt-testvar'
 	},

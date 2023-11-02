@@ -13,7 +13,6 @@ import {
 	ClientCapabilities,
 	CodeAction,
 	CodeActionKind,
-	CompletionItem,
 	CompletionList,
 	Definition,
 	Diagnostic,
@@ -26,6 +25,7 @@ import {
 	SymbolInformation,
 	SymbolKind
 } from 'vscode-languageserver/node';
+import systemVariableData from './mv/system-variables';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import mvtTagData from './mvt/tags';
@@ -71,8 +71,7 @@ const doValueCompletions: CompletionList = getDoValueCompletions( merchantFuncti
 const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
-const systemVariableCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'system-variable-completions.json' ) ) );
-const systemVariableHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( systemVariableCompletions );
+const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
 
 // Document cache for MivaScript (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
@@ -161,7 +160,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	const getVariableCompletions = (left: string, mvtDocument: TextDocument): CompletionList | null => {
 		// system variables
 		if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
-			return CompletionList.create( systemVariableCompletions );
+			return systemVariableCompletions;
 		}
 
 		// get full text
@@ -506,10 +505,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// System variable hover
 			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
-				const foundSystemVariableHover = systemVariableHoverMap.get(word);
-				if (foundSystemVariableHover) {
+				const foundSystemVariable = systemVariableData[wordLower];
+				if (foundSystemVariable) {
 					return {
-						contents: foundSystemVariableHover
+						contents: foundSystemVariable.documentation
 					};
 				}
 			}

@@ -1,25 +1,26 @@
+import { CompletionItemKind } from 'vscode-languageserver';
 import {
-	ItemData,
 	BaseItemData,
-	BaseItemParamData
+	BaseItemParamData,
+	ItemData
 } from '../util/interfaces';
 
 const baseItem: BaseItemData = {
 	insertTextFormat: 'Snippet',
-	kind: 'Interface',
+	kind: CompletionItemKind.Interface,
 	commitCharacters: []
 };
 
 const baseItemParamLink: BaseItemParamData = {
 	insertTextFormat: 'Snippet',
-	kind: 'Reference',
+	kind: CompletionItemKind.Reference,
 	commitCharacters: [],
 	paramType: 'link'
 };
 
 const baseItemParamFunction: BaseItemParamData = {
 	insertTextFormat: 'Snippet',
-	kind: 'Function',
+	kind: CompletionItemKind.Function,
 	commitCharacters: [
 		'('
 	],

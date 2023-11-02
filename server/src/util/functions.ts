@@ -1,18 +1,18 @@
 import {
 	readFileSync
 } from 'fs';
+import _cloneDeep from 'lodash.clonedeep';
 import {
-	ResponseError,
 	CancellationToken,
-	ErrorCodes,
 	CompletionItem,
 	CompletionItemKind,
-	InsertTextFormat,
 	CompletionList,
+	ErrorCodes,
+	InsertTextFormat,
 	MarkupContent,
-	MarkupKind
+	MarkupKind,
+	ResponseError
 } from 'vscode-languageserver/node';
-import _cloneDeep from 'lodash.clonedeep';
 import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string,
@@ -184,7 +184,7 @@ export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string
 export function parseCompletion( input: any ) {
 	const completion = _cloneDeep(input);
 
-	if (completion.kind) {
+	if (completion.kind && !Number.isInteger(completion.kind)) {
 		completion.kind = CompletionItemKind[ completion.kind ];
 	}
 
