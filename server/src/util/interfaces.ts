@@ -16,9 +16,9 @@ import {
 } from 'vscode-languageserver/node';
 
 export interface Settings {
-	LSK?: any,
-	MVT?: any,
-	MV?: any
+	LSK?: any;
+	MVT?: any;
+	MV?: any;
 }
 
 export interface Workspace {
@@ -27,16 +27,15 @@ export interface Workspace {
 }
 
 export interface Languages {
-	mv: LanguageFeatures,
-	mvt: LanguageFeatures,
-	mvtcss: LanguageFeatures,
-	mvtjs: LanguageFeatures
+	mv: LanguageFeatures;
+	mvt: LanguageFeatures;
+	mvtcss: LanguageFeatures;
+	mvtjs: LanguageFeatures;
 }
 
 export interface LanguageFeatures {
 
-	doValidation?: ( document: TextDocument,
-		settings?: Settings ) => Diagnostic[];
+	doValidation?: ( document: TextDocument, settings?: Settings ) => Diagnostic[];
 
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
 
@@ -53,13 +52,13 @@ export interface LanguageFeatures {
 }
 
 export interface MvtLanguageModel {
-	symbols: SymbolInformation[],
-	document: TextDocument
+	symbols: SymbolInformation[];
+	document: TextDocument;
 }
 
 export interface ValidationProblem {
-	type: string,
-	message: string
+	type: string;
+	message: string;
 }
 
 export namespace ValidationCode {
@@ -74,9 +73,9 @@ export namespace ValidationCode {
 export type ValidationCode = 'NO_TOOLKIT' | 'NO_TOOLBELT' | 'FOREACH_LSETTINGS' | 'FOREACH_GLOBAL' | 'GLOBAL_NULL_ASSIGNMENT' | 'GLOBAL_ENCODING_ENTITY' | 'GLOBAL_ENCODING_EVAL';
 
 export interface ValidationDataReplacement {
-	text: string,
-	message: string,
-	isPreferred?: boolean
+	text: string;
+	message: string;
+	isPreferred?: boolean;
 }
 
 export namespace ValidationDataType {
@@ -85,90 +84,90 @@ export namespace ValidationDataType {
 export type ValidationDataType = 'REPLACEMENT';
 
 export interface ValidationData {
-	type: ValidationDataType,
-	replacements?: ValidationDataReplacement[]
+	type: ValidationDataType;
+	replacements?: ValidationDataReplacement[];
 }
 
 export interface ValidationRule {
-	match: string,
-	matchIndex: number,
-	checkSetting?: string,
-	problem: ValidationProblem,
-	code: ValidationCode,
-	data?: ValidationData
+	match: string;
+	matchIndex: number;
+	checkSetting?: string;
+	problem: ValidationProblem;
+	code: ValidationCode;
+	data?: ValidationData;
 }
 
 export interface BaseTagAttributeValueData {
-	insertTextFormat: string,
-	kind: string,
-	commitCharacters: string[]
+	insertTextFormat: string;
+	kind: string;
+	commitCharacters: string[];
 }
 
 export interface TagAttributeValueData extends BaseTagAttributeValueData {
-	documentation: string,
-	insertText?: string,
-	label: string
-	reference?: string,
-	engine?: string,
-	version?: string
+	documentation: string;
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	version?: string;
 }
 
 export interface BaseTagAttributeData {
-	required: boolean,
-	insertTextFormat: string,
-	kind: string,
-	commitCharacters: string[],
-	valueType: 'variable' | 'expression' | 'string' | 'function'
+	required: boolean;
+	insertTextFormat: string;
+	kind: string;
+	commitCharacters: string[];
+	valueType: 'variable' | 'expression' | 'string' | 'function';
 }
 
 export interface TagAttributeData extends BaseTagAttributeData {
-	requiredMessage?: string,
-	documentation: string,
-	insertText?: string,
-	label: string,
-	values?: Record<string, TagAttributeValueData | ItemData>
-	reference?: string,
-	engine?: string,
-	version?: string
+	requiredMessage?: string;
+	documentation: string;
+	insertText?: string;
+	label: string;
+	values?: Record<string, TagAttributeValueData | ItemData>;
+	reference?: string;
+	engine?: string;
+	version?: string;
 }
 
 export interface BaseTagData {
-	insertTextFormat: string,
-	kind: string,
-	commitCharacters: string[]
+	insertTextFormat: string;
+	kind: string;
+	commitCharacters: string[];
 }
 
 export interface TagData extends BaseTagData {
-	documentation: string,
-	insertText?: string,
-	label: string,
-	reference?: string,
-	engine?: string,
-	version?: string,
-	attributes?: Record<string, TagAttributeData>
+	documentation: string;
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	version?: string;
+	attributes?: Record<string, TagAttributeData>;
 }
 
 export interface BaseItemParamData {
-	insertTextFormat: string,
-	kind: string,
-	commitCharacters: string[],
-	paramType: 'function' | 'link' | 'variable'
+	insertTextFormat: string;
+	kind: string;
+	commitCharacters: string[];
+	paramType: 'function' | 'link' | 'variable';
 }
 
 export interface ItemParamData extends BaseItemParamData {
-	documentation: string,
-	insertText?: string,
-	label: string,
-	reference?: string,
-	engine?: string,
-	version?: string
+	documentation: string;
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	version?: string;
 }
 
 export interface BaseItemData {
-	insertTextFormat: string,
-	kind: string,
-	commitCharacters: string[],
-	link?: string
+	insertTextFormat: string;
+	kind: string;
+	commitCharacters: string[];
+	link?: string;
 }
 
 export interface ItemData extends BaseItemData {
