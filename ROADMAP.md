@@ -43,6 +43,7 @@ This version will focus on adding missing Language Extension features and enhanc
 - Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
 - Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
 - Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, I am able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
+- Display common problems/code errors (like toolkit's tksl) to catch errors and enforce code quality.
 
 ### v1.X.X (TBD)
 
