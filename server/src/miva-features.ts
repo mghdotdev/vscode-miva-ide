@@ -26,6 +26,7 @@ import {
 	SymbolInformation,
 	SymbolKind
 } from 'vscode-languageserver/node';
+import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import mvtTagData from './mvt/tags';
 import {
@@ -153,12 +154,8 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
 
 	// MVT-specific completion data
-	const entityCompletions: CompletionItem[] = parseCompletionFile( readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'entity-completions.json' ) ) );
-	const entityHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( entityCompletions );
-	//const mvtTagHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionTagFile( mvtTagData );
-	//const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( mvtTagData ) );
-
 	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
+	const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mvtDocument: TextDocument): CompletionList | null => {
@@ -351,7 +348,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			if (
 				patterns.MVT.LEFT_AFTER_AMP.test( left )
 			) {
-				return CompletionList.create( entityCompletions );
+				return entityCompletions;
 			}
 
 			// After an entity (&mv**)
@@ -597,10 +594,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			// Entity hover
 			if (patterns.MVT.LEFT_AFTER_AMP_HOVER.test(left)) {
-				const foundEntityHover = entityHoverMap.get(word);
-				if (foundEntityHover) {
+				const foundEntity = mvtEntityData[wordLower];
+				if (foundEntity) {
 					return {
-						contents: foundEntityHover
+						contents: foundEntity.documentation
 					};
 				}
 			}

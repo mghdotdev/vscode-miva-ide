@@ -1,19 +1,19 @@
 import {
-	WorkspaceFolder,
-	Diagnostic,
-	Position,
+	Range,
+	TextDocument
+} from 'vscode-languageserver-textdocument';
+import {
+	CodeAction,
+	CodeActionContext,
 	CompletionList,
 	Definition,
-	SymbolInformation,
-	Hover,
+	Diagnostic,
 	DocumentLink,
-	CodeAction,
-	CodeActionContext
+	Hover,
+	Position,
+	SymbolInformation,
+	WorkspaceFolder
 } from 'vscode-languageserver/node';
-import {
-	TextDocument,
-	Range
-} from 'vscode-languageserver-textdocument';
 
 export interface Settings {
 	LSK?: any,
@@ -173,10 +173,22 @@ export interface BaseItemData {
 
 export interface ItemData extends BaseItemData {
 	documentation: string;
-	insertText?: string,
-	label: string,
-	reference?: string,
-	engine?: string,
-	version?: string,
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	version?: string;
 	params?: Record<string, ItemParamData>
+}
+
+export interface BaseEntityData {
+	kind: string;
+	commitCharacters: string[];
+}
+
+export interface EntityData extends BaseEntityData {
+	label: string;
+	detail: string;
+	documentation: string;
+	preselect?: boolean
 }
