@@ -3899,7 +3899,7 @@
 		"label": "miva_json_encode"
 	},
 	{
-		"documentation": "\n```mv\n{ ternary( condition, if_true, if_false ) }\n```\n---\n[ternary](https://www.mivascript.com/item/mivascript-functions/ternary.html)  \n\n",
+		"documentation": "\n```mv\n{ ternary( condition, if_true, if_false ) }\n```\n---\n[ternary](https://www.mivascript.com/item/mivascript-functions/ternary.html)  \n\nTests the condition to determine whether if_true or if_false should be returned. It should be noted that the if_true and if_false values will always be evaluated even when the condition is not met, but only the met condition will be returned.",
 		"insertText": "ternary( ${1:condition}, ${2:if_true}, ${3:if_false} )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
