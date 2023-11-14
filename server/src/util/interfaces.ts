@@ -202,9 +202,3 @@ export interface SystemVariableData extends BaseSystemVariableData {
 	detail: string;
 	documentation: string;
 }
-
-export interface MvtVariableInfo {
-	value: string;
-	parts: string[];
-	depth: number;
-};
