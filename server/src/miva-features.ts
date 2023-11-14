@@ -4,7 +4,8 @@ import _get from 'lodash.get';
 import * as path from 'path';
 import {
 	TokenType,
-	getLanguageService
+	getLanguageService,
+	newHTMLDataProvider
 } from 'vscode-html-languageservice/lib/esm/htmlLanguageService';
 import {
 	TextDocument
@@ -59,7 +60,30 @@ import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
 // Define HTML Language Service helper
-const htmlLanguageService = getLanguageService();
+const htmlLanguageService = getLanguageService({
+	customDataProviders: [
+		newHTMLDataProvider('mvt', {
+				version: 1,
+				tags: [
+					{
+						attributes: [],
+						void: true,
+						name: 'mvt:else',
+					},
+					{
+						attributes: [
+							{
+								name: 'expr'
+							}
+						],
+						void: true,
+						name: 'mvt:elseif',
+					}
+				]
+			}
+		)
+	]
+});
 
 // Constants
 const BOUNDARY_AMOUNT = 200;
