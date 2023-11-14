@@ -115,6 +115,12 @@ function cancelValue<E>() {
 	return new ResponseError<E>( ErrorCodes.PendingResponseRejected, 'Request cancelled' );
 }
 
+function wrapSpaces (str: string, wrap: boolean): string {
+	return wrap
+		? ` ${str} `
+		: str;
+}
+
 function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 
 	const parameters = fn.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
@@ -129,6 +135,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		insertTextFormat: InsertTextFormat.Snippet,
 		kind: CompletionItemKind.Function,
 		detail: file.distroPath,
+		documentation: `\n\`\`\`mv\n{ [ ${file.distroPath} ].${ fn.name }(${wrapSpaces( fn.parameters.join(', '), fn.parameters.length > 0 )}) }\n\`\`\`\n---\n${fn.description ? `${fn.description}\n---\n` : ''}${fn.parameters?.map(param => `@param \`${param}\``)?.join('\n\n')}`,
 		command: {
 			title: `Inject "${ file.distroPath }" into file attribute.`,
 			command: 'mivaIde.chooseFileName',
@@ -175,7 +182,9 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string, MarkupContent> {
 	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
 		return map.set(
-			completionItem.label,
+			completionItem.detail
+				? `${completionItem.detail}@${completionItem.label}`
+				: completionItem.label,
 			completionItem.documentation as MarkupContent
 		);
 	}, new Map());

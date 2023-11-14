@@ -11,6 +11,8 @@ export default {
 		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_ITEM_NAME: /(name\s*=\s*")([a-z]+)"[^<]+$/i,
 		RIGHT_ITEM_NAME: /^[^>]+?(name\s*=\s*")([a-z]+)"/i,
+		LEFT_DO_FILE: /(file\s*=\s*")([^"]+)"[^<]+$/i,
+		RIGHT_DO_FILE: /^[^>]+?(file\s*=\s*")([^"]+)"/i,
 		ENTITIES: /(?<=&mvt[a-z]?:)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 		ENTITIES_G: /(?<=&mvt[a-z]?:global:)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 		ENTITIES_LSETTINGS: /(?<=&mvt[a-z]?:)(?!global)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,

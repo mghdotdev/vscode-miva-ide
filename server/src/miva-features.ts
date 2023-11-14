@@ -92,6 +92,7 @@ const MAX_LINE_LENGTH = 9999;
 // Completion data
 const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
+const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items );
 const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
@@ -581,6 +582,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 									contents: formatItemParamDocumentation(foundItem, foundParam)
 								};
 							}
+						}
+					}
+
+					// Do functions
+					if (tagName === 'do') {
+						// Get item name
+						const [,, doFile] = left.match(patterns.MVT.LEFT_DO_FILE) || right.match(patterns.MVT.RIGHT_DO_FILE) || [];
+						const key = `${doFile}@${word}`;
+
+						const foundDoHover = doValueHoverMap.get(key);
+						if (foundDoHover) {
+							return {
+								contents: foundDoHover
+							};
 						}
 					}
 
