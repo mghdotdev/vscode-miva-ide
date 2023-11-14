@@ -3,7 +3,7 @@ export default {
 		LEFT_IN_MVTDO_TAG: /(?=<mvt:do)[^>]*?$/i,
 		LEFT_AFTER_AMP: /&$/,
 		LEFT_AFTER_AMP_HOVER: /&[a-z]+$/,
-		LEFT_AFTER_ENTITY_COLON: /&mvt[a-z]?:([a-z_][a-z0-9_:\[\]]*)?$/i,
+		LEFT_AFTER_ENTITY_COLON: /(?<=&mvt[a-z]?:)([a-z_][a-z0-9_:\[\]]*)?$/i,
 		LEFT_IN_MVT_TAG: /(?=<mvt:[a-z]+)[^>]*?$/i,
 		LEFT_IN_MVT_TAG_NAME: /(?<=<mvt:)[a-z]*?$/i,
 		LEFT_TAG_NAME: /(?<=<mvt:)([a-z]+)[^<]*?$/i,
@@ -11,6 +11,7 @@ export default {
 		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_ITEM_NAME: /(name\s*=\s*")([a-z]+)"[^<]+$/i,
 		RIGHT_ITEM_NAME: /^[^>]+?(name\s*=\s*")([a-z]+)"/i,
+		ENTITIES: /(?<=&mvt[a-z]?:)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 		ENTITIES_G: /(?<=&mvt[a-z]?:global:)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 		ENTITIES_LSETTINGS: /(?<=&mvt[a-z]?:)(?!global)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 	},
@@ -28,9 +29,8 @@ export default {
 		LEFT_VARIABLE_S: /s(ystem)?\.(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
 		LEFT_VARIABLE_G: /g(lobal)?\.(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
 		LEFT_VARIABLE_L: /l(ocal)?\.(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
-		LEFT_VARIABLE_LSETTINGS: /l(ocal)?\.settings:(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
 		VARIABLES_G: /(?<=g(lobal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
-		VARIABLES_L: /(?<=l(ocal)?\.)(?!settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
+		VARIABLES_L: /(?<=l(ocal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
 		VARIABLES_LSETTINGS: /(?<=l(ocal)?\.settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
 	}
 };

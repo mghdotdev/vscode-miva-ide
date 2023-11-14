@@ -169,29 +169,21 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		// global variables
 		if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
 
-			const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || [] );
+			const variableMatches = left.match(patterns.SHARED.VARIABLES_G) || [];
+			const _foundVariable = variableMatches[0] || '';
+			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
+			const foundVariableRegex = new RegExp(`^${foundVariable}`);
+
+			const foundVariables = [].concat(
+				mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [],
+				mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || []
+			)
+				?.filter( unique )
+				?.filter(_variable => _variable.startsWith(foundVariable))
+				?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 			return CompletionList.create(
-				foundVariables.filter( unique ).map((variable) => {
-					return parseCompletion({
-						"label": variable,
-						"kind": "Variable",
-						"detail": variable,
-						"documentation": "",
-						"commitCharacters": []
-					});
-				})
-			);
-
-		}
-
-		// l.settings variables
-		if ( patterns.SHARED.LEFT_VARIABLE_LSETTINGS.test( left ) ) {
-
-			const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || [] );
-
-			return CompletionList.create(
-				foundVariables.filter( unique ).map((variable) => {
+				foundVariables.map((variable) => {
 					return parseCompletion({
 						"label": variable,
 						"kind": "Variable",
@@ -207,10 +199,23 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		// local variables
 		if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
 
-			const foundVariables = mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [];
+			const variableMatches = left.match(patterns.SHARED.VARIABLES_L) || [];
+			const _foundVariable = variableMatches[0] || '';
+			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
+			const foundVariableRegex = new RegExp(`^${foundVariable}`);
+
+			const foundVariables = [].concat(
+				mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
+				foundVariable.startsWith('settings')
+					? (mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
+					: []
+			)
+				?.filter( unique )
+				?.filter(_variable => _variable.startsWith(foundVariable))
+				?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 			return CompletionList.create(
-				foundVariables.filter( unique ).map((variable) => {
+				foundVariables.map((variable) => {
 					return parseCompletion({
 						"label": variable,
 						"kind": "Variable",
@@ -356,20 +361,34 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				// get full text
 				const mvtDocumentText = mvtDocument.getText();
 
-				const foundVariables = [].concat( mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [], mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || [] );
+				const variableMatches = left.match(patterns.MVT.LEFT_AFTER_ENTITY_COLON) || [];
+				const _foundVariable = variableMatches[0] || '';
+				const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
+				const foundVariableRegex = new RegExp(`^${foundVariable}`);
 
-					return CompletionList.create(
-						foundVariables.filter( unique ).map((variable) => {
-							return parseCompletion({
-								"label": variable,
-								"kind": "Variable",
-								"detail": variable,
-								"documentation": "",
-								"commitCharacters": [],
-								"insertText": `${ variable };`
-							});
-						})
-					);
+				console.log('foundVariable', foundVariable);
+
+				const foundVariables = [].concat(
+					mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [],
+					mvtDocumentText.match( patterns.SHARED.VARIABLES_G )?.map(_variable => 'global:' + _variable) || [],
+					mvtDocumentText.match( patterns.MVT.ENTITIES ) || [],
+				)
+					?.filter( unique )
+					?.filter(_variable => _variable.startsWith(foundVariable))
+					?.map(_variable => _variable.replace(foundVariableRegex, ''));
+
+				return CompletionList.create(
+					foundVariables.map((variable) => {
+						return parseCompletion({
+							"label": variable,
+							"kind": "Variable",
+							"detail": variable,
+							"documentation": "",
+							"commitCharacters": [],
+							"insertText": `${ variable };`
+						});
+					})
+				);
 
 			}
 

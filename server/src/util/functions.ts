@@ -419,3 +419,11 @@ export function parseLinkTemplate (template: string, data: Record<string, string
 export function safeMatch (str: string, pattern: RegExp): RegExpMatchArray | [] {
 	return str?.match(pattern) || [];
 }
+
+export function getVariableParts (variable: string): string[] {
+	return variable?.split(':') || [];
+}
+
+export function getVariableDepth (variableParts: string[]): number {
+	return Math.max(0, variableParts.length - 1);
+}
