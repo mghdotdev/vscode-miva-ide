@@ -194,7 +194,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		// global variables
 		if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
 
-			const variableMatches = left.match(patterns.SHARED.VARIABLES_G) || [];
+			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_G) || [];
 			const _foundVariable = variableMatches[0] || '';
 			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
 			const foundVariableRegex = new RegExp(`^${foundVariable}`);
@@ -224,15 +224,17 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		// local variables
 		if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
 
-			const variableMatches = left.match(patterns.SHARED.VARIABLES_L) || [];
+			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_L) || [];
 			const _foundVariable = variableMatches[0] || '';
 			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
 			const foundVariableRegex = new RegExp(`^${foundVariable}`);
 
+			console.log('foundVariable', foundVariable);
+
 			const foundVariables = [].concat(
 				mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
 				foundVariable.startsWith('settings')
-					? (mvtDocumentText.match( patterns.MVT.ENTITIES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
+					? (mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
 					: []
 			)
 				?.filter( unique )
@@ -390,8 +392,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				const _foundVariable = variableMatches[0] || '';
 				const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
 				const foundVariableRegex = new RegExp(`^${foundVariable}`);
-
-				console.log('foundVariable', foundVariable);
 
 				const foundVariables = [].concat(
 					mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [],
