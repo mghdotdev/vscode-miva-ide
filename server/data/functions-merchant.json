@@ -1073,6 +1073,38 @@
 				]
 			},
 			{
+				"name": "JSON_AvailableFilter_NULL_INTEGER",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_NUMBER",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_BOOL",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_CHAR",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
 				"name": "JSON_AvailableFilter_LowLevel",
 				"parameters": [
 					"filters var",
@@ -1156,9 +1188,31 @@
 				]
 			},
 			{
+				"name": "JSON_Search_Filter_MivaScript_LowLevel",
+				"parameters": [
+					"expression var",
+					"outer_joining_clause",
+					"inner_joining_clause",
+					"filterlist var",
+					"params var",
+					"data var"
+				]
+			},
+			{
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList",
 				"parameters": [
 					"expression var",
+					"variable",
+					"filter_name",
+					"filter_operator",
+					"filter_value"
+				]
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Join",
+				"parameters": [
+					"expression var",
+					"joining_clause",
 					"variable",
 					"filter_name",
 					"filter_operator",
@@ -1205,7 +1259,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ 'merchant.mvc'",
+		"distroPath": "g.Module_Merchant",
 		"functions": [
 			{
 				"name": "Merchant",
@@ -2945,8 +2999,7 @@
 		"functions": [
 			{
 				"name": "AGR_Store_Create",
-				"parameters": [],
-				"description": "\n\\file\n### \tAvailability group database functions"
+				"parameters": []
 			},
 			{
 				"name": "AGR_Store_Delete",
@@ -5358,6 +5411,14 @@
 				]
 			},
 			{
+				"name": "JSON_BaseBusinessAccountList_Filters",
+				"parameters": []
+			},
+			{
+				"name": "JSON_BaseBusinessAccountList_OrderBy",
+				"parameters": []
+			},
+			{
 				"name": "JSON_BusinessAccountList_Load_Query",
 				"parameters": []
 			},
@@ -5483,8 +5544,7 @@
 				"parameters": [
 					"modules var",
 					"module_count"
-				],
-				"description": "\n\\file\n### \tCustomer functions for shopping interface"
+				]
 			},
 			{
 				"name": "Runtime_Validate_ShippingBilling",
@@ -6151,7 +6211,16 @@
 			{
 				"name": "DigitalDownload_Process_OrderItem",
 				"parameters": [
-					"orderitem var"
+					"orderitem var",
+					"created_digitaldownloads var",
+					"created_digitaldownload_count var"
+				]
+			},
+			{
+				"name": "DigitalDownload_Process_OrderItems",
+				"parameters": [
+					"orderitems var",
+					"orderitem_count var"
 				]
 			},
 			{
@@ -6159,7 +6228,9 @@
 				"parameters": [
 					"orderitem var",
 					"product var",
-					"variant_id"
+					"variant_id",
+					"created_digitaldownloads var",
+					"created_digitaldownload_count var"
 				]
 			},
 			{
@@ -6260,6 +6331,13 @@
 				"name": "DigitalDownload_Amazon_Regions",
 				"parameters": [
 					"regions var"
+				]
+			},
+			{
+				"name": "Notify_DigitalDownloads_Created",
+				"parameters": [
+					"created_digitaldownloads var",
+					"created_digitaldownload_count var"
 				]
 			}
 		]
@@ -6867,7 +6945,23 @@
 				"name": "GiftCertificateSales_Process_OrderItem",
 				"parameters": [
 					"giftcertificatesales var",
-					"orderitem var"
+					"orderitem var",
+					"created_giftcertificates var",
+					"created_giftcertificate_count var"
+				]
+			},
+			{
+				"name": "GiftCertificateSales_Process_OrderItems",
+				"parameters": [
+					"orderitems var",
+					"orderitem_count"
+				]
+			},
+			{
+				"name": "Notify_GiftCertificates_Created",
+				"parameters": [
+					"created_giftcertificates var",
+					"created_giftcertificate_count"
 				]
 			}
 		]
@@ -6877,8 +6971,7 @@
 		"functions": [
 			{
 				"name": "INV_Create_Data_Files",
-				"parameters": [],
-				"description": "\n\\file\n### \tInventory system database functions"
+				"parameters": []
 			},
 			{
 				"name": "INV_Store_Create",
@@ -7073,8 +7166,7 @@
 				"name": "Runtime_Product_InventoryFields_Read",
 				"parameters": [
 					"product var"
-				],
-				"description": "\n\\file\n### \tInventory system functions for shopping interface"
+				]
 			},
 			{
 				"name": "Runtime_Product_InventoryFields_Read_WithInventorySettings",
@@ -7914,7 +8006,7 @@
 				"parameters": [
 					"left var",
 					"right var",
-					"data var"
+					"sort var"
 				]
 			},
 			{
@@ -8353,7 +8445,8 @@
 				"parameters": [
 					"paymentrules var",
 					"payment_module var",
-					"module_data"
+					"module_data",
+					"paymentcardtype_id"
 				]
 			},
 			{
@@ -8924,8 +9017,7 @@
 		"functions": [
 			{
 				"name": "PGR_Store_Create",
-				"parameters": [],
-				"description": "\n\\file\n### \tPrice group database functions"
+				"parameters": []
 			},
 			{
 				"name": "PGR_Create_Data_Files",
@@ -9819,6 +9911,46 @@
 				"name": "CouponXCustomer_Delete_All_Customer",
 				"parameters": [
 					"cust_id"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Read",
+				"parameters": [
+					"couponxbusinessaccount var"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Insert",
+				"parameters": [
+					"coupon_id",
+					"account_id"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Delete",
+				"parameters": [
+					"coupon_id",
+					"account_id"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Load",
+				"parameters": [
+					"coupon_id",
+					"account_id",
+					"couponxbusinessaccount var"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Delete_All_Coupon",
+				"parameters": [
+					"coupon_id"
+				]
+			},
+			{
+				"name": "CouponXBusinessAccount_Delete_All_BusinessAccount",
+				"parameters": [
+					"account_id"
 				]
 			},
 			{
@@ -10825,6 +10957,18 @@
 			},
 			{
 				"name": "JSON_CouponCustomer_Update_Assigned",
+				"parameters": []
+			},
+			{
+				"name": "JSON_CouponBusinessAccountList_Load_Query",
+				"parameters": []
+			},
+			{
+				"name": "JSON_CouponBusinessAccount_Update_Assigned",
+				"parameters": []
+			},
+			{
+				"name": "JSON_CouponBusinessAccountIndex_Load_ID",
 				"parameters": []
 			},
 			{
@@ -12106,8 +12250,7 @@
 				"name": "PRV_ProvisionAsNeeded",
 				"parameters": [
 					"provide_filename"
-				],
-				"description": "\n\\file\n### \tProvisioning system"
+				]
 			},
 			{
 				"name": "PRV_Action_ProvisionEntireFile",
@@ -12867,6 +13010,18 @@
 			},
 			{
 				"name": "PRV_Action_Provision_Store_CouponCustomer_Unassign",
+				"parameters": [
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CouponBusinessAccount_Assign",
+				"parameters": [
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CouponBusinessAccount_Unassign",
 				"parameters": [
 					"provide_xml var"
 				]
@@ -14449,8 +14604,7 @@
 		"functions": [
 			{
 				"name": "RPD_Store_Create",
-				"parameters": [],
-				"description": "\n\\file\n### \tRelated products database functions"
+				"parameters": []
 			},
 			{
 				"name": "RPD_Store_Delete",
@@ -14567,6 +14721,10 @@
 				"parameters": []
 			},
 			{
+				"name": "JSON_RelatedProductList_Update_Assigned",
+				"parameters": []
+			},
+			{
 				"name": "JSON_RelatedProductList_DisplayOrder_Update",
 				"parameters": []
 			}
@@ -14577,8 +14735,7 @@
 		"functions": [
 			{
 				"name": "RPT_CreateDataFiles",
-				"parameters": [],
-				"description": "\n\\file\n### \tReport system database functions"
+				"parameters": []
 			},
 			{
 				"name": "RPT_Store_Create",
@@ -17278,8 +17435,7 @@
 		"functions": [
 			{
 				"name": "TUI_CreateDataFiles",
-				"parameters": [],
-				"description": "\n\\file\n### \tTemplate system database functions"
+				"parameters": []
 			},
 			{
 				"name": "TUI_Store_Create",
@@ -17300,8 +17456,22 @@
 				]
 			},
 			{
+				"name": "Page_Copy_PageVersion",
+				"parameters": [
+					"pageversion var",
+					"page var"
+				]
+			},
+			{
 				"name": "Page_Insert",
 				"parameters": [
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Insert_Branch",
+				"parameters": [
+					"branch_id",
 					"page var"
 				]
 			},
@@ -17326,6 +17496,13 @@
 			{
 				"name": "Page_Update_CacheSettings",
 				"parameters": [
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Update_CacheSettings_Branch",
+				"parameters": [
+					"branch_id",
 					"page var"
 				]
 			},
@@ -17365,6 +17542,20 @@
 				"name": "Page_Delete_ID_LowLevel",
 				"parameters": [
 					"id"
+				]
+			},
+			{
+				"name": "Page_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "Page_Delete_All_Orphaned_LowLevel",
+				"parameters": []
+			},
+			{
+				"name": "Page_Purge",
+				"parameters": [
+					"page var"
 				]
 			},
 			{
@@ -17408,6 +17599,48 @@
 				"parameters": [
 					"branch_id",
 					"code",
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Load_Code_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"page_code",
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Load_Reuse",
+				"parameters": [
+					"code",
+					"admin",
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Load_Branch_Reuse",
+				"parameters": [
+					"branch_id",
+					"code",
+					"admin",
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Load_Reuse_Existing_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"code",
+					"admin",
+					"page var"
+				]
+			},
+			{
+				"name": "Page_Load_Reuse_Deleted",
+				"parameters": [
+					"code",
+					"admin",
 					"page var"
 				]
 			},
@@ -17512,6 +17745,14 @@
 				]
 			},
 			{
+				"name": "PageList_Load_NotOnOtherBranch",
+				"parameters": [
+					"branch_id",
+					"other_branch_id",
+					"pages var"
+				]
+			},
+			{
 				"name": "Page_Load_First",
 				"parameters": [
 					"page var"
@@ -17568,6 +17809,12 @@
 				]
 			},
 			{
+				"name": "Page_Fork_CustomFields",
+				"parameters": [
+					"page var"
+				]
+			},
+			{
 				"name": "PageList_Load_Item",
 				"parameters": [
 					"item_id",
@@ -17620,14 +17867,225 @@
 				]
 			},
 			{
+				"name": "PageVersion_Read",
+				"parameters": [
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Copy_Page",
+				"parameters": [
+					"page var",
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Insert",
+				"parameters": [
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Update_LowLevel",
+				"parameters": [
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Update_CrossReference",
+				"parameters": [
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Delete_All_Page",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
+				"name": "PageVersion_Delete_All_Orphaned_Pages",
+				"parameters": []
+			},
+			{
+				"name": "PageVersion_Load_ID",
+				"parameters": [
+					"id",
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Load_Page_Current",
+				"parameters": [
+					"page_id",
+					"managedtemplateversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Load_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Fork_CrossReferences_LowLevel",
+				"parameters": [
+					"pageversion var",
+					"new_xref_id"
+				]
+			},
+			{
+				"name": "PageVersion_Fork_CrossReferences",
+				"parameters": [
+					"branch_id",
+					"pageversion var"
+				]
+			},
+			{
+				"name": "PageVersion_Fork_CrossReferences_ID",
+				"parameters": [
+					"branch_id",
+					"pageversion var",
+					"xref_id"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Read",
+				"parameters": [
+					"pagebranchversion var"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Insert",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"version_id"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Update_Head",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"version_id"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Delete_All_Page",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Load",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"version_id",
+					"pagebranchversion var"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Load_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"pagebranchversion var"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Load_Code_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"code",
+					"pagebranchversion var"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Load_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"version_id",
+					"pagebranchversion var"
+				]
+			},
+			{
+				"name": "PageBranchVersion_Delete_All_Branch",
+				"parameters": [
+					"branch_id"
+				]
+			},
+			{
+				"name": "PageChange_InsertOrUpdate",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"page_id",
+					"old_id",
+					"new_id",
+					"xref_id"
+				]
+			},
+			{
+				"name": "PageChange_Insert",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"page_id",
+					"old_id",
+					"new_id",
+					"xref_id"
+				]
+			},
+			{
+				"name": "PageChange_Update_New",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"page_id",
+					"new_id",
+					"xref_id"
+				]
+			},
+			{
+				"name": "PageChange_Delete_All_Changeset",
+				"parameters": [
+					"set_id"
+				]
+			},
+			{
+				"name": "PageChange_Delete_All_Page",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
 				"name": "Item_Read",
 				"parameters": [
 					"item var"
 				]
 			},
 			{
+				"name": "Item_Copy_ItemVersion",
+				"parameters": [
+					"itemversion var",
+					"item var"
+				]
+			},
+			{
 				"name": "Item_Insert",
 				"parameters": [
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Insert_Branch",
+				"parameters": [
+					"branch_id",
 					"item var"
 				]
 			},
@@ -17656,8 +18114,30 @@
 				]
 			},
 			{
+				"name": "Item_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "Item_Delete_All_Orphaned_LowLevel",
+				"parameters": []
+			},
+			{
+				"name": "Item_Purge",
+				"parameters": [
+					"item var"
+				]
+			},
+			{
 				"name": "Item_Load_ID",
 				"parameters": [
+					"id",
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Branch_ID",
+				"parameters": [
+					"branch_id",
 					"id",
 					"item var"
 				]
@@ -17670,8 +18150,53 @@
 				]
 			},
 			{
+				"name": "Item_Load_Branch_Code",
+				"parameters": [
+					"branch_id",
+					"code",
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Reuse",
+				"parameters": [
+					"code",
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Branch_Reuse",
+				"parameters": [
+					"branch_id",
+					"code",
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Reuse_Existing_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"code",
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Reuse_Deleted",
+				"parameters": [
+					"code",
+					"item var"
+				]
+			},
+			{
 				"name": "ItemList_Load_All",
 				"parameters": [
+					"items var"
+				]
+			},
+			{
+				"name": "ItemList_Load_Branch_All",
+				"parameters": [
+					"branch_id",
 					"items var"
 				]
 			},
@@ -17683,8 +18208,23 @@
 				]
 			},
 			{
+				"name": "ItemList_Load_Branch_Page",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"items var"
+				]
+			},
+			{
 				"name": "Item_Load_PageList",
 				"parameters": [
+					"item var"
+				]
+			},
+			{
+				"name": "Item_Load_Branch_PageList",
+				"parameters": [
+					"branch_id",
 					"item var"
 				]
 			},
@@ -17739,8 +18279,43 @@
 				]
 			},
 			{
+				"name": "ItemList_Load_Branch_Module",
+				"parameters": [
+					"branch_id",
+					"module_id",
+					"items var"
+				]
+			},
+			{
+				"name": "ItemList_Load_Module_Code",
+				"parameters": [
+					"mod_code",
+					"items var"
+				]
+			},
+			{
+				"name": "ItemList_Load_Branch_Module_Code",
+				"parameters": [
+					"branch_id",
+					"mod_code",
+					"items var"
+				]
+			},
+			{
 				"name": "ItemList_Load_Offset",
 				"parameters": [
+					"offset",
+					"search",
+					"searchable_fields",
+					"max",
+					"nextoffset var",
+					"items var"
+				]
+			},
+			{
+				"name": "ItemList_Load_Branch_Offset",
+				"parameters": [
+					"branch_id",
 					"offset",
 					"search",
 					"searchable_fields",
@@ -17762,8 +18337,23 @@
 				]
 			},
 			{
+				"name": "ItemList_Load_Branch_Codes",
+				"parameters": [
+					"branch_id",
+					"items var"
+				]
+			},
+			{
 				"name": "ItemModuleList_Load_Page",
 				"parameters": [
+					"page_id",
+					"modules var"
+				]
+			},
+			{
+				"name": "ItemModuleList_Load_Branch_Page",
+				"parameters": [
+					"branch_id",
 					"page_id",
 					"modules var"
 				]
@@ -17776,8 +18366,24 @@
 				]
 			},
 			{
+				"name": "ItemModuleList_Load_Branch_Page_Active",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"modules var"
+				]
+			},
+			{
 				"name": "ItemModuleList_Load_Page_Render",
 				"parameters": [
+					"page_id",
+					"items var"
+				]
+			},
+			{
+				"name": "ItemModuleList_Load_Branch_Page_Render",
+				"parameters": [
+					"branch_id",
 					"page_id",
 					"items var"
 				]
@@ -17790,8 +18396,24 @@
 				]
 			},
 			{
+				"name": "ItemExtensionModuleList_Load_Branch_Page_Render",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"items var"
+				]
+			},
+			{
 				"name": "ItemModuleList_Load_Page_Store",
 				"parameters": [
+					"page_id",
+					"modules var"
+				]
+			},
+			{
+				"name": "ItemModuleList_Load_Branch_Page_Store",
+				"parameters": [
+					"branch_id",
 					"page_id",
 					"modules var"
 				]
@@ -17801,6 +18423,171 @@
 				"parameters": [
 					"page_id",
 					"modules var"
+				]
+			},
+			{
+				"name": "ItemModuleList_Load_Branch_Page_Store_Active",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"modules var"
+				]
+			},
+			{
+				"name": "Item_Fork_Extensions",
+				"parameters": [
+					"item var"
+				]
+			},
+			{
+				"name": "ItemVersion_Read",
+				"parameters": [
+					"itemversion var"
+				]
+			},
+			{
+				"name": "ItemVersion_Copy_Item",
+				"parameters": [
+					"item var",
+					"itemversion var"
+				]
+			},
+			{
+				"name": "ItemVersion_Insert",
+				"parameters": [
+					"itemversion var"
+				]
+			},
+			{
+				"name": "ItemVersion_Delete_All_Item",
+				"parameters": [
+					"item_id"
+				]
+			},
+			{
+				"name": "ItemVersion_Delete_All_Orphaned_Items",
+				"parameters": []
+			},
+			{
+				"name": "ItemVersion_Load_ID",
+				"parameters": [
+					"id",
+					"itemversion var"
+				]
+			},
+			{
+				"name": "ItemVersion_Load_Item_Current",
+				"parameters": [
+					"item_id",
+					"managedtemplateversion var"
+				]
+			},
+			{
+				"name": "ItemVersion_Load_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"itemversion var"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Read",
+				"parameters": [
+					"itembranchversion var"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Insert",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"version_id"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Update_Head",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"version_id"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Delete_All_Item",
+				"parameters": [
+					"item_id"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Load",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"version_id",
+					"itembranchversion var"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Load_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"itembranchversion var"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Load_Code_Branch_Head",
+				"parameters": [
+					"branch_id",
+					"code",
+					"itembranchversion var"
+				]
+			},
+			{
+				"name": "ItemBranchVersion_Delete_All_Branch",
+				"parameters": [
+					"branch_id"
+				]
+			},
+			{
+				"name": "ItemChange_InsertOrUpdate",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"item_id",
+					"old_id",
+					"new_id"
+				]
+			},
+			{
+				"name": "ItemChange_Insert",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"item_id",
+					"old_id",
+					"new_id"
+				]
+			},
+			{
+				"name": "ItemChange_Update_New",
+				"parameters": [
+					"branch_id",
+					"set_id",
+					"item_id",
+					"new_id"
+				]
+			},
+			{
+				"name": "ItemChange_Delete_All_Changeset",
+				"parameters": [
+					"set_id"
+				]
+			},
+			{
+				"name": "ItemChange_Delete_All_Item",
+				"parameters": [
+					"item_id"
 				]
 			},
 			{
@@ -17828,6 +18615,19 @@
 				]
 			},
 			{
+				"name": "ItemExtension_Delete",
+				"parameters": [
+					"itemextension var"
+				]
+			},
+			{
+				"name": "ItemExtension_Delete_All_Version",
+				"parameters": [
+					"item_id",
+					"version_id"
+				]
+			},
+			{
 				"name": "ItemExtension_Delete_All_Item",
 				"parameters": [
 					"item_id"
@@ -17838,6 +18638,16 @@
 				"parameters": [
 					"module_id"
 				]
+			},
+			{
+				"name": "ItemExtension_Delete_All_Module_Code",
+				"parameters": [
+					"mod_code"
+				]
+			},
+			{
+				"name": "ItemExtension_Delete_All_Orphaned_Items",
+				"parameters": []
 			},
 			{
 				"name": "ItemExtension_Load_ID",
@@ -17855,6 +18665,32 @@
 				]
 			},
 			{
+				"name": "ItemExtension_Load_Branch_ItemModule",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"module_id",
+					"itemextension var"
+				]
+			},
+			{
+				"name": "ItemExtension_Load_ItemModuleCode",
+				"parameters": [
+					"item_id",
+					"mod_code",
+					"itemextension var"
+				]
+			},
+			{
+				"name": "ItemExtension_Load_Branch_ItemModuleCode",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"mod_code",
+					"itemextension var"
+				]
+			},
+			{
 				"name": "ItemExtensionList_Load_Item",
 				"parameters": [
 					"item_id",
@@ -17862,18 +18698,43 @@
 				]
 			},
 			{
-				"name": "ItemExtensionList_Update_Offsets",
+				"name": "ItemExtensionList_Load_Branch_Item",
 				"parameters": [
+					"branch_id",
 					"item_id",
 					"itemextensions var"
 				]
 			},
 			{
-				"name": "ItemExtensions_Update_Offsets_PastEnd",
+				"name": "ItemExtensionList_Update_Offsets",
+				"parameters": [
+					"item",
+					"itemextensions var"
+				]
+			},
+			{
+				"name": "ItemExtensionList_Update_Branch_Offsets",
+				"parameters": [
+					"branch_id",
+					"item",
+					"itemextensions var"
+				]
+			},
+			{
+				"name": "ItemExtensionList_Update_Offsets_PastEnd",
 				"parameters": [
 					"item_id",
+					"version_id",
 					"pastend var",
 					"pastend_count"
+				]
+			},
+			{
+				"name": "ItemExtension_Fork",
+				"parameters": [
+					"item_id",
+					"oldver_id",
+					"newver_id"
 				]
 			},
 			{
@@ -17886,13 +18747,22 @@
 				"name": "PageXItem_Insert_LowLevel",
 				"parameters": [
 					"page_id",
+					"xref_id",
 					"item_id"
+				]
+			},
+			{
+				"name": "PageXItem_Fork",
+				"parameters": [
+					"pageversion var",
+					"new_xref_id"
 				]
 			},
 			{
 				"name": "PageXItem_Delete_LowLevel",
 				"parameters": [
 					"page_id",
+					"xref_id",
 					"item_id"
 				]
 			},
@@ -17909,9 +18779,35 @@
 				]
 			},
 			{
+				"name": "PageXItem_Delete_All_Orphaned_Pages",
+				"parameters": []
+			},
+			{
+				"name": "PageXItem_Delete_All_Orphaned_Items",
+				"parameters": []
+			},
+			{
 				"name": "PageXItem_Load",
 				"parameters": [
 					"page_id",
+					"item_id",
+					"pagexitem var"
+				]
+			},
+			{
+				"name": "PageXItem_Load_Branch",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"item_id",
+					"pagexitem var"
+				]
+			},
+			{
+				"name": "PageXItem_Load_CrossReference",
+				"parameters": [
+					"page_id",
+					"xref_id",
 					"item_id",
 					"pagexitem var"
 				]
@@ -18013,6 +18909,80 @@
 			{
 				"name": "BranchList_Load_All",
 				"parameters": [
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_Page_Code",
+				"parameters": [
+					"page_code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_Page_Code_Admin_UI",
+				"parameters": [
+					"page_code",
+					"ui_id",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_Item_Code",
+				"parameters": [
+					"item_code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_Item_Module_Code",
+				"parameters": [
+					"mod_code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_CSSResource_Code",
+				"parameters": [
+					"code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_JavaScriptResource_Code",
+				"parameters": [
+					"code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_ManagedTemplate_Filename",
+				"parameters": [
+					"filename",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_ManagedProperty_Code",
+				"parameters": [
+					"type",
+					"code",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_ManagedProperty_Product",
+				"parameters": [
+					"type",
+					"product_id",
+					"branches var"
+				]
+			},
+			{
+				"name": "BranchList_Load_ManagedProperty_Category",
+				"parameters": [
+					"type",
+					"cat_id",
 					"branches var"
 				]
 			},
@@ -18235,6 +19205,18 @@
 				]
 			},
 			{
+				"name": "ManagedTemplate_Purge",
+				"parameters": [
+					"managedtemplate var"
+				]
+			},
+			{
+				"name": "ManagedTemplate_Purge_Filename",
+				"parameters": [
+					"filename"
+				]
+			},
+			{
 				"name": "ManagedTemplate_Delete_All_Product_Property",
 				"parameters": [
 					"product_id"
@@ -18245,6 +19227,14 @@
 				"parameters": [
 					"cat_id"
 				]
+			},
+			{
+				"name": "ManagedTemplate_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "ManagedTemplate_Delete_All_Orphaned_LowLevel",
+				"parameters": []
 			},
 			{
 				"name": "ManagedTemplate_Load_ID",
@@ -18342,6 +19332,40 @@
 				]
 			},
 			{
+				"name": "ManagedTemplate_Load_Reuse",
+				"parameters": [
+					"filename",
+					"parent_id",
+					"item_id",
+					"prop_id",
+					"sync",
+					"managedtemplate var"
+				]
+			},
+			{
+				"name": "ManagedTemplate_Load_Branch_Reuse",
+				"parameters": [
+					"branch_id",
+					"filename",
+					"parent_id",
+					"item_id",
+					"prop_id",
+					"sync",
+					"managedtemplate var"
+				]
+			},
+			{
+				"name": "ManagedTemplate_Load_Reuse_Existing",
+				"parameters": [
+					"filename",
+					"parent_id",
+					"item_id",
+					"prop_id",
+					"sync",
+					"managedtemplate var"
+				]
+			},
+			{
 				"name": "ManagedTemplateList_Load_All",
 				"parameters": [
 					"managedtemplates var"
@@ -18351,6 +19375,20 @@
 				"name": "ManagedTemplateList_Load_Branch_All",
 				"parameters": [
 					"branch_id",
+					"managedtemplates var"
+				]
+			},
+			{
+				"name": "ManagedTemplateList_Load_Branchless_Parent",
+				"parameters": [
+					"parent_id",
+					"managedtemplates var"
+				]
+			},
+			{
+				"name": "ManagedTemplateList_Load_Branchless_Item",
+				"parameters": [
+					"item_id",
 					"managedtemplates var"
 				]
 			},
@@ -18435,6 +19473,10 @@
 				"parameters": [
 					"id"
 				]
+			},
+			{
+				"name": "ManagedTemplateVersion_Delete_All_Orphaned_Templates",
+				"parameters": []
 			},
 			{
 				"name": "ManagedTemplateVersion_Load_ID",
@@ -18694,6 +19736,27 @@
 				"name": "JavaScriptResource_Load_Branch_Reuse",
 				"parameters": [
 					"branch_id",
+					"code",
+					"type",
+					"mod_code",
+					"mod_data",
+					"scriptresource var"
+				]
+			},
+			{
+				"name": "JavaScriptResource_Load_Reuse_Existing_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"code",
+					"type",
+					"mod_code",
+					"mod_data",
+					"scriptresource var"
+				]
+			},
+			{
+				"name": "JavaScriptResource_Load_Reuse_Deleted",
+				"parameters": [
 					"code",
 					"type",
 					"mod_code",
@@ -18992,7 +20055,21 @@
 				]
 			},
 			{
+				"name": "JavaScriptResource_Purge",
+				"parameters": [
+					"scriptresource var"
+				]
+			},
+			{
 				"name": "JavaScriptResource_Delete_All",
+				"parameters": []
+			},
+			{
+				"name": "JavaScriptResource_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "JavaScriptResource_Delete_All_Orphaned_LowLevel",
 				"parameters": []
 			},
 			{
@@ -19028,6 +20105,10 @@
 				"parameters": [
 					"res_id"
 				]
+			},
+			{
+				"name": "JavaScriptResourceVersion_Delete_All_Orphaned_Resources",
+				"parameters": []
 			},
 			{
 				"name": "JavaScriptResourceVersion_Load_ID",
@@ -19249,6 +20330,14 @@
 				]
 			},
 			{
+				"name": "JavaScriptCombinedResourceXResource_Delete_All_Orphaned_CombinedResources",
+				"parameters": []
+			},
+			{
+				"name": "JavaScriptCombinedResourceXResource_Delete_All_Orphaned_Resources",
+				"parameters": []
+			},
+			{
 				"name": "JavaScriptCombinedResourceXResource_Load",
 				"parameters": [
 					"comb_id",
@@ -19402,6 +20491,10 @@
 				"parameters": [
 					"scriptresourcexgroup var"
 				]
+			},
+			{
+				"name": "JavaScriptResourceXGroup_Delete_All_Orphaned_Scripts",
+				"parameters": []
 			},
 			{
 				"name": "JavaScriptResourceXGroup_Load",
@@ -19559,6 +20652,14 @@
 				]
 			},
 			{
+				"name": "JavaScriptResourceXPage_Delete_All_Orphaned_Pages",
+				"parameters": []
+			},
+			{
+				"name": "JavaScriptResourceXPage_Delete_All_Orphaned_Scripts",
+				"parameters": []
+			},
+			{
 				"name": "JavaScriptResourceXPage_Load",
 				"parameters": [
 					"script_id",
@@ -19653,6 +20754,27 @@
 				"name": "CSSResource_Load_Branch_Reuse",
 				"parameters": [
 					"branch_id",
+					"code",
+					"type",
+					"mod_code",
+					"mod_data",
+					"cssresource var"
+				]
+			},
+			{
+				"name": "CSSResource_Load_Reuse_Existing_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"code",
+					"type",
+					"mod_code",
+					"mod_data",
+					"cssresource var"
+				]
+			},
+			{
+				"name": "CSSResource_Load_Reuse_Deleted",
+				"parameters": [
 					"code",
 					"type",
 					"mod_code",
@@ -19951,7 +21073,21 @@
 				]
 			},
 			{
+				"name": "CSSResource_Purge",
+				"parameters": [
+					"cssresource var"
+				]
+			},
+			{
 				"name": "CSSResource_Delete_All",
+				"parameters": []
+			},
+			{
+				"name": "CSSResource_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "CSSResource_Delete_All_Orphaned_LowLevel",
 				"parameters": []
 			},
 			{
@@ -19987,6 +21123,10 @@
 				"parameters": [
 					"res_id"
 				]
+			},
+			{
+				"name": "CSSResourceVersion_Delete_All_Orphaned_Resources",
+				"parameters": []
 			},
 			{
 				"name": "CSSResourceVersion_Load_ID",
@@ -20208,6 +21348,14 @@
 				]
 			},
 			{
+				"name": "CSSCombinedResourceXResource_Delete_All_Orphaned_CombinedResources",
+				"parameters": []
+			},
+			{
+				"name": "CSSCombinedResourceXResource_Delete_All_Orphaned_Resources",
+				"parameters": []
+			},
+			{
 				"name": "CSSCombinedResourceXResource_Load",
 				"parameters": [
 					"comb_id",
@@ -20363,6 +21511,10 @@
 				]
 			},
 			{
+				"name": "CSSResourceXGroup_Delete_All_Orphaned_Styles",
+				"parameters": []
+			},
+			{
 				"name": "CSSResourceXGroup_Load",
 				"parameters": [
 					"css_id",
@@ -20516,6 +21668,14 @@
 				"parameters": [
 					"cssresourcexpage var"
 				]
+			},
+			{
+				"name": "CSSResourceXPage_Delete_All_Orphaned_Styles",
+				"parameters": []
+			},
+			{
+				"name": "CSSResourceXPage_Delete_All_Orphaned_Pages",
+				"parameters": []
 			},
 			{
 				"name": "CSSResourceXPage_Load",
@@ -20706,6 +21866,12 @@
 				]
 			},
 			{
+				"name": "ManagedProperty_Purge",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
 				"name": "ManagedProperty_Delete_All_Product",
 				"parameters": [
 					"product_id"
@@ -20716,6 +21882,14 @@
 				"parameters": [
 					"cat_id"
 				]
+			},
+			{
+				"name": "ManagedProperty_Delete_All_Orphaned",
+				"parameters": []
+			},
+			{
+				"name": "ManagedProperty_Delete_All_Orphaned_LowLevel",
+				"parameters": []
 			},
 			{
 				"name": "ManagedProperty_Load_ID",
@@ -20835,6 +22009,31 @@
 				"name": "ManagedProperty_Load_Branch_Reuse",
 				"parameters": [
 					"branch_id",
+					"type",
+					"code",
+					"product_id",
+					"cat_id",
+					"sync",
+					"has_template",
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "ManagedProperty_Load_Reuse_Existing_OtherBranch",
+				"parameters": [
+					"branch_id",
+					"type",
+					"code",
+					"product_id",
+					"cat_id",
+					"sync",
+					"has_template",
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "ManagedProperty_Load_Reuse_Deleted",
+				"parameters": [
 					"type",
 					"code",
 					"product_id",
@@ -21028,6 +22227,10 @@
 				]
 			},
 			{
+				"name": "ManagedPropertyVersion_Delete_All_Orphaned_Properties",
+				"parameters": []
+			},
+			{
 				"name": "ManagedPropertyBranchVersion_Insert",
 				"parameters": [
 					"branch_id",
@@ -21196,6 +22399,10 @@
 				]
 			},
 			{
+				"name": "ManagedPropertyImageReference_Delete_All_Orphaned_Properties",
+				"parameters": []
+			},
+			{
 				"name": "CopyPageRules_Default",
 				"parameters": [
 					"copyproductrules var"
@@ -21317,6 +22524,26 @@
 				"parameters": [
 					"id"
 				]
+			},
+			{
+				"name": "ManagedContent_Decrement_All_CSSResource",
+				"parameters": [
+					"res_id"
+				]
+			},
+			{
+				"name": "ManagedContent_Decrement_All_Orphaned_CSSResources",
+				"parameters": []
+			},
+			{
+				"name": "ManagedContent_Decrement_All_JavaScriptResource",
+				"parameters": [
+					"res_id"
+				]
+			},
+			{
+				"name": "ManagedContent_Decrement_All_Orphaned_JavaScriptResources",
+				"parameters": []
 			}
 		]
 	},
@@ -21355,7 +22582,7 @@
 				"parameters": [
 					"query var",
 					"customfield_state var",
-					"page_id",
+					"page var",
 					"view"
 				]
 			},
@@ -21403,9 +22630,32 @@
 				"parameters": [
 					"loaded_record var",
 					"module var",
-					"page_id",
+					"page var",
 					"code"
 				]
+			},
+			{
+				"name": "JSON_PageVersionList_Joins",
+				"parameters": [
+					"filter var",
+					"sort var",
+					"ondemandcolumns var",
+					"joins var"
+				]
+			},
+			{
+				"name": "JSON_PageVersionList_Load_Query_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_value",
+					"data var"
+				]
+			},
+			{
+				"name": "JSON_BranchPageVersionList_Load_Query",
+				"parameters": []
 			},
 			{
 				"name": "JSON_Page_Delete",
@@ -21443,7 +22693,17 @@
 				]
 			},
 			{
+				"name": "JSON_DestinationBranch_Load",
+				"parameters": [
+					"branch var"
+				]
+			},
+			{
 				"name": "JSON_Page_Copy",
+				"parameters": []
+			},
+			{
+				"name": "JSON_Page_Copy_Branch",
 				"parameters": []
 			},
 			{
@@ -21477,11 +22737,15 @@
 				"parameters": []
 			},
 			{
-				"name": "JSON_Item_Delete",
+				"name": "JSON_BranchItemVersionList_Load_Query",
 				"parameters": []
 			},
 			{
-				"name": "JSON_ItemExtensionIndex_Load_ID",
+				"name": "JSON_Item_Insert",
+				"parameters": []
+			},
+			{
+				"name": "JSON_Item_Delete",
 				"parameters": []
 			},
 			{
@@ -22100,17 +23364,6 @@
 				]
 			},
 			{
-				"name": "JSON_CSSResourceVersionList_Load_Query_Search_Filter",
-				"parameters": [
-					"query var",
-					"field_count var",
-					"search_field",
-					"search_operator",
-					"search_value",
-					"data var"
-				]
-			},
-			{
 				"name": "JSON_BranchCSSResourceVersionList_Load_Query",
 				"parameters": []
 			},
@@ -22130,17 +23383,6 @@
 					"field_count var",
 					"filter_name",
 					"filter_value",
-					"data var"
-				]
-			},
-			{
-				"name": "JSON_JavaScriptResourceVersionList_Load_Query_Search_Filter",
-				"parameters": [
-					"query var",
-					"field_count var",
-					"search_field",
-					"search_operator",
-					"search_value",
 					"data var"
 				]
 			},
@@ -22330,6 +23572,10 @@
 				"parameters": []
 			},
 			{
+				"name": "JSON_ChangesetItemVersionList_Load_Query",
+				"parameters": []
+			},
+			{
 				"name": "JSON_ManagedPropertyVersionList_Joins",
 				"parameters": [
 					"filter var",
@@ -22466,16 +23712,14 @@
 				"parameters": [
 					"code",
 					"module_code"
-				],
-				"description": "\n\\file\n### \tTemplate Manager"
+				]
 			},
 			{
 				"name": "TemplateManager_Create_Item_Module",
 				"parameters": [
 					"code",
 					"module var"
-				],
-				"description": "\n### \tCreates an item that references a specific module\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function was added specifically to enable the creation of Store Morph items from inside Module_Install_Store() of a currency, tax, or storeui module, but may\nalso be used elsewhere when a full Module record is available, to avoid explicitly loading the record from the database.\n\nFor a complete description of the issues resolved by calling this function, see http://bugzilla.mivamerchant.com/show_bug.cgi?id=5240\n\n* __@param__ [in] code The code of the newly created Item\n* __@param__ [in] module A complete Module record describing the component module which will implement the item\n\n\\return\t\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "TemplateManager_Create_Item_LowLevel",
@@ -22499,9 +23743,28 @@
 				]
 			},
 			{
+				"name": "TemplateManager_Delete_Item_Branch",
+				"parameters": [
+					"branch_id",
+					"item var"
+				]
+			},
+			{
 				"name": "TemplateManager_Delete_All_Module_Items_Transaction",
 				"parameters": [
-					"module_id"
+					"mod_code"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_Item_Code",
+				"parameters": [
+					"item_code"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_Item",
+				"parameters": [
+					"item var"
 				]
 			},
 			{
@@ -22521,14 +23784,7 @@
 			{
 				"name": "TemplateManager_Delete_ItemExtension",
 				"parameters": [
-					"extension_id"
-				]
-			},
-			{
-				"name": "TemplateManager_ItemExtension_Sort_Swap",
-				"parameters": [
-					"item_ext_1 var",
-					"item_ext_2 var"
+					"itemextension var"
 				]
 			},
 			{
@@ -22599,6 +23855,25 @@
 				]
 			},
 			{
+				"name": "TemplateManager_GlobalDelete_Page_Code",
+				"parameters": [
+					"page_code"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_Page_Code_Admin_UI",
+				"parameters": [
+					"page_code",
+					"ui_id"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_Page",
+				"parameters": [
+					"page var"
+				]
+			},
+			{
 				"name": "TemplateManager_ManagedTemplate_Version_Select",
 				"parameters": [
 					"templ_id",
@@ -22653,14 +23928,68 @@
 				]
 			},
 			{
+				"name": "TemplateManager_Create_ManagedTemplate_LowLevel_NoDuplicates",
+				"parameters": [
+					"managedtemplate var",
+					"source var",
+					"settings var",
+					"output_file var"
+				]
+			},
+			{
+				"name": "TemplateManager_Delete_ManagedTemplate_Filename",
+				"parameters": [
+					"filename"
+				]
+			},
+			{
+				"name": "TemplateManager_Delete_ManagedTemplate_Filename_Branch",
+				"parameters": [
+					"branch_id",
+					"filename"
+				]
+			},
+			{
 				"name": "TemplateManager_Delete_ManagedTemplate",
 				"parameters": [
 					"id"
 				]
 			},
 			{
+				"name": "TemplateManager_Delete_ManagedTemplate_Branch",
+				"parameters": [
+					"branch_id",
+					"id"
+				]
+			},
+			{
+				"name": "TemplateManager_Delete_ManagedTemplate_LowLevel",
+				"parameters": [
+					"branch_id",
+					"managedtemplate var"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_ManagedTemplate_Filename",
+				"parameters": [
+					"filename"
+				]
+			},
+			{
 				"name": "TemplateManager_Delete_All_ManagedTemplate_Files",
 				"parameters": []
+			},
+			{
+				"name": "TemplateManager_Purge_ManagedTemplate",
+				"parameters": [
+					"managedtemplate var"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_ManagedTemplate_Filename",
+				"parameters": [
+					"filename"
+				]
 			},
 			{
 				"name": "TemplateManager_Replace_ManagedTemplateVersion",
@@ -22752,6 +24081,12 @@
 				"parameters": [
 					"page var",
 					"item var"
+				]
+			},
+			{
+				"name": "TemplateManager_Page_Update_IfModified",
+				"parameters": [
+					"page var"
 				]
 			},
 			{
@@ -22957,6 +24292,12 @@
 				"name": "TemplateManager_Page_LockFile",
 				"parameters": [
 					"page var"
+				]
+			},
+			{
+				"name": "TemplateManager_ManagedProperty_LockFile",
+				"parameters": [
+					"managedproperty var"
 				]
 			},
 			{
@@ -23257,6 +24598,24 @@
 				]
 			},
 			{
+				"name": "TemplateManager_GlobalDelete_JavaScriptResource_Code",
+				"parameters": [
+					"code"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_JavaScriptResource_File",
+				"parameters": [
+					"file"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_JavaScriptResource",
+				"parameters": [
+					"scriptresource var"
+				]
+			},
+			{
 				"name": "TemplateManager_Delete_All_JavaScriptResource",
 				"parameters": []
 			},
@@ -23327,6 +24686,24 @@
 				"name": "TemplateManager_Delete_CSSResource_Branch",
 				"parameters": [
 					"branch_id",
+					"cssresource var"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_CSSResource_Code",
+				"parameters": [
+					"code"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_CSSResource_File",
+				"parameters": [
+					"file"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_CSSResource",
+				"parameters": [
 					"cssresource var"
 				]
 			},
@@ -23434,6 +24811,46 @@
 				]
 			},
 			{
+				"name": "TemplateManager_Changeset_Record_PageVersion",
+				"parameters": [
+					"page_id",
+					"old_id",
+					"new_id",
+					"xref_id",
+					"notes"
+				]
+			},
+			{
+				"name": "TemplateManager_Changeset_Record_PageVersion_Branch",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"old_id",
+					"new_id",
+					"xref_id",
+					"notes"
+				]
+			},
+			{
+				"name": "TemplateManager_Changeset_Record_ItemVersion",
+				"parameters": [
+					"item_id",
+					"old_id",
+					"new_id",
+					"notes"
+				]
+			},
+			{
+				"name": "TemplateManager_Changeset_Record_ItemVersion_Branch",
+				"parameters": [
+					"branch_id",
+					"item_id",
+					"old_id",
+					"new_id",
+					"notes"
+				]
+			},
+			{
 				"name": "TemplateManager_Changeset_Record_JavaScriptResourceVersion",
 				"parameters": [
 					"res_id",
@@ -23499,9 +24916,43 @@
 				"parameters": []
 			},
 			{
+				"name": "TemplateManager_Push_WorkingBranchStack",
+				"parameters": [
+					"branch var"
+				]
+			},
+			{
+				"name": "TemplateManager_Push_WorkingBranchStack_Entry",
+				"parameters": [
+					"stackentry var"
+				]
+			},
+			{
+				"name": "TemplateManager_Pop_WorkingBranchStack",
+				"parameters": []
+			},
+			{
+				"name": "TemplateManager_Update_WorkingBranchStack_Branch",
+				"parameters": [
+					"branch var"
+				]
+			},
+			{
+				"name": "TemplateManager_Get_WorkingBranchStack_Current",
+				"parameters": [
+					"stackentry var"
+				]
+			},
+			{
 				"name": "TemplateManager_Determine_Branch",
 				"parameters": [
 					"store var"
+				]
+			},
+			{
+				"name": "TemplateManager_Set_Working_Branch",
+				"parameters": [
+					"branch var"
 				]
 			},
 			{
@@ -23553,6 +25004,10 @@
 			},
 			{
 				"name": "TemplateManager_Working_Branch_ID",
+				"parameters": []
+			},
+			{
+				"name": "TemplateManager_Working_Branch_Is_Primary",
 				"parameters": []
 			},
 			{
@@ -23619,6 +25074,24 @@
 				]
 			},
 			{
+				"name": "TemplateManager_Copy_Branch_Pages",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
+					"dest_changeset var"
+				]
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Items",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
+					"dest_changeset var"
+				]
+			},
+			{
 				"name": "TemplateManager_Copy_Branch_JavaScriptResources",
 				"parameters": [
 					"source_branch var",
@@ -23661,6 +25134,24 @@
 					"source_changeset_count",
 					"dest_branch var",
 					"notes",
+					"dest_changeset var"
+				]
+			},
+			{
+				"name": "TemplateManager_Merge_Changeset_Pages",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
+					"dest_changeset var"
+				]
+			},
+			{
+				"name": "TemplateManager_Merge_Changeset_Items",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
 					"dest_changeset var"
 				]
 			},
@@ -23813,6 +25304,46 @@
 				]
 			},
 			{
+				"name": "TemplateManager_Delete_ManagedProperty",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "TemplateManager_Delete_ManagedProperty_Branch",
+				"parameters": [
+					"branch_id",
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_ManagedProperty_Code",
+				"parameters": [
+					"type",
+					"code"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_ManagedProperty_Product",
+				"parameters": [
+					"type",
+					"product_id"
+				]
+			},
+			{
+				"name": "TemplateManager_GlobalDelete_ManagedProperty_Category",
+				"parameters": [
+					"type",
+					"cat_id"
+				]
+			},
+			{
+				"name": "TemplateManager_Purge_ManagedProperty",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
 				"name": "TemplateManager_ManagedProperty_SettingsAndImage",
 				"parameters": [
 					"settings var",
@@ -23876,6 +25407,14 @@
 				"name": "TemplateManager_Page_Cache_Disable",
 				"parameters": [
 					"reason"
+				]
+			},
+			{
+				"name": "TemplateManager_Page_Fields_Propagate",
+				"parameters": [
+					"page_id",
+					"previous_version_id",
+					"new_version_id"
 				]
 			},
 			{
@@ -23964,8 +25503,7 @@
 				"name": "SKIN_Directory_Delete",
 				"parameters": [
 					"skin_dir"
-				],
-				"description": "\n\\file\n### \tTemplate system utility functions"
+				]
 			},
 			{
 				"name": "SKIN_Cleanup",
@@ -24269,6 +25807,12 @@
 				]
 			},
 			{
+				"name": "CommonComponentFields_Initialize_Order_RemovePII",
+				"parameters": [
+					"order var"
+				]
+			},
+			{
 				"name": "CommonComponentFields_Initialize_OrderItems",
 				"parameters": [
 					"orderitems var",
@@ -24492,6 +26036,18 @@
 				]
 			},
 			{
+				"name": "CommonComponentFields_Initialize_DigitalDownload",
+				"parameters": [
+					"digitaldownload var"
+				]
+			},
+			{
+				"name": "CommonComponentFields_Initialize_GiftCertificate",
+				"parameters": [
+					"giftcertificate var"
+				]
+			},
+			{
 				"name": "CommonComponentFields_Initialize_Subscription",
 				"parameters": [
 					"all_settings var",
@@ -24554,7 +26110,9 @@
 				"name": "CopyPage_Copy",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var"
 				]
 			},
@@ -24562,7 +26120,9 @@
 				"name": "CopyPage_Copy_Secure",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24571,7 +26131,9 @@
 				"name": "CopyPage_Copy_Title",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24580,7 +26142,9 @@
 				"name": "CopyPage_Copy_Items",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24589,7 +26153,9 @@
 				"name": "CopyPage_Copy_Settings",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24598,7 +26164,9 @@
 				"name": "CopyPage_Copy_Template",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24607,7 +26175,9 @@
 				"name": "CopyPage_Copy_Cacheset",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24616,7 +26186,9 @@
 				"name": "CopyPage_Copy_JavaScript",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24625,7 +26197,9 @@
 				"name": "CopyPage_Copy_CSS",
 				"parameters": [
 					"copypagerules var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var",
 					"data var"
 				]
@@ -24652,7 +26226,7 @@
 				]
 			},
 			{
-				"name": "GenerateUniqueManagedTemplateFilename_FromFilename",
+				"name": "GenerateBranchlessUniqueManagedTemplateFilename_FromFilename",
 				"parameters": [
 					"filename"
 				]
@@ -24764,7 +26338,7 @@
 			{
 				"name": "URI_Load_Page_Canonical",
 				"parameters": [
-					"page_id",
+					"page_code",
 					"canonical_uri var"
 				]
 			},
@@ -24793,6 +26367,13 @@
 				"name": "URIList_Load_Page",
 				"parameters": [
 					"page_id",
+					"uris var"
+				]
+			},
+			{
+				"name": "URIList_Load_Page_Code",
+				"parameters": [
+					"page_code",
 					"uris var"
 				]
 			},
@@ -24856,6 +26437,13 @@
 				]
 			},
 			{
+				"name": "URI_Update_Page_Code_All",
+				"parameters": [
+					"old_page_code",
+					"new_page_code"
+				]
+			},
+			{
 				"name": "URI_Delete",
 				"parameters": [
 					"uri var"
@@ -24888,7 +26476,7 @@
 			{
 				"name": "URI_Delete_All_Page",
 				"parameters": [
-					"page_id"
+					"page_code"
 				]
 			},
 			{
@@ -25100,8 +26688,22 @@
 				]
 			},
 			{
+				"name": "URI_Generate_Page_New_LowLevel",
+				"parameters": [
+					"pg_gen",
+					"page var"
+				]
+			},
+			{
 				"name": "URI_Generate_Page_Update",
 				"parameters": [
+					"page var"
+				]
+			},
+			{
+				"name": "URI_Generate_Page_Update_WithPageRegenerate",
+				"parameters": [
+					"pg_regen",
 					"page var"
 				]
 			},
@@ -25110,6 +26712,20 @@
 				"parameters": [
 					"pg_regen",
 					"page var"
+				]
+			},
+			{
+				"name": "URI_Handle_Page_Code_Change",
+				"parameters": [
+					"original_page var",
+					"new_page var"
+				]
+			},
+			{
+				"name": "URI_Handle_Primary_Branch_Change",
+				"parameters": [
+					"original_primary_branch_id",
+					"new_primary_branch_id"
 				]
 			},
 			{
@@ -25586,8 +27202,7 @@
 		"functions": [
 			{
 				"name": "Action_AddUpsoldProductToBasket",
-				"parameters": [],
-				"description": "\n\\file\n### \tUpsale system functions for shopping interface"
+				"parameters": []
 			},
 			{
 				"name": "Action_AddMultipleUpsoldProductsToBasket",
@@ -26252,6 +27867,10 @@
 				"parameters": []
 			},
 			{
+				"name": "JSON_CategoryProductList_Update_Assigned",
+				"parameters": []
+			},
+			{
 				"name": "JSON_CategoryProductList_BatchSort",
 				"parameters": []
 			},
@@ -26407,6 +28026,17 @@
 			{
 				"name": "JSON_ModuleList_Load_Query",
 				"parameters": []
+			},
+			{
+				"name": "JSON_ModuleList_Load_Query_Search_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_operator",
+					"filter_value",
+					"data var"
+				]
 			},
 			{
 				"name": "JSON_Module_Load",
@@ -28899,7 +30529,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_DBAPI",
+		"distroPath": "g.Module_Root $ '/lib/crypto_public.mvc'",
 		"functions": [
 			{
 				"name": "Encryption_Available",
@@ -29261,14 +30891,13 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_DBAPI",
+		"distroPath": "g.Module_Root $ '/lib/dbapi_public.mvc'",
 		"functions": [
 			{
 				"name": "DB_Supported_List",
 				"parameters": [
 					"list var"
-				],
-				"description": "\n\\file\n### \tDatabase API compatibility layer"
+				]
 			},
 			{
 				"name": "DB_PrivateKey_Supported_List",
@@ -29378,8 +31007,7 @@
 				"name": "Attribute_Insert",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### \tInserts a record into the sNN_Attributes table\n\nIf  attribute references a record in the sNN_AttributeTemplates table, the reference count for the associated AttributeTemplate record is incremented.\n\n* __@param__ [in] attribute The Attribute record to be inserted\n\n\\return\t\t1 on success, 0 on error\n\n\\sa\t\t\tAttribute_Insert_LowLevel"
+				]
 			},
 			{
 				"name": "Attribute_Update",
@@ -29397,23 +31025,20 @@
 				"name": "Attribute_Update_Inventory",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### \tUpdates the inventory flag for a single record in the sNN_Attributes table\n\nIf the inventory flag is toggled from true to false, any associated ProductKit and ProductVariant records are deleted.\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t\t1 on success, 0 on error\n\n\\sa\t\t\tAttribute_Update_Inventory_LowLevel"
+				]
 			},
 			{
 				"name": "Attribute_Delete",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### \tDeletes a single record from the sNN_Attributes table\n\nIf  attribute references a record in the sNN_AttributeTemplates table, the reference count for the associated AttributeTemplate record is decremented.\nThis function also deletes any associated Option, ProductKit, and ProductVariant records.\n\n* __@param__ [in] attribute The Attribute record to be deleted\n\n\\return\t\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Delete",
 				"parameters": [
 					"attribute var",
 					"option var"
-				],
-				"description": "\n### \tDeletes a single record from the sNN_Options table\n\nIf  option references the default option for the associated Attribute, the default_id of the Attribute is reset to 0.\nThis function also deletes any ProductKit and ProductVariant records that reference the deleted Option.\n\n* __@param__ [in] attribute The Attribute record which contains the Option to be deleted\n* __@param__ [in] option The Option record to be deleted\n\n\\return\t\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "ProductAttributeList_Update_Offsets_PastEnd",
@@ -29428,8 +31053,7 @@
 				"parameters": [
 					"product_id",
 					"attributes var"
-				],
-				"description": "\n### \tUpdates the display order of a group of attributes\n\nSorts a group of attributes for the specified product.\n\n* __@param__ [in] product_id The ID of the Product which contains the attributes to be sorted\n* __@param__ [in] attributes An OffsetArray containing the ID, original offset, and desired offset of the attributes to be sorted\n\n\\return\t\t1 on success, 0 on failure"
+				]
 			},
 			{
 				"name": "ProductAttributeOptionList_Update_Offsets_PastEnd",
@@ -29446,8 +31070,7 @@
 					"product_id",
 					"attr_id",
 					"options var"
-				],
-				"description": "\n### \tUpdates the display order of a group of options\n\nSorts a group of options for the specified product and attribute.\n\n* __@param__ [in] product_id The ID of the Product which contains the attributes whos options are to be sorted\n* __@param__ [in] attr_id The ID of the Attribute which contains the options to be sorted\n* __@param__ [in] options An OffsetArray containing the ID, original offset, and desired offset of the options to be sorted\n\n\\return\t\t1 on success, 0 on failure"
+				]
 			},
 			{
 				"name": "AttributeIDList_Load_Product_Inventory",
@@ -32550,6 +34173,14 @@
 				]
 			},
 			{
+				"name": "Runtime_OrderList_Build_Query_WHERE_Order_ID_BillEmail",
+				"parameters": [
+					"query var",
+					"id",
+					"bill_email"
+				]
+			},
+			{
 				"name": "Runtime_OrderList_Build_Query_WHERE_Customer_ID",
 				"parameters": [
 					"query var",
@@ -33223,7 +34854,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_DB",
+		"distroPath": "g.Module_Library_Utilities",
 		"functions": [
 			{
 				"name": "Error_Load_EOF",
@@ -33269,58 +34900,50 @@
 				"name": "Attribute_Insert_LowLevel",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### Inserts a record into the sNN_Attributes table\n\nUnlike Attribute_Insert(), this function does not increment the reference count of any associated AttributeTemplate record.\nThis function initializes the  id and  disp_order fields of  attribute.\n\n* __@param__ [in,out] attribute The Attribute record to be inserted\n\n\\return\t1 on success, 0 on error\n\n\\sa\t\tAttribute_Insert"
+				]
 			},
 			{
 				"name": "Attribute_Update_LowLevel",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### Updates a single record in the sNN_Attributes table\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Attribute_Update_Default_LowLevel",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### Updates the default option for a single record in the sNN_Attributes table\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Attribute_Update_DisplayOrder",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### Updates the sort order for a single record in the sNN_Attributes table\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Attribute_Update_Inventory_LowLevel",
 				"parameters": [
 					"attribute var"
-				],
-				"description": "\n### Updates the inventory flag for a single record in the sNN_Attributes table\n\nUnlike Attribute_Update_Inventory(), this function does not delete any ProductKit or ProductVariant records associated with the Attribute\nwhen the inventory flag is turned off.\n\n* __@param__ [in] attribute The Attribute record to be updated\n\n\\return\t1 on success, 0 on error\n\n\\sa\t\tAttribute_Update_Inventory"
+				]
 			},
 			{
 				"name": "Attribute_Delete_ID",
 				"parameters": [
 					"id"
-				],
-				"description": "\n### Deletes a single record from the sNN_Attributes table\n\n* __@param__ [in] id The unique ID of the Attribute to be deleted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Attribute_Delete_All_Product",
 				"parameters": [
 					"product_id"
-				],
-				"description": "\n### Deletes all sNN_Attributes records associated with a given Product\n\nThis function does not clean up any associated ProductKit or ProductVariant records, nor does it decrement the reference\ncounts for any associated AttributeTemplate records.\n\n* __@param__ [in] product_id The ID of the Product for which all Attributes should be deleted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Attribute_Load_ID",
 				"parameters": [
 					"id",
 					"attribute var"
-				],
-				"description": "\n### Loads a single Attribute record by its unique ID\n\n* __@param__ [in] id The unique ID of the Attribute to be retrieved\n* __@param__ [out] attribute A variable which receives the loaded Attribute record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "Attribute_Load_Code",
@@ -33328,24 +34951,21 @@
 					"product_id",
 					"code",
 					"attribute var"
-				],
-				"description": "\n### Loads a single Attribute record for a given Product by its code\n\n* __@param__ [in] product_id The unique ID of the Product\n* __@param__ [in] code The code of the Attribute to be retrieved\n* __@param__ [out] attribute A variable which receives the loaded Attribute record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "AttributeList_Load_Product",
 				"parameters": [
 					"product_id",
 					"attributes var"
-				],
-				"description": "\n### Loads a list of all of the Attribute records for a given Product\n\n* __@param__ [in] product_id The unique ID of the product\n* __@param__ [out] attributes An array of Attribute records\n\n\\return\tThe count of attributes on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "AttributeList_Load_Product_Inventory",
 				"parameters": [
 					"product_id",
 					"attributes var"
-				],
-				"description": "\n### Loads a list of all of the Attribute records for a given Product with the inventory flag set\n\n* __@param__ [in] product_id The unique ID of the product\n* __@param__ [out] attributes An array of Attribute records\n\n\\return\tThe count of attributes on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			}
 		]
 	},
@@ -34638,8 +36258,7 @@
 				"name": "Image_Read",
 				"parameters": [
 					"image var"
-				],
-				"description": "\n### Inserts a record into the Images table\n\n* __@param__ [in,out] image The Image record to be inserted\n\n\\return\t1 on success, 0 on error\n\n\\sa\t\tImage_Insert"
+				]
 			},
 			{
 				"name": "Image_Insert_LowLevel",
@@ -34786,51 +36405,44 @@
 				"name": "Option_Insert_LowLevel",
 				"parameters": [
 					"option var"
-				],
-				"description": "\n### Inserts an option into the sNN_Options table\n\n* __@param__ [in,out] option The Option record to be inserted.  The  id and  disp_order members are initialized by this function.\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Update_LowLevel",
 				"parameters": [
 					"option var"
-				],
-				"description": "\n### Updates a single option in the sNN_Options table\n\n* __@param__ [in] option The Option record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Update_DisplayOrder",
 				"parameters": [
 					"option var"
-				],
-				"description": "\n### Updates the sort order for a single option in the sNN_Options table\n\n* __@param__ [in] option The Option record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Delete_ID",
 				"parameters": [
 					"id"
-				],
-				"description": "\n### Deletes a single record from the sNN_Options table\n\n* __@param__ [in] id The unique ID of the Option to be deleted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Delete_All_Attribute",
 				"parameters": [
 					"attr_id"
-				],
-				"description": "\n### Deletes all sNN_Options records associated with a given Attribute\n\nThis function does not clean up any associated ProductKit or ProductVariant records, nor does it decrement the reference\ncounts for any associated AttributeTemplateOption records.\n\n* __@param__ [in] attr_id The ID of the Attribute for which all Option records should be deleted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Delete_All_Product",
 				"parameters": [
 					"product_id"
-				],
-				"description": "\n### Deletes all sNN_Options records associated with a given Product\n\nThis function does not clean up any associated ProductKit or ProductVariant records, nor does it decrement the reference\ncounts for any associated AttributeTemplateOptions records.\n\n* __@param__ [in] product_id The ID of the Product for which all Option records should be deleted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Option_Load_ID",
 				"parameters": [
 					"id",
 					"option var"
-				],
-				"description": "\n### Loads a single Option record by its unique ID\n\n* __@param__ [in] id The unique ID of the Option to be retrieved\n* __@param__ [out] option A variable which receives the loaded Option record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "Option_Load_Code",
@@ -34838,16 +36450,14 @@
 					"attr_id",
 					"code",
 					"option var"
-				],
-				"description": "\n### Loads a single Option record for a given Attribute by its code\n\n* __@param__ [in] attr_id The unique ID of the Attribute\n* __@param__ [in] code The code of the Option to be retrieved\n* __@param__ [out] option A variable which receives the loaded Option record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OptionList_Load_Attribute",
 				"parameters": [
 					"attr_id",
 					"options var"
-				],
-				"description": "\n### Loads a list of all of the Options records for a given Attribute\n\n* __@param__ [in] attr_id The unique ID of the Attribute\n* __@param__ [out] options An array of Option records\n\n\\return\tThe count of Option records on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			}
 		]
 	},
@@ -35038,15 +36648,13 @@
 				"name": "OrderItem_Insert_LowLevel",
 				"parameters": [
 					"orderitem var"
-				],
-				"description": "\n### Inserts a record into the sNN_OrderItems table\n\n* __@param__ [in,out] orderitem The OrderItem record to be inserted\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "OrderItem_Update",
 				"parameters": [
 					"orderitem var"
-				],
-				"description": "\n### Updates a single record in the sNN_OrderItems table\n\n* __@param__ [in] orderitem The OrderItem record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "OrderItem_Update_Pricing",
@@ -35064,8 +36672,7 @@
 				"name": "OrderItem_Update_Status_LowLevel",
 				"parameters": [
 					"orderitem var"
-				],
-				"description": "\n### Updates a single record in the sNN_OrderItems table\n\n* __@param__ [in] orderitem The OrderItem record to be updated\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "OrderItemList_Load_ProductID",
@@ -35073,8 +36680,7 @@
 					"order_id",
 					"product_id",
 					"orderitems var"
-				],
-				"description": "\n### Loads a list of all of the OrderItem records for a given Order by a unique product_id\n\n* __@param__ [in] order_id The unique ID of the order\n* __@param__ [in] product_id The unique ID of the product\n* __@param__ [out] orderitems An array of OrderItem records\n\n\\return\tThe count of orderitems on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItem_Load_Line",
@@ -35082,16 +36688,14 @@
 					"order_id",
 					"line_id",
 					"orderitem var"
-				],
-				"description": "\n### Loads a single OrderItem record for a given Order by its unique line_id\n\n* __@param__ [in] order_id The unique ID of the Order\n* __@param__ [in] line_id The unique ID of the OrderItem to be retrieved\n* __@param__ [out] orderitem A variable which receives the loaded OrderItem record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItemList_Load_Order",
 				"parameters": [
 					"order_id",
 					"orderitems var"
-				],
-				"description": "\n### Loads a list of all of the OrderItem records for a given Order\n\n* __@param__ [in] order_id The unique ID of the order\n* __@param__ [out] orderitems An array of OrderItem records\n\n\\return\tThe count of orderitems on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItemList_Load_Order_Subscription",
@@ -35105,16 +36709,14 @@
 				"parameters": [
 					"shpmnt_id",
 					"orderitems var"
-				],
-				"description": "\n### Loads a list of all of the OrderItem records for a given Shipment\n\n* __@param__ [in] shpmnt_id The unique ID of the shipment\n* __@param__ [out] orderitems An array of OrderItem records\n\n\\return\tThe count of orderitems on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItemList_Load_Return",
 				"parameters": [
 					"rma_id",
 					"orderitems var"
-				],
-				"description": "\n### Loads a list of all of the OrderItem records for a given Return\n\n* __@param__ [in] rma_id The unique ID of the return\n* __@param__ [out] orderitems An array of OrderItem records\n\n\\return\tThe count of orderitems on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItemList_Load_Status",
@@ -35122,16 +36724,14 @@
 					"order_id",
 					"status",
 					"orderitems var"
-				],
-				"description": "\n### Loads a list of all of the OrderItem records for a given Order by it's status\n\n* __@param__ [in] order_id The unique ID of the order\n* __@param__ [in] status The status code of the orderitem\n* __@param__ [out] orderitems An array of OrderItem records\n\n\\return\tThe count of orderitems on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItem_Count_Shipment",
 				"parameters": [
 					"shpmnt_id",
 					"count var"
-				],
-				"description": "\n### Loads the OrderItem count for a given Shipment by its unique line_id\n\n* __@param__ [in] order_id The unique ID of the Order\n* __@param__ [in] line_id The unique ID of the OrderItem to be retrieved\n* __@param__ [out] orderitem A variable which receives the loaded OrderItem record\n\n\\return\t1 on success, 0 on error or if no record found (see Error_Is_EOF())"
+				]
 			},
 			{
 				"name": "OrderItem_Count_Return",
@@ -35873,8 +37473,7 @@
 				"name": "Product_Insert_LowLevel",
 				"parameters": [
 					"product var"
-				],
-				"description": "\n### Inserts a record into the sNN_Products table\n\n* __@param__ [in,out] product A Product record.  The  id and  disp_order members are initialized by this function.\n\n\\return\t1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "Product_Update_LowLevel",
@@ -36764,8 +38363,7 @@
 					"file",
 					"username",
 					"password"
-				],
-				"description": "\n\\file\n### \tDatabase API compatibility layer - MivaSQL"
+				]
 			},
 			{
 				"name": "DB_Close",
@@ -37059,8 +38657,7 @@
 					"database",
 					"username",
 					"password"
-				],
-				"description": "\n\\file\n### \tDatabase API compatibility layer - MySQL"
+				]
 			},
 			{
 				"name": "DB_Close",
@@ -37354,8 +38951,7 @@
 					"database",
 					"username",
 					"password"
-				],
-				"description": "\n\\file\n### \tDatabase API compatibility layer - PostgreSQL"
+				]
 			},
 			{
 				"name": "DB_Close",
@@ -37641,22 +39237,19 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_Utilities",
+		"distroPath": "g.Module_Root $ '/lib/util_public.mvc'",
 		"functions": [
 			{
 				"name": "OrderMinimumsMet",
-				"parameters": [],
-				"description": "\n### Determines if the current shopping basket meets the configured minimums for checkout\n\nExamines the contents of the shopping basket in g.Basket to determine if it meets the minimum checkout settings for the store.\nBoth the minimum quantity of items and the minimum total price are verified.\n\n\\return\t1 if the basket meets the configured requirements, 0 if it does not"
+				"parameters": []
 			},
 			{
 				"name": "DetermineSessionID",
-				"parameters": [],
-				"description": "\n### \t\tSets up variables identifying the current shopping interface session\n\nThis function parses input parameters and cookies to identify and verify a shopping interface session.\nThe function also calls SetRuntimePaths() to initialize variables dependent on the current site configuration.\nInitializing g.Store_Code prior to calling this function will eliminate overhead.\n\nInput cookies are parsed using ParseCookies() and stored in the variable g.Request_Cookies.\n\n\\return\t\t\tThe value of g.Session_ID\n\n\\sa\t\t\tSetRuntimePaths ParseCookies"
+				"parameters": []
 			},
 			{
 				"name": "UpdateSessionID",
-				"parameters": [],
-				"description": "\n### \tUpdates URL variables and cookies to reflect changes in session variables\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function should be called whenever the value of one of the session variables is changed.\n\n\\sa\t\tSetRuntimePaths SetRuntimeCookies"
+				"parameters": []
 			},
 			{
 				"name": "AppendRuntimeParameter",
@@ -37668,8 +39261,7 @@
 			},
 			{
 				"name": "SetRuntimePaths",
-				"parameters": [],
-				"description": "\n### \tInitializes shopping session specific variables\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function examines the current shopping environment, configuration, and session, then initializes variables\nrequired for proper navigation of the store."
+				"parameters": []
 			},
 			{
 				"name": "SetRuntimeURLs",
@@ -37681,15 +39273,13 @@
 			},
 			{
 				"name": "SetRuntimeCookies",
-				"parameters": [],
-				"description": "\n### \tOutputs Set-Cookie headers for appropriate shopping session cookies\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function outputs Set-Cookie headers to update or create shopping session cookies.  \n\nWhen called in response to an HTTP request, the following cookies are updated:\n* mm5-[store_code]-basket-id\n\nWhen called in response to an HTTPS request, the following cookies are updated:\n* mm5-[store_code]-customer-session\n* mm5-[store_code]-affiliate-session\n* mm5-[store_code]-checkout-session\n\nIf a session value does not exist for any of the cookies above, that cookie is explicitly cleared by specifying an expiration date one year in the past.\n\nCookies are contained in the cookie list g.Output_Cookies.\n\n\\return\t\t1 if cookies are properly updated, 0 if they were not\n\n\\sa SetCookie ClearCookie OutputCookies"
+				"parameters": []
 			},
 			{
 				"name": "OpenBasket",
 				"parameters": [
 					"basket var"
-				],
-				"description": "\n### \tLoads and verifies a Basket record for the current shopping session\n\nThis function attempts to locate a Basket record for the session identified by g.Session_ID.\nIf a Basket record exists, it is checked for expiration and discarded if it has expired.\n\nIf a valid, unexpired Basket record is found, shopping session parameters are verified and the following\nverification variables are set:\n\n*\tg.Customer_Session_Verified\n* g.Affiliate_Session_Verified\n* g.Checkout_Session_Verified\n\n* __@param__ [out] basket A variable that will receive an existing, valid Basket record\n\n\\return\t\t1 if the current session exists and has not expired, 0 if the session is new or has expired"
+				]
 			},
 			{
 				"name": "OpenBasket_LowLevel",
@@ -37698,41 +39288,10 @@
 				]
 			},
 			{
-				"name": "Country_Select",
-				"parameters": [
-					"name",
-					"default"
-				],
-				"description": "\n### Draws a drop-down select list of domain-level countries\n\nThis function outputs an HTML <select> tag containing all of the countries in the domain country list.\n\n* __@param__ [in] name The name attribute of the HTML select tag\n* __@param__ [in] default The 2-letter alphanumeric code of the country which should be selected by default\n\n\\return\t1 on success, 0 on error"
-			},
-			{
 				"name": "StoreCountry_Select",
 				"parameters": [
 					"name",
 					"default"
-				],
-				"description": "\n### Draws a drop-down select list of store-level countries\n\nThis function outputs an HTML <select> tag containing all of the countries in the current store's country list.\n\n* __@param__ [in] name The name attribute of the HTML select tag\n* __@param__ [in] default The 2-letter alphanumeric code of the country which should be selected by default\n\n\\return\t1 on success, 0 on error"
-			},
-			{
-				"name": "State_Select",
-				"parameters": [
-					"name",
-					"default"
-				],
-				"description": "\n### Draws a drop-down select list of states\n\nThis function outputs an HTML <select> tag containing all of the states in the current store's state list.\n\n* __@param__ [in] name The name attribute of the HTML select tag\n* __@param__ [in] default The alphanumeric code of the state which should be selected by default\n\n\\return\t1 on success, 0 on error"
-			},
-			{
-				"name": "State_Select_US_Init",
-				"parameters": [
-					"states var"
-				]
-			},
-			{
-				"name": "State_Select_US",
-				"parameters": [
-					"name",
-					"select_value var",
-					"other_value var"
 				]
 			},
 			{
@@ -37740,8 +39299,7 @@
 				"parameters": [
 					"code",
 					"message"
-				],
-				"description": "\n### Sets global error values used by default error handling\n\nThis function copies its parameters to the global variables Error_Code and Error_Message, then returns 0.\n\n* __@param__ [in] code An error code which uniquely identifies the location in which the error was caught\n* __@param__ [in] message A description of the error which occurred\n\n\\return\t0"
+				]
 			},
 			{
 				"name": "Error_Clear",
@@ -37771,31 +39329,27 @@
 				"name": "Email_Add_AngleBrackets",
 				"parameters": [
 					"address"
-				],
-				"description": "\n### Adds containing angle brackets to email address(es)\n\nThis function adds containing angle brackets to one or more email addresses in parameter address.  Some SMTP servers require email addresses to be contained in angle brackets.\n\n* __@param__ [in] address A comma separated list of one or more email addresses\n\n\\return\tThe email addresses in address, with angle brackets added"
+				]
 			},
 			{
 				"name": "Email_Validate",
 				"parameters": [
 					"address"
-				],
-				"description": "\n### Validates an email address\n\n* __@param__ [in] address The email address to be validated\n\n\\return\t1 if the email address appears to be valid, 0 if it does not"
+				]
 			},
 			{
 				"name": "Phone_Validate",
 				"parameters": [
 					"phone",
 					"country"
-				],
-				"description": "\n### Validates a phone number\n\nFor the US and Germany, the phone number must contain only digits and common delimiter characters.\nFor all countries, the phone number must be non-empty.\n\n* __@param__ [in] phone The phone number to be validated\n* __@param__ [in] country The 2-character alphanumeric country code in which the phone number is expected to reside\n\n\\return\t1 if the phone number appears to be valid, 0 if it does not"
+				]
 			},
 			{
 				"name": "Zip_Validate",
 				"parameters": [
 					"zip",
 					"country"
-				],
-				"description": "\n### \tValidates a zip or postal code\n\n* For the US, zip must be a valid 5 digit or Zip+4 zip code\n* For Germany, zip must be exactly 5 numeric digits\n* For all other countries, zip must have a length greater than 0\n\n* __@param__ [in] zip The zip/postal code to be validated\n* __@param__ [in] country The 2-character alphanumeric country code in which the zip code is expected to reside\n\n\\return\t1 if the zip code appears to be valid, 0 if it does not"
+				]
 			},
 			{
 				"name": "StandardFields_Validate_NonOptional_Address",
@@ -37803,8 +39357,7 @@
 					"fields var",
 					"address var",
 					"prefix"
-				],
-				"description": "\n### \tPerforms validation of a non-optional shipping or billing address\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function validates a non-required address according to the passed in  fields variable, which is usually loaded from the StandardFields database for the current store.\n\n address contains the following members:\n* fname\n* lname\n* email\n* phone\n* fax\n* comp\n* addr1\n* addr2\n* city\n* state\n* zip\n* cntry\n\nIf one or more of the fields is invalid, a variable with the following name, prepended by  prefix is set to 1:\n* [prefix]FirstName_Invalid\n* [prefix]LastName_Invalid\n* [prefix]Email_Invalid\n* [prefix]Phone_Invalid\n* [prefix]Fax_Invalid\n* [prefix]Company_Invalid\n* [prefix]Address1_Invalid\n* [prefix]Address2_Invalid\n* [prefix]City_Invalid\n* [prefix]State_Invalid\n* [prefix]Zip_Invalid\n* [prefix]Country_Invalid\n\n* __@param__ [in] fields The StandardFields record for the current store\n* __@param__ [in] address The address to be validated\n* __@param__ [in] prefix An optional prefix for setting of _Invalid variables\n\n\\return\t1 if the address meets the requirements in fields, 0 if it does not\n\n\\sa StandardFields_Validate StandardFields_Load"
+				]
 			},
 			{
 				"name": "StandardFields_Validate",
@@ -37816,8 +39369,7 @@
 					"primary_prefix",
 					"secondary_address var",
 					"secondary_prefix"
-				],
-				"description": "\n### \tPerforms validation of both primary and secondary addresses\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function validates a set of primary and secondary addresses according to the passed in  fields variable, which is usually loaded from the StandardFields database for the current store.\n\n primary_address and  secondary_address contain the following members:\n* fname\n* lname\n* email\n* phone\n* fax\n* comp\n* addr1\n* addr2\n* city\n* state\n* zip\n* cntry\n\nIf one or more of the fields is invalid, a variable with the following name, prepended by  prefix is set to 1:\n* [prefix]FirstName_Invalid\n* [prefix]LastName_Invalid\n* [prefix]Email_Invalid\n* [prefix]Phone_Invalid\n* [prefix]Fax_Invalid\n* [prefix]Company_Invalid\n* [prefix]Address1_Invalid\n* [prefix]Address2_Invalid\n* [prefix]City_Invalid\n* [prefix]State_Invalid\n* [prefix]Zip_Invalid\n* [prefix]Country_Invalid\n\n* __@param__ [in] fields The StandardFields record for the current store\n* __@param__ [in] primary_setting * 'D' if the primary address is required * 'O' if the primary address is optional\n* __@param__ [in] secondary_setting * 'D' if the secondary address is required * 'O' if the secondary address is optional * 'H' if the secondary address is hidden\n* __@param__ [in] primary_address The primary address to be validated\n* __@param__ [in] primary_prefix The prefix for the _Invalid variables for the primary address\n* __@param__ [in] secondary_address The secondary address to be validated\n* __@param__ [in] secondary_prefix The prefix for the _Invalid variables for the secondary address\n\n\\return\t1 if the set of addresses meets the requirements in fields, 0 if it does not\n\n\\sa StandardFields_Validate_NonOptional_Address StandardFields_Load"
+				]
 			},
 			{
 				"name": "Adjusted_Price",
@@ -37825,8 +39377,7 @@
 					"product var",
 					"price",
 					"cost"
-				],
-				"description": "\n### Adjusts a products price according to Price Groups\n\nThis function takes into account the price groups of a currently logged in shopping account as well as the price group overlap setting of the current store.\n\n* __@param__ [in] product A product record, as loaded by one of the Runtime_Product... functions\n* __@param__ [in] price The input price of the product\n* __@param__ [in] cost The input cost of the product\n\n\\return\tThe sale price according to all price groups\n\n\\sa Adjusted_Price_LowLevel"
+				]
 			},
 			{
 				"name": "Adjusted_Price_LowLevel",
@@ -37835,8 +39386,7 @@
 					"product var",
 					"price",
 					"cost"
-				],
-				"description": "\n### Adjusts a products price according to Price Groups for a specific Customer\n\nThis function takes into account the price groups of the specified Customer as well as the price group overlap setting of the current store.\n\n* __@param__ [in] customer Customer record\n* __@param__ [in] product Product record, as loaded by one of the Runtime_Product... functions\n* __@param__ [in] price The input price of the product\n* __@param__ [in] cost The input cost of the product\n\n\\return\tThe sale price according to all price groups\n\n\\sa Adjusted_Price"
+				]
 			},
 			{
 				"name": "Adjusted_Price_PriceGroups",
@@ -37854,8 +39404,7 @@
 					"value",
 					"selected_value",
 					"text"
-				],
-				"description": "\n### Draws an HTML option tag\n\nIf  value is equal to  selected_value, the  selected attribute is included in the generated option tag.\n\n* __@param__ [in] value The value attribute of the generated option tag\n* __@param__ [in] selected_value The currently selected value for the containing <select> tag\n* __@param__ [in] text The contents of the generated <option> tag"
+				]
 			},
 			{
 				"name": "DrawOption_Encode",
@@ -37867,8 +39416,7 @@
 			},
 			{
 				"name": "DrawOption_SelectOne",
-				"parameters": [],
-				"description": "\n### Draws an HTML <option> tag containing the text \"Select One\""
+				"parameters": []
 			},
 			{
 				"name": "DrawCredentialInput",
@@ -37889,8 +39437,7 @@
 					"value",
 					"default",
 					"text"
-				],
-				"description": "\n### Draws an HTML radio button\n\nIf  value is equal to  default, the  checked attribute is included in the generated input tag.\n\n* __@param__ [in] name The name attribute of the generated input field\n* __@param__ [in] value The value attribute of the generated input field\n* __@param__ [in] default The currently selected value\n* __@param__ [in] text Optional text to be output immediately following the generated input tag"
+				]
 			},
 			{
 				"name": "DrawRadio_With_Label",
@@ -37908,8 +39455,7 @@
 					"name",
 					"value",
 					"text"
-				],
-				"description": "\n### Draws an HTML checkbox\n\nIf  checked is true, the  checked attribute is included in the generated input tag.\n\n\\note This function does not encode the text passed in. If you're using a global variable to construct your Checkbox text, you should encode it when calling DrawCheckbox. \n\n* __@param__ [in] checked A boolean value indicating the current state of the checkbox\n* __@param__ [in] name The name attribute of the generated input field\n* __@param__ [in] value The value attribute of the generated input field\n* __@param__ [in] text Optional text to be output immediately following the generated input tag"
+				]
 			},
 			{
 				"name": "DrawCheckbox_With_Label",
@@ -37945,8 +39491,7 @@
 					"name",
 					"value",
 					"text"
-				],
-				"description": "\n### Draws an HTML checkbox which calls the JavaScript function SetModified() when clicked\n\nIf  checked is true, the  checked attribute is included in the generated input tag.\n\n* __@param__ [in] checked A boolean value indicating the current state of the checkbox\n* __@param__ [in] name The name attribute of the generated input field\n* __@param__ [in] value The value attribute of the generated input field\n* __@param__ [in] text Optional text to be output immediately following the generated input tag\n\n\\sa SetModified"
+				]
 			},
 			{
 				"name": "DrawTemplateTextArea",
@@ -37955,8 +39500,7 @@
 					"value var",
 					"rows",
 					"cols"
-				],
-				"description": "\n### Draws an HTML textarea with 100% width and an attached color selector\n\nThe output textarea also contains connected JavaScript which provides tab functionality in common browsers.  If the current\nbrowser does not support 100% width, the width of the textarea will fall back to the value specified in  cols.\n\n* __@param__ [in] name The name attribute of the generated textarea\n* __@param__ [in] value The contents of the genereated textarea\n* __@param__ [in] rows The rows attribute of the generated textarea\n* __@param__ [in] cols The cols attribute of the generated textarea\n\n\\sa SetModified"
+				]
 			},
 			{
 				"name": "DrawTemplateTextArea_SetModified",
@@ -38050,16 +39594,14 @@
 					"zip",
 					"cntry",
 					"seperater"
-				],
-				"description": "\n### Arranges an address in a format suitable for display\n\nThe address is formatted into a multi-line format, using  seperator (sic) as the line delimiter.\n\n* __@param__ [in] company Company\n* __@param__ [in] name Name\n* __@param__ [in] street Street address\n* __@param__ [in] city City\n* __@param__ [in] state State\n* __@param__ [in] zip Zip/Postal Code\n* __@param__ [in] cntry Country (typically the ISO 2-character alphanumeric code)\n* __@param__ [in] seperater The line separator to be used\n\n\\return\tThe formatted address"
+				]
 			},
 			{
 				"name": "Timestamp_RFC3339_To_Time",
 				"parameters": [
 					"timestamp",
 					"time_t var"
-				],
-				"description": "\n### \tConverts a RFC 3339 timestamp string to time_t\n\\version\t>= 9.8.0\n\\ingroup\t\n\n* __@param__ [in] timestamp A UTC timestamp string formatted RFC 3339 specifications. e.g. YYYY-MM-DDTHH:II:SSZ\n* __@param__ [out] time_t \\return\t1 on success"
+				]
 			},
 			{
 				"name": "Format_RFC3339_DateTime",
@@ -38071,32 +39613,28 @@
 				"name": "Format_RFC1123_DateTime",
 				"parameters": [
 					"time_t"
-				],
-				"description": "\n### \tFormats a time_t into an RFC 1123 compatible date/time\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nRFC 1123 defines the date/time format used for many internet protocols.  The output date/time from this function is suitable for the use in a Set-Cookie tag.\n\n* __@param__ [in] time_t A time_t representing the date/time to be formatted\n\n\\return\tThe formatted date/time"
+				]
 			},
 			{
 				"name": "Format_Date",
 				"parameters": [
 					"time_t",
 					"language"
-				],
-				"description": "\n### Formats the date portion of a time_t according to a specified language\n\nThe following languages are supported:\n\n* en-US mm/dd/yyyy\n* de-DE dd/mm/yyyy\n\n* __@param__ [in] time_t A time_t representing the date to be formatted\n* __@param__ [in] language A language code representing the desired output format\n\n\\return\tThe formatted date if language is a supported value, or an empty string"
+				]
 			},
 			{
 				"name": "Format_Time",
 				"parameters": [
 					"time_t",
 					"language"
-				],
-				"description": "\n### Formats the time portion of a time_t according to a specified language\n\nThe following languages are supported:\n\n* en-US HH:MM:SS PST\n* de-DE HH:MM:SS\n\n* __@param__ [in] time_t A time_t representing the time to be formatted\n* __@param__ [in] language A language code representing the desired output format\n\n\\return\tThe formatted time if language is a supported value, or an empty string\n\n\\sa Format_Time_Short"
+				]
 			},
 			{
 				"name": "Format_Time_Short",
 				"parameters": [
 					"time_t",
 					"language"
-				],
-				"description": "\n### Formats the time portion of a time_t according to a specified language, excluding time zone\n\nThe following languages are supported:\n\n* en-US HH:MM:SS\n* de-DE HH:MM:SS\n\n* __@param__ [in] time_t A time_t representing the time to be formatted\n* __@param__ [in] language A language code representing the desired output format\n\n\\return\tThe formatted time if language is a supported value, or an empty string\n\n\\sa Format_Time"
+				]
 			},
 			{
 				"name": "FormatDateTime_ClientLocale",
@@ -38109,29 +39647,25 @@
 				"name": "HTML_Format_Marks",
 				"parameters": [
 					"data"
-				],
-				"description": "\n### Converts textual representations of special characters into their HTML equivalents\n\n* __@param__ [in] data A text string to be converted\n\n\\return\tThe input data with any textual representations converted to HTML"
+				]
 			},
 			{
 				"name": "Message_Error",
 				"parameters": [
 					"message"
-				],
-				"description": "\n### Appends an error message to the global array Error_Messages\n\nThese messages are displayed by the cmp-mv-messages component."
+				]
 			},
 			{
 				"name": "Message_Information",
 				"parameters": [
 					"message"
-				],
-				"description": "\n### Appends an informational message to the global array Information_Messages\n\nThese messages are displayed by the cmp-mv-messages component."
+				]
 			},
 			{
 				"name": "Data_Entry_Error",
 				"parameters": [
 					"message"
-				],
-				"description": "\n### Sets flag indicating a shopping interface field validation error\n\nThis function sets the global variable Data_Entry_Error to 1 and appends  message to the global array Data_Entry_Error_Message.  These fields are displayed\nby various component modules.\n\n* __@param__ [in] message A message to be displayed when the data entry error is reported to the user\n\n\\return 1"
+				]
 			},
 			{
 				"name": "SendEmail",
@@ -38142,8 +39676,7 @@
 					"subject",
 					"headers",
 					"message"
-				],
-				"description": "\n### Sends an email message\n\nThe email message is sent according to the domain settings, either by using <MvSMTP> or an external commerce library.\n\n* __@param__ [in] to The destination email address\n* __@param__ [in] from The source email address\n* __@param__ [in] cc (optional) A comma separated list of CC email addresses\n* __@param__ [in] subject The email subject\n* __@param__ [in] headers (optional) Additional SMTP headers\n* __@param__ [in] message The body of the email message\n\n\\return 1 on success, 0 on error"
+				]
 			},
 			{
 				"name": "v9_SendEmail",
@@ -38155,8 +39688,7 @@
 				"name": "Tokenize_Name",
 				"parameters": [
 					"full_name"
-				],
-				"description": "\n### Breaks a name into first, middle, and last name components\n\n* __@param__ [in] full_name The name to be tokenized\n\n\\return A structure containing the following members * first * middle * last"
+				]
 			},
 			{
 				"name": "Encryption_Available",
@@ -38171,8 +39703,7 @@
 					"attribute_count",
 					"basketoptions var",
 					"basketoption_count var"
-				],
-				"description": "\n### Validates a set of product attributes\n\nIn order to be valid, all required attributes must have values present, and all values must match an option in the database.\n\n attributes is an array of structures with the following members:\n*  template_code\t(optional) An attribute template code\n*  code\t\t\t\tAttribute code\n*  value\t\t\tOption or input field value\n\n\\deprecated\tModern callers should call Validate_Attributes_DetermineVariant() instead, which additionally returns a variant ID.\n\n* __@param__ [in] product The product for which attributes are being validated\n* __@param__ [in] prompt A boolean value indicating whether validation should automatically fail if the product has attributes\n* __@param__ [in] attributes An array of currently selected attribute values\n* __@param__ [in] attribute_count The count of items in  attributes\n* __@param__ [out] basketoptions BasketOption records suitable for direct insertion into the database\n* __@param__ [out] basketoption_count The count of items in  basketoptions\n\n\\return\t1 if the attributes are valid, 0 otherwise.\n\n\\sa Validate_Attributes_DetermineVariant"
+				]
 			},
 			{
 				"name": "Build_Attribute_Hash",
@@ -38192,16 +39723,14 @@
 					"basketoptions var",
 					"basketoption_count var",
 					"variant_id var"
-				],
-				"description": "\n### \tValidates a set of product attributes, returning a variant representing these attributes (if configured)\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nIn order to be valid, all required attributes must have values present, and all values must match an option in the database.\n\n attributes is an array of structures with the following members:\n*  template_code\t(optional) An attribute template code\n*  code\t\t\t\tAttribute code\n*  value\t\t\tOption or input field value\n\n* __@param__ [in] product The product for which attributes are being validated\n* __@param__ [in] prompt A boolean value indicating whether validation should automatically fail if the product has attributes\n* __@param__ [in] attributes An array of currently selected attributes, with each element containing the following members:\n\t\t\t\t\t\t\t\t*  code\t\t\t\tAttribute code\n\t\t\t\t\t\t\t\t*  template_code\tAttributeTemplateAttribute code (if  code refers to a \"used\" Attribute Template)\n\t\t\t\t\t\t\t\t*  value\t\t\tOption code for multiple select attributes, any value for boolean attributes, or user-specified data for text or textarea attributes.\n* __@param__ [in] attribute_count The count of items in  attributes\n* __@param__ [out] basketoptions BasketOption records suitable for direct insertion into the database\n* __@param__ [out] basketoption_count The count of items in  basketoptions\n* __@param__ [out] variant_id The ID of a product variant matching this configured set of attributes, or 0\n\n\\return\t1 if the attributes are valid, 0 otherwise."
+				]
 			},
 			{
 				"name": "Unique_Code",
 				"parameters": [
 					"name",
 					"unique_code"
-				],
-				"description": "\n### Attempts to generate a unique item code from a longer identifier\n\nIf  unique_code is empty, an initial code is generated by extracting the first letter of each word in  name.\nIf  unique_code has a value, a series of random digits is appended.\n\n* __@param__ [in] name An associated name or longer identifier that is a source for additional unique data\n* __@param__ [in] unique_code A previous value if it was proven to be non-unique\n\n\\return\tAn item code"
+				]
 			},
 			{
 				"name": "Draw_ProgressBar_Begin",
@@ -38287,8 +39816,7 @@
 					"file_name",
 					"file_dir",
 					"file_location"
-				],
-				"description": "\n### Sends an email message with an attached binary file\n\n* __@param__ [in] email_from The source address\n* __@param__ [in] email_to The destination address\n* __@param__ [in] email_cc (optional) A comma separated list of CC addresses\n* __@param__ [in] subject The subject\n* __@param__ [in] file_name The name of the file to be attached, minus any containing directory\n* __@param__ [in] file_dir The directory containing the file to be attached, relative to the Miva data or script directory\n* __@param__ [in] file_location * 'script' if the file is in the Miva script directory * 'data' if the file is in the Miva data directory\n\n\\return\t1 on success, 0 on failure"
+				]
 			},
 			{
 				"name": "BuildMIMEAttachmentEmailHeaders",
@@ -38387,8 +39915,7 @@
 				"parameters": [
 					"array var",
 					"count"
-				],
-				"description": "\n### Sorts a PR5-style item sort input array\n\nThis function sorts an OffsetArray used to implement the PR6-style numeric product, category, etc... sort.\n\n* __@param__ [in] array The OffsetArray to be sorted\n* __@param__ [in] count The number of elements in  array"
+				]
 			},
 			{
 				"name": "SortOffsetArray_Sort_Ascending_Callback",
@@ -38419,8 +39946,7 @@
 					"array var",
 					"subelement",
 					"direction"
-				],
-				"description": "\n### Sorts an array\n\nThe array is sorted using the Quick Sort algorithm.   subelement must contain a leading colon (:) if sorting an array of structures by a single member,\nor may be empty if sorting an array of simple values.  Elements are compared using the MivaScript EQ operator.\n\n* __@param__ [in,out] array The array to be sorted\n* __@param__ [in] subelement The element within the array to be sorted\n* __@param__ [in] direction * 1 to sort ascending * -1 to sort descending"
+				]
 			},
 			{
 				"name": "QuickSortArray_Sort",
@@ -38430,8 +39956,7 @@
 					"right",
 					"comparisons var",
 					"comparison_count"
-				],
-				"description": "\n### Sorts an array using multiple comparisons to break ties\n\nThe array is sorted using the Quick Sort algorithm.\n\nEach element in  comparisons contains the following members:\n*  subelement The member to sort by, including the leading colon (:)\n*  direction The direction in which to sort\n\nElements are compared using the MivaScript EQ operator according to each element in  comparisons.  If a comparison results in a tie, the next comparison is used.\n\n* __@param__ [in,out] array The array to be sorted\n* __@param__  left The index of the lowest element of the array to be sorted\n* __@param__  right The index of the highest element of the array to be sorted\n* __@param__  comparisons An array defining the comparisons to be used and the order in which they should be applied\n* __@param__  comparison_count The number of elements in  comparisons"
+				]
 			},
 			{
 				"name": "QuickSortArray_Partition",
@@ -38466,16 +39991,14 @@
 				"parameters": [
 					"string",
 					"length"
-				],
-				"description": "\n### \tEncodes a string in hexidecimal notation\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] string The string to be encoded\n* __@param__ [in] length The length of  string\n\n\\return\tThe hexidecimal notation of  string"
+				]
 			},
 			{
 				"name": "Hex_Decode",
 				"parameters": [
 					"string",
 					"length"
-				],
-				"description": "\n### \tDecodes a hexidecimal string\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] string The string to be decoded \n* __@param__ [in] length The length of  string\n\n\\return The decoded string"
+				]
 			},
 			{
 				"name": "HexByte_To_Decimal",
@@ -38487,53 +40010,46 @@
 				"name": "AlphaNumericOnly",
 				"parameters": [
 					"name"
-				],
-				"description": "\n### \tStrips non digit, non letter characters from a string\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__  name The string to be stripped\n\n\\return\tThe stripped string"
+				]
 			},
 			{
 				"name": "SanitizeRFC2616Token",
 				"parameters": [
 					"token"
-				],
-				"description": "\n### \tStrips any characters that are not valid in an RFC 2616 (HTTP) token from a string\n\n* __@param__  token The string to be stripped\n\n\\return\tThe stripped string"
+				]
 			},
 			{
 				"name": "FirstSparseArrayElement",
 				"parameters": [
 					"array var"
-				],
-				"description": "\n### \tReturns the lowest index of a sparse array\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] array The array to examine\n\n\\return If using Miva Empresa 5.07 or newer, the index of the first element in the array, otherwise 1"
+				]
 			},
 			{
 				"name": "NextSparseArrayElement",
 				"parameters": [
 					"array var",
 					"pos"
-				],
-				"description": "\n### \tReturns the index of the next element in a sparse array\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] array The array to examine\n* __@param__ [in] pos The current position in the array\n\n\\return If using Miva Empresa 5.07 or newer, the index of the next present element in the array, otherwise pos + 1"
+				]
 			},
 			{
 				"name": "PreviousSparseArrayElement",
 				"parameters": [
 					"array var",
 					"pos"
-				],
-				"description": "\n### \tReturns the index of the previous element in a sparse array\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] array The array to examine\n* __@param__ [in] pos The current position in the array\n\n\\return If using Miva Empresa 5.07 or newer, the index of the previous present element in the array, otherwise pos - 1"
+				]
 			},
 			{
 				"name": "StructureMembers",
 				"parameters": [
 					"struct var",
 					"members var"
-				],
-				"description": "\n### \tBuilds an array containing the names of all members of a structure\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nIf using Miva Empresa 5.07, the builtin function miva_struct_members() is used.  In previous versions of Empresa, fallback code utilizing miva_array_serialize() is used instead,\nwith a slight performance penalty.\n\n* __@param__ [in] struct The structure to examine\n* __@param__ [out] members A variable which will receive an array of member names\n\n\\return\tThe count of members within  struct"
+				]
 			},
 			{
 				"name": "ParseCookies",
 				"parameters": [
 					"cookies var"
-				],
-				"description": "\n### \tParses cookies sent by the browser and stores them in a structure\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nA member is created in  cookies with the name of the cookie equal to the member name, and the value of the member equal to the cookie's value.  This allows\ncookies to be referenced directly by name.\n\n* __@param__ [out] cookies A variable which will receive the cookies"
+				]
 			},
 			{
 				"name": "SetCookie",
@@ -38545,8 +40061,7 @@
 					"expires",
 					"path",
 					"secure"
-				],
-				"description": "\n### \tAdds or updates a cookie in a cookie list\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function adds or updates a cookie in a cookie list, which may then be output in its entirety using OutputCookies().  In pr7-bugfix-2 and later,\nall cookies are created with the HttpOnly attribute.\n\n* __@param__ [in,out] cookies The cookie list to be updated\n* __@param__ [in] name The name of the cookie to add or update\n* __@param__ [in] value The value of the cookie\n* __@param__ [in] domain The \"domain\" attribute of the cookie\n* __@param__ [in] expires A time_t or RFC 1123 format date/time representing the expiration date of the cookie\n* __@param__ [in] path The \"path\" attribute of the cookie\n* __@param__ [in] secure A boolean value controlling the \"secure\" attribute of the cookie\n\n\\sa ParseCookies ClearCookie OutputCookies"
+				]
 			},
 			{
 				"name": "v10_SetCookie",
@@ -38569,27 +40084,23 @@
 					"domain",
 					"path",
 					"secure"
-				],
-				"description": "\n### \tMarks a cookie in a cookie list for expungement\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function modifies a cookie list so that the specified cookie is explicitly cleared upon the next call to OutputCookies().  Clearing of the cookie\nis accomplished by setting its expiration date to a time one year in the past.\n\n* __@param__ [in,out] cookies The cookie list to be updated\n* __@param__ [in] name The name of the cookie to clear\n* __@param__ [in] domain The \"domain\" attribute of the cookie\n* __@param__ [in] path The \"path\" attribute of the cookie\n* __@param__ [in] secure A boolean value controlling the \"secure\" attribute of the cookie\n\n\\sa ParseCookies SetCookie OutputCookies"
+				]
 			},
 			{
 				"name": "OutputCookies",
 				"parameters": [
 					"cookies var"
-				],
-				"description": "\n### \tOutputs a cookie list to the browser\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] cookies The cookie list to be output\n\n\\return\t1 on success, 0 on failure"
+				]
 			},
 			{
 				"name": "SelfReferentialURL",
-				"parameters": [],
-				"description": "\n### \tConstructs a self-referential URL using s.documenturl and the HTTP Host header\n\\version\t>= 5.60\n\\ingroup\tPR7\n\nThis function examines s.documenturl to ensure that it matches the HTTP Host header sent by the client.  Depending\non the server configuration, this may or may not be the case.  If s.documenturl does not appear to be directly\nself-referential, this function constructs a URL based on the HTTP Host header and remaining contents of s.documenturl.\n\nThe resulting URL will most likely work for the specific client that made the original request, but may not work for\nother clients depending on their configuration."
+				"parameters": []
 			},
 			{
 				"name": "SelfReferentialURL_Failsafe",
 				"parameters": [
 					"failsafe_url"
-				],
-				"description": "\n### \tConstructs a self-referential URL using s.documenturl and the HTTP Host header, using a fallback URL in certain cases\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] failsafe_url The URL to use if s.documenturl appears to be malformed\n\nThis function behaves identically to SelfReferentialURL(), except if the number of forward slashes in s.documenturl and the parameter failsafe_url\ndiffer, s.documenturl is assumed to be malformed and failsafe_url is returned instead."
+				]
 			},
 			{
 				"name": "BaseName",
@@ -38646,8 +40157,7 @@
 				"parameters": [
 					"needle",
 					"haystack"
-				],
-				"description": "\n### \tCounts the number of occurrences of one string in another\n\\version\t>= 5.60\n\\ingroup\tPR7\n\n* __@param__ [in] needle The string to search for\n* __@param__ [in] haystack The string to search in\n\n\\return\t\tThe number of occurrences"
+				]
 			},
 			{
 				"name": "ShippingMethodList_Load_Enabled",
@@ -39290,7 +40800,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_Utilities",
+		"distroPath": "g.Module_Root $ '/lib/util_soap.mvc'",
 		"functions": [
 			{
 				"name": "Format_SOAP_DateTime",
@@ -40460,6 +41970,38 @@
 				]
 			},
 			{
+				"name": "JSON_AvailableFilter_NULL_INTEGER",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_NUMBER",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_BOOL",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
+				"name": "JSON_AvailableFilter_NULL_CHAR",
+				"parameters": [
+					"filters var",
+					"column",
+					"correlation"
+				]
+			},
+			{
 				"name": "JSON_AvailableFilter_LowLevel",
 				"parameters": [
 					"filters var",
@@ -40543,9 +42085,31 @@
 				]
 			},
 			{
+				"name": "JSON_Search_Filter_MivaScript_LowLevel",
+				"parameters": [
+					"expression var",
+					"outer_joining_clause",
+					"inner_joining_clause",
+					"filterlist var",
+					"params var",
+					"data var"
+				]
+			},
+			{
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList",
 				"parameters": [
 					"expression var",
+					"variable",
+					"filter_name",
+					"filter_operator",
+					"filter_value"
+				]
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Join",
+				"parameters": [
+					"expression var",
+					"joining_clause",
 					"variable",
 					"filter_name",
 					"filter_operator",
@@ -40592,7 +42156,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ 'merchant.mvc'",
+		"distroPath": "g.Module_Merchant",
 		"functions": [
 			{
 				"name": "Merchant",
@@ -41080,6 +42644,13 @@
 			{
 				"name": "TemplateBatchReport_Delete",
 				"parameters": [
+					"report var"
+				]
+			},
+			{
+				"name": "TemplateBatchReport_GlobalDelete",
+				"parameters": [
+					"module var",
 					"report var"
 				]
 			},
@@ -42243,6 +43814,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -42323,8 +43915,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -42334,8 +43928,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -42568,6 +44164,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ImageTypesComponentModule_Update",
 				"parameters": [
 					"module var",
@@ -42658,8 +44275,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -42669,8 +44288,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -42887,6 +44508,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -42967,8 +44609,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -42978,8 +44622,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -43152,6 +44798,35 @@
 		]
 	},
 	{
+		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/baselist.mvc'",
+		"functions": [
+			{
+				"name": "Element_BaseHTTPHeaderList_CSS",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_BaseHTTPHeaderList_JavaScript",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_BaseHTTPHeaderList_JavaScript_Combined",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_BaseHTTPHeaderList_HTML",
+				"parameters": [
+					"module var"
+				]
+			}
+		]
+	},
+	{
 		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/combined_integrity.mvc'",
 		"functions": []
 	},
@@ -43196,32 +44871,28 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/integrity.mvc'",
-		"functions": []
-	},
-	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/list.mvc'",
+		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/globallist.mvc'",
 		"functions": [
 			{
-				"name": "Element_HTTPHeaderList_CSS",
+				"name": "Element_GlobalHTTPHeaderList_CSS",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "Element_HTTPHeaderList_JavaScript",
+				"name": "Element_GlobalHTTPHeaderList_JavaScript",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "Element_HTTPHeaderList_JavaScript_Combined",
+				"name": "Element_GlobalHTTPHeaderList_JavaScript_Combined",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "Element_HTTPHeaderList_HTML",
+				"name": "Element_GlobalHTTPHeaderList_HTML",
 				"parameters": [
 					"module var"
 				]
@@ -43229,8 +44900,41 @@
 		]
 	},
 	{
+		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/integrity.mvc'",
+		"functions": []
+	},
+	{
 		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/output.mvc'",
 		"functions": []
+	},
+	{
+		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/pagelist.mvc'",
+		"functions": [
+			{
+				"name": "Element_PageHTTPHeaderList_CSS",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_PageHTTPHeaderList_JavaScript",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_PageHTTPHeaderList_JavaScript_Combined",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Element_PageHTTPHeaderList_HTML",
+				"parameters": [
+					"module var"
+				]
+			}
+		]
 	},
 	{
 		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/combined_integrity.mvc'",
@@ -43441,10 +45145,33 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -43524,6 +45251,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -43566,8 +45314,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -43739,6 +45489,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -43781,8 +45552,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -44159,8 +45932,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -44211,6 +45986,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -45550,8 +47346,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -45602,6 +47400,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -46027,8 +47846,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -46125,6 +47946,27 @@
 					"settings var",
 					"code var"
 				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
 			}
 		]
 	},
@@ -46208,8 +48050,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -46260,6 +48104,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -46384,6 +48249,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -46426,8 +48312,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -47052,8 +48940,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -47104,6 +48994,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -47769,8 +49680,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -47821,6 +49734,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -47914,8 +49848,28 @@
 				]
 			},
 			{
+				"name": "MivaPay_Load_Templates_Branch",
+				"parameters": [
+					"branch_id",
+					"template_filename",
+					"managedtemplate var",
+					"css_template_filename",
+					"css_managedtemplate var"
+				]
+			},
+			{
 				"name": "MivaPay_Load_TemplateVersions",
 				"parameters": [
+					"template_filename",
+					"templateversion var",
+					"css_template_filename",
+					"css_templateversion var"
+				]
+			},
+			{
+				"name": "MivaPay_Load_TemplateVersions_Branch",
+				"parameters": [
+					"branch_id",
 					"template_filename",
 					"templateversion var",
 					"css_template_filename",
@@ -48208,8 +50162,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -48260,6 +50216,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -48405,8 +50382,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -48457,6 +50436,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -48897,6 +50897,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -48939,8 +50960,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -49172,6 +51195,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -49214,8 +51258,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -50015,6 +52061,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -50057,8 +52124,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -50232,6 +52301,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -50274,8 +52364,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -50692,10 +52784,18 @@
 				]
 			},
 			{
-				"name": "Order_Load_Lookup",
+				"name": "Order_Load_Lookup_BillEmail_BillZip",
 				"parameters": [
 					"bill_email",
 					"bill_zip",
+					"order_id",
+					"order var"
+				]
+			},
+			{
+				"name": "Order_Load_Lookup_BillEmail",
+				"parameters": [
+					"bill_email",
 					"order_id",
 					"order var"
 				]
@@ -50737,6 +52837,27 @@
 					"field_prefix",
 					"fields var",
 					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -50782,8 +52903,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -50931,6 +53054,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -50973,8 +53117,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -51139,6 +53285,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -51181,8 +53348,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -51473,6 +53642,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -51515,8 +53705,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -51854,6 +54046,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -51896,8 +54109,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -52176,6 +54391,27 @@
 					"field_prefix",
 					"fields var",
 					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -52605,8 +54841,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -54076,6 +56314,58 @@
 				]
 			},
 			{
+				"name": "Module_Install_Store",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Upgrade_Store",
+				"parameters": [
+					"module var",
+					"version"
+				]
+			},
+			{
+				"name": "Module_Uninstall_Store",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Store_Validate",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Store_Update",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Store_Tabs",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Store_Head",
+				"parameters": [
+					"module var",
+					"tab"
+				]
+			},
+			{
+				"name": "Module_Store_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields"
+				]
+			},
+			{
 				"name": "ComponentModule_Tabs",
 				"parameters": [
 					"module var",
@@ -54101,6 +56391,27 @@
 					"field_prefix",
 					"fields var",
 					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -54146,8 +56457,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -54209,23 +56522,23 @@
 				]
 			},
 			{
-				"name": "ComponentModule_Provision_HeaderList",
+				"name": "ComponentModule_Provision_HeaderAddList",
 				"parameters": [
 					"provide_xml var",
-					"headers var"
-				]
-			},
-			{
-				"name": "ComponentModule_Provision_DeleteHeaders",
-				"parameters": [
-					"provide_xml",
 					"settings var"
 				]
 			},
 			{
-				"name": "ComponentModule_Provision_AddHeaders",
+				"name": "ComponentModule_Provision_HeaderDeleteList",
 				"parameters": [
-					"provide_xml",
+					"provide_xml var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Provision_DeleteAllHeaders",
+				"parameters": [
+					"provide_xml var",
 					"settings var"
 				]
 			},
@@ -54236,53 +56549,121 @@
 				]
 			},
 			{
-				"name": "JSON_Page_Load",
+				"name": "JSON_HTTPHeader",
 				"parameters": [
-					"page var"
+					"header var"
 				]
 			},
 			{
-				"name": "JSON_HTTPHeader_Validate",
-				"parameters": []
-			},
-			{
-				"name": "JSON_HTTPHeader_Update_NameValue",
-				"parameters": [
-					"original_name",
-					"original_value",
-					"name",
-					"value"
-				]
-			},
-			{
-				"name": "JSON_HTTPHeader_Delete_NameValue",
-				"parameters": [
-					"name",
-					"value"
-				]
-			},
-			{
-				"name": "JSON_HTTPHeaderList_Load_Query",
+				"name": "JSON_GlobalHTTPHeaderList_Load_Query",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "JSON_HTTPHeader_Insert",
+				"name": "JSON_GlobalHTTPHeader_Insert",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "JSON_HTTPHeader_Update",
+				"name": "JSON_GlobalHTTPHeader_Insert_LowLevel",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "JSON_GlobalHTTPHeader_Update",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "JSON_HTTPHeader_Delete",
+				"name": "JSON_GlobalHTTPHeader_Update_LowLevel",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "JSON_GlobalHTTPHeader_Delete",
 				"parameters": [
 					"module var"
+				]
+			},
+			{
+				"name": "JSON_GlobalHTTPHeader_Delete_LowLevel",
+				"parameters": [
+					"managedproperty var"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeaderList_Load_Query",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Insert",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Insert_LowLevel",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Update",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Update_LowLevel",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Delete",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "JSON_PageHTTPHeader_Delete_LowLevel",
+				"parameters": [
+					"page_id"
+				]
+			},
+			{
+				"name": "Module_Provision_Store",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_GlobalHeaderAddList",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_GlobalHeaderDeleteList",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				]
+			},
+			{
+				"name": "Module_Provision_Store_GlobalDeleteAllHeaders",
+				"parameters": [
+					"module var",
+					"provide_xml var"
 				]
 			},
 			{
@@ -54327,6 +56708,13 @@
 					"module var",
 					"item",
 					"output var"
+				]
+			},
+			{
+				"name": "HTTPHeader_Provision_Header",
+				"parameters": [
+					"provide_xml var",
+					"header var"
 				]
 			},
 			{
@@ -54386,6 +56774,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -54428,8 +56837,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -55586,6 +57997,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -55628,8 +58060,10 @@
 				"parameters": [
 					"module var",
 					"item",
-					"source_page",
-					"source_settings",
+					"source_branch var",
+					"source_page var",
+					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -55824,6 +58258,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code"
 				]
 			},
@@ -55832,6 +58267,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"values var"
 				]
@@ -55841,6 +58277,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"value"
 				]
@@ -55850,6 +58287,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"values var",
 					"value_count"
@@ -55896,6 +58334,7 @@
 					"module var",
 					"loaded_record var",
 					"page_id",
+					"pagever_id",
 					"code"
 				]
 			},
@@ -55905,6 +58344,15 @@
 					"module var",
 					"view_name",
 					"code"
+				]
+			},
+			{
+				"name": "Module_Page_Fields_Propagate",
+				"parameters": [
+					"module var",
+					"page_id",
+					"oldpagever_id",
+					"newpagever_id"
 				]
 			},
 			{
@@ -56175,6 +58623,7 @@
 				"name": "METAValue_Set_Page",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"name_id",
 					"value"
 				]
@@ -56183,6 +58632,7 @@
 				"name": "METAValue_Delete_Page",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"name_id"
 				]
 			},
@@ -56199,9 +58649,17 @@
 				]
 			},
 			{
+				"name": "METAValue_Delete_Page_Version",
+				"parameters": [
+					"page_id",
+					"version_id"
+				]
+			},
+			{
 				"name": "METANameAndValueList_Load_Page_All",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"values var"
 				]
 			},
@@ -56209,6 +58667,7 @@
 				"name": "METAValueList_Load_Page_Cached",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"values var"
 				]
 			},
@@ -56216,19 +58675,22 @@
 				"name": "METAValueList_Load_Page",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"values var"
 				]
 			},
 			{
 				"name": "METAValueList_Cache_Page",
 				"parameters": [
-					"page_id"
+					"page_id",
+					"pagever_id"
 				]
 			},
 			{
 				"name": "METAValue_Load_Page_Cached",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"name"
 				]
 			},
@@ -56523,6 +58985,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -56574,8 +59057,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -56889,6 +59374,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -56931,8 +59437,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -61191,6 +63699,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Content",
 				"parameters": [
 					"module var",
@@ -61233,8 +63762,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -62730,8 +65261,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -62793,6 +65326,27 @@
 					"field_prefix",
 					"fields var",
 					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -63492,36 +66046,36 @@
 				]
 			},
 			{
-				"name": "Module_Fulfillment_Validate",
+				"name": "Module_Email_Tabs",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "Module_Fulfillment_Update",
-				"parameters": [
-					"module var"
-				]
-			},
-			{
-				"name": "Module_Fulfillment_Head",
+				"name": "Module_Email_Head",
 				"parameters": [
 					"module var",
 					"tab"
 				]
 			},
 			{
-				"name": "Module_Fulfillment_Tabs",
+				"name": "Module_Email_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields"
+				]
+			},
+			{
+				"name": "Module_Email_Validate",
 				"parameters": [
 					"module var"
 				]
 			},
 			{
-				"name": "Module_Fulfillment_Content",
+				"name": "Module_Email_Update",
 				"parameters": [
-					"module var",
-					"tab",
-					"load_fields"
+					"module var"
 				]
 			},
 			{
@@ -63624,15 +66178,30 @@
 				"parameters": []
 			},
 			{
-				"name": "TemplateOrderEmail_Read",
+				"name": "TemplateOrderEmail_Group_GiftCertificates",
 				"parameters": [
+					"giftcertificates var",
+					"giftcertificate_count",
+					"grouped_giftcertificates var"
+				]
+			},
+			{
+				"name": "TemplateOrderEmail_Copy_Settings",
+				"parameters": [
+					"settings var",
 					"email var"
 				]
 			},
 			{
-				"name": "TemplateOrderEmail_Load_ID",
+				"name": "Settings_Copy_TemplateOrderEmail",
 				"parameters": [
-					"id",
+					"email var",
+					"settings var"
+				]
+			},
+			{
+				"name": "TemplateOrderEmail_Defaults",
+				"parameters": [
 					"email var"
 				]
 			},
@@ -63663,6 +66232,14 @@
 				]
 			},
 			{
+				"name": "TemplateOrderEmailList_Load_Run_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
+				]
+			},
+			{
 				"name": "TemplateOrderEmailList_Load_Customer",
 				"parameters": [
 					"emails var"
@@ -63681,15 +66258,39 @@
 				]
 			},
 			{
+				"name": "TemplateOrderEmailList_Load_PaymentCard_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
+				]
+			},
+			{
 				"name": "TemplateOrderEmailList_Load_AbandonedBasket",
 				"parameters": [
 					"emails var"
 				]
 			},
 			{
+				"name": "TemplateOrderEmailList_Load_AbandonedBasket_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
+				]
+			},
+			{
 				"name": "TemplateOrderEmailList_Load_SubscriptionPending",
 				"parameters": [
 					"emails var"
+				]
+			},
+			{
+				"name": "TemplateOrderEmailList_Load_SubscriptionPending_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
 				]
 			},
 			{
@@ -63701,7 +66302,7 @@
 			{
 				"name": "TemplateOrderEmail_Update_Template",
 				"parameters": [
-					"managedtemplate_id",
+					"filename",
 					"source var",
 					"managedtemplate var",
 					"previous_managedtemplateversion var"
@@ -63715,28 +66316,23 @@
 				]
 			},
 			{
-				"name": "TemplateOrderEmail_Update_LowLevel",
+				"name": "TemplateOrderEmail_Update_Enabled",
 				"parameters": [
-					"email var"
+					"code",
+					"enabled"
 				]
 			},
 			{
-				"name": "TemplateOrderEmail_Update_Enabled",
+				"name": "TemplateOrderEmail_Update_LowLevel",
 				"parameters": [
-					"id",
-					"enabled"
+					"settings var",
+					"managedproperty var"
 				]
 			},
 			{
 				"name": "TemplateOrderEmail_Delete",
 				"parameters": [
 					"email var"
-				]
-			},
-			{
-				"name": "TemplateOrderEmail_Delete_LowLevel",
-				"parameters": [
-					"id"
 				]
 			},
 			{
@@ -63748,7 +66344,7 @@
 			{
 				"name": "TemplateOrderEmailXPaymentCard_Insert",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"custpc_id",
 					"sentdate"
 				]
@@ -63756,15 +66352,9 @@
 			{
 				"name": "TemplateOrderEmailXPaymentCard_Load",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"custpc_id",
 					"templateorderemailxpaymentcard var"
-				]
-			},
-			{
-				"name": "TemplateOrderEmailXPaymentCard_Delete_All_Email",
-				"parameters": [
-					"email_id"
 				]
 			},
 			{
@@ -63776,7 +66366,7 @@
 			{
 				"name": "TemplateOrderEmailXBasket_Insert",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"basket_id",
 					"sentdate"
 				]
@@ -63784,15 +66374,9 @@
 			{
 				"name": "TemplateOrderEmailXBasket_Load",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"basket_id",
 					"templateorderemailxbasket var"
-				]
-			},
-			{
-				"name": "TemplateOrderEmailXBasket_Delete_All_Email",
-				"parameters": [
-					"email_id"
 				]
 			},
 			{
@@ -63804,7 +66388,7 @@
 			{
 				"name": "TemplateOrderEmailXSubscription_Insert",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"subscrp_id",
 					"termproc",
 					"sentdate"
@@ -63813,16 +66397,10 @@
 			{
 				"name": "TemplateOrderEmailXSubscription_Load",
 				"parameters": [
-					"email_id",
+					"email_code",
 					"subscrp_id",
 					"termproc",
 					"templateorderemailxpaymentcard var"
-				]
-			},
-			{
-				"name": "TemplateOrderEmailXSubscription_Delete_All_Email",
-				"parameters": [
-					"email_id"
 				]
 			},
 			{
@@ -64002,6 +66580,14 @@
 				]
 			},
 			{
+				"name": "TemplateOrderEmail_Branch_Warning_CSS",
+				"parameters": []
+			},
+			{
+				"name": "TemplateOrderEmail_Branch_Warning_HTML",
+				"parameters": []
+			},
+			{
 				"name": "TemplateOrderEmails_SparseOrderArray_Add_OrderItems",
 				"parameters": [
 					"orders var",
@@ -64054,6 +66640,22 @@
 					"email var",
 					"subscriptions var",
 					"subscription_count"
+				]
+			},
+			{
+				"name": "TemplateOrderEmails_SendDigitalDownloadEmails",
+				"parameters": [
+					"run var",
+					"digitaldownloads var",
+					"digitaldownload_count"
+				]
+			},
+			{
+				"name": "TemplateOrderEmails_SendGiftCertificateEmails",
+				"parameters": [
+					"run var",
+					"giftcertificates var",
+					"giftcertificate_count"
 				]
 			},
 			{
@@ -64126,7 +66728,21 @@
 				]
 			},
 			{
+				"name": "TemplateOrderEmails_Initialize_Item_giftcertificates",
+				"parameters": [
+					"run var",
+					"settings var"
+				]
+			},
+			{
 				"name": "TemplateOrderEmails_Initialize_Item_digitaldownload",
+				"parameters": [
+					"run var",
+					"settings var"
+				]
+			},
+			{
+				"name": "TemplateOrderEmails_Initialize_Item_digitaldownloads",
 				"parameters": [
 					"run var",
 					"settings var"
@@ -64173,6 +66789,14 @@
 				"name": "TemplateOrderEmails_Structure_To_String",
 				"parameters": [
 					"structure var"
+				]
+			},
+			{
+				"name": "TemplateOrderEmailList_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
 				]
 			},
 			{
@@ -64261,6 +66885,14 @@
 				]
 			},
 			{
+				"name": "Module_Notify_GiftCertificates_Created",
+				"parameters": [
+					"module var",
+					"giftcertificates var",
+					"giftcertificate_count"
+				]
+			},
+			{
 				"name": "Module_Notify_GiftCertificate_Redeemed",
 				"parameters": [
 					"module var",
@@ -64287,6 +66919,14 @@
 				"parameters": [
 					"module var",
 					"dl var"
+				]
+			},
+			{
+				"name": "Module_Notify_DigitalDownloads_Created",
+				"parameters": [
+					"module var",
+					"digitaldownloads var",
+					"digitaldownload_count"
 				]
 			},
 			{
@@ -64433,6 +67073,7 @@
 			{
 				"name": "CustomerAndPaymentCardList_Load_Expiration",
 				"parameters": [
+					"email_code",
 					"month",
 					"year",
 					"paymentcards var"
@@ -64441,6 +67082,7 @@
 			{
 				"name": "CustomerAndPaymentCardList_Load_Expiration_SubscriptionsOnly",
 				"parameters": [
+					"email_code",
 					"month",
 					"year",
 					"paymentcards var"
@@ -64449,6 +67091,7 @@
 			{
 				"name": "CustomerAndPaymentCardList_Load_Expiration_LowLevel",
 				"parameters": [
+					"email_code",
 					"month",
 					"year",
 					"linked_to_subscription",
@@ -64464,6 +67107,7 @@
 			{
 				"name": "BasketList_Load_AbandonedBillEmail",
 				"parameters": [
+					"email_code",
 					"abandoned_time",
 					"baskets var"
 				]
@@ -64617,8 +67261,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -64628,14 +67274,34 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
 			},
 			{
 				"name": "ComponentModule_Initialize",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "GiftCertificatesComponentModule_Initialize",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var"
+				]
+			},
+			{
+				"name": "DigitalDownloadsComponentModule_Initialize",
 				"parameters": [
 					"module var",
 					"item",
@@ -64677,6 +67343,27 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -65118,6 +67805,12 @@
 				]
 			},
 			{
+				"name": "Validate_Optional_Code",
+				"parameters": [
+					"code"
+				]
+			},
+			{
 				"name": "Create_Columns_Present",
 				"parameters": [
 					"import var",
@@ -65443,7 +68136,7 @@
 				]
 			},
 			{
-				"name": "Convert_Page_Code",
+				"name": "Validate_Alternate_Page_Code",
 				"parameters": [
 					"record var",
 					"session var"
@@ -66661,7 +69354,7 @@
 				]
 			},
 			{
-				"name": "Convert_Page_Code",
+				"name": "Validate_Alternate_Page_Code",
 				"parameters": [
 					"record var",
 					"session var"
@@ -67146,7 +69839,7 @@
 			{
 				"name": "URI_Delete_All_Page_Except_ID",
 				"parameters": [
-					"page_id",
+					"page_code",
 					"uri_id"
 				]
 			},
@@ -67396,7 +70089,7 @@
 				]
 			},
 			{
-				"name": "Convert_Page_Code",
+				"name": "Validate_Alternate_Page_Code",
 				"parameters": [
 					"record var",
 					"session var"
@@ -77316,7 +80009,7 @@
 			{
 				"name": "CSSUI_Dispatch_Page_Load",
 				"parameters": [
-					"page_id",
+					"page_code",
 					"fallback_code",
 					"page var"
 				]
@@ -78760,6 +81453,12 @@
 			},
 			{
 				"name": "CombinationFacet_CacheSetting_Delete_LowLevel",
+				"parameters": [
+					"facet var"
+				]
+			},
+			{
+				"name": "CombinationFacet_Template_Filename",
 				"parameters": [
 					"facet var"
 				]
@@ -80434,6 +83133,27 @@
 				]
 			},
 			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
+				]
+			},
+			{
 				"name": "ComponentModule_Validate",
 				"parameters": [
 					"module var",
@@ -80458,8 +83178,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -80595,6 +83317,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code"
 				]
 			},
@@ -80603,6 +83326,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"values var"
 				]
@@ -80612,6 +83336,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"value"
 				]
@@ -80621,6 +83346,7 @@
 				"parameters": [
 					"module var",
 					"page_id",
+					"pagever_id",
 					"code",
 					"values var",
 					"value_count"
@@ -80667,6 +83393,7 @@
 					"module var",
 					"loaded_record var",
 					"page_id",
+					"pagever_id",
 					"code"
 				]
 			},
@@ -80684,6 +83411,15 @@
 					"module var",
 					"code",
 					"choices var"
+				]
+			},
+			{
+				"name": "Module_Page_Fields_Propagate",
+				"parameters": [
+					"module var",
+					"page_id",
+					"oldpagever_id",
+					"newpagever_id"
 				]
 			},
 			{
@@ -80711,7 +83447,9 @@
 				"name": "Module_Notify_Page_Copy",
 				"parameters": [
 					"module var",
+					"source_branch var",
 					"source_page var",
+					"dest_branch var",
 					"dest_page var"
 				]
 			},
@@ -81502,6 +84240,7 @@
 				"parameters": [
 					"code",
 					"page_id",
+					"pagever_id",
 					"field var",
 					"value var"
 				]
@@ -81510,14 +84249,25 @@
 				"name": "PageFieldValue_LoadAll_Cache",
 				"parameters": [
 					"page_id",
+					"pagever_id",
 					"cache var"
+				]
+			},
+			{
+				"name": "PageFieldValue_Load",
+				"parameters": [
+					"field_id",
+					"page_id",
+					"pagever_id",
+					"value var"
 				]
 			},
 			{
 				"name": "PageFieldValue_Delete",
 				"parameters": [
 					"field_id",
-					"page_id"
+					"page_id",
+					"pagever_id"
 				]
 			},
 			{
@@ -81533,10 +84283,18 @@
 				]
 			},
 			{
+				"name": "PageFieldValue_Delete_All_Page_Version",
+				"parameters": [
+					"page_id",
+					"version_id"
+				]
+			},
+			{
 				"name": "PageFieldValue_Set",
 				"parameters": [
 					"field_id",
 					"page_id",
+					"pagever_id",
 					"value"
 				]
 			},
@@ -82570,6 +85328,18 @@
 				"parameters": [
 					"source var",
 					"dest var"
+				]
+			},
+			{
+				"name": "MVGA_Settings_Default",
+				"parameters": [
+					"settings var"
+				]
+			},
+			{
+				"name": "MVGA_Load_Or_Create",
+				"parameters": [
+					"settings var"
 				]
 			},
 			{
@@ -85928,6 +88698,7 @@
 			{
 				"name": "ProductDataField_Delete",
 				"parameters": [
+					"module var",
 					"productdatafield var"
 				]
 			},
@@ -86451,6 +89222,39 @@
 				]
 			},
 			{
+				"name": "Module_Email_Tabs",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Email_Head",
+				"parameters": [
+					"module var",
+					"tab"
+				]
+			},
+			{
+				"name": "Module_Email_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields"
+				]
+			},
+			{
+				"name": "Module_Email_Validate",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
+				"name": "Module_Email_Update",
+				"parameters": [
+					"module var"
+				]
+			},
+			{
 				"name": "LogModule_Action",
 				"parameters": [
 					"module var",
@@ -86502,8 +89306,10 @@
 				"parameters": [
 					"module var",
 					"item",
+					"source_branch var",
 					"source_page var",
 					"source_settings var",
+					"dest_branch var",
 					"dest_page var",
 					"dest_settings var"
 				]
@@ -86711,6 +89517,27 @@
 					"field_prefix",
 					"fields var",
 					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_Update_Requires_Version",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var",
+					"settings var"
+				]
+			},
+			{
+				"name": "ComponentModule_PostUpdate",
+				"parameters": [
+					"module var",
+					"page var",
+					"item",
+					"field_prefix",
+					"fields var"
 				]
 			},
 			{
@@ -87956,22 +90783,16 @@
 				]
 			},
 			{
-				"name": "QuoteEmail_Read",
+				"name": "QuoteEmail_Copy",
 				"parameters": [
-					"email var"
+					"source var",
+					"dest var"
 				]
 			},
 			{
 				"name": "QuoteEmail_Load_Code",
 				"parameters": [
 					"code",
-					"email var"
-				]
-			},
-			{
-				"name": "QuoteEmail_Load_ID",
-				"parameters": [
-					"id",
 					"email var"
 				]
 			},
@@ -87984,7 +90805,7 @@
 			{
 				"name": "QuoteEmail_Update_Template",
 				"parameters": [
-					"template_id",
+					"filename",
 					"source var",
 					"template var",
 					"previous_template var"
@@ -87995,12 +90816,6 @@
 				"parameters": [
 					"email var",
 					"original_email var"
-				]
-			},
-			{
-				"name": "QuoteEmail_Update_LowLevel",
-				"parameters": [
-					"email var"
 				]
 			},
 			{
@@ -88327,7 +91142,7 @@
 				"name": "QuoteXExpiredEmail_Delete",
 				"parameters": [
 					"quote_id",
-					"email_id"
+					"email_code"
 				]
 			},
 			{
@@ -88340,7 +91155,7 @@
 				"name": "QuoteXReminderEmail_Load",
 				"parameters": [
 					"quote_id",
-					"email_id",
+					"email_code",
 					"quotexreminderemail var"
 				]
 			},
@@ -88354,7 +91169,7 @@
 				"name": "QuoteXReminderEmail_Update",
 				"parameters": [
 					"quote_id",
-					"email_id",
+					"email_code",
 					"sentdate"
 				]
 			},
@@ -88520,6 +91335,14 @@
 				"name": "Quote_ShippingModule_Description",
 				"parameters": [
 					"quote var"
+				]
+			},
+			{
+				"name": "QuoteEmailList_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"data var"
 				]
 			},
 			{
