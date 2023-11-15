@@ -28,11 +28,11 @@ export default {
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,
 		RIGHT_IS_OPEN_PAREN: /^[a-z0-9_]*?\s*?(?=\()/i,
-		LEFT_VARIABLE_S: /(?<=s(ystem)?\.)(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
-		LEFT_VARIABLE_G: /(?<=g(lobal)?\.)(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
-		LEFT_VARIABLE_L: /(?<=l(ocal)?\.)(([a-z0-9_]+)([a-z0-9:_\.]*))?$/i,
-		VARIABLES_G: /(?<=g(lobal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
-		VARIABLES_L: /(?<=l(ocal)?\.)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
-		VARIABLES_LSETTINGS: /(?<=l(ocal)?\.settings:)([a-z0-9_]+)([a-z0-9:_\.]*)/ig,
+		LEFT_VARIABLE_S: /(?<=s(ystem)?\.)(([a-z0-9_]+)([a-z0-9_:\[\]]*))?$/i,
+		LEFT_VARIABLE_G: /(?<=g(lobal)?\.)(([a-z0-9_]+)([a-z0-9_:\[\]]*))?$/i,
+		LEFT_VARIABLE_L: /(?<=l(ocal)?\.)(([a-z0-9_]+)([a-z0-9_:\[\]]*))?$/i,
+		VARIABLES_G: /(?<=g(lobal)?\.)([a-z0-9_]+)([a-z0-9_:\[\]]*)/ig,
+		VARIABLES_L: /(?<=l(ocal)?\.)([a-z0-9_]+)([a-z0-9_:\[\]]*)/ig,
+		VARIABLES_LSETTINGS: /(?<=l(ocal)?\.settings:)([a-z0-9_]+)([a-z0-9_:\[\]]*)/ig,
 	}
 };

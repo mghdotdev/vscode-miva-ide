@@ -197,14 +197,14 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_G) || [];
 			const _foundVariable = variableMatches[0] || '';
 			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-			const foundVariableRegex = new RegExp(`^${foundVariable}`);
+			const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
 
 			const foundVariables = [].concat(
 				mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [],
 				mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || []
 			)
 				?.filter( unique )
-				?.filter(_variable => _variable.startsWith(foundVariable))
+				?.filter(_variable => foundVariableRegex.test(_variable))
 				?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 			return CompletionList.create(
@@ -227,9 +227,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_L) || [];
 			const _foundVariable = variableMatches[0] || '';
 			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-			const foundVariableRegex = new RegExp(`^${foundVariable}`);
-
-			console.log('foundVariable', foundVariable);
+			const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
 
 			const foundVariables = [].concat(
 				mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
@@ -238,7 +236,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					: []
 			)
 				?.filter( unique )
-				?.filter(_variable => _variable.startsWith(foundVariable))
+				?.filter(_variable => foundVariableRegex.test(_variable))
 				?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 			return CompletionList.create(
@@ -391,7 +389,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				const variableMatches = left.match(patterns.MVT.LEFT_AFTER_ENTITY_COLON) || [];
 				const _foundVariable = variableMatches[0] || '';
 				const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-				const foundVariableRegex = new RegExp(`^${foundVariable}`);
+				const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
 
 				const foundVariables = [].concat(
 					mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [],
@@ -399,7 +397,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					mvtDocumentText.match( patterns.MVT.ENTITIES ) || [],
 				)
 					?.filter( unique )
-					?.filter(_variable => _variable.startsWith(foundVariable))
+					?.filter(_variable => foundVariableRegex.test(_variable))
 					?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 				return CompletionList.create(
