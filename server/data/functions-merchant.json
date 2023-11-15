@@ -30529,7 +30529,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/lib/crypto_public.mvc'",
+		"distroPath": "g.Module_Library_DBAPI",
 		"functions": [
 			{
 				"name": "Encryption_Available",
@@ -30891,7 +30891,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/lib/dbapi_public.mvc'",
+		"distroPath": "g.Module_Library_DBAPI",
 		"functions": [
 			{
 				"name": "DB_Supported_List",
@@ -34854,7 +34854,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Library_Utilities",
+		"distroPath": "g.Module_Library_DB",
 		"functions": [
 			{
 				"name": "Error_Load_EOF",
@@ -39237,7 +39237,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/lib/util_public.mvc'",
+		"distroPath": "g.Module_Library_Utilities",
 		"functions": [
 			{
 				"name": "OrderMinimumsMet",
@@ -40800,7 +40800,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/lib/util_soap.mvc'",
+		"distroPath": "g.Module_Library_Utilities",
 		"functions": [
 			{
 				"name": "Format_SOAP_DateTime",
