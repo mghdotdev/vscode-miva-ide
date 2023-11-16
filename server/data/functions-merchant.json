@@ -3113,7 +3113,7 @@
 				"parameters": [
 					"affiliates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Affiliate_Update_Balance",
@@ -3174,7 +3174,7 @@
 					"newoffset var",
 					"affiliates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliateEarning_Read",
@@ -3232,7 +3232,7 @@
 					"payout_id",
 					"affiliateearnings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliateEarningList_Load_Offset_Affiliate",
@@ -3243,7 +3243,7 @@
 					"newoffset var",
 					"earnings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliateEarningList_Load_Offset_Payout",
@@ -3256,7 +3256,7 @@
 					"newoffset var",
 					"earnings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliatePayout_Read",
@@ -3304,7 +3304,7 @@
 					"newoffset var",
 					"payout var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliatePayoutList_Load_Offset_Processed",
@@ -3316,7 +3316,7 @@
 					"newoffset var",
 					"payout var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliatePayoutList_Load_Offset_All",
@@ -3328,7 +3328,7 @@
 					"newoffset var",
 					"payout var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliateSession_Read",
@@ -3364,7 +3364,7 @@
 					"affil_code",
 					"affiliatesession var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AffiliateSession_Load_Session",
@@ -3507,7 +3507,7 @@
 					"nextoffset var",
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailabilityGroupList_Load_Customer",
@@ -3515,14 +3515,14 @@
 					"cust_id",
 					"availabilitygroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailabilityGroupList_Load_All",
 				"parameters": [
 					"availabilitygroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailabilityGroup_Load_ID",
@@ -3856,7 +3856,7 @@
 					"agrp_id",
 					"availgroupxshippingmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailGroupXShippingMethod_Delete_All_AvailabilityGroup",
@@ -3881,7 +3881,7 @@
 					"cust_id",
 					"availabilitygroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailGroupXPaymentMethod_Read",
@@ -3947,7 +3947,7 @@
 					"agrp_id",
 					"availgroupxpaymentmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AvailGroupXPaymentMethod_Delete_All_AvailabilityGroup",
@@ -3965,7 +3965,7 @@
 					"cust_id",
 					"availabilitygroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -4057,7 +4057,7 @@
 				"parameters": [
 					"attributetemplates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeTemplate_Increment_ReferenceCount",
@@ -4089,7 +4089,7 @@
 					"newoffset var",
 					"template var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeTemplate_Copy",
@@ -4215,7 +4215,7 @@
 				"parameters": [
 					"attributetemplateattrs var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeTemplateAttrList_Load_Template",
@@ -4223,7 +4223,7 @@
 					"attemp_id",
 					"attributetemplateattrs var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeTemplateOption_Read",
@@ -4326,7 +4326,7 @@
 					"attmpat_id",
 					"attributetemplateoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeList_Load_Template",
@@ -4334,7 +4334,7 @@
 					"template_id",
 					"attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeTemplateAttributeList_Update_Offsets_PastEnd",
@@ -4430,7 +4430,7 @@
 			{
 				"name": "JSON_AttributeTemplateList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeTemplate_Insert",
@@ -4450,7 +4450,7 @@
 			{
 				"name": "JSON_AttributeTemplateAttributeList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeTemplateAttributeList_Load_Query_AdvancedSearchFilter",
@@ -4462,7 +4462,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeTemplateAttribute_Insert",
@@ -4512,7 +4512,7 @@
 			{
 				"name": "JSON_AttributeTemplateProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_AttributeTemplateProduct_Update_Assigned",
@@ -4652,7 +4652,7 @@
 					"rules_id",
 					"copyproductrulesxmodules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CopyProductRulesXModule_Delete",
@@ -4701,7 +4701,7 @@
 					"rules_id",
 					"copyproductrulesxcustomfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CopyProductRulesXCustomField_Delete",
@@ -4741,12 +4741,12 @@
 			{
 				"name": "JSON_CopyProductRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CopyProductRulesModuleList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CopyProductRulesModule_Update_Assigned",
@@ -4756,7 +4756,7 @@
 			{
 				"name": "JSON_CopyProductRulesCustomFieldList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CopyProductRulesCustomField_Update_Assigned",
@@ -5422,7 +5422,7 @@
 				"parameters": [
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset",
@@ -5434,7 +5434,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_AvailabilityGroup_Unassigned",
@@ -5447,7 +5447,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_AvailabilityGroup_All",
@@ -5460,7 +5460,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_AvailabilityGroup_Assigned",
@@ -5473,7 +5473,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_PriceGroup_Unassigned",
@@ -5486,7 +5486,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_PriceGroup_All",
@@ -5499,7 +5499,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerList_Load_Offset_PriceGroup_Assigned",
@@ -5512,7 +5512,7 @@
 					"nextoffset var",
 					"customers var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerEmail_Read",
@@ -5667,7 +5667,7 @@
 				"parameters": [
 					"credits var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerCreditHistoryList_Load_Customer",
@@ -5675,7 +5675,7 @@
 					"cust_id",
 					"credits var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerCreditHistoryList_Load_Offset_Customer",
@@ -5687,7 +5687,7 @@
 					"nextoffset var",
 					"credits var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerCreditHistoryList_Count_Customer",
@@ -5852,7 +5852,7 @@
 					"cust_id",
 					"customeraddresses var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerAddress_Load_ID",
@@ -6089,12 +6089,12 @@
 			{
 				"name": "JSON_CustomerLoginList_Load_Match",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseCustomerList_Filters",
@@ -6109,7 +6109,7 @@
 			{
 				"name": "JSON_CustomerList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Customer_CustomFields_Query",
@@ -6195,7 +6195,7 @@
 			{
 				"name": "JSON_CustomerCreditHistoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerCreditHistory_Delete",
@@ -6234,7 +6234,7 @@
 			{
 				"name": "JSON_BusinessAccountList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BusinessAccountIndex_Load_ID",
@@ -6264,7 +6264,7 @@
 			{
 				"name": "JSON_BusinessAccountCustomerList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BusinessAccountCustomerIndex_Load_ID",
@@ -6303,12 +6303,12 @@
 			{
 				"name": "JSON_CustomerAddressList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerAddressList_Load_Customer",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerAddress_Insert",
@@ -6343,7 +6343,7 @@
 			{
 				"name": "JSON_CustomerPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShopAsCustomer_MostRecentBasket_Load_Customer",
@@ -6814,7 +6814,7 @@
 					"order_id",
 					"dls var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DigitalDownloadList_Load_Product",
@@ -6822,7 +6822,7 @@
 					"product_id",
 					"dls var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DigitalDownloadProductSetting_Read",
@@ -6961,7 +6961,7 @@
 				"parameters": [
 					"dl_cdns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -6978,7 +6978,7 @@
 			{
 				"name": "JSON_ProductDigitalDownloadList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductDigitalDownload_Validate_Common",
@@ -7003,7 +7003,7 @@
 			{
 				"name": "JSON_DigitalDownloadCDNList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_DigitalDownloadCDN_Insert",
@@ -7031,7 +7031,7 @@
 			{
 				"name": "JSON_CatalogDigitalDownloadList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_DigitalDownload_Load_Code",
@@ -7399,7 +7399,7 @@
 				"parameters": [
 					"facetrules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryFacetRules_Default",
@@ -7474,7 +7474,7 @@
 					"cat_id",
 					"categoryfacetrules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductListFacet_Read",
@@ -7528,7 +7528,7 @@
 					"cachfct_id",
 					"facet_values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductListFacetValue_Insert",
@@ -7565,7 +7565,7 @@
 			{
 				"name": "JSON_FacetRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FacetRules_Update",
@@ -7575,7 +7575,7 @@
 			{
 				"name": "JSON_FacetList_Load_Priority",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FacetList_Update_Priority",
@@ -7594,7 +7594,7 @@
 			{
 				"name": "JSON_CategoryFacetRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryFacetRules_Update",
@@ -7609,7 +7609,7 @@
 			{
 				"name": "JSON_CategoryFacetList_Load_Priority",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryFacetList_Update_Priority",
@@ -7619,7 +7619,7 @@
 			{
 				"name": "JSON_FacetCategoryRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -7631,14 +7631,14 @@
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_All",
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Query_Cached",
@@ -7646,7 +7646,7 @@
 					"query var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Query",
@@ -7654,7 +7654,7 @@
 					"query var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Category_Cached",
@@ -7662,7 +7662,7 @@
 					"category var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Category",
@@ -7670,7 +7670,7 @@
 					"category var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Category_Query_Cached",
@@ -7679,7 +7679,7 @@
 					"query var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Category_Query",
@@ -7688,14 +7688,14 @@
 					"query var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_All_LowLevel",
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_All_LowLevel_With_Query",
@@ -7703,7 +7703,7 @@
 					"query var",
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Values_Query",
@@ -7713,7 +7713,7 @@
 					"facet_count",
 					"facets_with_values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Load_Values_Query_Populate",
@@ -7723,7 +7723,7 @@
 					"facet var",
 					"facet_with_values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FacetList_Runtime_Sort",
@@ -7815,7 +7815,7 @@
 				"parameters": [
 					"giftcertificates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GiftCertificate_Load_ID",
@@ -7839,7 +7839,7 @@
 					"order_id",
 					"giftcertificates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GiftCertificateSales_Read",
@@ -7906,7 +7906,7 @@
 					"order_id",
 					"giftcertificatesales var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -7923,7 +7923,7 @@
 			{
 				"name": "JSON_GiftCertificateList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_GiftCertificate_Load",
@@ -8613,14 +8613,14 @@
 				"parameters": [
 					"paymentcardtype_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentCardTypeList_Load_Linked",
 				"parameters": [
 					"paymentcardtype_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentCardTypeList_Load_PaymentMethod",
@@ -8629,7 +8629,7 @@
 					"meth_code",
 					"paymentcardtypes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentCardTypeList_Load_PaymentMethod_Cached",
@@ -8638,7 +8638,7 @@
 					"meth_code",
 					"paymentcardtypes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodRules_Read",
@@ -8715,7 +8715,7 @@
 				"parameters": [
 					"paymentmethodrules_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodRules_Increment_AvailabilityGroupCount",
@@ -8787,7 +8787,7 @@
 					"pctype_id",
 					"paymentmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodExclusion_Load",
@@ -8810,7 +8810,7 @@
 					"pctype_id",
 					"paymentmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodExclusionList_Load_Excluded",
@@ -8820,7 +8820,7 @@
 					"pctype_id",
 					"paymentmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductPaymentRules_Read",
@@ -8926,7 +8926,7 @@
 					"product_id",
 					"productpaymentmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductPaymentMethodList_Load_Product_Cached",
@@ -8934,7 +8934,7 @@
 					"product_id",
 					"productpaymentmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerPaymentCard_Read",
@@ -9068,7 +9068,7 @@
 					"cust_id",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerPaymentCardList_Load_Customer_Cached",
@@ -9076,7 +9076,7 @@
 					"cust_id",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentCard_Read",
@@ -9100,21 +9100,21 @@
 					"order_id",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentCardList_Load_Expired",
 				"parameters": [
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentCardList_Load_Unreferenced",
 				"parameters": [
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentCard_Insert",
@@ -9238,7 +9238,7 @@
 			{
 				"name": "JSON_PaymentMethodRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodRules_Update_Method",
@@ -9248,12 +9248,12 @@
 			{
 				"name": "JSON_PaymentMethodList_Load_Enabled",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodList_Load_Exclusions",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodExclusionList_Update_Method",
@@ -9263,7 +9263,7 @@
 			{
 				"name": "JSON_PaymentMethodList_Load_Priority",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodList_Update_Priority",
@@ -9273,7 +9273,7 @@
 			{
 				"name": "JSON_PaymentMethodAvailabilityGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentCardType",
@@ -9292,7 +9292,7 @@
 			{
 				"name": "JSON_PaymentCardTypeList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentCardType_Insert",
@@ -9339,7 +9339,7 @@
 			{
 				"name": "JSON_CustomerPaymentCardList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerPaymentCard_Insert",
@@ -9376,7 +9376,7 @@
 			{
 				"name": "JSON_AuthorizationBlacklistList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AuthorizationBlacklistList_Load_Query_Filter",
@@ -9388,7 +9388,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AuthorizationBlacklist_Insert",
@@ -9423,7 +9423,7 @@
 					"order var",
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_Load_Order_Authorize_OnSite",
@@ -9431,7 +9431,7 @@
 					"order var",
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_Load_Order_Authorize_LowLevel",
@@ -9439,14 +9439,14 @@
 					"order var",
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_Load_Basket",
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_Load_Basket_LowLevel",
@@ -9454,7 +9454,7 @@
 					"mivapay_settings var",
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_Group_PaymentCardTypes",
@@ -9469,7 +9469,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductPaymentRules_Merge_ProductPaymentMethods",
@@ -9547,14 +9547,14 @@
 				"parameters": [
 					"paymentmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodAndPaymentCardTypeList_Load_Enabled",
 				"parameters": [
 					"paymentmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PaymentMethodList_AppendMethod",
@@ -10095,7 +10095,7 @@
 			{
 				"name": "JSON_PageBuilderPageComponentPreviewImageList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageBuilderPage_Update",
@@ -10469,21 +10469,21 @@
 					"nextoffset var",
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupList_Load_All",
 				"parameters": [
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_All",
 				"parameters": [
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupList_Load_Module",
@@ -10491,7 +10491,7 @@
 					"module_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroup_Count_Module",
@@ -10507,7 +10507,7 @@
 					"account_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_BusinessAccount_AsOf",
@@ -10516,7 +10516,7 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Customer",
@@ -10524,7 +10524,7 @@
 					"cust_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Customer_AsOf",
@@ -10533,14 +10533,14 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_AllLoggedInCustomers",
 				"parameters": [
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_AllLoggedInCustomers_AsOf",
@@ -10548,7 +10548,7 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_DiscountSignature",
@@ -10556,7 +10556,7 @@
 					"dscsig_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Basket_Coupons",
@@ -10564,7 +10564,7 @@
 					"basket var",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Coupon",
@@ -10572,7 +10572,7 @@
 					"coupon_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Order",
@@ -10580,7 +10580,7 @@
 					"order_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroup_Load_ID",
@@ -10656,7 +10656,7 @@
 					"pgrp_id",
 					"pricegroupexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupExclusion_Load",
@@ -11286,7 +11286,7 @@
 					"basket_id",
 					"coupons var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CouponList_Load_Order",
@@ -11294,7 +11294,7 @@
 					"order_id",
 					"coupons var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Coupon_Increment_UseCount",
@@ -11626,7 +11626,7 @@
 					"basket_id",
 					"basketcoupons var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketCoupon_Recalculate_Basket",
@@ -11677,7 +11677,7 @@
 					"basket_id",
 					"basketdiscounttotals var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketDiscountTotal_Update_Persistent",
@@ -11702,7 +11702,7 @@
 					"basket_id",
 					"basketdiscounttotals var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Basket_Persistent",
@@ -11710,7 +11710,7 @@
 					"basket var",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Basket_Persistent_AsOf",
@@ -11719,7 +11719,7 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderCoupon_Read",
@@ -11781,7 +11781,7 @@
 					"order_id",
 					"ordercoupons var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderDiscountTotal_Read",
@@ -11840,7 +11840,7 @@
 					"order_id",
 					"orderdiscounttotals var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderDiscountTotal_Total_Order",
@@ -12122,7 +12122,7 @@
 				"parameters": [
 					"discountsignatures var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DiscountSignature_Delete",
@@ -12366,7 +12366,7 @@
 			{
 				"name": "JSON_DiscountModuleFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BasePriceGroupList_Filters",
@@ -12383,7 +12383,7 @@
 			{
 				"name": "JSON_PriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroup_Loaders_Present",
@@ -12407,7 +12407,7 @@
 			{
 				"name": "JSON_PriceGroupList_Load_Exclusions",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroup_Insert",
@@ -12455,7 +12455,7 @@
 			{
 				"name": "JSON_PriceGroupProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_PriceGroupProduct_Update_Assigned",
@@ -12470,7 +12470,7 @@
 			{
 				"name": "JSON_PriceGroupExcludedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_PriceGroupExcludedProduct_Update_Assigned",
@@ -12485,7 +12485,7 @@
 			{
 				"name": "JSON_PriceGroupProductSubscriptionTermList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupProductSubscriptionTerm_Update_Assigned",
@@ -12500,7 +12500,7 @@
 			{
 				"name": "JSON_PriceGroupExcludedProductSubscriptionTermList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupExcludedProductSubscriptionTerm_Update_Assigned",
@@ -12515,7 +12515,7 @@
 			{
 				"name": "JSON_PriceGroupQualifyingProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_PriceGroupQualifyingProduct_Update_Assigned",
@@ -12530,7 +12530,7 @@
 			{
 				"name": "JSON_PriceGroupQualifyingProductSubscriptionTermList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupQualifyingProductSubscriptionTerm_Update_Assigned",
@@ -12540,7 +12540,7 @@
 			{
 				"name": "JSON_PriceGroupCustomerList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupCustomerIndex_Load_ID",
@@ -12562,7 +12562,7 @@
 			{
 				"name": "JSON_CouponList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Coupon_Load",
@@ -12599,7 +12599,7 @@
 			{
 				"name": "JSON_CouponPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CouponPriceGroup_Update_Assigned",
@@ -12609,7 +12609,7 @@
 			{
 				"name": "JSON_CouponCustomerList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CouponCustomerIndex_Load_ID",
@@ -12624,7 +12624,7 @@
 			{
 				"name": "JSON_CouponBusinessAccountList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CouponBusinessAccount_Update_Assigned",
@@ -12663,7 +12663,7 @@
 			{
 				"name": "JSON_OrderCouponList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderDiscountTotal",
@@ -12675,12 +12675,12 @@
 			{
 				"name": "JSON_OrderDiscountTotalList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderPriceGroup_Update_Assigned",
@@ -12699,7 +12699,7 @@
 			{
 				"name": "JSON_OrderCouponList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderCoupon_Update_Assigned",
@@ -12721,7 +12721,7 @@
 			{
 				"name": "JSON_PriceGroupBusinessAccountList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupBusinessAccountIndex_Load_ID",
@@ -12736,7 +12736,7 @@
 			{
 				"name": "JSON_PriceGroupCategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupCategoryIndex_Load_ID",
@@ -12751,7 +12751,7 @@
 			{
 				"name": "JSON_PriceGroupExcludedCategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupExcludedCategoryIndex_Load_ID",
@@ -12803,7 +12803,7 @@
 					"cust_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_BusinessAccount",
@@ -12811,7 +12811,7 @@
 					"account_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_BusinessAccount_AsOf",
@@ -12820,7 +12820,7 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_Customer",
@@ -12828,7 +12828,7 @@
 					"cust_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_Customer_AsOf",
@@ -12837,14 +12837,14 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_AllLoggedInCustomers",
 				"parameters": [
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_AllLoggedInCustomers_AsOf",
@@ -12852,7 +12852,7 @@
 					"asof",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_DiscountSignature",
@@ -12860,7 +12860,7 @@
 					"dscsig_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupAndModuleList_Load_Basket",
@@ -12868,7 +12868,7 @@
 					"basket var",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResolvedPriceGroupAndModuleList_Load_Basket",
@@ -12876,7 +12876,7 @@
 					"basket var",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupExclusionCache_Update",
@@ -16951,7 +16951,7 @@
 			{
 				"name": "JSON_RelatedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_RelatedProduct_Update_Assigned",
@@ -17056,14 +17056,14 @@
 				"parameters": [
 					"reports var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ReportList_Load_Display",
 				"parameters": [
 					"reports var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Report_Count_Module",
@@ -17140,7 +17140,7 @@
 					"set_id",
 					"reportdata var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ReportData_Delete_Report",
@@ -17186,12 +17186,12 @@
 			{
 				"name": "JSON_ReportList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReportModuleFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Report_Validate_Module",
@@ -17413,7 +17413,7 @@
 				"parameters": [
 					"searchablecustomfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -17451,7 +17451,7 @@
 			{
 				"name": "JSON_SearchableFieldList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_SearchableFieldList_Sort_Callback",
@@ -17490,7 +17490,7 @@
 				"parameters": [
 					"searchablefields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SearchableField_Update_Builtin",
@@ -17513,7 +17513,7 @@
 				"parameters": [
 					"searchablecustomfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SearchableField_Update_CustomField",
@@ -17527,21 +17527,21 @@
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SearchableCustomFieldList_Load_With_Capabilities_Cached",
 				"parameters": [
 					"searchablecustomfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SearchableCustomFieldList_Load_With_Capabilities",
 				"parameters": [
 					"searchablecustomfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SearchSettings_Notify_Modules",
@@ -17774,7 +17774,7 @@
 				"parameters": [
 					"shippingmethodrules_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodRules_Increment_AvailabilityGroupCount",
@@ -17842,7 +17842,7 @@
 					"method_code",
 					"shippingmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodExclusion_Load",
@@ -17862,7 +17862,7 @@
 					"method_code",
 					"shippingmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodExclusionList_Load_Excluded",
@@ -17871,7 +17871,7 @@
 					"method_code",
 					"shippingmethodexclusions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductShippingRules_Read",
@@ -17983,7 +17983,7 @@
 					"product_id",
 					"productshippingrules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductShippingMethodList_Load_Product",
@@ -17991,7 +17991,7 @@
 					"product_id",
 					"productshippingmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PackagingRules_Read",
@@ -18070,7 +18070,7 @@
 				"parameters": [
 					"boxes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -18103,7 +18103,7 @@
 			{
 				"name": "JSON_ShippingMethodRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodRules_Update_Method",
@@ -18113,12 +18113,12 @@
 			{
 				"name": "JSON_ShippingMethodList_Load_Enabled",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodList_Load_Exclusions",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodExclusionList_Update_Method",
@@ -18128,7 +18128,7 @@
 			{
 				"name": "JSON_ShippingMethodList_Load_Priority",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodList_Update_Priority",
@@ -18138,7 +18138,7 @@
 			{
 				"name": "JSON_ShippingMethodAvailabilityGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Box",
@@ -18227,17 +18227,17 @@
 			{
 				"name": "JSON_BoxCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BoxList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BoxList_Load_Enabled",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Box_Validate_Module",
@@ -18264,7 +18264,7 @@
 			{
 				"name": "JSON_BoxPackingModule_BoxFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PackingSolution_Load_OrderShipment",
@@ -18335,7 +18335,7 @@
 				"parameters": [
 					"shippingmethods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodList_Runtime_Sort_Callback",
@@ -18391,21 +18391,21 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodList_Load_Basket_Undiscounted",
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodList_Load_Basket_LowLevel",
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShippingMethodList_Filter_ExcludeByDefault",
@@ -18764,7 +18764,7 @@
 					"max",
 					"prodstats var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProdStats_Add_Counts",
@@ -18788,7 +18788,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "STA_Store_Reset",
@@ -18955,7 +18955,7 @@
 					"product_id",
 					"productsubscriptionterms var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductSubscriptionTermList_Load_Product",
@@ -18963,7 +18963,7 @@
 					"product_id",
 					"productsubscriptionterms var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductSubscriptionTerm_Increment_SubscriptionCount",
@@ -19024,7 +19024,7 @@
 					"subterm_id",
 					"productsubscriptiontermdates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionSettings_Read",
@@ -19314,7 +19314,7 @@
 					"order_id",
 					"subscriptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionList_Load_Product",
@@ -19322,7 +19322,7 @@
 					"product_id",
 					"subscriptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionList_Load_Pending",
@@ -19330,7 +19330,7 @@
 					"dtstamp",
 					"subscriptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionGroupList_Load_Pending",
@@ -19338,7 +19338,7 @@
 					"dtstamp",
 					"subscription_groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Subscription_Load_ID",
@@ -19386,7 +19386,7 @@
 					"nextoffset var",
 					"subscriptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_Subscription_Count_Customer",
@@ -19444,7 +19444,7 @@
 					"total_count var",
 					"subscriptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionOption_Read",
@@ -19473,7 +19473,7 @@
 					"subscrp_id",
 					"subscriptionoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionOption_Copy_Order",
@@ -19489,7 +19489,7 @@
 					"line_id",
 					"subscriptionoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -19532,7 +19532,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseProducSubscriptionTermList_Product_Read",
@@ -19572,12 +19572,12 @@
 			{
 				"name": "JSON_ProductSubscriptionTermList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductAndSubscriptionTermList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductAndSubscriptionTermIndex_Load_ID",
@@ -19649,22 +19649,22 @@
 			{
 				"name": "JSON_SubscriptionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerSubscriptionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductCustomerSubscriptionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductSubscriptionTermSubscriptionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_SubscriptionList_Load_Query_Filter",
@@ -19675,7 +19675,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_SubscriptionList_Load_Query_Search_Filter",
@@ -19687,7 +19687,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_SubscriptionList_CustomFields_Query_Filter",
@@ -19810,7 +19810,7 @@
 			{
 				"name": "JSON_SubscriptionOrderList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionShippingMethodList_Sort_Callback",
@@ -19824,7 +19824,7 @@
 			{
 				"name": "JSON_SubscriptionShippingMethodList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -20043,7 +20043,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionProductShippingRules_Merge_BasketItem",
@@ -20328,7 +20328,7 @@
 					"ui_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_UI",
@@ -20337,7 +20337,7 @@
 					"ui_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_CSSResource",
@@ -20345,7 +20345,7 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_CSSResource",
@@ -20354,7 +20354,7 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Changeset_CSSResource",
@@ -20363,7 +20363,7 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_JavaScriptResource",
@@ -20371,7 +20371,7 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_JavaScriptResource",
@@ -20380,7 +20380,7 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Changeset_JavaScriptResource",
@@ -20389,14 +20389,14 @@
 					"res_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_All",
 				"parameters": [
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_All",
@@ -20404,14 +20404,14 @@
 					"branch_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_All_Runtime",
 				"parameters": [
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_All_Runtime",
@@ -20419,14 +20419,14 @@
 					"branch_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_All_Layout",
 				"parameters": [
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_All_Layout",
@@ -20434,7 +20434,7 @@
 					"branch_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_NotOnOtherBranch",
@@ -20443,7 +20443,7 @@
 					"other_branch_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Page_Load_First",
@@ -20522,7 +20522,7 @@
 					"item_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_Item",
@@ -20531,7 +20531,7 @@
 					"item_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Item_Runtime",
@@ -20539,7 +20539,7 @@
 					"item_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Branch_Item_Runtime",
@@ -20548,7 +20548,7 @@
 					"item_id",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Offset",
@@ -20560,7 +20560,7 @@
 					"nextoffset var",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Offset_Runtime",
@@ -20572,7 +20572,7 @@
 					"nextoffset var",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageVersion_Read",
@@ -20946,7 +20946,7 @@
 				"parameters": [
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_All",
@@ -20954,7 +20954,7 @@
 					"branch_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Page",
@@ -20962,7 +20962,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_Page",
@@ -20971,7 +20971,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Item_Load_PageList",
@@ -20999,7 +20999,7 @@
 					"nextoffset var",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Offset_Item_Assigned",
@@ -21012,7 +21012,7 @@
 					"nextoffset var",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageList_Load_Offset_Item_Unassigned",
@@ -21025,7 +21025,7 @@
 					"nextoffset var",
 					"pages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Item_Load_Module",
@@ -21041,7 +21041,7 @@
 					"module_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_Module",
@@ -21050,7 +21050,7 @@
 					"module_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Module_Code",
@@ -21058,7 +21058,7 @@
 					"mod_code",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_Module_Code",
@@ -21067,7 +21067,7 @@
 					"mod_code",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Offset",
@@ -21079,7 +21079,7 @@
 					"nextoffset var",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_Offset",
@@ -21092,21 +21092,21 @@
 					"nextoffset var",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Codes_Cached",
 				"parameters": [
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Codes",
 				"parameters": [
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Branch_Codes",
@@ -21114,7 +21114,7 @@
 					"branch_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Page",
@@ -21122,7 +21122,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Branch_Page",
@@ -21131,7 +21131,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Page_Active",
@@ -21139,7 +21139,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Branch_Page_Active",
@@ -21148,7 +21148,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Page_Render",
@@ -21156,7 +21156,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Branch_Page_Render",
@@ -21165,7 +21165,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemExtensionModuleList_Load_Page_Render",
@@ -21173,7 +21173,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemExtensionModuleList_Load_Branch_Page_Render",
@@ -21182,7 +21182,7 @@
 					"page_id",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Page_Store",
@@ -21190,7 +21190,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Branch_Page_Store",
@@ -21199,7 +21199,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Page_Store_Active",
@@ -21207,7 +21207,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemModuleList_Load_Branch_Page_Store_Active",
@@ -21216,7 +21216,7 @@
 					"page_id",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Item_Fork_Extensions",
@@ -21518,7 +21518,7 @@
 					"item_id",
 					"itemextensions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemExtensionList_Load_Branch_Item",
@@ -21527,7 +21527,7 @@
 					"item_id",
 					"itemextensions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemExtensionList_Update_Offsets",
@@ -21662,7 +21662,7 @@
 					"nextoffset var",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Offset_Page_Assigned",
@@ -21675,7 +21675,7 @@
 					"nextoffset var",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ItemList_Load_Offset_Page_Unassigned",
@@ -21688,7 +21688,7 @@
 					"nextoffset var",
 					"items var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Branch_Read",
@@ -21755,14 +21755,14 @@
 				"parameters": [
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_All",
 				"parameters": [
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_Page_Code",
@@ -21770,7 +21770,7 @@
 					"page_code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_Page_Code_Admin_UI",
@@ -21779,7 +21779,7 @@
 					"ui_id",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_Item_Code",
@@ -21787,7 +21787,7 @@
 					"item_code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_Item_Module_Code",
@@ -21795,7 +21795,7 @@
 					"mod_code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_CSSResource_Code",
@@ -21803,7 +21803,7 @@
 					"code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_JavaScriptResource_Code",
@@ -21811,7 +21811,7 @@
 					"code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_ManagedTemplate_Filename",
@@ -21819,7 +21819,7 @@
 					"filename",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_ManagedProperty_Code",
@@ -21828,7 +21828,7 @@
 					"code",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_ManagedProperty_Product",
@@ -21837,7 +21837,7 @@
 					"product_id",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BranchList_Load_ManagedProperty_Category",
@@ -21846,7 +21846,7 @@
 					"cat_id",
 					"branches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Branch_Delete",
@@ -21922,7 +21922,7 @@
 					"set_id",
 					"tags var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateTag_Insert",
@@ -21967,7 +21967,7 @@
 					"branch_id",
 					"changesets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Changeset_Delete_All_Branch",
@@ -22286,7 +22286,7 @@
 				"parameters": [
 					"managedtemplates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateList_Load_Branch_All",
@@ -22294,7 +22294,7 @@
 					"branch_id",
 					"managedtemplates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateList_Load_Branchless_Parent",
@@ -22302,7 +22302,7 @@
 					"parent_id",
 					"managedtemplates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateList_Load_Branchless_Item",
@@ -22310,7 +22310,7 @@
 					"item_id",
 					"managedtemplates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateAndVersion_Load_Filename",
@@ -22547,7 +22547,7 @@
 					"templ_id",
 					"managedtemplateversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateVersionList_Load_Branch_Template",
@@ -22556,14 +22556,14 @@
 					"templ_id",
 					"managedtemplateversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateVersionList_Load_Sync",
 				"parameters": [
 					"managedtemplateversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedTemplateVersionList_Load_Branch_Sync",
@@ -22571,7 +22571,7 @@
 					"branch_id",
 					"managedtemplateversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SKIN_Enabled",
@@ -22628,14 +22628,14 @@
 					"order",
 					"skins var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SKINList_Load_All",
 				"parameters": [
 					"SKINs var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SKINList_Load_Offset",
@@ -22647,7 +22647,7 @@
 					"nextoffset var",
 					"SKINs var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResource_Read",
@@ -22742,7 +22742,7 @@
 					"type",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_Type",
@@ -22751,7 +22751,7 @@
 					"type",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_File",
@@ -22759,7 +22759,7 @@
 					"file",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_File",
@@ -22768,7 +22768,7 @@
 					"file",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Module",
@@ -22777,7 +22777,7 @@
 					"module_data",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_Module",
@@ -22787,7 +22787,7 @@
 					"module_data",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Group",
@@ -22795,7 +22795,7 @@
 					"group_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_Group",
@@ -22804,7 +22804,7 @@
 					"group_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Changeset_Group",
@@ -22813,7 +22813,7 @@
 					"group_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_CombinedResource",
@@ -22821,7 +22821,7 @@
 					"comb_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_CombinedResource",
@@ -22830,7 +22830,7 @@
 					"comb_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Changeset_CombinedResource",
@@ -22839,7 +22839,7 @@
 					"comb_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Page",
@@ -22847,7 +22847,7 @@
 					"page_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_Page",
@@ -22856,14 +22856,14 @@
 					"page_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_All",
 				"parameters": [
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceList_Load_Branch_All",
@@ -22871,7 +22871,7 @@
 					"branch_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_JavaScriptResource_Load_Code",
@@ -22897,7 +22897,7 @@
 					"page_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_JavaScriptResourceList_Load_Branch_Page",
@@ -22907,7 +22907,7 @@
 					"page_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_JavaScriptResourceList_Load_CombinedResource",
@@ -22915,7 +22915,7 @@
 					"comb_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_JavaScriptResourceList_Load_Branch_CombinedResource",
@@ -22924,7 +22924,7 @@
 					"comb_id",
 					"scriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResource_Create_Type_Combined",
@@ -23153,7 +23153,7 @@
 					"comb_id",
 					"scriptresourceversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceVersionList_Load_Branch_ResourceGroup",
@@ -23162,7 +23162,7 @@
 					"group_id",
 					"scriptresourceversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceVersion_Fork_CrossReferences_LowLevel",
@@ -23414,7 +23414,7 @@
 					"res_id",
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResourceList_Load_Branch_Resource",
@@ -23423,7 +23423,7 @@
 					"res_id",
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResourceList_Load_CombinedResource",
@@ -23431,7 +23431,7 @@
 					"comb_id",
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResourceList_Load_Branch_CombinedResource",
@@ -23440,14 +23440,14 @@
 					"comb_id",
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResourceList_Load_All",
 				"parameters": [
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResourceList_Load_Branch_All",
@@ -23455,7 +23455,7 @@
 					"branch_id",
 					"scriptcombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptCombinedResourceXResource_Update_Offsets_PastEnd",
@@ -23596,7 +23596,7 @@
 					"script_id",
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroupList_Load_Branch_Resource",
@@ -23605,7 +23605,7 @@
 					"script_id",
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroupList_Load_Group",
@@ -23613,7 +23613,7 @@
 					"group_id",
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroupList_Load_Branch_Group",
@@ -23622,14 +23622,14 @@
 					"group_id",
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroupList_Load_All",
 				"parameters": [
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroupList_Load_Branch_All",
@@ -23637,7 +23637,7 @@
 					"branch_id",
 					"scriptresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXGroup_Update_Offsets_PastEnd",
@@ -23783,7 +23783,7 @@
 					"res_id",
 					"scriptresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXPageList_Load_Branch_Resource",
@@ -23792,14 +23792,14 @@
 					"res_id",
 					"scriptresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXPageList_Load_All",
 				"parameters": [
 					"scriptresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JavaScriptResourceXPageList_Load_Branch_All",
@@ -23807,7 +23807,7 @@
 					"branch_id",
 					"scriptresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResource_Read",
@@ -23902,7 +23902,7 @@
 					"file",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_File",
@@ -23911,7 +23911,7 @@
 					"file",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Module",
@@ -23920,7 +23920,7 @@
 					"module_data",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_Module",
@@ -23930,7 +23930,7 @@
 					"module_data",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Type",
@@ -23938,7 +23938,7 @@
 					"type",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_Type",
@@ -23947,7 +23947,7 @@
 					"type",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Group",
@@ -23955,7 +23955,7 @@
 					"group_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_Group",
@@ -23964,7 +23964,7 @@
 					"group_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Changeset_Group",
@@ -23973,7 +23973,7 @@
 					"group_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_CombinedResource",
@@ -23981,7 +23981,7 @@
 					"comb_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_CombinedResource",
@@ -23990,7 +23990,7 @@
 					"comb_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Changeset_CombinedResource",
@@ -23999,7 +23999,7 @@
 					"comb_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Page",
@@ -24007,7 +24007,7 @@
 					"page_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_Page",
@@ -24016,14 +24016,14 @@
 					"page_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_All",
 				"parameters": [
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceList_Load_Branch_All",
@@ -24031,7 +24031,7 @@
 					"branch_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_CSSResource_Load_Code",
@@ -24057,7 +24057,7 @@
 					"page_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_CSSResourceList_Load_Branch_Page",
@@ -24067,7 +24067,7 @@
 					"page_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_CSSResourceList_Load_CombinedResource",
@@ -24075,7 +24075,7 @@
 					"comb_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_CSSResourceList_Load_Branch_CombinedResource",
@@ -24084,7 +24084,7 @@
 					"comb_id",
 					"cssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResource_Create_Type_Combined",
@@ -24313,7 +24313,7 @@
 					"comb_id",
 					"cssresourceversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceVersionList_Load_Branch_ResourceGroup",
@@ -24322,7 +24322,7 @@
 					"group_id",
 					"cssresourceversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceVersion_Fork_CrossReferences_LowLevel",
@@ -24574,7 +24574,7 @@
 					"res_id",
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResourceList_Load_Branch_Resource",
@@ -24583,7 +24583,7 @@
 					"res_id",
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResourceList_Load_CombinedResource",
@@ -24591,7 +24591,7 @@
 					"comb_id",
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResourceList_Load_Branch_CombinedResource",
@@ -24600,14 +24600,14 @@
 					"comb_id",
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResourceList_Load_All",
 				"parameters": [
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResourceList_Load_Branch_All",
@@ -24615,7 +24615,7 @@
 					"branch_id",
 					"csscombinedresourcexresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSCombinedResourceXResource_Update_Offsets_PastEnd",
@@ -24756,7 +24756,7 @@
 					"css_id",
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroupList_Load_Branch_Resource",
@@ -24765,7 +24765,7 @@
 					"css_id",
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroupList_Load_Group",
@@ -24773,7 +24773,7 @@
 					"group_id",
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroupList_Load_Branch_Group",
@@ -24782,14 +24782,14 @@
 					"group_id",
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroupList_Load_All",
 				"parameters": [
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroupList_Load_Branch_All",
@@ -24797,7 +24797,7 @@
 					"branch_id",
 					"cssresourcexgroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXGroup_Update_Offsets_PastEnd",
@@ -24943,7 +24943,7 @@
 					"res_id",
 					"cssresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXPageList_Load_Branch_Resource",
@@ -24952,14 +24952,14 @@
 					"res_id",
 					"cssresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXPageList_Load_All",
 				"parameters": [
 					"cssresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSResourceXPageList_Load_Branch_All",
@@ -24967,7 +24967,7 @@
 					"branch_id",
 					"cssresourcexpages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ResourceGroup_Read",
@@ -25190,7 +25190,7 @@
 					"type",
 					"managedproperties var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedPropertyList_Load_Branch_Type",
@@ -25199,7 +25199,7 @@
 					"type",
 					"managedproperties var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedProperty_Load_Code",
@@ -25425,7 +25425,7 @@
 					"type",
 					"managedproperties var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedPropertyAndVersionList_Load_Branch_Type",
@@ -25434,7 +25434,7 @@
 					"type",
 					"managedproperties var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ManagedPropertyVersionAndImage_Load_Branch",
@@ -25833,7 +25833,7 @@
 					"rules_id",
 					"copypagerulesxsettingslist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CopyPageRulesXSettings_Delete",
@@ -25946,7 +25946,7 @@
 			{
 				"name": "JSON_PageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Page_CustomFields_With_Query",
@@ -25967,7 +25967,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Page_CustomFields_Query",
@@ -26030,12 +26030,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchPageVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Page_Delete",
@@ -26055,7 +26055,7 @@
 			{
 				"name": "JSON_PageCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Page_CustomFields_Initialize",
@@ -26099,12 +26099,12 @@
 			{
 				"name": "JSON_ItemPageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageItemList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageItem_Update_Assigned",
@@ -26130,12 +26130,12 @@
 			{
 				"name": "JSON_ItemList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchItemVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Item_Insert",
@@ -26150,7 +26150,7 @@
 			{
 				"name": "JSON_ItemExtensionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ItemExtension_Insert",
@@ -26170,7 +26170,7 @@
 			{
 				"name": "JSON_FrameworkList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Framework_Delete",
@@ -26241,19 +26241,19 @@
 			{
 				"name": "JSON_TemplateVersionList_Load_Template",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateVersionList_Load_Template_LowLevel",
 				"parameters": [
 					"template_id"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateVersionList_Load_Query_Filter",
@@ -26264,7 +26264,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateVersion_Clear_History_LowLevel",
@@ -26302,7 +26302,7 @@
 			{
 				"name": "JSON_JavaScriptResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptResource_Insert",
@@ -26405,12 +26405,12 @@
 			{
 				"name": "JSON_JavaScriptResource_TemplateVersionList_Load_Template",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptResource_LinkedPageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptResource_LinkedPage_Update_Assigned",
@@ -26420,7 +26420,7 @@
 			{
 				"name": "JSON_JavaScriptResource_LinkedResourceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptResource_LinkedResourceGroup_Update_Assigned",
@@ -26430,7 +26430,7 @@
 			{
 				"name": "JSON_JavaScriptCombinedResource_LinkedResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptCombinedResource_LinkedResource_Update_Assigned",
@@ -26467,7 +26467,7 @@
 			{
 				"name": "JSON_CSSResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSResource_Load",
@@ -26589,12 +26589,12 @@
 			{
 				"name": "JSON_CSSResource_TemplateVersionList_Load_Template",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSResource_LinkedPageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSResource_LinkedPage_Update_Assigned",
@@ -26604,7 +26604,7 @@
 			{
 				"name": "JSON_CSSResource_LinkedResourceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSResource_LinkedResourceGroup_Update_Assigned",
@@ -26614,7 +26614,7 @@
 			{
 				"name": "JSON_CSSCombinedResource_LinkedResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSCombinedResource_LinkedResource_Update_Assigned",
@@ -26650,12 +26650,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ResourceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ResourceGroup_Load",
@@ -26694,7 +26694,7 @@
 			{
 				"name": "JSON_ResourceGroup_LinkedCSSResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ResourceGroup_LinkedCSSResourceList_DisplayOrder_Update",
@@ -26704,7 +26704,7 @@
 			{
 				"name": "JSON_ResourceGroup_LinkedJavaScriptResourceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ResourceGroup_LinkedJavaScriptResourceList_DisplayOrder_Update",
@@ -26818,7 +26818,7 @@
 			{
 				"name": "JSON_BranchList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchList_Load_Query_Filter",
@@ -26829,17 +26829,17 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchList_Load_Runtime_Headers",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchList_Load_Runtime",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchTag_Cookie_Get",
@@ -26860,12 +26860,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchTemplateVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSResourceVersionList_Joins",
@@ -26886,12 +26886,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchCSSResourceVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_JavaScriptResourceVersionList_Joins",
@@ -26912,12 +26912,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchJavaScriptResourceVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Changeset",
@@ -27071,7 +27071,7 @@
 			{
 				"name": "JSON_ChangesetList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetList_Load_Query_Search_Filter",
@@ -27083,7 +27083,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetList_Merge",
@@ -27093,7 +27093,7 @@
 			{
 				"name": "JSON_ChangesetChangeList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetChangeList_Load_Query_AdvancedSearchFilter",
@@ -27105,27 +27105,27 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetTemplateVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetCSSResourceVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetJavaScriptResourceVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetItemVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ManagedPropertyVersionList_Joins",
@@ -27146,7 +27146,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ManagedPropertyVersionList_Load_Query_Search_Filter",
@@ -27158,17 +27158,17 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BranchPropertyVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChangesetPropertyVersionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageCacheSetting_Load",
@@ -27181,7 +27181,7 @@
 			{
 				"name": "JSON_PageCacheSettingList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageCacheSettingList_Sort_Callback",
@@ -27250,7 +27250,7 @@
 			{
 				"name": "JSON_CopyPageRulesList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CopyPageRules_Insert",
@@ -27270,7 +27270,7 @@
 			{
 				"name": "JSON_CopyPageRulesSettingsList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CopyPageRulesSettings_Update_Assigned",
@@ -29979,7 +29979,7 @@
 					"field_feature",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CommonComponentFields_Initialize_xxx_CustomField_Filter_ModuleFields",
@@ -30300,7 +30300,7 @@
 					"page_id",
 					"uris var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "URIList_Load_Page_Code",
@@ -30308,7 +30308,7 @@
 					"page_code",
 					"uris var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "URIList_Load_Product",
@@ -30316,7 +30316,7 @@
 					"product_id",
 					"uris var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "URIList_Load_Category",
@@ -30324,7 +30324,7 @@
 					"cat_id",
 					"uris var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "URIList_Load_Item",
@@ -30332,7 +30332,7 @@
 					"uri var",
 					"uris var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "URI_Product_Transfer",
@@ -30464,7 +30464,7 @@
 			{
 				"name": "JSON_URIList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_URI_Validate_Destination",
@@ -30523,7 +30523,7 @@
 			{
 				"name": "JSON_ProductURIList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductURI_Regenerate",
@@ -30553,7 +30553,7 @@
 			{
 				"name": "JSON_CategoryURIList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryURI_Regenerate",
@@ -30583,7 +30583,7 @@
 			{
 				"name": "JSON_PageURIList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageURI_Regenerate",
@@ -30613,7 +30613,7 @@
 			{
 				"name": "JSON_FeedURIList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FeedURI_Insert",
@@ -31137,7 +31137,7 @@
 				"parameters": [
 					"upsell var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "UpsellList_Load_Offset",
@@ -31149,7 +31149,7 @@
 					"newoffset var",
 					"upsell var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Upsell_Load_Eligible_ProductList",
@@ -31221,7 +31221,7 @@
 					"product_id",
 					"upsellxprod VAR"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "UpsellOptions_Read",
@@ -31263,7 +31263,7 @@
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			}
 		]
 	},
@@ -31294,7 +31294,7 @@
 					"basket var",
 					"upsold_products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			}
 		]
 	},
@@ -31359,7 +31359,7 @@
 					"id",
 					"wishlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishList_Load_ID_Cached",
@@ -31367,7 +31367,7 @@
 					"id",
 					"wishlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishList_Load_WishListItem",
@@ -31375,7 +31375,7 @@
 					"wish_id",
 					"wishlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishList_Load_WishListItem_Cached",
@@ -31383,7 +31383,7 @@
 					"wish_id",
 					"wishlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListList_Load_Customer",
@@ -31391,7 +31391,7 @@
 					"cust_id",
 					"wishlists var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListList_Load_Offset_Customer",
@@ -31403,7 +31403,7 @@
 					"nextoffset var",
 					"wishlists var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishList_Count_Customer",
@@ -31424,7 +31424,7 @@
 					"nextoffset var",
 					"wishlists var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishList_Count_Customer_Search",
@@ -31544,7 +31544,7 @@
 					"wshlst_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_Product",
@@ -31552,7 +31552,7 @@
 					"product_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_Attribute",
@@ -31560,7 +31560,7 @@
 					"attr_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_Option",
@@ -31569,7 +31569,7 @@
 					"option_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_AttributeTemplateAttribute",
@@ -31577,7 +31577,7 @@
 					"attmpat_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_AttributeTemplateOption",
@@ -31586,7 +31586,7 @@
 					"option_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WishListItemList_Load_WishList_Product",
@@ -31595,7 +31595,7 @@
 					"product_id",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_WishListProductList_Load_Offset_WishList",
@@ -31607,7 +31607,7 @@
 					"nextoffset var",
 					"wishlistitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_WishListProduct_Count_WishList",
@@ -31644,7 +31644,7 @@
 					"wish_id",
 					"wishlistoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -31765,12 +31765,12 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AuthorizationFailureList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AuthorizationFailureList_Delete",
@@ -31797,12 +31797,12 @@
 			{
 				"name": "JSON_BatchList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BatchReportList_Load_Orders",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BatchReport_Run",
@@ -31849,14 +31849,14 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Category_CustomFieldsList_Load",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Category_CustomFields_Initialize",
@@ -31906,7 +31906,7 @@
 			{
 				"name": "JSON_CategoryCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryIndex_Load_ID",
@@ -31916,12 +31916,12 @@
 			{
 				"name": "JSON_CategoryList_Load_Parent",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Category_CustomFields_Query",
@@ -31974,7 +31974,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Category_Load_Code",
@@ -32033,7 +32033,7 @@
 			{
 				"name": "JSON_CategoryProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_CategoryProduct_Update_Assigned",
@@ -32063,7 +32063,7 @@
 			{
 				"name": "JSON_ChildCategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ChildCategory_Update_Assigned",
@@ -32083,7 +32083,7 @@
 			{
 				"name": "JSON_CountryList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -32093,7 +32093,7 @@
 			{
 				"name": "JSON_EncryptionKeyList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EncryptionKey_Delete",
@@ -32103,7 +32103,7 @@
 			{
 				"name": "JSON_OrderList_Load_EncryptionKey_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -32123,12 +32123,12 @@
 			{
 				"name": "JSON_ImageTypeList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ImageTypeList_Load_All",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ImageType_Load_ID",
@@ -32161,12 +32161,12 @@
 			{
 				"name": "JSON_MMTextEditor_FontSizeList_Load_All",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_MMTextEditor_FontFamilyList_Load_All",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -32222,12 +32222,12 @@
 			{
 				"name": "JSON_ModuleList_Load_Features",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ModuleList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ModuleList_Load_Query_Search_Filter",
@@ -32239,7 +32239,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Module_Load",
@@ -32342,7 +32342,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseOrderIndex_Load_ID",
@@ -32363,7 +32363,7 @@
 			{
 				"name": "JSON_OrderList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderList_Load_Query_Filter",
@@ -32374,7 +32374,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderList_Load_Query_Advanced_Filter",
@@ -32386,7 +32386,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderList_CreateShipment_Status",
@@ -32469,22 +32469,22 @@
 			{
 				"name": "JSON_OrderItemList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderItemList_Load_Status",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderItemList_Load_Shipment",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderItemList_Load_Return",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderCharge",
@@ -32504,12 +32504,12 @@
 			{
 				"name": "JSON_OrderChargeList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderChargeList_Load_Type",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Order_Create_FromOrder",
@@ -32660,7 +32660,7 @@
 			{
 				"name": "JSON_OrderTabList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderItem_DetermineSKU",
@@ -32803,7 +32803,7 @@
 			{
 				"name": "JSON_OrderCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderCustomFields_Update",
@@ -32825,12 +32825,12 @@
 			{
 				"name": "JSON_OrderPaymentList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AllOrderPaymentList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AllOrderPaymentList_Joins",
@@ -32845,7 +32845,7 @@
 			{
 				"name": "JSON_OrderPaymentFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EncryptionKey_Load",
@@ -32863,22 +32863,22 @@
 			{
 				"name": "JSON_EncryptionKeyList_Load_Batch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EncryptionKeyList_Load_OrderList",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EncryptionKeyList_Load_Capture_Batch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EncryptionKeyList_Load_Capture_OrderList",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Order_Authorize_GenerateMivaPayRequest",
@@ -32895,7 +32895,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Order_Authorize",
@@ -32944,17 +32944,17 @@
 			{
 				"name": "JSON_PaymentMethodList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodList_Load_OnSite",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PaymentMethodFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderList_Capture_Decrypt_OrderPayment",
@@ -33086,12 +33086,12 @@
 			{
 				"name": "JSON_ProductImageList_Load_Product",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductImageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductImageList_DisplayOrder_Update",
@@ -33140,12 +33140,12 @@
 			{
 				"name": "JSON_ProductKitList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PartList_Load_ProductKit",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductKit_Update_Parts",
@@ -33181,12 +33181,12 @@
 			{
 				"name": "JSON_ProductKitInventoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductInventoryList_Load_ProductKit",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -33213,14 +33213,14 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Product_CustomFieldsList_Load",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Product_CustomFields_Initialize",
@@ -33270,7 +33270,7 @@
 			{
 				"name": "JSON_ProductCustomFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Product_Loaders_Present",
@@ -33312,12 +33312,12 @@
 			{
 				"name": "JSON_ProductList_Load_CodeMatch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_ProductList_Load_SKUMatch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_ProductList_Adjust_Inventory",
@@ -33347,12 +33347,12 @@
 			{
 				"name": "JSON_AttributeList_Load_CodeMatch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeList_Load_Inventory",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Option_Load_Code",
@@ -33362,22 +33362,22 @@
 			{
 				"name": "JSON_OptionList_Load_CodeMatch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OptionList_Load_Attribute",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeTemplateOptionList_Load_Attribute",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeAndOptionList_Load_Product",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseProductList_Filters",
@@ -33431,7 +33431,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_BaseProductList_Load_Query_LowLevel",
@@ -33449,7 +33449,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_BaseProductList_Load_Query_QueryCustomFields",
@@ -33459,7 +33459,7 @@
 					"count",
 					"total_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_BaseProductIndex_Load_ID",
@@ -33497,7 +33497,7 @@
 			{
 				"name": "JSON_ProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Product_CustomFields_Query",
@@ -33550,7 +33550,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_ProductList_Load_Query_Search_Filter",
@@ -33562,7 +33562,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Product_Delete",
@@ -33628,7 +33628,7 @@
 			{
 				"name": "JSON_ProductAttributeAndOptionList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductAttributeAndOptionList_Load_Query_Search_Filter",
@@ -33640,7 +33640,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductAttributeAndOptionList_Load_Query_Search_Filter_WHERE_PriceCostWeight",
@@ -33649,7 +33649,7 @@
 					"column",
 					"search_value var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Attribute_Insert",
@@ -33709,7 +33709,7 @@
 			{
 				"name": "JSON_ProductCategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductCategoryList_Update_Assigned",
@@ -33719,7 +33719,7 @@
 			{
 				"name": "JSON_ProductPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -33729,12 +33729,12 @@
 			{
 				"name": "JSON_ProductVariantList_Load_Product",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductVariantList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductVariantInventoryIndex_Load_ID",
@@ -33744,12 +33744,12 @@
 			{
 				"name": "JSON_ProductVariantInventoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductVariantPartList_Load_Variant",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductVariantList_Delete",
@@ -33783,12 +33783,12 @@
 			{
 				"name": "JSON_ProductInventoryList_Load_ProductVariants",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductInventoryList_Load_ProductVariants_Filter",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductVariant_Insert",
@@ -33935,12 +33935,12 @@
 			{
 				"name": "JSON_OrderReturnList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderReturnList_Load_Order",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderReturnList_Received",
@@ -33960,7 +33960,7 @@
 			{
 				"name": "JSON_Runtime_AttributeAndOptionList_Load_Product",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_Product_AttributeAndOption",
@@ -34142,7 +34142,7 @@
 			{
 				"name": "JSON_Runtime_AttributeList_Load_ProductVariant_Possible",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_ProductVariant_Load_Attributes",
@@ -34152,7 +34152,7 @@
 			{
 				"name": "JSON_Runtime_ProductImageList_Load_Product_Variant",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_ProductImageDataList_Output",
@@ -34177,7 +34177,7 @@
 			{
 				"name": "JSON_Runtime_ShippingMethodList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CalculateCharges",
@@ -34221,7 +34221,7 @@
 			{
 				"name": "JSON_Runtime_PaymentMethodList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_ValidateAddress",
@@ -34284,12 +34284,12 @@
 			{
 				"name": "JSON_Runtime_CategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryList_Load_Query_LowLevel",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryList_Load_Query_ReadChildren",
@@ -34298,7 +34298,7 @@
 					"depth",
 					"customfield_state var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryList_OrderByColumns",
@@ -34346,14 +34346,14 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryCustomFieldList_Load",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_Category_CustomFields_Initialize",
@@ -34421,24 +34421,24 @@
 			{
 				"name": "JSON_Runtime_ProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Runtime_RelatedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_BaseRuntimeProductList_Load_Query",
 				"parameters": [
 					"search_query var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Runtime_ProductList_Facets",
@@ -34485,7 +34485,7 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_Product_CustomFields_Initialize",
@@ -34521,7 +34521,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "JSON_Runtime_Product_CustomFields_Query",
@@ -34623,12 +34623,12 @@
 			{
 				"name": "JSON_ShipmentBatchList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShipmentBatchReportList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShipmentBatchReport_Run",
@@ -34685,7 +34685,7 @@
 			{
 				"name": "JSON_OrderShipmentList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipmentList_Load_Query_Filter",
@@ -34696,7 +34696,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipmentList_Load_Query_Advanced_Filter",
@@ -34708,7 +34708,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipment_CustomFields_Query",
@@ -34739,12 +34739,12 @@
 			{
 				"name": "JSON_OrderShipmentList_Load_Order",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipmentList_Load_ShipmentBatch",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipmentList_Update",
@@ -34827,7 +34827,7 @@
 			{
 				"name": "JSON_OrderShipmentLabelList_Load_Shipment",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OrderShipmentLabel_Void_Shipment",
@@ -34850,7 +34850,7 @@
 			{
 				"name": "JSON_ShippingMethodList_Load_Order",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodList_Load_Order_LowLevel",
@@ -34859,27 +34859,27 @@
 					"methods var",
 					"method_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingLabelMethodList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingLabelModuleBoxList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingLabelShipmentFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingLabelPackageFieldList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -34889,12 +34889,12 @@
 			{
 				"name": "JSON_StateList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StateList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StateIndex_Load_Code",
@@ -34941,17 +34941,17 @@
 			{
 				"name": "JSON_StoreList_Load_All",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StoreList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StoreCountryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StoreCountryIndex_Load_ID",
@@ -35021,7 +35021,7 @@
 			{
 				"name": "JSON_CacheSettingList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CacheSettingList_Sort_Callback",
@@ -35075,7 +35075,7 @@
 			{
 				"name": "JSON_StoreModuleList_Load_Feature",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -35085,7 +35085,7 @@
 			{
 				"name": "JSON_TrackingLinkList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -35095,7 +35095,7 @@
 			{
 				"name": "JSON_UserPreferenceList_Load_Heirarchy",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_UserPreferenceList_Load_Heirarchy_Output",
@@ -35105,7 +35105,7 @@
 					"key_prefix",
 					"exclude_prefix"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_UserPreferenceList_Save",
@@ -35115,7 +35115,7 @@
 			{
 				"name": "JSON_UserPreferenceList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_UserPreference_Insert",
@@ -35757,7 +35757,7 @@
 					"product_id",
 					"attr_ids var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeIdentifierList_Load_Product_Inventory",
@@ -35765,7 +35765,7 @@
 					"product_id",
 					"attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -36135,7 +36135,7 @@
 					"product_id",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset",
@@ -36147,7 +36147,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset_AvailabilityGroup_All",
@@ -36160,7 +36160,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset_AvailabilityGroup_Unassigned",
@@ -36173,7 +36173,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset_AvailabilityGroup_Assigned",
@@ -36186,7 +36186,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Category_Load_First",
@@ -36292,7 +36292,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset_Product_All",
@@ -36305,7 +36305,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Offset_Product_Assigned",
@@ -36318,7 +36318,7 @@
 					"nextoffset var",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Category_Validate_Parent",
@@ -36373,7 +36373,7 @@
 					"nextoffset VAR",
 					"countries VAR"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CountryList_Load_Offset_Store_All",
@@ -36385,7 +36385,7 @@
 					"nextoffset VAR",
 					"countries VAR"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CountryList_Load_Offset_Store_Assigned",
@@ -36397,7 +36397,7 @@
 					"nextoffset VAR",
 					"countries VAR"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CountryList_Load_Offset_Store_Unassigned",
@@ -36409,7 +36409,7 @@
 					"nextoffset VAR",
 					"countries VAR"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -36473,7 +36473,7 @@
 					"nextoffset var",
 					"crypt_keys var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "EncryptionList_Load_Offset_Order",
@@ -36486,7 +36486,7 @@
 					"nextoffset var",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Encryption_Delete_ID",
@@ -36833,7 +36833,7 @@
 					"batch_id",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderList_Load_Batch_Unprocessed",
@@ -36841,7 +36841,7 @@
 					"batch_id",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderList_Load_Offset",
@@ -36853,7 +36853,7 @@
 					"nextoffset var",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderList_Load_Offset_Uncategorized",
@@ -36865,7 +36865,7 @@
 					"nextoffset var",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderList_Load_Customer_Offset",
@@ -36877,7 +36877,7 @@
 					"nextoffset var",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemList_CreateShipment",
@@ -36959,7 +36959,7 @@
 					"order_id",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderShipmentList_Load_Status",
@@ -36968,7 +36968,7 @@
 					"status",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderShipmentList_Load_ShipmentBatch",
@@ -36976,7 +36976,7 @@
 					"shipmentbatch_id",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -37628,7 +37628,7 @@
 					"image_filepath",
 					"productimages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImage_Insert",
@@ -37733,7 +37733,7 @@
 					"product_id",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImageDataList_Load_Product_Constrained",
@@ -37743,7 +37743,7 @@
 					"constraint_count",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImageDataList_Load_Product_TypeCodes_Constrained",
@@ -37755,7 +37755,7 @@
 					"constraint_count",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImageDataList_Load_Product_Variant",
@@ -37764,7 +37764,7 @@
 					"variant_id",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImageDataList_Load_Product_Variant_Constrained",
@@ -37775,7 +37775,7 @@
 					"constraint_count",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImageDataList_Load_Product_Variant_TypeCodes_Constrained",
@@ -37788,7 +37788,7 @@
 					"constraint_count",
 					"productimagedatalist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -37891,7 +37891,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Active",
@@ -37903,7 +37903,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Uncategorized",
@@ -37915,7 +37915,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_All",
@@ -37928,7 +37928,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_Assigned",
@@ -37941,7 +37941,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_Unassigned",
@@ -37954,7 +37954,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_Unassigned",
@@ -37967,7 +37967,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_All",
@@ -37980,7 +37980,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_Assigned",
@@ -37993,7 +37993,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_Unassigned",
@@ -38006,7 +38006,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_All",
@@ -38019,7 +38019,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_Assigned",
@@ -38032,7 +38032,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_Unassigned",
@@ -38045,7 +38045,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_All",
@@ -38058,7 +38058,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_Assigned",
@@ -38071,7 +38071,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_UpsellXProduct_Required",
@@ -38082,7 +38082,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_RelatedProducts_Offset_Unassigned",
@@ -38095,7 +38095,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_Offset_RelatedProducts_All",
@@ -38108,7 +38108,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_RelatedProducts_Offset_Assigned",
@@ -38121,7 +38121,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Product_Load_First",
@@ -38190,7 +38190,7 @@
 					"sku",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductAndBasketItemList_Load_Basket_WithRuntimeInventory",
@@ -38198,7 +38198,7 @@
 					"basket_id",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Related",
@@ -38206,7 +38206,7 @@
 					"product_id",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			}
 		]
 	},
@@ -38275,7 +38275,7 @@
 					"attribute_count",
 					"possible_options var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OptionList_Load_ProductVariant_Possible_Facets",
@@ -38289,7 +38289,7 @@
 					"facet_count",
 					"possible_options var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeList_Load_ProductVariant_Possible",
@@ -38299,7 +38299,7 @@
 					"attribute_count",
 					"possible_attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeList_Load_ProductVariant_Possible_Facets",
@@ -38311,7 +38311,7 @@
 					"facet_count",
 					"possible_attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Variant",
@@ -38320,7 +38320,7 @@
 					"variant_id",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductVariantList_Load_Product",
@@ -38328,7 +38328,7 @@
 					"product_id",
 					"product_variants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductIDList_Load_Product_Option",
@@ -38339,7 +38339,7 @@
 					"option_id",
 					"product_ids var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Product_Option_HasVariantParts",
@@ -38562,14 +38562,14 @@
 					"cat_id",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_CategoryList_Load_All",
 				"parameters": [
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_Product_AvailabilityGroup_Where",
@@ -38619,7 +38619,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_RelatedProducts_Sort",
@@ -38631,7 +38631,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Category",
@@ -38642,7 +38642,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Category_Sort",
@@ -38654,14 +38654,14 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_All",
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_All",
@@ -38671,7 +38671,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_All_Sort",
@@ -38682,7 +38682,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Search",
@@ -38693,7 +38693,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Search_Sort",
@@ -38705,7 +38705,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Count_Category",
@@ -38844,7 +38844,7 @@
 					"basket_id",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_Basket_Empty",
@@ -38860,7 +38860,7 @@
 					"product_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_Encrypt_SplitPaymentData",
@@ -39198,7 +39198,7 @@
 					"total_count var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Count",
@@ -39206,7 +39206,7 @@
 					"query var",
 					"total_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Data",
@@ -39217,7 +39217,7 @@
 					"next_offset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_LowLevel",
@@ -39230,7 +39230,7 @@
 					"next_offset var",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Runtime_OrderList_Build_Query",
@@ -39275,7 +39275,7 @@
 					"total_count var",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_OrderList_Build_Query_ORDER_BY",
@@ -39935,7 +39935,7 @@
 					"nextoffset var",
 					"states var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StateList_Update_Offsets",
@@ -39999,7 +39999,7 @@
 					"nextoffset var",
 					"tracklinks var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -40124,7 +40124,7 @@
 					"product_id",
 					"attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "AttributeList_Load_Product_Inventory",
@@ -40132,7 +40132,7 @@
 					"product_id",
 					"attributes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -40285,7 +40285,7 @@
 					"basket_id",
 					"basketcharges var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketCharge_Count_Type",
@@ -40312,7 +40312,7 @@
 					"type",
 					"basketcharges var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketCharge_Delete_All_Basket",
@@ -40386,7 +40386,7 @@
 					"basket_id",
 					"basketinfos var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketInfo_Delete",
@@ -40443,7 +40443,7 @@
 					"line_id",
 					"basketitemdiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemDiscount_Delete_All_Basket",
@@ -40529,7 +40529,7 @@
 					"basket_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Group",
@@ -40537,7 +40537,7 @@
 					"group_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Basket_Group",
@@ -40546,7 +40546,7 @@
 					"group_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Basket_Product",
@@ -40555,7 +40555,7 @@
 					"product_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Basket_WithSubscriptionTerm",
@@ -40563,7 +40563,7 @@
 					"basket_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Basket_WishListItem",
@@ -40572,7 +40572,7 @@
 					"wish_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Basket_WithWishListItem",
@@ -40580,7 +40580,7 @@
 					"basket_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItemList_Load_Upsold",
@@ -40588,7 +40588,7 @@
 					"basket_id",
 					"basketitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketItem_Delete_Line",
@@ -40638,7 +40638,7 @@
 					"attmpat_id",
 					"basketoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketOptionDiscountList_Load_LineOption_ID",
@@ -40646,7 +40646,7 @@
 					"lineopt_id",
 					"basketoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketOptionDiscount_Delete_All_Basket",
@@ -40708,7 +40708,7 @@
 					"line_id",
 					"basketoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BasketOption_Delete",
@@ -40919,7 +40919,7 @@
 				"parameters": [
 					"batches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BatchList_Load_Closed",
@@ -40927,7 +40927,7 @@
 					"closed",
 					"batches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BatchList_Load_Offset",
@@ -40939,7 +40939,7 @@
 					"nextoffset var",
 					"batches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -40959,7 +40959,7 @@
 					"id",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "CachedProductList_Load_Signature",
@@ -40968,7 +40968,7 @@
 					"version",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "CachedProductList_Load_Signature_UnExpired",
@@ -40977,14 +40977,14 @@
 					"version",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "CachedProductListList_Load_All",
 				"parameters": [
 					"cachedproductlists var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductListList_Load_OlderThan",
@@ -40992,7 +40992,7 @@
 					"time",
 					"cachedproductlists var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductList_Insert",
@@ -41149,7 +41149,7 @@
 				"parameters": [
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Load_Parent",
@@ -41157,7 +41157,7 @@
 					"parent_id",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -41275,7 +41275,7 @@
 				"parameters": [
 					"countries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CountryList_Load_Alpha",
@@ -41283,7 +41283,7 @@
 					"alpha",
 					"countries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Country_Load_ID",
@@ -41494,7 +41494,7 @@
 				"parameters": [
 					"crypt_keys var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PrivateKey_Read",
@@ -41589,7 +41589,7 @@
 					"image_id",
 					"generatedimages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GeneratedImage_Load_File",
@@ -41709,7 +41709,7 @@
 				"parameters": [
 					"imagetypes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -41758,7 +41758,7 @@
 					"order_id",
 					"notes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -41837,7 +41837,7 @@
 					"attr_id",
 					"options var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -41885,7 +41885,7 @@
 					"order_id",
 					"ordercharges var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderCharge_Load",
@@ -41912,7 +41912,7 @@
 					"type",
 					"ordercharges var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderCharge_Delete_All_Order",
@@ -41978,7 +41978,7 @@
 					"order_id",
 					"orderinfos var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderInfo_Delete",
@@ -42021,7 +42021,7 @@
 					"line_id",
 					"orderitemdiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemDiscount_Delete_All_Order",
@@ -42091,7 +42091,7 @@
 					"product_id",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItem_Load_Line",
@@ -42108,7 +42108,7 @@
 					"order_id",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemList_Load_Order_Subscription",
@@ -42116,7 +42116,7 @@
 					"order_id",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemList_Load_Shipment",
@@ -42124,7 +42124,7 @@
 					"shpmnt_id",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemList_Load_Return",
@@ -42132,7 +42132,7 @@
 					"rma_id",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItemList_Load_Status",
@@ -42141,7 +42141,7 @@
 					"status",
 					"orderitems var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderItem_Count_Shipment",
@@ -42201,7 +42201,7 @@
 					"attmpat_id",
 					"orderoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderOptionDiscountList_Load_LineOption_ID",
@@ -42209,7 +42209,7 @@
 					"lineopt_id",
 					"orderoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderOptionDiscount_Delete_All_Order",
@@ -42267,7 +42267,7 @@
 					"line_id",
 					"orderoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderOption_Delete_All_Order",
@@ -42316,7 +42316,7 @@
 					"order_id",
 					"orderpayments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentList_Load_Order_Authorization",
@@ -42324,7 +42324,7 @@
 					"order_id",
 					"orderpayments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentList_Load_Order_Module_Authorization",
@@ -42333,7 +42333,7 @@
 					"module_id",
 					"orderpayments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPaymentList_Load_Order_Capture",
@@ -42341,7 +42341,7 @@
 					"order_id",
 					"orderpayments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderPayment_Update_Amounts",
@@ -42392,7 +42392,7 @@
 					"order_id",
 					"orderreturns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderReturnList_Load_Status",
@@ -42401,7 +42401,7 @@
 					"status",
 					"orderreturns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderReturn_Insert_LowLevel",
@@ -42521,7 +42521,7 @@
 					"cust_id",
 					"orders var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Order_Load_Customer",
@@ -42639,7 +42639,7 @@
 					"order_id",
 					"ordershipmentlabels var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderShipmentLabel_Count_Shipment",
@@ -42654,7 +42654,7 @@
 					"shpmnt_id",
 					"ordershipmentlabels var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderShipmentLabel_Count_Shipment_Module",
@@ -42671,7 +42671,7 @@
 					"module_id",
 					"ordershipmentlabels var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -42756,7 +42756,7 @@
 					"order_id",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "v57_OrderShipmentList_Load_Status",
@@ -42765,7 +42765,7 @@
 					"status",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "v57_OrderShipmentList_Load_ShipmentBatch",
@@ -42773,7 +42773,7 @@
 					"shipmentbatch_id",
 					"ordershipments var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -42821,7 +42821,7 @@
 					"order_id",
 					"ordersources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderSource_Delete_All_Order",
@@ -42865,7 +42865,7 @@
 					"product_id",
 					"productimages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductImage_Insert_LowLevel",
@@ -43086,7 +43086,7 @@
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "ProductList_Load_SKU",
@@ -43094,7 +43094,7 @@
 					"sku",
 					"products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "Product_Count",
@@ -43177,7 +43177,7 @@
 					"variant_id",
 					"productvariantparts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantPartList_Load_Part",
@@ -43185,7 +43185,7 @@
 					"part_id",
 					"productvariantparts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantPart_Insert",
@@ -43298,7 +43298,7 @@
 					"part_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_Product_Attribute",
@@ -43307,7 +43307,7 @@
 					"attr_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_Product_Option",
@@ -43317,7 +43317,7 @@
 					"option_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_AttributeTemplateAttribute",
@@ -43325,7 +43325,7 @@
 					"attmpat_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_AttributeTemplateOption",
@@ -43334,7 +43334,7 @@
 					"option_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_Variant",
@@ -43343,7 +43343,7 @@
 					"variant_id",
 					"productvariants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariant_Insert_LowLevel",
@@ -43504,7 +43504,7 @@
 				"parameters": [
 					"shipmentbatches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShipmentBatchList_Load_Closed",
@@ -43512,7 +43512,7 @@
 					"closed",
 					"shipmentbatches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShipmentBatchList_Load_Offset",
@@ -43524,7 +43524,7 @@
 					"nextoffset var",
 					"shipmentbatches var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -43615,7 +43615,7 @@
 				"parameters": [
 					"states var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "State_Count",
@@ -43658,7 +43658,7 @@
 				"parameters": [
 					"storecountries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StoreCountry_Load_ID",
@@ -43830,7 +43830,7 @@
 				"parameters": [
 					"stores var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StoreList_Load_User",
@@ -43838,7 +43838,7 @@
 					"user_id",
 					"stores var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StoreList_Load_Manager_Cached",
@@ -43846,7 +43846,7 @@
 					"manager_id",
 					"stores var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StoreList_Load_Manager",
@@ -43854,7 +43854,7 @@
 					"manager_id",
 					"stores var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Store_Count_Cached",
@@ -43927,7 +43927,7 @@
 				"parameters": [
 					"tracklinks var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -43959,7 +43959,7 @@
 					"key_prefix",
 					"userpreferencelist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "UserPreference_Insert",
@@ -46071,7 +46071,7 @@
 				"parameters": [
 					"shipping_methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Image_Type_From_Header",
@@ -46340,49 +46340,49 @@
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductCustomFieldList_Load_Facets",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryCustomFieldList_Load",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerCustomFieldList_Load",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderCustomFieldList_Load",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BoxCustomFieldList_Load",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageCustomFieldList_Load",
 				"parameters": [
 					"customfields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "InitializeCustomFieldSelect",
@@ -48763,7 +48763,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateBatchReport_Insert",
@@ -48863,7 +48863,7 @@
 				"parameters": [
 					"reports var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateBatchReportList_Load_Type",
@@ -48871,7 +48871,7 @@
 					"type",
 					"reports var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateBatchReport_Insert",
@@ -49593,14 +49593,14 @@
 					"dimensions var",
 					"boxes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BoxList_Load_EnabledWithQuantity",
 				"parameters": [
 					"boxes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PackByQuantitySettings_Insert",
@@ -49946,14 +49946,14 @@
 					"dimensions var",
 					"boxes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BoxList_Load_Enabled_WithWeightAndArea",
 				"parameters": [
 					"boxes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PackByWeightSettings_Insert",
@@ -52944,7 +52944,7 @@
 					"category_list var",
 					"category_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Breadcrumb_Array_Generator",
@@ -52963,7 +52963,7 @@
 					"category var",
 					"category_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Breadcrumbs_Initialize",
@@ -53218,7 +53218,7 @@
 				"parameters": [
 					"buttons var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSUI_Button_Load_Code",
@@ -53690,7 +53690,7 @@
 					"category",
 					"category_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_PathToRoot_Adjust_ParentID",
@@ -53708,7 +53708,7 @@
 					"level",
 					"urisettings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryList_Make_Array",
@@ -53922,7 +53922,7 @@
 					"cat_id",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSUI_CatTree_CategoryList_Load_Parent_With_URI",
@@ -53930,7 +53930,7 @@
 					"cat_id",
 					"categories var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CSSUI_CatTree_ManagedPropertyAndVersion_To_ImagePath",
@@ -56501,7 +56501,7 @@
 			{
 				"name": "JSON_CSSUIMessageList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CSSUIMessage_Load",
@@ -59640,7 +59640,7 @@
 			{
 				"name": "JSON_SubscriptionShippingMethodList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -63009,7 +63009,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlexComponentList_Load_Query_Filter",
@@ -63020,7 +63020,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlexComponentList_Delete",
@@ -63229,7 +63229,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlexRegisteredComponentList_Load_Query_Filter",
@@ -63240,7 +63240,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlexRegisteredComponent_Delete",
@@ -63427,7 +63427,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlexItem_Insert",
@@ -63530,7 +63530,7 @@
 				"parameters": [
 					"components var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponent_Insert",
@@ -63584,7 +63584,7 @@
 					"fc_id",
 					"componentscriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentJavaScriptResource_Insert",
@@ -63638,7 +63638,7 @@
 					"fc_id",
 					"componentcssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentCSSResource_Insert",
@@ -63691,7 +63691,7 @@
 					"fc_id",
 					"componentversions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentVersion_Insert",
@@ -63727,7 +63727,7 @@
 					"fcv_id",
 					"componentversionscriptresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentVersionJavaScriptResource_Insert",
@@ -63763,7 +63763,7 @@
 					"fcv_id",
 					"componentversioncssresources var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentVersionCSSResource_Insert",
@@ -63799,7 +63799,7 @@
 					"fcv_id",
 					"componentversiondependencies var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentVersionDependencyList_Load_Version_Conflicts",
@@ -63807,7 +63807,7 @@
 					"fcv_id",
 					"componentversiondependencies var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlexComponentVersionDependency_Insert",
@@ -64470,7 +64470,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_GlobalHTTPHeader_Insert",
@@ -64519,7 +64519,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PageHTTPHeader_Insert",
@@ -66220,7 +66220,7 @@
 					"category var",
 					"category_list var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Module_Product_Field_Capabilities",
@@ -66502,7 +66502,7 @@
 				"parameters": [
 					"names var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAName_Load_Name_Cached",
@@ -66569,7 +66569,7 @@
 					"cat_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METANameAndValueList_Load_Product_All",
@@ -66577,7 +66577,7 @@
 					"product_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValue_Read",
@@ -66592,7 +66592,7 @@
 					"cat_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Cache_Category",
@@ -66607,7 +66607,7 @@
 					"cat_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValue_Load_Category_Cached",
@@ -66623,7 +66623,7 @@
 					"product_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Cache_Product",
@@ -66638,7 +66638,7 @@
 					"product_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValue_Load_Product_Cached",
@@ -66770,21 +66770,21 @@
 				"parameters": [
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Load_Global_Cached",
 				"parameters": [
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Load_Global",
 				"parameters": [
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValue_Set_Page",
@@ -66834,7 +66834,7 @@
 					"pagever_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Load_Page_Cached",
@@ -66843,7 +66843,7 @@
 					"pagever_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Load_Page",
@@ -66852,7 +66852,7 @@
 					"pagever_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "METAValueList_Cache_Page",
@@ -66876,7 +66876,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_METAName_Insert",
@@ -67431,7 +67431,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Sequence_Load",
@@ -70741,14 +70741,14 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Customer_ProductPriceList_Load_Query",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomerSpecificPricing_Update",
@@ -71133,7 +71133,7 @@
 					"subterm_id",
 					"salepricing var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SalePriceLookup_Load_PriceGroup_Eligible_Products",
@@ -71152,7 +71152,7 @@
 					"product_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PriceGroupList_Load_SalePricing_Product_Cached",
@@ -71161,7 +71161,7 @@
 					"product_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DiscountModule_Capabilities",
@@ -71494,7 +71494,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductSubscriptionTerm_SalePrice_Update",
@@ -71577,7 +71577,7 @@
 					"module_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ConvertCustomFieldCode_To_PriceGroupID",
@@ -72019,7 +72019,7 @@
 					"product_id",
 					"pricegroups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DiscountModule_Capabilities",
@@ -75071,7 +75071,7 @@
 					"field_feature",
 					"modules var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateFeed_Initialize_xxx_CustomField_Filter_ModuleFields",
@@ -75367,7 +75367,7 @@
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_Run",
@@ -75375,7 +75375,7 @@
 					"run var",
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_Run_Sort_Callback",
@@ -75384,28 +75384,28 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_Customer",
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_Order",
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_PaymentCard",
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_PaymentCard_Sort_Callback",
@@ -75414,14 +75414,14 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_AbandonedBasket",
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_AbandonedBasket_Sort_Callback",
@@ -75430,14 +75430,14 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_SubscriptionPending",
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmailList_Load_SubscriptionPending_Sort_Callback",
@@ -75446,7 +75446,7 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "TemplateOrderEmail_Insert_LowLevel",
@@ -75689,7 +75689,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_TemplateOrderEmail_Load",
@@ -76342,7 +76342,7 @@
 					"year",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerAndPaymentCardList_Load_Expiration_SubscriptionsOnly",
@@ -76352,7 +76352,7 @@
 					"year",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerAndPaymentCardList_Load_Expiration_LowLevel",
@@ -76363,7 +76363,7 @@
 					"linked_to_subscription",
 					"paymentcards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ScheduledTaskModule_Execute_AbandonedBasket",
@@ -76379,7 +76379,7 @@
 					"abandoned_time",
 					"baskets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ScheduledTaskModule_Execute_Subscription_Pending",
@@ -81522,7 +81522,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_MOD10Card_Insert",
@@ -81597,7 +81597,7 @@
 				"parameters": [
 					"cards var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "MOD10Card_Load_ID",
@@ -84049,7 +84049,7 @@
 					"report_id",
 					"subterm_ids var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionMetricsXTerm_Delete_All_Report",
@@ -84719,7 +84719,7 @@
 					"report_id",
 					"subterm_ids var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "SubscriptionStatsXTerm_Delete_All_Report",
@@ -85085,7 +85085,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseUnitMethod_Insert",
@@ -85298,7 +85298,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "BaseUnitMethod_Insert",
@@ -85537,7 +85537,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FlatRateMethod_Insert",
@@ -85620,7 +85620,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_FlatRateMethod_Insert",
@@ -85722,7 +85722,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_MinUnitMethod_Insert",
@@ -85935,7 +85935,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "MinUnitMethod_Insert",
@@ -86282,7 +86282,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceTableBasedShippingMethod_Insert",
@@ -86331,7 +86331,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceTableBasedShippingCharge_Update",
@@ -86418,7 +86418,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PTBSMethod_Insert",
@@ -86480,7 +86480,7 @@
 					"method_id",
 					"breaks var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PTBSBreak_Insert",
@@ -86841,7 +86841,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuantityBasedShippingMethod_Insert",
@@ -86954,7 +86954,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QShipMethod_Insert",
@@ -87007,7 +87007,7 @@
 					"method_id",
 					"quants var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QShipQuantity_Insert",
@@ -87379,7 +87379,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_WeightTableBasedShippingMethod_Insert",
@@ -87428,7 +87428,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_WeightTableBasedShippingCharge_Update",
@@ -87515,7 +87515,7 @@
 				"parameters": [
 					"methods var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WTBSMethod_Insert",
@@ -87577,7 +87577,7 @@
 					"method_id",
 					"breaks var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WTBSBreak_Insert",
@@ -88636,7 +88636,7 @@
 				"parameters": [
 					"canvat var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CanVat_Load_Province",
@@ -88769,7 +88769,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CanVat_Insert",
@@ -89237,7 +89237,7 @@
 				"parameters": [
 					"devat_rates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DEVAT_Rate_Load_ID",
@@ -89303,7 +89303,7 @@
 				"parameters": [
 					"devat_products var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.product_count"
 			},
 			{
 				"name": "DEVAT_Country_Insert",
@@ -89337,7 +89337,7 @@
 				"parameters": [
 					"devat_countries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Module_Clientside",
@@ -89398,7 +89398,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EuropeanVATRate_Insert",
@@ -89426,7 +89426,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_EuropeanVATCountry_Insert",
@@ -89731,7 +89731,7 @@
 				"parameters": [
 					"rates var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ShopTaxRate_Insert",
@@ -89813,7 +89813,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShopTaxRate_Insert",
@@ -90071,7 +90071,7 @@
 				"parameters": [
 					"states var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "StateTaxState_Insert",
@@ -90153,7 +90153,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_StateTaxState_Insert",
@@ -90522,7 +90522,7 @@
 				"parameters": [
 					"vat var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Module_Clientside",
@@ -90569,7 +90569,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_GenericVAT_Update",
@@ -92419,21 +92419,21 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CombinationFacetValueList_Load_Field",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CombinationFacetAppliedValueList_Load_Cookie",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CombinationFacetAppliedValueList_Set_Cookie",
@@ -92546,7 +92546,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CombinationFacetRecord_Validate",
@@ -92731,14 +92731,14 @@
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetList_Load_Enabled",
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetField_Read",
@@ -92805,7 +92805,7 @@
 					"facet_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetFieldList_Load_Facet",
@@ -92813,7 +92813,7 @@
 					"facet_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetProduct_Insert",
@@ -92901,7 +92901,7 @@
 					"record_id",
 					"values var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetRecords_Present",
@@ -92936,7 +92936,7 @@
 					"value_count",
 					"record_ids var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CombinationFacetList_Update_Offsets_PastEnd",
@@ -94333,14 +94333,14 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomFieldGroupList_Load_Query",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Group_Load",
@@ -94375,7 +94375,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomFieldList_Load_Query_Advanced_Filter",
@@ -94387,7 +94387,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CustomField_Insert",
@@ -94946,21 +94946,21 @@
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_Load",
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Group_Update",
@@ -94988,35 +94988,35 @@
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_Load_Category",
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_Load_Customer",
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_Load_Order",
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "GroupList_Load_Page",
 				"parameters": [
 					"groups var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryField_Update_Group",
@@ -95043,14 +95043,14 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryFieldList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryFieldList_Load_Values",
@@ -95058,7 +95058,7 @@
 					"cat_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryFieldList_Load_Group",
@@ -95066,7 +95066,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryFieldAndValueList_Load_Group",
@@ -95075,7 +95075,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CategoryField_Load_ID",
@@ -95203,14 +95203,14 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductFieldList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductFieldList_Load_Values",
@@ -95218,7 +95218,7 @@
 					"product_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductFieldList_Load_Group",
@@ -95226,14 +95226,14 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductFieldList_Load_Facets",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductFieldAndValueList_Load_Group",
@@ -95242,7 +95242,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductField_Load_ID",
@@ -95370,14 +95370,14 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerFieldList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerFieldList_Load_Values",
@@ -95385,7 +95385,7 @@
 					"cust_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerFieldList_Load_Group",
@@ -95393,7 +95393,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerFieldAndValueList_Load_Group",
@@ -95402,7 +95402,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CustomerField_Load_ID",
@@ -95520,21 +95520,21 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderFieldList_Load_All",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderFieldList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OrderField_Load_Code_Cached",
@@ -95672,7 +95672,7 @@
 					"field_id",
 					"options var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "FieldOptions_Read",
@@ -95735,7 +95735,7 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageFieldAndValueList_Load_Group",
@@ -95744,21 +95744,21 @@
 					"group_id",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageFieldList_Load_All",
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageFieldList_LoadAll_Cache",
 				"parameters": [
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "PageField_Load_Code_Cached",
@@ -96517,7 +96517,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ImageManagement_Image_Delete",
@@ -96559,7 +96559,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ImageManagement_GeneratedImageList_Delete",
@@ -96719,7 +96719,7 @@
 					"last_generated_image_id",
 					"generatedimages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ImageManagement_CheckForUpdatedImages_MasterImages_Initialize",
@@ -97780,7 +97780,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_API_OrderList_Acknowledge",
@@ -97809,21 +97809,21 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFWorkflowConditionList_Load_Workflow",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFWorkflowActionList_Load_Workflow",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFWorkflowActionList_Output_Workflow",
@@ -97837,7 +97837,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFWorkflowList_Load_Query_Filter",
@@ -97848,7 +97848,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFWorkflowList_Delete",
@@ -97929,7 +97929,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFQueueList_Delete",
@@ -97978,7 +97978,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_OWFAuthenticationCredentials_Insert",
@@ -98481,14 +98481,14 @@
 				"parameters": [
 					"queues var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "WorkflowList_Load_Default",
 				"parameters": [
 					"workflows var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWorkflow_Apply",
@@ -98870,7 +98870,7 @@
 				"parameters": [
 					"queues var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFQueueList_Load_Order",
@@ -98878,7 +98878,7 @@
 					"order_id",
 					"queues var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFAuthenticationCredentials_Read",
@@ -99074,7 +99074,7 @@
 				"parameters": [
 					"workflows var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWorkflowList_Load_Trigger",
@@ -99082,7 +99082,7 @@
 					"trigger",
 					"workflows var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWorkflowTrigger_Read",
@@ -99122,7 +99122,7 @@
 					"flow_id",
 					"workflowtriggerlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWorkflowTriggerList_Load_Trigger",
@@ -99130,7 +99130,7 @@
 					"trig_code",
 					"workflowtriggerlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWorkflowTrigger_Delete_All_Workflow",
@@ -99195,7 +99195,7 @@
 					"flow_id",
 					"actions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFQueueXOrder_Read",
@@ -99235,7 +99235,7 @@
 					"order_id",
 					"queuexorderlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFQueueXOrder_Delete_All_Queue",
@@ -99299,7 +99299,7 @@
 				"parameters": [
 					"entries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "OWFWaitQueueList_Load_Pending",
@@ -99307,7 +99307,7 @@
 					"nextcheck",
 					"entries var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -100800,7 +100800,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductDataField_Insert",
@@ -100927,14 +100927,14 @@
 				"parameters": [
 					"productdatafields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductDataFieldList_Load_All",
 				"parameters": [
 					"productdatafields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductDataFieldLookup_Load_Notification_Cached",
@@ -101009,7 +101009,7 @@
 					"product_id",
 					"productdataqueues var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductDataQueue_MarkForProcessing",
@@ -101258,7 +101258,7 @@
 				"parameters": [
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DigitalDownload_ProductFieldValue_LoadAll_Cache",
@@ -102412,7 +102412,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteIndex_Load_ID",
@@ -102430,7 +102430,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteList_Load_Query_Advanced_Filter",
@@ -102442,7 +102442,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Quote_Create_Empty",
@@ -102498,7 +102498,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ShippingMethodList_Load_Quote_LowLevel",
@@ -102508,7 +102508,7 @@
 					"methods var",
 					"method_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Quote_RecalculateDiscounts",
@@ -102567,7 +102567,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteItem_Add",
@@ -102603,7 +102603,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteCustomFieldValues_Update_Quote",
@@ -102631,7 +102631,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteNoteList_Load_Query_Advanced_Filter",
@@ -102643,7 +102643,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteNote_Insert",
@@ -102692,7 +102692,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteCustomField_Insert",
@@ -102770,7 +102770,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_QuoteEmail_Update_Enabled",
@@ -103008,7 +103008,7 @@
 				"parameters": [
 					"customfield var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteCustomField_Insert",
@@ -103090,7 +103090,7 @@
 					"field_id",
 					"customfieldoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteCustomFieldOption_Delete_ID",
@@ -103184,7 +103184,7 @@
 					"quote_id",
 					"customfieldvalues var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteCustomFieldValue_Delete_All_Quote",
@@ -103297,7 +103297,7 @@
 				"parameters": [
 					"emails var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteItem_Read",
@@ -103372,7 +103372,7 @@
 					"quote_id",
 					"quoteitemlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteItemList_Delete",
@@ -103402,7 +103402,7 @@
 					"line_id",
 					"quoteoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteOption_Delete_All_Line",
@@ -103453,7 +103453,7 @@
 					"line_id",
 					"quoteitemdiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteItemDiscount_Delete_All_Quote",
@@ -103491,7 +103491,7 @@
 					"attmpat_id",
 					"quoteoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteOptionDiscountList_Load_LineOption_ID",
@@ -103499,7 +103499,7 @@
 					"lineopt_id",
 					"quoteoptiondiscounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteOptionDiscount_Delete_All_Quote",
@@ -103542,7 +103542,7 @@
 					"basket_id",
 					"quotes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Quote_Create",
@@ -103645,7 +103645,7 @@
 					"nextoffset var",
 					"quotes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteXExpiredEmail_Read",
@@ -103722,7 +103722,7 @@
 					"quote_id",
 					"quotenotes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteNoteList_Load_Quote_Public",
@@ -103730,7 +103730,7 @@
 					"quote_id",
 					"quotenotes var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "QuoteNote_Insert",
@@ -104189,7 +104189,7 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_BasketList_Load_Query_Advanced_Filter",
@@ -104201,7 +104201,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_Basket_Delete_All",
@@ -104216,12 +104216,12 @@
 			{
 				"name": "JSON_ReviewBaskets_ItemList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_ChargeList_Load",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_BasketItem_Add",
@@ -104286,7 +104286,7 @@
 			{
 				"name": "JSON_ReviewBaskets_BasketPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_BasketPriceGroup_Update_Assigned",
@@ -104296,7 +104296,7 @@
 			{
 				"name": "JSON_ReviewBaskets_BasketCouponList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ReviewBaskets_BasketCoupon_Update_Assigned",
@@ -104936,14 +104936,14 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeFacetList_Load_Query",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeFacet_UpdatePrompts",
@@ -104968,14 +104968,14 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeFacetOptionList_Load_Query",
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeFacetOption_UpdatePrompts",
