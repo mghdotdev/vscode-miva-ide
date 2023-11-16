@@ -12,6 +12,7 @@
 	* Items & Item Params
 	* Builtin Functions
 	* Variables
+	* Miva Merchant functions
 * Added goto-definition support for MVT variables (via `<mvt:assign>`).
 * Added Code Actions support for existing problem diagnostics.
 * Added improved snippet and completion intelligence.
