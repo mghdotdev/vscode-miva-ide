@@ -58,7 +58,7 @@
 			"MvDO",
 			"<MvDO"
 		],
-		"body": "<MvDO FILE = \"{ $4 }\" NAME = \"${2:l.success}\" VALUE = \"{ $1 }\">",
+		"body": "<MvDO FILE = \"{ $4 }\" NAME = \"${2:l.void}\" VALUE = \"{ $1 }\">",
 		"description": "Tag - Do",
 		"scope": "mv"
 	},

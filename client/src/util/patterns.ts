@@ -20,6 +20,8 @@ export default {
 
 		LEFT_FILE_ATTR: /(?<=file\s*=\s*\"(\s*\{)?)[^<]*?$/i,
 		RIGHT_FILE_ATTR: /^[^>]*?file\s*=\s*"(\s*\{)?/i,
+		LEFT_NAME_ATTR: /(?<=name\s*=\s*\"(\s*\{)?)[^<]*?$/i,
+		RIGHT_NAME_ATTR: /^[^>]*?name\s*=\s*"(\s*\{)?/i,
 
 	}
 };

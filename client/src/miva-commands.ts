@@ -1,10 +1,11 @@
+import { CharacterPair, Position, Range, TextEditor, TextEditorEdit, Uri, commands, env, languages, window, workspace } from 'vscode';
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, Position, CharacterPair } from 'vscode';
 
 const boundryAmount = 200;
 
 const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
+	const returnValue = payload.returnValue;
 	let fileName;
 	if ( payload.fileNames.length < 2 ) {
 		fileName = payload.fileNames[0];
@@ -15,11 +16,20 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName'
 
 	}
 
-	commands.executeCommand( 'mivaIde.insertFileName', fileName );
+	commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
 
 });
 
-const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
+const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName: string, returnValue: string ) => {
+	/**
+	 * Helper method for inserting file name
+	 */
+	function insertEdit( matchLength: number, editText: string ) {
+		edit.insert(
+			textEditor.document.positionAt( cursorPositionOffset - matchLength ),
+			editText
+		);
+	}
 
 	const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
@@ -29,57 +39,64 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	let leftMatch;
+	let leftFileAttributeMatch;
 
+	// []. matching (left only) to inject fileName variable
 	// check for bracket-dot syntax first - then tags
 	if ( languageId === 'mv' ) {
+		leftFileAttributeMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
 
-		leftMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
-
-		if ( leftMatch ) {
-
-			insertEdit( leftMatch[0].length, ` ${ fileName } ` );
-
+		if ( leftFileAttributeMatch ) {
+			insertEdit( leftFileAttributeMatch[0].length, ` ${ fileName } ` );
+			return;
 		}
-
 	}
 
-	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	// file="" Matching (left and right) to inject fileName variable
 
-	// define helper method for inserting file name
-	function insertEdit( matchLength: number, fileName: string ) {
-
-		edit.insert(
-			textEditor.document.positionAt( cursorPositionOffset - matchLength ),
-			fileName
-		);
-
-	}
+	leftFileAttributeMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
 
 	// check & execute the insertion
-	if ( leftMatch ) {
-
-		insertEdit( leftMatch[0].length, fileName );
-
+	if ( leftFileAttributeMatch ) {
+		insertEdit( leftFileAttributeMatch[0].length, fileName );
 	}
 	else {
-
 		const rightOffset = cursorPositionOffset + boundryAmount;
 		const rightRange = new Range(
 			textEditor.selection.active,
 			textEditor.document.positionAt( rightOffset )
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
-		const rightMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
 
-		if ( rightMatch ) {
+		const rightFileAttributeMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
 
-			insertEdit( rightMatch[0].length, fileName );
-
+		if ( rightFileAttributeMatch ) {
+			insertEdit( rightFileAttributeMatch[0].length, fileName );
 		}
-
 	}
 
+	// name="" Matching (left and right) to inject returnValue variable
+
+	let leftNameAttributeMatch = patterns.SHARED.LEFT_NAME_ATTR.exec( left );
+
+	// check & execute the insertion
+	if ( leftNameAttributeMatch ) {
+		insertEdit( leftNameAttributeMatch[0].length, returnValue );
+	}
+	else {
+		const rightOffset = cursorPositionOffset + boundryAmount;
+		const rightRange = new Range(
+			textEditor.selection.active,
+			textEditor.document.positionAt( rightOffset )
+		);
+		const right = textEditor.document.getText( rightRange ) || '';
+
+		const rightNameAttributeMatch = patterns.SHARED.RIGHT_NAME_ATTR.exec( right );
+
+		if ( rightNameAttributeMatch ) {
+			insertEdit( rightNameAttributeMatch[0].length, returnValue );
+		}
+	}
 });
 
 function convertEntityToVariable( entity: string ) {

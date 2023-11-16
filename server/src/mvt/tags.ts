@@ -384,7 +384,7 @@ The ... loop terminates when the entire document has been received, or when an (
 	do: {
 		...baseTag,
 		documentation: `Provides access to call native MivaScript functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
-		insertText: "<mvt:do file=\"$4\" ${2:name=\"${3:l.success}\"} value=\"$1\" />",
+		insertText: "<mvt:do file=\"$3\" name=\"$2\" value=\"$1\" />",
 		label: 'mvt:do',
 		reference: 'https://docs.miva.com/template-language/mvtdo',
 		engine: '>=5.22',
