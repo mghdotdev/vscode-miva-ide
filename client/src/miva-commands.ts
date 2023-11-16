@@ -54,7 +54,9 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 
 	// file="" Matching (left and right) to inject fileName variable
 
-	leftFileAttributeMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	leftFileAttributeMatch = languageId === 'mv'
+		? patterns.MV.LEFT_FILE_ATTR.exec( left )
+		: patterns.MVT.LEFT_FILE_ATTR.exec( left );
 
 	// check & execute the insertion
 	if ( leftFileAttributeMatch ) {
@@ -68,7 +70,9 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
 
-		const rightFileAttributeMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
+		const rightFileAttributeMatch = languageId === 'mv'
+			? patterns.MV.RIGHT_FILE_ATTR.exec( right )
+			: patterns.MVT.RIGHT_FILE_ATTR.exec( right );
 
 		if ( rightFileAttributeMatch ) {
 			insertEdit( rightFileAttributeMatch[0].length, fileName );
@@ -77,7 +81,9 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 
 	// name="" Matching (left and right) to inject returnValue variable
 
-	let leftNameAttributeMatch = patterns.SHARED.LEFT_NAME_ATTR.exec( left );
+	let leftNameAttributeMatch = languageId === 'mv'
+		? patterns.MV.LEFT_NAME_ATTR.exec( left )
+		: patterns.MVT.LEFT_NAME_ATTR.exec( left );
 
 	// check & execute the insertion
 	if ( leftNameAttributeMatch ) {
@@ -91,7 +97,9 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
 
-		const rightNameAttributeMatch = patterns.SHARED.RIGHT_NAME_ATTR.exec( right );
+		const rightNameAttributeMatch = languageId === 'mv'
+			? patterns.MV.RIGHT_NAME_ATTR.exec( right )
+			: patterns.MVT.RIGHT_NAME_ATTR.exec( right );
 
 		if ( rightNameAttributeMatch ) {
 			insertEdit( rightNameAttributeMatch[0].length, returnValue );
