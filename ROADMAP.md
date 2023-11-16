@@ -8,9 +8,9 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 
 ## Existing Features
 
-- Syntax highlighting for Mivascript and MVT languages.
+- Syntax highlighting for Miva Script and MVT languages.
 - Syntax highlighting for MVT embedded in CSS and MVT embedded in JavaScript (MVTCSS, MVTJS)
-- Autocompletion for Mivascript and MVT tags.
+- Autocompletion for Miva Script and MVT tags.
 - Autocompletion for `<mvt:do>`/`<MvDO>` functions with automatic file path injection.
 - Goto defintion/peek support for `<mvt:do>`/`<MvDO>` functions (requires copy of LSK on your computer).
 - Autocompletion for system variables, global variables and local variables with automatic parsing of open files.
@@ -58,8 +58,8 @@ This is a semi-rewrite of the extension. It will use a newly created Language Se
 	- Create / delete and push branches.
 	- Commit file changes and write notes.
 	- Status bar widget that informs the user what remote, branch and changeset they are currently working with.
-- Split Mivascript / MVT language service into separate packages. This will make it easier to maintain the intricacies of each language. Also, it aligns the Embedded Language extension guide: https://code.visualstudio.com/api/language-extensions/embedded-languages
-- A Mivascript/MVT parser class written in Node that will be used to improve existing parsing performance add missing language server features including:
+- Split Miva Script / MVT language service into separate packages. This will make it easier to maintain the intricacies of each language. Also, it aligns the Embedded Language extension guide: https://code.visualstudio.com/api/language-extensions/embedded-languages
+- A Miva Script/MVT parser class written in Node that will be used to improve existing parsing performance add missing language server features including:
 	- Rename symbol: Allows users to highlight a variable and rename all references within the file.
 	- Code Actions: Allows users to automatically fix common issues in the current file.
 	- Document Links: Provide links to templates from the `<mvt:item>` tag / readtheme functions.

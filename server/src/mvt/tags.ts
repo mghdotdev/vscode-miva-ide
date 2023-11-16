@@ -383,7 +383,7 @@ The ... loop terminates when the entire document has been received, or when an (
 	},
 	do: {
 		...baseTag,
-		documentation: `Provides access to call native MivaScript functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
+		documentation: `Provides access to call native Miva Script functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
 		insertText: "<mvt:do file=\"$3\" name=\"$2\" value=\"$1\" />",
 		label: 'mvt:do',
 		reference: 'https://docs.miva.com/template-language/mvtdo',
@@ -402,7 +402,7 @@ The ... loop terminates when the entire document has been received, or when an (
 			},
 			file: {
 				...baseAttribute,
-				documentation: `This is the path to the compiled MivaScript file (.mvc) relative to the mm5 directory. It can be a string (wrapped in single quotes) or more commonly a global variable to one of Miva's built on libraries. See below for available libraries:
+				documentation: `This is the path to the compiled Miva Script file (.mvc) relative to the mm5 directory. It can be a string (wrapped in single quotes) or more commonly a global variable to one of Miva's built on libraries. See below for available libraries:
 
 __Miva Library Variables__
 

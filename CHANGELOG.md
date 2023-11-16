@@ -6,7 +6,7 @@
 	* Improved tag snippets.
 	* Added tag attribute autocompletion.
 	* Added matching `mvt:item` name and param attribute completions.
-* Improved MVT and MivaScript syntax highlighting.
+* Improved MVT and Miva Script syntax highlighting.
 * Added language intelligence for the underlying HTML syntax in MVT files.
 * Added hover-on-symbol support and documentation for key MVT features.
 	* Items & Item Params

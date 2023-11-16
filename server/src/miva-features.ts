@@ -98,7 +98,7 @@ const builtinFunctionCompletions: CompletionList = CompletionList.create( parseC
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
 const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
 
-// Document cache for MivaScript (this is globally defined since we use .mv documents in MVT for LSK lookups)
+// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
 
 // Symbol (variable, LSK function) containers
