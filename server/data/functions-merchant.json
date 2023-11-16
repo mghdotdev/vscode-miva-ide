@@ -69564,7 +69564,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_AddFormatPlainText",
@@ -69572,7 +69572,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_AddFormatPlainTextShort",
@@ -69580,7 +69580,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_Output_CurrencyFormat_JavaScript",
@@ -69692,7 +69692,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_AddFormatPlainText",
@@ -69700,7 +69700,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_AddFormatPlainTextShort",
@@ -69708,7 +69708,7 @@
 					"g.Store:currncy_mod",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.formatted_price"
 			},
 			{
 				"name": "CurrencyModule_Output_CurrencyFormat_JavaScript",
