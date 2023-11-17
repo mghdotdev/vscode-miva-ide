@@ -135,25 +135,28 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		insertTextFormat: InsertTextFormat.Snippet,
 		kind: CompletionItemKind.Function,
 		detail: file.distroPath,
-		documentation: [
-			'',
-			'```mv',
-			`{ [ ${file.distroPath} ].${ fn.name }(${wrapSpaces( fn.parameters.join(', '), fn.parameters.length > 0 )}) }`,
-			'```',
-			`---`,
-			'',
-			...fn.description ?
-				[
-					fn.description,
-					'',
-					`---`,
-					''
-				]
-				: [''],
-			...fn.parameters?.map(param => `@param \`${param}\`\n`),
-			'',
-			`@returns \`${fn.returnValue}\``
-		].join('\n'),
+		documentation: {
+			kind: 'markdown',
+			value: [
+				'',
+				'```mv',
+				`{ [ ${file.distroPath} ].${ fn.name }(${wrapSpaces( fn.parameters.join(', '), fn.parameters.length > 0 )}) }`,
+				'```',
+				`---`,
+				'',
+				...fn.description ?
+					[
+						fn.description,
+						'',
+						`---`,
+						''
+					]
+					: [''],
+				...fn.parameters?.map(param => `@param \`${param}\`\n`),
+				'',
+				`@returns \`${fn.returnValue}\``
+			].join('\n')
+		},
 		command: {
 			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute.`,
 			command: 'mivaIde.chooseFileName',
