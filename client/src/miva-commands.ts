@@ -23,15 +23,6 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName'
 });
 
 const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName: string, returnValue: string ) => {
-	/**
-	 * Helper method for inserting file name
-	 */
-	function insertEdit( matchLength: number, editText: string ) {
-		edit.insert(
-			textEditor.document.positionAt( cursorPositionOffset - matchLength ),
-			editText
-		);
-	}
 
 	const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
@@ -41,28 +32,47 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	let leftFileAttributeMatch;
+
+	/**
+	 * Helper method for inserting file name
+	 */
+	function replaceEdit(start: number, end: number, editText: string) {
+		const startPosition = textEditor.document.positionAt( cursorPositionOffset - start );
+		const endPosition = textEditor.document.positionAt( cursorPositionOffset - start + end );
+
+		edit.replace(
+			new Range(startPosition, endPosition),
+			editText
+		)
+	}
 
 	// []. matching (left only) to inject fileName variable
 	// check for bracket-dot syntax first - then tags
 	if ( languageId === 'mv' ) {
-		leftFileAttributeMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
+		const startMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
 
-		if ( leftFileAttributeMatch ) {
-			insertEdit( leftFileAttributeMatch[0].length, ` ${ fileName } ` );
+		if ( startMatch ) {
+			const endMatch = patterns.MV.BRACKET_DOT_END.exec( left.slice( startMatch.index ) );
+
+			replaceEdit( startMatch[0].length, endMatch?.[0]?.length || 0, ` ${ fileName } `, );
+
 			return;
 		}
 	}
 
 	// file="" Matching (left and right) to inject fileName variable
 
-	leftFileAttributeMatch = languageId === 'mv'
+	const leftFileAttributeStartMatch = languageId === 'mv'
 		? patterns.MV.LEFT_FILE_ATTR.exec( left )
 		: patterns.MVT.LEFT_FILE_ATTR.exec( left );
 
 	// check & execute the insertion
-	if ( leftFileAttributeMatch ) {
-		insertEdit( leftFileAttributeMatch[0].length, fileName );
+	if ( leftFileAttributeStartMatch ) {
+		const endMatch = languageId === 'mv'
+			? patterns.MV.FILE_ATTR_END.exec( left.slice( leftFileAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftFileAttributeStartMatch.index ) );
+
+		replaceEdit( leftFileAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, fileName );
 	}
 	else {
 		const rightOffset = cursorPositionOffset + boundryAmount;
@@ -72,24 +82,32 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
 
-		const rightFileAttributeMatch = languageId === 'mv'
+		const rightFileAttributeStartMatch = languageId === 'mv'
 			? patterns.MV.RIGHT_FILE_ATTR.exec( right )
 			: patterns.MVT.RIGHT_FILE_ATTR.exec( right );
 
-		if ( rightFileAttributeMatch ) {
-			insertEdit( rightFileAttributeMatch[0].length, fileName );
+		const endMatch = languageId === 'mv'
+			? patterns.MV.FILE_ATTR_END.exec( right.slice( rightFileAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( right.slice( rightFileAttributeStartMatch.index ) );
+
+		if ( rightFileAttributeStartMatch ) {
+			replaceEdit( rightFileAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, fileName );
 		}
 	}
 
 	// name="" Matching (left and right) to inject returnValue variable
 
-	let leftNameAttributeMatch = languageId === 'mv'
+	const leftNameAttributeStartMatch = languageId === 'mv'
 		? patterns.MV.LEFT_NAME_ATTR.exec( left )
 		: patterns.MVT.LEFT_NAME_ATTR.exec( left );
 
 	// check & execute the insertion
-	if ( leftNameAttributeMatch ) {
-		insertEdit( leftNameAttributeMatch[0].length, returnValue );
+	if ( leftNameAttributeStartMatch ) {
+		const endMatch = languageId === 'mv'
+			? patterns.MV.NAME_ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) );
+
+		replaceEdit( leftNameAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
 	}
 	else {
 		const rightOffset = cursorPositionOffset + boundryAmount;
@@ -103,8 +121,12 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 			? patterns.MV.RIGHT_NAME_ATTR.exec( right )
 			: patterns.MVT.RIGHT_NAME_ATTR.exec( right );
 
+		const endMatch = languageId === 'mv'
+			? patterns.MV.NAME_ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) );
+
 		if ( rightNameAttributeMatch ) {
-			insertEdit( rightNameAttributeMatch[0].length, returnValue );
+			replaceEdit( rightNameAttributeMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
 		}
 	}
 });
