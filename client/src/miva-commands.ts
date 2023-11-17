@@ -6,13 +6,15 @@ const boundryAmount = 200;
 const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
 	const returnValue = payload.returnValue;
+	const fileNames = payload.fileNames?.filter((value, index, self) => self.indexOf( value ) === index);
+
 	let fileName;
-	if ( payload.fileNames.length < 2 ) {
-		fileName = payload.fileNames[0];
+	if ( fileNames.length < 2 ) {
+		fileName = fileNames[0];
 	}
 	else {
 
-		fileName = await window.showQuickPick( payload.fileNames, { placeHolder: 'Select the file path for the selected function.' } );
+		fileName = await window.showQuickPick( fileNames, { placeHolder: 'Select the file path for the selected function.' } );
 
 	}
 
