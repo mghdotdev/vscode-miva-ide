@@ -414,7 +414,8 @@
 					"param",
 					"output var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_xxx: Validate a parameter and return its result given the specified criteria"
 			},
 			{
 				"name": "JSON_Input_Filter",
@@ -509,7 +510,8 @@
 					"output var",
 					"output_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_xxx_Array: Process a single parameter that is passed as an array, validating each member against the specified\n\ncriteria."
 			},
 			{
 				"name": "JSON_Input_Number_Array",
@@ -551,7 +553,8 @@
 					"param",
 					"output var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_Array/JSON_Input_Element_xxx: Process an array of structures, validating individual members given the specified criteria"
 			},
 			{
 				"name": "JSON_Input_Structure",
@@ -818,7 +821,8 @@
 				"parameters": [
 					"filterlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "filterlist\n\n[1]\n\n:name=\"search|search_AND|search_OR\"\n\n:value\t... child nodes joined with OR, separate \"search\" filters joined with AND ...\n\n[1]:field=field_code\n\n[1]:operator=EQ\n\n[1]:value=wombat\n\n[2]:field=search|search_AND|search_OR\n\n[2]:operator=SUBWHERE\n\n[2]:value\n\n[1]:field=field_code\n\n[1]:operator=EQ\n\n[1]:value=wombat\n\n[2]:field=search|search_AND|search_OR\n\n[2]:operator=SUBWHERE\n\n[2]:value\n\n... unlimited nesting ...\n\n[2]\n\n:name=\"ondemandcolumns\"\n\n:value\n\n[1]=field_code,\n\n[2]=CustomField_Values:module_code:field_code\n\n[3]\n\n:name=\"\"\n\n:value="
 			},
 			{
 				"name": "JSON_Filter_Structify_Search",
@@ -1127,7 +1131,8 @@
 					"filterlist var",
 					"variablelist"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Note: Non-core files that use this function must directly include json/mivascript.mv to resolve required\n\nfilter functions that cannot be called via MvDO."
 			},
 			{
 				"name": "JSON_Filter_MivaScript_Callback",
@@ -1631,7 +1636,8 @@
 			{
 				"name": "FieldError_Clear",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "User Interface Helper Functions"
 			},
 			{
 				"name": "FieldError",
@@ -2785,7 +2791,8 @@
 				"parameters": [
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validates a \"token\" from the HTML 1.1 RFC Augmented BNF\n\nhttp://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html#sec2.1"
 			},
 			{
 				"name": "Validate_Password",
@@ -2891,7 +2898,8 @@
 					"logo",
 					"title"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Wizard Utilities"
 			},
 			{
 				"name": "Wizard_EndScreen",
@@ -2937,7 +2945,8 @@
 			{
 				"name": "AFF_Create_Data_Files",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Privileges"
 			},
 			{
 				"name": "Store_Create",
@@ -2956,7 +2965,8 @@
 				"parameters": [
 					"affiliateoptions var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Options"
 			},
 			{
 				"name": "AffiliateOptions_Insert",
@@ -2984,7 +2994,8 @@
 				"parameters": [
 					"affiliateemail var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Email"
 			},
 			{
 				"name": "AffiliateEmail_Insert",
@@ -3012,7 +3023,8 @@
 				"parameters": [
 					"affiliatemanage var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Manage"
 			},
 			{
 				"name": "AffiliateManage_Insert",
@@ -3040,7 +3052,8 @@
 				"parameters": [
 					"affiliate var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliates"
 			},
 			{
 				"name": "Affiliate_Insert",
@@ -3181,7 +3194,8 @@
 				"parameters": [
 					"affiliateearning var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Earnings"
 			},
 			{
 				"name": "AffiliateEarning_Read_Affiliate",
@@ -3263,7 +3277,8 @@
 				"parameters": [
 					"affiliatepayout var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Payouts"
 			},
 			{
 				"name": "AffiliatePayout_Insert",
@@ -3335,7 +3350,8 @@
 				"parameters": [
 					"affiliatesession var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Affiliate Sessions"
 			},
 			{
 				"name": "AffiliateSession_Insert",
@@ -3975,7 +3991,8 @@
 			{
 				"name": "ATT_Create_Data_Files",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Attribute Templates"
 			},
 			{
 				"name": "ATT_Store_Create",
@@ -4105,7 +4122,8 @@
 				"parameters": [
 					"attributetemplateattr var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Attribute Template Attributes"
 			},
 			{
 				"name": "AttributeTemplateAttr_Insert",
@@ -4230,7 +4248,8 @@
 				"parameters": [
 					"attributetemplateoption var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "AttributeTemplateOptions"
 			},
 			{
 				"name": "AttributeTemplateOption_Insert",
@@ -4343,7 +4362,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "AttributeTemplateAttributeList_Update_Offsets",
@@ -4361,7 +4381,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "AttributeTemplateAttributeOptionList_Update_Offsets",
@@ -4512,7 +4533,7 @@
 			{
 				"name": "JSON_AttributeTemplateProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_AttributeTemplateProduct_Update_Assigned",
@@ -4836,7 +4857,8 @@
 					"dest_product var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Copy Product"
 			},
 			{
 				"name": "CopyProduct_Copy_Products",
@@ -5173,7 +5195,8 @@
 			{
 				"name": "CUS_Create_Data_Files",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Customers"
 			},
 			{
 				"name": "CUS_Store_Create",
@@ -5519,7 +5542,8 @@
 				"parameters": [
 					"customeremail var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CustomerEmail"
 			},
 			{
 				"name": "CustomerEmail_Insert",
@@ -5547,7 +5571,8 @@
 				"parameters": [
 					"customersettings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CustomerSettings"
 			},
 			{
 				"name": "CustomerSettings_Insert",
@@ -5624,7 +5649,8 @@
 				"parameters": [
 					"credit var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CustomerCreditHistory"
 			},
 			{
 				"name": "CustomerCreditHistory_Insert",
@@ -5702,7 +5728,8 @@
 				"parameters": [
 					"businessaccount var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "BusinessAccounts"
 			},
 			{
 				"name": "BusinessAccount_Load",
@@ -5816,7 +5843,8 @@
 				"parameters": [
 					"customeraddress var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CustomerAddresses"
 			},
 			{
 				"name": "CustomerAddress_Insert",
@@ -6183,7 +6211,8 @@
 				"parameters": [
 					"credit var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Customer Credit History"
 			},
 			{
 				"name": "JSON_CustomerCreditHistory_Load",
@@ -6212,7 +6241,8 @@
 				"parameters": [
 					"businessaccount var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Business Accounts"
 			},
 			{
 				"name": "JSON_BusinessAccount_Load",
@@ -6281,7 +6311,8 @@
 				"parameters": [
 					"customeraddress var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Customer Addresses"
 			},
 			{
 				"name": "JSON_CustomerAddress_Loaders_Present",
@@ -6343,12 +6374,14 @@
 			{
 				"name": "JSON_CustomerPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "Customer Price Groups"
 			},
 			{
 				"name": "JSON_ShopAsCustomer_MostRecentBasket_Load_Customer",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Shop As Customer"
 			},
 			{
 				"name": "JSON_ShopAsCustomer_CreateOrShareSession",
@@ -6606,7 +6639,8 @@
 					"basket var",
 					"shopascustomersession var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Shop As Customer"
 			},
 			{
 				"name": "ShopAsCustomer_ClearCookies",
@@ -7204,7 +7238,8 @@
 					"amazon var",
 					"signature"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Amazon CDN Helper Functions"
 			},
 			{
 				"name": "DigitalDownload_Amazon_GenerateSignature",
@@ -7311,7 +7346,8 @@
 					"created_digitaldownloads var",
 					"created_digitaldownload_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			}
 		]
 	},
@@ -7918,7 +7954,8 @@
 				"parameters": [
 					"giftcertificate var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Gift Certificates"
 			},
 			{
 				"name": "JSON_GiftCertificateList_Load_Query",
@@ -8032,7 +8069,8 @@
 					"created_giftcertificates var",
 					"created_giftcertificate_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			}
 		]
 	},
@@ -9280,7 +9318,8 @@
 				"parameters": [
 					"paymentcardtype var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "PaymentCardTypes"
 			},
 			{
 				"name": "JSON_PaymentCardType_Load",
@@ -9314,7 +9353,8 @@
 				"parameters": [
 					"paymentcard var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CustomerPaymentCards"
 			},
 			{
 				"name": "JSON_CustomerPaymentCard_Load",
@@ -9772,7 +9812,8 @@
 					"bill_cntry",
 					"paymentcard var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "MivaPay"
 			},
 			{
 				"name": "MivaPay_SessionData",
@@ -9999,21 +10040,24 @@
 					"replacements",
 					"response var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "ApplePay"
 			},
 			{
 				"name": "PaymentCardType_Validate_Prefixes",
 				"parameters": [
 					"prefix_list"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Payment Card Type Validation Functions"
 			},
 			{
 				"name": "PredictCardType",
 				"parameters": [
 					"ccnum"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Card Type Prediction"
 			},
 			{
 				"name": "PredictCardType_Compare",
@@ -10039,7 +10083,8 @@
 					"normalized_start_ip var",
 					"normalized_end_ip var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Authorization Blacklists"
 			},
 			{
 				"name": "AuthorizationBlacklist_Segments_Normalize",
@@ -10159,7 +10204,8 @@
 					"properties var",
 					"output_settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON Page Builder Element Validation"
 			},
 			{
 				"name": "JSON_PageBuilder_Element_Validate_Properties_LowLevel",
@@ -12455,7 +12501,7 @@
 			{
 				"name": "JSON_PriceGroupProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupProduct_Update_Assigned",
@@ -12470,7 +12516,7 @@
 			{
 				"name": "JSON_PriceGroupExcludedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupExcludedProduct_Update_Assigned",
@@ -12515,7 +12561,7 @@
 			{
 				"name": "JSON_PriceGroupQualifyingProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_PriceGroupQualifyingProduct_Update_Assigned",
@@ -14288,7 +14334,8 @@
 				"parameters": [
 					"provide_xml var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Features"
 			},
 			{
 				"name": "PRV_Action_Provision_Store_Item_Update",
@@ -16342,7 +16389,8 @@
 				"parameters": [
 					"provide_xml var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Domain Provisioning Functions"
 			},
 			{
 				"name": "PRV_User_Icon",
@@ -16602,7 +16650,8 @@
 					"user var",
 					"provide_xml var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "User Provisioning Functions"
 			},
 			{
 				"name": "PRV_Action_Provision_User_BookmarksDeleteAll",
@@ -16921,7 +16970,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "RelatedProduct_Update_Offsets",
@@ -16951,7 +17001,7 @@
 			{
 				"name": "JSON_RelatedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_RelatedProduct_Update_Assigned",
@@ -17561,7 +17611,8 @@
 					"original_searchsettings var",
 					"searchsettings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "FULLTEXT Index"
 			},
 			{
 				"name": "Search_Update_FULLTEXT_Indexes_Products",
@@ -18658,7 +18709,8 @@
 			{
 				"name": "STA_Store_Create",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Stats"
 			},
 			{
 				"name": "STA_Store_Delete",
@@ -18734,7 +18786,8 @@
 				"parameters": [
 					"prodstats var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "ProdStats"
 			},
 			{
 				"name": "ProdStats_Insert",
@@ -18793,7 +18846,8 @@
 			{
 				"name": "STA_Store_Reset",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Create/Pack/Delete"
 			}
 		]
 	},
@@ -19501,12 +19555,14 @@
 				"parameters": [
 					"productsubscriptionsettings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Product Subscription Settings"
 			},
 			{
 				"name": "JSON_BaseProductSubscriptionTermList_Filters",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Product Subscription Terms"
 			},
 			{
 				"name": "JSON_BaseProductSubscriptionTermList_OrderBy",
@@ -19617,7 +19673,8 @@
 				"parameters": [
 					"subscription var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Subscriptions"
 			},
 			{
 				"name": "JSON_BaseSubscription",
@@ -26278,7 +26335,8 @@
 				"parameters": [
 					"scriptresource var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JavaScript Resources"
 			},
 			{
 				"name": "JSON_JavaScriptResource_Load",
@@ -26462,7 +26520,8 @@
 				"parameters": [
 					"cssresource var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CSS Resources"
 			},
 			{
 				"name": "JSON_CSSResourceList_Load_Query",
@@ -26650,7 +26709,8 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "Resource Groups"
 			},
 			{
 				"name": "JSON_ResourceGroupList_Load_Query",
@@ -27296,7 +27356,8 @@
 					"code",
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function creates an item that references a specific module and was added specifically to enable the creation of Store Morph\n\nitems from inside Module_Install_Store() of a currency, tax, or storeui module, but may also be used elsewhere when a full Module \n\nrecord is available, to avoid explicitly loading the record from the database.\n\nFor a complete description of the issues resolved by calling this function, see MM-1648"
 			},
 			{
 				"name": "TemplateManager_Create_Item_LowLevel",
@@ -28283,7 +28344,8 @@
 				"parameters": [
 					"scriptresource var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JavaScript Resources"
 			},
 			{
 				"name": "TemplateManager_Delete_JavaScriptResource_Branch",
@@ -28389,7 +28451,8 @@
 				"parameters": [
 					"cssresource var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "CSS Resources"
 			},
 			{
 				"name": "TemplateManager_Delete_CSSResource_Branch",
@@ -29232,7 +29295,8 @@
 				"parameters": [
 					"page var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Cache"
 			},
 			{
 				"name": "TemplateManager_Cache_Connect",
@@ -29282,7 +29346,8 @@
 					"cache_key",
 					"cache var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Redis Cache"
 			},
 			{
 				"name": "TemplateManager_Cache_Redis_Set_Page",
@@ -29342,7 +29407,8 @@
 					"overwrite_extfile_okay",
 					"execute_configuration"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "SKIN_Install"
 			},
 			{
 				"name": "_SKIN_Install",
@@ -29445,7 +29511,8 @@
 				"parameters": [
 					"skin_code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "SKIN register"
 			},
 			{
 				"name": "SKIN_Register_Unpacked",
@@ -29468,7 +29535,8 @@
 				"parameters": [
 					"skin_code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Packaged SKIN registration."
 			},
 			{
 				"name": "SKIN_Export",
@@ -29482,7 +29550,8 @@
 					"export_pages",
 					"export_items"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "SKIN Export"
 			},
 			{
 				"name": "_SKIN_Export",
@@ -29662,7 +29731,8 @@
 				"parameters": [
 					"order var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Common component field initialization routines"
 			},
 			{
 				"name": "CommonComponentFields_Initialize_Order_RemovePII",
@@ -29969,7 +30039,8 @@
 				"parameters": [
 					"code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Component Initialization Helper Functions"
 			},
 			{
 				"name": "CommonComponentFields_Initialize_xxx_CustomField_ModuleList_Load",
@@ -30013,7 +30084,8 @@
 					"dest_branch var",
 					"dest_page var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Page Copy"
 			},
 			{
 				"name": "CopyPage_Copy_Secure",
@@ -30193,7 +30265,8 @@
 				"parameters": [
 					"urisettings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "URISettings"
 			},
 			{
 				"name": "URISettings_Update",
@@ -30228,7 +30301,8 @@
 				"parameters": [
 					"uri var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "URIs"
 			},
 			{
 				"name": "URI_Load_ID",
@@ -31221,7 +31295,7 @@
 					"product_id",
 					"upsellxprod VAR"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "UpsellOptions_Read",
@@ -31263,7 +31337,8 @@
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count",
+				"description": "Runtime functions"
 			}
 		]
 	},
@@ -31294,7 +31369,7 @@
 					"basket var",
 					"upsold_products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -31607,7 +31682,7 @@
 					"nextoffset var",
 					"wishlistitems var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_WishListProduct_Count_WishList",
@@ -32033,7 +32108,7 @@
 			{
 				"name": "JSON_CategoryProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_CategoryProduct_Update_Assigned",
@@ -33312,12 +33387,12 @@
 			{
 				"name": "JSON_ProductList_Load_CodeMatch",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductList_Load_SKUMatch",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductList_Adjust_Inventory",
@@ -33431,7 +33506,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseProductList_Load_Query_LowLevel",
@@ -33449,7 +33524,7 @@
 					"count_query var",
 					"ondemandcolumns var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseProductList_Load_Query_QueryCustomFields",
@@ -33459,7 +33534,7 @@
 					"count",
 					"total_count"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseProductIndex_Load_ID",
@@ -33497,7 +33572,7 @@
 			{
 				"name": "JSON_ProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Product_CustomFields_Query",
@@ -33550,7 +33625,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_ProductList_Load_Query_Search_Filter",
@@ -33562,7 +33637,7 @@
 					"search_value",
 					"data var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Product_Delete",
@@ -33600,7 +33675,8 @@
 					"product var",
 					"attribute var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON Product Attributes"
 			},
 			{
 				"name": "JSON_ProductOption_Load",
@@ -33704,7 +33780,8 @@
 			{
 				"name": "JSON_ProductCategoryIndex_Load_ID",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Product Categories"
 			},
 			{
 				"name": "JSON_ProductCategoryList_Load_Query",
@@ -33719,7 +33796,8 @@
 			{
 				"name": "JSON_ProductPriceGroupList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "Product Price Groups"
 			}
 		]
 	},
@@ -33983,7 +34061,8 @@
 					"have_complete_variant var",
 					"complete_variant var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Given A B C(last_selected) d e f g\n\nLoad a complete variant with exactly A B C\n\nIf no variant and there are unselected attributes, check if there are any variants containing A B C \n\nIf no variant(s)\n\nSolve for A B d e f g using C(last_selected)\n\nSolve for C using empty set\n\nElse\n\nSolution for d e f g = variant(s)\n\nSolve for A using B C\n\nSolve for B using A C\n\nSolve for C using A B\n\nReturn:\n\na b c d e f g\n\ncomplete variant, if it exists\n\nSelected_Attributes\t= []\n\nLast_Selected_ID\t\t= n\n\nUnselected_Attributes\t= []"
 			},
 			{
 				"name": "JSON_Possible_Output",
@@ -34240,7 +34319,8 @@
 			{
 				"name": "JSON_Runtime_InitiateCheckout",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_InitiateCheckout"
 			},
 			{
 				"name": "JSON_Runtime_InitiateCheckout_LowLevel",
@@ -34250,7 +34330,8 @@
 			{
 				"name": "JSON_Runtime_UpdateShipping",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_UpdateShipping"
 			},
 			{
 				"name": "JSON_Runtime_UpdateShipping_LowLevel",
@@ -34260,7 +34341,8 @@
 			{
 				"name": "JSON_Runtime_UpdateBilling",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_UpdateBilling"
 			},
 			{
 				"name": "JSON_Runtime_UpdateBilling_LowLevel",
@@ -34274,7 +34356,8 @@
 					"address var",
 					"std_fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_UpdateShipping and JSON_Runtime_UpdateBilling helper functions"
 			},
 			{
 				"name": "JSON_Runtime_OutputCheckoutResponse",
@@ -34284,7 +34367,8 @@
 			{
 				"name": "JSON_Runtime_CategoryList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "JSON_Runtime_CategoryList_Load_Query"
 			},
 			{
 				"name": "JSON_Runtime_CategoryList_Load_Query_LowLevel",
@@ -34386,7 +34470,8 @@
 				"parameters": [
 					"category var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_ProductList_Load_Query / JSON_Runtime_CategoryProductList_Load_Query / JSON_Runtime_RelatedProductList_Load_Query"
 			},
 			{
 				"name": "JSON_Runtime_Product_Load",
@@ -34421,24 +34506,24 @@
 			{
 				"name": "JSON_Runtime_ProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_CategoryProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_RelatedProductList_Load_Query",
 				"parameters": [],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_BaseRuntimeProductList_Load_Query",
 				"parameters": [
 					"search_query var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_ProductList_Facets",
@@ -34521,7 +34606,7 @@
 					"filter_value",
 					"data var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "JSON_Runtime_Product_CustomFields_Query",
@@ -35333,7 +35418,8 @@
 					"offset",
 					"digits"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "One Time Password functions"
 			},
 			{
 				"name": "HOTP_Truncate",
@@ -35364,7 +35450,8 @@
 					"sl",
 					"otp"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Two-Factor: YubiCloud"
 			},
 			{
 				"name": "YubiCloud_Hash",
@@ -35377,7 +35464,8 @@
 			{
 				"name": "WebAuthn_Challenge_Generate",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "WebAuthn"
 			},
 			{
 				"name": "WebAuthn_Verify_Registration",
@@ -35411,7 +35499,8 @@
 				"parameters": [
 					"password"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Password Hashing"
 			},
 			{
 				"name": "Runtime_Password_Verify",
@@ -35427,7 +35516,8 @@
 					"plaintext var",
 					"encrypted var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "PBKDF2 Prefix (PKCS No. 5/RFC2898):\n\nThe hash, and iteration count and key identifier are embedded in the encrypted\n\npassword and may vary.  The derived key length must be determined based on the\n\napparent length of the ciphertext.\n\nFormat:\n\nPBKDF2:hash:iterations:salt-base64:ciphertext-base64"
 			},
 			{
 				"name": "Runtime_Password_Verify_PBKDF1",
@@ -35435,7 +35525,8 @@
 					"plaintext var",
 					"encrypted var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "PBKDF1 Prefix (PKCS No. 5/RFC2898):\n\nThe hash, and iteration count and key identifier are embedded in the encrypted\n\npassword and may vary.  The derived key length must be determined based on the\n\napparent length of the ciphertext.\n\nFormat:\n\nPBKDF1:hash:iterations:salt-base64:ciphertext-base64"
 			},
 			{
 				"name": "Runtime_Password_Verify_SHA1",
@@ -35443,7 +35534,8 @@
 					"plaintext var",
 					"encrypted var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "SHA1 Prefix (custcrypt module)\n\nSingle iteration of SHA1 with a 16-byte random salt.  The output is\n\nhexidecimal encoded.\n\nFormat:\n\nSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\n\nS = Hexidecimal encoded salt\n\nC = Hexidecimal encoded ciphertext"
 			},
 			{
 				"name": "Runtime_Password_Encrypt",
@@ -35461,7 +35553,8 @@
 					"key_id var",
 					"key_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "SSH Public Key Functions"
 			},
 			{
 				"name": "SSH_PublicKey_Load",
@@ -35493,7 +35586,8 @@
 				"parameters": [
 					"length"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "ASN.1 DER Encoding Functions"
 			},
 			{
 				"name": "DER_RSAPublicKey",
@@ -35514,12 +35608,14 @@
 			{
 				"name": "Random_Int31",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous functions"
 			},
 			{
 				"name": "Duo_State_Generate",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Duo OIDC"
 			},
 			{
 				"name": "Duo_AuthorizationRequest",
@@ -35722,7 +35818,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "ProductAttributeList_Update_Offsets",
@@ -35740,7 +35837,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "ProductAttributeOptionList_Update_Offsets",
@@ -36247,7 +36345,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "CategoryList_Update_Offsets",
@@ -36271,7 +36370,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "CategoryXProduct_Update_Offsets",
@@ -37891,7 +37991,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Active",
@@ -37903,7 +38003,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Uncategorized",
@@ -37915,7 +38015,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_All",
@@ -37928,7 +38028,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_Assigned",
@@ -37941,7 +38041,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Category_Unassigned",
@@ -37954,7 +38054,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_Unassigned",
@@ -37967,7 +38067,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_All",
@@ -37980,7 +38080,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_AvailabilityGroup_Assigned",
@@ -37993,7 +38093,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_Unassigned",
@@ -38006,7 +38106,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_All",
@@ -38019,7 +38119,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_PriceGroup_Assigned",
@@ -38032,7 +38132,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_Unassigned",
@@ -38045,7 +38145,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_All",
@@ -38058,7 +38158,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_Upsell_Assigned",
@@ -38071,7 +38171,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_UpsellXProduct_Required",
@@ -38082,7 +38182,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_RelatedProducts_Offset_Unassigned",
@@ -38095,7 +38195,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_Offset_RelatedProducts_All",
@@ -38108,7 +38208,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_RelatedProducts_Offset_Assigned",
@@ -38121,7 +38221,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Product_Load_First",
@@ -38190,7 +38290,7 @@
 					"sku",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductAndBasketItemList_Load_Basket_WithRuntimeInventory",
@@ -38206,7 +38306,7 @@
 					"product_id",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			}
 		]
 	},
@@ -38320,7 +38420,7 @@
 					"variant_id",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductVariantList_Load_Product",
@@ -38619,7 +38719,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_RelatedProducts_Sort",
@@ -38631,7 +38731,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Category",
@@ -38642,7 +38742,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Category_Sort",
@@ -38654,14 +38754,14 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_All",
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_All",
@@ -38671,7 +38771,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_All_Sort",
@@ -38682,7 +38782,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Search",
@@ -38693,7 +38793,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Offset_Search_Sort",
@@ -38705,7 +38805,7 @@
 					"nextoffset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Count_Category",
@@ -38844,7 +38944,7 @@
 					"basket_id",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_Basket_Empty",
@@ -38888,7 +38988,8 @@
 				"parameters": [
 					"query var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Core Query Building Functions, suitable for All Products load"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_Set_DiscountSignature",
@@ -39007,7 +39108,8 @@
 					"customfield_count",
 					"customfield_names var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Functions for including custom fields in the query output"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_OutputCustomFields_Apply",
@@ -39048,7 +39150,8 @@
 					"query var",
 					"category var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Category Products"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_Get_Category",
@@ -39064,7 +39167,8 @@
 					"query var",
 					"product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Related Products"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_Facet",
@@ -39072,7 +39176,8 @@
 					"query var",
 					"facet var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Facets"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_Facet_Variants",
@@ -39097,7 +39202,8 @@
 					"query var",
 					"search"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Search (including searchable custom fields)"
 			},
 			{
 				"name": "Runtime_ProductList_Build_Query_Search_FROM",
@@ -39170,7 +39276,8 @@
 				"parameters": [
 					"query var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Product List: Loading and caching"
 			},
 			{
 				"name": "Runtime_ProductList_Cache",
@@ -39198,7 +39305,7 @@
 					"total_count var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Count",
@@ -39206,7 +39313,7 @@
 					"query var",
 					"total_count var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_Data",
@@ -39217,7 +39324,7 @@
 					"next_offset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_ProductList_Load_LowLevel",
@@ -39230,7 +39337,7 @@
 					"next_offset var",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Runtime_OrderList_Build_Query",
@@ -39293,7 +39400,8 @@
 					"customfield_count",
 					"customfield_names var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime Order List: Functions for including custom fields in the query output"
 			},
 			{
 				"name": "Runtime_OrderList_Build_Query_OutputCustomFields_Apply",
@@ -40011,7 +40119,8 @@
 				"parameters": [
 					"error_code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "EOF Handling Functions"
 			},
 			{
 				"name": "Error_ListLoad_EOF",
@@ -40959,7 +41068,7 @@
 					"id",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductList_Load_Signature",
@@ -40968,7 +41077,7 @@
 					"version",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductList_Load_Signature_UnExpired",
@@ -40977,7 +41086,7 @@
 					"version",
 					"cachedproductlist var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "CachedProductListList_Load_All",
@@ -41436,7 +41545,8 @@
 				"parameters": [
 					"encryption var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Encryption"
 			},
 			{
 				"name": "Encryption_Insert",
@@ -41501,7 +41611,8 @@
 				"parameters": [
 					"privatekey var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "PrivateKeys"
 			},
 			{
 				"name": "PrivateKey_Insert",
@@ -43086,7 +43197,7 @@
 				"parameters": [
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "ProductList_Load_SKU",
@@ -43094,7 +43205,7 @@
 					"sku",
 					"products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Product_Count",
@@ -45023,17 +45134,20 @@
 			{
 				"name": "OrderMinimumsMet",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Examines the contents of the shopping basket in g.Basket to determine if it meets the minimum checkout settings for the store.\n\nBoth the minimum quantity of items and the minimum total price are verified."
 			},
 			{
 				"name": "DetermineSessionID",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function parses input parameters and cookies to identify and verify a shopping interface session.\n\nThe function also calls SetRuntimePaths() to initialize variables dependent on the current site configuration.\n\nInitializing g.Store_Code prior to calling this function will eliminate overhead.\n\nInput cookies are parsed using ParseCookies() and stored in the variable g.Request_Cookies."
 			},
 			{
 				"name": "UpdateSessionID",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function should be called whenever the value of one of the session variables is changed."
 			},
 			{
 				"name": "AppendRuntimeParameter",
@@ -45047,7 +45161,8 @@
 			{
 				"name": "SetRuntimePaths",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function examines the current shopping environment, configuration, and session, then initializes variables\n\nrequired for proper navigation of the store."
 			},
 			{
 				"name": "SetRuntimeURLs",
@@ -45062,14 +45177,16 @@
 			{
 				"name": "SetRuntimeCookies",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function outputs Set-Cookie headers to update or create shopping session cookies.  \n\nWhen called in response to an HTTP request, the following cookies are updated:\n\nmm5-[store_code]-basket-id\n\nWhen called in response to an HTTPS request, the following cookies are updated:\n\nmm5-[store_code]-customer-session\n\nmm5-[store_code]-affiliate-session\n\nmm5-[store_code]-checkout-session\n\nIf a session value does not exist for any of the cookies above, that cookie is explicitly cleared by specifying an expiration date one year in the past.\n\nCookies are contained in the cookie list g.Output_Cookies."
 			},
 			{
 				"name": "OpenBasket",
 				"parameters": [
 					"basket var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function attempts to locate a Basket record for the session identified by g.Session_ID.\n\nIf a Basket record exists, it is checked for expiration and discarded if it has expired.\n\nIf a valid, unexpired Basket record is found, shopping session parameters are verified and the following\n\nverification variables are set:\n\ng.Customer_Session_Verified\n\ng.Affiliate_Session_Verified\n\ng.Checkout_Session_Verified"
 			},
 			{
 				"name": "OpenBasket_LowLevel",
@@ -45084,7 +45201,8 @@
 					"name",
 					"default"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function outputs an HTML  tag containing all of the countries in the domain country list.\n\n' }\">\n\n\t\n\n\t\n\n\n\n\t\n\n\t\n\n\t\t\n\n\t\t\t' $ encodeentities( l.country[ l.pos ]:name ) $ '' }\">\n\n\t\t\n\n\t\t\t' $ encodeentities( l.country[ l.pos ]:name ) $ '' }\">\n\n\t\t\n\n\n\n\t\t\n\n\t\n\n\n\n\t\n\n\n\n\t\n\n\n\n\n\n\n\nThis function outputs an HTML  tag containing all of the countries in the current store's country list."
 			},
 			{
 				"name": "Error",
@@ -45092,7 +45210,8 @@
 					"code",
 					"message"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function copies its parameters to the global variables Error_Code and Error_Message, then returns 0."
 			},
 			{
 				"name": "Error_Clear",
@@ -45129,14 +45248,16 @@
 				"parameters": [
 					"address"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function adds containing angle brackets to one or more comma separated email addresses in parameter address.  \n\nSome SMTP servers require email addresses to be contained in angle brackets.\n\nReturns The email addresses in address, with angle brackets added"
 			},
 			{
 				"name": "Email_Validate",
 				"parameters": [
 					"address"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validates an email address"
 			},
 			{
 				"name": "Phone_Validate",
@@ -45144,7 +45265,8 @@
 					"phone",
 					"country"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validates a phone number\n\nFor the US and Germany, the phone number must contain only digits and common delimiter characters.\n\nFor all countries, the phone number must be non-empty."
 			},
 			{
 				"name": "Zip_Validate",
@@ -45152,7 +45274,8 @@
 					"zip",
 					"country"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validates a zip or postal code\n\nFor the US, zip must be a valid 5 digit or Zip+4 zip code\n\nFor Germany, zip must be exactly 5 numeric digits\n\nFor all other countries, zip must have a length greater than 0"
 			},
 			{
 				"name": "StandardFields_Validate_NonOptional_Address",
@@ -45161,7 +45284,8 @@
 					"address var",
 					"prefix"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function validates a non-required address according to the passed in fields variable, which is usually loaded from the StandardFields database for the current store.\n\naddress contains the following members:\n\nfname\n\nlname\n\nemail\n\nphone\n\nfax\n\ncomp\n\naddr1\n\naddr2\n\ncity\n\nstate\n\nzip\n\ncntry\n\nIf one or more of the fields is invalid, a variable with the following name, prepended by prefix is set to 1:\n\n[prefix]FirstName_Invalid\n\n[prefix]LastName_Invalid\n\n[prefix]Email_Invalid\n\n[prefix]Phone_Invalid\n\n[prefix]Fax_Invalid\n\n[prefix]Company_Invalid\n\n[prefix]Address1_Invalid\n\n[prefix]Address2_Invalid\n\n[prefix]City_Invalid\n\n[prefix]State_Invalid\n\n[prefix]Zip_Invalid\n\n[prefix]Country_Invalid"
 			},
 			{
 				"name": "StandardFields_Validate",
@@ -45174,7 +45298,8 @@
 					"secondary_address var",
 					"secondary_prefix"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function validates a set of primary and secondary addresses according to the passed in fields variable, which is usually loaded from the StandardFields database for the current store.\n\nprimary_address and secondary_address contain the following members:\n\nfname\n\nlname\n\nemail\n\nphone\n\nfax\n\ncomp\n\naddr1\n\naddr2\n\ncity\n\nstate\n\nzip\n\ncntry\n\nIf one or more of the fields is invalid, a variable with the following name, prepended by prefix is set to 1:\n\n[prefix]FirstName_Invalid\n\n[prefix]LastName_Invalid\n\n[prefix]Email_Invalid\n\n[prefix]Phone_Invalid\n\n[prefix]Fax_Invalid\n\n[prefix]Company_Invalid\n\n[prefix]Address1_Invalid\n\n[prefix]Address2_Invalid\n\n[prefix]City_Invalid\n\n[prefix]State_Invalid\n\n[prefix]Zip_Invalid\n\n[prefix]Country_Invalid"
 			},
 			{
 				"name": "Adjusted_Price",
@@ -45183,7 +45308,8 @@
 					"price",
 					"cost"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function takes into account the price groups of a currently logged in shopping account as well as the price group overlap setting of the current store.\n\nReturns the sale price according to all price groups"
 			},
 			{
 				"name": "Adjusted_Price_LowLevel",
@@ -45193,7 +45319,8 @@
 					"price",
 					"cost"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function takes into account the price groups of the specified Customer as well as the price group overlap setting of the current store.\n\nReturns the sale price according to all price groups"
 			},
 			{
 				"name": "Adjusted_Price_PriceGroups",
@@ -45213,7 +45340,8 @@
 					"selected_value",
 					"text"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML option tag. If value is equal to selected_value, the selected attribute is included in the generated option tag."
 			},
 			{
 				"name": "DrawOption_Encode",
@@ -45227,7 +45355,8 @@
 			{
 				"name": "DrawOption_SelectOne",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML  tag containing the text \"Select One\""
 			},
 			{
 				"name": "DrawCredentialInput",
@@ -45250,7 +45379,8 @@
 					"default",
 					"text"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML radio button. If  value is equal to default, the checked attribute is included in the generated input tag."
 			},
 			{
 				"name": "DrawRadio_With_Label",
@@ -45270,7 +45400,8 @@
 					"value",
 					"text"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML checkbox. If checked is true, the checked attribute is included in the generated input tag.\n\nThis function does not encode the text passed in. If you're using a global variable to construct your Checkbox text, you should encode it when calling DrawCheckbox."
 			},
 			{
 				"name": "DrawCheckbox_With_Label",
@@ -45310,7 +45441,8 @@
 					"value",
 					"text"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML checkbox which calls the JavaScript function SetModified() when clicked.\n\nIf checked is true, the  checked attribute is included in the generated input tag."
 			},
 			{
 				"name": "DrawTemplateTextArea",
@@ -45320,7 +45452,8 @@
 					"rows",
 					"cols"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Draws an HTML textarea with 100% width and an attached color selector.\n\nThe output textarea also contains connected JavaScript which provides tab functionality in common browsers.  If the current\n\nbrowser does not support 100% width, the width of the textarea will fall back to the value specified in cols."
 			},
 			{
 				"name": "DrawTemplateTextArea_SetModified",
@@ -45431,7 +45564,8 @@
 					"timestamp",
 					"time_t var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Converts a RFC 3339 timestamp string to time_t"
 			},
 			{
 				"name": "Format_RFC3339_DateTime",
@@ -45445,7 +45579,8 @@
 				"parameters": [
 					"time_t"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Formats a time_t into an RFC 1123 compatible date/time.\n\nRFC 1123 defines the date/time format used for many internet protocols.\n\nThe output date/time from this function is suitable for the use in a Set-Cookie tag.\n\nReturns the formatted date/time"
 			},
 			{
 				"name": "Format_Date",
@@ -45453,7 +45588,8 @@
 					"time_t",
 					"language"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Formats the date portion of a time_t according to a specified language for the following languages:\n\nen-US mm/dd/yyyy\n\nde-DE dd/mm/yyyy\n\nReturns the formatted date if language is a supported value, or an empty string"
 			},
 			{
 				"name": "Format_Time",
@@ -45461,7 +45597,8 @@
 					"time_t",
 					"language"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Formats the time portion of a time_t according to a specified language for the following languages:\n\nen-US HH:MM:SS PST\n\nde-DE HH:MM:SS\n\nReturns the formatted time if language is a supported value, or an empty string"
 			},
 			{
 				"name": "Format_Time_Short",
@@ -45469,7 +45606,8 @@
 					"time_t",
 					"language"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Formats the time portion of a time_t according to a specified language, excluding time zone for the following languages:\n\nen-US HH:MM:SS\n\nde-DE HH:MM:SS\n\nReturns the formatted time if language is a supported value, or an empty string"
 			},
 			{
 				"name": "FormatDateTime_ClientLocale",
@@ -45484,28 +45622,32 @@
 				"parameters": [
 					"data"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Converts textual representations of special characters into their HTML equivalents\n\nReturns the input data with any textual representations converted to HTML"
 			},
 			{
 				"name": "Message_Error",
 				"parameters": [
 					"message"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Appends an error message to the global array Error_Messages\n\nThese messages are displayed by the cmp-mv-messages component."
 			},
 			{
 				"name": "Message_Information",
 				"parameters": [
 					"message"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Appends an informational message to the global array Information_Messages\n\nThese messages are displayed by the cmp-mv-messages component."
 			},
 			{
 				"name": "Data_Entry_Error",
 				"parameters": [
 					"message"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function sets the global variable Data_Entry_Error to 1 and appends message to the global array Data_Entry_Error_Message.  \n\nThese fields are displayed by various component modules."
 			},
 			{
 				"name": "SendEmail",
@@ -45517,7 +45659,8 @@
 					"headers",
 					"message"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sends an email message according to the domain settings, either by using  or an external commerce library."
 			},
 			{
 				"name": "v9_SendEmail",
@@ -45531,7 +45674,8 @@
 				"parameters": [
 					"full_name"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Breaks a name into first, middle, and last name components\n\nReturns a structure containing the following members first middle last"
 			},
 			{
 				"name": "Encryption_Available",
@@ -45578,7 +45722,8 @@
 					"name",
 					"unique_code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Attempts to generate a unique item code from a longer identifier\n\nIf unique_code is empty, an initial code is generated by extracting the first letter of each word in name.\n\nIf unique_code has a value, a series of random digits is appended.\n\nReturns an item code"
 			},
 			{
 				"name": "Draw_ProgressBar_Begin",
@@ -45678,7 +45823,8 @@
 					"file_dir",
 					"file_location"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sends an email message with an attached binary file"
 			},
 			{
 				"name": "BuildMIMEAttachmentEmailHeaders",
@@ -45789,7 +45935,8 @@
 					"array var",
 					"count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorts a PR5-style item sort input array\n\nThis function sorts an OffsetArray used to implement the PR6-style numeric product, category, etc... sort."
 			},
 			{
 				"name": "SortOffsetArray_Sort_Ascending_Callback",
@@ -45824,7 +45971,8 @@
 					"subelement",
 					"direction"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorts an array using the Quick Sort algorithm. Subelement must contain a leading colon (:) if sorting an array of structures by a single member,\n\nor may be empty if sorting an array of simple values.  Elements are compared using the MivaScript EQ operator."
 			},
 			{
 				"name": "QuickSortArray_Sort",
@@ -45835,7 +45983,8 @@
 					"comparisons var",
 					"comparison_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorts an array using multiple comparisons to break ties using the Quick Sort algorithm.\n\nEach element in comparisons contains the following members:\n\nsubelement The member to sort by, including the leading colon (:)\n\ndirection The direction in which to sort\n\nElements are compared using the MivaScript EQ operator according to each element in comparisons.\n\nIf a comparison results in a tie, the next comparison is used."
 			},
 			{
 				"name": "QuickSortArray_Partition",
@@ -45874,7 +46023,8 @@
 					"string",
 					"length"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Encodes a string in hexidecimal notation\n\nReturns the hexidecimal notation of string"
 			},
 			{
 				"name": "Hex_Decode",
@@ -45882,7 +46032,8 @@
 					"string",
 					"length"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Decodes a hexidecimal string\n\nReturns the decoded string"
 			},
 			{
 				"name": "HexByte_To_Decimal",
@@ -45896,7 +46047,8 @@
 				"parameters": [
 					"name"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Strips non digit, non letter characters from a string\n\nReturns the stripped string"
 			},
 			{
 				"name": "SanitizeRFC2616Token",
@@ -45910,7 +46062,8 @@
 				"parameters": [
 					"array var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Returns the lowest index of a sparse array"
 			},
 			{
 				"name": "NextSparseArrayElement",
@@ -45918,7 +46071,8 @@
 					"array var",
 					"pos"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Returns the index of the next element in a sparse array if present, otherwise pos + 1"
 			},
 			{
 				"name": "PreviousSparseArrayElement",
@@ -45926,7 +46080,8 @@
 					"array var",
 					"pos"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Returns the index of the previous element in a sparse array if present, otherwise pos - 1"
 			},
 			{
 				"name": "StructureMembers",
@@ -45934,14 +46089,16 @@
 					"struct var",
 					"members var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Builds an array containing the names of all members of a structure\n\nReturns the count of members within struct"
 			},
 			{
 				"name": "ParseCookies",
 				"parameters": [
 					"cookies var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Parses cookies sent by the browser and stores them in a structure. A member is created in cookies with the name of the cookie equal to\n\nthe member name, and the value of the member equal to the cookie's value. This allows cookies to be referenced directly by name."
 			},
 			{
 				"name": "SetCookie",
@@ -45954,7 +46111,8 @@
 					"path",
 					"secure"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function adds or updates a cookie in a cookie list, which may then be output in its entirety using OutputCookies().\n\nIn pr7-bugfix-2 and later, all cookies are created with the HttpOnly attribute."
 			},
 			{
 				"name": "v10_SetCookie",
@@ -45979,26 +46137,30 @@
 					"path",
 					"secure"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function modifies a cookie list so that the specified cookie is explicitly cleared upon the next call to OutputCookies().  \n\nClearing of the cookie is accomplished by setting its expiration date to a time one year in the past."
 			},
 			{
 				"name": "OutputCookies",
 				"parameters": [
 					"cookies var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Outputs a cookie list to the browser"
 			},
 			{
 				"name": "SelfReferentialURL",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "This function examines s.documenturl to ensure that it matches the HTTP Host header sent by the client.  Depending\n\non the server configuration, this may or may not be the case.  If s.documenturl does not appear to be directly\n\nself-referential, this function constructs a URL based on the HTTP Host header and remaining contents of s.documenturl.\n\nThe resulting URL will most likely work for the specific client that made the original request, but may not work for\n\nother clients depending on their configuration."
 			},
 			{
 				"name": "SelfReferentialURL_Failsafe",
 				"parameters": [
 					"failsafe_url"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Constructs a self-referential URL using s.documenturl and the HTTP Host header, using a fallback URL in certain cases\n\nThis function behaves identically to SelfReferentialURL(), except if the number of forward slashes in s.documenturl and the parameter failsafe_url\n\ndiffer, s.documenturl is assumed to be malformed and failsafe_url is returned instead."
 			},
 			{
 				"name": "BaseName",
@@ -46064,7 +46226,8 @@
 					"needle",
 					"haystack"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Counts and returns the number of occurrences of one string in another"
 			},
 			{
 				"name": "ShippingMethodList_Load_Enabled",
@@ -46740,7 +46903,8 @@
 					"order var",
 					"basket var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Dummy Basket Functions"
 			},
 			{
 				"name": "DummyBasket_Copy",
@@ -47316,7 +47480,8 @@
 					"param",
 					"output var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_xxx: Validate a parameter and return its result given the specified criteria"
 			},
 			{
 				"name": "JSON_Input_Filter",
@@ -47411,7 +47576,8 @@
 					"output var",
 					"output_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_xxx_Array: Process a single parameter that is passed as an array, validating each member against the specified\n\ncriteria."
 			},
 			{
 				"name": "JSON_Input_Number_Array",
@@ -47453,7 +47619,8 @@
 					"param",
 					"output var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "JSON_Input_Array/JSON_Input_Element_xxx: Process an array of structures, validating individual members given the specified criteria"
 			},
 			{
 				"name": "JSON_Input_Structure",
@@ -47720,7 +47887,8 @@
 				"parameters": [
 					"filterlist var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "filterlist\n\n[1]\n\n:name=\"search|search_AND|search_OR\"\n\n:value\t... child nodes joined with OR, separate \"search\" filters joined with AND ...\n\n[1]:field=field_code\n\n[1]:operator=EQ\n\n[1]:value=wombat\n\n[2]:field=search|search_AND|search_OR\n\n[2]:operator=SUBWHERE\n\n[2]:value\n\n[1]:field=field_code\n\n[1]:operator=EQ\n\n[1]:value=wombat\n\n[2]:field=search|search_AND|search_OR\n\n[2]:operator=SUBWHERE\n\n[2]:value\n\n... unlimited nesting ...\n\n[2]\n\n:name=\"ondemandcolumns\"\n\n:value\n\n[1]=field_code,\n\n[2]=CustomField_Values:module_code:field_code\n\n[3]\n\n:name=\"\"\n\n:value="
 			},
 			{
 				"name": "JSON_Filter_Structify_Search",
@@ -48029,7 +48197,8 @@
 					"filterlist var",
 					"variablelist"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Note: Non-core files that use this function must directly include json/mivascript.mv to resolve required\n\nfilter functions that cannot be called via MvDO."
 			},
 			{
 				"name": "JSON_Filter_MivaScript_Callback",
@@ -48847,7 +49016,8 @@
 				"parameters": [
 					"report var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "TemplateBatchReport_Load_Code",
@@ -48916,7 +49086,8 @@
 					"item",
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Component Module code"
 			},
 			{
 				"name": "ComponentModule_Initialize",
@@ -49263,7 +49434,8 @@
 				"parameters": [
 					"packbycube var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions for table PackByCube"
 			},
 			{
 				"name": "PackByCube_Update",
@@ -49556,7 +49728,8 @@
 				"parameters": [
 					"pbq var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "PackByQuantityBox_Load",
@@ -49909,7 +50082,8 @@
 				"parameters": [
 					"pbw var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "PackByWeightBox_Load",
@@ -49983,7 +50157,8 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper Routines"
 			},
 			{
 				"name": "PackByWeight_BoxSort_Weight",
@@ -53473,7 +53648,8 @@
 					"cat_id",
 					"cssui_category var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "CSSUI_CatTitle_InsertOrUpdate",
@@ -55588,7 +55764,8 @@
 					"id",
 					"cssui_css var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database functions"
 			},
 			{
 				"name": "CSSUI_CSS_Load_File",
@@ -56600,7 +56777,8 @@
 				"parameters": [
 					"cssui_message var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database functions"
 			},
 			{
 				"name": "CSSUIMessage_Record",
@@ -56678,7 +56856,8 @@
 					"type",
 					"messages var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			}
 		]
 	},
@@ -58059,7 +58238,8 @@
 					"cat_id",
 					"source var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "Product_HDFT_InsertOrUpdate",
@@ -58076,7 +58256,8 @@
 					"category_id",
 					"category_hdft var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "These functions are emulated for backwards compatibility"
 			},
 			{
 				"name": "Product_HDFT_Load",
@@ -63835,7 +64016,8 @@
 				"parameters": [
 					"componentversiondata var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Component Manager Functions"
 			},
 			{
 				"name": "ComponentManager_Deregister_Component",
@@ -64030,7 +64212,8 @@
 					"componentstates var",
 					"componentstate_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Component State Functions"
 			},
 			{
 				"name": "ComponentState_Append_Action_Add",
@@ -65250,7 +65433,8 @@
 				"parameters": [
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "MiniBasket Functions"
 			},
 			{
 				"name": "Generate_CSS_CSSUI",
@@ -66495,7 +66679,8 @@
 				"parameters": [
 					"name var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper database functions"
 			},
 			{
 				"name": "METANameList_Load",
@@ -66756,7 +66941,8 @@
 					"name_id",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions for table METAGlobal"
 			},
 			{
 				"name": "METAValue_Delete_Global_Name",
@@ -66794,7 +66980,8 @@
 					"name_id",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions for table METAPage"
 			},
 			{
 				"name": "METAValue_Delete_Page",
@@ -67009,7 +67196,8 @@
 					"query var",
 					"metaname var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "Meta_Page_Query_Field_Alias",
@@ -67902,7 +68090,8 @@
 					"item",
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "ShippingEstimate Functions"
 			},
 			{
 				"name": "Generate_ShippingEstimate_Code",
@@ -70243,7 +70432,8 @@
 					"discount_state var",
 					"discounts var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "BuyXGetY_Discounts_Build_Same_Product",
@@ -70849,7 +71039,8 @@
 				"parameters": [
 					"customerspecificpricing var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "CustomerSpecificPricing_Load",
@@ -71047,7 +71238,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "data_store"
 			},
 			{
 				"name": "Module_Upgrade_Store",
@@ -71169,7 +71361,8 @@
 					"module var",
 					"capabilities var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "discount"
 			},
 			{
 				"name": "DiscountModule_Fields",
@@ -71261,7 +71454,8 @@
 					"tab",
 					"product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "vis_product"
 			},
 			{
 				"name": "Module_Product_Tabs",
@@ -71310,7 +71504,8 @@
 					"module var",
 					"product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "not_prod"
 			},
 			{
 				"name": "Module_Notify_Product_Insert",
@@ -71359,7 +71554,8 @@
 					"code",
 					"capabilities var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "fields_prod"
 			},
 			{
 				"name": "Module_Product_Fields",
@@ -71472,7 +71668,8 @@
 					"module var",
 					"provide_xml var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "provision_store"
 			},
 			{
 				"name": "Module_Provision_Store_ProductSalePrice",
@@ -71559,7 +71756,8 @@
 					"product var",
 					"pricegroup var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "ProductSubscriptionTerm_PriceGroup_Validate",
@@ -71933,7 +72131,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "data_store"
 			},
 			{
 				"name": "Module_Upgrade_Store",
@@ -72027,7 +72226,8 @@
 					"module var",
 					"capabilities var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "discount"
 			},
 			{
 				"name": "DiscountModule_Fields",
@@ -72119,7 +72319,8 @@
 					"right var",
 					"data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "These sort functions differ from the ones in features/pgr/pgr_ut.mv in that they break ties by\n\nproduct_id then variant_id, and finally, put items with higher line_ids later in the output array,\n\nto guarantee that those items receive the highest quantity volume discount.  This ensures that\n\npredicted discounts are calculated correctly."
 			},
 			{
 				"name": "Volume_Item_Sort_TotalPriceAscending",
@@ -72235,7 +72436,8 @@
 					"tab",
 					"product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "vis_product"
 			},
 			{
 				"name": "Module_Product_Tabs",
@@ -72284,7 +72486,8 @@
 					"module var",
 					"product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "not_prod"
 			},
 			{
 				"name": "Module_Notify_Product_Insert",
@@ -72341,7 +72544,8 @@
 					"module var",
 					"capabilities var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "import"
 			},
 			{
 				"name": "ImportModule_Delimited_Columns",
@@ -72470,7 +72674,8 @@
 					"module var",
 					"provide_xml var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "provision_store"
 			},
 			{
 				"name": "Module_Provision_Store_ProductPricingTable",
@@ -72487,7 +72692,8 @@
 					"item",
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "component"
 			},
 			{
 				"name": "ComponentModule_Validate",
@@ -72659,7 +72865,8 @@
 					"provide_xml var",
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "component_prov"
 			},
 			{
 				"name": "SkinsComponentModule_Description",
@@ -72667,7 +72874,8 @@
 					"module var",
 					"item var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "skins"
 			},
 			{
 				"name": "SkinsComponentModule_Export_Item",
@@ -72683,7 +72891,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "json"
 			},
 			{
 				"name": "JSON_Runtime_VolumePricing_Load_Product_Variant",
@@ -72697,7 +72906,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "clientside"
 			},
 			{
 				"name": "Module_Clientside_Output_File",
@@ -73288,7 +73498,8 @@
 					"values var",
 					"value"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "NOTE WELL: Due to the way that MvEXPORT works, in order for this function\n\nto work correctly the values parameter to this function must actually refer\n\nto an array that is called l.values at the point of the MvEXPORT that uses\n\nthe fields parameter to this function."
 			},
 			{
 				"name": "FlatProduct_Export_ProductImport",
@@ -73453,7 +73664,8 @@
 				"parameters": [
 					"start_time var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Private functions"
 			},
 			{
 				"name": "Write_Line",
@@ -73931,7 +74143,8 @@
 					"available_only",
 					"exclude_free"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Output xxx Functions"
 			},
 			{
 				"name": "Sitemap_Write_Categories",
@@ -73968,7 +74181,8 @@
 					"sitemaps var",
 					"sitemap_count var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Used to create sitemap files"
 			},
 			{
 				"name": "Sitemap_Write_Sitemap_URL",
@@ -74016,7 +74230,8 @@
 			{
 				"name": "Sitemap_Generate_SitemapIndex_Header",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Used to create sitemap index files"
 			},
 			{
 				"name": "Sitemap_Generate_SitemapIndex_Footer",
@@ -74526,7 +74741,8 @@
 					"settings var",
 					"all_settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Custom Iterator Templates"
 			},
 			{
 				"name": "TemplateFeed_Product_IteratorTemplate_Render_Variant",
@@ -74612,7 +74828,8 @@
 				"parameters": [
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Product Related Helper Functions"
 			},
 			{
 				"name": "TemplateFeed_Product_DefaultFields_Master",
@@ -74829,7 +75046,8 @@
 				"parameters": [
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Category Related Helper Functions"
 			},
 			{
 				"name": "TemplateFeed_Category_DefaultFields",
@@ -74883,7 +75101,8 @@
 				"parameters": [
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Customer Related Helper Functions"
 			},
 			{
 				"name": "TemplateFeed_Customer_DefaultFields",
@@ -75330,7 +75549,8 @@
 					"settings var",
 					"email var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "Settings_Copy_TemplateOrderEmail",
@@ -76846,7 +77066,8 @@
 					"settings var",
 					"code var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "TODO"
 			},
 			{
 				"name": "Module_Notify_CustomerPaymentCard_Insert",
@@ -77008,7 +77229,8 @@
 					"column var",
 					"required"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validation Functions"
 			},
 			{
 				"name": "Validate_Login",
@@ -77164,7 +77386,8 @@
 					"import var",
 					"columns_present var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous Utility Functions"
 			},
 			{
 				"name": "Add_Standard_Column",
@@ -77208,7 +77431,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "API Functions for Feature \"import\""
 			},
 			{
 				"name": "ImportModule_Capabilities",
@@ -77333,7 +77557,8 @@
 					"run_data var",
 					"existing_category var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Mode Specific Single Record Import Functions"
 			},
 			{
 				"name": "Import_Update_Only",
@@ -77387,7 +77612,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Update_Category",
@@ -77449,7 +77675,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "A zero return here does not indicate error - just that the record should be skipped."
 			},
 			{
 				"name": "Prepare_Parent_ID_For_Update",
@@ -77460,7 +77687,8 @@
 					"run_data var",
 					"existing_category var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "A zero return here does not indicate error - just that the record should be skipped."
 			},
 			{
 				"name": "Validate_Columns",
@@ -77470,7 +77698,8 @@
 					"error_code var",
 					"error_msg var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validation Functions"
 			},
 			{
 				"name": "Validate_Fields_Create",
@@ -77496,7 +77725,8 @@
 					"import var",
 					"columns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous Utility Functions"
 			},
 			{
 				"name": "Store_Config",
@@ -77694,7 +77924,8 @@
 					"import var",
 					"columns_present var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "Record_Skip",
@@ -77739,7 +77970,8 @@
 					"run_data var",
 					"existing_coupon var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Mode Specific Single Record Import Functions"
 			},
 			{
 				"name": "Import_Update_Only",
@@ -77804,7 +78036,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Update_Coupon",
@@ -77869,7 +78102,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "API Functions for Feature \"import\""
 			},
 			{
 				"name": "ImportModule_Capabilities",
@@ -77994,7 +78228,8 @@
 					"run_data var",
 					"existing_customer var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Mode Specific Single Record Import Functions"
 			},
 			{
 				"name": "Import_Update_Only",
@@ -78048,7 +78283,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Update_Customer",
@@ -78090,7 +78326,8 @@
 					"error_code var",
 					"error_msg var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validation Functions"
 			},
 			{
 				"name": "Validate_Fields_Create",
@@ -78116,7 +78353,8 @@
 					"import var",
 					"columns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous Utility Functions"
 			},
 			{
 				"name": "Store_Config",
@@ -78265,7 +78503,8 @@
 					"import var",
 					"columns_present var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "Record_Skip",
@@ -78319,7 +78558,8 @@
 					"run_data var",
 					"existing_giftcertificate var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Mode Specific Single Record Import Functions"
 			},
 			{
 				"name": "Import_Update_Only",
@@ -78384,7 +78624,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Update_GiftCertificate",
@@ -78429,7 +78670,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "API Functions for Feature \"import\""
 			},
 			{
 				"name": "ImportModule_Capabilities",
@@ -78554,7 +78796,8 @@
 					"run_data var",
 					"existing_product var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Mode Specific Single Record Import Functions"
 			},
 			{
 				"name": "Import_Update_Only",
@@ -78608,7 +78851,8 @@
 					"record var",
 					"run_data var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Update_Product",
@@ -78777,7 +79021,8 @@
 					"error_code var",
 					"error_msg var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validation Functions"
 			},
 			{
 				"name": "Validate_Fields_Create",
@@ -78813,7 +79058,8 @@
 					"import var",
 					"columns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous Utility Functions"
 			},
 			{
 				"name": "Add_Inventory_Column",
@@ -79041,7 +79287,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "API Functions for Feature \"import\""
 			},
 			{
 				"name": "ImportModule_Capabilities",
@@ -79156,7 +79403,8 @@
 					"error_code var",
 					"error_msg var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Validation Functions"
 			},
 			{
 				"name": "Validate_Fields",
@@ -79173,7 +79421,8 @@
 					"import var",
 					"columns var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Miscellaneous Utility Functions"
 			},
 			{
 				"name": "Record_Skip",
@@ -79315,7 +79564,8 @@
 					"import var",
 					"columns_present var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			},
 			{
 				"name": "Record_Skip",
@@ -79360,7 +79610,8 @@
 					"uri_record var",
 					"skip_message var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Functions To Actually Import a Single Record"
 			},
 			{
 				"name": "Import_Page",
@@ -79407,7 +79658,8 @@
 				"parameters": [
 					"uri_record var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database functions"
 			},
 			{
 				"name": "URI_Delete_All_Product_Except_ID",
@@ -79459,7 +79711,8 @@
 					"module var",
 					"capabilities var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Import Feature"
 			},
 			{
 				"name": "ImportModule_Delimited_Columns",
@@ -80744,7 +80997,8 @@
 				"parameters": [
 					"cod var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "COD_Load_Cached",
@@ -81958,7 +82212,8 @@
 					"intervals var",
 					"interval_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report Data Generation Helper Functions"
 			},
 			{
 				"name": "CouponUsage_Run_Interval",
@@ -82286,7 +82541,8 @@
 					"intervals var",
 					"interval_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report Data Generation Helper Functions"
 			},
 			{
 				"name": "CustomerSales_Run_Gross",
@@ -83225,7 +83481,8 @@
 					"intervals var",
 					"interval_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report Data Generation Helper Functions"
 			},
 			{
 				"name": "SalesCommission_Run_Metric",
@@ -83939,7 +84196,8 @@
 					"intervals var",
 					"interval_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report data generation functions"
 			},
 			{
 				"name": "SubscriptionMetrics_Run_MRR",
@@ -84049,7 +84307,8 @@
 					"report_id",
 					"subterm_ids var"
 				],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "Database functions"
 			},
 			{
 				"name": "SubscriptionMetricsXTerm_Delete_All_Report",
@@ -84185,7 +84444,8 @@
 				"parameters": [
 					"query var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report data generation functions"
 			},
 			{
 				"name": "SubscriptionProductStats_Product_TempTable_Insert",
@@ -84630,7 +84890,8 @@
 					"intervals var",
 					"interval_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Report data generation functions"
 			},
 			{
 				"name": "SubscriptionStats_Run_New",
@@ -84719,7 +84980,8 @@
 					"report_id",
 					"subterm_ids var"
 				],
-				"returnValue": "l.count"
+				"returnValue": "l.count",
+				"description": "Database functions"
 			},
 			{
 				"name": "SubscriptionStatsXTerm_Delete_All_Report",
@@ -85904,7 +86166,8 @@
 				"parameters": [
 					"method var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions"
 			},
 			{
 				"name": "MinUnitMethod_Load_ID",
@@ -89303,7 +89566,7 @@
 				"parameters": [
 					"devat_products var"
 				],
-				"returnValue": "l.product_count"
+				"returnValue": "l.count"
 			},
 			{
 				"name": "DEVAT_Country_Insert",
@@ -90027,7 +90290,8 @@
 				"parameters": [
 					"options var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "StateTaxOptions table helper functions"
 			},
 			{
 				"name": "StateTaxOptions_Insert",
@@ -90048,7 +90312,8 @@
 				"parameters": [
 					"state var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "StateTaxStates table helper functions"
 			},
 			{
 				"name": "StateTaxState_Load",
@@ -91588,7 +91853,8 @@
 					"product_id",
 					"inventory"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "|BEGIN HELPER FUNCTIONS\n\n\t|"
 			},
 			{
 				"name": "InventoryProductCount_Update_LowLevel",
@@ -91612,7 +91878,8 @@
 					"module var",
 					"fields var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "|END HELPER FUNCTIONS\n\n\t|"
 			},
 			{
 				"name": "Module_Product_Field_Name",
@@ -92910,7 +93177,8 @@
 					"product_id",
 					"present var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Database Functions: CombinationFacetRecord"
 			},
 			{
 				"name": "CombinationFacetRecord_Insert",
@@ -92944,7 +93212,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "CombinationFacetList_Update_Offsets",
@@ -92960,7 +93229,8 @@
 					"pastend var",
 					"pastend_count"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Sorting:  Items to be sorted are processed in three groups.  The input array to the sort function just contains the\n\nitems to be sorted, their desired offsets, and their current offsets.  We initially sort this data into\n\ntwo groups: items moving up and items moving down.  During processing, items moving down are segregated\n\ninto two groups: items moving past the highest current offset, and items moving within the current\n\ndata set.\n\nTies are broken using the items original offset.\n\nThe end result is that we process items in the following order:\n\n+-----------------------+  offset  original_offset\n\n|                       |    |            ^\n\n|    Items moving up    |    |            |\n\n|                       |    v            |\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    |            |\n\n| Items moving past end |    |            |\n\n|                       |    v            v\n\n+-----------------------+\n\n+-----------------------+\n\n|                       |    ^            |\n\n|   Items moving down   |    |            |\n\n|                       |    |            v\n\n+-----------------------+"
 			},
 			{
 				"name": "CombinationFacetFieldList_Update_Offsets",
@@ -94708,7 +94978,8 @@
 					"basket_id",
 					"code"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Make-shift fields_basket feature"
 			},
 			{
 				"name": "Module_Basket_Set_Field",
@@ -95899,7 +96170,8 @@
 					"custom_fields",
 					"destination var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Assembly MvDO functions"
 			},
 			{
 				"name": "Read_Product_Code",
@@ -96689,7 +96961,8 @@
 			{
 				"name": "ImageManagement_Delete_UnreferencedImages",
 				"parameters": [],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Utility Functions"
 			},
 			{
 				"name": "Image_Count",
@@ -97042,7 +97315,8 @@
 				"parameters": [
 					"settings var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "MVGA Functions"
 			},
 			{
 				"name": "MVGA_Settings_Copy",
@@ -101362,7 +101636,8 @@
 				"parameters": [
 					"module var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "status values:\n\n0 = new\n\n1 = sent\n\n2 = modified (sent but items added or deleted)\n\n3 = accepted (turned back into a basket)\n\n4 = viewed (quote viewed in email client)\n\n5 = purchased (quote has passed through the AUTH action)\n\n6 = expired (quote has reached the expiry date)\n\n7 = response needed (customer has added a note in runtime)\n\n8 = converted to order (admin converted quote to order)"
 			},
 			{
 				"name": "Module_Install_Store",
@@ -103257,7 +103532,8 @@
 					"source var",
 					"dest var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Quote Emails"
 			},
 			{
 				"name": "QuoteEmail_Load_Code",
@@ -104503,7 +104779,8 @@
 				"parameters": [
 					"source"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			}
 		]
 	},
@@ -105043,7 +105320,8 @@
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Attribute Facet(s)"
 			},
 			{
 				"name": "StandardFacets_Product_Facets_Query_Attribute",
@@ -105076,7 +105354,8 @@
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Category Facet"
 			},
 			{
 				"name": "StandardFacets_Product_Facet_Value_Prompt_Category",
@@ -105126,7 +105405,8 @@
 				"parameters": [
 					"facets var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Price Facet"
 			},
 			{
 				"name": "StandardFacets_Product_Facet_Values_Query_PostProcess_Price",
