@@ -28,5 +28,5 @@ export default {
 		LEFT_NAME_ATTR: /(?<=name\s*=\s*\"\s*)[^<]*?$/i,
 		RIGHT_NAME_ATTR: /^[^>]*?name\s*=\s*"\s*/i,
 		NAME_ATTR_END: /^[^"]+/
-	},
+	}
 };
