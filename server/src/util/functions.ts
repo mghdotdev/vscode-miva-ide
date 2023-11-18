@@ -458,3 +458,25 @@ export function getVariableParts (variable: string): string[] {
 export function getVariableDepth (variableParts: string[]): number {
 	return Math.max(0, variableParts.length - 1);
 }
+
+export function isTagSelfClosing (tagName: string): boolean {
+	switch (tagName.toLowerCase()) {
+		case 'mvt:assign':
+		case 'mvt:callcontinue':
+		case 'mvt:callstop':
+		case 'mvt:do':
+		case 'mvt:else':
+		case 'mvt:elseif':
+		case 'mvt:eval':
+		case 'mvt:exit':
+		case 'mvt:foreachcontinue':
+		case 'mvt:foreachstop':
+		case 'mvt:item':
+		case 'mvt:miva':
+		case 'mvt:whilecontinue':
+		case 'mvt:whilestop':
+			return true;
+		default:
+			return false;
+	}
+}

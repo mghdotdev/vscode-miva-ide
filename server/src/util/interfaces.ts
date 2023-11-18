@@ -11,6 +11,7 @@ import {
 	Diagnostic,
 	DocumentLink,
 	Hover,
+	MarkupContent,
 	Position,
 	SymbolInformation,
 	WorkspaceFolder
@@ -53,7 +54,7 @@ export interface LanguageFeatures {
 }
 
 export interface MvtLanguageModel {
-	symbols: SymbolInformation[];
+	symbols: SymbolInformationWithDocumentation[];
 	document: TextDocument;
 }
 
@@ -202,3 +203,7 @@ export interface SystemVariableData extends BaseSystemVariableData {
 	detail: string;
 	documentation: string;
 }
+
+export interface SymbolInformationWithDocumentation extends SymbolInformation {
+	documentation: MarkupContent;
+};

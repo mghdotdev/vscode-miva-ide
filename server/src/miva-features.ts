@@ -40,6 +40,7 @@ import {
 	getHoverMapFromCompletionFile,
 	getVariableAtOffset,
 	getWordAtOffset,
+	isTagSelfClosing,
 	parseCompletion,
 	parseCompletionFile,
 	readJSONFile,
@@ -51,6 +52,7 @@ import {
 	LanguageFeatures,
 	MvtLanguageModel,
 	Settings,
+	SymbolInformationWithDocumentation,
 	ValidationData,
 	ValidationDataType,
 	ValidationRule,
@@ -108,7 +110,7 @@ let lskSymbols: any[] = [];
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const findDocumentSymbols = ( document: TextDocument ) => {
-		const symbols: SymbolInformation[] = [];
+		const symbols: SymbolInformationWithDocumentation[] = [];
 
 		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 		let token = scanner.scan();
@@ -141,8 +143,22 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 								name = `l.settings:${name}`;
 							}
 
+							const selfClosing = isTagSelfClosing(lastTagName);
+
 							// Create references to variable symbols
 							symbols.push({
+								documentation: {
+									kind: 'markdown',
+									value: [
+										'',
+										'```mvt',
+										selfClosing
+											? `<${lastTagName} ${lastAttributeName}="${name}" />`
+											: `<${lastTagName} ${lastAttributeName}="${name}">\n\t...\n</${lastTagName}>`,
+										'',
+										'```'
+									].join('\n')
+								},
 								kind: SymbolKind.Variable,
 								name,
 								location: Location.create(
@@ -512,7 +528,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		onHover ( document: TextDocument, position: Position ) {
 
-			const {document: mvtDocument} = mvtDocuments.get( document );
+			const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
 			// Get word
 			const line = mvtDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -653,6 +669,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				if (foundEntity) {
 					return {
 						contents: foundEntity.documentation
+					};
+				}
+			}
+
+			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
+			const entity = getEntityAtOffset( line, position.character )?.toLowerCase()
+
+			for (let symbol of documentSymbols) {
+				const nameLower = symbol.name.toLowerCase();
+
+				// Show variable hover docs
+				if (symbol.kind === SymbolKind.Variable && nameLower === entity || nameLower === variable || nameLower === word) {
+					return {
+						contents: symbol.documentation
 					};
 				}
 			}
