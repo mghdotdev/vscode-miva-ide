@@ -687,7 +687,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			}
 
 			// Variable / Entity Symbol Hover Documentation
-			const symbols = [].concat( documentSymbols, lskSymbols );
+			const symbols = [].concat( lskSymbols, documentSymbols );
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 			let symbolDocumentation = '';
