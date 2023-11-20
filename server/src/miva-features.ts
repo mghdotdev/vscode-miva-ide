@@ -145,30 +145,36 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 							const selfClosing = isTagSelfClosing(lastTagName);
 
+							const range = Range.create(
+								document.positionAt( scanner.getTokenOffset() + 1 ),
+								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+							);
+
 							// Create references to variable symbols
-							symbols.push({
-								documentation: {
-									kind: 'markdown',
-									value: [
-										'',
-										'```mvt',
-										selfClosing
-											? `<${lastTagName} ${lastAttributeName}="${name}" />`
-											: `<${lastTagName} ${lastAttributeName}="${name}">\n\t...\n</${lastTagName}>`,
-										'',
-										'```'
-									].join('\n')
-								},
-								kind: SymbolKind.Variable,
-								name,
-								location: Location.create(
-									document.uri,
-									Range.create(
-										document.positionAt( scanner.getTokenOffset() + 1 ),
-										document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+							symbols.push(
+								{
+									documentation: {
+										kind: 'markdown',
+										value: [
+											'',
+											`Defined on Ln ${range.start.line + 1}, Col ${range.start.character + 1}`,
+											'',
+											'```mvt',
+											selfClosing
+												? `<${lastTagName} ${lastAttributeName}="${name}" />`
+												: `<${lastTagName} ${lastAttributeName}="${name}">\n\t...\n</${lastTagName}>`,
+											'```',
+											''
+										].join('\n')
+									},
+									kind: SymbolKind.Variable,
+									name,
+									location: Location.create(
+										document.uri,
+										range
 									)
-								)
-							});
+								}
+							);
 						}
 
 					}
@@ -663,7 +669,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				}
 			}
 
-			// Entity hover
+			// Entity Encoding hover
 			if (patterns.MVT.LEFT_AFTER_AMP_HOVER.test(left)) {
 				const foundEntity = mvtEntityData[wordLower];
 				if (foundEntity) {
@@ -673,18 +679,27 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				}
 			}
 
+			// Variable / Entity Symbol Hover Documentation
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
-			const entity = getEntityAtOffset( line, position.character )?.toLowerCase()
+			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
+			let symbolDocumentation = '';
 
 			for (let symbol of documentSymbols) {
 				const nameLower = symbol.name.toLowerCase();
 
 				// Show variable hover docs
 				if (symbol.kind === SymbolKind.Variable && nameLower === entity || nameLower === variable || nameLower === word) {
-					return {
-						contents: symbol.documentation
-					};
+					symbolDocumentation += symbol.documentation.value + '\n---\n';
 				}
+			}
+
+			if (symbolDocumentation.length > 0) {
+				return {
+					contents: {
+						kind: 'markdown',
+						value: symbolDocumentation
+					}
+				};
 			}
 
 			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
