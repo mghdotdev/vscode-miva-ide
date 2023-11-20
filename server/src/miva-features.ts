@@ -278,6 +278,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 		return null;
 	};
 
+	// Get lsk symbols
+	_createLskSymbols(workspace.settings);
+
 	return {
 
 		doValidation( document: TextDocument, settings: Settings ) {
@@ -534,6 +537,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 		onHover ( document: TextDocument, position: Position ) {
 
+			if (lskSymbols.length === 0) {
+				_createLskSymbols(workspace.settings);
+			}
+
 			const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
 			// Get word
@@ -680,11 +687,12 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			}
 
 			// Variable / Entity Symbol Hover Documentation
+			const symbols = [].concat( documentSymbols, lskSymbols );
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 			let symbolDocumentation = '';
 
-			for (let symbol of documentSymbols) {
+			for (let symbol of symbols) {
 				const nameLower = symbol.name.toLowerCase();
 
 				// Show variable hover docs
@@ -738,56 +746,85 @@ function _getMvDocumentSymbolsByUri (uri) {
 
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
 
-	const symbols: SymbolInformation[] = [];
+	const symbols: SymbolInformationWithDocumentation[] = [];
 
 	const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 	let token = scanner.scan();
 	let lastTagName: string | undefined = undefined;
+	let originalLastTagName: string | undefined = undefined;
 	let lastAttributeName: string | undefined = undefined;
+	let originalLastAttributeName: string | undefined = undefined;
 
 	while ( token !== TokenType.EOS ) {
 
 		switch ( token ) {
 
 			case TokenType.StartTag:
-				lastTagName = scanner.getTokenText().toLowerCase();
+				originalLastTagName = scanner.getTokenText();
+				lastTagName = originalLastTagName.toLowerCase();
 				break;
 
 			case TokenType.AttributeName:
-				lastAttributeName = scanner.getTokenText().toLowerCase();
+				originalLastAttributeName = scanner.getTokenText();
+				lastAttributeName = originalLastAttributeName.toLowerCase();
 				break;
 
 			case TokenType.AttributeValue:
-				if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
 
-					symbols.push({
-						kind: SymbolKind.Variable,
-						name: scanner.getTokenText().replace( /"/g, '' ),
-						location: Location.create(
-							document.uri,
-							Range.create(
-								document.positionAt( scanner.getTokenOffset() + 1 ),
-								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+				const name = scanner.getTokenText().replace( /"/g, '' );
+
+				if (name) {
+					const pathInfo = path.parse(document.uri);
+
+					const range = Range.create(
+						document.positionAt( scanner.getTokenOffset() + 1 ),
+						document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+					);
+
+					if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
+
+						symbols.push({
+							documentation: {
+								kind: 'markdown',
+								value: [
+									'',
+									`Defined in [${pathInfo.base}](${document.uri}#L${range.start.line + 1},${range.start.character + 1}) on Ln ${range.start.line + 1}, Col ${range.start.character + 1}`,
+									'',
+									'```mv',
+									lastTagName === 'mvassign'
+										? `<${originalLastTagName} ${originalLastAttributeName} = "${name}" />`
+										: `<${originalLastTagName} ${originalLastAttributeName} = "${name}">\n\t...\n</${originalLastTagName}>`,
+									'```',
+									''
+								].join('\n')
+							},
+							kind: SymbolKind.Variable,
+							name,
+							location: Location.create(
+								document.uri,
+								range
 							)
-						)
-					});
+						});
 
-				}
-				else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
+					}
+					else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
 
-					symbols.push({
-						kind: SymbolKind.Function,
-						name: scanner.getTokenText().replace( /"/g, '' ),
-						location: Location.create(
-							document.uri,
-							Range.create(
-								document.positionAt( scanner.getTokenOffset() + 1 ),
-								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+						symbols.push({
+							documentation: {
+								kind: 'markdown',
+								value: ''
+							},
+							kind: SymbolKind.Function,
+							name,
+							location: Location.create(
+								document.uri,
+								range
 							)
-						)
-					});
+						});
 
+					}
 				}
+
 				break;
 
 		}
@@ -805,7 +842,7 @@ function _createLskSymbols (settings) {
 	if (lskPath) {
 		const resolvedLskPath = path.resolve(lskPath).replace(new RegExp(`${path.sep}$`), '');
 		if (existsSync(lskPath)) {
-			lskSymbols = lskSymbols.concat( _getMvDocumentSymbolsByUri(resolvedLskPath) );
+			lskSymbols = _getMvDocumentSymbolsByUri(resolvedLskPath);
 		}
 	}
 }
