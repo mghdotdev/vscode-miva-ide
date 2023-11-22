@@ -1,7 +1,3 @@
-export const MVT_NON_CLOSING_TAGS: string[] = [
-	'mvt:else'
-];
-
 export const MVT_EMPTY_ELEMENTS: string[] = [
 	'area',
 	'base',
@@ -30,8 +26,7 @@ export const MVT_EMPTY_ELEMENTS: string[] = [
 	'mvt:item',
 	'mvt:miva',
 	'mvt:whilecontinue',
-	'mvt:whilestop',
-	...MVT_NON_CLOSING_TAGS
+	'mvt:whilestop'
 ];
 
 export const MV_NON_CLOSING_TAGS: string[] = [
@@ -50,8 +45,6 @@ export const MV_NON_CLOSING_TAGS: string[] = [
 	'MvDELETE',
 	'MvDIMENSION',
 	'MvDO',
-	// 'MvELSE',
-	// 'MvELSEIF',
 	'MvEVAL',
 	'MvEXIT',
 	'MvEXPORT',
