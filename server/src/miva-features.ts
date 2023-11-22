@@ -24,7 +24,8 @@ import {
 	Position,
 	Range,
 	SymbolInformation,
-	SymbolKind
+	SymbolKind,
+	TextEdit
 } from 'vscode-languageserver/node';
 import systemVariableData from './mv/system-variables';
 import mvtEntityData from './mvt/entities';
@@ -501,6 +502,25 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				return builtinFunctionCompletions; */
 
+			}
+
+			// After mvt: (tag completions after colon)
+			if ( patterns.MVT.LEFT_AFTER_TAG_COLON.test( left ) ) {
+				return CompletionList.create([
+					...mvtTagCompletions.items.map(mvtTagCompletion => {
+						return {
+							...mvtTagCompletion,
+							// Delete the last four characters (mvt:)
+							additionalTextEdits: [
+								TextEdit.del(Range.create(
+									mvtDocument.positionAt( cursorPositionOffset - 4 ),
+									position
+								))
+							]
+						};
+					}),
+					...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+				]);
 			}
 
 			return CompletionList.create([

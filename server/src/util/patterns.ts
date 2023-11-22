@@ -4,6 +4,7 @@ export default {
 		LEFT_AFTER_AMP: /&$/,
 		LEFT_AFTER_AMP_HOVER: /&[a-z]+$/,
 		LEFT_AFTER_ENTITY_COLON: /(?<=&mvt[a-z]?:)([a-z_][a-z0-9_:\[\]]*)?$/i,
+		LEFT_AFTER_TAG_COLON: /(?<!&)mvt:$/i,
 		LEFT_IN_MVT_TAG: /(?=<mvt:[a-z]+)[^>]*?$/i,
 		LEFT_IN_MVT_TAG_NAME: /(?<=<mvt:)[a-z]*?$/i,
 		LEFT_TAG_NAME: /(?<=<mvt:)([a-z]+)[^<]*?$/i,
