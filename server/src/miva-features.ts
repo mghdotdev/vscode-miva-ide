@@ -504,27 +504,38 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			}
 
-			// After mvt: (tag completions after colon)
-			if ( patterns.MVT.LEFT_AFTER_TAG_COLON.test( left ) ) {
-				return CompletionList.create([
-					...mvtTagCompletions.items.map(mvtTagCompletion => {
-						return {
-							...mvtTagCompletion,
-							// Delete the last four characters (mvt:)
-							additionalTextEdits: [
-								TextEdit.del(Range.create(
-									mvtDocument.positionAt( cursorPositionOffset - 4 ),
-									position
-								))
-							]
-						};
-					}),
-					...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
-				]);
-			}
+			/**
+			 * Used to determine if the tag starts with either <mvt: mvt: or < and removes that portion with an additionalTextEdit after completion
+			 */
+			const determineAdditionalTextEdits = (): TextEdit[] => {
+				const foundMatch = [
+					'<mvt:',
+					'mvt:',
+					'<'
+				].find(match => left.endsWith(match));
+
+				return foundMatch
+					? [
+						TextEdit.del(Range.create(
+							mvtDocument.positionAt( cursorPositionOffset - foundMatch.length ),
+							position
+						))
+					]
+					: [];
+			};
+
+			// Define additional text edits and add them to the completions items via a map
+			const additionalTextEdits = determineAdditionalTextEdits();
 
 			return CompletionList.create([
-				...mvtTagCompletions.items,
+				...additionalTextEdits.length > 0
+					? mvtTagCompletions.items.map(mvtTagCompletion => {
+						return {
+							...mvtTagCompletion,
+							additionalTextEdits
+						};
+					})
+					: mvtTagCompletions.items,
 				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
 			]);
 
