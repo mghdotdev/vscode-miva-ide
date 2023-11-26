@@ -108,6 +108,81 @@ const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => do
 let workspaceSymbols: any[] = [];
 let lskSymbols: any[] = [];
 
+// Helper function for "variable" completion target list
+const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
+	// system variables
+	if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
+		return systemVariableCompletions;
+	}
+
+	// get full text
+	const mivaDocumentText = mivaDocument.getText();
+
+	// global variables
+	if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
+
+		const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_G) || [];
+		const _foundVariable = variableMatches[0] || '';
+		const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
+		const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
+
+		const foundVariables = [].concat(
+			mivaDocumentText.match( patterns.SHARED.VARIABLES_G ) || [],
+			mivaDocumentText.match( patterns.MVT.ENTITIES_G ) || []
+		)
+			?.filter( unique )
+			?.filter(_variable => foundVariableRegex.test(_variable))
+			?.map(_variable => _variable.replace(foundVariableRegex, ''));
+
+		return CompletionList.create(
+			foundVariables.map((variable) => {
+				return parseCompletion({
+					"label": variable,
+					"kind": "Variable",
+					"detail": variable,
+					"documentation": "",
+					"commitCharacters": []
+				});
+			})
+		);
+
+	}
+
+	// local variables
+	if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
+
+		const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_L) || [];
+		const _foundVariable = variableMatches[0] || '';
+		const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
+		const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
+
+		const foundVariables = [].concat(
+			mivaDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
+			foundVariable.startsWith('settings')
+				? (mivaDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
+				: []
+		)
+			?.filter( unique )
+			?.filter(_variable => foundVariableRegex.test(_variable))
+			?.map(_variable => _variable.replace(foundVariableRegex, ''));
+
+		return CompletionList.create(
+			foundVariables.map((variable) => {
+				return parseCompletion({
+					"label": variable,
+					"kind": "Variable",
+					"detail": variable,
+					"documentation": "",
+					"commitCharacters": []
+				});
+			})
+		);
+
+	}
+
+	return null;
+};
+
 export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
 
 	const findDocumentSymbols = ( document: TextDocument ) => {
@@ -203,81 +278,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	// MVT-specific completion data
 	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
 	const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
-
-	// Helper function for "variable" completion target list
-	const getVariableCompletions = (left: string, mvtDocument: TextDocument): CompletionList | null => {
-		// system variables
-		if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
-			return systemVariableCompletions;
-		}
-
-		// get full text
-		const mvtDocumentText = mvtDocument.getText();
-
-		// global variables
-		if ( patterns.SHARED.LEFT_VARIABLE_G.test( left ) ) {
-
-			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_G) || [];
-			const _foundVariable = variableMatches[0] || '';
-			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-			const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
-
-			const foundVariables = [].concat(
-				mvtDocumentText.match( patterns.SHARED.VARIABLES_G ) || [],
-				mvtDocumentText.match( patterns.MVT.ENTITIES_G ) || []
-			)
-				?.filter( unique )
-				?.filter(_variable => foundVariableRegex.test(_variable))
-				?.map(_variable => _variable.replace(foundVariableRegex, ''));
-
-			return CompletionList.create(
-				foundVariables.map((variable) => {
-					return parseCompletion({
-						"label": variable,
-						"kind": "Variable",
-						"detail": variable,
-						"documentation": "",
-						"commitCharacters": []
-					});
-				})
-			);
-
-		}
-
-		// local variables
-		if ( patterns.SHARED.LEFT_VARIABLE_L.test( left ) ) {
-
-			const variableMatches = left.match(patterns.SHARED.LEFT_VARIABLE_L) || [];
-			const _foundVariable = variableMatches[0] || '';
-			const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-			const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
-
-			const foundVariables = [].concat(
-				mvtDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
-				foundVariable.startsWith('settings')
-					? (mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
-					: []
-			)
-				?.filter( unique )
-				?.filter(_variable => foundVariableRegex.test(_variable))
-				?.map(_variable => _variable.replace(foundVariableRegex, ''));
-
-			return CompletionList.create(
-				foundVariables.map((variable) => {
-					return parseCompletion({
-						"label": variable,
-						"kind": "Variable",
-						"detail": variable,
-						"documentation": "",
-						"commitCharacters": []
-					});
-				})
-			);
-
-		}
-
-		return null;
-	};
 
 	// Get lsk symbols
 	_createLskSymbols(workspace.settings);
@@ -925,18 +925,22 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			) {
 
 				// If after `[].` notation
-				if (
-					patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )
-				) {
+				if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
 					return doValueCompletions;
+				}
+
+				const variableCompletions = getVariableCompletions(left, mvDocument);
+				if (variableCompletions) {
+					return variableCompletions;
 				}
 
 				return builtinFunctionCompletions;
 
 			}
 
-			return null;
-
+			return CompletionList.create([
+				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+			]);
 		},
 
 		findDocumentSymbols( document: TextDocument ): SymbolInformation[] {
