@@ -19,12 +19,12 @@ export default {
 	},
 	MV: {
 		LEFT_IN_MVDO_TAG: /(?=<MvDO)[^>]*?$/i,
-		LEFT_AFTER_BRACKET_DOT: /\[[^\]]*\]\.$/i,
+		LEFT_AFTER_BRACKET_DOT: /\[[^\]]*\]\.[^(]*$/i,
 		LEFT_IN_EXPRESSION: /\{[^{}]*?$/i,
 		RIGHT_IN_EXPRESSION: /^[^{}]*?\}/i
 	},
 	SHARED: {
-		LEFT_IN_VALUE_ATTR: /value\s*=\s*"\s*(\{)?(.){1}$/i,
+		LEFT_IN_VALUE_ATTR: /value\s*=\s*"\s*(\{)?[^}"(]*$/i,
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,
 		RIGHT_IS_OPEN_PAREN: /^[a-z0-9_]*?\s*?(?=\()/i,
