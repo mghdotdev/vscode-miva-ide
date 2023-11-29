@@ -7,8 +7,6 @@ export default {
 		LEFT_IN_MVT_TAG: /(?=<mvt:[a-z]+)[^>]*?$/i,
 		LEFT_IN_MVT_TAG_NAME: /(?<=<mvt:)[a-z]*?$/i,
 		LEFT_TAG_NAME: /(?<=<mvt:)([a-z]+)[^<]*?$/i,
-		LEFT_IN_ATTR: /[a-z-]\s*=\s*"\s*([^"]*?)$/i,
-		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_ITEM_NAME: /(name\s*=\s*")([a-z]+)"[^<]+$/i,
 		RIGHT_ITEM_NAME: /^[^>]+?(name\s*=\s*")([a-z]+)"/i,
 		LEFT_DO_FILE: /(file\s*=\s*")([^"]+)"[^<]+$/i,
@@ -18,12 +16,16 @@ export default {
 		ENTITIES_LSETTINGS: /(?<=&mvt[a-z]?:)(?!global)([a-z_][a-z0-9_:\[\]]*?)(?=;)/ig,
 	},
 	MV: {
+		LEFT_IN_MV_TAG: /(?=<Mv[a-z]+|MIVA)[^>]*?$/i,
+		LEFT_TAG_NAME: /(?<=<Mv)([a-z]+)[^<]*?$|(?<=<)(MIVA)[^<]*?$/i,
 		LEFT_IN_MVDO_TAG: /(?=<MvDO)[^>]*?$/i,
 		LEFT_AFTER_BRACKET_DOT: /\[[^\]]*\]\.[^(]*$/i,
 		LEFT_IN_EXPRESSION: /\{[^{}]*?$/i,
 		RIGHT_IN_EXPRESSION: /^[^{}]*?\}/i
 	},
 	SHARED: {
+		LEFT_IN_ATTR: /[a-z-]\s*=\s*"\s*([^"]*?)$/i,
+		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_IN_VALUE_ATTR: /value\s*=\s*"\s*(\{)?[^}"(]*$/i,
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,

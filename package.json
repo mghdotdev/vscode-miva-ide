@@ -217,12 +217,7 @@
 				"configuration": "./configurations/mv/mv.configuration.json"
 			}
 		],
-		"snippets": [
-			{
-				"language": "mv",
-				"path": "./snippets/mv/tags.snippets.json"
-			}
-		]
+		"snippets": []
 	},
 	"activationEvents": [
 		"onLanguage:mvt",

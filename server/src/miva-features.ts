@@ -28,6 +28,7 @@ import {
 	TextEdit
 } from 'vscode-languageserver/node';
 import systemVariableData from './mv/system-variables';
+import mvTagData from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import mvtTagData from './mvt/tags';
@@ -446,18 +447,20 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 				// Determine which tag we are in
 				const [, tagName] = safeMatch(left, patterns.MVT.LEFT_TAG_NAME);
+				const tagNameLower = tagName?.toLowerCase();
 
 				// Attempt to get tag from name
-				const foundTag = mvtTagData[tagName];
+				const foundTag = mvtTagData[tagNameLower];
 				if (foundTag) {
 					const foundTagAttributes = foundTag.attributes;
 					if (foundTagAttributes) {
 
 						// Tag attribute value completions
-						if (patterns.MVT.LEFT_IN_ATTR.test( left )) {
-							const [, attributeName] = safeMatch(left, patterns.MVT.LEFT_ATTR_NAME);
+						if (patterns.SHARED.LEFT_IN_ATTR.test( left )) {
+							const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
+							const attributeNameLower = attributeName?.toLowerCase();
 
-							const foundAttribute = foundTag.attributes[attributeName];
+							const foundAttribute = foundTag.attributes[attributeNameLower];
 							if (foundAttribute) {
 								switch (foundAttribute.valueType) {
 									case 'variable':
@@ -472,7 +475,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 										return builtinFunctionCompletions;
 									}
 									case 'function': {
-										if (tagName === 'item') {
+										if (tagNameLower === 'item') {
 											// Get item name
 											const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
 											const foundItem = mvtItemData[itemName];
@@ -497,11 +500,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				}
 
 				return null;
-
-				/*
-
-				return builtinFunctionCompletions; */
-
 			}
 
 			/**
@@ -538,7 +536,6 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					: mvtTagCompletions.items,
 				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
 			]);
-
 		},
 
 		findDefinition( document: TextDocument, position: Position, settings: Settings ) {
@@ -683,9 +680,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						}
 
 						// Return hover for attribute value if found
-						if (patterns.MVT.LEFT_IN_ATTR.test(left)) {
+						if (patterns.SHARED.LEFT_IN_ATTR.test(left)) {
 							// Find attribute data with word
-							const [, attributeName] = safeMatch(left, patterns.MVT.LEFT_ATTR_NAME);
+							const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
 							const foundAttribute = foundAttributes[attributeName];
 							const foundAttributeValue = foundAttribute?.values?.[wordLower];
 
@@ -886,6 +883,9 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 		workspaceSymbols = workspaceSymbols.concat( _getMvDocumentSymbolsByUri(folder.uri) );
 	});
 
+	// MVT-specific completion data
+	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvTagData ) ) );
+
 	return {
 
 		doCompletion( document: TextDocument, position: Position ): CompletionList {
@@ -938,7 +938,81 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			}
 
+			// tag-specific
+			if ( patterns.MV.LEFT_IN_MV_TAG.test( left ) ) {
+
+				// Determine which tag we are in
+				let tagName = void 0;
+				const [, mvTagName, mivaTagName] = safeMatch(left, patterns.MV.LEFT_TAG_NAME);
+				tagName = mvTagName || mivaTagName;
+				const tagNameLower = tagName?.toLowerCase();
+
+				const foundTag = mvTagData[tagNameLower];
+				if (foundTag) {
+					const foundTagAttributes = foundTag.attributes;
+					if (foundTagAttributes) {
+
+						// Tag attribute value completions
+						if (patterns.SHARED.LEFT_IN_ATTR.test(left)) {
+							const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
+							const attributeNameLower = attributeName?.toLowerCase();
+
+							const foundAttribute = foundTag.attributes[attributeNameLower];
+							if (foundAttribute) {
+								switch (foundAttribute.valueType) {
+									case 'variable':
+										//
+									default:
+									case 'expression': {
+										//
+									}
+									case 'function': {
+										//
+									}
+									case 'string':
+										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
+								}
+							}
+						}
+
+						// Tag attribute completions
+						return CompletionList.create( parseCompletionFile( Object.values( foundTagAttributes ) ) );
+					}
+				}
+
+				return null;
+			}
+
+			/**
+			 * Used to determine if the tag starts with either <mvt: mvt: or < and removes that portion with an additionalTextEdit after completion
+			 */
+			const determineAdditionalTextEdits = (): TextEdit[] => {
+				const foundMatch = [
+					'<'
+				].find(match => left.endsWith(match));
+
+				return foundMatch
+					? [
+						TextEdit.del(Range.create(
+							mvDocument.positionAt( cursorPositionOffset - foundMatch.length ),
+							position
+						))
+					]
+					: [];
+			};
+
+			// Define additional text edits and add them to the completions items via a map
+			const additionalTextEdits = determineAdditionalTextEdits();
+
 			return CompletionList.create([
+				...additionalTextEdits.length > 0
+					? mvTagCompletions.items.map(mvtTagCompletion => {
+						return {
+							...mvtTagCompletion,
+							additionalTextEdits
+						};
+					})
+					: mvTagCompletions.items,
 				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
 			]);
 		},
