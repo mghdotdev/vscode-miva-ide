@@ -250,29 +250,10 @@ function formatTagVersion (version) {
 		: '';
 }
 
-function formatTagTitle (title: string, tagName?: string, value?: string) {
-	return tagName
-		? `#### ${tagName}[${title}${value ? `="${value}"` : ''}]`
-		: `#### ${title}`;
-}
-
-function formatItemTitle (type, title: string, itemName?: string) {
-	switch (type) {
-		case 'function':
-			return itemName
-				? `#### ${itemName}.${title}()`
-				: `#### ${title}`;
-		case 'link':
-			return itemName
-				? `#### ${itemName} → ${title}`
-				: `#### ${title}`;
-		default:
-			return `#### ${title}`
-	}
-}
-
 function formatTagReference (reference) {
-	return `[Documentation Reference](${reference})`
+	return reference
+		? `[Documentation Reference](${reference})`
+		: '';
 }
 
 function formatTagAttributeRequired (required: boolean, requiredMessage?: string) {
@@ -281,65 +262,65 @@ function formatTagAttributeRequired (required: boolean, requiredMessage?: string
 		: `_Optional${requiredMessage ? `: ${requiredMessage}` : ''}_`;
 }
 
-export function formatTagDocumentation (tagData): MarkupContent {
+export function formatTagDocumentation (tagData: TagData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
-		value: `${formatTagTitle(tagData.label)}
-
-${formatTagEngine(tagData.engine)}
-
-${formatTagVersion(tagData.version)}
-
-${tagData.documentation}
-
-${formatTagReference(tagData.reference)}`
+		value: [
+			tagData.documentation,
+			'',
+			formatTagEngine(tagData.engine),
+			'',
+			formatTagVersion(tagData.version),
+			'',
+			formatTagReference(tagData.reference)
+		].join('\n')
 	};
 }
 
 export function formatTagAttributeDocumentation (tagData: TagData, attributeData: TagAttributeData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
-		value: `${formatTagTitle(attributeData.label, tagData.label)}
-
-${formatTagEngine(attributeData.engine || tagData.engine)}
-
-${formatTagVersion(attributeData.version || tagData.version)}
-
-${formatTagAttributeRequired(attributeData.required, attributeData.requiredMessage)}
-
-${attributeData.documentation}
-
-${formatTagReference(attributeData.reference || tagData.reference)}`
+		value: [
+			attributeData.documentation,
+			'',
+			formatTagEngine(attributeData.engine || tagData.engine),
+			'',
+			formatTagVersion(attributeData.version || tagData.version),
+			'',
+			formatTagAttributeRequired(attributeData.required, attributeData.requiredMessage),
+			'',
+			formatTagReference(attributeData.reference || tagData.reference)
+		].join('\n')
 	};
 }
 
 export function formatTagAttributeValueDocumentation (tagData: TagData, attributeData: TagAttributeData, attributeValueData: TagAttributeValueData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
-		value: `${formatTagTitle(attributeData.label, tagData.label, attributeValueData.label)}
-
-${formatTagEngine(attributeValueData.engine || attributeData.engine || tagData.engine)}
-
-${formatTagVersion(attributeValueData.version || attributeData.version || tagData.version)}
-
-${attributeValueData.documentation}
-
-${formatTagReference(attributeValueData.reference || attributeData.reference || tagData.reference)}`
+		value: [
+			attributeValueData.documentation,
+			'',
+			formatTagEngine(attributeValueData.engine || attributeData.engine || tagData.engine),
+			'',
+			formatTagVersion(attributeValueData.version || attributeData.version || tagData.version),
+			'',
+			formatTagReference(attributeValueData.reference || attributeData.reference || tagData.reference)
+		].join('\n')
 	};
 }
 
 export function formatItemParamDocumentation (foundItem: ItemData, foundParam: ItemParamData): MarkupContent {
 	return {
 		kind: MarkupKind.Markdown,
-		value: `${formatItemTitle(foundParam.paramType, foundParam.label, foundItem.label)}
-
-${formatTagEngine(foundParam.engine || foundItem.engine)}
-
-${formatTagVersion(foundParam.version || foundItem.version)}
-
-${foundParam.documentation}
-
-${formatTagReference(foundParam.reference || foundItem.reference)}`
+		value: [
+			foundParam.documentation,
+			'',
+			formatTagEngine(foundParam.engine || foundItem.engine),
+			'',
+			formatTagVersion(foundParam.version || foundItem.version),
+			'',
+			formatTagReference(foundParam.reference || foundItem.reference)
+		].join('\n')
 	};
 }
 
