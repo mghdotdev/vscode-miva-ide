@@ -4,7 +4,8 @@ import {
 	BaseTagAttributeValueData,
 	BaseTagData,
 	TagAttributeData,
-	TagData
+	TagData,
+	TagSnippet
 } from '../util/interfaces';
 import itemsData from './items';
 
@@ -89,7 +90,7 @@ const tagItem = {
 
 // Full tag data structure
 
-const tagData: Record<string, TagData> = {
+const snippets: Record<string, TagSnippet> = {
 	debug: {
 		...baseTag,
 		documentation: '',
@@ -117,7 +118,10 @@ const tagData: Record<string, TagData> = {
 		kind: CompletionItemKind.Function,
 		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
 		label: 'mvt-testvar'
-	},
+	}
+};
+
+const tags: Record<string, TagData> = {
 	assign: {
 		...baseTag,
 		documentation: `Executes the expression contained within value and saves that value to the variable defined in the name attribute.`,
@@ -125,6 +129,8 @@ const tagData: Record<string, TagData> = {
 		label: 'mvt:assign',
 		reference: 'https://docs.miva.com/template-language/mvtassign',
 		engine: '>=5.18',
+		selfClosing: true,
+		void: true,
 		attributes: {
 			name,
 			value: {
@@ -150,6 +156,8 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 		label: 'mvt:call',
 		reference: 'https://docs.miva.com/template-language/mvtcall',
 		engine: '>=5.22',
+		selfClosing: false,
+		void: false,
 		attributes: {
 			action: {
 				...baseAttribute,
@@ -348,7 +356,9 @@ The ... loop terminates when the entire document has been received, or when an (
 		insertText: "<mvt:callcontinue />",
 		label: 'mvt:callcontinue',
 		reference: 'https://docs.miva.com/template-language/mvtcall',
-		engine: '>=5.22'
+		engine: '>=5.22',
+		selfClosing: true,
+		void: false
 	},
 	callstop: {
 		...baseTag,
@@ -356,7 +366,9 @@ The ... loop terminates when the entire document has been received, or when an (
 		insertText: "<mvt:callstop />",
 		label: 'mvt:callstop',
 		reference: 'https://docs.miva.com/template-language/mvtcall',
-		engine: '>=5.22'
+		engine: '>=5.22',
+		selfClosing: true,
+		void: false
 	},
 	capture: {
 		...baseTag,
@@ -365,6 +377,8 @@ The ... loop terminates when the entire document has been received, or when an (
 		label: 'mvt:capture',
 		reference: 'https://docs.miva.com/template-language/mvtcapture',
 		engine: '>=5.33',
+		selfClosing: false,
+		void: false,
 		attributes: {
 			variable: {
 				...baseAttribute,
@@ -379,7 +393,9 @@ The ... loop terminates when the entire document has been received, or when an (
 		...baseTag,
 		documentation: `Content within this tag will be ignored.`,
 		insertText: "<mvt:comment>\n|\n|\t${1}\n|\n</mvt:comment>",
-		label: 'mvt:comment'
+		label: 'mvt:comment',
+		selfClosing: false,
+		void: false
 	},
 	do: {
 		...baseTag,
@@ -388,6 +404,8 @@ The ... loop terminates when the entire document has been received, or when an (
 		label: 'mvt:do',
 		reference: 'https://docs.miva.com/template-language/mvtdo',
 		engine: '>=5.22',
+		selfClosing: true,
+		void: false,
 		attributes: {
 			name: {
 				...name,
@@ -428,7 +446,9 @@ These global variables reference a specific module file. The Limited Source Kit 
 		documentation: ``,
 		insertText: "<mvt:else>",
 		label: 'mvt:else',
-		reference: 'https://docs.miva.com/template-language/if-else'
+		reference: 'https://docs.miva.com/template-language/if-else',
+		selfClosing: true,
+		void: true
 	},
 	elseif: {
 		...baseTag,
@@ -436,6 +456,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:elseif expr=\"${0}\">",
 		label: 'mvt:elseif',
 		reference: 'https://docs.miva.com/template-language/if-else',
+		selfClosing: true,
+		void: true,
 		attributes: {
 			expr
 		}
@@ -447,6 +469,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		label: 'mvt:eval',
 		reference: 'https://docs.miva.com/template-language/mvteval',
 		engine: '>=5.18',
+		selfClosing: true,
+		void: false,
 		attributes: {
 			expr
 		}
@@ -455,7 +479,9 @@ These global variables reference a specific module file. The Limited Source Kit 
 		...baseTag,
 		documentation: ``,
 		insertText: "<mvt:exit />",
-		label: 'mvt:exit'
+		label: 'mvt:exit',
+		selfClosing: true,
+		void: false
 	},
 	foreach: {
 		...baseTag,
@@ -463,6 +489,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${0}\n</mvt:foreach>",
 		label: 'mvt:foreach',
 		reference: 'https://docs.miva.com/template-language/foreach',
+		selfClosing: false,
+		void: false,
 		attributes: {
 			iterator: {
 				...baseAttribute,
@@ -485,14 +513,18 @@ These global variables reference a specific module file. The Limited Source Kit 
 		documentation: ``,
 		insertText: "<mvt:foreachcontinue />",
 		label: 'mvt:foreachcontinue',
-		reference: 'https://docs.miva.com/template-language/foreach'
+		reference: 'https://docs.miva.com/template-language/foreach',
+		selfClosing: true,
+		void: false
 	},
 	foreachstop: {
 		...baseTag,
 		documentation: ``,
 		insertText: "<mvt:foreachstop />",
 		label: 'mvt:foreachstop',
-		reference: 'https://docs.miva.com/template-language/foreach'
+		reference: 'https://docs.miva.com/template-language/foreach',
+		selfClosing: true,
+		void: false
 	},
 	if: {
 		...baseTag,
@@ -500,6 +532,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
 		label: 'mvt:if',
 		reference: 'https://docs.miva.com/template-language/if-statement',
+		selfClosing: false,
+		void: false,
 		attributes: {
 			expr
 		}
@@ -509,6 +543,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		documentation: ``,
 		insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />",
 		label: 'mvt:item',
+		selfClosing: true,
+		void: false,
 		attributes: {
 			name: {
 				...baseAttribute,
@@ -562,6 +598,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />",
 		label: 'mvt:miva',
 		reference: 'http://www.mivascript.com/item/mivascript-tags/MIVA.html',
+		selfClosing: true,
+		void: false,
 		attributes: {
 			output: {
 				...baseAttribute,
@@ -615,6 +653,8 @@ These global variables reference a specific module file. The Limited Source Kit 
 		insertText: "<mvt:while expr=\"${1}\">\n\t${0}\n</mvt:while>",
 		label: 'mvt:while',
 		reference: 'https://docs.miva.com/template-language/while',
+		selfClosing: false,
+		void: false,
 		attributes: {
 			expr
 		}
@@ -624,15 +664,22 @@ These global variables reference a specific module file. The Limited Source Kit 
 		documentation: ``,
 		insertText: "<mvt:whilecontinue />",
 		label: 'mvt:whilecontinue',
-		reference: 'https://docs.miva.com/template-language/while'
+		reference: 'https://docs.miva.com/template-language/while',
+		selfClosing: true,
+		void: false
 	},
 	whilestop: {
 		...baseTag,
 		documentation: ``,
 		insertText: "<mvt:whilestop />",
 		label: 'mvt:whilestop',
-		reference: 'https://docs.miva.com/template-language/while'
+		reference: 'https://docs.miva.com/template-language/while',
+		selfClosing: true,
+		void: false
 	}
 };
 
-export default tagData;
+export default {
+	...snippets,
+	...tags
+};

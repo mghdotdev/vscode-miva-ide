@@ -147,7 +147,15 @@ export interface TagData extends BaseTagData {
 	engine?: string;
 	version?: string;
 	attributes?: Record<string, TagAttributeData>;
+	selfClosing: boolean;
+	void: boolean;
 }
+
+export interface TagSnippet extends BaseTagData {
+	documentation: string;
+	insertText?: string;
+	label: string;
+};
 
 export interface BaseItemParamData {
 	insertTextFormat: string;
