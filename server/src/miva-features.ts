@@ -28,10 +28,10 @@ import {
 	TextEdit
 } from 'vscode-languageserver/node';
 import systemVariableData from './mv/system-variables';
-import mvTagData from './mv/tags';
+import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
-import mvtTagData from './mvt/tags';
+import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
 import {
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
@@ -277,7 +277,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
 
 	// MVT-specific completion data
-	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagData ) ) );
+	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagAndSnippetData ) ) );
 	const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
 
 	// Get lsk symbols
@@ -616,15 +616,16 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			if (patterns.MVT.LEFT_IN_MVT_TAG.test(left)) {
 				// Determine which tag we are in
 				const [, tagName] = safeMatch(left, patterns.MVT.LEFT_TAG_NAME);
+				const tagNameLower = tagName?.toLowerCase();
 
 				// Attempt to get tag from name
-				const foundTagRegex = mvtTagData[tagName];
+				const foundTagRegex = mvtTagData[tagNameLower];
 
 				// Do stuff with found tag (via regex)
 				if (foundTagRegex) {
 
 					// Item functions
-					if (tagName === 'item') {
+					if (tagNameLower === 'item') {
 						// Get item name
 						const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
 						const foundItem = mvtItemData[itemName];
@@ -641,9 +642,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 					}
 
 					// Do functions
-					if (tagName === 'do') {
+					if (tagNameLower === 'do') {
 						// Get item name
-						const [,, doFile] = left.match(patterns.MVT.LEFT_DO_FILE) || right.match(patterns.MVT.RIGHT_DO_FILE) || [];
+						const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
 						const key = `${doFile}@${word}`;
 
 						const foundDoHover = doValueHoverMap.get(key);
@@ -883,8 +884,8 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 		workspaceSymbols = workspaceSymbols.concat( _getMvDocumentSymbolsByUri(folder.uri) );
 	});
 
-	// MVT-specific completion data
-	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvTagData ) ) );
+	// MV-specific completion data
+	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvTagAndSnippetData ) ) );
 
 	return {
 
@@ -1065,6 +1066,9 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				return null;
 			}
 
+			// Get lowercase version of word
+			const wordLower = word.toLowerCase();
+
 			// determine left side text range
 			const cursorPositionOffset = mvDocument.offsetAt( position );
 			const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
@@ -1084,18 +1088,96 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			// Check for various hover scenarios
 
-			// Function Hover
-			if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-				// Builtin function lookup
-				const foundHoverSymbol = builtinFunctionHoverMap.get(word);
-				if (foundHoverSymbol) {
+			// System variable hover
+			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
+				const foundSystemVariable = systemVariableData[wordLower];
+				if (foundSystemVariable) {
 					return {
-						contents: foundHoverSymbol
+						contents: foundSystemVariable.documentation
 					};
 				}
 			}
 
-			return null;
+			// Tag name hover
+			if (patterns.MV.LEFT_IN_MV_TAG.test(left)) {
+				// Determine which tag we are in
+				const [, tagName] = safeMatch(left, patterns.MV.LEFT_TAG_NAME);
+				const tagNameLower = tagName?.toLowerCase();
+
+				console.log('tagNameLower', tagNameLower);
+
+				// Attempt to get tag from name
+				const foundTagRegex = mvTagData[tagNameLower];
+
+				// Do stuff with found tag (via regex)
+				if (foundTagRegex) {
+
+					// Do functions
+					if (tagNameLower === 'do') {
+						// Get item name
+						const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
+						const key = `${doFile}@${word}`;
+
+						const foundDoHover = doValueHoverMap.get(key);
+						if (foundDoHover) {
+							return {
+								contents: foundDoHover
+							};
+						}
+					}
+
+					// Function Hover
+					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
+
+						// Builtin function lookup
+						const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
+						if (foundBuiltinHover) {
+							return {
+								contents: foundBuiltinHover
+							};
+						}
+					}
+
+					// Find attribute data on found tag name
+					const foundAttributes = foundTagRegex.attributes;
+					if (foundAttributes) {
+						// Find attribute data with word
+						const foundAttribute = foundAttributes[wordLower];
+
+						// Return hover for attribute if found
+						if (foundAttribute) {
+							return {
+								contents: formatTagAttributeDocumentation(foundTagRegex, foundAttribute)
+							};
+						}
+
+						// Return hover for attribute value if found
+						if (patterns.SHARED.LEFT_IN_ATTR.test(left)) {
+							// Find attribute data with word
+							const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
+							const foundAttribute = foundAttributes[attributeName];
+							const foundAttributeValue = foundAttribute?.values?.[wordLower];
+
+							if (foundAttributeValue && foundAttributeValue.documentation) {
+								return {
+									contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
+								};
+							}
+						}
+					}
+				}
+
+
+				// Do stuff with found tag (via word)
+				const foundTag = mvTagData[wordLower];
+				if (foundTag) {
+					return {
+						contents: formatTagDocumentation(foundTag)
+					};
+				}
+			}
+
+			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
 
 		}
 

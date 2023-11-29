@@ -38,7 +38,7 @@ const baseAttributeValue: BaseTagAttributeValueData = {
 	]
 };
 
-// Specific attribute references
+// Shared attribute references
 
 const expr: TagAttributeData = {
 	...baseAttribute,
@@ -121,7 +121,7 @@ const snippets: Record<string, TagSnippet> = {
 	}
 };
 
-const tags: Record<string, TagData> = {
+export const tags: Record<string, TagData> = {
 	assign: {
 		...baseTag,
 		documentation: `Executes the expression contained within value and saves that value to the variable defined in the name attribute.`,

@@ -140,7 +140,7 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 			value: [
 				'',
 				'```mv',
-				`{ [ ${file.distroPath} ].${ fn.name }(${wrapSpaces( fn.parameters.join(', '), fn.parameters.length > 0 )}) }`,
+				`{ [ ${file.distroPath} ].${formatFunctionDocumentation(fn.name, fn.parameters)} }`,
 				'```',
 				`---`,
 				'',
@@ -237,6 +237,10 @@ export function parseCompletion( input: any ) {
 export function unique( value, index, self ) {
 	return self.indexOf( value ) === index;
 };
+
+function formatFunctionDocumentation (name: string, parameters: string[]): string {
+	return `${ name }(${wrapSpaces( parameters.join(', '), parameters.length > 0 )})`
+}
 
 function formatTagEngine (engine) {
 	return engine
