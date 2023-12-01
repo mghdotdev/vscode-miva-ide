@@ -119,7 +119,7 @@ export interface BaseTagAttributeData {
 	insertTextFormat: string;
 	kind: CompletionItemKind | string;
 	commitCharacters: string[];
-	valueType: 'variable' | 'expression' | 'string' | 'function';
+	valueType: 'variable' | 'expression' | 'string' | 'function' | 'literal';
 }
 
 export interface TagAttributeData extends BaseTagAttributeData {

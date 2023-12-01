@@ -489,7 +489,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 										return null;
 									}
 									case 'string':
-										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
+										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values || {} ) ) );
 								}
 							}
 						}
@@ -961,17 +961,22 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 							const foundAttribute = foundTag.attributes[attributeNameLower];
 							if (foundAttribute) {
 								switch (foundAttribute.valueType) {
-									case 'variable':
-										//
 									default:
+									case 'literal':
 									case 'expression': {
-										//
-									}
-									case 'function': {
-										//
+										if (patterns.MV.LEFT_IN_EXPRESSION.test(left)) {
+											const variableCompletions = getVariableCompletions(left, mvDocument);
+											if (variableCompletions) {
+												return variableCompletions;
+											}
+
+											return builtinFunctionCompletions;
+										}
+
+										return getVariableCompletions(left, mvDocument);
 									}
 									case 'string':
-										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values ) ) );
+										return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values || {} ) ) );
 								}
 							}
 						}
@@ -1099,12 +1104,10 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			}
 
 			// Tag name hover
-			if (patterns.MV.LEFT_IN_MV_TAG.test(left)) {
+			if (patterns.MV.LEFT_IN_MV_TAG.test( left )) {
 				// Determine which tag we are in
 				const [, tagName] = safeMatch(left, patterns.MV.LEFT_TAG_NAME);
 				const tagNameLower = tagName?.toLowerCase();
-
-				console.log('tagNameLower', tagNameLower);
 
 				// Attempt to get tag from name
 				const foundTagRegex = mvTagData[tagNameLower];
@@ -1113,7 +1116,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				if (foundTagRegex) {
 
 					// Do functions
-					if (tagNameLower === 'do') {
+					if (tagNameLower === 'mvdo') {
 						// Get item name
 						const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
 						const key = `${doFile}@${word}`;
@@ -1166,15 +1169,14 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 						}
 					}
 				}
+			}
 
-
-				// Do stuff with found tag (via word)
-				const foundTag = mvTagData[wordLower];
-				if (foundTag) {
-					return {
-						contents: formatTagDocumentation(foundTag)
-					};
-				}
+			// Do stuff with found tag (via word)
+			const foundTag = mvTagData[wordLower];
+			if (foundTag) {
+				return {
+					contents: formatTagDocumentation(foundTag)
+				};
 			}
 
 			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
