@@ -263,12 +263,12 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Optional: The expression or literal for the index to a variable array.",
-				"insertText": "INDEX = \"{ $0 }\"",
+				"insertText": "INDEX = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "INDEX",
 				"required": false,
-				"valueType": "expression"
+				"valueType": "literal"
 			},
 			"member": {
 				"commitCharacters": [
@@ -1651,12 +1651,12 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Required, the name of a variable which will contain a specific element in the array. The mechanism\n    used is the same as <MvREFERENCE> and <MvREFERENCEARRAY>.",
-				"insertText": "ITERATOR = \"{ $0 }\"",
+				"insertText": "ITERATOR = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "ITERATOR",
 				"required": true,
-				"valueType": "expression"
+				"valueType": "literal"
 			},
 			"array": {
 				"commitCharacters": [
@@ -1664,12 +1664,12 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Required, the array over which to iterate.",
-				"insertText": "ARRAY = \"{ $0 }\"",
+				"insertText": "ARRAY = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "ARRAY",
 				"required": true,
-				"valueType": "expression"
+				"valueType": "literal"
 			},
 			"index": {
 				"commitCharacters": [
@@ -1677,12 +1677,12 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Optional, the name of the variable that is used to track the iterations through the loop. When specified,\n    the variable can be used inside the expressions for the NEXT and LAST attributes, and is present within the\n    MvFOREACH loop. If omitted an internal variable is used.",
-				"insertText": "INDEX = \"{ $0 }\"",
+				"insertText": "INDEX = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "INDEX",
 				"required": false,
-				"valueType": "expression"
+				"valueType": "literal"
 			},
 			"first": {
 				"commitCharacters": [
@@ -1741,7 +1741,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Is designed to make dealing with arrays of items more convenient. Each item in the array is represented in the loop as an iterator variable, simplifying the syntax. Optionally you can exit the loop using\n\nWhen combined with the -C (compatibility) compiler flag, MvFOREACH generates code that will run on any engine version\n5.00 or newer, using runtime engine version checks to either call these functions or emulate their behavior.",
-		"insertText": "<MvFOREACH ITERATOR = \"{ $1 }\" ARRAY = \"{ $2 }\">\n\t$3\n</MvFOREACH>",
+		"insertText": "<MvFOREACH ITERATOR = \"$1\" ARRAY = \"$2\">\n\t$3\n</MvFOREACH>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvFOREACH",
