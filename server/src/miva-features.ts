@@ -1119,7 +1119,11 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					if (tagNameLower === 'mvdo') {
 						// Get item name
 						const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
-						const key = `${doFile}@${word}`;
+						const doFileNoExpression = doFile
+							.replace(/[\{\}]/g, '')
+							.trim();
+
+						const key = `${doFileNoExpression}@${word}`;
 
 						const foundDoHover = doValueHoverMap.get(key);
 						if (foundDoHover) {
