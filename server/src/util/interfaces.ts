@@ -101,7 +101,7 @@ export interface ValidationRule {
 
 export interface BaseTagAttributeValueData {
 	insertTextFormat: string;
-	kind: CompletionItemKind;
+	kind: CompletionItemKind | string;
 	commitCharacters: string[];
 }
 
@@ -117,7 +117,7 @@ export interface TagAttributeValueData extends BaseTagAttributeValueData {
 export interface BaseTagAttributeData {
 	required: boolean;
 	insertTextFormat: string;
-	kind: CompletionItemKind;
+	kind: CompletionItemKind | string;
 	commitCharacters: string[];
 	valueType: 'variable' | 'expression' | 'string' | 'function';
 }
@@ -135,7 +135,7 @@ export interface TagAttributeData extends BaseTagAttributeData {
 
 export interface BaseTagData {
 	insertTextFormat: string;
-	kind: CompletionItemKind;
+	kind: CompletionItemKind | string;
 	commitCharacters: string[];
 }
 
