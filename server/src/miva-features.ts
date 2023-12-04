@@ -1093,6 +1093,27 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 			// Check for various hover scenarios
 
+			// If in an expression `{ ... }`
+			if (
+				patterns.MV.LEFT_IN_EXPRESSION.test(left) &&
+				patterns.MV.RIGHT_IN_EXPRESSION.test(right)
+			) {
+
+				// If after `[].` notation
+				if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
+					const [, doFile] = safeMatch(left, patterns.MV.LEFT_DO_FILE_BRACKET_DOT);
+					const key = `${doFile?.trim()}@${word}`;
+
+					const foundDoHover = doValueHoverMap.get(key);
+					if (foundDoHover) {
+						return {
+							contents: foundDoHover
+						};
+					}
+				}
+
+			}
+
 			// System variable hover
 			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
 				const foundSystemVariable = systemVariableData[wordLower];

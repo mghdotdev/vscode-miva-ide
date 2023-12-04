@@ -18,6 +18,7 @@ export default {
 		LEFT_TAG_NAME: /(?<=<)(Mv[a-z]+|MIVA)[^<]*?$/i,
 		LEFT_IN_MVDO_TAG: /(?=<MvDO)[^>]*?$/i,
 		LEFT_AFTER_BRACKET_DOT: /\[[^\]]*\]\.[^(]*$/i,
+		LEFT_DO_FILE_BRACKET_DOT: /(?<=\[)(.*)\].*?$/i,
 		LEFT_IN_EXPRESSION: /\{[^{}]*?$/i,
 		RIGHT_IN_EXPRESSION: /^[^{}]*?\}/i
 	},
