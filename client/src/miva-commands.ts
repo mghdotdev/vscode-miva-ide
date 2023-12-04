@@ -131,7 +131,7 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 	}
 });
 
-function convertEntityToVariable( entity: string ) {
+function convertEntityToVariable( entity: string, showMessage: boolean = true ) {
 
 	const globalMatch = patterns.MVT.ENTITY_GLOBAL.exec( entity );
 	const localMatch = patterns.MVT.ENTITY_LOCAL.exec( entity );
@@ -147,13 +147,15 @@ function convertEntityToVariable( entity: string ) {
 
 	}
 
-	window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+	if (showMessage) {
+		window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+	}
 
 	return false;
 
 }
 
-function convertVariableToEntity( variable: string, uri?: Uri ) {
+function convertVariableToEntity( variable: string, uri?: Uri, showMessage: boolean = true ) {
 
 	const settings = workspace.getConfiguration( 'MVT', uri );
 
@@ -171,7 +173,9 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	}
 
-	window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+	if (showMessage) {
+		window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+	}
 
 	return false;
 
@@ -190,7 +194,7 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 
 		let text = textEditor.document.getText( new Range( selection.start, selection.end ) );
 
-		let conversion = convertEntityToVariable( text ) || convertVariableToEntity( text, textEditor.document.uri );
+		let conversion = convertEntityToVariable( text, false ) || convertVariableToEntity( text, textEditor.document.uri, false );
 
 		if ( conversion ) {
 
@@ -203,6 +207,11 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 	if ( clipboardContents.length > 0 ) {
 
 		env.clipboard.writeText( clipboardContents.join( '\n' ) );
+
+	}
+	else {
+
+		window.showWarningMessage( 'Unable to convert and copy. No entity(s) or variable(s) detected.' );
 
 	}
 
