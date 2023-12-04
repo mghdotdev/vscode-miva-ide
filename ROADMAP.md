@@ -14,6 +14,7 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 - Autocompletion for `<mvt:do>`/`<MvDO>` functions with automatic file path injection.
 - Goto defintion/peek support for `<mvt:do>`/`<MvDO>` functions (requires copy of LSK on your computer).
 - Autocompletion for system variables, global variables and local variables with automatic parsing of open files.
+- Documentation is displayed inline when hovering over variables, functions and tags.
 - Custom tag folding.
 - Snippets for common MVT features including custom fields, readytheme and more.
 - Function that converts entities => variables and variables => entities.
