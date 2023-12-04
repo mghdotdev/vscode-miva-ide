@@ -53,10 +53,16 @@ export interface LanguageFeatures {
 
 }
 
+export interface MvLanguageModel {
+	symbols: SymbolInformationWithDocumentation[];
+	document: TextDocument;
+}
+
 export interface MvtLanguageModel {
 	symbols: SymbolInformationWithDocumentation[];
 	document: TextDocument;
 }
+
 
 export interface ValidationProblem {
 	type: string;

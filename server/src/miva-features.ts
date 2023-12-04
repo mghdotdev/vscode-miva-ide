@@ -23,7 +23,6 @@ import {
 	MarkupContent,
 	Position,
 	Range,
-	SymbolInformation,
 	SymbolKind,
 	TextEdit
 } from 'vscode-languageserver/node';
@@ -52,6 +51,7 @@ import {
 } from './util/functions';
 import {
 	LanguageFeatures,
+	MvLanguageModel,
 	MvtLanguageModel,
 	Settings,
 	SymbolInformationWithDocumentation,
@@ -103,7 +103,14 @@ const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompl
 const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
 
 // Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
-const mvDocuments = getLanguageModelCache<TextDocument>( 500, 60, document => document );
+const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
+	const symbols = _mvFindDocumentSymbols(document);
+
+	return {
+		symbols,
+		document
+	};
+});
 
 // Symbol (variable, LSK function) containers
 let workspaceSymbols: any[] = [];
@@ -723,9 +730,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 			for (let symbol of symbols) {
 				const nameLower = symbol.name.toLowerCase();
+				const trimmedValue = symbol?.documentation?.value?.trim();
 
 				// Show variable hover docs
-				if (symbol.kind === SymbolKind.Variable && nameLower === entity || nameLower === variable || nameLower === word) {
+				if (trimmedValue?.length > 0 && symbol.kind === SymbolKind.Variable && (nameLower === entity || nameLower === variable || nameLower === word)) {
 					symbolDocumentation += symbol.documentation.value + '\n---\n';
 				}
 			}
@@ -766,14 +774,14 @@ function _getMvDocumentSymbolsByUri (uri) {
 	return files.reduce((output, file) => {
 
 		let fileContents = readFileSync( file ).toString();
-		let document = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
+		const {symbols} = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
 
-		return output.concat( _mvFindDocumentSymbols( document ) );
+		return output.concat( symbols );
 
 	}, []);
 }
 
-function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformation[] {
+function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWithDocumentation[] {
 
 	const symbols: SymbolInformationWithDocumentation[] = [];
 
@@ -891,7 +899,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 		doCompletion( document: TextDocument, position: Position ): CompletionList {
 
-			const mvDocument = mvDocuments.get( document );
+			const {document: mvDocument} = mvDocuments.get( document );
 
 			// determine left side text range
 			const cursorPositionOffset = mvDocument.offsetAt( position );
@@ -1023,44 +1031,42 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			]);
 		},
 
-		findDocumentSymbols( document: TextDocument ): SymbolInformation[] {
+		findDocumentSymbols( document: TextDocument ): SymbolInformationWithDocumentation[] {
+			const {symbols} = mvDocuments.get( document )
 
-			return _mvFindDocumentSymbols( mvDocuments.get( document ) );
+			return symbols;
 
 		},
 
 		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
 
-			const mvDocument = mvDocuments.get( document );
+			const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
 
 			// Get word
 			const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
-			const word = getWordAtOffset( line, position.character );
+			const word = getWordAtOffset( line, position.character )?.toLowerCase();
+			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 
 			if (lskSymbols.length === 0) {
 				_createLskSymbols(settings);
 			}
 
-			const symbols = [
+			return [
 				...workspaceSymbols,
-				...lskSymbols
-			].filter(( symbol ) => {
-				return ( symbol.name === word );
-			});
-
-			if ( symbols ) {
-
-				return symbols.map( symbol => symbol.location );
-
-			}
-
-			return null;
+				...lskSymbols,
+				...documentSymbols
+			]
+				?.filter(( symbol ) => {
+					const nameLower: string = symbol.name.toLowerCase();
+					return nameLower === variable || nameLower === word;
+				})
+				?.map( symbol => symbol.location );
 
 		},
 
 		onHover (document: TextDocument, position: Position ): Hover | null {
 
-			const mvDocument = mvDocuments.get( document );
+			const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
 
 			// Get word
 			const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -1201,6 +1207,30 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			if (foundTag) {
 				return {
 					contents: formatTagDocumentation(foundTag)
+				};
+			}
+
+			// Variable / Symbol Hover Documentation
+			const symbols = [].concat( lskSymbols, documentSymbols );
+			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
+			let symbolDocumentation = '';
+
+			for (let symbol of symbols) {
+				const nameLower = symbol.name.toLowerCase();
+				const trimmedValue = symbol?.documentation?.value?.trim();
+
+				// Show variable hover docs
+				if (trimmedValue?.length > 0 && symbol.kind === SymbolKind.Variable && (nameLower === variable || nameLower === word)) {
+					symbolDocumentation += trimmedValue + '\n---\n';
+				}
+			}
+
+			if (symbolDocumentation.length > 0) {
+				return {
+					contents: {
+						kind: 'markdown',
+						value: symbolDocumentation
+					}
 				};
 			}
 
