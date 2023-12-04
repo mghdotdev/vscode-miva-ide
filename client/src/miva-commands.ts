@@ -208,6 +208,8 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 
 		env.clipboard.writeText( clipboardContents.join( '\n' ) );
 
+		window.showInformationMessage( 'Successfully converted and copied!' );
+
 	}
 	else {
 
@@ -235,6 +237,8 @@ const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.
 
 			edit.replace( range, conversion );
 
+			window.showInformationMessage( 'Successfully converted variable to entity!' );
+
 		}
 
 	});
@@ -258,6 +262,8 @@ const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MV
 		if ( conversion ) {
 
 			edit.replace( range, conversion );
+
+			window.showInformationMessage( 'Successfully converted entity to variable!' );
 
 		}
 
