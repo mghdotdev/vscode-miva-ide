@@ -1,10 +1,13 @@
 {
 	"compilerOptions": {
+		"forceConsistentCasingInFileNames": true,
 		"module": "commonjs",
-		"target": "es6",
 		"outDir": "out",
 		"rootDir": "src",
-		"sourceMap": true
+		"sourceMap": true,
+		"strict": false,
+		"target": "ES2019",
+		"lib": ["ES2019", "WebWorker"]
 	},
 	"include": [
 		"src"
@@ -14,7 +17,11 @@
 		".vscode-test"
 	],
 	"references": [
-		{ "path": "./client" },
-		{ "path": "./server" }
+		{
+			"path": "./client"
+		},
+		{
+			"path": "./server"
+		}
 	]
 }

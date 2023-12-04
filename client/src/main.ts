@@ -1,18 +1,20 @@
+import * as path from 'path';
 import {
 	ExtensionContext,
-	languages,
-	IndentAction
+	IndentAction,
+	languages
 } from 'vscode';
 import {
-	ServerOptions,
-	TransportKind,
+	LanguageClient,
 	LanguageClientOptions,
-	LanguageClient
-} from 'vscode-languageclient';
-import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS, MVT_NON_CLOSING_TAGS } from './util/emptyTagsShared';
-import * as path from 'path';
-import { readJSONFile, pushAll } from './util/functions';
-import mivaCommands from './mivaCommands';
+	ServerOptions,
+	TransportKind
+} from 'vscode-languageclient/node';
+import mivaCommands from './miva-commands';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS } from './util/empty-tag-shared';
+import { pushAll, readJSONFile } from './util/functions';
+
+let client: LanguageClient;
 
 export function activate( context: ExtensionContext ) {
 
@@ -53,17 +55,17 @@ export function activate( context: ExtensionContext ) {
 	};
 
 	// Create the language client and start the client.
-	let client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
+	client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
 	client.registerProposedFeatures();
-	let clientDisposable = client.start();
+	client.start();
 
 	// push client to context
-	context.subscriptions.push( clientDisposable );
+	context.subscriptions.push( client );
 
 	// set advanced language configurations
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
-			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MVT_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$ `),
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param)\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$ `),
 			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
 		},
 		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
@@ -104,7 +106,7 @@ export function activate( context: ExtensionContext ) {
 }
 
 export function deactivate(): Thenable<void> | undefined {
-
+	client?.stop();
 	return;
 
 }

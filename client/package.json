@@ -1,13 +1,21 @@
 {
+	"publishConfig": {
+		"access": "restricted"
+	},
 	"main": "./out/main.js",
 	"engines": {
-		"vscode": "^1.40.0"
+		"vscode": "^1.77.0"
 	},
-	"scripts": {},
+	"scripts": {
+		"esbuild": "npx esbuild ./src/main.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"build:prod": "npm run esbuild -- --minify",
+		"build": "npm run esbuild -- --sourcemap",
+		"watch": "npm run esbuild -- --sourcemap --watch=forever"
+	},
 	"devDependencies": {
-		"@types/vscode": "^1.51.0"
+		"@types/vscode": "^1.77.0"
 	},
 	"dependencies": {
-		"vscode-languageclient": "^6.1.3"
+		"vscode-languageclient": "^8.1.0"
 	}
 }

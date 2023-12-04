@@ -1,5 +1,45 @@
 # Change Log
 
+## v1.0.0
+
+* Improved autocomplete and language intelligence for MVT and MivScript.
+	* Improved tag snippets.
+	* Added tag attribute autocompletion.
+	* Added matching `mvt:item` name and param attribute completions.
+* Improved MVT and Miva Script syntax highlighting.
+* Added language intelligence for the underlying HTML syntax in MVT files.
+* Added hover-on-symbol support and documentation for key MVT features.
+	* Items & Item Params
+	* Builtin Functions
+	* Variables
+	* Miva Merchant functions
+* Added goto-definition support for MVT variables (via `<mvt:assign>`).
+* Added Code Actions support for existing problem diagnostics.
+* Added improved snippet and completion intelligence.
+	* Completions will be expression and document aware. For example no function completions within variable or document contexts.
+	* Added compound `mvt:item` name and param completion snippets to the document completion list.
+* Reduced overall extension size by adding `esbuild`.
+* Updated dependencies and fixed security issues.
+
+## v0.12.2
+
+* Fixed broken Emmet support.
+
+## v0.12.0
+
+* Added embedded MVT syntax support for JavaScript.
+* Added embedded MVT syntax support for CSS.
+
+## v0.11.0
+
+* Updated LSK functions to 10.04.02.
+
+## v0.10.0
+
+* Fixed dependency security vulnerabilities.
+* Updated builtin functions to latest Empressa version.
+* Updated LSK functions to 10.04.01.
+
 ## v0.9.1
 
 * Fixed issue with functions-merchant autocompletion data that caused the file name to not auto fill.
@@ -7,7 +47,7 @@
 ## v0.9.0
 
 * Added LSK data up to 10.04.00
-* Added builtin function data up to empressa 5.36
+* Added builtin function data up to Empressa 5.36
 
 ## v0.8.1
 

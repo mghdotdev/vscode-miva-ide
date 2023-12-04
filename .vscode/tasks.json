@@ -3,14 +3,15 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "compile",
+			"script": "build",
 			"group": "build",
 			"presentation": {
 				"panel": "dedicated",
-				"reveal": "never"
+				"reveal": "never",
+				"group": "build"
 			},
 			"problemMatcher": [
-				"$tsc"
+				"$esbuild"
 			]
 		},
 		{
@@ -23,10 +24,11 @@
 			},
 			"presentation": {
 				"panel": "dedicated",
-				"reveal": "never"
+				"reveal": "never",
+				"group": "build"
 			},
 			"problemMatcher": [
-				"$tsc-watch"
+				"$esbuild-watch"
 			]
 		}
 	]

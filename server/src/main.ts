@@ -1,25 +1,31 @@
-import {
-	createConnection,
-	IConnection,
-	TextDocuments,
-	ConfigurationParams,
-	ConfigurationRequest,
-	InitializeParams,
-	InitializeResult,
-	WorkspaceFolder,
-	ServerCapabilities,
-	TextDocumentSyncKind,
-	DidChangeWorkspaceFoldersNotification,
-	Diagnostic,
-	DidChangeConfigurationNotification,
-	SymbolInformation
-} from 'vscode-languageserver';
-import { URI } from 'vscode-uri';
-import { formatError, pushAll, runSafeAsync, runSafe } from './util/functions';
-import { Settings, Workspace, Languages } from './util/interfaces';
-import { getMVTFeatures, getMVFeatures } from './mivaFeatures';
 import _has from 'lodash.has';
 import { TextDocument } from 'vscode-languageserver-textdocument';
+import {
+	CancellationToken,
+	CodeActionKind,
+	CodeActionParams,
+	ConfigurationParams,
+	ConfigurationRequest,
+	Connection,
+	Diagnostic,
+	DidChangeConfigurationNotification,
+	DidChangeWorkspaceFoldersNotification,
+	DocumentLinkParams,
+	HoverParams,
+	InitializeParams,
+	InitializeResult,
+	ProposedFeatures,
+	ServerCapabilities,
+	SymbolInformation,
+	TextDocumentSyncKind,
+	TextDocuments,
+	WorkspaceFolder,
+	createConnection
+} from 'vscode-languageserver/node';
+import { URI } from 'vscode-uri';
+import { getMVFeatures, getMVTFeatures } from './miva-features';
+import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
+import { Languages, Settings, Workspace } from './util/interfaces';
 
 // ================================================================================================================================ //
 
@@ -84,7 +90,7 @@ async function validateTextDocument( textDocument: TextDocument ) {
 // ================================================================================================================================ //
 
 // Create a connection for the server
-const connection: IConnection = createConnection();
+const connection: Connection = createConnection(ProposedFeatures.all);
 
 process.on('unhandledRejection', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
@@ -150,10 +156,19 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 
 	const capabilities: ServerCapabilities = {
 		textDocumentSync: TextDocumentSyncKind.Full,
-		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&' ] } : undefined,
+		completionProvider: clientSnippetSupport ? { resolveProvider: false, triggerCharacters: [ '.', ':', '<', '"', '=', '/', '&', '\'' ] } : undefined,
 		definitionProvider: true,
 		documentSymbolProvider: true,
-		workspaceSymbolProvider: true
+		workspaceSymbolProvider: true,
+		hoverProvider: true,
+		documentLinkProvider: {
+			resolveProvider: true
+		},
+		codeActionProvider: {
+			codeActionKinds: [
+				CodeActionKind.QuickFix
+			]
+		}
 	};
 
 	return { capabilities };
@@ -234,10 +249,10 @@ connection.onCompletion(async ( textDocumentPosition, token ) => {
 	return undefined;
 }); */
 
-connection.onDocumentSymbol(( documentSymbolParms, token ) => {
+connection.onDocumentSymbol(( documentSymbolParams, token ) => {
 	return runSafe(() => {
 
-		const document = documents.get( documentSymbolParms.textDocument.uri );
+		const document = documents.get( documentSymbolParams.textDocument.uri );
 		const symbols: SymbolInformation[] = [];
 
 		if ( document ) {
@@ -253,7 +268,7 @@ connection.onDocumentSymbol(( documentSymbolParms, token ) => {
 
 		return symbols;
 
-	}, [], `Error while computing document symbols for ${ documentSymbolParms.textDocument.uri }`, token );
+	}, [], `Error while computing document symbols for ${ documentSymbolParams.textDocument.uri }`, token );
 });
 
 connection.onWorkspaceSymbol(( workspaceSymbolParams, token ) => {
@@ -285,6 +300,71 @@ connection.onDefinition(( definitionParams, token ) => {
 		return [];
 
 	}, null, `Error while computing definitions for ${ definitionParams.textDocument.uri }`, token );
+});
+
+connection.onHover(( hoverParams: HoverParams, token: CancellationToken ) => {
+	return runSafeAsync(async () => {
+
+		const document = documents.get( hoverParams.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.onHover ) {
+
+				return features.onHover( document, hoverParams.position );
+
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while hovering on position: ${hoverParams.position.line}:${hoverParams.position.character}`, token);
+});
+
+connection.onDocumentLinks(( documentLinkParams: DocumentLinkParams, token: CancellationToken ) => {
+	return runSafeAsync(async () => {
+
+		const document = documents.get( documentLinkParams.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.onDocumentLinks ) {
+
+				return features.onDocumentLinks( document );
+
+			}
+
+		}
+
+		return [];
+
+	}, null, `Error while providing links for document: ${documentLinkParams.textDocument.uri}`, token);
+});
+
+connection.onCodeAction(( params: CodeActionParams, token: CancellationToken ) => {
+	return runSafe(() => {
+
+		const document = documents.get( params.textDocument.uri );
+
+		if ( document ) {
+
+			const features = languages[ document.languageId ];
+
+			if ( features && features.doCodeAction ) {
+
+				return features.doCodeAction( document, params.range, params.context );
+
+			}
+
+		}
+
+		return [];
+	}, null, `Error while providing code actions for document: ${params.textDocument.uri}`, token);
 });
 
 // The content of a text document has changed. This event is emitted

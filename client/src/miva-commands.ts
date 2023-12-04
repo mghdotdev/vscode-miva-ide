@@ -1,25 +1,28 @@
+import { CharacterPair, Position, Range, TextEditor, TextEditorEdit, Uri, commands, env, languages, window, workspace } from 'vscode';
 import patterns from './util/patterns';
-import { TextEditor, TextEditorEdit, Range, commands, env, window, workspace, Uri, languages, Position, CharacterPair } from 'vscode';
 
 const boundryAmount = 200;
 
 const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
+	const returnValue = payload.returnValue;
+	const fileNames = payload.fileNames?.filter((value, index, self) => self.indexOf( value ) === index);
+
 	let fileName;
-	if ( payload.fileNames.length < 2 ) {
-		fileName = payload.fileNames[0];
+	if ( fileNames.length < 2 ) {
+		fileName = fileNames[0];
 	}
 	else {
 
-		fileName = await window.showQuickPick( payload.fileNames, { placeHolder: 'Select the file path for the selected function.' } );
+		fileName = await window.showQuickPick( fileNames, { placeHolder: 'Select the file path for the selected function.' } );
 
 	}
 
-	commands.executeCommand( 'mivaIde.insertFileName', fileName );
+	commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
 
 });
 
-const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName ) => {
+const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName: string, returnValue: string ) => {
 
 	const languageId = textEditor.document.languageId;
 	const cursorPositionOffset = textEditor.document.offsetAt( textEditor.selection.active );
@@ -29,60 +32,106 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		textEditor.selection.active
 	);
 	const left = textEditor.document.getText( leftRange ) || '';
-	let leftMatch;
 
+	/**
+	 * Helper method for inserting file name
+	 */
+	function replaceEdit(start: number, end: number, editText: string) {
+		const startPosition = textEditor.document.positionAt( cursorPositionOffset - start );
+		const endPosition = textEditor.document.positionAt( cursorPositionOffset - start + end );
+
+		edit.replace(
+			new Range(startPosition, endPosition),
+			editText
+		)
+	}
+
+	// []. matching (left only) to inject fileName variable
 	// check for bracket-dot syntax first - then tags
 	if ( languageId === 'mv' ) {
+		const startMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
 
-		leftMatch = patterns.MV.LEFT_BRACKET_DOT.exec( left );
+		if ( startMatch ) {
+			const endMatch = patterns.MV.BRACKET_DOT_END.exec( left.slice( startMatch.index ) );
 
-		if ( leftMatch ) {
+			replaceEdit( startMatch[0].length, endMatch?.[0]?.length || 0, ` ${ fileName } `, );
 
-			insertEdit( leftMatch[0].length, ` ${ fileName } ` );
-
+			return;
 		}
-
 	}
 
-	leftMatch = patterns.SHARED.LEFT_FILE_ATTR.exec( left );
+	// file="" Matching (left and right) to inject fileName variable
 
-	// define helper method for inserting file name
-	function insertEdit( matchLength: number, fileName: string ) {
-
-		edit.insert(
-			textEditor.document.positionAt( cursorPositionOffset - matchLength ),
-			fileName
-		);
-
-	}
+	const leftFileAttributeStartMatch = languageId === 'mv'
+		? patterns.MV.LEFT_FILE_ATTR.exec( left )
+		: patterns.MVT.LEFT_FILE_ATTR.exec( left );
 
 	// check & execute the insertion
-	if ( leftMatch ) {
+	if ( leftFileAttributeStartMatch ) {
+		const endMatch = languageId === 'mv'
+			? patterns.MV.FILE_ATTR_END.exec( left.slice( leftFileAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftFileAttributeStartMatch.index ) );
 
-		insertEdit( leftMatch[0].length, fileName );
-
+		replaceEdit( leftFileAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, fileName );
 	}
 	else {
-
 		const rightOffset = cursorPositionOffset + boundryAmount;
 		const rightRange = new Range(
 			textEditor.selection.active,
 			textEditor.document.positionAt( rightOffset )
 		);
 		const right = textEditor.document.getText( rightRange ) || '';
-		const rightMatch = patterns.SHARED.RIGHT_FILE_ATTR.exec( right );
 
-		if ( rightMatch ) {
+		const rightFileAttributeStartMatch = languageId === 'mv'
+			? patterns.MV.RIGHT_FILE_ATTR.exec( right )
+			: patterns.MVT.RIGHT_FILE_ATTR.exec( right );
 
-			insertEdit( rightMatch[0].length, fileName );
+		const endMatch = languageId === 'mv'
+			? patterns.MV.FILE_ATTR_END.exec( right.slice( rightFileAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( right.slice( rightFileAttributeStartMatch.index ) );
 
+		if ( rightFileAttributeStartMatch ) {
+			replaceEdit( rightFileAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, fileName );
 		}
-
 	}
 
+	// name="" Matching (left and right) to inject returnValue variable
+
+	const leftNameAttributeStartMatch = languageId === 'mv'
+		? patterns.MV.LEFT_NAME_ATTR.exec( left )
+		: patterns.MVT.LEFT_NAME_ATTR.exec( left );
+
+	// check & execute the insertion
+	if ( leftNameAttributeStartMatch ) {
+		const endMatch = languageId === 'mv'
+			? patterns.MV.NAME_ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) );
+
+		replaceEdit( leftNameAttributeStartMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
+	}
+	else {
+		const rightOffset = cursorPositionOffset + boundryAmount;
+		const rightRange = new Range(
+			textEditor.selection.active,
+			textEditor.document.positionAt( rightOffset )
+		);
+		const right = textEditor.document.getText( rightRange ) || '';
+
+		const rightNameAttributeMatch = languageId === 'mv'
+			? patterns.MV.RIGHT_NAME_ATTR.exec( right )
+			: patterns.MVT.RIGHT_NAME_ATTR.exec( right );
+
+		const endMatch = languageId === 'mv'
+			? patterns.MV.NAME_ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) )
+			: patterns.MVT.ATTR_END.exec( left.slice( leftNameAttributeStartMatch.index ) );
+
+		if ( rightNameAttributeMatch ) {
+			replaceEdit( rightNameAttributeMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
+		}
+	}
 });
 
-function convertEntityToVariable( entity: string ) {
+function convertEntityToVariable( entity: string, showMessage: boolean = true ) {
 
 	const globalMatch = patterns.MVT.ENTITY_GLOBAL.exec( entity );
 	const localMatch = patterns.MVT.ENTITY_LOCAL.exec( entity );
@@ -98,13 +147,15 @@ function convertEntityToVariable( entity: string ) {
 
 	}
 
-	window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+	if (showMessage) {
+		window.showWarningMessage( 'Unable to convert entity to variable. No entity detected.' );
+	}
 
 	return false;
 
 }
 
-function convertVariableToEntity( variable: string, uri?: Uri ) {
+function convertVariableToEntity( variable: string, uri?: Uri, showMessage: boolean = true ) {
 
 	const settings = workspace.getConfiguration( 'MVT', uri );
 
@@ -122,7 +173,9 @@ function convertVariableToEntity( variable: string, uri?: Uri ) {
 
 	}
 
-	window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+	if (showMessage) {
+		window.showWarningMessage( 'Unable to convert variable to entity. No variable detected.' );
+	}
 
 	return false;
 
@@ -141,7 +194,7 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 
 		let text = textEditor.document.getText( new Range( selection.start, selection.end ) );
 
-		let conversion = convertEntityToVariable( text ) || convertVariableToEntity( text, textEditor.document.uri );
+		let conversion = convertEntityToVariable( text, false ) || convertVariableToEntity( text, textEditor.document.uri, false );
 
 		if ( conversion ) {
 
@@ -154,6 +207,13 @@ const convertAndCopyCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.c
 	if ( clipboardContents.length > 0 ) {
 
 		env.clipboard.writeText( clipboardContents.join( '\n' ) );
+
+		window.showInformationMessage( 'Successfully converted and copied!' );
+
+	}
+	else {
+
+		window.showWarningMessage( 'Unable to convert and copy. No entity(s) or variable(s) detected.' );
 
 	}
 
@@ -176,6 +236,8 @@ const convertToEntityCommand = commands.registerTextEditorCommand( 'mivaIde.MVT.
 		if ( conversion ) {
 
 			edit.replace( range, conversion );
+
+			window.showInformationMessage( 'Successfully converted variable to entity!' );
 
 		}
 
@@ -200,6 +262,8 @@ const convertToVariableCommand = commands.registerTextEditorCommand( 'mivaIde.MV
 		if ( conversion ) {
 
 			edit.replace( range, conversion );
+
+			window.showInformationMessage( 'Successfully converted entity to variable!' );
 
 		}
 
