@@ -89,6 +89,12 @@
 			"files.associations": {
 				"**/css/*.mvt": "mvtcss",
 				"**/js/*.mvt": "mvtjs"
+			},
+			"emmet.includeLanguages": {
+				"mv": "html",
+				"mvt": "html",
+				"mvtcss": "css",
+				"mvtjs": "javascript"
 			}
 		},
 		"commands": [
