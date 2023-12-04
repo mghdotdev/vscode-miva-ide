@@ -1112,16 +1112,28 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					}
 				}
 
-			}
+				// Function Hover
+				if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
 
-			// System variable hover
-			if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
-				const foundSystemVariable = systemVariableData[wordLower];
-				if (foundSystemVariable) {
-					return {
-						contents: foundSystemVariable.documentation
-					};
+					// Builtin function lookup
+					const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
+					if (foundBuiltinHover) {
+						return {
+							contents: foundBuiltinHover
+						};
+					}
 				}
+
+				// System variable hover
+				if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
+					const foundSystemVariable = systemVariableData[wordLower];
+					if (foundSystemVariable) {
+						return {
+							contents: foundSystemVariable.documentation
+						};
+					}
+				}
+
 			}
 
 			// Tag name hover
@@ -1150,18 +1162,6 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 						if (foundDoHover) {
 							return {
 								contents: foundDoHover
-							};
-						}
-					}
-
-					// Function Hover
-					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-
-						// Builtin function lookup
-						const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
-						if (foundBuiltinHover) {
-							return {
-								contents: foundBuiltinHover
 							};
 						}
 					}
