@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.0
+
+* Bumped version to supersede previously deployed prerelease versions.
+
 ## v1.0.0
 
 * Improved autocomplete and language intelligence for MVT and MivScript.
