@@ -1,3 +1,4 @@
+import { SpawnOptionsWithoutStdio, spawn } from 'child_process';
 import {
 	readFileSync
 } from 'fs';
@@ -464,4 +465,33 @@ export function isTagSelfClosing (tagName: string): boolean {
 		default:
 			return false;
 	}
+}
+
+export function asyncSpawn (command: string, args?: readonly string[], options?: SpawnOptionsWithoutStdio): Promise<{stdout: string, stderr: string}> {
+	return new Promise((resolve, reject) => {
+		let stdout = '';
+		let stderr = '';
+
+		const cmd = spawn(
+			command,
+			args,
+			options
+		);
+
+		cmd.stdout.on('data', data => {
+			console.log('data', data.toString())
+			stdout += data.toString();
+		});
+
+		cmd.stderr.on('data', data => {
+			stderr += data.toString();
+		});
+
+		cmd.on('close', () => {
+			resolve({
+				stdout,
+				stderr,
+			});
+		});
+	});
 }

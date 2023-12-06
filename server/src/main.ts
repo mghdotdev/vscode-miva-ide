@@ -75,7 +75,7 @@ async function validateTextDocument( textDocument: TextDocument ) {
 
 		if ( features && features.doValidation ) {
 
-			pushAll( diagnostics, features.doValidation( textDocument, settings ) );
+			pushAll( diagnostics, (await features.doValidation( textDocument, settings )) );
 
 		}
 

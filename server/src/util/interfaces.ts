@@ -37,7 +37,7 @@ export interface Languages {
 
 export interface LanguageFeatures {
 
-	doValidation?: ( document: TextDocument, settings?: Settings ) => Diagnostic[];
+	doValidation?: ( document: TextDocument, settings?: Settings ) => Promise<Diagnostic[]>;
 
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
 

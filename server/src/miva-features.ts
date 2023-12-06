@@ -32,6 +32,7 @@ import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
 import {
+	asyncSpawn,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
@@ -300,34 +301,36 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 			const text = mvtDocument.getText();
 
 			// build diagnostics array
-			return validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): any => {
+			return Promise.resolve(
+				validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): any => {
 
-				// validate configured setting to check - exit if not valid
-				if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
+					// validate configured setting to check - exit if not valid
+					if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
+						return diagnostics;
+					}
+
+					// create the pattern to match
+					const pattern = new RegExp( validation.match, 'igm' );
+					let match: RegExpExecArray;
+					let count = 0;
+					while ( (match = pattern.exec( text )) && count < 1000 ) {
+						count++;
+						diagnostics.push(
+							{
+								range: Range.create( mvtDocument.positionAt( match.index ), mvtDocument.positionAt( match.index + match[ validation.matchIndex ].length ) ),
+								message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
+								severity: DiagnosticSeverity[ validation.problem.type ],
+								source: 'Miva IDE',
+								data: validation.data,
+								code: validation.code,
+							}
+						);
+					}
+
 					return diagnostics;
-				}
 
-				// create the pattern to match
-				const pattern = new RegExp( validation.match, 'igm' );
-				let match: RegExpExecArray;
-				let count = 0;
-				while ( (match = pattern.exec( text )) && count < 1000 ) {
-					count++;
-					diagnostics.push(
-						{
-							range: Range.create( mvtDocument.positionAt( match.index ), mvtDocument.positionAt( match.index + match[ validation.matchIndex ].length ) ),
-							message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
-							severity: DiagnosticSeverity[ validation.problem.type ],
-							source: 'Miva IDE',
-							data: validation.data,
-							code: validation.code,
-						}
-					);
-				}
-
-				return diagnostics;
-
-			}, []);
+				}, [])
+			);
 
 		},
 
@@ -897,6 +900,42 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 	return {
 
+		async doValidation( document: TextDocument, settings: Settings ) {
+
+			const {document: mvtDocument} = mvDocuments.get( document );
+			const mvFilePath = document.uri.replace( 'file://', '' );
+
+			const args = [
+				'-W',
+				'all',
+				'-o',
+				'/dev/null',
+				mvFilePath
+			].join(' ');
+
+			console.log('args', args);
+
+			const {stdout} = await asyncSpawn(
+				'mvc -W all -o /dev/null ' + mvFilePath,
+				[
+
+				],
+				{
+					shell: true
+				}
+			);
+
+			console.log('stdout', stdout);
+
+			if (stdout) {
+				const errors = stdout.split('\n');
+				console.log('errors', errors);
+			}
+
+			return [];
+
+		},
+
 		doCompletion( document: TextDocument, position: Position ): CompletionList {
 
 			const {document: mvDocument} = mvDocuments.get( document );
@@ -1035,7 +1074,6 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const {symbols} = mvDocuments.get( document )
 
 			return symbols;
-
 		},
 
 		findDefinition( document: TextDocument, position: Position, settings: Settings ): Definition | null {
