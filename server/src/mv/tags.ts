@@ -1247,7 +1247,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used to call an function declared with  in an external file or call an external file directly executing the script starting at the beginning.\n\n<MvDO> works in two somewhat different ways, depending on whether NAME and VALUE are present. If they are specified, \nthe function is the only code in the external file that gets executed. ALL other Miva Script and HTML code is ignored. \nThis allows you to create librarys of functions stored in external compiled files.\n\nIf NAME and VALUE are omitted, everything in the external file is executed, however any script contained within \nMvFUNCTION blocks are ignored. Starting at the beginning of the file, the results of all <MvASSIGN> tags are available \nto the calling program. All system and global variables, and all open databases, are available to the code in the \nexternal file. For example a file could contain initialization script, setting global variables and opening databases.",
-		"insertText": "<MvDO FILE = \"{ $1 }\" NAME = \"$2\" VALUE = \"{ $3 }\">$0",
+		"insertText": "<MvDO FILE = \"{  }\" NAME = \"$2\" VALUE = \"$1\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvDO",
@@ -1898,7 +1898,7 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Optional value to return from a user defined function. If not value is being return it may be omitted.",
-				"insertText": "VALUE = \"{ $0 }\"",
+				"insertText": "VALUE = $0",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "VALUE",
@@ -1910,7 +1910,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Exits a user defined function and optionally returns a value.\n\nIn this example if invalid parameters are passed to the the function returns without doing anything otherwise it \nreturns the parameter value added together.",
-		"insertText": "<MvFUNCTIONRETURN VALUE = \"{ $1 }\">$0",
+		"insertText": "<MvFUNCTIONRETURN VALUE = $1>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvFUNCTIONRETURN",
