@@ -3,6 +3,9 @@ import { glob } from 'glob';
 import _get from 'lodash.get';
 import * as path from 'path';
 import {
+	getCSSLanguageService
+} from 'vscode-css-languageservice/lib/esm/cssLanguageService';
+import {
 	TokenType,
 	getLanguageService
 } from 'vscode-html-languageservice/lib/esm/htmlLanguageService';
@@ -167,7 +170,7 @@ const getVariableCompletions = (left: string, mivaDocument: TextDocument): Compl
 	return null;
 };
 
-export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
+export function baseMVTFeatures(workspace: Workspace, clientCapabilities: ClientCapabilities): LanguageFeatures {
 
 	const findDocumentSymbols = ( document: TextDocument ) => {
 		const symbols: SymbolInformationWithDocumentation[] = [];
@@ -517,7 +520,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						};
 					})
 					: mvtTagCompletions.items,
-				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+				{
+					label: '@@@LANGUAGESESRVICE@@@' // To be replaced by that language's native service result
+				}
 			]);
 		},
 
@@ -723,12 +728,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				};
 			}
 
-			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
+			return {
+				contents: '@@@LANGUAGESESRVICE@@@'
+			};
 
-		},
-
-		onDocumentLinks ( document: TextDocument ) {
-			return [];
 		},
 
 		findDocumentSymbols ( document: TextDocument ) {
@@ -739,6 +742,60 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	};
 
+}
+
+export function getMVTFeatures(mvtFeatures: LanguageFeatures): LanguageFeatures {
+	return {
+		...mvtFeatures,
+		doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
+			const completionList = mvtFeatures.doCompletion(document, position, settings);
+
+			return CompletionList.create(completionList.items.flatMap(completionItem => {
+				if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
+					return htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || [];
+				}
+
+				return completionItem;
+			}))
+		},
+		onHover(document: TextDocument, position: Position) {
+			const hover = mvtFeatures.onHover(document, position);
+
+			if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
+				return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
+			}
+
+			return hover;
+		}
+	}
+};
+
+export function getMVTCSSFeatures(mvtFeatures: LanguageFeatures): LanguageFeatures {
+	const cssLanguageService = getCSSLanguageService();
+
+	return {
+		...mvtFeatures,
+		doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
+			const completionList = mvtFeatures.doCompletion(document, position, settings);
+
+			return CompletionList.create(completionList.items.flatMap(completionItem => {
+				if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
+					return cssLanguageService.doComplete(document, position, cssLanguageService.parseStylesheet(document))?.items || [];
+				}
+
+				return completionItem;
+			}));
+		},
+		onHover(document: TextDocument, position: Position) {
+			const hover = mvtFeatures.onHover(document, position);
+
+			if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
+				return cssLanguageService.doHover(document, position, cssLanguageService.parseStylesheet(document));
+			}
+
+			return hover;
+		}
+	}
 }
 
 // ======================================================================================================================== //
