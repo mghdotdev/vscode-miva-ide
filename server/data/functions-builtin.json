@@ -2549,7 +2549,7 @@
 	},
 	{
 		"documentation": "\n```mv\n{ miva_joinstring( input var, join_with, flags ) }\n```\n---\n[miva\\_joinstring](https://www.mivascript.com/item/mivascript-functions/miva%5Fjoinstring.html)  \n\nJoins a simple array and outputs a string seperated by the join\\_with character or characters. If the input parameter is an array, then a string is returned with each array element's value separated by the join\\_with parameter along with any modifications made via the flags parameter. If the input parameter is a string, then a string is returned alongside any modifications made via the flags parameter. If the input parameter is a structure, an empty string is returned\n\nReturns : The joined string.\n\n* input = The input string, variable or simple array.\n* join\\_with = The string that will seperate array elements\n* flags = A comma separated list of any of the following keywords escape : Escapes the join\\_with characters. If the join\\_with characters exists in the elements value. insensitive : When combined with the escape flag, it will search for the join\\_with characters in an insensitive fashion.",
-		"insertText": "miva_joinstring( ${1:input var}, ${2:join_with}, ${3|'trim','ltrim','rtrim','lower','upper','insensitive'|} )$0",
+		"insertText": "miva_joinstring( ${1:input var}, ${2:join_with}, ${3|'escape','insensitive','noempty'|} )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "miva_joinstring"
