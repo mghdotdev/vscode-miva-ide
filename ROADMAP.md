@@ -41,6 +41,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 - [ ] Fix expression syntax highlighting as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47)
 - [x] Add operators to expression completions results
 - [x] Add engine version callouts to tags and builtin functions
+- [x] Fix indentation issues for block tags
 
 ### v2.0.0 (TBD)
 
