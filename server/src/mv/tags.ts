@@ -1621,6 +1621,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Loops through the code between  and  the number of time specified between first and last, incrimenting the index. Optionally you can exit the loop using .\n\nLoops through the code between <MvFOR> and </MvFOR> the number of time specified between first and last, incrementing\nthe index. Optionally you can exit the loop using <MvFORSTOP>.",
+		"engine": ">=5.10",
 		"insertText": "<MvFOR LAST = \"{ $1 }\" COUNT = \"{ $2 }\" EXPR = \"{ $3 }\">\n\t$4\n</MvFOR>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1741,6 +1742,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Is designed to make dealing with arrays of items more convenient. Each item in the array is represented in the loop as an iterator variable, simplifying the syntax. Optionally you can exit the loop using\n\nWhen combined with the -C (compatibility) compiler flag, MvFOREACH generates code that will run on any engine version\n5.00 or newer, using runtime engine version checks to either call these functions or emulate their behavior.",
+		"engine": ">=5.10",
 		"insertText": "<MvFOREACH ITERATOR = \"$1\" ARRAY = \"$2\">\n\t$3\n</MvFOREACH>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
