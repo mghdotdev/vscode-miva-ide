@@ -222,8 +222,7 @@
 				],
 				"configuration": "./configurations/mv/mv.configuration.json"
 			}
-		],
-		"snippets": []
+		]
 	},
 	"activationEvents": [
 		"onLanguage:mvt",
