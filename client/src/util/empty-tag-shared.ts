@@ -1,20 +1,4 @@
 export const MVT_EMPTY_ELEMENTS: string[] = [
-	'area',
-	'base',
-	'br',
-	'col',
-	'embed',
-	'hr',
-	'img',
-	'input',
-	'keygen',
-	'link',
-	'menuitem',
-	'meta',
-	'param',
-	'source',
-	'track',
-	'wbr',
 	'mvt:assign',
 	'mvt:callcontinue',
 	'mvt:callstop',
@@ -29,7 +13,7 @@ export const MVT_EMPTY_ELEMENTS: string[] = [
 	'mvt:whilestop'
 ];
 
-export const MV_NON_CLOSING_TAGS: string[] = [
+export const MV_EMPTY_ELEMENTS: string[] = [
 	'MIVA',
 	'MvADD',
 	'MvASSIGN',
@@ -85,24 +69,4 @@ export const MV_NON_CLOSING_TAGS: string[] = [
 	'MvUNDELETE',
 	'MvWHILECONTINUE',
 	'MvWHILESTOP'
-];
-
-export const MV_EMPTY_ELEMENTS: string[] = [
-	'area',
-	'base',
-	'br',
-	'col',
-	'embed',
-	'hr',
-	'img',
-	'input',
-	'keygen',
-	'link',
-	'menuitem',
-	'meta',
-	'param',
-	'source',
-	'track',
-	'wbr',
-	...MV_NON_CLOSING_TAGS
 ];

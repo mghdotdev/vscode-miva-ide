@@ -11,7 +11,7 @@ import {
 	TransportKind
 } from 'vscode-languageclient/node';
 import mivaCommands from './miva-commands';
-import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS, MV_NON_CLOSING_TAGS } from './util/empty-tag-shared';
+import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/empty-tag-shared';
 import { pushAll, readJSONFile } from './util/functions';
 
 let client: LanguageClient;
@@ -65,36 +65,36 @@ export function activate( context: ExtensionContext ) {
 	// set advanced language configurations
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
-			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param)\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$ `),
-			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`, 'i'),
+			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})`, 'i')
 		},
-		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
+		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
-				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
+				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
+				afterText: new RegExp(`^<\\/([_:\\w][_:\\w\-.\\d]*)\\s*>`, 'i'),
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${ MVT_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],
 	});
 	languages.setLanguageConfiguration('mv', {
 		indentationRules: {
-			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|link|meta|param|${ MV_NON_CLOSING_TAGS.join( '|' ) })\\b|[^>]*/>)([-_\\.A-Za-z0-9]+)(?=\\s|>)\\b[^>]*>(?!.*</\\1>)|<!--(?!.*-->)|\\{[^}"']*$` ),
-			decreaseIndentPattern: /^\s*(<\/(?!html)[-_\.A-Za-z0-9]+\b[^>]*>|-->|\})/
+			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`),
+			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})`, 'i')
 		},
-		wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\$\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\s]+)/g,
+		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
 			{
-				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w-.\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
-				afterText: /^<\/([_:\w][_:\w-.\d]*)\s*>/i,
+				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
+				afterText: new RegExp(`^<\\/([_:\\w][_:\\w\-.\\d]*)\\s*>`, 'i'),
 				action: { indentAction: IndentAction.IndentOutdent }
 			},
 			{
-				beforeText: new RegExp(`<(?!(?:${ MV_EMPTY_ELEMENTS.join( '|' ) }))(\\w[\\w\\d]*)([^/>]*(?!/)>)[^<]*$`, 'i'),
+				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
 				action: { indentAction: IndentAction.Indent }
 			}
 		],
