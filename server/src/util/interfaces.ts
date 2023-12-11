@@ -221,3 +221,20 @@ export interface SystemVariableData extends BaseSystemVariableData {
 export interface SymbolInformationWithDocumentation extends SymbolInformation {
 	documentation: MarkupContent;
 };
+
+export interface BaseOperatorData {
+	insertTextFormat: string;
+	kind: CompletionItemKind | string;
+	commitCharacters: string[];
+	reference?: string;
+}
+
+export interface OperatorData extends BaseOperatorData {
+	documentation: string;
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	detail?: string;
+	example?: string;
+}

@@ -1437,6 +1437,10 @@
           "name": "keyword.operator.string.mvt"
         },
         {
+          "match": "(\\b(?i:BITAND|BITOR|BITXOR|BITOC|BITSL|BITSR)\\b)",
+          "name": "keyword.operator.bitwise.mvt"
+        },
+        {
           "match": "\\$",
           "name": "keyword.operator.string.mvt"
         }

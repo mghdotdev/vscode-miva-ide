@@ -303,6 +303,10 @@ repository:
       - match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
         name: keyword.operator.string.mv
 
+      # Bitwise Operators
+      - match: (\b(?i:BITAND|BITOR|BITXOR|BITOC|BITSL|BITSR)\b)
+        name: keyword.operator.bitwise.mv
+
       # Text Operators (Symbols)
       - match: \$
         name: keyword.operator.string.mv

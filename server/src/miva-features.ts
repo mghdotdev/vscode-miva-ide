@@ -28,12 +28,14 @@ import {
 	SymbolKind,
 	TextEdit
 } from 'vscode-languageserver/node';
+import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
 import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
 import {
+	formatGenericDocumentation,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
@@ -80,6 +82,7 @@ const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data',
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
 const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
+const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
 
 // Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
@@ -458,7 +461,10 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 											return variableCompletions;
 										}
 
-										return builtinFunctionCompletions;
+										return CompletionList.create([
+											...operatorCompletions.items,
+											...builtinFunctionCompletions.items
+										]);
 									}
 									case 'function': {
 										if (tagNameLower === 'item') {
@@ -678,6 +684,14 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 							if (foundAttributeValue && foundAttributeValue.documentation) {
 								return {
 									contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
+								};
+							}
+
+							// Operator lookup
+							const foundOperator = mvOperatorData[wordLower];
+							if (foundOperator) {
+								return {
+									contents: formatGenericDocumentation(foundOperator)
 								};
 							}
 						}
@@ -976,7 +990,10 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					return variableCompletions;
 				}
 
-				return builtinFunctionCompletions;
+				return CompletionList.create([
+					...operatorCompletions.items,
+					...builtinFunctionCompletions.items
+				]);
 
 			}
 
@@ -1173,6 +1190,13 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					}
 				}
 
+				// Operator lookup
+				const foundOperator = mvOperatorData[wordLower];
+				if (foundOperator) {
+					return {
+						contents: formatGenericDocumentation(foundOperator)
+					};
+				}
 			}
 
 			// Tag name hover
