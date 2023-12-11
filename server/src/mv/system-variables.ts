@@ -42,6 +42,12 @@ const systemVariableData: Record<string, SystemVariableData> = {
 		detail: 'MvCALL Value',
 		documentation: 'Value of the current MvCALL response chunk.'
 	},
+	callservercertificate: {
+		...baseSystemVariableData,
+		label: 'callservercertificate',
+		detail: 'MvCALL Server Certificate',
+		documentation: `Returns the server's certificate in PEM format.`
+	},
 	content_length: {
 		...baseSystemVariableData,
 		label: 'content_length',
@@ -267,6 +273,12 @@ const systemVariableData: Record<string, SystemVariableData> = {
 		label: 'http_x_real_ip',
 		detail: 'HTTP Real IP Address',
 		documentation: 'The IP address of the connected client.'
+	},
+	json_data: {
+		...baseSystemVariableData,
+		label: 'json_data',
+		detail: 'MvCALL JSON Data',
+		documentation: `Data posted via an MvCALL when content type is "application/json". Stored as a JSON object.`
 	},
 	miva_charset: {
 		...baseSystemVariableData,

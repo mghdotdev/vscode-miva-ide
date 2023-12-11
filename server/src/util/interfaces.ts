@@ -206,6 +206,7 @@ export interface EntityData extends BaseEntityData {
 	detail: string;
 	documentation: string;
 	preselect?: boolean
+	engine?: string;
 }
 
 export interface BaseSystemVariableData {

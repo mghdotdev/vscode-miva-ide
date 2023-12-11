@@ -712,7 +712,7 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 				const foundEntity = mvtEntityData[wordLower];
 				if (foundEntity) {
 					return {
-						contents: foundEntity.documentation
+						contents: formatGenericDocumentation(foundEntity)
 					};
 				}
 			}
