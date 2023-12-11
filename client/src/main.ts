@@ -66,7 +66,7 @@ export function activate( context: ExtensionContext ) {
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
 			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`, 'i'),
-			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})|^<mvt:else(if)?(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)`, 'i')
+			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})|^\\s*<mvt:else(if)?(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)`, 'i')
 		},
 		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
@@ -84,7 +84,7 @@ export function activate( context: ExtensionContext ) {
 	languages.setLanguageConfiguration('mv', {
 		indentationRules: {
 			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`),
-			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})|^<MvELSE(IF)?(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)`, 'i')
+			decreaseIndentPattern: new RegExp(`^\\s*(<\\/(?!html)[-_\\.A-Za-z0-9:]+\\b[^>]*>|-->|\\})|^\\s*<MvELSE(IF)?(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)`, 'i')
 		},
 		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
