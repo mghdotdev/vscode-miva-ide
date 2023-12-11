@@ -73,7 +73,7 @@
           ]
         },
         {
-          "begin": "(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|CALL|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\\s|/?>)",
+          "begin": "(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\\s|/?>)",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv"
