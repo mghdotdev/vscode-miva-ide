@@ -3,9 +3,11 @@ import {
 	TagSnippet
 } from '../util/interfaces';
 
-// Full tag data structure
+// Snippet data structure
 
 const snippets: Record<string, TagSnippet> = {};
+
+// Full tag data structure
 
 export const tags: Record<string, TagData> = {
 	"miva": {
@@ -382,6 +384,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Code within a  and  block will start to execute in a separate asynchronous task,\nand the task will exit when the  block is reached.  All output, even via , is\ndiscarded from the asynchronous task.\n\nAsynchronous tasks can not be started from within an asynchronous task.",
+		"engine": ">=5.24",
 		"insertText": "<MvASYNCHRONOUS>\n\t$1\n</MvASYNCHRONOUS>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
