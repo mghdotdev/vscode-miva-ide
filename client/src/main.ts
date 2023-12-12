@@ -71,6 +71,30 @@ export function activate( context: ExtensionContext ) {
 		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
 			{
+				/**
+				 * eg
+				 * <mvt:comment><
+				 */
+				beforeText: /^\s*<mvt:comment>/i,
+				afterText: /^</,
+				action: {
+					indentAction: IndentAction.IndentOutdent,
+					appendText: "|\t",
+				}
+			},
+			{
+				/**
+				 * eg
+				 * <mvt:comment>
+				 * |
+				 */
+				beforeText: /^\s*\|[^<]*/i,
+				action: {
+					indentAction: IndentAction.None,
+					appendText: "|\t",
+				}
+			},
+			{
 				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
 				afterText: new RegExp(`^<\\/([_:\\w][_:\\w\-.\\d]*)\\s*>`, 'i'),
 				action: { indentAction: IndentAction.IndentOutdent }
@@ -81,6 +105,7 @@ export function activate( context: ExtensionContext ) {
 			}
 		],
 	});
+
 	languages.setLanguageConfiguration('mv', {
 		indentationRules: {
 			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`),
@@ -88,6 +113,30 @@ export function activate( context: ExtensionContext ) {
 		},
 		wordPattern: new RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\$\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\s]+)", 'g'),
 		onEnterRules: [
+			{
+				/**
+				 * eg
+				 * <MvCOMMENT><
+				 */
+				beforeText: /^\s*<MvCOMMENT>/i,
+				afterText: /^</,
+				action: {
+					indentAction: IndentAction.IndentOutdent,
+					appendText: "|\t",
+				}
+			},
+			{
+				/**
+				 * eg
+				 * <MvCOMMENT>
+				 * |
+				 */
+				beforeText: /^\s*\|[^<]*/i,
+				action: {
+					indentAction: IndentAction.None,
+					appendText: "|\t",
+				}
+			},
 			{
 				beforeText: new RegExp(`<(?!(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MV_EMPTY_ELEMENTS.join( '|' ) }))([_:\\w][_:\\w\-.\\d]*)(?:(?:[^'\"/>]|\"[^\"]*\"|'[^']*')*?(?!\\/)>)[^<]*$`, 'i'),
 				afterText: new RegExp(`^<\\/([_:\\w][_:\\w\-.\\d]*)\\s*>`, 'i'),
