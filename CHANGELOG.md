@@ -1,5 +1,13 @@
 # Change Log
 
+# v1.2.0
+
+* Applied fixes to Miva Script snippets based off developer feedback
+* Fixed builtin function `miva_joinstring` flag parameter completion values as per [issue #52](https://github.com/mghdotdev/vscode-miva-ide/issues/52)
+* Added operators to expression completions results
+* Added engine version callouts to tags and builtin functions
+* Fixed indentation issues for block tags referenced in [issue #46](https://github.com/mghdotdev/vscode-miva-ide/issues/46)
+
 ## v1.1.0
 
 * Bumped version to supersede previously deployed prerelease versions.
