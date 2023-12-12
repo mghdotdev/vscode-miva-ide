@@ -38,6 +38,7 @@ const entityData: Record<string, EntityData> = {
 	'mvts': {
 		...baseEntityData,
 		label: 'mvts',
+		engine: '>=5.23',
 		detail: 'Slugify Encoding',
 		documentation: 'Applies the `slugify` function before outputting.\n\n __Example:__ `hello world` => `hello-world`'
 	}

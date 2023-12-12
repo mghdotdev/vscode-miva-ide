@@ -201,12 +201,16 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 }
 
-export function getHoverMapFromCompletionFile ( completions: any[] ): Map<string, MarkupContent> {
+export function getHoverMapFromCompletionFile ( completions: any[], forceLowerCase = false, allowDetailChaning = true ): Map<string, MarkupContent> {
 	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
+		const label = allowDetailChaning && completionItem.detail
+			? `${completionItem.detail}@${completionItem.label}`
+			: completionItem.label;
+
 		return map.set(
-			completionItem.detail
-				? `${completionItem.detail}@${completionItem.label}`
-				: completionItem.label,
+			forceLowerCase
+				? label?.toLowerCase()
+				: label,
 			completionItem.documentation as MarkupContent
 		);
 	}, new Map());
@@ -242,21 +246,31 @@ function formatFunctionDocumentation (name: string, parameters: string[]): strin
 	return `${ name }(${wrapSpaces( parameters.join(', '), parameters.length > 0 )})`
 }
 
-function formatTagEngine (engine) {
+function formatTagEngine (engine: string) {
 	return engine
 		? `_Requires Engine: ${engine}_`
 		: '';
 }
 
-function formatTagVersion (version) {
+function formatTagVersion (version: string) {
 	return version
 		? `_Requires Miva: ${version}_`
 		: '';
 }
 
-function formatTagReference (reference) {
+function formatTagReference (reference: string) {
 	return reference
 		? `[Documentation Reference](${reference})`
+		: '';
+}
+
+function formatTagExample (example: string): string {
+	return example
+		? [
+			`__Example:__`,
+			'',
+			example
+		].join('\n')
 		: '';
 }
 
@@ -267,6 +281,7 @@ function formatTagAttributeRequired (required: boolean, requiredMessage?: string
 }
 
 export function formatTagDocumentation (tagData: TagData): MarkupContent {
+	console.log('tagData', tagData);
 	return {
 		kind: MarkupKind.Markdown,
 		value: [
@@ -324,6 +339,23 @@ export function formatItemParamDocumentation (foundItem: ItemData, foundParam: I
 			formatTagVersion(foundParam.version || foundItem.version),
 			'',
 			formatTagReference(foundParam.reference || foundItem.reference)
+		].join('\n')
+	};
+}
+
+export function formatGenericDocumentation ( dataObject: {documentation: string, reference?: string, engine?: string, version?: string, example?: string} ): MarkupContent {
+	return {
+		kind: MarkupKind.Markdown,
+		value: [
+			dataObject?.documentation,
+			'',
+			formatTagEngine(dataObject?.engine),
+			'',
+			formatTagVersion(dataObject?.version),
+			'',
+			formatTagExample(dataObject?.example),
+			'',
+			formatTagReference(dataObject?.reference)
 		].join('\n')
 	};
 }

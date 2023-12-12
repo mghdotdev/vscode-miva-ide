@@ -47,7 +47,7 @@ repository:
           - include: '#text-attributes'
 
       # Inline Control Flow Tags
-      - begin: '(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|CALL|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\s|/?>)'
+      - begin: '(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\s|/?>)'
         beginCaptures:
           1: {name: punctuation.definition.tag.begin.mv}
           2: {name: entity.name.tag.mv keyword.control.flow.mv}
@@ -303,12 +303,16 @@ repository:
       - match: (\b(?i:IN|CIN|EIN|ECIN|CRYPT)\b)
         name: keyword.operator.string.mv
 
+      # Bitwise Operators
+      - match: (\b(?i:BITAND|BITOR|BITXOR|BITOC|BITSL|BITSR)\b)
+        name: keyword.operator.bitwise.mv
+
       # Text Operators (Symbols)
       - match: \$
         name: keyword.operator.string.mv
 
 
-  # =-======== Constants - Source ========-= #
+  # =-======== Constants - Source ========-=
   source-constants:
     patterns:
       # NULL
