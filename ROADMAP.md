@@ -52,7 +52,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.4.0
 
-- [ ] Fix windows issue for paste completion window
+- [x] Fix windows issue for paste completion window
 - [ ] Fix initial comment auto pipe add to include extra spaces and pipes
 
 ### v2.0.0 (TBD)
