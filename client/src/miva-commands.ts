@@ -323,6 +323,14 @@ const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.M
 
 });
 
+const clipboardPasteCommand = commands.registerTextEditorCommand('mivaIde.clipboardPasteAction', () => {
+	// Execute original command
+	commands.executeCommand('editor.action.clipboardPasteAction').then(() => {
+		// Trigger suggestion popover
+		commands.executeCommand('editor.action.triggerSuggest');
+	});
+});
+
 export default [
 	chooseFileNameCommand,
 	insertFileNameCommand,
@@ -330,5 +338,6 @@ export default [
 	convertToEntityCommand,
 	convertToVariableCommand,
 	insertHtmlComment,
-	calculatePosNumberCommand
+	calculatePosNumberCommand,
+	clipboardPasteCommand
 ];

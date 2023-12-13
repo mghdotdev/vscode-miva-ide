@@ -172,6 +172,11 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
+			},
+			{
+				"command": "mivaIde.clipboardPasteAction",
+				"key": "cmd+v",
+				"when": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			}
 		],
 		"languages": [
