@@ -560,7 +560,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	if: {
 		...baseTag,
 		documentation: ``,
-		insertText: "<mvt:if expr=\"${1}\">\n\t${2:$3\n<mvt:else>\n\t}${0}\n</mvt:if>",
+		insertText: "<mvt:if expr=\"$1\">\n\t$2\n</mvt:if>$0",
 		label: 'mvt:if',
 		reference: 'https://docs.miva.com/template-language/if-statement',
 		selfClosing: false,
