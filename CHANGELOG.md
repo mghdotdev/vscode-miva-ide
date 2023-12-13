@@ -1,5 +1,13 @@
 # Change Log
 
+# v1.3.0
+
+* Fixed expression syntax highlighting in Miva Script as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47).
+* Fixed MvDO VALUE attribute snippet. It should default to be an expression.
+* Removed mvt:else tag from mvt:if snippet.
+* Added workaround to trigger completion window on paste command.
+* Dedent on completion of else/elseif tags for Miva Script and MVT.
+
 # v1.2.0
 
 * Applied fixes to Miva Script snippets based off developer feedback

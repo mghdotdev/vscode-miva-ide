@@ -714,6 +714,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next line.\n\nThis examples calls a URL stripping out any tags by using <MvCALLCONTINUE> to ignore tag objects.",
+		"engine": ">=5.10",
 		"insertText": "<MvCALLCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -952,6 +953,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next line.\n\nThis example skips any un-important / unused responses from the commerce library using  <MvCOMMERCECONTINUE>.",
+		"engine": ">=5.10",
 		"insertText": "<MvCOMMERCECONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1127,6 +1129,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used to issue commands to a database that has already been opened or created via the MvOPEN or MvCREATE tags. All database interfaces take these commands.\n\nThe database must already be open or created via the <MvOPEN> or <MvCREATE> tags.",
+		"engine": ">=5.00",
 		"insertText": "<MvDBCOMMAND COMMAND = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1250,7 +1253,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used to call an function declared with  in an external file or call an external file directly executing the script starting at the beginning.\n\n<MvDO> works in two somewhat different ways, depending on whether NAME and VALUE are present. If they are specified, \nthe function is the only code in the external file that gets executed. ALL other Miva Script and HTML code is ignored. \nThis allows you to create librarys of functions stored in external compiled files.\n\nIf NAME and VALUE are omitted, everything in the external file is executed, however any script contained within \nMvFUNCTION blocks are ignored. Starting at the beginning of the file, the results of all <MvASSIGN> tags are available \nto the calling program. All system and global variables, and all open databases, are available to the code in the \nexternal file. For example a file could contain initialization script, setting global variables and opening databases.",
-		"insertText": "<MvDO FILE = \"{  }\" NAME = \"$2\" VALUE = \"$1\">$0",
+		"insertText": "<MvDO FILE = \"{  }\" NAME = \"$2\" VALUE = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvDO",
@@ -1264,6 +1267,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the condition return false.\n\nIn this example the code executed branches based on the system clocks current hour of the day, where LT means Less\nThan. See Operators",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1292,6 +1299,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the initial condition return false. Used in place of nested  tags.\n\nUsing <MvELSEIF>, multiple conditions can be used to determine which of several block s of code to execute.",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSEIF EXPR = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -2175,6 +2186,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next record.\n\nThis examples imports movies from a text file and appends the data to an array. The <MvIMPORCONTINUE> tag is \nused to skip importing movies made before the year 2000.",
+		"engine": ">=5.10",
 		"insertText": "<MvIMPORTCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -2876,6 +2888,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next email.\n\nThis examples loops through and displays email messages . The <MvPOPCONTINUE> tag is used to skip \ndisplaying messages if they return true from a user defined function called SpamFilter().",
+		"engine": ">=5.10",
 		"insertText": "<MvPOPCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -3066,6 +3079,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Creates a reference from one variable to another, such that changes to one will appear to be made to the other.  It can be also used to refer to a variable named created with an expression, like the miva_variable_value() function.\n\nNOTE:  * INDEX and MEMBER refer to the variable in the NAME parameter, NOT the VARIABLE parameter.",
+		"engine": ">=5.00",
 		"insertText": "<MvREFERENCE NAME = \"{ $1 }\" VARIABLE = \"{ $2 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -3556,6 +3570,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. testing the expression.\n\nThis examples parses a comma separated list. The <MvWHILECONTINUE> tag is used to skip \nitems in the list that start with the letters N through Z",
+		"engine": ">=5.10",
 		"insertText": "<MvWHILECONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",

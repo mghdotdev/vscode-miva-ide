@@ -5,6 +5,7 @@ import {
 import {
 	CodeAction,
 	CodeActionContext,
+	Command,
 	CompletionItemKind,
 	CompletionList,
 	Definition,
@@ -155,6 +156,7 @@ export interface TagData extends BaseTagData {
 	attributes?: Record<string, TagAttributeData>;
 	selfClosing: boolean;
 	void: boolean;
+	command?: Command
 }
 
 export interface TagSnippet extends BaseTagData {
