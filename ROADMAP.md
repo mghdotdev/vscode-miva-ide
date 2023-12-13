@@ -45,6 +45,10 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 ### v1.3.0
 
 - [ ] Fix expression syntax highlighting as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47)
+- [ ] Fix MvDO VALUE attribute snippet. It should default to be an expression.
+- [x] Remove mvt:else tag from mvt:if snippet.
+- [x] Research if completion window can be triggered automatically on paste.
+- [ ] Dedent on completion of else/elseif tags
 
 ### v2.0.0 (TBD)
 
