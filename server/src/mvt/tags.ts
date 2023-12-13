@@ -477,7 +477,11 @@ These global variables reference a specific module file. The Limited Source Kit 
 		label: 'mvt:else',
 		reference: 'https://docs.miva.com/template-language/if-else',
 		selfClosing: true,
-		void: true
+		void: true,
+		command: {
+			title: 'Outdent tag on completion.',
+			command: 'outdent'
+		}
 	},
 	elseif: {
 		...baseTag,
@@ -489,6 +493,10 @@ These global variables reference a specific module file. The Limited Source Kit 
 		void: true,
 		attributes: {
 			expr
+		},
+		command: {
+			title: 'Outdent tag on completion.',
+			command: 'outdent'
 		}
 	},
 	eval: {

@@ -1267,6 +1267,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the condition return false.\n\nIn this example the code executed branches based on the system clocks current hour of the day, where LT means Less\nThan. See Operators",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1295,6 +1299,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the initial condition return false. Used in place of nested  tags.\n\nUsing <MvELSEIF>, multiple conditions can be used to determine which of several block s of code to execute.",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSEIF EXPR = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
