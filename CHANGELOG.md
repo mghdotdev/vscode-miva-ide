@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.5.0
+
+
+
 ## v1.4.0
 
 * Fixed windows issue for paste completion window
