@@ -27,28 +27,39 @@ Our VSCode extension is a vital tool for web development on the Miva platform. I
 
 ## Future Versions
 
-### v0.X.0 (2-5 hrs per version upgrade)
+### v1.X.X (2-5 hrs per version upgrade)
 
 This is the existing development flow. When new LSK or Empressa versions are released I simply update the code completion data to include the new functions.
 
 - Add additional `<mvt:do>`/`<MvDO>` function completions as future LSK versions are released.
 - Add additional built-in function completions & documentation as future Miva Empressa engines are released.
 
+### v1.2.0
 
-### v1.0.0 (75-100 hrs)
+- [x] Apply fixes to Miva Script snippets based off developer feedback
+- [x] Fix builtin function `miva_joinstring` flag parameter completion values as per [issue #52](https://github.com/mghdotdev/vscode-miva-ide/issues/52)
+- [x] Add operators to expression completions results
+- [x] Add engine version callouts to tags and builtin functions
+- [x] Fix indentation issues for block tags
 
-This version will focus on adding missing Language Extension features and enhancing existing ones. Even after version 1.0 I will still bring over new updates to LSK and Empressa via the same method as before.
+### v1.3.0
 
-- Upgraded internal tooling dependencies (vscode CLI, typescript, etc...). This improves overall extension health by keeping it's tooling on the latest versions.
-- Improved tag completion, enhanced documentation and context. Enhance where the tag completions display and when. Right now you can complete mvt tags WITHIN other mvt tags. This enhancement would prevent the ability to complete where you're not supposed to. Add symbol hover documentation directly from [docs.miva.com](https://docs.miva.com).
-- Improved function completion (builtin), documentation and context. Improve the completion provider for builtin functions to only complete in the correct MVT tag expressions. Also, provide hover documentation.
-- Improved `<mvt:item>` completion, documentation. Allow for `name` and `param` matching completion pairs similar to the existing `<mvt:do>` functionality.
-- Add Code Action language feature to fix existing diagnostic call outs. For example, a developer attemtpts to output a global variable as an entity. Right now, I am able to provide a warning/error for that issue. With this new feature addition you will be able to fix the issue automatically by selecting a fix from a dropdown list.
-- Display common problems/code errors (like toolkit's tksl) to catch errors and enforce code quality.
+- [x] Fix expression syntax highlighting as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47)
+- [x] Fix MvDO VALUE attribute snippet. It should default to be an expression.
+- [x] Remove mvt:else tag from mvt:if snippet.
+- [x] Research if completion window can be triggered automatically on paste.
+- [x] Dedent on completion of else/elseif tags
 
-### v1.X.X (TBD)
+### v1.4.0
 
-Continue to update completion data when new LSK or Empressa versions are released. Also, fix any bugs or issues as they arise.
+- [x] Fix windows issue for paste completion window
+- [x] <s>Fix initial comment auto pipe add to include extra spaces and pipes</s>
+- [x] Add support for markdown code fences for mvt and miva script
+	- https://stackoverflow.com/questions/75903579/how-to-add-custom-language-syntax-highlighter-to-markdown-code-block-in-vscode
+
+### v1.5.0
+
+TBD
 
 ### v2.0.0 (TBD)
 

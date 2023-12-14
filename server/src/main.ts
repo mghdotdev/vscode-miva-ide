@@ -23,7 +23,7 @@ import {
 	createConnection
 } from 'vscode-languageserver/node';
 import { URI } from 'vscode-uri';
-import { getMVFeatures, getMVTFeatures } from './miva-features';
+import { baseMVTFeatures, getMVFeatures, getMVTCSSFeatures, getMVTFeatures } from './miva-features';
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { Languages, Settings, Workspace } from './util/interfaces';
 
@@ -140,9 +140,11 @@ connection.onInitialize(( params: InitializeParams ): InitializeResult => {
 		get folders() { return workspaceFolders }
 	};
 
-	const mvtFeatures = getMVTFeatures( workspace, params.capabilities );
+	const baseFeatures = baseMVTFeatures( workspace, params.capabilities );
+	const mvtFeatures = getMVTFeatures(baseFeatures);
+	const mvtCSSFeatures = getMVTCSSFeatures(baseFeatures);
 	languages.mvt = mvtFeatures;
-	languages.mvtcss = mvtFeatures;
+	languages.mvtcss = mvtCSSFeatures;
 	languages.mvtjs = mvtFeatures;
 	languages.mv = getMVFeatures( workspace, params.capabilities );
 

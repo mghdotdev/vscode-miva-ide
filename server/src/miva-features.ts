@@ -3,9 +3,11 @@ import { glob } from 'glob';
 import _get from 'lodash.get';
 import * as path from 'path';
 import {
+	getCSSLanguageService
+} from 'vscode-css-languageservice/lib/esm/cssLanguageService';
+import {
 	TokenType,
-	getLanguageService,
-	newHTMLDataProvider
+	getLanguageService
 } from 'vscode-html-languageservice/lib/esm/htmlLanguageService';
 import {
 	TextDocument
@@ -26,6 +28,7 @@ import {
 	SymbolKind,
 	TextEdit
 } from 'vscode-languageserver/node';
+import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
 import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
@@ -33,6 +36,7 @@ import mvtItemData from './mvt/items';
 import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
 import {
 	asyncSpawn,
+	formatGenericDocumentation,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
 	formatTagAttributeValueDocumentation,
@@ -65,30 +69,7 @@ import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
 // Define HTML Language Service helper
-const htmlLanguageService = getLanguageService({
-	customDataProviders: [
-		newHTMLDataProvider('mvt', {
-				version: 1,
-				tags: [
-					{
-						attributes: [],
-						void: true,
-						name: 'mvt:else',
-					},
-					{
-						attributes: [
-							{
-								name: 'expr'
-							}
-						],
-						void: true,
-						name: 'mvt:elseif',
-					}
-				]
-			}
-		)
-	]
-});
+const htmlLanguageService = getLanguageService();
 
 // Constants
 const BOUNDARY_AMOUNT = 200;
@@ -102,6 +83,7 @@ const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data',
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
 const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
+const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
 
 // Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
@@ -192,7 +174,7 @@ const getVariableCompletions = (left: string, mivaDocument: TextDocument): Compl
 	return null;
 };
 
-export function getMVTFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
+export function baseMVTFeatures(workspace: Workspace, clientCapabilities: ClientCapabilities): LanguageFeatures {
 
 	const findDocumentSymbols = ( document: TextDocument ) => {
 		const symbols: SymbolInformationWithDocumentation[] = [];
@@ -482,7 +464,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 											return variableCompletions;
 										}
 
-										return builtinFunctionCompletions;
+										return CompletionList.create([
+											...operatorCompletions.items,
+											...builtinFunctionCompletions.items
+										]);
 									}
 									case 'function': {
 										if (tagNameLower === 'item') {
@@ -544,7 +529,9 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 						};
 					})
 					: mvtTagCompletions.items,
-				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+				{
+					label: '@@@LANGUAGESESRVICE@@@' // To be replaced by that language's native service result
+				}
 			]);
 		},
 
@@ -702,6 +689,14 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 									contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
 								};
 							}
+
+							// Operator lookup
+							const foundOperator = mvOperatorData[wordLower];
+							if (foundOperator) {
+								return {
+									contents: formatGenericDocumentation(foundOperator)
+								};
+							}
 						}
 					}
 				}
@@ -720,7 +715,7 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				const foundEntity = mvtEntityData[wordLower];
 				if (foundEntity) {
 					return {
-						contents: foundEntity.documentation
+						contents: formatGenericDocumentation(foundEntity)
 					};
 				}
 			}
@@ -750,12 +745,10 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 				};
 			}
 
-			return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
+			return {
+				contents: '@@@LANGUAGESESRVICE@@@'
+			};
 
-		},
-
-		onDocumentLinks ( document: TextDocument ) {
-			return [];
 		},
 
 		findDocumentSymbols ( document: TextDocument ) {
@@ -766,6 +759,60 @@ export function getMVTFeatures( workspace: Workspace, clientCapabilities: Client
 
 	};
 
+}
+
+export function getMVTFeatures(mvtFeatures: LanguageFeatures): LanguageFeatures {
+	return {
+		...mvtFeatures,
+		doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
+			const completionList = mvtFeatures.doCompletion(document, position, settings);
+
+			return CompletionList.create(completionList.items.flatMap(completionItem => {
+				if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
+					return htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || [];
+				}
+
+				return completionItem;
+			}))
+		},
+		onHover(document: TextDocument, position: Position) {
+			const hover = mvtFeatures.onHover(document, position);
+
+			if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
+				return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
+			}
+
+			return hover;
+		}
+	}
+};
+
+export function getMVTCSSFeatures(mvtFeatures: LanguageFeatures): LanguageFeatures {
+	const cssLanguageService = getCSSLanguageService();
+
+	return {
+		...mvtFeatures,
+		doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
+			const completionList = mvtFeatures.doCompletion(document, position, settings);
+
+			return CompletionList.create(completionList.items.flatMap(completionItem => {
+				if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
+					return cssLanguageService.doComplete(document, position, cssLanguageService.parseStylesheet(document))?.items || [];
+				}
+
+				return completionItem;
+			}));
+		},
+		onHover(document: TextDocument, position: Position) {
+			const hover = mvtFeatures.onHover(document, position);
+
+			if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
+				return cssLanguageService.doHover(document, position, cssLanguageService.parseStylesheet(document));
+			}
+
+			return hover;
+		}
+	}
 }
 
 // ======================================================================================================================== //
@@ -982,7 +1029,10 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					return variableCompletions;
 				}
 
-				return builtinFunctionCompletions;
+				return CompletionList.create([
+					...operatorCompletions.items,
+					...builtinFunctionCompletions.items
+				]);
 
 			}
 
@@ -1178,6 +1228,13 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 					}
 				}
 
+				// Operator lookup
+				const foundOperator = mvOperatorData[wordLower];
+				if (foundOperator) {
+					return {
+						contents: formatGenericDocumentation(foundOperator)
+					};
+				}
 			}
 
 			// Tag name hover

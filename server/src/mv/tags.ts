@@ -3,9 +3,11 @@ import {
 	TagSnippet
 } from '../util/interfaces';
 
-// Full tag data structure
+// Snippet data structure
 
 const snippets: Record<string, TagSnippet> = {};
+
+// Full tag data structure
 
 export const tags: Record<string, TagData> = {
 	"miva": {
@@ -382,6 +384,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Code within a  and  block will start to execute in a separate asynchronous task,\nand the task will exit when the  block is reached.  All output, even via , is\ndiscarded from the asynchronous task.\n\nAsynchronous tasks can not be started from within an asynchronous task.",
+		"engine": ">=5.24",
 		"insertText": "<MvASYNCHRONOUS>\n\t$1\n</MvASYNCHRONOUS>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -711,6 +714,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next line.\n\nThis examples calls a URL stripping out any tags by using <MvCALLCONTINUE> to ignore tag objects.",
+		"engine": ">=5.10",
 		"insertText": "<MvCALLCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -949,6 +953,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next line.\n\nThis example skips any un-important / unused responses from the commerce library using  <MvCOMMERCECONTINUE>.",
+		"engine": ">=5.10",
 		"insertText": "<MvCOMMERCECONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1124,6 +1129,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used to issue commands to a database that has already been opened or created via the MvOPEN or MvCREATE tags. All database interfaces take these commands.\n\nThe database must already be open or created via the <MvOPEN> or <MvCREATE> tags.",
+		"engine": ">=5.00",
 		"insertText": "<MvDBCOMMAND COMMAND = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1247,7 +1253,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used to call an function declared with  in an external file or call an external file directly executing the script starting at the beginning.\n\n<MvDO> works in two somewhat different ways, depending on whether NAME and VALUE are present. If they are specified, \nthe function is the only code in the external file that gets executed. ALL other Miva Script and HTML code is ignored. \nThis allows you to create librarys of functions stored in external compiled files.\n\nIf NAME and VALUE are omitted, everything in the external file is executed, however any script contained within \nMvFUNCTION blocks are ignored. Starting at the beginning of the file, the results of all <MvASSIGN> tags are available \nto the calling program. All system and global variables, and all open databases, are available to the code in the \nexternal file. For example a file could contain initialization script, setting global variables and opening databases.",
-		"insertText": "<MvDO FILE = \"{ $1 }\" NAME = \"$2\" VALUE = \"{ $3 }\">$0",
+		"insertText": "<MvDO FILE = \"{  }\" NAME = \"$2\" VALUE = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvDO",
@@ -1261,6 +1267,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the condition return false.\n\nIn this example the code executed branches based on the system clocks current hour of the day, where LT means Less\nThan. See Operators",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1289,6 +1299,10 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Used in an  statement to provide an alternate execution branch when the initial condition return false. Used in place of nested  tags.\n\nUsing <MvELSEIF>, multiple conditions can be used to determine which of several block s of code to execute.",
+		"command": {
+			"title": "Outdent tag on completion.",
+			"command": "outdent"
+		},
 		"insertText": "<MvELSEIF EXPR = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1621,6 +1635,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Loops through the code between  and  the number of time specified between first and last, incrimenting the index. Optionally you can exit the loop using .\n\nLoops through the code between <MvFOR> and </MvFOR> the number of time specified between first and last, incrementing\nthe index. Optionally you can exit the loop using <MvFORSTOP>.",
+		"engine": ">=5.10",
 		"insertText": "<MvFOR LAST = \"{ $1 }\" COUNT = \"{ $2 }\" EXPR = \"{ $3 }\">\n\t$4\n</MvFOR>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1741,6 +1756,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Is designed to make dealing with arrays of items more convenient. Each item in the array is represented in the loop as an iterator variable, simplifying the syntax. Optionally you can exit the loop using\n\nWhen combined with the -C (compatibility) compiler flag, MvFOREACH generates code that will run on any engine version\n5.00 or newer, using runtime engine version checks to either call these functions or emulate their behavior.",
+		"engine": ">=5.10",
 		"insertText": "<MvFOREACH ITERATOR = \"$1\" ARRAY = \"$2\">\n\t$3\n</MvFOREACH>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -1898,7 +1914,7 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Optional value to return from a user defined function. If not value is being return it may be omitted.",
-				"insertText": "VALUE = \"{ $0 }\"",
+				"insertText": "VALUE = $0",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "VALUE",
@@ -1910,7 +1926,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Exits a user defined function and optionally returns a value.\n\nIn this example if invalid parameters are passed to the the function returns without doing anything otherwise it \nreturns the parameter value added together.",
-		"insertText": "<MvFUNCTIONRETURN VALUE = \"{ $1 }\">$0",
+		"insertText": "<MvFUNCTIONRETURN VALUE = $1>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvFUNCTIONRETURN",
@@ -2170,6 +2186,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next record.\n\nThis examples imports movies from a text file and appends the data to an array. The <MvIMPORCONTINUE> tag is \nused to skip importing movies made before the year 2000.",
+		"engine": ">=5.10",
 		"insertText": "<MvIMPORTCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -2871,6 +2888,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. reading the next email.\n\nThis examples loops through and displays email messages . The <MvPOPCONTINUE> tag is used to skip \ndisplaying messages if they return true from a user defined function called SpamFilter().",
+		"engine": ">=5.10",
 		"insertText": "<MvPOPCONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -3061,6 +3079,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Creates a reference from one variable to another, such that changes to one will appear to be made to the other.  It can be also used to refer to a variable named created with an expression, like the miva_variable_value() function.\n\nNOTE:  * INDEX and MEMBER refer to the variable in the NAME parameter, NOT the VARIABLE parameter.",
+		"engine": ">=5.00",
 		"insertText": "<MvREFERENCE NAME = \"{ $1 }\" VARIABLE = \"{ $2 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -3551,6 +3570,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Returns program flow to the top of the  loop, performing the operations would normally occur at the bottom of the loop i.e. testing the expression.\n\nThis examples parses a comma separated list. The <MvWHILECONTINUE> tag is used to skip \nitems in the list that start with the letters N through Z",
+		"engine": ">=5.10",
 		"insertText": "<MvWHILECONTINUE>$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",

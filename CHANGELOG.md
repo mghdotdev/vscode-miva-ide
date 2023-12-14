@@ -1,5 +1,26 @@
 # Change Log
 
+# v1.4.0
+
+* Fixed windows issue for paste completion window
+* Added support for markdown code fences for mvt and miva script
+
+# v1.3.0
+
+* Fixed expression syntax highlighting in Miva Script as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47).
+* Fixed MvDO VALUE attribute snippet. It should default to be an expression.
+* Removed mvt:else tag from mvt:if snippet.
+* Added workaround to trigger completion window on paste command.
+* Dedent on completion of else/elseif tags for Miva Script and MVT.
+
+# v1.2.0
+
+* Applied fixes to Miva Script snippets based off developer feedback
+* Fixed builtin function `miva_joinstring` flag parameter completion values as per [issue #52](https://github.com/mghdotdev/vscode-miva-ide/issues/52)
+* Added operators to expression completions results
+* Added engine version callouts to tags and builtin functions
+* Fixed indentation issues for block tags referenced in [issue #46](https://github.com/mghdotdev/vscode-miva-ide/issues/46)
+
 ## v1.1.0
 
 * Bumped version to supersede previously deployed prerelease versions.

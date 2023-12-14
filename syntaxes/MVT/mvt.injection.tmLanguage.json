@@ -181,6 +181,9 @@
               "include": "#pin-digest-attribute"
             },
             {
+              "include": "#flags-attribute"
+            },
+            {
               "include": "#illegal-attributes"
             }
           ]
@@ -1389,6 +1392,31 @@
         }
       ]
     },
+    "flags-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(flags)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.$1.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.$1.mvt string.quoted.double.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "attribute-value.$1.mvt string.quoted.double.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.$1.mvt string.quoted.double.mvt"
+        }
+      ]
+    },
     "source-mvt": {
       "patterns": [
         {
@@ -1435,6 +1463,10 @@
         {
           "match": "(\\b(?i:IN|CIN|EIN|ECIN|CRYPT)\\b)",
           "name": "keyword.operator.string.mvt"
+        },
+        {
+          "match": "(\\b(?i:BITAND|BITOR|BITXOR|BITOC|BITSL|BITSR)\\b)",
+          "name": "keyword.operator.bitwise.mvt"
         },
         {
           "match": "\\$",

@@ -17,6 +17,7 @@
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.get": "^4.4.2",
 		"lodash.has": "^4.5.2",
+		"vscode-css-languageservice": "^6.2.11",
 		"vscode-html-languageservice": "^5.0.4",
 		"vscode-languageserver": "^8.1.0",
 		"vscode-languageserver-textdocument": "^1.0.8",

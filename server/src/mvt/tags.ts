@@ -88,7 +88,7 @@ const tagItem = {
 	}
 }
 
-// Full tag data structure
+// Snippet data structure
 
 const snippets: Record<string, TagSnippet> = {
 	debug: {
@@ -121,6 +121,8 @@ const snippets: Record<string, TagSnippet> = {
 	}
 };
 
+// Full tag data structure
+
 export const tags: Record<string, TagData> = {
 	assign: {
 		...baseTag,
@@ -152,7 +154,7 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 - Use \`s.callvalue\` to access the response. To read the full body, concatenate \`s.callvalue\` into a variable assigned outside of the tag.
 - Use \`<mvt:callstop />\` to exit the response early.
 - Use \`<mvt:callcontinue />\` to continue reading the response.`,
-		insertText: "<mvt:call action=\"$1\" method=\"${2|'GET','POST','HEAD','XML','RAW','OPTIONS','PUT','DELETE','TRACE','CONNECT'|}\">\n\t${3:<mvt:eval expr=\"s.callvalue\" />}\n</mvt:call>\n${4:<!-- @@ &mvt:global:MvCALL_Error; -->}",
+		insertText: "<mvt:call action=\"$1\" method=\"'${2:GET}'\">\n\t${3:<mvt:eval expr=\"s.callvalue\" />}\n</mvt:call>$0",
 		label: 'mvt:call',
 		reference: 'https://docs.miva.com/template-language/mvtcall',
 		engine: '>=5.22',
@@ -168,69 +170,69 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 			method: {
 				...baseAttribute,
 				documentation: `GET | POST | HEAD | XML | RAW | OPTIONS | PUT | DELETE | TRACE | CONNECT. In most cases use GET for simple page retrieval and use POST when when transmitting field data. If not specified and METHOD is XML, POST will have content type "text/xml." If not specified and METHOD is RAW, will have content type "text/plain".`,
-				insertText: 'method="${0}"',
+				insertText: 'method="\'${0}\'"',
 				label: 'method',
 				valueType: 'string',
 				values: {
-					CONNECT: {
+					connect: {
 						...baseAttributeValue,
 						documentation: `The CONNECT method establishes a tunnel to the server identified by the target resource.`,
-						insertText: "'CONNECT'",
-						label: "'CONNECT'"
+						insertText: "CONNECT",
+						label: "CONNECT"
 					},
-					DELETE: {
+					delete: {
 						...baseAttributeValue,
 						documentation: `The DELETE method deletes the specified resource.`,
-						insertText: "'DELETE'",
-						label: "'DELETE'"
+						insertText: "DELETE",
+						label: "DELETE"
 					},
-					GET: {
+					get: {
 						...baseAttributeValue,
 						documentation: `The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.`,
-						insertText: "'GET'",
-						label: "'GET'"
+						insertText: "GET",
+						label: "GET"
 					},
-					HEAD: {
+					head: {
 						...baseAttributeValue,
 						documentation: `The HEAD method asks for a response identical to a GET request, but without the response body.`,
-						insertText: "'HEAD'",
-						label: "'HEAD'"
+						insertText: "HEAD",
+						label: "HEAD"
 					},
-					POST: {
+					post: {
 						...baseAttributeValue,
 						documentation: `The POST method submits an entity to the specified resource, often causing a change in state or side effects on the server.`,
-						insertText: "'POST'",
-						label: "'POST'"
+						insertText: "POST",
+						label: "POST"
 					},
-					RAW: {
+					raw: {
 						...baseAttributeValue,
 						documentation: `Functionally the same as a POST, however it sets the Content-Type header to be \`text/plain\`.`,
-						insertText: "'RAW'",
-						label: "'RAW'"
+						insertText: "RAW",
+						label: "RAW"
 					},
-					OPTIONS: {
+					options: {
 						...baseAttributeValue,
 						documentation: `The OPTIONS method describes the communication options for the target resource.`,
-						insertText: "'OPTIONS'",
-						label: "'OPTIONS'"
+						insertText: "OPTIONS",
+						label: "OPTIONS"
 					},
-					PUT: {
+					put: {
 						...baseAttributeValue,
 						documentation: `The PUT method replaces all current representations of the target resource with the request payload.`,
-						insertText: "'PUT'",
-						label: "'PUT'"
+						insertText: "PUT",
+						label: "PUT"
 					},
-					TRACE: {
+					trace: {
 						...baseAttributeValue,
 						documentation: `The TRACE method performs a message loop-back test along the path to the target resource.`,
-						insertText: "'TRACE'",
-						label: "'TRACE'"
+						insertText: "TRACE",
+						label: "TRACE"
 					},
-					XML: {
+					xml: {
 						...baseAttributeValue,
 						documentation: `Functionally the same as a POST, however it sets the Content-Type header to be \`text/xml\`.`,
-						insertText: "'XML'",
-						label: "'XML'"
+						insertText: "XML",
+						label: "XML"
 					}
 				}
 			},
@@ -239,7 +241,7 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 				required: false,
 				requiredMessage: "Available when the `method` attribute is `'XML'` or `'RAW'`.",
 				documentation: `The values of the variables listed in the FIELDS attribute will then be passed in the header.`,
-				insertText: 'content-type="${0}"',
+				insertText: 'content-type="\'${0}\'"',
 				label: 'content-type'
 			},
 			fields: {
@@ -257,6 +259,35 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 				insertText: 'files="${0}"',
 				label: 'files'
 			},
+			flags: {
+				...baseAttribute,
+				required: false,
+				engine: '>=5.32',
+				documentation: 'Flags used to modify the behavior of the call.',
+				insertText: 'flags="\'${0}\'"',
+				label: 'flags',
+				valueType: 'string',
+				values: {
+					noparse: {
+						...baseAttributeValue,
+						documentation: `Disables parsing of the returned data.`,
+						insertText: 'noparse',
+						label: 'noparse'
+					},
+					force_https: {
+						...baseAttributeValue,
+						documentation: `This flag will only connect to the specified host if done so over HTTPS. If the HTTPS protocol is not used, mvt:call will raise an error.`,
+						insertText: 'force_https',
+						label: 'force_https'
+					},
+					force_verify: {
+						...baseAttributeValue,
+						documentation: ` This flag will force certificate chain verification / IP verification even when the engine is configured to not to perform chain / hostname verification.`,
+						insertText: 'force_verify',
+						label: 'force_verify'
+					}
+				}
+			},
 			certfile: {
 				...baseAttribute,
 				required: false,
@@ -268,21 +299,21 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 				...baseAttribute,
 				required: false,
 				documentation: `Must be either 'PEM' or 'ASN1'.`,
-				insertText: 'certtype="${0}"',
+				insertText: 'certtype="\'${0}\'"',
 				label: 'certtype',
 				valueType: 'string',
 				values: {
 					PEM: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'PEM'",
-						label: "'PEM'"
+						insertText: "PEM",
+						label: "PEM"
 					},
 					ANS1: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'ANS1'",
-						label: "'ANS1'"
+						insertText: "ANS1",
+						label: "ANS1"
 					}
 				}
 			},
@@ -309,40 +340,38 @@ All parameters accept variables (g.url) or strings which must be wrapped in sing
 			},
 			'pin-algorithm': {
 				...baseAttribute,
+				engine: '>=5.33',
 				required: false,
-				documentation: `__[Requires 5.33 engine or above]__
-
-Is either an empty string (which disables pinning), or an OpenSSL digest algorithm identifier, such as "sha1", "md5" or "sha256".`,
-				insertText: 'pin-algorithm="${0}"',
+				documentation: `Is either an empty string (which disables pinning), or an OpenSSL digest algorithm identifier, such as 'sha1', 'md5' or 'sha256'.`,
+				insertText: 'pin-algorithm="\'${0}\'"',
 				label: 'pin-algorithm',
 				valueType: 'string',
 				values: {
 					sha1: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'sha1'",
-						label: "'sha1'"
+						insertText: "sha1",
+						label: "sha1"
 					},
 					md5: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'md5'",
-						label: "'md5'"
+						insertText: "md5",
+						label: "md5"
 					},
 					sha256: {
 						...baseAttributeValue,
 						documentation: ``,
-						insertText: "'sha256'",
-						label: "'sha256'"
+						insertText: "sha256",
+						label: "sha256"
 					}
 				}
 			},
 			'pin-digest': {
 				...baseAttribute,
 				required: false,
-				documentation: `__[Requires 5.33 engine or above]__
-
-Pin diesest is the binary "fingerprint" of the X509 certificate (as generated by X509_digest)
+				engine: '>=5.33',
+				documentation: `Pin diesest is the binary "fingerprint" of the X509 certificate (as generated by X509_digest)
 
 The ... loop terminates when the entire document has been received, or when an (optional) is encountered. If is encountered, processing start back at the top continuing with the next item.`,
 				insertText: 'pin-digest="${0}"',
@@ -448,7 +477,11 @@ These global variables reference a specific module file. The Limited Source Kit 
 		label: 'mvt:else',
 		reference: 'https://docs.miva.com/template-language/if-else',
 		selfClosing: true,
-		void: true
+		void: true,
+		command: {
+			title: 'Outdent tag on completion.',
+			command: 'outdent'
+		}
 	},
 	elseif: {
 		...baseTag,
@@ -460,6 +493,10 @@ These global variables reference a specific module file. The Limited Source Kit 
 		void: true,
 		attributes: {
 			expr
+		},
+		command: {
+			title: 'Outdent tag on completion.',
+			command: 'outdent'
 		}
 	},
 	eval: {
@@ -510,6 +547,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	foreachcontinue: {
 		...baseTag,
+		engine: '>=5.20',
 		documentation: ``,
 		insertText: "<mvt:foreachcontinue />",
 		label: 'mvt:foreachcontinue',
@@ -519,6 +557,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	foreachstop: {
 		...baseTag,
+		engine: '>=5.20',
 		documentation: ``,
 		insertText: "<mvt:foreachstop />",
 		label: 'mvt:foreachstop',
@@ -529,7 +568,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	if: {
 		...baseTag,
 		documentation: ``,
-		insertText: "<mvt:if expr=\"${1}\">\n\t${2}\n${3:<mvt:else>}\n\t${0}\n</mvt:if>",
+		insertText: "<mvt:if expr=\"$1\">\n\t$2\n</mvt:if>$0",
 		label: 'mvt:if',
 		reference: 'https://docs.miva.com/template-language/if-statement',
 		selfClosing: false,
@@ -661,6 +700,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	whilecontinue: {
 		...baseTag,
+		engine: '>=5.20',
 		documentation: ``,
 		insertText: "<mvt:whilecontinue />",
 		label: 'mvt:whilecontinue',
@@ -670,6 +710,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	whilestop: {
 		...baseTag,
+		engine: '>=5.20',
 		documentation: ``,
 		insertText: "<mvt:whilestop />",
 		label: 'mvt:whilestop',

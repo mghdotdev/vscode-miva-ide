@@ -1,7 +1,7 @@
 {
   "name": "Miva Script (Injection)",
   "scopeName": "source.mv.injection",
-  "injectionSelector": "L:text.html.mv -comment.block.mv",
+  "injectionSelector": "L:text.html.mv -comment.block.mv -source.mv",
   "patterns": [
     {
       "include": "#comments"
@@ -73,7 +73,7 @@
           ]
         },
         {
-          "begin": "(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|CALL|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\\s|/?>)",
+          "begin": "(?i)(<)(Mv((CALL|WHILE|FOR|FOREACH|IMPORT|COMMERCE|POP)(STOP|CONTINUE)|(FUNC|FUNCTION)(RETURN)|EXIT|SKIP))(?=\\s|/?>)",
           "beginCaptures": {
             "1": {
               "name": "punctuation.definition.tag.begin.mv"
@@ -530,6 +530,10 @@
         {
           "match": "(\\b(?i:IN|CIN|EIN|ECIN|CRYPT)\\b)",
           "name": "keyword.operator.string.mv"
+        },
+        {
+          "match": "(\\b(?i:BITAND|BITOR|BITXOR|BITOC|BITSL|BITSR)\\b)",
+          "name": "keyword.operator.bitwise.mv"
         },
         {
           "match": "\\$",

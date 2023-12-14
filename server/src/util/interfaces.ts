@@ -5,6 +5,7 @@ import {
 import {
 	CodeAction,
 	CodeActionContext,
+	Command,
 	CompletionItemKind,
 	CompletionList,
 	Definition,
@@ -155,6 +156,7 @@ export interface TagData extends BaseTagData {
 	attributes?: Record<string, TagAttributeData>;
 	selfClosing: boolean;
 	void: boolean;
+	command?: Command
 }
 
 export interface TagSnippet extends BaseTagData {
@@ -206,6 +208,7 @@ export interface EntityData extends BaseEntityData {
 	detail: string;
 	documentation: string;
 	preselect?: boolean
+	engine?: string;
 }
 
 export interface BaseSystemVariableData {
@@ -221,3 +224,20 @@ export interface SystemVariableData extends BaseSystemVariableData {
 export interface SymbolInformationWithDocumentation extends SymbolInformation {
 	documentation: MarkupContent;
 };
+
+export interface BaseOperatorData {
+	insertTextFormat: string;
+	kind: CompletionItemKind | string;
+	commitCharacters: string[];
+	reference?: string;
+}
+
+export interface OperatorData extends BaseOperatorData {
+	documentation: string;
+	insertText?: string;
+	label: string;
+	reference?: string;
+	engine?: string;
+	detail?: string;
+	example?: string;
+}
