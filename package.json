@@ -160,6 +160,28 @@
 					"text.html.mv"
 				],
 				"path": "./syntaxes/mv/mv.injection.tmLanguage.json"
+			},
+			{
+				"language": "mvt-markdown-injection",
+				"scopeName": "markdown.mvt.codeblock",
+				"path": "./syntaxes/mvt/mvt-markdown-injection.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.mvt": "mvt"
+				}
+			},
+			{
+				"language": "mv-markdown-injection",
+				"scopeName": "markdown.mv.codeblock",
+				"path": "./syntaxes/mv/mv-markdown-injection.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.mv": "mv"
+				}
 			}
 		],
 		"keybindings": [
@@ -221,6 +243,18 @@
 					".mv"
 				],
 				"configuration": "./configurations/mv/mv.configuration.json"
+			},
+			{
+				"id": "mvt-markdown-injection",
+				"aliases": [
+					"_"
+				]
+			},
+			{
+				"id": "mv-markdown-injection",
+				"aliases": [
+					"_"
+				]
 			}
 		]
 	},
