@@ -1,7 +1,15 @@
 import { CharacterPair, Position, Range, TextEditor, TextEditorEdit, Uri, commands, env, languages, window, workspace } from 'vscode';
+import { Disposable } from 'vscode-languageclient';
 import patterns from './util/patterns';
 
 const boundryAmount = 200;
+
+const allowedLanguages = [
+	'mv',
+	'mvt',
+	'mvcss',
+	'mvtjs'
+];
 
 const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
@@ -323,13 +331,28 @@ const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.M
 
 });
 
-const clipboardPasteCommand = commands.registerTextEditorCommand('mivaIde.clipboardPasteAction', () => {
+// Hack that forces suggest window to appear after pasting
+
+const overwriteClipboardPasteAction = (textEditor: TextEditor) => {
+	// Dispose of overwritten command
+	overwriteClipboardPasteCommand.dispose();
+
 	// Execute original command
 	commands.executeCommand('editor.action.clipboardPasteAction').then(() => {
-		// Trigger suggestion popover
-		commands.executeCommand('editor.action.triggerSuggest');
+		// Trigger suggestion popover if language matches
+		if (allowedLanguages.includes(textEditor.document.languageId)) {
+			commands.executeCommand('editor.action.triggerSuggest');
+		}
+
+		// Redefine overwritten command
+		defineOverwriteClipboardPasteCommand();
 	});
-});
+};
+const defineOverwriteClipboardPasteCommand = () => {
+	overwriteClipboardPasteCommand = commands.registerTextEditorCommand('editor.action.clipboardPasteAction', overwriteClipboardPasteAction);
+}
+let overwriteClipboardPasteCommand: Disposable;
+defineOverwriteClipboardPasteCommand();
 
 export default [
 	chooseFileNameCommand,
@@ -339,5 +362,5 @@ export default [
 	convertToVariableCommand,
 	insertHtmlComment,
 	calculatePosNumberCommand,
-	clipboardPasteCommand
+	overwriteClipboardPasteCommand
 ];

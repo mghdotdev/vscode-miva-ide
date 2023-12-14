@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -160,6 +160,28 @@
 					"text.html.mv"
 				],
 				"path": "./syntaxes/mv/mv.injection.tmLanguage.json"
+			},
+			{
+				"language": "mvt-markdown-injection",
+				"scopeName": "markdown.mvt.codeblock",
+				"path": "./syntaxes/mvt/mvt-markdown-injection.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.mvt": "mvt"
+				}
+			},
+			{
+				"language": "mv-markdown-injection",
+				"scopeName": "markdown.mv.codeblock",
+				"path": "./syntaxes/mv/mv-markdown-injection.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.mv": "mv"
+				}
 			}
 		],
 		"keybindings": [
@@ -172,11 +194,6 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
-			},
-			{
-				"command": "mivaIde.clipboardPasteAction",
-				"key": "cmd+v",
-				"when": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			}
 		],
 		"languages": [
@@ -226,6 +243,18 @@
 					".mv"
 				],
 				"configuration": "./configurations/mv/mv.configuration.json"
+			},
+			{
+				"id": "mvt-markdown-injection",
+				"aliases": [
+					"_"
+				]
+			},
+			{
+				"id": "mv-markdown-injection",
+				"aliases": [
+					"_"
+				]
 			}
 		]
 	},
