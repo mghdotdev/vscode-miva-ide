@@ -57,6 +57,10 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 - [x] Add support for markdown code fences for mvt and miva script
 	- https://stackoverflow.com/questions/75903579/how-to-add-custom-language-syntax-highlighter-to-markdown-code-block-in-vscode
 
+### v1.5.0
+
+TBD
+
 ### v2.0.0 (TBD)
 
 This is a semi-rewrite of the extension. It will use a newly created Language Service package to handle most of the file parsing. The parsed file generated from the package will improve overall performance, allow me to add missing Language Extension features and provide an easier to maintain extension for future changes. Also, I will focus on adding a `mmt` integration directly into the extension.
