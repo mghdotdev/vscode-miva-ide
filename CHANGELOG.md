@@ -1,5 +1,10 @@
 # Change Log
 
+# v1.4.0
+
+* Fixed windows issue for paste completion window
+* Added support for markdown code fences for mvt and miva script
+
 # v1.3.0
 
 * Fixed expression syntax highlighting in Miva Script as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47).
