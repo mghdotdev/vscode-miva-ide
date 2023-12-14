@@ -73,25 +73,24 @@ export function activate( context: ExtensionContext ) {
 			{
 				/**
 				 * eg
-				 * <mvt:comment><
+				 * <mvt:comment>[CURSOR]<
 				 */
 				beforeText: /^\s*<mvt:comment>/i,
 				afterText: /^</,
 				action: {
 					indentAction: IndentAction.IndentOutdent,
-					appendText: "|\t",
+					appendText: '|\t'
 				}
 			},
 			{
 				/**
 				 * eg
-				 * <mvt:comment>
-				 * |
+				 * |[CURSOR]
 				 */
 				beforeText: /^\s*\|[^<]*/i,
 				action: {
 					indentAction: IndentAction.None,
-					appendText: "|\t",
+					appendText: '|\t'
 				}
 			},
 			{
@@ -116,25 +115,25 @@ export function activate( context: ExtensionContext ) {
 			{
 				/**
 				 * eg
-				 * <MvCOMMENT><
+				 * <MvCOMMENT>[CURSOR]<
 				 */
 				beforeText: /^\s*<MvCOMMENT>/i,
 				afterText: /^</,
 				action: {
+
 					indentAction: IndentAction.IndentOutdent,
-					appendText: "|\t",
+					appendText: '|\t'
 				}
 			},
 			{
 				/**
 				 * eg
-				 * <MvCOMMENT>
-				 * |
+				 * [CURSOR]
 				 */
 				beforeText: /^\s*\|[^<]*/i,
 				action: {
 					indentAction: IndentAction.None,
-					appendText: "|\t",
+					appendText: '|\t',
 				}
 			},
 			{

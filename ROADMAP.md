@@ -53,7 +53,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 ### v1.4.0
 
 - [x] Fix windows issue for paste completion window
-- [ ] Fix initial comment auto pipe add to include extra spaces and pipes
+- [x] <s>Fix initial comment auto pipe add to include extra spaces and pipes</s>
 - [x] Add support for markdown code fences for mvt and miva script
 	- https://stackoverflow.com/questions/75903579/how-to-add-custom-language-syntax-highlighter-to-markdown-code-block-in-vscode
 
