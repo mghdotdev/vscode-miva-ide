@@ -59,7 +59,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.5.0
 
-TBD
+- [ ] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks
 
 ### v2.0.0 (TBD)
 
