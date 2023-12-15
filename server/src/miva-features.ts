@@ -949,37 +949,51 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 
 		async doValidation( document: TextDocument, settings: Settings ) {
 
-			const {document: mvtDocument} = mvDocuments.get( document );
 			const mvFilePath = document.uri.replace( 'file://', '' );
+			const diagnostics: Diagnostic[] = [];
 
-			const args = [
-				'-W',
-				'all',
-				'-o',
-				'/dev/null',
-				mvFilePath
-			].join(' ');
-
-			console.log('args', args);
-
-			const {stdout} = await asyncSpawn(
-				'mvc -W all -o /dev/null ' + mvFilePath,
+			const {stderr} = await asyncSpawn(
+				'mvc',
 				[
-
+					'-W',
+					'all',
+					'-o',
+					'/dev/null',
+					mvFilePath
 				],
 				{
 					shell: true
 				}
 			);
 
-			console.log('stdout', stdout);
+			if (stderr) {
+				const rawErrorLines = stderr
+					.trim()
+					.split('\n');
 
-			if (stdout) {
-				const errors = stdout.split('\n');
-				console.log('errors', errors);
+				for (let rawErrorLine of rawErrorLines) {
+					const [, lineNumber] = safeMatch(rawErrorLine, /[^\:]+:([0-9]+)/i);
+					const [, errorMessage] = safeMatch(rawErrorLine, /(?<=[a-z]+_[0-9]+:\s)(.*)$/i);
+					const [, errorCode] = safeMatch(rawErrorLine, /\b([a-z]+_[0-9]+):/i);
+
+					if (lineNumber != null && errorMessage != null) {
+						const parsedLineNumber = Math.max(0, parseInt(lineNumber, 10) - 1);
+
+						diagnostics.push({
+							code: errorCode,
+							message: errorMessage,
+							range: Range.create(
+								Position.create(parsedLineNumber, 0),
+								Position.create(parsedLineNumber, 9999)
+							),
+							source: 'Miva Script Compiler',
+							severity: DiagnosticSeverity.Error
+						});
+					}
+				}
 			}
 
-			return [];
+			return diagnostics;
 
 		},
 
