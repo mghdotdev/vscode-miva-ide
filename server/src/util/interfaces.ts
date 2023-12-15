@@ -21,7 +21,7 @@ import {
 export interface Settings {
 	LSK?: any;
 	MVT?: any;
-	MV?: any;
+	mivaScript?: any;
 }
 
 export interface Workspace {

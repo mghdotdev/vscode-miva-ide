@@ -36,6 +36,7 @@ import mvtItemData from './mvt/items';
 import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
 import {
 	asyncSpawn,
+	folderContainsFile,
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
@@ -948,8 +949,17 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 	return {
 
 		async doValidation( document: TextDocument, settings: Settings ) {
-
+			// Get actual file path
 			const mvFilePath = document.uri.replace( 'file://', '' );
+
+			// Determine if file is in the lsk folder
+			const isLSKFolder = folderContainsFile(settings?.LSK?.path, mvFilePath);
+
+			// Exit if compiler is not enabled or file is in LSK and LSK is disabled
+			if (!settings?.mivaScript?.mivaScriptCompiler?.enable || (settings?.mivaScript?.mivaScriptCompiler?.disableLSK && isLSKFolder)) {
+				return [];
+			}
+
 			const diagnostics: Diagnostic[] = [];
 
 			const {stderr} = await asyncSpawn(

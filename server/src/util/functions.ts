@@ -526,3 +526,7 @@ export function asyncSpawn (command: string, args?: readonly string[], options?:
 		});
 	});
 }
+
+export function folderContainsFile (folderUri: string, fileUri: string): boolean {
+	return fileUri.startsWith(folderUri);
+}
