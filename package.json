@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -101,27 +101,32 @@
 			{
 				"command": "mivaIde.toggleHtmlComment",
 				"title": "Toggle HTML Comment",
-				"category": "Miva IDE"
+				"category": "Miva IDE",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			},
 			{
 				"command": "mivaIde.MVT.convertToVariable",
 				"title": "Convert Entity → Variable",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertAndCopy",
 				"title": "Convert Variable ↔ Entity & Copy",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertToEntity",
 				"title": "Convert Variable → Entity",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.calculatePosNumber",
 				"title": "Calculate POS Number",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			}
 		],
 		"grammars": [
@@ -194,6 +199,13 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
+			},
+			{
+				"command": "mivaIde.clipboardPasteAction",
+				"mac": "cmd+v",
+				"win": "ctrl+v",
+				"linux": "ctrl+v",
+				"when": "editorFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			}
 		],
 		"languages": [
