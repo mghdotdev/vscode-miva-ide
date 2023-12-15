@@ -1,11 +1,15 @@
 # Change Log
 
-# v1.4.0
+## v1.4.1
 
-* Fixed windows issue for paste completion window
-* Added support for markdown code fences for mvt and miva script
+* Fixed bug where completion window was triggering after pasting into search bar.
 
-# v1.3.0
+## v1.4.0
+
+* Fixed Windows OS issue for paste completion window.
+* Added support for markdown code fences for mvt and Miva Script.
+
+## v1.3.0
 
 * Fixed expression syntax highlighting in Miva Script as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47).
 * Fixed MvDO VALUE attribute snippet. It should default to be an expression.
@@ -13,7 +17,7 @@
 * Added workaround to trigger completion window on paste command.
 * Dedent on completion of else/elseif tags for Miva Script and MVT.
 
-# v1.2.0
+## v1.2.0
 
 * Applied fixes to Miva Script snippets based off developer feedback
 * Fixed builtin function `miva_joinstring` flag parameter completion values as per [issue #52](https://github.com/mghdotdev/vscode-miva-ide/issues/52)
