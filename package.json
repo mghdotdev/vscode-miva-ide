@@ -199,6 +199,13 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
+			},
+			{
+				"command": "mivaIde.clipboardPasteAction",
+				"mac": "cmd+v",
+				"win": "ctrl+v",
+				"linux": "ctrl+v",
+				"when": "editorFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			}
 		],
 		"languages": [
