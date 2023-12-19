@@ -127,7 +127,7 @@ export const tags: Record<string, TagData> = {
 	assign: {
 		...baseTag,
 		documentation: `Executes the expression contained within value and saves that value to the variable defined in the name attribute.`,
-		insertText: "<mvt:assign name=\"${1:l.variable}\" value=\"${2:l.value}\" />",
+		insertText: "<mvt:assign name=\"${1:l.variable}\" value=\"${2:l.value}\" />$0",
 		label: 'mvt:assign',
 		reference: 'https://docs.miva.com/template-language/mvtassign',
 		engine: '>=5.18',
@@ -402,7 +402,7 @@ The ... loop terminates when the entire document has been received, or when an (
 	capture: {
 		...baseTag,
 		documentation: `This tag takes the evaluated contents between the mvt:capture tags and saves it to a variable`,
-		insertText: "<mvt:capture variable=\"${1}\">\n\t${0}\n</mvt:capture>",
+		insertText: "<mvt:capture variable=\"${1}\">$2</mvt:capture>$0",
 		label: 'mvt:capture',
 		reference: 'https://docs.miva.com/template-language/mvtcapture',
 		engine: '>=5.33',
@@ -429,7 +429,7 @@ The ... loop terminates when the entire document has been received, or when an (
 	do: {
 		...baseTag,
 		documentation: `Provides access to call native Miva Script functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
-		insertText: "<mvt:do file=\"$3\" name=\"$2\" value=\"$1\" />",
+		insertText: "<mvt:do file=\"$3\" name=\"$2\" value=\"$1\" />$0",
 		label: 'mvt:do',
 		reference: 'https://docs.miva.com/template-language/mvtdo',
 		engine: '>=5.22',
@@ -486,7 +486,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	elseif: {
 		...baseTag,
 		documentation: `Must be used within an \`<mvt:if>\` tag. Executes the following block of code if the expression is truthy and the previous if/elseif conditions are falsy.`,
-		insertText: "<mvt:elseif expr=\"${0}\">",
+		insertText: "<mvt:elseif expr=\"${1}\">$0",
 		label: 'mvt:elseif',
 		reference: 'https://docs.miva.com/template-language/if-else',
 		selfClosing: true,
@@ -502,7 +502,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	eval: {
 		...baseTag,
 		documentation: `Executes the expression contained within expr attribute and outputs the expression's value directly to the page. It operates just like \`mvt:assign\` except that instead of saving the value/expression to a variable, it will output it directly to the page.`,
-		insertText: "<mvt:eval expr=\"${1:l.value}\" />",
+		insertText: "<mvt:eval expr=\"${1:l.value}\" />$0",
 		label: 'mvt:eval',
 		reference: 'https://docs.miva.com/template-language/mvteval',
 		engine: '>=5.18',
@@ -523,7 +523,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	foreach: {
 		...baseTag,
 		documentation: `Runs the code block within the \`<mvt:foreach>\` tag as many times as there are items in the \`array\` attribute.`,
-		insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${0}\n</mvt:foreach>",
+		insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${3}\n</mvt:foreach>$0",
 		label: 'mvt:foreach',
 		reference: 'https://docs.miva.com/template-language/foreach',
 		selfClosing: false,
@@ -580,7 +580,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	item: {
 		...baseTag,
 		documentation: `Interact with Miva's component module system. Items are defined by modules and assigned to pages within Miva.`,
-		insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />",
+		insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />$0",
 		label: 'mvt:item',
 		selfClosing: true,
 		void: false,
@@ -612,7 +612,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 					...oi,
 					[`item-${itemName}`]: {
 						...tagItem,
-						insertText: `<mvt:item name="${itemData.insertText || itemData.label}" param="\${1}" />`,
+						insertText: `<mvt:item name="${itemData.insertText || itemData.label}" param="\${1}" />$0`,
 						label: `mvt:item:${itemName}`,
 						kind: itemData.kind
 					},
@@ -623,7 +623,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 								...op,
 								[`item-${itemName}-${paramName}`]: {
 									...tagItem,
-									insertText: `<mvt:item name="${itemData.insertText || itemData.label}" param="${paramData.insertText || paramData.label}" />`,
+									insertText: `<mvt:item name="${itemData.insertText || itemData.label}" param="${paramData.insertText || paramData.label}" />$0`,
 									label: `mvt:item:${itemName}:${paramData.label || paramName}`,
 									kind: paramData.kind
 								},
@@ -634,7 +634,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	miva: {
 		...baseTag,
 		documentation: `Configure script output and whitespace handling.`,
-		insertText: "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />",
+		insertText: "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />$0",
 		label: 'mvt:miva',
 		reference: 'http://www.mivascript.com/item/mivascript-tags/MIVA.html',
 		selfClosing: true,
@@ -689,7 +689,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	while: {
 		...baseTag,
 		documentation: `Continues to run the following code block as long as the \`expr\` condition is true.`,
-		insertText: "<mvt:while expr=\"${1}\">\n\t${0}\n</mvt:while>",
+		insertText: "<mvt:while expr=\"${1}\">\n\t${2}\n</mvt:while>$0",
 		label: 'mvt:while',
 		reference: 'https://docs.miva.com/template-language/while',
 		selfClosing: false,
