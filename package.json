@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -39,6 +39,11 @@
 		"configuration": {
 			"title": "Miva IDE",
 			"properties": {
+				"enableTriggerSuggestAfterPaste": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor."
+				},
 				"LSK.path": {
 					"type": "string",
 					"description": "Path to your LSK folder. Used for Goto Definition support."
@@ -194,6 +199,13 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
+			},
+			{
+				"command": "mivaIde.clipboardPasteAction",
+				"mac": "cmd+v",
+				"win": "ctrl+v",
+				"linux": "ctrl+v",
+				"when": "mivaIde.enableTriggerSuggestAfterPaste && editorTextFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			}
 		],
 		"languages": [
