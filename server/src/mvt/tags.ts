@@ -472,7 +472,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	else: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Must be used within an \`<mvt:if>\` tag. Executes the following block of code when all previous if/elseif conditions are falsy.`,
 		insertText: "<mvt:else>",
 		label: 'mvt:else',
 		reference: 'https://docs.miva.com/template-language/if-else',
@@ -485,7 +485,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	elseif: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Must be used within an \`<mvt:if>\` tag. Executes the following block of code if the expression is truthy and the previous if/elseif conditions are falsy.`,
 		insertText: "<mvt:elseif expr=\"${0}\">",
 		label: 'mvt:elseif',
 		reference: 'https://docs.miva.com/template-language/if-else',
@@ -514,7 +514,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	exit: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Exits the script execution and prevents any code after the \`<mvt:exit>\` tag from running.`,
 		insertText: "<mvt:exit />",
 		label: 'mvt:exit',
 		selfClosing: true,
@@ -522,7 +522,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	foreach: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Runs the code block within the \`<mvt:foreach>\` tag as many times as there are items in the \`array\` attribute.`,
 		insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${0}\n</mvt:foreach>",
 		label: 'mvt:foreach',
 		reference: 'https://docs.miva.com/template-language/foreach',
@@ -548,7 +548,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	foreachcontinue: {
 		...baseTag,
 		engine: '>=5.20',
-		documentation: ``,
+		documentation: `Skips the current foreach iteration.`,
 		insertText: "<mvt:foreachcontinue />",
 		label: 'mvt:foreachcontinue',
 		reference: 'https://docs.miva.com/template-language/foreach',
@@ -558,7 +558,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	foreachstop: {
 		...baseTag,
 		engine: '>=5.20',
-		documentation: ``,
+		documentation: `Exits the current foreach iteration and does not continue to the next iteration.`,
 		insertText: "<mvt:foreachstop />",
 		label: 'mvt:foreachstop',
 		reference: 'https://docs.miva.com/template-language/foreach',
@@ -567,7 +567,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	if: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Runs the following code block if the expression condition is true.`,
 		insertText: "<mvt:if expr=\"$1\">\n\t$2\n</mvt:if>$0",
 		label: 'mvt:if',
 		reference: 'https://docs.miva.com/template-language/if-statement',
@@ -579,7 +579,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	item: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Interact with Miva's component module system. Items are defined by modules and assigned to pages within Miva.`,
 		insertText: "<mvt:item name=\"${1}\" ${2:param=\"${3}\"} />",
 		label: 'mvt:item',
 		selfClosing: true,
@@ -587,7 +587,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 		attributes: {
 			name: {
 				...baseAttribute,
-				documentation: ``,
+				documentation: `The name of the component item to interact with.`,
 				insertText: 'name="${0}"',
 				label: 'name',
 				valueType: 'string',
@@ -598,7 +598,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 			param: {
 				...baseAttribute,
 				required: false,
-				documentation: ``,
+				documentation: `Optionally provide additional parameters to the component item. The parameter format depends on the specific item. Referer to documentation for each item for more information.`,
 				insertText: 'param="${0}"',
 				label: 'param',
 				valueType: 'function'
@@ -633,7 +633,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 			}, {}),
 	miva: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Configure script output and whitespace handling.`,
 		insertText: "<mvt:miva output=\"${1|on,off|}\" compresswhitespace=\"${2|on,off|}\" />",
 		label: 'mvt:miva',
 		reference: 'http://www.mivascript.com/item/mivascript-tags/MIVA.html',
@@ -643,20 +643,20 @@ These global variables reference a specific module file. The Limited Source Kit 
 			output: {
 				...baseAttribute,
 				required: false,
-				documentation: ``,
+				documentation: `Specifices wether or not the script displays content to the browser after running.`,
 				insertText: 'output="${0}"',
 				label: 'output',
 				valueType: 'string',
 				values: {
 					on: {
 						...baseAttributeValue,
-						documentation: ``,
+						documentation: `Turns output on. Enabled by default.`,
 						insertText: "on",
 						label: "on"
 					},
 					off: {
 						...baseAttributeValue,
-						documentation: ``,
+						documentation: `Turns output off.`,
 						insertText: "off",
 						label: "off"
 					}
@@ -665,20 +665,20 @@ These global variables reference a specific module file. The Limited Source Kit 
 			compresswhitespace: {
 				...baseAttribute,
 				required: false,
-				documentation: ``,
+				documentation: `Determines if whitespace characters should be eliminated from the output after running.`,
 				insertText: 'compresswhitespace="${0}"',
 				label: 'compresswhitespace',
 				valueType: 'string',
 				values: {
 					on: {
 						...baseAttributeValue,
-						documentation: ``,
+						documentation: `Turns on whitespace compression.`,
 						insertText: "on",
 						label: "on"
 					},
 					off: {
 						...baseAttributeValue,
-						documentation: ``,
+						documentation: `Turns off whitespace compression. Enabled by default.`,
 						insertText: "off",
 						label: "off"
 					}
@@ -688,7 +688,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	},
 	while: {
 		...baseTag,
-		documentation: ``,
+		documentation: `Continues to run the following code block as long as the \`expr\` condition is true.`,
 		insertText: "<mvt:while expr=\"${1}\">\n\t${0}\n</mvt:while>",
 		label: 'mvt:while',
 		reference: 'https://docs.miva.com/template-language/while',
@@ -701,7 +701,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	whilecontinue: {
 		...baseTag,
 		engine: '>=5.20',
-		documentation: ``,
+		documentation: `Skips the current while iteration.`,
 		insertText: "<mvt:whilecontinue />",
 		label: 'mvt:whilecontinue',
 		reference: 'https://docs.miva.com/template-language/while',
@@ -711,7 +711,7 @@ These global variables reference a specific module file. The Limited Source Kit 
 	whilestop: {
 		...baseTag,
 		engine: '>=5.20',
-		documentation: ``,
+		documentation: `Exits the current while iteration and does not continue to the next iteration.`,
 		insertText: "<mvt:whilestop />",
 		label: 'mvt:whilestop',
 		reference: 'https://docs.miva.com/template-language/while',
