@@ -4,10 +4,18 @@
 
 
 
+## v1.4.2
+
+* Fixed bug where completion window was triggering after pasting into quick find input.
+
+## v1.4.1
+
+* Fixed bug where completion window was triggering after pasting into search bar.
+
 ## v1.4.0
 
-* Fixed windows issue for paste completion window
-* Added support for markdown code fences for mvt and miva script
+* Fixed Windows OS issue for paste completion window.
+* Added support for markdown code fences for mvt and Miva Script.
 
 ## v1.3.0
 

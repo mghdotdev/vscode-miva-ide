@@ -106,27 +106,32 @@
 			{
 				"command": "mivaIde.toggleHtmlComment",
 				"title": "Toggle HTML Comment",
-				"category": "Miva IDE"
+				"category": "Miva IDE",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			},
 			{
 				"command": "mivaIde.MVT.convertToVariable",
 				"title": "Convert Entity → Variable",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertAndCopy",
 				"title": "Convert Variable ↔ Entity & Copy",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertToEntity",
 				"title": "Convert Variable → Entity",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.calculatePosNumber",
 				"title": "Calculate POS Number",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			}
 		],
 		"grammars": [
