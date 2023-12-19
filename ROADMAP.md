@@ -61,6 +61,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 - [ ] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks.
 - [ ] Add setting to enable/disable the suggestion after paste feature.
+- [ ] Add missing documentation to MVT tags / items.
 
 ### v2.0.0 (TBD)
 
