@@ -77,7 +77,7 @@ export function activate( context: ExtensionContext ) {
 				 * <mvt:comment>[CURSOR]<
 				 */
 				beforeText: /^\s*<mvt:comment>/i,
-				afterText: /^</,
+				afterText: /^<\/mvt:comment>/i,
 				action: {
 					indentAction: IndentAction.IndentOutdent,
 					appendText: '|\t'
@@ -119,7 +119,7 @@ export function activate( context: ExtensionContext ) {
 				 * <MvCOMMENT>[CURSOR]<
 				 */
 				beforeText: /^\s*<MvCOMMENT>/i,
-				afterText: /^</,
+				afterText: /^<\/MvCOMMENT>/i,
 				action: {
 
 					indentAction: IndentAction.IndentOutdent,
