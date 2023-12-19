@@ -60,8 +60,10 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 ### v1.5.0
 
 - [ ] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks.
-- [ ] Add setting to enable/disable the suggestion after paste feature.
+- [x] Add setting to enable/disable the suggestion after paste feature.
 - [ ] Add missing documentation to MVT tags / items.
+- [ ] Fix indentation issues when running Reindent Lines.
+	- mvt:comment with pipes
 
 ### v2.0.0 (TBD)
 
