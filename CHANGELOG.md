@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.4.2
+
+* Fixed bug where completion window was triggering after pasting into quick find input.
+
 ## v1.4.1
 
 * Fixed bug where completion window was triggering after pasting into search bar.
