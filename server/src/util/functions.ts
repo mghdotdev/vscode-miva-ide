@@ -281,7 +281,6 @@ function formatTagAttributeRequired (required: boolean, requiredMessage?: string
 }
 
 export function formatTagDocumentation (tagData: TagData): MarkupContent {
-	console.log('tagData', tagData);
 	return {
 		kind: MarkupKind.Markdown,
 		value: [
