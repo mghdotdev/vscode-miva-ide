@@ -479,7 +479,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			reference: 'https://docs.miva.com/template-language/if-else',
 			selfClosing: true,
 			void: true,
-			...settings.MVT?.enableLegacyElseSnippets
+			...settings?.MVT?.enableLegacyElseSnippets
 				? {
 					insertText: [
 						`<mvt:if expr="$1">`,
@@ -507,7 +507,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			attributes: {
 				expr
 			},
-			...settings.MVT?.enableLegacyElseSnippets
+			...settings?.MVT?.enableLegacyElseSnippets
 				? {
 					insertText: [
 						`<mvt:if expr="$1">`,
