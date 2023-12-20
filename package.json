@@ -16,7 +16,7 @@
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
-		"package": "npx vsce package"
+		"release": "npx vsce pack && npx vsce publish --githubBranch main"
 	},
 	"repository": {
 		"type": "git",
