@@ -60,7 +60,8 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 ### v1.5.0
 
 - [x] Add setting to enable/disable the suggestion after paste feature.
-- [ ] Add missing documentation to MVT tags / items.
+- [x] Add missing documentation to MVT tags / items.
+- [x] Fix bug with `<MIVA>` tag attribute completions.
 
 ### v1.X.0
 
