@@ -503,6 +503,13 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 
 											// Create completion list from params object
 											if (foundItem && foundItem.params) {
+												if (patterns.SHARED.LEFT_IN_FUNCTION.test( left )) {
+													const variableCompletions = getVariableCompletions(left, mvtDocument);
+													if (variableCompletions) {
+														return variableCompletions;
+													}
+												}
+
 												return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
 											}
 										}
