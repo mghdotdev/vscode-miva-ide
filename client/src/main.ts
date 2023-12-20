@@ -2,7 +2,8 @@ import * as path from 'path';
 import {
 	ExtensionContext,
 	IndentAction,
-	languages
+	languages,
+	workspace
 } from 'vscode';
 import {
 	LanguageClient,
@@ -12,7 +13,7 @@ import {
 } from 'vscode-languageclient/node';
 import mivaCommands from './miva-commands';
 import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/empty-tag-shared';
-import { pushAll, readJSONFile } from './util/functions';
+import { pushAll, readJSONFile, syncSettingToWhenContext } from './util/functions';
 
 let client: LanguageClient;
 
@@ -76,7 +77,7 @@ export function activate( context: ExtensionContext ) {
 				 * <mvt:comment>[CURSOR]<
 				 */
 				beforeText: /^\s*<mvt:comment>/i,
-				afterText: /^</,
+				afterText: /^<\/mvt:comment>/i,
 				action: {
 					indentAction: IndentAction.IndentOutdent,
 					appendText: '|\t'
@@ -118,7 +119,7 @@ export function activate( context: ExtensionContext ) {
 				 * <MvCOMMENT>[CURSOR]<
 				 */
 				beforeText: /^\s*<MvCOMMENT>/i,
-				afterText: /^</,
+				afterText: /^<\/MvCOMMENT>/i,
 				action: {
 
 					indentAction: IndentAction.IndentOutdent,
@@ -147,6 +148,15 @@ export function activate( context: ExtensionContext ) {
 			}
 		],
 	});
+
+	// Create when context and sync from setting
+	syncSettingToWhenContext('', 'enableTriggerSuggestAfterPaste', 'mivaIde');
+
+	// Listen for configuration changes and do something
+	const didChangeConfigurationDisposable = workspace.onDidChangeConfiguration(() => {
+		syncSettingToWhenContext('', 'enableTriggerSuggestAfterPaste', 'mivaIde');
+	});
+	context.subscriptions.push( didChangeConfigurationDisposable );
 
 	// push all commands to context
 	pushAll( context.subscriptions, mivaCommands );

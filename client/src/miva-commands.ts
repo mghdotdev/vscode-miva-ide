@@ -3,13 +3,6 @@ import patterns from './util/patterns';
 
 const boundryAmount = 200;
 
-const allowedLanguages = [
-	'mv',
-	'mvt',
-	'mvcss',
-	'mvtjs'
-];
-
 const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
 
 	const returnValue = payload.returnValue;

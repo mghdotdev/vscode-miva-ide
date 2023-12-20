@@ -95,16 +95,4086 @@ export const tags: Record<string, TagData> = {
 				"required": false,
 				"valueType": "string"
 			},
-			"mvtagname_error": {
+			"mvadd_error": {
 				"commitCharacters": [
 					"=",
 					"\""
 				],
 				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
-				"insertText": "MvTAGNAME_ERROR = \"$0\"",
+				"insertText": "MvADD_ERROR = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
-				"label": "MvTAGNAME_ERROR",
+				"label": "MvADD_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvassembly_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvASSEMBLY_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvASSEMBLY_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvassign_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvASSIGN_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvASSIGN_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvassignarray_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvASSIGNARRAY_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvASSIGNARRAY_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvasynchronous_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvASYNCHRONOUS_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvASYNCHRONOUS_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcall_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCALL_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCALL_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcallcontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCALLCONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCALLCONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcallstop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCALLSTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCALLSTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcapture_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCAPTURE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCAPTURE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvclose_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCLOSE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCLOSE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcloseview_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCLOSEVIEW_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCLOSEVIEW_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcomment_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCOMMENT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCOMMENT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcommerce_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCOMMERCE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCOMMERCE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcommercecontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCOMMERCECONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCOMMERCECONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcommercestop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCOMMERCESTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCOMMERCESTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcommit_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCOMMIT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCOMMIT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvcreate_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvCREATE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvCREATE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvdbcommand_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvDBCOMMAND_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvDBCOMMAND_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvdelete_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvDELETE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvDELETE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvdimension_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvDIMENSION_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvDIMENSION_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvdo_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvDO_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvDO_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvelse_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvELSE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvELSE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvelseif_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvELSEIF_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvELSEIF_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mveval_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvEVAL_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvEVAL_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvexit_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvEXIT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvEXIT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvexport_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvEXPORT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvEXPORT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfilter_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFILTER_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFILTER_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfind_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFIND_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFIND_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfor_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFOR_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFOR_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvforcontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFORCONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFORCONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvforeach_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFOREACH_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFOREACH_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvforeachcontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFOREACHCONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFOREACHCONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvforeachstop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFOREACHSTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFOREACHSTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvforstop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFORSTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFORSTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfuncreturn_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFUNCRETURN_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFUNCRETURN_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfunction_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFUNCTION_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFUNCTION_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvfunctionreturn_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvFUNCTIONRETURN_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvFUNCTIONRETURN_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvgo_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvGO_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvGO_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvhide_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvHIDE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvHIDE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvif_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIF_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIF_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvifdef_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIFDEF_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIFDEF_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvifndef_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIFNDEF_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIFNDEF_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvimport_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIMPORT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIMPORT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvimportcontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIMPORTCONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIMPORTCONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvimportstop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvIMPORTSTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvIMPORTSTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvinclude_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvINCLUDE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvINCLUDE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvlocalized_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvLOCALIZED_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvLOCALIZED_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvlocalized-text_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvLOCALIZED-TEXT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvLOCALIZED-TEXT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvlocalized-token_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvLOCALIZED-TOKEN_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvLOCALIZED-TOKEN_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvlockfile_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvLOCKFILE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvLOCKFILE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvmakeindex_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvMAKEINDEX_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvMAKEINDEX_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvmember_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvMEMBER_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvMEMBER_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvopen_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvOPEN_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvOPEN_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvopenview_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvOPENVIEW_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvOPENVIEW_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvpack_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPACK_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPACK_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvpop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvpopcontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPOPCONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPOPCONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvpopdelete_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPOPDELETE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPOPDELETE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvpopstop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPOPSTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPOPSTOP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvprimary_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvPRIMARY_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvPRIMARY_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvquery_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvQUERY_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvQUERY_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvreference_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvREFERENCE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvREFERENCE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvreferencearray_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvREFERENCEARRAY_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvREFERENCEARRAY_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvreindex_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvREINDEX_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvREINDEX_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvrevealstructure_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvREVEALSTRUCTURE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvREVEALSTRUCTURE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvrollback_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvROLLBACK_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvROLLBACK_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvsetindex_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvSETINDEX_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvSETINDEX_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvskip_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvSKIP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvSKIP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvsmtp_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvSMTP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvSMTP_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvtransact_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvTRANSACT_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvTRANSACT_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvundelete_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvUNDELETE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvUNDELETE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvupdate_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvUPDATE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvUPDATE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvwhile_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvWHILE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvWHILE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvwhilecontinue_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvWHILECONTINUE_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvWHILECONTINUE_ERROR",
+				"required": false,
+				"valueType": "string",
+				"values": {
+					"fatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "fatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "fatal"
+					},
+					"nonfatal": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nonfatal",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nonfatal"
+					},
+					"display": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "display",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "display"
+					},
+					"nodisplay": {
+						"commitCharacters": [
+							"'"
+						],
+						"documentation": "",
+						"insertText": "nodisplay",
+						"insertTextFormat": "Snippet",
+						"kind": "Enum",
+						"label": "nodisplay"
+					}
+				}
+			},
+			"mvwhilestop_error": {
+				"commitCharacters": [
+					"=",
+					"\""
+				],
+				"documentation": "Optional keywords: fatal | nonfatal, display | nodisplay. This\n    attribute controls handling of runtime errors for specific tags. During a runtime error, a global variable is\n    populated that contain the error message in the form of MvTagname_Error. For example a runtime error during <MvIMPORT>\n    will return MvImport_Error. Use the MvIMPORT_ERROR attribute to control Miva Scripts response.\n    \n        fatal | nonfatal: Select one. fatal will cause all runtime errors for this tag to terminate\n        the script. This is the default. nonfatal will allow the script to continue. \n        display | nodisplay: Select one. display will cause runtime error messages for this tag\n        to be displayed. This is the default nodisplay will suppress error messages for this tag.",
+				"insertText": "MvWHILESTOP_ERROR = \"$0\"",
+				"insertTextFormat": "Snippet",
+				"kind": "Enum",
+				"label": "MvWHILESTOP_ERROR",
 				"required": false,
 				"valueType": "string",
 				"values": {
@@ -168,7 +4238,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Enables you to configure the level of output, error reporting, and error handling.\n\nYour script can contain multiple MIVA tags as needed, to turn features on and off. Each <MIVA> tag can specify one or\nmore attributes. The STANDARDOUTPUTLEVEL and ERROROUTPUTLEVEL attributes can also be specified in user-defined functions\ni.e. <MvFUNCTION> giving you local control, or embedded within a function, allowing you for example, to enable and disable\noutput to the browser for sections of script. When subsequent <MIVA> tags are encountered, and an attribute is omitted,\nthe current setting for that attribute are assumed.",
-		"insertText": "<MIVA>$0",
+		"insertText": "<MIVA STANDARDOUTPUTLEVEL = \"$1\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MIVA",

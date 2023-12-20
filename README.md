@@ -40,10 +40,84 @@ Miva IDE contributes the following settings:
 * `mivaIde.MVT.lint.showWarningOnToolbeltUsage` &mdash; Show a warning when the 'toolbelt' item is referenced within the template.
 * `mivaIde.MVT.lint.showWarningForUnencodedVariables` &mdash; Show a warning when unencoded entities and 'evals' are referenced within the file.
 
+## Integrations
+
+### [vscode-icons](https://github.com/vscode-icons/vscode-icons)
+
+1. Follow the [instructions](https://github.com/vscode-icons/vscode-icons/wiki/Custom) and identify the location of your custom icons folder.
+2. Download the custom icons [here](./integrations/vsicons-custom-icons).
+3. Place the downloaded icons into your custom icon folder.
+4. Add the following JSON to your Settings file:
+
+```json
+"vsicons.associations.files": [
+	{
+		"icon": "mivascript",
+		"extensions": [
+			"mv"
+		],
+		"languages": [
+			{
+				"ids": "mv",
+				"defaultExtension": "mv"
+			}
+		],
+		"format": "png"
+	},
+	{
+		"icon": "mvt",
+		"extensions": [
+			"mvt"
+		],
+		"languages": [
+			{
+				"ids": [
+					"mvt"
+				],
+				"defaultExtension": "mvt"
+			}
+		],
+		"filename": true,
+		"format": "png"
+	},
+	{
+		"icon": "mvtjs",
+		"extensions": [
+			"js/*.mvt"
+		],
+		"filename": true,
+		"languages": [
+			{
+				"ids": [
+					"mvtjs"
+				],
+				"defaultExtension": "mvt"
+			}
+		],
+		"format": "png"
+	},
+	{
+		"icon": "mvtcss",
+		"extensions": [
+			"css/*.mvt"
+		],
+		"languages": [
+			{
+				"ids": [
+					"mvtcss"
+				],
+				"defaultExtension": "mvt"
+			}
+		],
+		"format": "png"
+	}
+]
+```
+
 ## Known Issues
 
 None.
 
 ## Release Notes
 
-See [CHANGELOG](https://github.com/mghweb/vscode-miva-ide/blob/master/CHANGELOG.md).
+See [CHANGELOG](./CHANGELOG.md).

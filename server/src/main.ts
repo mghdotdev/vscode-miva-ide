@@ -224,6 +224,10 @@ connection.onDidChangeConfiguration(change  => {
 
 	documents.all().forEach( triggerValidation );
 
+	for (let language in languages) {
+		languages[language]?.onConfigurationChange();
+	}
+
 });
 
 // Handle completion events

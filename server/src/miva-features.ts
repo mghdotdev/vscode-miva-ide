@@ -33,7 +33,7 @@ import systemVariableData from './mv/system-variables';
 import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
-import mvtTagAndSnippetData, { tags as mvtTagData } from './mvt/tags';
+import { generateMvtTags, mvtSnippetData } from './mvt/tags';
 import {
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
@@ -59,6 +59,8 @@ import {
 	MvtLanguageModel,
 	Settings,
 	SymbolInformationWithDocumentation,
+	TagData,
+	TagSnippet,
 	ValidationData,
 	ValidationDataType,
 	ValidationRule,
@@ -255,6 +257,22 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 		return symbols;
 	};
 
+	const buildTagCompletionData = (settings: Settings) => {
+		if (!settingsChanged) {
+			return;
+		}
+
+		mvtTagData = generateMvtTags(settings);
+		mvtTagAndSnippetData = {
+			...mvtSnippetData,
+			...mvtTagData
+		};
+
+		mvtTagCompletions = CompletionList.create( parseCompletionFile( Object.values( mvtTagAndSnippetData ) ) );
+
+		settingsChanged = false;
+	};
+
 	const mvtDocuments = getLanguageModelCache<MvtLanguageModel>( 10, 60, (document: TextDocument) => {
 		const symbols = findDocumentSymbols( document );
 
@@ -265,14 +283,23 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 	});
 	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
 
+	// Variable to determine if settings have changed
+	let settingsChanged = true;
+
 	// MVT-specific completion data
-	const mvtTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtTagAndSnippetData ) ) );
+	let mvtTagData: Record<string, TagData>;
+	let mvtTagAndSnippetData: Record<string, TagData | TagSnippet>;
+	let mvtTagCompletions: CompletionList;
 	const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
 
 	// Get lsk symbols
 	_createLskSymbols(workspace.settings);
 
 	return {
+
+		onConfigurationChange () {
+			settingsChanged = true;
+		},
 
 		doValidation( document: TextDocument, settings: Settings ) {
 
@@ -359,7 +386,9 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 			return actions;
 		},
 
-		doCompletion( document: TextDocument, position: Position ): CompletionList {
+		doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
+
+			buildTagCompletionData( settings );
 
 			const {document: mvtDocument} = mvtDocuments.get( document );
 
@@ -557,7 +586,9 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 				?.map( symbol => symbol.location );
 		},
 
-		onHover ( document: TextDocument, position: Position ) {
+		onHover ( document: TextDocument, position: Position, settings: Settings ) {
+
+			buildTagCompletionData( settings );
 
 			if (lskSymbols.length === 0) {
 				_createLskSymbols(workspace.settings);

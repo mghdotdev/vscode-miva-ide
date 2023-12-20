@@ -1,5 +1,16 @@
 # Change Log
 
+## v1.5.0
+
+* Added setting to enable/disable the suggestion after paste feature.
+	* This setting is disabled by default.
+* Added setting to enable/disable legacy if/elseif/else snippets.
+	* This setting is disabled by default.
+* Added missing documentation to MVT tags / items.
+* Fixed bug with `<MIVA>` tag attribute completions.
+* Added tooltkit tskl validation.
+* Documented [vscode-icons](https://github.com/vscode-icons) integration.
+
 ## v1.4.2
 
 * Fixed bug where completion window was triggering after pasting into quick find input.
@@ -35,7 +46,7 @@
 
 ## v1.0.0
 
-* Improved autocomplete and language intelligence for MVT and MivScript.
+* Improved autocomplete and language intelligence for MVT and Miva Script.
 	* Improved tag snippets.
 	* Added tag attribute autocompletion.
 	* Added matching `mvt:item` name and param attribute completions.
@@ -97,10 +108,6 @@
 * Added file-specific global and local variable autocompletion
 * Updated scope for tag completions
 * Updated scope for entity completions
-
-## v0.6.0
-
-## v0.5.0
 
 ## v0.4.0
 

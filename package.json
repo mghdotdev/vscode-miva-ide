@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.4.2",
+	"version": "1.5.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -16,7 +16,7 @@
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
-		"package": "npx vsce package"
+		"release": "npx vsce pack && npx vsce publish --githubBranch main"
 	},
 	"repository": {
 		"type": "git",
@@ -39,9 +39,19 @@
 		"configuration": {
 			"title": "Miva IDE",
 			"properties": {
+				"enableTriggerSuggestAfterPaste": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor."
+				},
 				"LSK.path": {
 					"type": "string",
 					"description": "Path to your LSK folder. Used for Goto Definition support."
+				},
+				"MVT.enableLegacyElseSnippets": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets."
 				},
 				"MVT.defaultEncodingForVariableConversions": {
 					"type": "string",
@@ -76,6 +86,11 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show a warning when unencoded entities and 'evals' are referenced within the file."
+				},
+				"MVT.lint.showErrorForTksl": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show an error for the `toolkit` item's `tksl` param."
 				}
 			}
 		},
@@ -205,7 +220,7 @@
 				"mac": "cmd+v",
 				"win": "ctrl+v",
 				"linux": "ctrl+v",
-				"when": "editorTextFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
+				"when": "mivaIde.enableTriggerSuggestAfterPaste && editorTextFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			}
 		],
 		"languages": [

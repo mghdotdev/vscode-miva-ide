@@ -25,8 +25,8 @@ export default {
 	SHARED: {
 		LEFT_DO_FILE: /(file\s*=\s*")([^"]+)"[^<]+$/i,
 		RIGHT_DO_FILE: /^[^>]+?(file\s*=\s*")([^"]+)"/i,
-		LEFT_IN_ATTR: /[a-z-]\s*=\s*"\s*([^"]*?)$/i,
-		LEFT_ATTR_NAME: /([a-z-]+)\s*=\s*"\s*[^"]*?$/i,
+		LEFT_IN_ATTR: /[a-z-_]\s*=\s*"\s*([^"]*?)$/i,
+		LEFT_ATTR_NAME: /([a-z-_]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_IN_VALUE_ATTR: /value\s*=\s*"\s*(\{)?[^}"(]*$/i,
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,

@@ -38,6 +38,8 @@ export interface Languages {
 
 export interface LanguageFeatures {
 
+	onConfigurationChange?: () => void;
+
 	doValidation?: ( document: TextDocument, settings?: Settings ) => Diagnostic[];
 
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
@@ -46,7 +48,7 @@ export interface LanguageFeatures {
 
 	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
 
-	onHover?: ( document: TextDocument, position: Position ) => Hover | null
+	onHover?: ( document: TextDocument, position: Position, settings?: Settings ) => Hover | null
 
 	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[]
 
