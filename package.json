@@ -81,6 +81,11 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show a warning when unencoded entities and 'evals' are referenced within the file."
+				},
+				"MVT.lint.showErrorForTksl": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show an error for the `toolkit` item's `tksl` param."
 				}
 			}
 		},

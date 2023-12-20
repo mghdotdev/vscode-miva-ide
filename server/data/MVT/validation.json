@@ -139,5 +139,15 @@
 				}
 			]
 		}
+	},
+	{
+		"match": "<mvt:item[^>]+name=\"toolkit\"[^>]+param=\"tksl\"[^>]+>",
+		"matchIndex": 0,
+		"checkSetting": "MVT.lint.showErrorForTksl",
+		"problem": {
+			"type": "Error",
+			"message": "Toolkit's tksl param is not compatible with Miva Merchant >= 10.08."
+		},
+		"code": "NO_TOOKIT_TKSL"
 	}
 ]
