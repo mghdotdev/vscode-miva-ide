@@ -2,7 +2,14 @@
 
 ## v1.5.0
 
-
+* Added setting to enable/disable the suggestion after paste feature.
+	* This setting is disabled by default.
+* Added setting to enable/disable legacy if/elseif/else snippets.
+	* This setting is disabled by default.
+* Added missing documentation to MVT tags / items.
+* Fixed bug with `<MIVA>` tag attribute completions.
+* Added tooltkit tskl validation.
+* Documented [vscode-icons](https://github.com/vscode-icons) integration.
 
 ## v1.4.2
 

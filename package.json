@@ -48,6 +48,11 @@
 					"type": "string",
 					"description": "Path to your LSK folder. Used for Goto Definition support."
 				},
+				"MVT.enableLegacyElseSnippets": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets."
+				},
 				"MVT.defaultEncodingForVariableConversions": {
 					"type": "string",
 					"default": "e",
