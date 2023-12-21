@@ -48,6 +48,11 @@
 					"default": false,
 					"description": "Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor."
 				},
+				"showChangelogOnUpdate": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show CHANGELOG after updating to the latest version."
+				},
 				"LSK.path": {
 					"type": "string",
 					"description": "Path to your LSK folder. Used for Goto Definition support."
@@ -146,6 +151,11 @@
 				"title": "Calculate POS Number",
 				"category": "MVT",
 				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
+			},
+			{
+				"command": "mivaIde.showChangelog",
+				"title": "Show Updates",
+				"category": "Miva IDE"
 			}
 		],
 		"grammars": [

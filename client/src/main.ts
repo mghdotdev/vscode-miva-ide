@@ -11,6 +11,7 @@ import {
 	ServerOptions,
 	TransportKind
 } from 'vscode-languageclient/node';
+import { showChangelog } from './changelog/manager';
 import mivaCommands from './miva-commands';
 import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/empty-tag-shared';
 import { pushAll, readJSONFile, syncSettingToWhenContext } from './util/functions';
@@ -161,6 +162,7 @@ export function activate( context: ExtensionContext ) {
 	// push all commands to context
 	pushAll( context.subscriptions, mivaCommands );
 
+	showChangelog(context);
 }
 
 export function deactivate(): Thenable<void> | undefined {
