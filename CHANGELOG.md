@@ -8,6 +8,7 @@
 * Added a command that allows you to show the changelog.
 	* "Miva IDE: Show Updates"
 * Fixed `mvt:item` tag variable completions within function parameters.
+* Fixed bug related to legacy if/elseif/else snippet setting not working properly.
 
 ## v1.5.0
 
