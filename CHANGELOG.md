@@ -1,4 +1,13 @@
-# Change Log
+<header style="display: flex; justify-content: space-between; margin-bottom: 32px;">
+	<div style="display: flex; align-items: center; gap: 16px;">
+		<img src="icon.png" alt="Miva Logo" height="50px" width="50px" />
+		<strong style="font-size: 32px;">Miva IDE Updates</strong>
+	</div>
+	<div style="display: flex; align-items: center; gap: 16px;">
+		<a href="https://github.com/mghdotdev/vscode-miva-ide" target="_blank">View Source</a>
+		<a href="https://github.com/mghdotdev/vscode-miva-ide/issues" target="_blank">Report a Bug</a>
+	</div>
+</header>
 
 ## v1.5.0
 
