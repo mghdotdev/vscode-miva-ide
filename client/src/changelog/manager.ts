@@ -1,36 +1,41 @@
-import { CancellationToken, ExtensionContext, ProviderResult, TextDocumentContentProvider, Uri, workspace } from 'vscode';
+import * as semver from 'semver';
+import { ExtensionContext, TextDocumentContentProvider, Uri, workspace } from 'vscode';
+import { getFileContentsFromUri } from '../util/functions';
 import { registerShowChangelogCommand, showChangelogCommand } from './command';
-import { getFileContentsFromUri, getLatestVersion } from './parser';
 
 export async function showChangelog (context: ExtensionContext): Promise<boolean> {
-	const settingValue = workspace.getConfiguration('').get('showChangelogOnUpdate');
-	if (!settingValue) {
-		return false;
-	}
-
-	const changeLogFileUri = Uri.joinPath(context.extensionUri, 'CHANGELOG.md');
-	const changelogFileContents = await getFileContentsFromUri(changeLogFileUri);
-
-	const latestVersion = await getLatestVersion(changeLogFileUri, changelogFileContents);
-	const storedLatestVersion = context.globalState.get('latestVersion');
-
-	const changelogHeader = await getFileContentsFromUri(Uri.joinPath(context.extensionUri, 'templates', 'changelog-header.html'));
-
 	const provider = new (class implements TextDocumentContentProvider {
-		provideTextDocumentContent(uri: Uri, token: CancellationToken): ProviderResult<string> {
-			return uri.path === 'Miva IDE Updates'
-				? changelogFileContents.replace('# Change Log', changelogHeader)
-				: '';
+		async provideTextDocumentContent(uri: Uri): Promise<string> {
+			if (uri.path === 'Miva IDE Updates') {
+				const changelogHeader = await getFileContentsFromUri(Uri.joinPath(context.extensionUri, 'templates', 'changelog-header.html'));
+				const changeLogFileUri = Uri.joinPath(context.extensionUri, 'CHANGELOG.md');
+				const changelogFileContents = await getFileContentsFromUri(changeLogFileUri);
+				return changelogFileContents.replace('# Change Log', changelogHeader);
+			}
+
+			return '';
 		}
 	})();
 
 	context.subscriptions.push(workspace.registerTextDocumentContentProvider('mivaIde', provider))
 	context.subscriptions.push(registerShowChangelogCommand());
 
-	if (latestVersion !== storedLatestVersion) {
-		showChangelogCommand();
+	const settingValue = workspace.getConfiguration('').get('showChangelogOnUpdate');
+	if (!settingValue) {
+		return false;
+	}
 
-		context.globalState.update('latestVersion', latestVersion);
+	const latestVersion = <string> context.extension.packageJSON.version;
+	const storedLatestVersion = <string> context.globalState.get('latestVersion');
+
+	if (latestVersion !== storedLatestVersion) {
+		const versionDiff = semver.diff(latestVersion, storedLatestVersion);
+
+		if (versionDiff === 'major' || versionDiff === 'minor') {
+			showChangelogCommand();
+
+			context.globalState.update('latestVersion', latestVersion);
+		}
 	}
 
 	return true;

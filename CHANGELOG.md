@@ -1,5 +1,14 @@
 # Change Log
 
+## v1.6.0
+
+* Added feature that shows the changelog after an update happens.
+* Added setting that allows you to disable showing the changelog after update.
+	* `mivaIde.showChangelogOnUpdate`
+* Added a command that allows you to show the changelog.
+	* "Miva IDE: Show Updates"
+* Fixed `mvt:item` tag variable completions within function parameters.
+
 ## v1.5.0
 
 * Added setting to enable/disable the suggestion after paste feature.

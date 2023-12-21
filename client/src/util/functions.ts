@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { commands, workspace } from 'vscode';
+import { Uri, commands, workspace } from 'vscode';
 
 export function readJSONFile( location: string ) {
 	try {
@@ -27,4 +27,10 @@ export function syncSettingToWhenContext (section: string, settingName: string, 
 	const settingValue = workspace.getConfiguration(section).get(settingName);
 
 	setWhenContext(extensionName, settingName, settingValue);
+}
+
+export async function getFileContentsFromUri (uri: Uri): Promise<string> {
+	const fileContents = await workspace.fs.readFile(uri);
+
+	return fileContents.toString();
 }
