@@ -300,10 +300,7 @@
 		]
 	},
 	"activationEvents": [
-		"onLanguage:mvt",
-		"onLanguage:mvtcss",
-		"onLanguage:mvtjs",
-		"onLanguage:mv"
+		"onFileSystem:mivaIde"
 	],
 	"workspaces": [
 		"client",
