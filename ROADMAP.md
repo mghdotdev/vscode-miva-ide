@@ -67,7 +67,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.6.0
 
-- [ ] Add "What's New" popup after upgrading.
+- [x] Add "What's New" popup after upgrading.
 - [x] Fix completions when inside mvt:item functions.
 
 ### v1.X.0
