@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -16,11 +16,15 @@
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
-		"release": "npx vsce pack && npx vsce publish --githubBranch main"
+		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mghdotdev/vscode-miva-ide.git"
+	},
+	"bugs": {
+		"email": "mhegler@miva.com",
+		"url": "https://github.com/mghdotdev/vscode-miva-ide/issues"
 	},
 	"keywords": [
 		"snippets",
