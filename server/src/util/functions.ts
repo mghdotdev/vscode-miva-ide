@@ -1,6 +1,3 @@
-import {
-	readFileSync
-} from 'fs';
 import _cloneDeep from 'lodash.clonedeep';
 import {
 	CancellationToken,
@@ -12,7 +9,7 @@ import {
 	MarkupContent,
 	MarkupKind,
 	ResponseError
-} from 'vscode-languageserver/node';
+} from 'vscode-languageserver';
 import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string,
@@ -44,16 +41,6 @@ export function pushAll<T>( to: T[], from: T[] ) {
 		for ( const e of from ) {
 			to.push( e );
 		}
-	}
-}
-
-export function readJSONFile( location: string ) {
-	try {
-		return JSON.parse( readFileSync( location ).toString() );
-	}
-	catch( e ) {
-		console.log( `Problems reading ${ location }: ${ e }` );
-		return {};
 	}
 }
 

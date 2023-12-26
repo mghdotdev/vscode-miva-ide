@@ -10,12 +10,15 @@
 		"Programming Languages"
 	],
 	"scripts": {
-		"vscode:prepublish": "npm run build:prod",
+		"vscode:prepublish": "npm run build:prod && npm run build-web:prod",
 		"syntax:watch": "node ./syntaxes/watch.cjs",
 		"syntax:build": "node ./syntaxes/build.cjs",
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
+		"build-web:prod": "npm run build-web:prod --workspaces",
+		"build-web": "npm run build-web --workspaces",
+		"watch-web": "npm run watch-web --workspace=client & npm run watch-web --workspace=server",
 		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main"
 	},
 	"repository": {
@@ -307,8 +310,9 @@
 		"server"
 	],
 	"devDependencies": {
-		"@types/node": "^18.15.11",
 		"@esbuild-plugins/node-resolve": "^0.2.2",
+		"@types/node": "^18.15.11",
+		"@vscode/test-web": "^0.0.50",
 		"@vscode/vsce": "^2.21.1",
 		"chalk": "^4.1.2",
 		"esbuild": "^0.19.5",

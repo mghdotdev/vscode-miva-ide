@@ -10,9 +10,6 @@ import {
 	getLanguageService
 } from 'vscode-html-languageservice/lib/esm/htmlLanguageService';
 import {
-	TextDocument
-} from 'vscode-languageserver-textdocument';
-import {
 	ClientCapabilities,
 	CodeAction,
 	CodeActionKind,
@@ -27,7 +24,13 @@ import {
 	Range,
 	SymbolKind,
 	TextEdit
-} from 'vscode-languageserver/node';
+} from 'vscode-languageserver';
+import {
+	TextDocument
+} from 'vscode-languageserver-textdocument';
+import validationTests from './data/MVT/validation.json';
+import builtinFunctionData from './data/functions-builtin.json';
+import merchantFunctionFiles from './data/functions-merchant.json';
 import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
 import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
@@ -48,7 +51,6 @@ import {
 	isTagSelfClosing,
 	parseCompletion,
 	parseCompletionFile,
-	readJSONFile,
 	safeMatch,
 	tokenize,
 	unique
@@ -63,7 +65,6 @@ import {
 	TagSnippet,
 	ValidationData,
 	ValidationDataType,
-	ValidationRule,
 	Workspace
 } from './util/interfaces';
 import { getLanguageModelCache } from './util/language-model-cache';
@@ -77,10 +78,8 @@ const BOUNDARY_AMOUNT = 200;
 const MAX_LINE_LENGTH = 9999;
 
 // Completion data
-const merchantFunctionFiles = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-merchant.json' ) );
 const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
 const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items );
-const builtinFunctionData = readJSONFile( path.resolve( __dirname, '..', 'data', 'functions-builtin.json' ) );
 const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
 const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
@@ -281,7 +280,6 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 			document
 		};
 	});
-	const validationTests: ValidationRule[] = readJSONFile( path.resolve( __dirname, '..', 'data', 'mvt', 'validation.json' ) );
 
 	// Variable to determine if settings have changed
 	let settingsChanged = true;
@@ -309,7 +307,7 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 			const text = mvtDocument.getText();
 
 			// build diagnostics array
-			return validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): any => {
+			return validationTests.reduce(( diagnostics: Diagnostic[], validation: any ) => {
 
 				// validate configured setting to check - exit if not valid
 				if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
@@ -852,7 +850,7 @@ export function getMVTCSSFeatures(mvtFeatures: LanguageFeatures): LanguageFeatur
 
 // ======================================================================================================================== //
 
-function _getMvDocumentSymbolsByUri (uri) {
+export function _getMvDocumentSymbolsByUri (uri) {
 	const pattern = `${ uri.replace( 'file://', '' ) }${ path.sep }**${ path.sep }*.mv`;
 	const files = glob.sync(pattern);
 

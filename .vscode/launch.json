@@ -19,12 +19,36 @@
 			"port": 6045,
 			"sourceMaps": true,
 			"outFiles": ["${workspaceFolder}/server/out/**/*.js"]
+		},
+		{
+			"type": "extensionHost",
+			"request": "launch",
+			"name": "Launch Client - Web",
+			"debugWebWorkerHost": true,
+			"runtimeExecutable": "${execPath}",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceRoot}",
+				"--extensionDevelopmentKind=web"
+			],
+			"outFiles": ["${workspaceFolder}/client/out-web/**/*.js"],
+			"preLaunchTask": "npm: watch-web"
+		},
+		{
+			"type": "node",
+			"request": "attach",
+			"name": "Attach to Server - Web",
+			"port": 6009,
+			"outFiles": ["${workspaceFolder}/server/out-web/**/*.js"]
 		}
 	],
 	"compounds": [
 		{
 			"name": "Client + Server",
 			"configurations": ["Launch Client", "Attach to Server"]
+		},
+		{
+			"name": "Client + Server - Web",
+			"configurations": ["Launch Client - Web", "Attach to Server - Web"]
 		}
 	]
 }
