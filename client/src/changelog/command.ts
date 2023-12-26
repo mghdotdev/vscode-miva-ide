@@ -4,7 +4,11 @@ import { Disposable } from 'vscode-languageclient';
 export async function showChangelogCommand (): Promise<unknown> {
 	const virtualChangelogDocument = await workspace.openTextDocument(Uri.parse('mivaIde:Miva IDE Updates'));
 
-	return commands.executeCommand('markdown.showPreview', virtualChangelogDocument.uri);
+	if (virtualChangelogDocument && virtualChangelogDocument.version) {
+		return commands.executeCommand('markdown.showPreview', virtualChangelogDocument.uri);
+	}
+
+	return false;
 }
 
 export function registerShowChangelogCommand (): Disposable {
