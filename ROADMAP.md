@@ -65,6 +65,11 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 - [x] Add tooltkit tskl validation.
 - [x] Document vscode-icons integration.
 
+### v1.6.0
+
+- [x] Add "What's New" popup after upgrading.
+- [x] Fix completions when inside mvt:item functions.
+
 ### v1.X.0
 
 - [ ] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks.

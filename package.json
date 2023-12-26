@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -16,11 +16,15 @@
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
-		"release": "npx vsce pack && npx vsce publish --githubBranch main"
+		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mghdotdev/vscode-miva-ide.git"
+	},
+	"bugs": {
+		"email": "mhegler@miva.com",
+		"url": "https://github.com/mghdotdev/vscode-miva-ide/issues"
 	},
 	"keywords": [
 		"snippets",
@@ -43,6 +47,11 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor."
+				},
+				"showChangelogOnUpdate": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show CHANGELOG after updating to the latest version."
 				},
 				"LSK.path": {
 					"type": "string",
@@ -142,6 +151,11 @@
 				"title": "Calculate POS Number",
 				"category": "MVT",
 				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
+			},
+			{
+				"command": "mivaIde.showChangelog",
+				"title": "Show Updates",
+				"category": "Miva IDE"
 			}
 		],
 		"grammars": [
@@ -286,10 +300,7 @@
 		]
 	},
 	"activationEvents": [
-		"onLanguage:mvt",
-		"onLanguage:mvtcss",
-		"onLanguage:mvtjs",
-		"onLanguage:mv"
+		"onFileSystem:mivaIde"
 	],
 	"workspaces": [
 		"client",

@@ -11,30 +11,31 @@ import {
 	ServerOptions,
 	TransportKind
 } from 'vscode-languageclient/node';
+import { showChangelog } from './changelog/manager';
 import mivaCommands from './miva-commands';
 import { MVT_EMPTY_ELEMENTS, MV_EMPTY_ELEMENTS } from './util/empty-tag-shared';
 import { pushAll, readJSONFile, syncSettingToWhenContext } from './util/functions';
 
+// Define language client to be used during activate and deactivate callbacks
 let client: LanguageClient;
 
 export function activate( context: ExtensionContext ) {
-
-	// path to server module
-	let serverMain = readJSONFile( context.asAbsolutePath( './server/package.json' ) ).main;
-	let serverModule = context.asAbsolutePath( path.join( 'server', serverMain ) );
+	// Path to server module
+	const serverMain = readJSONFile( context.asAbsolutePath( './server/package.json' ) ).main;
+	const serverModule = context.asAbsolutePath( path.join( 'server', serverMain ) );
 
 	// The debug options for the server
-	let debugOptions = { execArgv: [ '--nolazy', '--inspect=6045' ] };
+	const debugOptions = { execArgv: [ '--nolazy', '--inspect=6045' ] };
 
 	// If the extension is launch in debug mode the debug server options are use
 	// Otherwise the run options are used
-	let serverOptions: ServerOptions = {
+	const serverOptions: ServerOptions = {
 		run: { module: serverModule, transport: TransportKind.ipc },
 		debug: { module: serverModule, transport: TransportKind.ipc, options: debugOptions }
 	};
 
 	// Options to control the language client
-	let documentSelector = [
+	const documentSelector = [
 		{ scheme: 'file', language: 'mvt' },
 		{ scheme: 'untitled', language: 'mvt' },
 		{ scheme: 'file', language: 'mvtcss' },
@@ -44,8 +45,8 @@ export function activate( context: ExtensionContext ) {
 		{ scheme: 'file', language: 'mv' },
 		{ scheme: 'untitled', language: 'mv' }
 	];
-	let embeddedLanguages = { html: true };
-	let clientOptions: LanguageClientOptions = {
+	const embeddedLanguages = { html: true };
+	const clientOptions: LanguageClientOptions = {
 		documentSelector,
 		synchronize: {
 			configurationSection: [ 'html', 'MVT', 'MV', 'LSK' ]
@@ -60,10 +61,11 @@ export function activate( context: ExtensionContext ) {
 	client.registerProposedFeatures();
 	client.start();
 
-	// push client to context
+	// Push client to subscriptions
 	context.subscriptions.push( client );
 
-	// set advanced language configurations
+	// Set advanced language configurations
+
 	languages.setLanguageConfiguration('mvt', {
 		indentationRules: {
 			increaseIndentPattern: new RegExp( `<(?!\\?|(?:area|base|br|col|frame|hr|html|img|input|keygen|link|menuitem|meta|param|source|track|wbr|${ MVT_EMPTY_ELEMENTS.join( '|' ) })\\b|[^>]*\\/>)([-_\\.A-Za-z0-9:]+)(?=\\s|>)\\b[^>]*>(?!.*<\\/\\1>)|<!--(?!.*-->)|\\{[^}\"']*$`, 'i'),
@@ -161,10 +163,12 @@ export function activate( context: ExtensionContext ) {
 	// push all commands to context
 	pushAll( context.subscriptions, mivaCommands );
 
+	// Run function to show the changelog to the user
+	showChangelog(context);
 }
 
 export function deactivate(): Thenable<void> | undefined {
 	client?.stop();
-	return;
 
+	return;
 }

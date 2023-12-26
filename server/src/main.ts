@@ -225,7 +225,11 @@ connection.onDidChangeConfiguration(change  => {
 	documents.all().forEach( triggerValidation );
 
 	for (let language in languages) {
-		languages[language]?.onConfigurationChange();
+		const foundLanguage = languages[language];
+
+		if (foundLanguage && typeof foundLanguage.onConfigurationChange === 'function') {
+			languages[language].onConfigurationChange();
+		}
 	}
 
 });

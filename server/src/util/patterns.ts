@@ -28,6 +28,7 @@ export default {
 		LEFT_IN_ATTR: /[a-z-_]\s*=\s*"\s*([^"]*?)$/i,
 		LEFT_ATTR_NAME: /([a-z-_]+)\s*=\s*"\s*[^"]*?$/i,
 		LEFT_IN_VALUE_ATTR: /value\s*=\s*"\s*(\{)?[^}"(]*$/i,
+		LEFT_IN_FUNCTION: /(?<=[a-z0-9_]+\s*\()[^)]*$/i,
 		RIGHT_IN_TAG: /^[^<]*?(?=>)/,
 		RIGHT_IN_ATTR: /^\s*?(\})?"/,
 		RIGHT_IS_OPEN_PAREN: /^[a-z0-9_]*?\s*?(?=\()/i,
