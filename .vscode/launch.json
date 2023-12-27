@@ -27,7 +27,7 @@
 			"debugWebWorkerHost": true,
 			"runtimeExecutable": "${execPath}",
 			"args": [
-				"--extensionDevelopmentPath=${workspaceRoot}",
+				"--extensionDevelopmentPath=${workspaceFolder}",
 				"--extensionDevelopmentKind=web"
 			],
 			"outFiles": ["${workspaceFolder}/client/out-web/**/*.js"],

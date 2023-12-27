@@ -3,6 +3,7 @@
 		"access": "restricted"
 	},
 	"main": "./out/main.js",
+	"browser": "./out-web/main.js",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -13,8 +14,8 @@
 		"build": "npm run esbuild -- --sourcemap",
 		"watch": "npm run esbuild -- --sourcemap --watch=forever",
 		"build-web:prod": "npm run esbuild-web -- --minify",
-		"build-web": "npm run esbuild-web -- --sourcemap",
-		"watch-web": "npm run esbuild-web -- --sourcemap --watch=forever"
+		"build-web": "npm run esbuild-web -- --sourcemap=external",
+		"watch-web": "npm run esbuild-web -- --sourcemap=external --watch=forever"
 	},
 	"devDependencies": {
 		"@types/semver": "^7.5.6",

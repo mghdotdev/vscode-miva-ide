@@ -2,6 +2,7 @@ node_modules
 out
 out-web
 .vscode-test
+.vscode-test-web
 *.code-workspace
 */*.tsbuildinfo
 *.vsix

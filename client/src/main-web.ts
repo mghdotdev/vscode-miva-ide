@@ -1,4 +1,5 @@
 import { ExtensionContext } from 'vscode';
+import { sharedActivate } from './main-shared';
 
 // Define language client to be used during activate and deactivate callbacks
 // let client: LanguageClient;
@@ -18,6 +19,8 @@ export function activate (context: ExtensionContext) {
 	// client.start();
 
 	// context.subscriptions.push( client );
+
+	sharedActivate(context);
 }
 
 export function deactivate(): Thenable<void> | undefined {

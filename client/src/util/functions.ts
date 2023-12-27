@@ -22,5 +22,5 @@ export function syncSettingToWhenContext (section: string, settingName: string, 
 export async function getFileContentsFromUri (uri: Uri): Promise<string> {
 	const fileContents = await workspace.fs.readFile(uri);
 
-	return fileContents.toString();
+	return new TextDecoder().decode(fileContents);
 }
