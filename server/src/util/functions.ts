@@ -1,4 +1,5 @@
 import _cloneDeep from 'lodash.clonedeep';
+import setImmediateShim from 'set-immediate-shim';
 import {
 	CancellationToken,
 	CompletionItem,
@@ -54,7 +55,7 @@ export function tokenize( text: string, matches: RegExpExecArray ): string {
 
 export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMessage: string, token: CancellationToken ): Thenable<T | ResponseError<any>> {
 	return new Promise<T | ResponseError<any>>((resolve) => {
-		setImmediate(() => {
+		setImmediateShim(() => {
 			if ( token.isCancellationRequested ) {
 				resolve( cancelValue() );
 			}
@@ -75,7 +76,7 @@ export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMess
 
 export function runSafe<T, E>( func: () => T, errorVal: T, errorMessage: string, token: CancellationToken ): Thenable<T | ResponseError<E>> {
 	return new Promise<T | ResponseError<E>>(( resolve ) => {
-		setImmediate(() => {
+		setImmediateShim(() => {
 			if ( token.isCancellationRequested ) {
 				resolve( cancelValue() );
 			}
