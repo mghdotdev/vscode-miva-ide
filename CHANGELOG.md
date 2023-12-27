@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.7.0
+
+* Added support for VSCode's Web Extension features.
+	* This allows users to install the Miva IDE extension when using [Visual Studio Code for the Web](https://code.visualstudio.com/docs/editor/vscode-web).
+* Fixed issue with "MVT: Calculate POS Number" command.
+
 ## v1.6.0
 
 * Added feature that shows the changelog after an update happens.
