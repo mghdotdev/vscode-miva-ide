@@ -1,8 +1,4 @@
 import {
-	Range,
-	TextDocument
-} from 'vscode-languageserver-textdocument';
-import {
 	CodeAction,
 	CodeActionContext,
 	Command,
@@ -16,7 +12,11 @@ import {
 	Position,
 	SymbolInformation,
 	WorkspaceFolder
-} from 'vscode-languageserver/node';
+} from 'vscode-languageserver';
+import {
+	Range,
+	TextDocument
+} from 'vscode-languageserver-textdocument';
 
 export interface Settings {
 	LSK?: any;
