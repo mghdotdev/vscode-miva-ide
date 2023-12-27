@@ -28,6 +28,7 @@ import {
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
+import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
@@ -894,21 +895,20 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWith
 				const name = scanner.getTokenText().replace( /"/g, '' );
 
 				if (name) {
-					const pathInfo = path.parse(document.uri);
-
 					const range = Range.create(
 						document.positionAt( scanner.getTokenOffset() + 1 ),
 						document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
 					);
 
 					if ( (lastTagName === 'mvassign' || lastTagName === 'mvassignarray') && lastAttributeName === 'name' ) {
+						const basename = Utils.basename(URI.parse(document.uri));
 
 						symbols.push({
 							documentation: {
 								kind: 'markdown',
 								value: [
 									'',
-									`Defined in [${pathInfo.base}](${document.uri}#L${range.start.line + 1},${range.start.character + 1}) on Ln ${range.start.line + 1}, Col ${range.start.character + 1}`,
+									`Defined in [${basename}](${document.uri}#L${range.start.line + 1},${range.start.character + 1}) on Ln ${range.start.line + 1}, Col ${range.start.character + 1}`,
 									'',
 									'```mv',
 									lastTagName === 'mvassign'
