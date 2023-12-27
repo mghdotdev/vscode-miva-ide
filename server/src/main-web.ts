@@ -8,4 +8,4 @@ const messageWriter = new BrowserMessageWriter(self);
 
 const connection = createConnection(messageReader, messageWriter);
 
-activate(connection);
+activate(connection, true);

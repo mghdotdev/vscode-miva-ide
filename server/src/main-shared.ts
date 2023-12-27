@@ -25,7 +25,7 @@ import { baseMVTFeatures, getMVFeatures, getMVTCSSFeatures, getMVTFeatures } fro
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { Languages, Settings, Workspace } from './util/interfaces';
 
-export function activate (connection: Connection) {
+export function activate (connection: Connection, isWeb: boolean = false) {
 	// ================================================================================================================================ //
 
 	function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {

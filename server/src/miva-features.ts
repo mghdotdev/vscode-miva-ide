@@ -1,7 +1,4 @@
-import { existsSync, readFileSync } from 'fs';
-import { glob } from 'glob';
 import _get from 'lodash.get';
-import * as path from 'path';
 import {
 	getCSSLanguageService
 } from 'vscode-css-languageservice/lib/esm/cssLanguageService';
@@ -95,10 +92,6 @@ const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: 
 		document
 	};
 });
-
-// Symbol (variable, LSK function) containers
-let workspaceSymbols: any[] = [];
-let lskSymbols: any[] = [];
 
 // Helper function for "variable" completion target list
 const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
@@ -290,9 +283,6 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 	let mvtTagAndSnippetData: Record<string, TagData | TagSnippet>;
 	let mvtTagCompletions: CompletionList;
 	const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
-
-	// Get lsk symbols
-	_createLskSymbols(workspace.settings);
 
 	return {
 
@@ -576,13 +566,7 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 
-			if (lskSymbols.length === 0) {
-				_createLskSymbols(settings);
-			}
-
 			return [
-				...workspaceSymbols,
-				...lskSymbols,
 				...documentSymbols
 			]
 				?.filter(( symbol ) => {
@@ -595,10 +579,6 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 		onHover ( document: TextDocument, position: Position, settings: Settings ) {
 
 			buildTagCompletionData( settings );
-
-			if (lskSymbols.length === 0) {
-				_createLskSymbols(workspace.settings);
-			}
 
 			const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
@@ -755,7 +735,7 @@ export function baseMVTFeatures(workspace: Workspace, clientCapabilities: Client
 			}
 
 			// Variable / Entity Symbol Hover Documentation
-			const symbols = [].concat( lskSymbols, documentSymbols );
+			const symbols = [].concat( documentSymbols );
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 			let symbolDocumentation = '';
@@ -851,20 +831,6 @@ export function getMVTCSSFeatures(mvtFeatures: LanguageFeatures): LanguageFeatur
 
 // ======================================================================================================================== //
 
-export function _getMvDocumentSymbolsByUri (uri) {
-	const pattern = `${ uri.replace( 'file://', '' ) }${ path.sep }**${ path.sep }*.mv`;
-	const files = glob.sync(pattern);
-
-	return files.reduce((output, file) => {
-
-		let fileContents = readFileSync( file ).toString();
-		const {symbols} = mvDocuments.get( TextDocument.create( file, 'mv', 1, fileContents ) );
-
-		return output.concat( symbols );
-
-	}, []);
-}
-
 function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWithDocumentation[] {
 
 	const symbols: SymbolInformationWithDocumentation[] = [];
@@ -957,23 +923,7 @@ function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWith
 
 }
 
-function _createLskSymbols (settings) {
-	const lskPath = _get(settings, 'LSK.path');
-	if (lskPath) {
-		const resolvedLskPath = path.resolve(lskPath).replace(new RegExp(`${path.sep}$`), '');
-		if (existsSync(lskPath)) {
-			lskSymbols = _getMvDocumentSymbolsByUri(resolvedLskPath);
-		}
-	}
-}
-
 export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
-
-	_createLskSymbols(workspace.settings);
-
-	workspace.folders.forEach(( folder ) => {
-		workspaceSymbols = workspaceSymbols.concat( _getMvDocumentSymbolsByUri(folder.uri) );
-	});
 
 	// MV-specific completion data
 	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvTagAndSnippetData ) ) );
@@ -1133,13 +1083,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			const word = getWordAtOffset( line, position.character )?.toLowerCase();
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 
-			if (lskSymbols.length === 0) {
-				_createLskSymbols(settings);
-			}
-
 			return [
-				...workspaceSymbols,
-				...lskSymbols,
 				...documentSymbols
 			]
 				?.filter(( symbol ) => {
@@ -1304,7 +1248,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 			}
 
 			// Variable / Symbol Hover Documentation
-			const symbols = [].concat( lskSymbols, documentSymbols );
+			const symbols = [].concat( documentSymbols );
 			const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 			let symbolDocumentation = '';
 
