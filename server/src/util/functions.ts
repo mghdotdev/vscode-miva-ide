@@ -13,8 +13,7 @@ import {
 } from 'vscode-languageserver';
 import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
-export function formatError( message: string,
-	err: any ): string {
+export function formatError( message: string, err: any ): string {
 
 	if ( err instanceof Error ) {
 
