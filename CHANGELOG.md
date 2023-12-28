@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.6.2
+
+* Fixed MvASSIGNARRAY completion bugs.
+
 ## v1.6.1
 
 * Removed automatic popup to show the changelog.
