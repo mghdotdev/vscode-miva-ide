@@ -2,6 +2,7 @@ import {
 	readFileSync
 } from 'fs';
 import _cloneDeep from 'lodash.clonedeep';
+import { HTMLDocument, Node } from 'vscode-html-languageservice';
 import {
 	CancellationToken,
 	CompletionItem,
@@ -494,5 +495,23 @@ export function isTagSelfClosing (tagName: string): boolean {
 			return true;
 		default:
 			return false;
+	}
+}
+
+export function filterTagData (tagData: Record<string, TagData>, callback: (value: [string, TagData]) => boolean): Record<string, TagData> {
+	return Object.fromEntries(
+		Object.entries(tagData)
+			?.filter(callback)
+	);
+}
+
+export function getNodeAtOffset (offset: number, parsedDocument: HTMLDocument): Node {
+	let currentNode = parsedDocument.findNodeAt(offset);
+	while (currentNode) {
+		if (offset > currentNode.startTagEnd && offset < currentNode.endTagStart) {
+			return currentNode;
+		}
+
+		currentNode = currentNode.parent;
 	}
 }

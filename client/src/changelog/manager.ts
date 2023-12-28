@@ -3,6 +3,8 @@ import { ExtensionContext, TextDocumentContentProvider, Uri, window, workspace }
 import { getFileContentsFromUri } from '../util/functions';
 import { registerShowChangelogCommand, showChangelogCommand } from './command';
 
+const CHANGELOG_HEADER_REPLACEMENT = '# Miva IDE CHANGELOG';
+
 export async function showChangelog (context: ExtensionContext): Promise<boolean> {
 	const provider = new (class implements TextDocumentContentProvider {
 		async provideTextDocumentContent(uri: Uri): Promise<string> {
@@ -15,7 +17,7 @@ export async function showChangelog (context: ExtensionContext): Promise<boolean
 					.catch(err => console.error(err)) || '';
 
 				return changelogFileContents && changelogFileContents?.length > 0
-					? changelogFileContents.replace('# Change Log', changelogHeader)
+					? changelogFileContents.replace(CHANGELOG_HEADER_REPLACEMENT, changelogHeader)
 					: undefined;
 			}
 

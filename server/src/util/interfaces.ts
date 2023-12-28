@@ -159,6 +159,8 @@ export interface TagData extends BaseTagData {
 	selfClosing: boolean;
 	void: boolean;
 	command?: Command
+	parent?: string;
+	children?: string[];
 }
 
 export interface TagSnippet extends BaseTagData {
