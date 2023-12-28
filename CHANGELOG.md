@@ -2,7 +2,7 @@
 
 ## v1.6.2
 
-* Updated CHANGELOG header to be consistant with README.
+* Updated CHANGELOG header to be consistent with README.
 * Fixed MvASSIGNARRAY completion bugs.
 
 ## v1.6.1
