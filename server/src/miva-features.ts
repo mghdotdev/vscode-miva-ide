@@ -30,11 +30,12 @@ import {
 } from 'vscode-languageserver/node';
 import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
-import mvTagAndSnippetData, { tags as mvTagData } from './mv/tags';
+import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import { generateMvtTags, mvtSnippetData } from './mvt/tags';
 import {
+	filterTagData,
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
@@ -43,6 +44,7 @@ import {
 	getDoValueCompletions,
 	getEntityAtOffset,
 	getHoverMapFromCompletionFile,
+	getNodeAtOffset,
 	getVariableAtOffset,
 	getWordAtOffset,
 	isTagSelfClosing,
@@ -978,7 +980,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 	});
 
 	// MV-specific completion data
-	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvTagAndSnippetData ) ) );
+	const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( { ...mvSnippetData, ...filterTagData(mvTagData, ([, tagData]) => !tagData.parent) } ) ) );
 
 	return {
 
@@ -1085,6 +1087,21 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 				return null;
 			}
 
+			// Determine if child tags exist and only complete those if inside a parent tag
+			const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
+			const currentNode = getNodeAtOffset(cursorPositionOffset, parsedDocument);
+			const currentTagLower = currentNode?.tag?.toLowerCase();
+
+			if (currentTagLower) {
+				const foundTag = mvTagData[currentTagLower];
+
+				if (foundTag?.children?.length > 0) {
+					return CompletionList.create(
+						parseCompletionFile( Object.values( foundTag?.children?.map(childTagNameLower => mvTagData[childTagNameLower]) ) )
+					);
+				}
+			}
+
 			/**
 			 * Used to determine if the tag starts with either <mvt: mvt: or < and removes that portion with an additionalTextEdit after completion
 			 */
@@ -1115,7 +1132,7 @@ export function getMVFeatures( workspace: Workspace, clientCapabilities: ClientC
 						};
 					})
 					: mvTagCompletions.items,
-				...htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || []
+				...htmlLanguageService.doComplete(document, position, parsedDocument)?.items || []
 			]);
 		},
 
