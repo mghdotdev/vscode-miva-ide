@@ -258,7 +258,7 @@ repository:
 
   # =-======================== Expression ========================-= #
   expression:
-    begin: '{'
+    begin: '\{(?!\n)'
     beginCaptures:
       0: {name: punctuation.definition.expression.begin.mv}
     end: '}'
