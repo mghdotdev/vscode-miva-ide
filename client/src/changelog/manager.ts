@@ -1,5 +1,5 @@
 import * as semver from 'semver';
-import { ExtensionContext, TextDocumentContentProvider, Uri, workspace } from 'vscode';
+import { ExtensionContext, TextDocumentContentProvider, Uri, window, workspace } from 'vscode';
 import { getFileContentsFromUri } from '../util/functions';
 import { registerShowChangelogCommand, showChangelogCommand } from './command';
 
@@ -42,7 +42,12 @@ export async function showChangelog (context: ExtensionContext): Promise<boolean
 		const versionDiff = semver.diff(latestVersion, storedLatestVersion);
 
 		if (versionDiff === 'major' || versionDiff === 'minor') {
-			showChangelogCommand();
+			// Show information message with link to show changelog
+			const choice = await window.showInformationMessage(`Miva IDE has been updated to v${latestVersion}`, 'Show Updates', 'Close');
+
+			if (choice === 'Show Updates') {
+				showChangelogCommand();
+			}
 		}
 
 		// Set the latest version recorded in the global state
