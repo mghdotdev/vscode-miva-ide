@@ -1,8 +1,12 @@
 # Miva IDE CHANGELOG
 
+## v1.6.3
+
+* Fixed Miva Script expression syntax hightlighting error.
+
 ## v1.6.2
 
-* Updated CHANGELOG header to be consistant with README.
+* Updated CHANGELOG header to be consistent with README.
 * Fixed MvASSIGNARRAY completion bugs.
 
 ## v1.6.1
