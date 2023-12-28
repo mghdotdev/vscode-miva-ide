@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.6.1
+
+* Removed automatic popup to show the changelog.
+* Updated changelog popup functionality to instead display an information message with a link to show the changelog.
+
 ## v1.6.0
 
 * Added feature that shows the changelog after an update happens.
