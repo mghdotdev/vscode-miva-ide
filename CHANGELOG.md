@@ -1,4 +1,4 @@
-# Change Log
+# Miva IDE CHANGELOG
 
 ## v1.6.1
 
