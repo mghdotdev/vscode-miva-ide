@@ -2,7 +2,7 @@
 
 ## v1.6.3
 
-* Fixed Miva Script expression syntax hightlighting error.
+* Fixed Miva Script expression syntax highlighting error.
 
 ## v1.6.2
 
