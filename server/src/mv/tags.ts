@@ -5,11 +5,11 @@ import {
 
 // Snippet data structure
 
-const snippets: Record<string, TagSnippet> = {};
+export const mvSnippetData: Record<string, TagSnippet> = {};
 
 // Full tag data structure
 
-export const tags: Record<string, TagData> = {
+export const mvTagData: Record<string, TagData> = {
 	"miva": {
 		"attributes": {
 			"standardoutputlevel": {
@@ -4395,52 +4395,17 @@ export const tags: Record<string, TagData> = {
 				"label": "VALUE",
 				"required": true,
 				"valueType": "expression"
-			},
-			"subtags": {
-				"commitCharacters": [
-					"=",
-					"\""
-				],
-				"documentation": "MvDIMENSION and <MvMEMBER>.",
-				"insertText": "SubTags = \"$0\"",
-				"insertTextFormat": "Snippet",
-				"kind": "Enum",
-				"label": "SubTags",
-				"required": true,
-				"valueType": "string"
-			},
-			"<mvdimensionindex=\"numberic": {
-				"commitCharacters": [
-					"=",
-					"\""
-				],
-				"documentation": "{ expression } | literal\"> INDEX: Declares the index of the array in NAME \n\tthat will receive the VALUE.",
-				"insertText": "<MvDIMENSIONINDEX=\"numberic = \"$0\"",
-				"insertTextFormat": "Snippet",
-				"kind": "Enum",
-				"label": "<MvDIMENSIONINDEX=\"numberic",
-				"required": true,
-				"valueType": "string"
-			},
-			"<mvmembername=\"{string": {
-				"commitCharacters": [
-					"=",
-					"\""
-				],
-				"documentation": "{ expression } | literal }\"> NAME: Declares sub-variable name in a structure.",
-				"insertText": "<MvMEMBERNAME=\"{string = \"$0\"",
-				"insertTextFormat": "Snippet",
-				"kind": "Enum",
-				"label": "<MvMEMBERNAME=\"{string",
-				"required": true,
-				"valueType": "string"
 			}
 		},
 		"commitCharacters": [
 			"/"
 		],
 		"documentation": "Defines a multi-dimension array or structure using  and/or .\n\nArrays and structures are used to store multiple values in a single variable. They can consist of a simple indexed \nlist of values or more complex spreadsheet or database like structures.  If you think of a single dimension array \nas an simple numbered list, a two dimension array can be though of as a spreadsheet with numbered rows and columns. Miva \nScript provides flexible tools for creating even more complex data structures. Arrays can also be assigned using <MvASSIGN>; \noften the resulting code is shorter, but their is no functional difference between the two forms.",
-		"insertText": "<MvASSIGNARRAY NAME = \"{ $1 }\" VALUE = \"{ $2 }\" SubTags = \"$3\" <MvDIMENSIONINDEX=\"numberic = \"$4\" <MvMEMBERNAME=\"{string = \"$5\">\n\t$6\n</MvASSIGNARRAY>",
+		"children": [
+			"mvdimension",
+			"mvmember"
+		],
+		"insertText": "<MvASSIGNARRAY NAME = \"$1\" VALUE = \"{ $2 }\">\n\t$3\n</MvASSIGNARRAY>",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvASSIGNARRAY",
@@ -5269,6 +5234,7 @@ export const tags: Record<string, TagData> = {
 			"/"
 		],
 		"documentation": "Assigns an index position for a mulidimensional array. See\n\nIf you think of a single dimension array as an simple numbered list, a two dimension array can be though of as a \nspreadsheet with numbered rows and columns. Miva Script provides flexible tools for creating even more complex data \nstructures.",
+		"parent": "mvassignarray",
 		"insertText": "<MvDIMENSION INDEX = \"{ $1 }\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
@@ -6655,19 +6621,20 @@ export const tags: Record<string, TagData> = {
 					"\""
 				],
 				"documentation": "Declares sub-variable name within a structure.",
-				"insertText": "NAME = \"{ $0 }\"",
+				"insertText": "NAME = \"$0\"",
 				"insertTextFormat": "Snippet",
 				"kind": "Enum",
 				"label": "NAME",
 				"required": true,
-				"valueType": "expression"
+				"valueType": "literal"
 			}
 		},
 		"commitCharacters": [
 			"/"
 		],
 		"documentation": "Assigns a structure recordname for a mulidimensional array or structure. See\n\nStructures are used to store multiple values in a single variable. If a value is assigned to a member that did not previously exist, the entry will be created.",
-		"insertText": "<MvMEMBER NAME = \"{ $1 }\">$0",
+		"parent": "mvassignarray",
+		"insertText": "<MvMEMBER NAME = \"$1\">$0",
 		"insertTextFormat": "Snippet",
 		"kind": "TypeParameter",
 		"label": "MvMEMBER",
@@ -7663,9 +7630,4 @@ export const tags: Record<string, TagData> = {
 		"selfClosing": true,
 		"void": true
 	}
-};
-
-export default {
-	...snippets,
-	...tags
 };

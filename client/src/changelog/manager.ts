@@ -1,7 +1,9 @@
 import * as semver from 'semver';
-import { ExtensionContext, TextDocumentContentProvider, Uri, workspace } from 'vscode';
+import { ExtensionContext, TextDocumentContentProvider, Uri, window, workspace } from 'vscode';
 import { getFileContentsFromUri } from '../util/functions';
 import { registerShowChangelogCommand, showChangelogCommand } from './command';
+
+const CHANGELOG_HEADER_REPLACEMENT = '# Miva IDE CHANGELOG';
 
 export async function showChangelog (context: ExtensionContext): Promise<boolean> {
 	const provider = new (class implements TextDocumentContentProvider {
@@ -15,8 +17,8 @@ export async function showChangelog (context: ExtensionContext): Promise<boolean
 					.catch(err => console.error(err)) || '';
 
 				return changelogFileContents && changelogFileContents?.length > 0
-					? changelogFileContents.replace('# Change Log', changelogHeader)
-					: 'There was an error loading the CHANGELOG.';
+					? changelogFileContents.replace(CHANGELOG_HEADER_REPLACEMENT, changelogHeader)
+					: undefined;
 			}
 
 			return '';
@@ -42,7 +44,12 @@ export async function showChangelog (context: ExtensionContext): Promise<boolean
 		const versionDiff = semver.diff(latestVersion, storedLatestVersion);
 
 		if (versionDiff === 'major' || versionDiff === 'minor') {
-			showChangelogCommand();
+			// Show information message with link to show changelog
+			const choice = await window.showInformationMessage(`Miva IDE has been updated to v${latestVersion}`, 'Show Updates', 'Close');
+
+			if (choice === 'Show Updates') {
+				showChangelogCommand();
+			}
 		}
 
 		// Set the latest version recorded in the global state

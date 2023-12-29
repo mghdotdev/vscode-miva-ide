@@ -1,4 +1,18 @@
-# Change Log
+# Miva IDE CHANGELOG
+
+## v1.6.3
+
+* Fixed Miva Script expression syntax highlighting error.
+
+## v1.6.2
+
+* Updated CHANGELOG header to be consistent with README.
+* Fixed MvASSIGNARRAY completion bugs.
+
+## v1.6.1
+
+* Removed automatic popup to show the CHANGELOG.
+* Updated CHANGELOG popup functionality to instead display an information message with a link to show the CHANGELOG.
 
 ## v1.7.0
 
@@ -8,10 +22,10 @@
 
 ## v1.6.0
 
-* Added feature that shows the changelog after an update happens.
-* Added setting that allows you to disable showing the changelog after update.
+* Added feature that shows the CHANGELOG after an update happens.
+* Added setting that allows you to disable showing the CHANGELOG after update.
 	* `mivaIde.showChangelogOnUpdate`
-* Added a command that allows you to show the changelog.
+* Added a command that allows you to show the CHANGELOG.
 	* "Miva IDE: Show Updates"
 * Fixed `mvt:item` tag variable completions within function parameters.
 * Fixed bug related to legacy if/elseif/else snippet setting not working properly.
