@@ -5,6 +5,7 @@
 * Added support for VSCode's Web Extension features.
 	* This allows users to install the Miva IDE extension when using [Visual Studio Code for the Web](https://code.visualstudio.com/docs/editor/vscode-web).
 * Fixed issue with "MVT: Calculate POS Number" command.
+* Updated LSK functionality to utilize local workspace LSK reference instead of `mivaIde.LSK.path` setting if an LSK folder is detected within the workspace.
 
 ## v1.6.3
 
