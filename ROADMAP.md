@@ -74,6 +74,10 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 - [x] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks.
 
+### v1.7.0
+
+- [x] Add web extension support.
+
 ### v1.X.0
 
 - [ ] Fix indentation issues when running Reindent Lines.

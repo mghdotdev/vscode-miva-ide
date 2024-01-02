@@ -1,15 +1,5 @@
-import { readFileSync } from 'fs';
-import { Uri, commands, workspace } from 'vscode';
 
-export function readJSONFile( location: string ) {
-	try {
-		return JSON.parse( readFileSync( location ).toString() );
-	}
-	catch( e ) {
-		console.log( `Problems reading ${ location }: ${ e }` );
-		return {};
-	}
-}
+import { Uri, commands, workspace } from 'vscode';
 
 export function pushAll<T>( to: T[], from: T[] ) {
 	if ( from ) {
@@ -32,5 +22,5 @@ export function syncSettingToWhenContext (section: string, settingName: string, 
 export async function getFileContentsFromUri (uri: Uri): Promise<string> {
 	const fileContents = await workspace.fs.readFile(uri);
 
-	return fileContents.toString();
+	return new TextDecoder().decode(fileContents);
 }

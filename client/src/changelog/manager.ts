@@ -37,7 +37,7 @@ export async function showChangelog (context: ExtensionContext): Promise<boolean
 	// Compare the latest package.json version with the global state stored last version
 
 	const latestVersion = <string> context.extension.packageJSON.version;
-	const storedLatestVersion = <string> context.globalState.get('latestVersion');
+	const storedLatestVersion = <string> context.globalState.get('latestVersion') || '0.0.0';
 
 	if (latestVersion !== storedLatestVersion) {
 		// Only show the changelog if the difference is major or minor updates

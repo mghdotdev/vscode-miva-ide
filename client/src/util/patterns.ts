@@ -6,7 +6,7 @@ export default {
 		VARIABLE_LOCAL: /^l\.settings\:(.+?)$/i,
 		VARIABLE_GLOBAL: /^g\.(.+?)/i,
 
-		FOREACH_TAG_OPEN: /<mvt:foreach/gi,
+		FOREACH_TAG_OPEN: /<mvt:foreach\b/gi,
 		FOREACH_TAG_CLOSE: /<\/mvt:foreach/gi,
 
 		LEFT_FILE_ATTR: /(?<=file\s*=\s*\"\s*)[^<]*?$/i,
