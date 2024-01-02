@@ -1,4 +1,5 @@
 import { Connection, ProposedFeatures, createConnection } from 'vscode-languageserver/node';
+import { LskProvider } from './lsk-provider/lsk-provider';
 import { activate } from './main-shared';
 import { formatError } from './util/functions';
 
@@ -13,4 +14,4 @@ process.on('uncaughtException', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
 });
 
-activate(connection);
+activate(connection, new LskProvider());

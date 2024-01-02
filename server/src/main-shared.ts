@@ -21,11 +21,12 @@ import {
 } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI } from 'vscode-uri';
-import { baseMVTFeatures, getMVFeatures, getMVTCSSFeatures, getMVTFeatures } from './miva-features';
+import type { LskProvider } from './lsk-provider/lsk-provider';
+import { activateFeatures } from './miva-features';
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { Languages, Settings, Workspace } from './util/interfaces';
 
-export function activate (connection: Connection, isWeb: boolean = false) {
+export function activate (connection: Connection, lskProvider?: LskProvider) {
 	// ================================================================================================================================ //
 
 	function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
@@ -128,6 +129,8 @@ export function activate (connection: Connection, isWeb: boolean = false) {
 			get settings() { return globalSettings },
 			get folders() { return workspaceFolders }
 		};
+
+		const { baseMVTFeatures, getMVFeatures, getMVTCSSFeatures, getMVTFeatures } = activateFeatures(lskProvider);
 
 		const baseFeatures = baseMVTFeatures( workspace, params.capabilities );
 		const mvtFeatures = getMVTFeatures(baseFeatures);

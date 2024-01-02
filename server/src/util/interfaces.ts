@@ -46,13 +46,13 @@ export interface LanguageFeatures {
 
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
 
-	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
+	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Promise<Definition> | Promise<null>;
 
-	onHover?: ( document: TextDocument, position: Position, settings?: Settings ) => Hover | null
+	onHover?: ( document: TextDocument, position: Position, settings?: Settings ) => Promise<Hover> | Promise<null>;
 
-	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[]
+	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[];
 
-	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[]
+	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[];
 
 }
 
