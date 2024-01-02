@@ -76,7 +76,7 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.7.0
 
-- [ ] Add web extension support.
+- [x] Add web extension support.
 
 ### v1.X.0
 
