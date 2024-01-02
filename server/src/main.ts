@@ -1,6 +1,6 @@
 import { Connection, ProposedFeatures, createConnection } from 'vscode-languageserver/node';
-import { LskProvider } from './lsk-provider/lsk-provider';
 import { activate } from './main-shared';
+import { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import { formatError } from './util/functions';
 
 // Create a connection for the server
@@ -14,4 +14,4 @@ process.on('uncaughtException', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
 });
 
-activate(connection, new LskProvider());
+activate(connection, new WorkspaceSymbolProvider());

@@ -27,8 +27,8 @@ import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
-import type { LskProvider } from './lsk-provider/lsk-provider';
 import mvOperatorData from './mv/operators';
+import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
@@ -69,7 +69,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures(lskProvider?: LskProvider) {
+export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -97,7 +97,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 	});
 
 	// Lsk Symbols array
-	let lskSymbols: SymbolInformationWithDocumentation[] = [];
+	let mivaScriptWorkspaceSymbols: SymbolInformationWithDocumentation[] = [];
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
@@ -572,11 +572,11 @@ export function activateFeatures(lskProvider?: LskProvider) {
 				const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 				const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 
-				await _createLskSymbols(workspace, settings);
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				return [
 					...documentSymbols,
-					...lskSymbols
+					...mivaScriptWorkspaceSymbols
 				]
 					?.filter(( symbol ) => {
 						const nameLower: string = symbol.name.toLowerCase();
@@ -589,7 +589,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 
 				buildTagCompletionData( settings );
 
-				await _createLskSymbols(workspace, settings);
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				const {document: mvtDocument, symbols: documentSymbols} = mvtDocuments.get( document );
 
@@ -746,7 +746,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 				}
 
 				// Variable / Entity Symbol Hover Documentation
-				const symbols = [].concat( lskSymbols, documentSymbols );
+				const symbols = [].concat( mivaScriptWorkspaceSymbols, documentSymbols );
 				const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 				const entity = getEntityAtOffset( line, position.character )?.toLowerCase();
 				let symbolDocumentation = '';
@@ -842,19 +842,29 @@ export function activateFeatures(lskProvider?: LskProvider) {
 
 	// ======================================================================================================================== //
 
-	async function _createLskSymbols (workspace: Workspace, settings: Settings, force: boolean = false) {
+	async function _createMivaScriptWorkspaceSymbols (workspace: Workspace, settings: Settings, force: boolean = false) {
 		// Exit if provider is missing
-		if (!lskProvider) {
+		if (!workspaceSymbolProvider) {
 			return false;
 		}
 
-		if (lskSymbols && (lskSymbols.length === 0 || force)) {
-			lskProvider.setWorkspace({
-				folders: workspace.folders,
+		if (mivaScriptWorkspaceSymbols && (mivaScriptWorkspaceSymbols.length === 0 || force)) {
+			workspaceSymbolProvider.setWorkspace({
+				folders: [
+					...workspace.folders,
+					...settings?.LSK?.path
+						? [
+							{
+								name: 'settings.LSK.path',
+								uri: settings.LSK.path
+							}
+						]
+						: []
+				],
 				settings: settings
 			});
 
-			lskSymbols = await lskProvider.provideSymbols(_mvFindDocumentSymbols);
+			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols(_mvFindDocumentSymbols);
 		}
 
 		return true;
@@ -1122,7 +1132,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 
 				const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
 
-				await _createLskSymbols(workspace, settings);
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				// Get word
 				const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -1131,7 +1141,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 
 				return [
 					...documentSymbols,
-					...lskSymbols
+					...mivaScriptWorkspaceSymbols
 				]
 					?.filter(( symbol ) => {
 						const nameLower: string = symbol.name.toLowerCase();
@@ -1145,7 +1155,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 
 				const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
 
-				await _createLskSymbols(workspace, settings);
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				// Get word
 				const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -1297,7 +1307,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 				}
 
 				// Variable / Symbol Hover Documentation
-				const symbols = [].concat( lskSymbols, documentSymbols );
+				const symbols = [].concat( mivaScriptWorkspaceSymbols, documentSymbols );
 				const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
 				let symbolDocumentation = '';
 

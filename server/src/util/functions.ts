@@ -12,6 +12,7 @@ import {
 	MarkupKind,
 	ResponseError
 } from 'vscode-languageserver';
+import { URI } from 'vscode-uri';
 import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string, err: any ): string {
@@ -501,4 +502,12 @@ export function getNodeAtOffset (offset: number, parsedDocument: HTMLDocument): 
 
 		currentNode = currentNode.parent;
 	}
+}
+
+export function uriToFsPath (uri: URI | string) {
+	if (typeof uri === 'string') {
+		return URI.parse(uri).fsPath;
+	}
+
+	return uri.fsPath;
 }

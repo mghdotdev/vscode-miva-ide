@@ -68,6 +68,10 @@ export class FileSystemDetector {
 			.map(folderPath => this.getPathName(folderPath));
 	}
 
+	setRootPath (rootPath: string): void {
+		this.config.rootPath = rootPath;
+	}
+
 	async detect (): Promise<boolean> {
 		if (!this.config.rootPath) {
 			return false;
