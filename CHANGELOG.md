@@ -2,7 +2,9 @@
 
 ## v1.7.0
 
-* Added [Web Extension](https://code.visualstudio.com/docs/editor/vscode-web) support.
+* Added support for VSCode's Web Extension features.
+	* This allows users to install the Miva IDE extension when using [Visual Studio Code for the Web](https://code.visualstudio.com/docs/editor/vscode-web).
+* Fixed issue with "MVT: Calculate POS Number" command.
 
 ## v1.6.3
 
@@ -17,12 +19,6 @@
 
 * Removed automatic popup to show the CHANGELOG.
 * Updated CHANGELOG popup functionality to instead display an information message with a link to show the CHANGELOG.
-
-## v1.7.0
-
-* Added support for VSCode's Web Extension features.
-	* This allows users to install the Miva IDE extension when using [Visual Studio Code for the Web](https://code.visualstudio.com/docs/editor/vscode-web).
-* Fixed issue with "MVT: Calculate POS Number" command.
 
 ## v1.6.0
 
