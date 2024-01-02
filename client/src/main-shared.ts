@@ -13,14 +13,10 @@ import { pushAll, syncSettingToWhenContext } from './util/functions';
 export function getClientOptions(): LanguageClientOptions {
 	// Options to control the language client
 	const documentSelector = [
-		{ scheme: 'file', language: 'mvt' },
-		{ scheme: 'untitled', language: 'mvt' },
-		{ scheme: 'file', language: 'mvtcss' },
-		{ scheme: 'untitled', language: 'mvtcss' },
-		{ scheme: 'file', language: 'mvtjs' },
-		{ scheme: 'untitled', language: 'mvtjs' },
-		{ scheme: 'file', language: 'mv' },
-		{ scheme: 'untitled', language: 'mv' }
+		{ language: 'mvt' },
+		{ language: 'mvtcss' },
+		{ language: 'mvtjs' },
+		{ language: 'mv' }
 	];
 	const embeddedLanguages = { html: true };
 	const clientOptions: LanguageClientOptions = {
