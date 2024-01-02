@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.7.0
+
+* Added [Web Extension](https://code.visualstudio.com/docs/editor/vscode-web) support.
+
 ## v1.6.3
 
 * Fixed Miva Script expression syntax highlighting error.
