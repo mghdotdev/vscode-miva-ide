@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.7.1
+
+* Fixed paths to syntax and configuration files for the Web version.
+
 ## v1.7.0
 
 * Added support for VSCode's Web Extension features.
