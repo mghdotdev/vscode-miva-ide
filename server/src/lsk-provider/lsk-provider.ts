@@ -1,6 +1,7 @@
 import { readFile, readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { TextDocument } from 'vscode-languageserver-textdocument';
+import { URI } from 'vscode-uri';
 import { SymbolInformationWithDocumentation, Workspace } from '../util/interfaces';
 import { FileSystemDetector } from './file-system-detector';
 
@@ -43,13 +44,14 @@ export class LskProvider {
 	private async determineLskPath (): Promise<string> {
 		// Check workspace folders
 		for (let workspaceFolder of this.workspace.folders) {
+			const workspaceFolderUri = URI.parse(workspaceFolder.uri);
 			const workspaceDetector = new FileSystemDetector({
-				rootPath: workspaceFolder.uri,
+				rootPath: workspaceFolderUri.fsPath,
 				...SHARED_FILE_SYSTEM_DETECTOR_SETTINGS
 			});
 
 			if (await workspaceDetector.detect()) {
-				return workspaceFolder.uri;
+				return workspaceFolderUri.fsPath;
 			}
 		}
 
