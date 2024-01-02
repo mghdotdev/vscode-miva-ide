@@ -20,7 +20,7 @@
 		"build-web": "npm run build-web --workspaces",
 		"watch-web": "npm run watch-web --workspace=client & npm run watch-web --workspace=server",
 		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main",
-		"chrome": "npm run build-web && npx vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ./test-data"
+		"chrome": "npm run watch-web & npx vscode-test-web --verbose --printServerLog --open-devtools --browserOption=--disable-web-security --browserType=chromium --extensionDevelopmentPath=. ./test-data"
 	},
 	"repository": {
 		"type": "git",
