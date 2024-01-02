@@ -79,6 +79,7 @@ export class FileSystemDetector {
 
 		if (this.config.fileNames && this.config.fileNames.length > 0) {
 			const fileNames = await this.gatherFileNames();
+
 			return this.config.fileNamesMethod === 'every'
 				? this.config.fileNames.every(fileName => fileNames.includes(fileName))
 				: this.config.fileNames.some(fileName => fileNames.includes(fileName))

@@ -311,11 +311,12 @@ export function activate (connection: Connection, lskProvider?: LskProvider) {
 
 			if ( document ) {
 
+				const settings = await getDocumentSettings( document );
 				const features = languages[ document.languageId ];
 
 				if ( features && features.onHover ) {
 
-					return features.onHover( document, hoverParams.position );
+					return features.onHover( document, hoverParams.position, settings );
 
 				}
 

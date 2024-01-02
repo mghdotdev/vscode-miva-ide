@@ -9,20 +9,21 @@ const SHARED_FILE_SYSTEM_DETECTOR_SETTINGS: any = {
 		'mmlsk-download.mv',
 		'mmlsk-json.mv',
 		'mmlsk-merchant.mv',
-		'mmlsk-url.mv'
+		'mmlsk-uri.mv'
 	],
 	fileNamesMethod: 'every'
 };
 
-async function walk (dir: string, fileExtension: string) {
+async function walk (dir, fileExtension) {
 	let files = await readdir(dir);
 
+	// @ts-ignore
 	files = await Promise.all(files.map(async file => {
 		const filePath = join(dir, file);
 		const stats = await stat(filePath);
 
 		if (stats.isDirectory()) {
-			return this.walk(filePath, fileExtension);
+			return walk(filePath, fileExtension);
 		}
 		else if (stats.isFile() && file.endsWith(fileExtension)) {
 			return filePath;
@@ -73,6 +74,10 @@ export class LskProvider {
 
 	async provideSymbols (iterator: ( document: TextDocument ) => SymbolInformationWithDocumentation[]): Promise<SymbolInformationWithDocumentation[]> {
 		const lskPath = await this.determineLskPath();
+		if (!lskPath) {
+			return [];
+		}
+
 		const filePaths = await walk(lskPath, '.mv');
 		const symbols = await Promise.all(filePaths?.flatMap(async (filePath) => {
 			const document = await this.createTextDocumentFromPath(filePath);

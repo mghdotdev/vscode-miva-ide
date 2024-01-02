@@ -792,7 +792,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 			doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
 				const completionList = mvtFeatures.doCompletion(document, position, settings);
 
-				return CompletionList.create(completionList.items.flatMap(completionItem => {
+				return CompletionList.create(completionList?.items.flatMap(completionItem => {
 					if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
 						return htmlLanguageService.doComplete(document, position, htmlLanguageService.parseHTMLDocument(document))?.items || [];
 					}
@@ -800,8 +800,8 @@ export function activateFeatures(lskProvider?: LskProvider) {
 					return completionItem;
 				}))
 			},
-			async onHover(document: TextDocument, position: Position) {
-				const hover = await mvtFeatures.onHover(document, position);
+			async onHover(document: TextDocument, position: Position, settings: Settings) {
+				const hover = await mvtFeatures.onHover(document, position, settings);
 
 				if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
 					return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
@@ -820,7 +820,7 @@ export function activateFeatures(lskProvider?: LskProvider) {
 			doCompletion(document: TextDocument, position: Position, settings: Settings): CompletionList {
 				const completionList = mvtFeatures.doCompletion(document, position, settings);
 
-				return CompletionList.create(completionList.items.flatMap(completionItem => {
+				return CompletionList.create(completionList?.items.flatMap(completionItem => {
 					if (completionItem.label === '@@@LANGUAGESESRVICE@@@') {
 						return cssLanguageService.doComplete(document, position, cssLanguageService.parseStylesheet(document))?.items || [];
 					}
@@ -828,8 +828,8 @@ export function activateFeatures(lskProvider?: LskProvider) {
 					return completionItem;
 				}));
 			},
-			async onHover(document: TextDocument, position: Position) {
-				const hover = await mvtFeatures.onHover(document, position);
+			async onHover(document: TextDocument, position: Position, settings: Settings) {
+				const hover = await mvtFeatures.onHover(document, position, settings);
 
 				if (hover?.contents === '@@@LANGUAGESESRVICE@@@') {
 					return cssLanguageService.doHover(document, position, cssLanguageService.parseStylesheet(document));
@@ -853,9 +853,8 @@ export function activateFeatures(lskProvider?: LskProvider) {
 				folders: workspace.folders,
 				settings: settings
 			});
-			lskSymbols = await lskProvider.provideSymbols(_mvFindDocumentSymbols);
 
-			console.log('lskSymbols', lskSymbols);
+			lskSymbols = await lskProvider.provideSymbols(_mvFindDocumentSymbols);
 		}
 
 		return true;
