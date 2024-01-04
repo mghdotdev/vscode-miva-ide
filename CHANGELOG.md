@@ -1,5 +1,11 @@
 # Miva IDE CHANGELOG
 
+## v1.8.0
+
+
+* Fixed Miva Script syntax issue.
+* Replaced png icons with new svg icons.
+
 ## v1.7.2
 
 * Fixed issue where MVT and Miva Script language servers would not start for the Web version.
