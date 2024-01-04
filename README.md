@@ -62,7 +62,7 @@ Miva IDE contributes the following settings:
 				"defaultExtension": "mv"
 			}
 		],
-		"format": "png"
+		"format": "svg"
 	},
 	{
 		"icon": "mvt",
@@ -78,7 +78,7 @@ Miva IDE contributes the following settings:
 			}
 		],
 		"filename": true,
-		"format": "png"
+		"format": "svg"
 	},
 	{
 		"icon": "mvtjs",
@@ -94,7 +94,7 @@ Miva IDE contributes the following settings:
 				"defaultExtension": "mvt"
 			}
 		],
-		"format": "png"
+		"format": "svg"
 	},
 	{
 		"icon": "mvtcss",
@@ -109,7 +109,7 @@ Miva IDE contributes the following settings:
 				"defaultExtension": "mvt"
 			}
 		],
-		"format": "png"
+		"format": "svg"
 	}
 ]
 ```
