@@ -34,11 +34,15 @@ Enable support for goto function definition by following the steps below. This w
 
 Miva IDE contributes the following settings:
 
-* `LSK.path` &mdash; Path to your LSK folder. Used for Goto Definition support.
-* `mivaIde.MVT.defaultEncodingForVariableConversions` &mdash; The encoding type that will be used when converting a variable to an entity.
-* `mivaIde.MVT.lint.showWarningOnToolkitUsage` &mdash; Show a warning when the 'toolkit' item is referenced within the template.
-* `mivaIde.MVT.lint.showWarningOnToolbeltUsage` &mdash; Show a warning when the 'toolbelt' item is referenced within the template.
-* `mivaIde.MVT.lint.showWarningForUnencodedVariables` &mdash; Show a warning when unencoded entities and 'evals' are referenced within the file.
+- `enableTriggerSuggestAfterPaste` &mdash; Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor.
+- `showChangelogOnUpdate` &mdash; Show CHANGELOG after updating to the latest version.
+- `LSK.path` &mdash; Path to your LSK folder. Used for Goto Definition support.
+- `MVT.enableLegacyElseSnippets` &mdash; Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets.
+- `mivaIde.MVT.defaultEncodingForVariableConversions` &mdash; The encoding type that will be used when converting a variable to an entity.
+- `mivaIde.MVT.lint.showWarningOnToolkitUsage` &mdash; Show a warning when the 'toolkit' item is referenced within the template.
+- `mivaIde.MVT.lint.showWarningOnToolbeltUsage` &mdash; Show a warning when the 'toolbelt' item is referenced within the template.
+- `mivaIde.MVT.lint.showWarningForUnencodedVariables` &mdash; Show a warning when unencoded entities and 'evals' are referenced within the file.
+- `MVT.lint.showErrorForTksl` &mdash; Show an error for the `toolkit` item's `tksl` param.
 
 ## Integrations
 
@@ -85,7 +89,6 @@ Miva IDE contributes the following settings:
 		"extensions": [
 			"js/*.mvt"
 		],
-		"filename": true,
 		"languages": [
 			{
 				"ids": [
