@@ -3,10 +3,12 @@ import patterns from './util/patterns';
 
 const boundryAmount = 200;
 
-const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
+const chooseFileCommand = commands.registerCommand( 'mivaIde.chooseFile', async ( payload ) => {
 
 	const returnValue = payload.returnValue;
-	const fileNames = payload.fileNames?.filter((value, index, self) => self.indexOf( value ) === index);
+	const fileNames = payload.files
+		?.map(file => file.distroPath)
+		?.filter((value, index, self) => self.indexOf( value ) === index);
 
 	let fileName;
 	if ( fileNames.length < 2 ) {
@@ -18,8 +20,12 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName'
 
 	}
 
-	commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
+	await commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
 
+	const chosenFile = payload.files?.find(file => file.distroPath === fileName);
+	if ( chosenFile.moduleCode && chosenFile.moduleVar ) {
+		commands.executeCommand( 'mivaIde.insertModuleImport', `<mvt:do file="g.Module_Library_DB" name="l.void" value="Module_Load_Code_Cached( '${chosenFile.moduleCode}', ${chosenFile.moduleVar} )" />` )
+	}
 });
 
 const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName: string, returnValue: string ) => {
@@ -128,6 +134,19 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		if ( rightNameAttributeMatch ) {
 			replaceEdit( rightNameAttributeMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
 		}
+	}
+});
+
+const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.insertModuleImport', ( textEditor: TextEditor, edit: TextEditorEdit, moduleImportText: string ) => {
+	const moduleImportBlockEndComment = `<mvt:comment> --- module imports --- <\/mvt:comment>`;
+	const documentText = textEditor.document.getText();
+	const moduleImportBlockExec = new RegExp(`(?:${moduleImportBlockEndComment})`, 'i').exec( documentText );
+	const insertText = moduleImportBlockExec === null
+		? `${moduleImportText}\n${moduleImportBlockEndComment}\n`
+		: `${moduleImportText}\n`;
+
+	if (documentText.indexOf(moduleImportText) === -1) {
+		edit.insert( new Position( 0, 0 ), insertText );
 	}
 });
 
@@ -334,8 +353,9 @@ const clipboardPasteCommand = commands.registerTextEditorCommand('mivaIde.clipbo
 });
 
 export default [
-	chooseFileNameCommand,
+	chooseFileCommand,
 	insertFileNameCommand,
+	insertModuleImportCommand,
 	convertAndCopyCommand,
 	convertToEntityCommand,
 	convertToVariableCommand,
