@@ -24,7 +24,7 @@ const chooseFileCommand = commands.registerCommand( 'mivaIde.chooseFile', async 
 
 	const chosenFile = payload.files?.find(file => file.distroPath === fileName);
 	if ( chosenFile.moduleCode && chosenFile.moduleVar ) {
-		commands.executeCommand( 'mivaIde.insertModuleImport', `<mvt:do file="g.Module_Library_DB" name="l.void" value="Module_Load_Code_Cached( '${chosenFile.moduleCode}', ${chosenFile.moduleVar} )" />` )
+		commands.executeCommand( 'mivaIde.insertModuleImport', chosenFile.moduleCode, chosenFile.moduleVar );
 	}
 });
 
@@ -137,8 +137,13 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 	}
 });
 
-const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.insertModuleImport', ( textEditor: TextEditor, edit: TextEditorEdit, moduleImportText: string ) => {
-	const moduleImportBlockEndComment = `<mvt:comment> --- module imports --- <\/mvt:comment>`;
+const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.insertModuleImport', ( textEditor: TextEditor, edit: TextEditorEdit, moduleCode: string, moduleVar: string ) => {
+	const moduleImportText = textEditor.document.languageId === 'mv'
+		? `<MvDO FILE = "g.Module_Library_DB" NAME = "l.void" VALUE = "{ Module_Load_Code_Cached( '${moduleCode}', ${moduleVar} ) }">`
+		: `<mvt:do file="g.Module_Library_DB" name="l.void" value="Module_Load_Code_Cached( '${moduleCode}', ${moduleVar} )" />`;
+	const moduleImportBlockEndComment = textEditor.document.languageId === 'mv'
+		? `<MvCOMMENT> --- module imports --- <\/MvCOMMENT>`
+		: `<mvt:comment> --- module imports --- <\/mvt:comment>`;
 	const documentText = textEditor.document.getText();
 	const moduleImportBlockExec = new RegExp(`(?:${moduleImportBlockEndComment})`, 'i').exec( documentText );
 	const insertText = moduleImportBlockExec === null
