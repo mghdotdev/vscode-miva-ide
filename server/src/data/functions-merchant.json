@@ -48697,7 +48697,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_stdacct",
+		"distroPath": "g.Module_Root $ l.__module_stdacct:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -48719,7 +48719,7 @@
 		"moduleVar": "l.__module_stdacct"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49114,7 +49114,7 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_AddEditDialog_CSS",
@@ -49149,13 +49149,13 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [],
 		"moduleCode": "templatebatchreports",
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_JavaScript_Combined_Begin",
@@ -49183,7 +49183,7 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_Functions_JavaScript",
@@ -49204,13 +49204,13 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [],
 		"moduleCode": "templatebatchreports",
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_List_CSS",
@@ -49245,13 +49245,13 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [],
 		"moduleCode": "templatebatchreports",
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_packbycube",
+		"distroPath": "g.Module_Root $ l.__module_packbycube:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49474,7 +49474,7 @@
 		"moduleVar": "l.__module_packbycube"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_packbyquantity",
+		"distroPath": "g.Module_Root $ l.__module_packbyquantity:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49830,7 +49830,7 @@
 		"moduleVar": "l.__module_packbyquantity"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_packbyweight",
+		"distroPath": "g.Module_Root $ l.__module_packbyweight:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -50250,13 +50250,13 @@
 		"moduleVar": "l.__module_packbyweight"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [],
 		"moduleCode": "cmp-cssui-messages",
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessage_JavaScript_Combined_Begin",
@@ -50284,7 +50284,7 @@
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessage_Functions_JavaScript",
@@ -50305,13 +50305,13 @@
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [],
 		"moduleCode": "cmp-cssui-messages",
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessageList_CSS",
@@ -50346,25 +50346,25 @@
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [],
 		"moduleCode": "cmp-cssui-messages",
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
 		"functions": [],
 		"moduleCode": "cmp-cssui-searchfield",
 		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
 		"functions": [],
 		"moduleCode": "cmp-cssui-searchfield",
 		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -50764,7 +50764,7 @@
 		"moduleVar": "l.__module_cmp_cssui_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -51135,7 +51135,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdorderitemfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatebatchreports",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -51523,7 +51523,7 @@
 		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_BaseHTTPHeaderList_CSS",
@@ -51558,13 +51558,13 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-http-headers",
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_HTTPHeader_JavaScript_Combined_Begin",
@@ -51592,7 +51592,7 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_HTTPHeader_Functions_JavaScript",
@@ -51613,7 +51613,7 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_GlobalHTTPHeaderList_CSS",
@@ -51648,19 +51648,19 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-http-headers",
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-http-headers",
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_PageHTTPHeaderList_CSS",
@@ -51695,13 +51695,13 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-prodctgy-meta",
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_META_JavaScript_Combined_Begin",
@@ -51729,7 +51729,7 @@
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_META_Functions_JavaScript",
@@ -51750,13 +51750,13 @@
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-prodctgy-meta",
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_METAName_List_CSS",
@@ -51791,13 +51791,13 @@
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [],
 		"moduleCode": "cmp-mv-prodctgy-meta",
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressbook",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressbook:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52016,7 +52016,7 @@
 		"moduleVar": "l.__module_cmp_cssui_addressbook"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52261,7 +52261,7 @@
 		"moduleVar": "l.__module_cmp_cssui_addressfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afae",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afae:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52515,7 +52515,7 @@
 		"moduleVar": "l.__module_cmp_cssui_afae"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afflink",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afflink:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52735,7 +52735,7 @@
 		"moduleVar": "l.__module_cmp_cssui_afflink"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_attributes",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_attributes:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52946,7 +52946,7 @@
 		"moduleVar": "l.__module_cmp_cssui_attributes"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53002,7 +53002,7 @@
 		"moduleVar": "l.__module_cmp_cssui_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53261,7 +53261,7 @@
 		"moduleVar": "l.__module_cmp_cssui_breadcrumbs"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_buttons",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_buttons:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53503,7 +53503,7 @@
 		"moduleVar": "l.__module_cmp_cssui_buttons"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattitle",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattitle:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53761,7 +53761,7 @@
 		"moduleVar": "l.__module_cmp_cssui_cattitle"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattree",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattree:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54212,7 +54212,7 @@
 		"moduleVar": "l.__module_cmp_cssui_cattree"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_countryselect",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_countryselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54337,7 +54337,7 @@
 		"moduleVar": "l.__module_cmp_cssui_countryselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54669,7 +54669,7 @@
 		"moduleVar": "l.__module_cmp_cssui_custfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custlink",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custlink:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54889,7 +54889,7 @@
 		"moduleVar": "l.__module_cmp_cssui_custlink"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_customercredithistory",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_customercredithistory:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55129,7 +55129,7 @@
 		"moduleVar": "l.__module_cmp_cssui_customercredithistory"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_datepicker",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_datepicker:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55340,7 +55340,7 @@
 		"moduleVar": "l.__module_cmp_cssui_datepicker"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_hdft",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_hdft:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55676,7 +55676,7 @@
 		"moduleVar": "l.__module_cmp_cssui_hdft"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_head",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_head:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55942,7 +55942,7 @@
 		"moduleVar": "l.__module_cmp_cssui_head"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_html",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_html:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56136,7 +56136,7 @@
 		"moduleVar": "l.__module_cmp_cssui_html"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_custfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_custfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56371,7 +56371,7 @@
 		"moduleVar": "l.__module_cmp_cssui_invc_custfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_order",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_order:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56402,7 +56402,7 @@
 		"moduleVar": "l.__module_cmp_cssui_invc_order"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_links",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_links:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56579,7 +56579,7 @@
 		"moduleVar": "l.__module_cmp_cssui_links"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56980,7 +56980,7 @@
 		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_mivapay",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_mivapay:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57302,7 +57302,7 @@
 		"moduleVar": "l.__module_cmp_cssui_mivapay"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_navbar",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_navbar:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57504,7 +57504,7 @@
 		"moduleVar": "l.__module_cmp_cssui_navbar"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_orderlist",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_orderlist:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57769,7 +57769,7 @@
 		"moduleVar": "l.__module_cmp_cssui_orderlist"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_paymentcards",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_paymentcards:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57996,7 +57996,7 @@
 		"moduleVar": "l.__module_cmp_cssui_paymentcards"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_pchdft",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_pchdft:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -58398,7 +58398,7 @@
 		"moduleVar": "l.__module_cmp_cssui_pchdft"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlayo",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlayo:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -58661,7 +58661,7 @@
 		"moduleVar": "l.__module_cmp_cssui_prodlayo"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlist",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlist:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59122,7 +59122,7 @@
 		"moduleVar": "l.__module_cmp_cssui_prodlist"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59433,7 +59433,7 @@
 		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_sitemap",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_sitemap:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59584,7 +59584,7 @@
 		"moduleVar": "l.__module_cmp_cssui_sitemap"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_stateselect",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_stateselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59709,7 +59709,7 @@
 		"moduleVar": "l.__module_cmp_cssui_stateselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptionfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptionfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59966,7 +59966,7 @@
 		"moduleVar": "l.__module_cmp_cssui_subscriptionfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptions",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptions:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60215,7 +60215,7 @@
 		"moduleVar": "l.__module_cmp_cssui_subscriptions"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_urls",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_urls:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60400,7 +60400,7 @@
 		"moduleVar": "l.__module_cmp_cssui_urls"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_uslmltplattr",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_uslmltplattr:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60535,7 +60535,7 @@
 		"moduleVar": "l.__module_cmp_cssui_uslmltplattr"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_vieworder",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_vieworder:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60586,7 +60586,7 @@
 		"moduleVar": "l.__module_cmp_cssui_vieworder"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60813,7 +60813,7 @@
 		"moduleVar": "l.__module_cmp_cssui_wishlistfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistitems",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistitems:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61071,7 +61071,7 @@
 		"moduleVar": "l.__module_cmp_cssui_wishlistitems"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlists",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlists:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61303,7 +61303,7 @@
 		"moduleVar": "l.__module_cmp_cssui_wishlists"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_adminorderfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_adminorderfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61484,7 +61484,7 @@
 		"moduleVar": "l.__module_cmp_mv_adminorderfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_attributemachine",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_attributemachine:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61710,7 +61710,7 @@
 		"moduleVar": "l.__module_cmp_mv_attributemachine"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_clientdimensions",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_clientdimensions:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61940,7 +61940,7 @@
 		"moduleVar": "l.__module_cmp_mv_clientdimensions"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_content",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_content:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -62143,7 +62143,7 @@
 		"moduleVar": "l.__module_cmp_mv_content"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_customerwishlists",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_customerwishlists:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -62271,7 +62271,7 @@
 		"moduleVar": "l.__module_cmp_mv_customerwishlists"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_flex",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_flex:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -64535,7 +64535,7 @@
 		"moduleVar": "l.__module_cmp_mv_flex"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65026,7 +65026,7 @@
 		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_imagemachine",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_imagemachine:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65238,7 +65238,7 @@
 		"moduleVar": "l.__module_cmp_mv_imagemachine"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_inventory",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_inventory:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65355,7 +65355,7 @@
 		"moduleVar": "l.__module_cmp_mv_inventory"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_minibask",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_minibask:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65673,7 +65673,7 @@
 		"moduleVar": "l.__module_cmp_mv_minibask"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65790,7 +65790,7 @@
 		"moduleVar": "l.__module_cmp_mv_paymentfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentmethod",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentmethod:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65907,7 +65907,7 @@
 		"moduleVar": "l.__module_cmp_mv_paymentmethod"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentsettings",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentsettings:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -66024,7 +66024,7 @@
 		"moduleVar": "l.__module_cmp_mv_paymentsettings"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_payselect",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_payselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -66141,7 +66141,7 @@
 		"moduleVar": "l.__module_cmp_mv_payselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67393,7 +67393,7 @@
 		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_runtimejs",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_runtimejs:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67531,7 +67531,7 @@
 		"moduleVar": "l.__module_cmp_mv_runtimejs"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_sequence",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_sequence:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67902,7 +67902,7 @@
 		"moduleVar": "l.__module_cmp_mv_sequence"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipestimate",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipestimate:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68302,7 +68302,7 @@
 		"moduleVar": "l.__module_cmp_mv_shipestimate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipselect",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68419,7 +68419,7 @@
 		"moduleVar": "l.__module_cmp_mv_shipselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_splitpayment",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_splitpayment:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68536,7 +68536,7 @@
 		"moduleVar": "l.__module_cmp_mv_splitpayment"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdcatfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdcatfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68669,7 +68669,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdcatfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stddigitaldownloadfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stddigitaldownloadfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68797,7 +68797,7 @@
 		"moduleVar": "l.__module_cmp_mv_stddigitaldownloadfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdgiftcertificatefields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdgiftcertificatefields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68925,7 +68925,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdgiftcertificatefields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69042,7 +69042,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdorderfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69066,7 +69066,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdorderitemfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdprodfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdprodfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69183,7 +69183,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdprodfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdreturnfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdreturnfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69217,7 +69217,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdreturnfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdshipmentfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdshipmentfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69283,7 +69283,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdshipmentfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdstorefields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdstorefields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69400,7 +69400,7 @@
 		"moduleVar": "l.__module_cmp_mv_stdstorefields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_taxfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_taxfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69517,7 +69517,7 @@
 		"moduleVar": "l.__module_cmp_mv_taxfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_mv_uslprodfields",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_uslprodfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69634,7 +69634,7 @@
 		"moduleVar": "l.__module_cmp_mv_uslprodfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs:module",
 		"functions": [
 			{
 				"name": "SEOSettings_Encode_Delimiter",
@@ -69934,7 +69934,7 @@
 		"moduleVar": "l.__module_cmp_cssui_breadcrumbs"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_usmoney",
+		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70086,7 +70086,7 @@
 		"moduleVar": "l.__module_usmoney"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_usmoney",
+		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70131,13 +70131,13 @@
 		"moduleVar": "l.__module_usmoney"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [],
 		"moduleCode": "discount_customerspecific",
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_CustomerSpecific_JavaScript_Combined_Begin",
@@ -70165,7 +70165,7 @@
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_Customer_ProductPriceList_CSS",
@@ -70200,7 +70200,7 @@
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_CustomerSpecific_Functions_JavaScript",
@@ -70221,19 +70221,19 @@
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [],
 		"moduleCode": "discount_customerspecific",
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [],
 		"moduleCode": "discount_customerspecific",
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_Product_CustomerPriceList_CSS",
@@ -70268,7 +70268,7 @@
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_addon",
+		"distroPath": "g.Module_Root $ l.__module_discount_addon:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70392,7 +70392,7 @@
 		"moduleVar": "l.__module_discount_addon"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_basket_product",
+		"distroPath": "g.Module_Root $ l.__module_discount_basket_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70480,7 +70480,7 @@
 		"moduleVar": "l.__module_discount_basket_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_basket",
+		"distroPath": "g.Module_Root $ l.__module_discount_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70576,7 +70576,7 @@
 		"moduleVar": "l.__module_discount_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_buyxgety",
+		"distroPath": "g.Module_Root $ l.__module_discount_buyxgety:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70748,7 +70748,7 @@
 		"moduleVar": "l.__module_discount_buyxgety"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_costmarkup",
+		"distroPath": "g.Module_Root $ l.__module_discount_costmarkup:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70844,7 +70844,7 @@
 		"moduleVar": "l.__module_discount_costmarkup"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71378,7 +71378,7 @@
 		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_product",
+		"distroPath": "g.Module_Root $ l.__module_discount_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71474,7 +71474,7 @@
 		"moduleVar": "l.__module_discount_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_saleprice",
+		"distroPath": "g.Module_Root $ l.__module_discount_saleprice:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -72056,7 +72056,7 @@
 		"moduleVar": "l.__module_discount_saleprice"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_shipping_basket",
+		"distroPath": "g.Module_Root $ l.__module_discount_shipping_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -72205,7 +72205,7 @@
 		"moduleVar": "l.__module_discount_shipping_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_shipping_product",
+		"distroPath": "g.Module_Root $ l.__module_discount_shipping_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -72373,7 +72373,7 @@
 		"moduleVar": "l.__module_discount_shipping_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_discount_volume",
+		"distroPath": "g.Module_Root $ l.__module_discount_volume:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73237,7 +73237,7 @@
 		"moduleVar": "l.__module_discount_volume"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_afilexprt",
+		"distroPath": "g.Module_Root $ l.__module_afilexprt:module",
 		"functions": [
 			{
 				"name": "Buffer_Add_Field",
@@ -73338,7 +73338,7 @@
 		"moduleVar": "l.__module_afilexprt"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_afilexprt",
+		"distroPath": "g.Module_Root $ l.__module_afilexprt:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73431,7 +73431,7 @@
 		"moduleVar": "l.__module_afilexprt"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_attrexp",
+		"distroPath": "g.Module_Root $ l.__module_attrexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73488,7 +73488,7 @@
 		"moduleVar": "l.__module_attrexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatcat",
+		"distroPath": "g.Module_Root $ l.__module_flatcat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73568,7 +73568,7 @@
 		"moduleVar": "l.__module_flatcat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatcus",
+		"distroPath": "g.Module_Root $ l.__module_flatcus:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73642,7 +73642,7 @@
 		"moduleVar": "l.__module_flatcus"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatord",
+		"distroPath": "g.Module_Root $ l.__module_flatord:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73711,7 +73711,7 @@
 		"moduleVar": "l.__module_flatord"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_prodexp",
+		"distroPath": "g.Module_Root $ l.__module_prodexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73901,7 +73901,7 @@
 		"moduleVar": "l.__module_prodexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shipexport",
+		"distroPath": "g.Module_Root $ l.__module_shipexport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73983,7 +73983,7 @@
 		"moduleVar": "l.__module_shipexport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_uriexport",
+		"distroPath": "g.Module_Root $ l.__module_uriexport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -74080,7 +74080,7 @@
 		"moduleVar": "l.__module_uriexport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_userdataexp",
+		"distroPath": "g.Module_Root $ l.__module_userdataexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -74197,7 +74197,7 @@
 		"moduleVar": "l.__module_userdataexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_sitemap",
+		"distroPath": "g.Module_Root $ l.__module_sitemap:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -74634,7 +74634,7 @@
 		"moduleVar": "l.__module_sitemap"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templatefeed",
+		"distroPath": "g.Module_Root $ l.__module_templatefeed:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -75633,7 +75633,7 @@
 		"moduleVar": "l.__module_templatefeed"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -77380,7 +77380,7 @@
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_AddEditDialog_CSS",
@@ -77415,13 +77415,13 @@
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [],
 		"moduleCode": "templateorderemails",
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_JavaScript_Combined_Begin",
@@ -77449,7 +77449,7 @@
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_Functions_JavaScript",
@@ -77470,13 +77470,13 @@
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [],
 		"moduleCode": "templateorderemails",
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_List_CSS",
@@ -77511,13 +77511,13 @@
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_templateorderemails",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [],
 		"moduleCode": "templateorderemails",
 		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_categoryimport",
+		"distroPath": "g.Module_Root $ l.__module_categoryimport:module",
 		"functions": [
 			{
 				"name": "Validate_Code",
@@ -77724,7 +77724,7 @@
 		"moduleVar": "l.__module_categoryimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_categoryimport",
+		"distroPath": "g.Module_Root $ l.__module_categoryimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78064,7 +78064,7 @@
 		"moduleVar": "l.__module_categoryimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_couponimport",
+		"distroPath": "g.Module_Root $ l.__module_couponimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78399,7 +78399,7 @@
 		"moduleVar": "l.__module_couponimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customerimport",
+		"distroPath": "g.Module_Root $ l.__module_customerimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78680,7 +78680,7 @@
 		"moduleVar": "l.__module_customerimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_giftcertificateimport",
+		"distroPath": "g.Module_Root $ l.__module_giftcertificateimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78971,7 +78971,7 @@
 		"moduleVar": "l.__module_giftcertificateimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_productimport",
+		"distroPath": "g.Module_Root $ l.__module_productimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79449,7 +79449,7 @@
 		"moduleVar": "l.__module_productimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_provisioningimport",
+		"distroPath": "g.Module_Root $ l.__module_provisioningimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79592,7 +79592,7 @@
 		"moduleVar": "l.__module_provisioningimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shipimport",
+		"distroPath": "g.Module_Root $ l.__module_shipimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79749,7 +79749,7 @@
 		"moduleVar": "l.__module_shipimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_uriimport",
+		"distroPath": "g.Module_Root $ l.__module_uriimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80012,7 +80012,7 @@
 		"moduleVar": "l.__module_uriimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_variantimport",
+		"distroPath": "g.Module_Root $ l.__module_variantimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80370,7 +80370,7 @@
 		"moduleVar": "l.__module_variantimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_elf",
+		"distroPath": "g.Module_Root $ l.__module_elf:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80517,7 +80517,7 @@
 		"moduleVar": "l.__module_elf"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_malf",
+		"distroPath": "g.Module_Root $ l.__module_malf:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80645,7 +80645,7 @@
 		"moduleVar": "l.__module_malf"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_check",
+		"distroPath": "g.Module_Root $ l.__module_check:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80856,7 +80856,7 @@
 		"moduleVar": "l.__module_check"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cod",
+		"distroPath": "g.Module_Root $ l.__module_cod:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -81350,7 +81350,7 @@
 		"moduleVar": "l.__module_cod"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customercredit",
+		"distroPath": "g.Module_Root $ l.__module_customercredit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -81767,7 +81767,7 @@
 		"moduleVar": "l.__module_customercredit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82238,13 +82238,13 @@
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [],
 		"moduleCode": "mod10",
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10_JavaScript_Combined_Begin",
@@ -82272,7 +82272,7 @@
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10_Functions_JavaScript",
@@ -82293,13 +82293,13 @@
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [],
 		"moduleCode": "mod10",
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10CardList_CSS",
@@ -82334,13 +82334,13 @@
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mod10",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [],
 		"moduleCode": "mod10",
 		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_coupon_usage",
+		"distroPath": "g.Module_Root $ l.__module_report_coupon_usage:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82572,7 +82572,7 @@
 		"moduleVar": "l.__module_report_coupon_usage"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_customer_sales",
+		"distroPath": "g.Module_Root $ l.__module_report_customer_sales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82943,7 +82943,7 @@
 		"moduleVar": "l.__module_report_customer_sales"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_geosales",
+		"distroPath": "g.Module_Root $ l.__module_report_geosales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83202,7 +83202,7 @@
 		"moduleVar": "l.__module_report_geosales"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_productsales",
+		"distroPath": "g.Module_Root $ l.__module_report_productsales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83586,7 +83586,7 @@
 		"moduleVar": "l.__module_report_productsales"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_sales_commission",
+		"distroPath": "g.Module_Root $ l.__module_report_sales_commission:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83875,7 +83875,7 @@
 		"moduleVar": "l.__module_report_sales_commission"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_sales",
+		"distroPath": "g.Module_Root $ l.__module_report_sales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84320,7 +84320,7 @@
 		"moduleVar": "l.__module_report_sales"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_stats",
+		"distroPath": "g.Module_Root $ l.__module_report_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84416,7 +84416,7 @@
 		"moduleVar": "l.__module_report_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_subscription_metrics",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_metrics:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84686,7 +84686,7 @@
 		"moduleVar": "l.__module_report_subscription_metrics"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_subscription_product_stats",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_product_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -85056,7 +85056,7 @@
 		"moduleVar": "l.__module_report_subscription_product_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_report_subscription_stats",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -85363,13 +85363,13 @@
 		"moduleVar": "l.__module_report_subscription_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [],
 		"moduleCode": "baseunit",
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnit_JavaScript_Combined_Begin",
@@ -85397,7 +85397,7 @@
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnit_Functions_JavaScript",
@@ -85418,13 +85418,13 @@
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [],
 		"moduleCode": "baseunit",
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnitMethod_List_CSS",
@@ -85459,19 +85459,19 @@
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [],
 		"moduleCode": "baseunit",
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [],
 		"moduleCode": "flatrate",
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRate_JavaScript_Combined_Begin",
@@ -85499,7 +85499,7 @@
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRate_Functions_JavaScript",
@@ -85520,13 +85520,13 @@
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [],
 		"moduleCode": "flatrate",
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRateList_CSS",
@@ -85561,19 +85561,19 @@
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [],
 		"moduleCode": "flatrate",
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [],
 		"moduleCode": "minunit",
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnit_JavaScript_Combined_Begin",
@@ -85601,7 +85601,7 @@
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnit_Functions_JavaScript",
@@ -85622,13 +85622,13 @@
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [],
 		"moduleCode": "minunit",
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnitMethod_List_CSS",
@@ -85663,13 +85663,13 @@
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [],
 		"moduleCode": "minunit",
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baseunit",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -85993,7 +85993,7 @@
 		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_flatrate",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -86310,7 +86310,7 @@
 		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_minunit",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -86635,7 +86635,7 @@
 		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -87276,7 +87276,7 @@
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -87744,7 +87744,7 @@
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -88349,7 +88349,7 @@
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShippingChargeList_CSS",
@@ -88384,13 +88384,13 @@
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [],
 		"moduleCode": "ptbship",
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShipping_JavaScript_Combined_Begin",
@@ -88418,7 +88418,7 @@
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShipping_Functions_JavaScript",
@@ -88439,13 +88439,13 @@
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [],
 		"moduleCode": "ptbship",
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShippingList_CSS",
@@ -88480,19 +88480,19 @@
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ptbship",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [],
 		"moduleCode": "ptbship",
 		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [],
 		"moduleCode": "qship",
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShipping_JavaScript_Combined_Begin",
@@ -88520,7 +88520,7 @@
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShipping_Functions_JavaScript",
@@ -88541,13 +88541,13 @@
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [],
 		"moduleCode": "qship",
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShippingList_CSS",
@@ -88582,13 +88582,13 @@
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_qship",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [],
 		"moduleCode": "qship",
 		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShippingChargeList_CSS",
@@ -88623,13 +88623,13 @@
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [],
 		"moduleCode": "wtbship",
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShipping_JavaScript_Combined_Begin",
@@ -88657,7 +88657,7 @@
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShipping_Functions_JavaScript",
@@ -88678,13 +88678,13 @@
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [],
 		"moduleCode": "wtbship",
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShippingList_CSS",
@@ -88719,13 +88719,13 @@
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_wtbship",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [],
 		"moduleCode": "wtbship",
 		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_ex_system",
+		"distroPath": "g.Module_Root $ l.__module_ex_system:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -88793,13 +88793,13 @@
 		"moduleVar": "l.__module_ex_system"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [],
 		"moduleCode": "canvat",
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVat_JavaScript_Combined_Begin",
@@ -88827,7 +88827,7 @@
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVat_Functions_JavaScript",
@@ -88848,13 +88848,13 @@
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [],
 		"moduleCode": "canvat",
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVatList_CSS",
@@ -88889,19 +88889,19 @@
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [],
 		"moduleCode": "canvat",
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [],
 		"moduleCode": "devat",
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVAT_JavaScript_Combined_Begin",
@@ -88929,7 +88929,7 @@
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVATCountryList_CSS",
@@ -88964,7 +88964,7 @@
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVAT_Functions_JavaScript",
@@ -88985,19 +88985,19 @@
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [],
 		"moduleCode": "devat",
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [],
 		"moduleCode": "devat",
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVATRateList_CSS",
@@ -89032,7 +89032,7 @@
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_canvat",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -89561,7 +89561,7 @@
 		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_devat",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90199,7 +90199,7 @@
 		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90593,7 +90593,7 @@
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90945,7 +90945,7 @@
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -91343,13 +91343,13 @@
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [],
 		"moduleCode": "shoptax",
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTax_JavaScript_Combined_Begin",
@@ -91377,7 +91377,7 @@
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTax_Functions_JavaScript",
@@ -91398,13 +91398,13 @@
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [],
 		"moduleCode": "shoptax",
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTaxRateList_CSS",
@@ -91439,19 +91439,19 @@
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_shoptax",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [],
 		"moduleCode": "shoptax",
 		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [],
 		"moduleCode": "statetax",
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTax_JavaScript_Combined_Begin",
@@ -91479,7 +91479,7 @@
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTax_Functions_JavaScript",
@@ -91500,13 +91500,13 @@
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [],
 		"moduleCode": "statetax",
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTaxStateList_CSS",
@@ -91541,19 +91541,19 @@
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_statetax",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [],
 		"moduleCode": "statetax",
 		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [],
 		"moduleCode": "vat",
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVAT_JavaScript_Combined_Begin",
@@ -91581,7 +91581,7 @@
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVAT_Functions_JavaScript",
@@ -91602,13 +91602,13 @@
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [],
 		"moduleCode": "vat",
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVATList_CSS",
@@ -91643,13 +91643,13 @@
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_vat",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [],
 		"moduleCode": "vat",
 		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_cssui",
+		"distroPath": "g.Module_Root $ l.__module_cssui:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -91890,7 +91890,7 @@
 		"moduleVar": "l.__module_cssui"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mmui_stsl",
+		"distroPath": "g.Module_Root $ l.__module_mmui_stsl:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -91980,7 +91980,7 @@
 		"moduleVar": "l.__module_mmui_stsl"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_List_CSS",
@@ -92015,7 +92015,7 @@
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacetRecord_List_CSS",
@@ -92050,13 +92050,13 @@
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [],
 		"moduleCode": "combofacets",
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_JavaScript_Combined_Begin",
@@ -92084,7 +92084,7 @@
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_Functions_JavaScript",
@@ -92105,25 +92105,25 @@
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [],
 		"moduleCode": "combofacets",
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [],
 		"moduleCode": "combofacets",
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [],
 		"moduleCode": "customfields",
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_JavaScript_Combined_Begin",
@@ -92151,7 +92151,7 @@
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_AddEditDialog_CSS",
@@ -92186,7 +92186,7 @@
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomFieldGroup_List_CSS",
@@ -92221,7 +92221,7 @@
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_List_CSS",
@@ -92256,25 +92256,25 @@
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [],
 		"moduleCode": "customfields",
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [],
 		"moduleCode": "customfields",
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [],
 		"moduleCode": "imagemanagement",
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_JavaScript_Combined_Begin",
@@ -92302,7 +92302,7 @@
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_ImageDialog_CSS",
@@ -92337,7 +92337,7 @@
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_ImageList_CSS",
@@ -92372,19 +92372,19 @@
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [],
 		"moduleCode": "imagemanagement",
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [],
 		"moduleCode": "imagemanagement",
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_baskinv",
+		"distroPath": "g.Module_Root $ l.__module_baskinv:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -92578,7 +92578,7 @@
 		"moduleVar": "l.__module_baskinv"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_combofacets",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -93815,7 +93815,7 @@
 		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_customfields",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -97266,7 +97266,7 @@
 		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_imagemanagement",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -97617,7 +97617,7 @@
 		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mvga",
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -98043,7 +98043,7 @@
 		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderhistorynotes",
+		"distroPath": "g.Module_Root $ l.__module_orderhistorynotes:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -98247,7 +98247,7 @@
 		"moduleVar": "l.__module_orderhistorynotes"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -100168,7 +100168,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_productdata",
+		"distroPath": "g.Module_Root $ l.__module_productdata:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -102028,7 +102028,7 @@
 		"moduleVar": "l.__module_productdata"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_productdigitaldownloadcustomfields",
+		"distroPath": "g.Module_Root $ l.__module_productdigitaldownloadcustomfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -102139,7 +102139,7 @@
 		"moduleVar": "l.__module_productdigitaldownloadcustomfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_productimagecustomfields",
+		"distroPath": "g.Module_Root $ l.__module_productimagecustomfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -102217,7 +102217,7 @@
 		"moduleVar": "l.__module_productimagecustomfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -104906,7 +104906,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -105205,7 +105205,7 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -105379,7 +105379,7 @@
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_stdfacets",
+		"distroPath": "g.Module_Root $ l.__module_stdfacets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -106293,7 +106293,7 @@
 		"moduleVar": "l.__module_stdfacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_stdschtasks",
+		"distroPath": "g.Module_Root $ l.__module_stdschtasks:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -106619,19 +106619,19 @@
 		"moduleVar": "l.__module_stdschtasks"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mvga",
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
 		"functions": [],
 		"moduleCode": "mvga",
 		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_mvga",
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
 		"functions": [],
 		"moduleCode": "mvga",
 		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFAuthenticationCredentialsDialog_CSS",
@@ -106666,7 +106666,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFAuthenticationCredentialsList_CSS",
@@ -106701,13 +106701,13 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [],
 		"moduleCode": "orderworkflow",
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWF_JavaScript_Combined_Begin",
@@ -106735,7 +106735,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWF_Functions_JavaScript",
@@ -106756,19 +106756,19 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [],
 		"moduleCode": "orderworkflow",
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [],
 		"moduleCode": "orderworkflow",
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFQueue_AddDialog_CSS",
@@ -106803,7 +106803,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFQueue_List_CSS",
@@ -106838,7 +106838,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFWorkflow_AddEditDialog_CSS",
@@ -106873,7 +106873,7 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_orderworkflow",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFWorkflow_List_CSS",
@@ -106908,13 +106908,13 @@
 		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [],
 		"moduleCode": "quote",
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_JavaScript_Combined_Begin",
@@ -106942,7 +106942,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomerDashboard_CSS",
@@ -106977,7 +106977,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomerLookupDialog_CSS",
@@ -107012,7 +107012,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Customer_QuoteListDetailOverlay_CSS",
@@ -107047,7 +107047,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomFieldDialog_CSS",
@@ -107082,7 +107082,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomFieldList_CSS",
@@ -107117,7 +107117,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_EmailEditDialog_CSS",
@@ -107152,7 +107152,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_EmailList_CSS",
@@ -107187,7 +107187,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_Functions_JavaScript",
@@ -107208,13 +107208,13 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [],
 		"moduleCode": "quote",
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_ItemDialog_CSS",
@@ -107249,7 +107249,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteList_CSS",
@@ -107284,7 +107284,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteAddEditDialog_CSS",
@@ -107319,7 +107319,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteDialog_CSS",
@@ -107354,7 +107354,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteList_CSS",
@@ -107389,13 +107389,13 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [],
 		"moduleCode": "quote",
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlay_CSS",
@@ -107430,7 +107430,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlayDetails_CSS",
@@ -107473,7 +107473,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlayList_CSS",
@@ -107516,7 +107516,7 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_quote",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_RequesterDialog_CSS",
@@ -107551,13 +107551,13 @@
 		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [],
 		"moduleCode": "reviewbaskets",
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBaskets_JavaScript_Combined_Begin",
@@ -107585,7 +107585,7 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBaskets_Functions_JavaScript",
@@ -107606,19 +107606,19 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [],
 		"moduleCode": "reviewbaskets",
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [],
 		"moduleCode": "reviewbaskets",
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlay_CSS",
@@ -107653,7 +107653,7 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlayDetails_CSS",
@@ -107696,7 +107696,7 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlayList_CSS",
@@ -107739,7 +107739,7 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_reviewbaskets",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsList_CSS",
@@ -107774,13 +107774,13 @@
 		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [],
 		"moduleCode": "srchrplc",
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_JavaScript_Combined_Begin",
@@ -107808,7 +107808,7 @@
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_ConfirmationNotesDialog_CSS",
@@ -107843,7 +107843,7 @@
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_Functions_JavaScript",
@@ -107864,13 +107864,13 @@
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [],
 		"moduleCode": "srchrplc",
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_Interface_CSS",
@@ -107905,7 +107905,7 @@
 		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_srchrplc",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [],
 		"moduleCode": "srchrplc",
 		"moduleVar": "l.__module_srchrplc"
