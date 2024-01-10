@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.8.2
+
+* Fixed issue where the "module imports" variables were not referencing the correct member (`:module`).
+
 ## v1.8.1
 
 * Added an additional linebreak after "module imports" comment.
