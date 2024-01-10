@@ -1,5 +1,13 @@
 # Miva IDE CHANGELOG
 
+## v1.8.0
+
+* Added `mvt:do`/`MvDO` "module imports".
+	* This feature replaces existing string-based file paths in favor of loading modules via `Module_Load_Code_Cached`.
+	* Using `Module_Load_Code_Cached` ensures that the correct module will be loaded in the event the file path changes.
+* Fixed Miva Script syntax issue.
+* Replaced png icons with new svg icons.
+
 ## v1.7.2
 
 * Fixed issue where MVT and Miva Script language servers would not start for the Web version.

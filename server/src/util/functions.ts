@@ -147,11 +147,15 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 			].join('\n')
 		},
 		command: {
-			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute.`,
-			command: 'mivaIde.chooseFileName',
+			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute. Also, inject module import if available.`,
+			command: 'mivaIde.chooseFile',
 			arguments: [
 				{
-					fileNames: [ file.distroPath ],
+					files: [{
+						distroPath: file.distroPath,
+						moduleCode: file.moduleCode,
+						moduleVar: file.moduleVar
+					}],
 					returnValue: fn.returnValue
 				}
 			]
@@ -172,8 +176,12 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 			if ( completion ) {
 
-				// append to the fileNames argument
-				completion.command.arguments[0].fileNames.push( file.distroPath );
+				// append to the files argument
+				completion.command.arguments[0].files.push({
+					distroPath: file.distroPath,
+					moduleCode: file.moduleCode,
+					moduleVar: file.moduleVar
+				});
 
 			}
 			else {
