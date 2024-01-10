@@ -147,7 +147,7 @@ const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.i
 	const documentText = textEditor.document.getText();
 	const moduleImportBlockExec = new RegExp(`(?:${moduleImportBlockEndComment})`, 'i').exec( documentText );
 	const insertText = moduleImportBlockExec === null
-		? `${moduleImportText}\n${moduleImportBlockEndComment}\n`
+		? `${moduleImportText}\n${moduleImportBlockEndComment}\n\n`
 		: `${moduleImportText}\n`;
 
 	if (documentText.indexOf(moduleImportText) === -1) {

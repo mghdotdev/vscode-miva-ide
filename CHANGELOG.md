@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.8.1
+
+* Added an additional linebreak after "module imports" comment.
+
 ## v1.8.0
 
 * Added `mvt:do`/`MvDO` "module imports".
