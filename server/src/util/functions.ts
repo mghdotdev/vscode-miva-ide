@@ -1,8 +1,7 @@
 import { SpawnOptionsWithoutStdio, spawn } from 'child_process';
-import {
-	readFileSync
-} from 'fs';
 import _cloneDeep from 'lodash.clonedeep';
+import setImmediateShim from 'set-immediate-shim';
+import { HTMLDocument, Node } from 'vscode-html-languageservice';
 import {
 	CancellationToken,
 	CompletionItem,
@@ -13,11 +12,11 @@ import {
 	MarkupContent,
 	MarkupKind,
 	ResponseError
-} from 'vscode-languageserver/node';
+} from 'vscode-languageserver';
+import { URI } from 'vscode-uri';
 import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
-export function formatError( message: string,
-	err: any ): string {
+export function formatError( message: string, err: any ): string {
 
 	if ( err instanceof Error ) {
 
@@ -48,16 +47,6 @@ export function pushAll<T>( to: T[], from: T[] ) {
 	}
 }
 
-export function readJSONFile( location: string ) {
-	try {
-		return JSON.parse( readFileSync( location ).toString() );
-	}
-	catch( e ) {
-		console.log( `Problems reading ${ location }: ${ e }` );
-		return {};
-	}
-}
-
 export function tokenize( text: string, matches: RegExpExecArray ): string {
 	let result = text;
 	for ( let i = 0; i < matches.length; i++ ) {
@@ -68,7 +57,7 @@ export function tokenize( text: string, matches: RegExpExecArray ): string {
 
 export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMessage: string, token: CancellationToken ): Thenable<T | ResponseError<any>> {
 	return new Promise<T | ResponseError<any>>((resolve) => {
-		setImmediate(() => {
+		setImmediateShim(() => {
 			if ( token.isCancellationRequested ) {
 				resolve( cancelValue() );
 			}
@@ -89,7 +78,7 @@ export function runSafeAsync<T>( func: () => Thenable<T>, errorVal: T, errorMess
 
 export function runSafe<T, E>( func: () => T, errorVal: T, errorMessage: string, token: CancellationToken ): Thenable<T | ResponseError<E>> {
 	return new Promise<T | ResponseError<E>>(( resolve ) => {
-		setImmediate(() => {
+		setImmediateShim(() => {
 			if ( token.isCancellationRequested ) {
 				resolve( cancelValue() );
 			}
@@ -159,11 +148,15 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 			].join('\n')
 		},
 		command: {
-			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute.`,
-			command: 'mivaIde.chooseFileName',
+			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute. Also, inject module import if available.`,
+			command: 'mivaIde.chooseFile',
 			arguments: [
 				{
-					fileNames: [ file.distroPath ],
+					files: [{
+						distroPath: file.distroPath,
+						moduleCode: file.moduleCode,
+						moduleVar: file.moduleVar
+					}],
 					returnValue: fn.returnValue
 				}
 			]
@@ -184,8 +177,12 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 			if ( completion ) {
 
-				// append to the fileNames argument
-				completion.command.arguments[0].fileNames.push( file.distroPath );
+				// append to the files argument
+				completion.command.arguments[0].files.push({
+					distroPath: file.distroPath,
+					moduleCode: file.moduleCode,
+					moduleVar: file.moduleVar
+				});
 
 			}
 			else {
@@ -529,4 +526,30 @@ export function asyncSpawn (command: string, args?: readonly string[], options?:
 
 export function folderContainsFile (folderUri: string, fileUri: string): boolean {
 	return fileUri.startsWith(folderUri);
+}
+
+export function filterTagData (tagData: Record<string, TagData>, callback: (value: [string, TagData]) => boolean): Record<string, TagData> {
+	return Object.fromEntries(
+		Object.entries(tagData)
+			?.filter(callback)
+	);
+}
+
+export function getNodeAtOffset (offset: number, parsedDocument: HTMLDocument): Node {
+	let currentNode = parsedDocument.findNodeAt(offset);
+	while (currentNode) {
+		if (offset > currentNode.startTagEnd && offset < currentNode.endTagStart) {
+			return currentNode;
+		}
+
+		currentNode = currentNode.parent;
+	}
+}
+
+export function uriToFsPath (uri: URI | string) {
+	if (typeof uri === 'string') {
+		return URI.parse(uri).fsPath;
+	}
+
+	return uri.fsPath;
 }

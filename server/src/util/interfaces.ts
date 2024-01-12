@@ -1,8 +1,4 @@
 import {
-	Range,
-	TextDocument
-} from 'vscode-languageserver-textdocument';
-import {
 	CodeAction,
 	CodeActionContext,
 	Command,
@@ -16,7 +12,11 @@ import {
 	Position,
 	SymbolInformation,
 	WorkspaceFolder
-} from 'vscode-languageserver/node';
+} from 'vscode-languageserver';
+import {
+	Range,
+	TextDocument
+} from 'vscode-languageserver-textdocument';
 
 export interface Settings {
 	LSK?: any;
@@ -44,13 +44,13 @@ export interface LanguageFeatures {
 
 	findDocumentSymbols?: ( document: TextDocument ) => SymbolInformation[];
 
-	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Definition | null;
+	findDefinition?: ( document: TextDocument, position: Position, settings: Settings ) => Promise<Definition> | Promise<null>;
 
-	onHover?: ( document: TextDocument, position: Position ) => Hover | null
+	onHover?: ( document: TextDocument, position: Position, settings?: Settings ) => Promise<Hover> | Promise<null>;
 
-	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[]
+	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[];
 
-	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[]
+	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[];
 
 }
 
@@ -157,6 +157,8 @@ export interface TagData extends BaseTagData {
 	selfClosing: boolean;
 	void: boolean;
 	command?: Command
+	parent?: string;
+	children?: string[];
 }
 
 export interface TagSnippet extends BaseTagData {

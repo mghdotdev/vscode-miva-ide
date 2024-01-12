@@ -2,7 +2,7 @@
 ---
 name: Miva Script (Injection)
 scopeName: source.mv.injection
-injectionSelector: 'L:text.html.mv -comment.block.mv -source.mv'
+injectionSelector: 'L:text.html.mv -comment.block.mv -source.mv -string'
 
 patterns:
   - include: '#comments'
@@ -258,7 +258,7 @@ repository:
 
   # =-======================== Expression ========================-= #
   expression:
-    begin: '{'
+    begin: '\{(?!\n)'
     beginCaptures:
       0: {name: punctuation.definition.expression.begin.mv}
     end: '}'

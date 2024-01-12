@@ -30,6 +30,36 @@
 			"problemMatcher": [
 				"$esbuild-watch"
 			]
+		},
+		{
+			"type": "npm",
+			"script": "build-web",
+			"group": "build",
+			"presentation": {
+				"panel": "dedicated",
+				"reveal": "never",
+				"group": "build"
+			},
+			"problemMatcher": [
+				"$esbuild"
+			]
+		},
+		{
+			"type": "npm",
+			"script": "watch-web",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"panel": "dedicated",
+				"reveal": "never",
+				"group": "build"
+			},
+			"problemMatcher": [
+				"$esbuild-watch"
+			]
 		}
 	]
 }

@@ -48697,7 +48697,7 @@
 		]
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/stdacct.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_stdacct:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -48714,10 +48714,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "stdacct",
+		"moduleVar": "l.__module_stdacct"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49107,10 +49109,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/addeditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_AddEditDialog_CSS",
@@ -49140,14 +49144,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
+		"functions": [],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_JavaScript_Combined_Begin",
@@ -49170,10 +49178,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_Functions_JavaScript",
@@ -49189,14 +49199,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
+		"functions": [],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "Element_TemplateBatchReport_List_CSS",
@@ -49226,14 +49240,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/batch/templatebatchreports/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
+		"functions": [],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/boxpacking/packbycube.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_packbycube:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49451,10 +49469,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "packbycube",
+		"moduleVar": "l.__module_packbycube"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/boxpacking/packbyquantity.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_packbyquantity:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -49805,10 +49825,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "packbyquantity",
+		"moduleVar": "l.__module_packbyquantity"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/boxpacking/packbyweight.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_packbyweight:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -50223,14 +50245,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "packbyweight",
+		"moduleVar": "l.__module_packbyweight"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
+		"functions": [],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessage_JavaScript_Combined_Begin",
@@ -50253,10 +50279,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessage_Functions_JavaScript",
@@ -50272,14 +50300,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
+		"functions": [],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Element_CSSUIMessageList_CSS",
@@ -50309,22 +50341,30 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
+		"functions": [],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-searchfield/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
+		"functions": [],
+		"moduleCode": "cmp-cssui-searchfield",
+		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-searchfield/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
+		"functions": [],
+		"moduleCode": "cmp-cssui-searchfield",
+		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-include-basket.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -50719,10 +50759,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-basket",
+		"moduleVar": "l.__module_cmp_cssui_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-include-imagetypes.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -51088,10 +51130,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdorderitemfields",
+		"moduleVar": "l.__module_cmp_mv_stdorderitemfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-include-order.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatebatchreports:module",
 		"functions": [
 			{
 				"name": "ComponentModule_Tabs",
@@ -51474,10 +51518,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatebatchreports",
+		"moduleVar": "l.__module_templatebatchreports"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/baselist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_BaseHTTPHeaderList_CSS",
@@ -51507,14 +51553,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_HTTPHeader_JavaScript_Combined_Begin",
@@ -51537,10 +51587,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_HTTPHeader_Functions_JavaScript",
@@ -51556,10 +51608,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/globallist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_GlobalHTTPHeaderList_CSS",
@@ -51589,18 +51643,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers/pagelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Element_PageHTTPHeaderList_CSS",
@@ -51630,14 +51690,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_META_JavaScript_Combined_Begin",
@@ -51660,10 +51724,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_META_Functions_JavaScript",
@@ -51679,14 +51745,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/metanamelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Element_METAName_List_CSS",
@@ -51716,14 +51786,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
+		"functions": [],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-addressbook.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressbook:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -51937,10 +52011,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-addressbook",
+		"moduleVar": "l.__module_cmp_cssui_addressbook"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-addressfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_addressfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52180,10 +52256,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-addressfields",
+		"moduleVar": "l.__module_cmp_cssui_addressfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-afae.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afae:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52432,10 +52510,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-afae",
+		"moduleVar": "l.__module_cmp_cssui_afae"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-afflink.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_afflink:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52650,10 +52730,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-afflink",
+		"moduleVar": "l.__module_cmp_cssui_afflink"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-attributes.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_attributes:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52859,10 +52941,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-attributes",
+		"moduleVar": "l.__module_cmp_cssui_attributes"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-basket.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -52913,10 +52997,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-basket",
+		"moduleVar": "l.__module_cmp_cssui_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-breadcrumbs.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53170,10 +53256,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-breadcrumbs",
+		"moduleVar": "l.__module_cmp_cssui_breadcrumbs"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-buttons.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_buttons:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53410,10 +53498,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-buttons",
+		"moduleVar": "l.__module_cmp_cssui_buttons"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-cattitle.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattitle:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -53666,10 +53756,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-cattitle",
+		"moduleVar": "l.__module_cmp_cssui_cattitle"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-cattree.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_cattree:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54115,10 +54207,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-cattree",
+		"moduleVar": "l.__module_cmp_cssui_cattree"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-countryselect.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_countryselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54238,10 +54332,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-countryselect",
+		"moduleVar": "l.__module_cmp_cssui_countryselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-custfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54568,10 +54664,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-custfields",
+		"moduleVar": "l.__module_cmp_cssui_custfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-custlink.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_custlink:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -54786,10 +54884,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-custlink",
+		"moduleVar": "l.__module_cmp_cssui_custlink"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-customercredithistory.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_customercredithistory:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55024,10 +55124,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-customercredithistory",
+		"moduleVar": "l.__module_cmp_cssui_customercredithistory"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-datepicker.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_datepicker:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55233,10 +55335,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-datepicker",
+		"moduleVar": "l.__module_cmp_cssui_datepicker"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-hdft.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_hdft:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55567,10 +55671,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-hdft",
+		"moduleVar": "l.__module_cmp_cssui_hdft"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-head.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_head:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -55831,10 +55937,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-head",
+		"moduleVar": "l.__module_cmp_cssui_head"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-html.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_html:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56023,10 +56131,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-html",
+		"moduleVar": "l.__module_cmp_cssui_html"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-invc-custfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_custfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56256,10 +56366,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-invc-custfields",
+		"moduleVar": "l.__module_cmp_cssui_invc_custfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-invc-order.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_invc_order:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56285,10 +56397,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-invc-order",
+		"moduleVar": "l.__module_cmp_cssui_invc_order"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-links.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_links:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56460,10 +56574,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-links",
+		"moduleVar": "l.__module_cmp_cssui_links"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-messages.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_messages:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -56859,10 +56975,12 @@
 				"returnValue": "l.void",
 				"description": "Helper functions"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-messages",
+		"moduleVar": "l.__module_cmp_cssui_messages"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-mivapay.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_mivapay:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57179,10 +57297,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-mivapay",
+		"moduleVar": "l.__module_cmp_cssui_mivapay"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-navbar.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_navbar:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57379,10 +57499,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-navbar",
+		"moduleVar": "l.__module_cmp_cssui_navbar"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-orderlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_orderlist:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57642,10 +57764,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-orderlist",
+		"moduleVar": "l.__module_cmp_cssui_orderlist"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-paymentcards.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_paymentcards:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -57867,10 +57991,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-paymentcards",
+		"moduleVar": "l.__module_cmp_cssui_paymentcards"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-pchdft.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_pchdft:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -58267,10 +58393,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-pchdft",
+		"moduleVar": "l.__module_cmp_cssui_pchdft"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-prodlayo.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlayo:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -58528,10 +58656,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-prodlayo",
+		"moduleVar": "l.__module_cmp_cssui_prodlayo"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-prodlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_prodlist:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -58987,10 +59117,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-prodlist",
+		"moduleVar": "l.__module_cmp_cssui_prodlist"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-searchfield.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_searchfield:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59296,10 +59428,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-searchfield",
+		"moduleVar": "l.__module_cmp_cssui_searchfield"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-sitemap.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_sitemap:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59445,10 +59579,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-sitemap",
+		"moduleVar": "l.__module_cmp_cssui_sitemap"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-stateselect.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_stateselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59568,10 +59704,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-stateselect",
+		"moduleVar": "l.__module_cmp_cssui_stateselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-subscriptionfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptionfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -59823,10 +59961,12 @@
 				"parameters": [],
 				"returnValue": "l.count"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-subscriptionfields",
+		"moduleVar": "l.__module_cmp_cssui_subscriptionfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-subscriptions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_subscriptions:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60070,10 +60210,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-subscriptions",
+		"moduleVar": "l.__module_cmp_cssui_subscriptions"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-urls.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_urls:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60253,10 +60395,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-urls",
+		"moduleVar": "l.__module_cmp_cssui_urls"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-uslmltplattr.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_uslmltplattr:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60386,10 +60530,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-uslmltplattr",
+		"moduleVar": "l.__module_cmp_cssui_uslmltplattr"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-vieworder.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_vieworder:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60435,10 +60581,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-vieworder",
+		"moduleVar": "l.__module_cmp_cssui_vieworder"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-wishlistfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60660,10 +60808,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-wishlistfields",
+		"moduleVar": "l.__module_cmp_cssui_wishlistfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-wishlistitems.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlistitems:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -60916,10 +61066,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-wishlistitems",
+		"moduleVar": "l.__module_cmp_cssui_wishlistitems"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-cssui-wishlists.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_wishlists:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61146,10 +61298,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-wishlists",
+		"moduleVar": "l.__module_cmp_cssui_wishlists"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-adminorderfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_adminorderfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61325,10 +61479,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-adminorderfields",
+		"moduleVar": "l.__module_cmp_mv_adminorderfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-attributemachine.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_attributemachine:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61549,10 +61705,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-attributemachine",
+		"moduleVar": "l.__module_cmp_mv_attributemachine"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-clientdimensions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_clientdimensions:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61777,10 +61935,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-clientdimensions",
+		"moduleVar": "l.__module_cmp_mv_clientdimensions"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-content.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_content:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -61978,10 +62138,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-content",
+		"moduleVar": "l.__module_cmp_mv_content"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-customerwishlists.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_customerwishlists:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -62104,10 +62266,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-customerwishlists",
+		"moduleVar": "l.__module_cmp_mv_customerwishlists"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-flex.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_flex:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -64366,10 +64530,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-flex",
+		"moduleVar": "l.__module_cmp_mv_flex"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-http-headers.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_http_headers:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -64855,10 +65021,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-http-headers",
+		"moduleVar": "l.__module_cmp_mv_http_headers"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-imagemachine.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_imagemachine:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65065,10 +65233,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-imagemachine",
+		"moduleVar": "l.__module_cmp_mv_imagemachine"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-inventory.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_inventory:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65180,10 +65350,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-inventory",
+		"moduleVar": "l.__module_cmp_mv_inventory"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-minibask.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_minibask:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65496,10 +65668,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-minibask",
+		"moduleVar": "l.__module_cmp_mv_minibask"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-paymentfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65611,10 +65785,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-paymentfields",
+		"moduleVar": "l.__module_cmp_mv_paymentfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-paymentmethod.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentmethod:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65726,10 +65902,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-paymentmethod",
+		"moduleVar": "l.__module_cmp_mv_paymentmethod"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-paymentsettings.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_paymentsettings:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65841,10 +66019,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-paymentsettings",
+		"moduleVar": "l.__module_cmp_mv_paymentsettings"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-payselect.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_payselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -65956,10 +66136,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-payselect",
+		"moduleVar": "l.__module_cmp_mv_payselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-prodctgy-meta.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_prodctgy_meta:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67206,10 +67388,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-prodctgy-meta",
+		"moduleVar": "l.__module_cmp_mv_prodctgy_meta"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-runtimejs.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_runtimejs:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67342,10 +67526,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-runtimejs",
+		"moduleVar": "l.__module_cmp_mv_runtimejs"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-sequence.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_sequence:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -67711,10 +67897,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-sequence",
+		"moduleVar": "l.__module_cmp_mv_sequence"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-shipestimate.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipestimate:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68109,10 +68297,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-shipestimate",
+		"moduleVar": "l.__module_cmp_mv_shipestimate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-shipselect.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_shipselect:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68224,10 +68414,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-shipselect",
+		"moduleVar": "l.__module_cmp_mv_shipselect"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-splitpayment.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_splitpayment:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68339,10 +68531,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-splitpayment",
+		"moduleVar": "l.__module_cmp_mv_splitpayment"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdcatfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdcatfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68470,10 +68664,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdcatfields",
+		"moduleVar": "l.__module_cmp_mv_stdcatfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stddigitaldownloadfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stddigitaldownloadfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68596,10 +68792,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stddigitaldownloadfields",
+		"moduleVar": "l.__module_cmp_mv_stddigitaldownloadfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdgiftcertificatefields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdgiftcertificatefields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68722,10 +68920,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdgiftcertificatefields",
+		"moduleVar": "l.__module_cmp_mv_stdgiftcertificatefields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdorderfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68837,10 +69037,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdorderfields",
+		"moduleVar": "l.__module_cmp_mv_stdorderfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdorderitemfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdorderitemfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68859,10 +69061,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdorderitemfields",
+		"moduleVar": "l.__module_cmp_mv_stdorderitemfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdprodfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdprodfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -68974,10 +69178,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdprodfields",
+		"moduleVar": "l.__module_cmp_mv_stdprodfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdreturnfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdreturnfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69006,10 +69212,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdreturnfields",
+		"moduleVar": "l.__module_cmp_mv_stdreturnfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdshipmentfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdshipmentfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69070,10 +69278,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdshipmentfields",
+		"moduleVar": "l.__module_cmp_mv_stdshipmentfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-stdstorefields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_stdstorefields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69185,10 +69395,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-stdstorefields",
+		"moduleVar": "l.__module_cmp_mv_stdstorefields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-taxfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_taxfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69300,10 +69512,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-taxfields",
+		"moduleVar": "l.__module_cmp_mv_taxfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/cmp-mv-uslprodfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_mv_uslprodfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69415,10 +69629,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-mv-uslprodfields",
+		"moduleVar": "l.__module_cmp_mv_uslprodfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/component/seo_include.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cmp_cssui_breadcrumbs:module",
 		"functions": [
 			{
 				"name": "SEOSettings_Encode_Delimiter",
@@ -69713,10 +69929,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cmp-cssui-breadcrumbs",
+		"moduleVar": "l.__module_cmp_cssui_breadcrumbs"
 	},
 	{
-		"distroPath": "g.Module_Store_Module_Currency",
+		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69863,10 +70081,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "usmoney",
+		"moduleVar": "l.__module_usmoney"
 	},
 	{
-		"distroPath": "g.Module_Store_Module_Currency",
+		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -69906,14 +70126,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "usmoney",
+		"moduleVar": "l.__module_usmoney"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
+		"functions": [],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_CustomerSpecific_JavaScript_Combined_Begin",
@@ -69936,10 +70160,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/customer_productpricelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_Customer_ProductPriceList_CSS",
@@ -69969,10 +70195,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_CustomerSpecific_Functions_JavaScript",
@@ -69988,18 +70216,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
+		"functions": [],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
+		"functions": [],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific/product_customerpricelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Element_Product_CustomerPriceList_CSS",
@@ -70029,10 +70263,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/addon.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_addon:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70151,10 +70387,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_addon",
+		"moduleVar": "l.__module_discount_addon"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/basket_product.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_basket_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70237,10 +70475,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_basket_product",
+		"moduleVar": "l.__module_discount_basket_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/basket.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70331,10 +70571,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_basket",
+		"moduleVar": "l.__module_discount_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/buyxgety.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_buyxgety:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70501,10 +70743,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_buyxgety",
+		"moduleVar": "l.__module_discount_buyxgety"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/costmarkup.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_costmarkup:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70595,10 +70839,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_costmarkup",
+		"moduleVar": "l.__module_discount_costmarkup"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/customerspecific.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71127,10 +71373,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_customerspecific",
+		"moduleVar": "l.__module_discount_customerspecific"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/product.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71221,10 +71469,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_product",
+		"moduleVar": "l.__module_discount_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/saleprice.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_saleprice:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71801,10 +72051,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_saleprice",
+		"moduleVar": "l.__module_discount_saleprice"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/shipping_basket.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_shipping_basket:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -71948,10 +72200,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_shipping_basket",
+		"moduleVar": "l.__module_discount_shipping_basket"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/shipping_product.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_shipping_product:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -72114,10 +72368,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_shipping_product",
+		"moduleVar": "l.__module_discount_shipping_product"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/discount/volume.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_discount_volume:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -72976,10 +73232,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "discount_volume",
+		"moduleVar": "l.__module_discount_volume"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/export_include.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_afilexprt:module",
 		"functions": [
 			{
 				"name": "Buffer_Add_Field",
@@ -73075,10 +73333,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "afilexprt",
+		"moduleVar": "l.__module_afilexprt"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/afilexprt.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_afilexprt:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73166,10 +73426,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "afilexprt",
+		"moduleVar": "l.__module_afilexprt"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/attrexp.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_attrexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73221,10 +73483,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "attrexp",
+		"moduleVar": "l.__module_attrexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/flatcat.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatcat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73299,10 +73563,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatcat",
+		"moduleVar": "l.__module_flatcat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/flatcus.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatcus:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73371,10 +73637,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatcus",
+		"moduleVar": "l.__module_flatcus"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/flatord.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatord:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73438,10 +73706,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatord",
+		"moduleVar": "l.__module_flatord"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/prodexp.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_prodexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73626,10 +73896,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "prodexp",
+		"moduleVar": "l.__module_prodexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/shipexport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shipexport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73706,10 +73978,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shipexport",
+		"moduleVar": "l.__module_shipexport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/uriexport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_uriexport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73801,10 +74075,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "uriexport",
+		"moduleVar": "l.__module_uriexport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/export/userdataexp.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_userdataexp:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -73916,10 +74192,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "userdataexp",
+		"moduleVar": "l.__module_userdataexp"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/feed/sitemap.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_sitemap:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -74351,10 +74629,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "sitemap",
+		"moduleVar": "l.__module_sitemap"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/feed/templatefeed.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templatefeed:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -75348,10 +75628,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templatefeed",
+		"moduleVar": "l.__module_templatefeed"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -77093,10 +77375,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/addeditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_AddEditDialog_CSS",
@@ -77126,14 +77410,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
+		"functions": [],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_JavaScript_Combined_Begin",
@@ -77156,10 +77444,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_Functions_JavaScript",
@@ -77175,14 +77465,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
+		"functions": [],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
 		"functions": [
 			{
 				"name": "Element_TemplateOrderEmail_List_CSS",
@@ -77212,14 +77506,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/fulfill/templateorderemails/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_templateorderemails:module",
+		"functions": [],
+		"moduleCode": "templateorderemails",
+		"moduleVar": "l.__module_templateorderemails"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/import_include.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_categoryimport:module",
 		"functions": [
 			{
 				"name": "Validate_Code",
@@ -77421,10 +77719,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "categoryimport",
+		"moduleVar": "l.__module_categoryimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/categoryimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_categoryimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -77759,10 +78059,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "categoryimport",
+		"moduleVar": "l.__module_categoryimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/couponimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_couponimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78092,10 +78394,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "couponimport",
+		"moduleVar": "l.__module_couponimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/customerimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customerimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78371,10 +78675,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customerimport",
+		"moduleVar": "l.__module_customerimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/giftcertificateimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_giftcertificateimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -78660,10 +78966,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "giftcertificateimport",
+		"moduleVar": "l.__module_giftcertificateimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/productimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_productimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79136,10 +79444,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "productimport",
+		"moduleVar": "l.__module_productimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/provisioningimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_provisioningimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79277,10 +79587,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "provisioningimport",
+		"moduleVar": "l.__module_provisioningimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/shipimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shipimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79432,10 +79744,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shipimport",
+		"moduleVar": "l.__module_shipimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/uriimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_uriimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -79693,10 +80007,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "uriimport",
+		"moduleVar": "l.__module_uriimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/import/variantimport.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_variantimport:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80049,10 +80365,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "variantimport",
+		"moduleVar": "l.__module_variantimport"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/log/elf.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_elf:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80194,10 +80512,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "elf",
+		"moduleVar": "l.__module_elf"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/log/malf.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_malf:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80320,10 +80640,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "malf",
+		"moduleVar": "l.__module_malf"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/check.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_check:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -80529,10 +80851,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "check",
+		"moduleVar": "l.__module_check"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/cod.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cod:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -81021,10 +81345,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cod",
+		"moduleVar": "l.__module_cod"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/customercredit.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customercredit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -81436,10 +81762,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customercredit",
+		"moduleVar": "l.__module_customercredit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -81905,14 +82233,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
+		"functions": [],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10_JavaScript_Combined_Begin",
@@ -81935,10 +82267,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10_Functions_JavaScript",
@@ -81954,14 +82288,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
+		"functions": [],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
 		"functions": [
 			{
 				"name": "Element_MOD10CardList_CSS",
@@ -81991,14 +82329,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/payment/mod10/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_mod10:module",
+		"functions": [],
+		"moduleCode": "mod10",
+		"moduleVar": "l.__module_mod10"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/coupon_usage.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_coupon_usage:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82225,10 +82567,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_coupon_usage",
+		"moduleVar": "l.__module_report_coupon_usage"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/customer_sales.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_customer_sales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82594,10 +82938,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_customer_sales",
+		"moduleVar": "l.__module_report_customer_sales"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/geosales.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_geosales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -82851,10 +83197,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_geosales",
+		"moduleVar": "l.__module_report_geosales"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/productsales.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_productsales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83233,10 +83581,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_productsales",
+		"moduleVar": "l.__module_report_productsales"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/sales_commission.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_sales_commission:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83520,10 +83870,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_sales_commission",
+		"moduleVar": "l.__module_report_sales_commission"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/sales.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_sales:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -83963,10 +84315,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_sales",
+		"moduleVar": "l.__module_report_sales"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/stats.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84057,10 +84411,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_stats",
+		"moduleVar": "l.__module_report_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/subscription_metrics.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_metrics:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84325,10 +84681,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_subscription_metrics",
+		"moduleVar": "l.__module_report_subscription_metrics"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/subscription_product_stats.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_product_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84693,10 +85051,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_subscription_product_stats",
+		"moduleVar": "l.__module_report_subscription_product_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/report/subscription_stats.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_report_subscription_stats:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -84998,14 +85358,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "report_subscription_stats",
+		"moduleVar": "l.__module_report_subscription_stats"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
+		"functions": [],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnit_JavaScript_Combined_Begin",
@@ -85028,10 +85392,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnit_Functions_JavaScript",
@@ -85047,14 +85413,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
+		"functions": [],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/methodlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Element_BaseUnitMethod_List_CSS",
@@ -85084,18 +85454,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
+		"functions": [],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
+		"functions": [],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRate_JavaScript_Combined_Begin",
@@ -85118,10 +85494,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRate_Functions_JavaScript",
@@ -85137,14 +85515,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
+		"functions": [],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Element_FlatRateList_CSS",
@@ -85174,18 +85556,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
+		"functions": [],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
+		"functions": [],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnit_JavaScript_Combined_Begin",
@@ -85208,10 +85596,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnit_Functions_JavaScript",
@@ -85227,14 +85617,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
+		"functions": [],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/methodlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Element_MinUnitMethod_List_CSS",
@@ -85264,14 +85658,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
+		"functions": [],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/baseunit.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_baseunit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -85590,10 +85988,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "baseunit",
+		"moduleVar": "l.__module_baseunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/flatrate.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_flatrate:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -85905,10 +86305,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "flatrate",
+		"moduleVar": "l.__module_flatrate"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/minunit.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_minunit:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -86228,10 +86630,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "minunit",
+		"moduleVar": "l.__module_minunit"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -86867,10 +87271,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -87333,10 +87739,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -87936,10 +88344,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/chargelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShippingChargeList_CSS",
@@ -87969,14 +88379,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
+		"functions": [],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShipping_JavaScript_Combined_Begin",
@@ -87999,10 +88413,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShipping_Functions_JavaScript",
@@ -88018,14 +88434,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
+		"functions": [],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
 		"functions": [
 			{
 				"name": "Element_PriceTableBasedShippingList_CSS",
@@ -88055,18 +88475,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/ptbship/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_ptbship:module",
+		"functions": [],
+		"moduleCode": "ptbship",
+		"moduleVar": "l.__module_ptbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
+		"functions": [],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShipping_JavaScript_Combined_Begin",
@@ -88089,10 +88515,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShipping_Functions_JavaScript",
@@ -88108,14 +88536,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
+		"functions": [],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
 		"functions": [
 			{
 				"name": "Element_QuantityBasedShippingList_CSS",
@@ -88145,14 +88577,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/qship/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_qship:module",
+		"functions": [],
+		"moduleCode": "qship",
+		"moduleVar": "l.__module_qship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/chargelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShippingChargeList_CSS",
@@ -88182,14 +88618,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
+		"functions": [],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShipping_JavaScript_Combined_Begin",
@@ -88212,10 +88652,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShipping_Functions_JavaScript",
@@ -88231,14 +88673,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
+		"functions": [],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
 		"functions": [
 			{
 				"name": "Element_WeightTableBasedShippingList_CSS",
@@ -88268,14 +88714,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/shipping/wtbship/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_wtbship:module",
+		"functions": [],
+		"moduleCode": "wtbship",
+		"moduleVar": "l.__module_wtbship"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/system/ex-system.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_ex_system:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -88338,14 +88788,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "ex-system",
+		"moduleVar": "l.__module_ex_system"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
+		"functions": [],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVat_JavaScript_Combined_Begin",
@@ -88368,10 +88822,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVat_Functions_JavaScript",
@@ -88387,14 +88843,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
+		"functions": [],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Element_CanVatList_CSS",
@@ -88424,18 +88884,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
+		"functions": [],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
+		"functions": [],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVAT_JavaScript_Combined_Begin",
@@ -88458,10 +88924,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/countrylist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVATCountryList_CSS",
@@ -88491,10 +88959,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVAT_Functions_JavaScript",
@@ -88510,18 +88980,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
+		"functions": [],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
+		"functions": [],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat/ratelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Element_EuropeanVATRateList_CSS",
@@ -88551,10 +89027,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/canvat.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_canvat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -89078,10 +89556,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "canvat",
+		"moduleVar": "l.__module_canvat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/devat.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_devat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -89714,10 +90194,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "devat",
+		"moduleVar": "l.__module_devat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90106,10 +90588,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90456,10 +90940,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -90852,14 +91338,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
+		"functions": [],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTax_JavaScript_Combined_Begin",
@@ -90882,10 +91372,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTax_Functions_JavaScript",
@@ -90901,14 +91393,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
+		"functions": [],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
 		"functions": [
 			{
 				"name": "Element_ShopTaxRateList_CSS",
@@ -90938,18 +91434,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/shoptax/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_shoptax:module",
+		"functions": [],
+		"moduleCode": "shoptax",
+		"moduleVar": "l.__module_shoptax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
+		"functions": [],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTax_JavaScript_Combined_Begin",
@@ -90972,10 +91474,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTax_Functions_JavaScript",
@@ -90991,14 +91495,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
+		"functions": [],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
 		"functions": [
 			{
 				"name": "Element_StateTaxStateList_CSS",
@@ -91028,18 +91536,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/statetax/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_statetax:module",
+		"functions": [],
+		"moduleCode": "statetax",
+		"moduleVar": "l.__module_statetax"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
+		"functions": [],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVAT_JavaScript_Combined_Begin",
@@ -91062,10 +91576,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVAT_Functions_JavaScript",
@@ -91081,14 +91597,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
+		"functions": [],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
 		"functions": [
 			{
 				"name": "Element_GenericVATList_CSS",
@@ -91118,14 +91638,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/tax/vat/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_vat:module",
+		"functions": [],
+		"moduleCode": "vat",
+		"moduleVar": "l.__module_vat"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/ui/cssui.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_cssui:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -91361,10 +91885,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "cssui",
+		"moduleVar": "l.__module_cssui"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/ui/mmui_stsl.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mmui_stsl:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -91449,10 +91975,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mmui_stsl",
+		"moduleVar": "l.__module_mmui_stsl"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/combinationfacetlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_List_CSS",
@@ -91482,10 +92010,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/combinationfacetrecordlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacetRecord_List_CSS",
@@ -91515,14 +92045,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
+		"functions": [],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_JavaScript_Combined_Begin",
@@ -91545,10 +92079,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Element_CombinationFacet_Functions_JavaScript",
@@ -91564,22 +92100,30 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
+		"functions": [],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
+		"functions": [],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
+		"functions": [],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_JavaScript_Combined_Begin",
@@ -91602,10 +92146,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/customfieldaddeditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_AddEditDialog_CSS",
@@ -91635,10 +92181,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/customfieldgrouplist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomFieldGroup_List_CSS",
@@ -91668,10 +92216,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/customfieldlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Element_CustomField_List_CSS",
@@ -91701,22 +92251,30 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
+		"functions": [],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
+		"functions": [],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
+		"functions": [],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_JavaScript_Combined_Begin",
@@ -91739,10 +92297,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/imagedialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_ImageDialog_CSS",
@@ -91772,10 +92332,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/imagelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Element_ImageManagement_ImageList_CSS",
@@ -91805,18 +92367,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
+		"functions": [],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
+		"functions": [],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/baskinv.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_baskinv:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -92005,10 +92573,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "baskinv",
+		"moduleVar": "l.__module_baskinv"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/combofacets.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_combofacets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -93240,10 +93810,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "combofacets",
+		"moduleVar": "l.__module_combofacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/customfld.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_customfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -96689,10 +97261,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "customfields",
+		"moduleVar": "l.__module_customfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/imagemanagement.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_imagemanagement:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -97038,10 +97612,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "imagemanagement",
+		"moduleVar": "l.__module_imagemanagement"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/mvga.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -97462,10 +98038,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "mvga",
+		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderhistorynotes.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderhistorynotes:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -97664,10 +98242,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderhistorynotes",
+		"moduleVar": "l.__module_orderhistorynotes"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -99583,10 +100163,12 @@
 				],
 				"returnValue": "l.count"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/productdata.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_productdata:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -101441,10 +102023,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "productdata",
+		"moduleVar": "l.__module_productdata"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/productdigitaldownloadcustomfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_productdigitaldownloadcustomfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -101550,10 +102134,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "productdigitaldownloadcustomfields",
+		"moduleVar": "l.__module_productdigitaldownloadcustomfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/productimagecustomfields.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_productimagecustomfields:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -101626,10 +102212,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "productimagecustomfields",
+		"moduleVar": "l.__module_productimagecustomfields"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -104313,10 +104901,12 @@
 				"parameters": [],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -104610,10 +105200,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -104782,10 +105374,12 @@
 				"returnValue": "l.void",
 				"description": "Helper functions"
 			}
-		]
+		],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/stdfacets.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_stdfacets:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -105694,10 +106288,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "stdfacets",
+		"moduleVar": "l.__module_stdfacets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/stdschtasks.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_stdschtasks:module",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -106018,18 +106614,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "stdschtasks",
+		"moduleVar": "l.__module_stdschtasks"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/mvga/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
+		"functions": [],
+		"moduleCode": "mvga",
+		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/mvga/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_mvga:module",
+		"functions": [],
+		"moduleCode": "mvga",
+		"moduleVar": "l.__module_mvga"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/authenticationcredentialsdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFAuthenticationCredentialsDialog_CSS",
@@ -106059,10 +106661,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/authenticationcredentialslist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFAuthenticationCredentialsList_CSS",
@@ -106092,14 +106696,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
+		"functions": [],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWF_JavaScript_Combined_Begin",
@@ -106122,10 +106730,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWF_Functions_JavaScript",
@@ -106141,18 +106751,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
+		"functions": [],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
+		"functions": [],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/queueadddialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFQueue_AddDialog_CSS",
@@ -106182,10 +106798,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/queuelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFQueue_List_CSS",
@@ -106215,10 +106833,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/workflowaddeditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFWorkflow_AddEditDialog_CSS",
@@ -106248,10 +106868,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/orderworkflow/workflowlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_orderworkflow:module",
 		"functions": [
 			{
 				"name": "Element_OWFWorkflow_List_CSS",
@@ -106281,14 +106903,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "orderworkflow",
+		"moduleVar": "l.__module_orderworkflow"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
+		"functions": [],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_JavaScript_Combined_Begin",
@@ -106311,10 +106937,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/customerdashboard.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomerDashboard_CSS",
@@ -106344,10 +106972,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/customerlookupdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomerLookupDialog_CSS",
@@ -106377,10 +107007,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/customerquoteoverlay.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Customer_QuoteListDetailOverlay_CSS",
@@ -106410,10 +107042,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/customfielddialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomFieldDialog_CSS",
@@ -106443,10 +107077,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/customfieldlist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_CustomFieldList_CSS",
@@ -106476,10 +107112,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/emaileditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_EmailEditDialog_CSS",
@@ -106509,10 +107147,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/emaillist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_EmailList_CSS",
@@ -106542,10 +107182,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_Functions_JavaScript",
@@ -106561,14 +107203,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
+		"functions": [],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/itemdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_ItemDialog_CSS",
@@ -106598,10 +107244,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/list.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteList_CSS",
@@ -106631,10 +107279,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/noteaddeditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteAddEditDialog_CSS",
@@ -106664,10 +107314,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/notedialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteDialog_CSS",
@@ -106697,10 +107349,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/notelist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_NoteList_CSS",
@@ -106730,14 +107384,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
+		"functions": [],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/overlay.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlay_CSS",
@@ -106767,10 +107425,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/overlaydetails.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlayDetails_CSS",
@@ -106808,10 +107468,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/overlaylist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_QuoteListDetailOverlayList_CSS",
@@ -106849,10 +107511,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/quote/requestereditdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_quote:module",
 		"functions": [
 			{
 				"name": "Element_Quote_RequesterDialog_CSS",
@@ -106882,14 +107546,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "quote",
+		"moduleVar": "l.__module_quote"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
+		"functions": [],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBaskets_JavaScript_Combined_Begin",
@@ -106912,10 +107580,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBaskets_Functions_JavaScript",
@@ -106931,18 +107601,24 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
+		"functions": [],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
+		"functions": [],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/overlay.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlay_CSS",
@@ -106972,10 +107648,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/overlaydetails.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlayDetails_CSS",
@@ -107013,10 +107691,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/overlaylist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsListDetailOverlayList_CSS",
@@ -107054,10 +107734,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/reviewbaskets/reviewbasketslist.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_reviewbaskets:module",
 		"functions": [
 			{
 				"name": "Element_ReviewBasketsList_CSS",
@@ -107087,14 +107769,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "reviewbaskets",
+		"moduleVar": "l.__module_reviewbaskets"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/combined_integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
+		"functions": [],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/combined.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_JavaScript_Combined_Begin",
@@ -107117,10 +107803,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/confirmationnotesdialog.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_ConfirmationNotesDialog_CSS",
@@ -107150,10 +107838,12 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/functions.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_Functions_JavaScript",
@@ -107169,14 +107859,18 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/integrity.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
+		"functions": [],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/interface.mvc'",
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
 		"functions": [
 			{
 				"name": "Element_TemplateSearchAndReplace_Interface_CSS",
@@ -107206,10 +107900,14 @@
 				],
 				"returnValue": "l.void"
 			}
-		]
+		],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	},
 	{
-		"distroPath": "g.Module_Root $ '/modules/util/srchrplc/output.mvc'",
-		"functions": []
+		"distroPath": "g.Module_Root $ l.__module_srchrplc:module",
+		"functions": [],
+		"moduleCode": "srchrplc",
+		"moduleVar": "l.__module_srchrplc"
 	}
 ]

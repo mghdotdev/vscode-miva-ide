@@ -59,7 +59,39 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 
 ### v1.5.0
 
-TBD
+- [x] Add setting to enable/disable the suggestion after paste feature.
+- [x] Add missing documentation to MVT tags / items.
+- [x] Fix bug with `<MIVA>` tag attribute completions.
+- [x] Add tooltkit tskl validation.
+- [x] Document vscode-icons integration.
+
+### v1.6.0
+
+- [x] Add "What's New" popup after upgrading.
+- [x] Fix completions when inside mvt:item functions.
+
+### v1.6.3
+
+- [x] Fix syntax issue in Miva Script where an expression scope is active inside embedded JavaScript curly code blocks.
+
+### v1.7.0
+
+- [x] Add web extension support.
+
+### v1.8.0
+
+- [x] Add "import" style module load functionality for mvt:do functions that don't have a specific global variable for their file attribute.
+	- For example: `<mvt:do file="g.Module_Root $ '/modules/util/customfld.mvc'" name="l.void" value="Group_Load_ID( id, group var )" />`
+	- For functions that have a string path instead use `<mvt:do file="g.Module_Library_DB" name="l.success" value="Module_Load_Code_Cached( '[MODULE_CODE]', l.module_[MODULE_CODE] )" />` injected at the top of the file
+	- Use `g.Module_Root $ l.module_[MODULE_CODE]:module` for the file attribute instead of the string path.
+	- Have said "importer" function check if the same "import" already exists and skip adding a duplicate value if so.
+- [x] Fix syntax issue for Miva Script expressions.
+	- See "LSK/src/features/prv/mmlsk-prv_ad.mv" for an example.
+
+### v1.X.0
+
+- [ ] Fix indentation issues when running Reindent Lines.
+	- mvt:comment with pipes
 
 ### v2.0.0 (TBD)
 

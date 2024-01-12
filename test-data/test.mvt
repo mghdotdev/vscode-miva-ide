@@ -1,0 +1,23 @@
+<mvt:if expr="">
+
+</mvt:if>
+
+<mvt:assign name="l.variable" value="l.value" />
+
+<mvt:while expr="">
+
+</mvt:while>
+
+<mvt:foreach iterator="" array="">
+	<mvt:foreachcontinue />
+	<mvt:foreachstop />
+</mvt:foreach>
+
+<mvt:item name="" param="" />
+
+<mvt:item name="customfields" param="Read_Basket( 'code', g.Basket:customfields:code )" />
+
+<mvt:call action="" method="'GET'">
+	<mvt:eval expr="s.callvalue" />
+</mvt:call>
+

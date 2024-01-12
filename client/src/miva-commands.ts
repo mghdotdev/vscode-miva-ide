@@ -1,20 +1,14 @@
 import { CharacterPair, Position, Range, TextEditor, TextEditorEdit, Uri, commands, env, languages, window, workspace } from 'vscode';
-import { Disposable } from 'vscode-languageclient';
 import patterns from './util/patterns';
 
 const boundryAmount = 200;
 
-const allowedLanguages = [
-	'mv',
-	'mvt',
-	'mvcss',
-	'mvtjs'
-];
-
-const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName', async ( payload ) => {
+const chooseFileCommand = commands.registerCommand( 'mivaIde.chooseFile', async ( payload ) => {
 
 	const returnValue = payload.returnValue;
-	const fileNames = payload.fileNames?.filter((value, index, self) => self.indexOf( value ) === index);
+	const fileNames = payload.files
+		?.map(file => file.distroPath)
+		?.filter((value, index, self) => self.indexOf( value ) === index);
 
 	let fileName;
 	if ( fileNames.length < 2 ) {
@@ -26,8 +20,12 @@ const chooseFileNameCommand = commands.registerCommand( 'mivaIde.chooseFileName'
 
 	}
 
-	commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
+	await commands.executeCommand( 'mivaIde.insertFileName', fileName, returnValue );
 
+	const chosenFile = payload.files?.find(file => file.distroPath === fileName);
+	if ( chosenFile.moduleCode && chosenFile.moduleVar ) {
+		commands.executeCommand( 'mivaIde.insertModuleImport', chosenFile.moduleCode, chosenFile.moduleVar );
+	}
 });
 
 const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.insertFileName', ( textEditor: TextEditor, edit: TextEditorEdit, fileName: string, returnValue: string ) => {
@@ -136,6 +134,24 @@ const insertFileNameCommand = commands.registerTextEditorCommand( 'mivaIde.inser
 		if ( rightNameAttributeMatch ) {
 			replaceEdit( rightNameAttributeMatch[0].length, endMatch?.[0]?.length || 0, returnValue );
 		}
+	}
+});
+
+const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.insertModuleImport', ( textEditor: TextEditor, edit: TextEditorEdit, moduleCode: string, moduleVar: string ) => {
+	const moduleImportText = textEditor.document.languageId === 'mv'
+		? `<MvDO FILE = "g.Module_Library_DB" NAME = "l.void" VALUE = "{ Module_Load_Code_Cached( '${moduleCode}', ${moduleVar} ) }">`
+		: `<mvt:do file="g.Module_Library_DB" name="l.void" value="Module_Load_Code_Cached( '${moduleCode}', ${moduleVar} )" />`;
+	const moduleImportBlockEndComment = textEditor.document.languageId === 'mv'
+		? `<MvCOMMENT> --- module imports --- <\/MvCOMMENT>`
+		: `<mvt:comment> --- module imports --- <\/mvt:comment>`;
+	const documentText = textEditor.document.getText();
+	const moduleImportBlockExec = new RegExp(`(?:${moduleImportBlockEndComment})`, 'i').exec( documentText );
+	const insertText = moduleImportBlockExec === null
+		? `${moduleImportText}\n${moduleImportBlockEndComment}\n\n`
+		: `${moduleImportText}\n`;
+
+	if (documentText.indexOf(moduleImportText) === -1) {
+		edit.insert( new Position( 0, 0 ), insertText );
 	}
 });
 
@@ -331,36 +347,24 @@ const calculatePosNumberCommand = commands.registerTextEditorCommand( 'mivaIde.M
 
 });
 
-// Hack that forces suggest window to appear after pasting
-
-const overwriteClipboardPasteAction = (textEditor: TextEditor) => {
-	// Dispose of overwritten command
-	overwriteClipboardPasteCommand.dispose();
-
+/**
+ * Decorated clipboard paste action that opens suggest window on paste
+ */
+const clipboardPasteCommand = commands.registerTextEditorCommand('mivaIde.clipboardPasteAction', () => {
 	// Execute original command
 	commands.executeCommand('editor.action.clipboardPasteAction').then(() => {
-		// Trigger suggestion popover if language matches
-		if (allowedLanguages.includes(textEditor.document.languageId)) {
-			commands.executeCommand('editor.action.triggerSuggest');
-		}
-
-		// Redefine overwritten command
-		defineOverwriteClipboardPasteCommand();
+		commands.executeCommand('editor.action.triggerSuggest');
 	});
-};
-const defineOverwriteClipboardPasteCommand = () => {
-	overwriteClipboardPasteCommand = commands.registerTextEditorCommand('editor.action.clipboardPasteAction', overwriteClipboardPasteAction);
-}
-let overwriteClipboardPasteCommand: Disposable;
-defineOverwriteClipboardPasteCommand();
+});
 
 export default [
-	chooseFileNameCommand,
+	chooseFileCommand,
 	insertFileNameCommand,
+	insertModuleImportCommand,
 	convertAndCopyCommand,
 	convertToEntityCommand,
 	convertToVariableCommand,
 	insertHtmlComment,
 	calculatePosNumberCommand,
-	overwriteClipboardPasteCommand
+	clipboardPasteCommand
 ];

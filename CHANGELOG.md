@@ -1,11 +1,85 @@
-# Change Log
+# Miva IDE CHANGELOG
 
-# v1.4.0
+## v1.8.2
 
-* Fixed windows issue for paste completion window
-* Added support for markdown code fences for mvt and miva script
+* Fixed issue where the "module imports" variables were not referencing the correct member (`:module`).
 
-# v1.3.0
+## v1.8.1
+
+* Added an additional linebreak after "module imports" comment.
+
+## v1.8.0
+
+* Added `mvt:do`/`MvDO` "module imports".
+	* This feature replaces existing string-based file paths in favor of loading modules via `Module_Load_Code_Cached`.
+	* Using `Module_Load_Code_Cached` ensures that the correct module will be loaded in the event the file path changes.
+* Fixed Miva Script syntax issue.
+* Replaced png icons with new svg icons.
+
+## v1.7.2
+
+* Fixed issue where MVT and Miva Script language servers would not start for the Web version.
+
+## v1.7.1
+
+* Fixed paths to syntax and configuration files for the Web version.
+
+## v1.7.0
+
+* Added support for VSCode's Web Extension features.
+	* This allows users to install the Miva IDE extension when using [Visual Studio Code for the Web](https://code.visualstudio.com/docs/editor/vscode-web).
+* Fixed issue with "MVT: Calculate POS Number" command.
+* Updated LSK functionality to utilize local workspace LSK reference instead of `mivaIde.LSK.path` setting if an LSK folder is detected within the workspace.
+
+## v1.6.3
+
+* Fixed Miva Script expression syntax highlighting error.
+
+## v1.6.2
+
+* Updated CHANGELOG header to be consistent with README.
+* Fixed MvASSIGNARRAY completion bugs.
+
+## v1.6.1
+
+* Removed automatic popup to show the CHANGELOG.
+* Updated CHANGELOG popup functionality to instead display an information message with a link to show the CHANGELOG.
+
+## v1.6.0
+
+* Added feature that shows the CHANGELOG after an update happens.
+* Added setting that allows you to disable showing the CHANGELOG after update.
+	* `mivaIde.showChangelogOnUpdate`
+* Added a command that allows you to show the CHANGELOG.
+	* "Miva IDE: Show Updates"
+* Fixed `mvt:item` tag variable completions within function parameters.
+* Fixed bug related to legacy if/elseif/else snippet setting not working properly.
+
+## v1.5.0
+
+* Added setting to enable/disable the suggestion after paste feature.
+	* This setting is disabled by default.
+* Added setting to enable/disable legacy if/elseif/else snippets.
+	* This setting is disabled by default.
+* Added missing documentation to MVT tags / items.
+* Fixed bug with `<MIVA>` tag attribute completions.
+* Added tooltkit tskl validation.
+* Documented [vscode-icons](https://github.com/vscode-icons) integration.
+
+## v1.4.2
+
+* Fixed bug where completion window was triggering after pasting into quick find input.
+
+## v1.4.1
+
+* Fixed bug where completion window was triggering after pasting into search bar.
+
+## v1.4.0
+
+* Fixed Windows OS issue for paste completion window.
+* Added support for markdown code fences for mvt and Miva Script.
+
+## v1.3.0
 
 * Fixed expression syntax highlighting in Miva Script as per [issue #47](https://github.com/mghdotdev/vscode-miva-ide/issues/47).
 * Fixed MvDO VALUE attribute snippet. It should default to be an expression.
@@ -13,7 +87,7 @@
 * Added workaround to trigger completion window on paste command.
 * Dedent on completion of else/elseif tags for Miva Script and MVT.
 
-# v1.2.0
+## v1.2.0
 
 * Applied fixes to Miva Script snippets based off developer feedback
 * Fixed builtin function `miva_joinstring` flag parameter completion values as per [issue #52](https://github.com/mghdotdev/vscode-miva-ide/issues/52)
@@ -27,7 +101,7 @@
 
 ## v1.0.0
 
-* Improved autocomplete and language intelligence for MVT and MivScript.
+* Improved autocomplete and language intelligence for MVT and Miva Script.
 	* Improved tag snippets.
 	* Added tag attribute autocompletion.
 	* Added matching `mvt:item` name and param attribute completions.
@@ -89,10 +163,6 @@
 * Added file-specific global and local variable autocompletion
 * Updated scope for tag completions
 * Updated scope for entity completions
-
-## v0.6.0
-
-## v0.5.0
 
 ## v0.4.0
 

@@ -3,11 +3,16 @@
 		"access": "restricted"
 	},
 	"main": "./out/main.js",
+	"browser": "./out-web/main.js",
 	"scripts": {
 		"esbuild": "npx esbuild ./src/main.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild-web": "npx esbuild ./src/main-web.ts --bundle --outfile=out-web/main.js --external:vscode --format=esm --platform=browser",
 		"build:prod": "npm run esbuild -- --minify",
 		"build": "npm run esbuild -- --sourcemap",
-		"watch": "npm run esbuild -- --sourcemap --watch=forever"
+		"watch": "npm run esbuild -- --sourcemap --watch=forever",
+		"build-web:prod": "npm run esbuild-web -- --minify",
+		"build-web": "npm run esbuild-web -- --sourcemap",
+		"watch-web": "npm run esbuild-web -- --sourcemap --watch=forever"
 	},
 	"engines": {
 		"node": "*"
@@ -17,6 +22,7 @@
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.get": "^4.4.2",
 		"lodash.has": "^4.5.2",
+		"set-immediate-shim": "^2.0.0",
 		"vscode-css-languageservice": "^6.2.11",
 		"vscode-html-languageservice": "^5.0.4",
 		"vscode-languageserver": "^8.1.0",

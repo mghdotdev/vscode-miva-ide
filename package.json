@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.4.0",
+	"version": "1.8.2",
 	"engines": {
 		"vscode": "^1.77.0"
 	},
@@ -10,17 +10,25 @@
 		"Programming Languages"
 	],
 	"scripts": {
-		"vscode:prepublish": "npm run build:prod",
+		"vscode:prepublish": "npm run build:prod && npm run build-web:prod",
 		"syntax:watch": "node ./syntaxes/watch.cjs",
 		"syntax:build": "node ./syntaxes/build.cjs",
 		"build:prod": "npm run build:prod --workspaces",
 		"build": "npm run build --workspaces",
 		"watch": "npm run watch --workspace=client & npm run watch --workspace=server",
-		"package": "npx vsce package"
+		"build-web:prod": "npm run build-web:prod --workspaces",
+		"build-web": "npm run build-web --workspaces",
+		"watch-web": "npm run watch-web --workspace=client & npm run watch-web --workspace=server",
+		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main",
+		"chrome": "npm run watch-web & npx vscode-test-web --verbose --printServerLog --open-devtools --browserOption=--disable-web-security --browserType=chromium --extensionDevelopmentPath=. ./test-data"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mghdotdev/vscode-miva-ide.git"
+	},
+	"bugs": {
+		"email": "mhegler@miva.com",
+		"url": "https://github.com/mghdotdev/vscode-miva-ide/issues"
 	},
 	"keywords": [
 		"snippets",
@@ -35,13 +43,29 @@
 	"icon": "icon.png",
 	"publisher": "mhegler",
 	"main": "./client/out/main.js",
+	"browser": "./client/out-web/main.js",
 	"contributes": {
 		"configuration": {
 			"title": "Miva IDE",
 			"properties": {
+				"enableTriggerSuggestAfterPaste": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor."
+				},
+				"showChangelogOnUpdate": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show CHANGELOG after updating to the latest version."
+				},
 				"LSK.path": {
 					"type": "string",
 					"description": "Path to your LSK folder. Used for Goto Definition support."
+				},
+				"MVT.enableLegacyElseSnippets": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets."
 				},
 				"MVT.defaultEncodingForVariableConversions": {
 					"type": "string",
@@ -96,6 +120,11 @@
 					"dependencies": [
 						"LSK.path"
 					]
+				},
+				"MVT.lint.showErrorForTksl": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show an error for the `toolkit` item's `tksl` param."
 				}
 			}
 		},
@@ -121,27 +150,37 @@
 			{
 				"command": "mivaIde.toggleHtmlComment",
 				"title": "Toggle HTML Comment",
-				"category": "Miva IDE"
+				"category": "Miva IDE",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
 			},
 			{
 				"command": "mivaIde.MVT.convertToVariable",
 				"title": "Convert Entity → Variable",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertAndCopy",
 				"title": "Convert Variable ↔ Entity & Copy",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.convertToEntity",
 				"title": "Convert Variable → Entity",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			},
 			{
 				"command": "mivaIde.MVT.calculatePosNumber",
 				"title": "Calculate POS Number",
-				"category": "MVT"
+				"category": "MVT",
+				"enablement": "editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs"
+			},
+			{
+				"command": "mivaIde.showChangelog",
+				"title": "Show Updates",
+				"category": "Miva IDE"
 			}
 		],
 		"grammars": [
@@ -214,6 +253,13 @@
 				"command": "mivaIde.toggleHtmlComment",
 				"key": "cmd+alt+/",
 				"when": "textInputFocus"
+			},
+			{
+				"command": "mivaIde.clipboardPasteAction",
+				"mac": "cmd+v",
+				"win": "ctrl+v",
+				"linux": "ctrl+v",
+				"when": "mivaIde.enableTriggerSuggestAfterPaste && editorTextFocus && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
 			}
 		],
 		"languages": [
@@ -279,19 +325,17 @@
 		]
 	},
 	"activationEvents": [
-		"onLanguage:mvt",
-		"onLanguage:mvtcss",
-		"onLanguage:mvtjs",
-		"onLanguage:mv"
+		"onFileSystem:mivaIde"
 	],
 	"workspaces": [
 		"client",
 		"server"
 	],
 	"devDependencies": {
-		"@types/node": "^18.15.11",
 		"@esbuild-plugins/node-resolve": "^0.2.2",
-		"@vscode/vsce": "^2.21.1",
+		"@types/node": "^18.15.11",
+		"@vscode/vsce": "^2.22.0",
+		"@vscode/test-web": "^0.0.50",
 		"chalk": "^4.1.2",
 		"esbuild": "^0.19.5",
 		"glob": "^7.2.2",
