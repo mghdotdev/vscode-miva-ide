@@ -75,7 +75,7 @@ export function activate (connection: Connection, workspaceSymbolProvider?: Work
 
 			if ( features && features.doValidation ) {
 
-				pushAll( diagnostics, features.doValidation( textDocument, settings ) );
+				pushAll( diagnostics, await features.doValidation( textDocument, settings ) );
 
 			}
 
