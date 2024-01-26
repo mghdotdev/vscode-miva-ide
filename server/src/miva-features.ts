@@ -1,4 +1,5 @@
 import _get from 'lodash.get';
+import { MivaExpressionDataManager, MivaExpressionParser } from 'miva-expression-parser/dist/esm/main';
 import {
 	getCSSLanguageService
 } from 'vscode-css-languageservice/lib/esm/cssLanguageService';
@@ -197,6 +198,18 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 						break;
 
 					case TokenType.AttributeValue:
+						console.log('ltn', lastTagName.startsWith('mvt:'), lastTagName);
+						if (lastTagName.startsWith('mvt:')) {
+							const range = Range.create(
+								document.positionAt( scanner.getTokenOffset() + 1 ),
+								document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+							);
+
+							const parser = new MivaExpressionParser(new MivaExpressionDataManager([]));
+							const result = parser.parse(document.getText(range), scanner.getTokenOffset() + 1);
+							console.log(result);
+						}
+
 						if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' || lastTagName === 'mvt:foreach' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' || lastAttributeName === 'iterator' ) ) {
 
 							// Get name
