@@ -2,9 +2,10 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.8.2",
+	"version": "1.9.0",
 	"engines": {
-		"vscode": "^1.77.0"
+		"vscode": "^1.77.0",
+		"node": ">=16"
 	},
 	"categories": [
 		"Programming Languages"
@@ -19,7 +20,8 @@
 		"build-web:prod": "npm run build-web:prod --workspaces",
 		"build-web": "npm run build-web --workspaces",
 		"watch-web": "npm run watch-web --workspace=client & npm run watch-web --workspace=server",
-		"release": "npx vsce pack --githubBranch main && npx vsce publish --githubBranch main",
+		"pack": "npx vsce pack --githubBranch main",
+		"release": "npx vsce publish --githubBranch main",
 		"chrome": "npm run watch-web & npx vscode-test-web --verbose --printServerLog --open-devtools --browserOption=--disable-web-security --browserType=chromium --extensionDevelopmentPath=. ./test-data"
 	},
 	"repository": {

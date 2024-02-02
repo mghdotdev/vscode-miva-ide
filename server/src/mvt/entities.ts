@@ -5,7 +5,7 @@ import {
 } from '../util/interfaces';
 
 const baseEntityData: BaseEntityData = {
-	commitCharacters: [':'],
+	commitCharacters: [],
 	kind: CompletionItemKind.Keyword
 };
 

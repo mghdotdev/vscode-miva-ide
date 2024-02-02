@@ -386,6 +386,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 				buildTagCompletionData( settings );
 
 				const {document: mvtDocument} = mvtDocuments.get( document );
+				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
 				// determine left side text range
 				const cursorPositionOffset = mvtDocument.offsetAt( position );
@@ -465,6 +466,8 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					// Attempt to get tag from name
 					const foundTag = mvtTagData[tagNameLower];
 					if (foundTag) {
+						const currentNode = getNodeAtOffset(cursorPositionOffset, parsedDocument) || parsedDocument.findNodeAt(cursorPositionOffset);
+
 						const foundTagAttributes = foundTag.attributes;
 						if (foundTagAttributes) {
 
@@ -517,8 +520,14 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 								}
 							}
 
+							// Get list of available attributes
+							const availableAttributes = Object.values( foundTagAttributes )
+								.filter(attr => Object.keys(currentNode?.attributes)?.filter(_attr => _attr.toLowerCase() === attr.label.toLowerCase())?.length === 0);
+
 							// Tag attribute completions
-							return CompletionList.create( parseCompletionFile( Object.values( foundTagAttributes ) ) );
+							return availableAttributes.length > 0
+								? CompletionList.create( parseCompletionFile( availableAttributes ) )
+								: CompletionList.create([]);
 						}
 					}
 
@@ -972,6 +981,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 			doCompletion( document: TextDocument, position: Position ): CompletionList {
 
 				const {document: mvDocument} = mvDocuments.get( document );
+				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
 				// determine left side text range
 				const cursorPositionOffset = mvDocument.offsetAt( position );
@@ -989,6 +999,9 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					mvDocument.positionAt( rightOffset )
 				);
 				const right = mvDocument.getText( rightRange ) || '';
+
+				// Get current node
+				const currentNode = getNodeAtOffset(cursorPositionOffset, parsedDocument) || parsedDocument.findNodeAt(cursorPositionOffset);
 
 				// MvDO tag value attribute completions
 				if (
@@ -1064,8 +1077,14 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 								}
 							}
 
+							// Get list of available attributes
+							const availableAttributes = Object.values( foundTagAttributes )
+								.filter(attr => Object.keys(currentNode?.attributes)?.filter(_attr => _attr.toLowerCase() === attr.label.toLowerCase())?.length === 0);
+
 							// Tag attribute completions
-							return CompletionList.create( parseCompletionFile( Object.values( foundTagAttributes ) ) );
+							return availableAttributes.length > 0
+								? CompletionList.create( parseCompletionFile( availableAttributes ) )
+								: CompletionList.create([]);
 						}
 					}
 
@@ -1073,8 +1092,6 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 				}
 
 				// Determine if child tags exist and only complete those if inside a parent tag
-				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
-				const currentNode = getNodeAtOffset(cursorPositionOffset, parsedDocument);
 				const currentTagLower = currentNode?.tag?.toLowerCase();
 
 				if (currentTagLower) {
