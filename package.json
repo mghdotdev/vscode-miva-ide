@@ -4,7 +4,8 @@
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
 	"version": "1.9.0",
 	"engines": {
-		"vscode": "^1.77.0"
+		"vscode": "^1.77.0",
+		"node": ">=16"
 	},
 	"categories": [
 		"Programming Languages"
