@@ -14,10 +14,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Publish
+
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 16
         cache: 'npm'
-    - run: npm ci
-    - run: npm run release -- -p ${{ secrets.VSCE_PAT }}
+
+    - name: Get package.json Version
+      uses: sergeysova/jq-action@v2
+      id: packagejsonversion
+      with:
+        cmd: 'jq .version package.json -r'
+
+    - name: Get Latest Extension Version
+      uses: sergeysova/jq-action@v2
+      id: extensionversion
+      with:
+        cmd: 'jq -r `.versions[0].version` <<< "$(npx vsce show mhegler.vscode-miva-ide --json)"'
+
+    - name: Publish Extension
+      if: ${{ steps.packagejsonversion }} !== ${{ steps.extensionversion }}
+      run:
+        npm ci
+        npm run release -- -p ${{ secrets.VSCE_PAT }}
