@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.10.0
+
+* Updated function data for Miva Merchant 10.08.03.
+
 ## v1.9.0
 
 * Tag attribute completions will now be limited by the current attributes on the existing tag.
