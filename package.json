@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.9.0",
+	"version": "1.10.0",
 	"engines": {
 		"vscode": "^1.77.0",
 		"node": ">=16"
@@ -22,7 +22,8 @@
 		"watch-web": "npm run watch-web --workspace=client & npm run watch-web --workspace=server",
 		"pack": "npx vsce pack --githubBranch main",
 		"release": "npx vsce publish --githubBranch main",
-		"chrome": "npm run watch-web & npx vscode-test-web --verbose --printServerLog --open-devtools --browserOption=--disable-web-security --browserType=chromium --extensionDevelopmentPath=. ./test-data"
+		"chrome": "npm run watch-web & npx vscode-test-web --verbose --printServerLog --open-devtools --browserOption=--disable-web-security --browserType=chromium --extensionDevelopmentPath=. ./test-data",
+		"lsk-update": "npx miva-lsk-parser --pretty $LSKPATH > server/src/data/functions-merchant.json"
 	},
 	"repository": {
 		"type": "git",
@@ -316,12 +317,13 @@
 	"devDependencies": {
 		"@esbuild-plugins/node-resolve": "^0.2.2",
 		"@types/node": "^18.15.11",
-		"@vscode/vsce": "^2.22.0",
 		"@vscode/test-web": "^0.0.50",
+		"@vscode/vsce": "^2.22.0",
 		"chalk": "^4.1.2",
 		"esbuild": "^0.19.5",
 		"glob": "^7.2.2",
 		"js-yaml": "^3.14.0",
+		"miva-lsk-tools": "^1.7.0",
 		"typescript": "^5.0.4"
 	}
 }
