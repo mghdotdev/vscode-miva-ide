@@ -18,7 +18,6 @@ import {
 	MarkupContent,
 	Position,
 	Range,
-	SymbolInformation,
 	SymbolKind,
 	TextEdit
 } from 'vscode-languageserver';
@@ -100,9 +99,6 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 	// Lsk Symbols array
 	let mivaScriptWorkspaceSymbols: SymbolInformationWithDocumentation[] = [];
-
-	// TODO
-	const stringSymbols: SymbolInformation[] = [];
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
@@ -217,7 +213,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 									document.positionAt( str.end )
 								);
 
-								stringSymbols.push({
+								symbols.push({
 									kind: SymbolKind.String,
 									location: Location.create(document.uri, strRange),
 									name: str.text
@@ -422,7 +418,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					]
 				};
 
-				const {document: mvtDocument} = mvtDocuments.get( document );
+				const {document: mvtDocument, symbols: mvtSymbols} = mvtDocuments.get( document );
 				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
 				const text = document.getText();
@@ -469,8 +465,9 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 											return CompletionList.create(
 												Array.from(
 													new Set(
-														stringSymbols
-														.map(symbol => symbol.name)
+														mvtSymbols
+															.filter(symbol => symbol.kind === SymbolKind.String)
+															.map(symbol => symbol.name)
 													)
 												).map(str => ({
 													label: str
