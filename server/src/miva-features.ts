@@ -1,5 +1,5 @@
 import _get from 'lodash.get';
-import { MivaExpressionDataManager, MivaExpressionParser } from 'miva-expression-parser/dist/esm/main';
+import { MivaExpressionDataManager, MivaExpressionParser, MivaExpressionScanner, TokenType as MivaExpressionTokenType } from 'miva-expression-parser/dist/esm';
 import {
 	getCSSLanguageService
 } from 'vscode-css-languageservice/lib/esm/cssLanguageService';
@@ -18,6 +18,7 @@ import {
 	MarkupContent,
 	Position,
 	Range,
+	SymbolInformation,
 	SymbolKind,
 	TextEdit
 } from 'vscode-languageserver';
@@ -99,6 +100,9 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 	// Lsk Symbols array
 	let mivaScriptWorkspaceSymbols: SymbolInformationWithDocumentation[] = [];
+
+	// TODO
+	const stringSymbols: SymbolInformation[] = [];
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
@@ -198,7 +202,6 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 						break;
 
 					case TokenType.AttributeValue:
-						console.log('ltn', lastTagName.startsWith('mvt:'), lastTagName);
 						if (lastTagName.startsWith('mvt:')) {
 							const range = Range.create(
 								document.positionAt( scanner.getTokenOffset() + 1 ),
@@ -207,7 +210,19 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 							const parser = new MivaExpressionParser(new MivaExpressionDataManager([]));
 							const result = parser.parse(document.getText(range), scanner.getTokenOffset() + 1);
-							console.log(result);
+
+							for (let str of result.strings) {
+								const strRange = Range.create(
+									document.positionAt( str.start ),
+									document.positionAt( str.end )
+								);
+
+								stringSymbols.push({
+									kind: SymbolKind.String,
+									location: Location.create(document.uri, strRange),
+									name: str.text
+								});
+							}
 						}
 
 						if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' || lastTagName === 'mvt:foreach' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' || lastAttributeName === 'iterator' ) ) {
@@ -398,191 +413,82 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 				buildTagCompletionData( settings );
 
+				const result: CompletionList = {
+					isIncomplete: false,
+					items: [
+						{
+							label: '@@@LANGUAGESESRVICE@@@' // To be replaced by that language's native service result
+						}
+					]
+				};
+
 				const {document: mvtDocument} = mvtDocuments.get( document );
 				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
-				// determine left side text range
-				const cursorPositionOffset = mvtDocument.offsetAt( position );
-				const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
-				const leftRange = Range.create(
-					mvtDocument.positionAt( leftOffset ),
-					position
-				);
-				const left = mvtDocument.getText( leftRange ) || '';
+				const text = document.getText();
+				const offset = document.offsetAt(position);
 
-				// determine right side text range
-				const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
-				const rightRange = Range.create(
-					position,
-					mvtDocument.positionAt( rightOffset )
-				);
-				const right = mvtDocument.getText( rightRange ) || '';
-
-				// mvt:do tag value attribute completions
-				if (
-					patterns.MVT.LEFT_IN_MVTDO_TAG.test( left ) &&
-					patterns.SHARED.RIGHT_IN_TAG.test( right ) &&
-					patterns.SHARED.LEFT_IN_VALUE_ATTR.test( left )
-				) {
-					return doValueCompletions;
+				const node = parsedDocument.findNodeBefore(offset);
+				if (!node) {
+					return result;
 				}
 
-				// document-specific entity completions
-				if (
-					patterns.MVT.LEFT_AFTER_AMP.test( left )
-				) {
-					return entityCompletions;
-				}
+				const scanner = htmlLanguageService.createScanner( document.getText(), node.start );
+				let token = scanner.scan();
+				let currentTag: string = '';
+				let currentAttributeName: string;
 
-				// After an entity (&mv**)
-				if ( patterns.MVT.LEFT_AFTER_ENTITY_COLON.test( left ) ) {
+				while ( token !== TokenType.EOS ) {
+					switch ( token ) {
+						case TokenType.StartTag:
+							currentTag = scanner.getTokenText().toLowerCase();
+							break;
 
-					// get full text
-					const mvtDocumentText = mvtDocument.getText();
+						case TokenType.AttributeName:
+							currentAttributeName = scanner.getTokenText().toLowerCase();
+							break;
 
-					const variableMatches = left.match(patterns.MVT.LEFT_AFTER_ENTITY_COLON) || [];
-					const _foundVariable = variableMatches[0] || '';
-					const foundVariable = _foundVariable.slice(0, _foundVariable.lastIndexOf(':') + 1);
-					const foundVariableRegex = new RegExp(`^${foundVariable.replace(/(?<=\[)[0-9]+(?=\])/g, '[0-9]+')}`);
+						case TokenType.AttributeValue:
+							if (currentTag.startsWith('mvt:')) {
+								const range = Range.create(
+									document.positionAt( scanner.getTokenOffset() + 1 ),
+									document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+								);
 
-					const foundVariables = [].concat(
-						mvtDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || [],
-						mvtDocumentText.match( patterns.SHARED.VARIABLES_G )?.map(_variable => 'global:' + _variable) || [],
-						mvtDocumentText.match( patterns.MVT.ENTITIES ) || [],
-					)
-						?.filter( unique )
-						?.filter(_variable => foundVariableRegex.test(_variable))
-						?.map(_variable => _variable.replace(foundVariableRegex, ''));
+								const expressionText = document.getText(range);
+								const expressionOffset = offset - (scanner.getTokenOffset() + 1);
 
-					return CompletionList.create(
-						foundVariables.map((variable) => {
-							return parseCompletion({
-								"label": variable,
-								"kind": "Variable",
-								"detail": variable,
-								"documentation": "",
-								"commitCharacters": [],
-								"insertText": `${ variable };`
-							});
-						})
-					);
+								const expressionScanner = new MivaExpressionScanner(expressionText, expressionOffset);
+								let expressionToken = expressionScanner.scan();
 
-				}
+								while ( expressionToken !== MivaExpressionTokenType.EOS ) {
+									switch ( expressionToken ) {
+										case MivaExpressionTokenType.String:
+										case MivaExpressionTokenType.StringOpen: {
 
-				// tag-specific
-				if ( patterns.MVT.LEFT_IN_MVT_TAG.test( left ) ) {
-
-					// Determine which tag we are in
-					const [, tagName] = safeMatch(left, patterns.MVT.LEFT_TAG_NAME);
-					const tagNameLower = tagName?.toLowerCase();
-
-					// Attempt to get tag from name
-					const foundTag = mvtTagData[tagNameLower];
-					if (foundTag) {
-						const currentNode = getNodeAtOffset(cursorPositionOffset, parsedDocument) || parsedDocument.findNodeAt(cursorPositionOffset);
-
-						const foundTagAttributes = foundTag.attributes;
-						if (foundTagAttributes) {
-
-							// Tag attribute value completions
-							if (patterns.SHARED.LEFT_IN_ATTR.test( left )) {
-								const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
-								const attributeNameLower = attributeName?.toLowerCase();
-
-								const foundAttribute = foundTag.attributes[attributeNameLower];
-								if (foundAttribute) {
-									switch (foundAttribute.valueType) {
-										case 'variable':
-											return getVariableCompletions(left, mvtDocument);
-										default:
-										case 'expression': {
-											const variableCompletions = getVariableCompletions(left, mvtDocument);
-											if (variableCompletions) {
-												return variableCompletions;
-											}
-
-											return CompletionList.create([
-												...operatorCompletions.items,
-												...builtinFunctionCompletions.items
-											]);
+											return CompletionList.create(
+												Array.from(
+													new Set(
+														stringSymbols
+														.map(symbol => symbol.name)
+													)
+												).map(str => ({
+													label: str
+												}))
+											);
 										}
-										case 'function': {
-											if (tagNameLower === 'item') {
-												// Get item name
-												const [,, itemName] = left.match(patterns.MVT.LEFT_ITEM_NAME) || right.match(patterns.MVT.RIGHT_ITEM_NAME) || [];
-												const foundItem = mvtItemData[itemName];
-
-												// Create completion list from params object
-												if (foundItem && foundItem.params) {
-													if (patterns.SHARED.LEFT_IN_FUNCTION.test( left )) {
-														const variableCompletions = getVariableCompletions(left, mvtDocument);
-														if (variableCompletions) {
-															return variableCompletions;
-														}
-													}
-
-													return CompletionList.create( parseCompletionFile( Object.values( foundItem.params ) ) );
-												}
-											}
-
-											return null;
-										}
-										case 'string':
-											return CompletionList.create( parseCompletionFile( Object.values( foundAttribute.values || {} ) ) );
 									}
+
+									expressionToken = expressionScanner.scan();
 								}
 							}
-
-							// Get list of available attributes
-							const availableAttributes = Object.values( foundTagAttributes )
-								.filter(attr => Object.keys(currentNode?.attributes)?.filter(_attr => _attr.toLowerCase() === attr.label.toLowerCase())?.length === 0);
-
-							// Tag attribute completions
-							return availableAttributes.length > 0
-								? CompletionList.create( parseCompletionFile( availableAttributes ) )
-								: CompletionList.create([]);
-						}
+							break;
 					}
 
-					return null;
+					token = scanner.scan();
 				}
 
-				/**
-				 * Used to determine if the tag starts with either <mvt: mvt: or < and removes that portion with an additionalTextEdit after completion
-				 */
-				const determineAdditionalTextEdits = (): TextEdit[] => {
-					const foundMatch = [
-						'<mvt:',
-						'mvt:',
-						'<'
-					].find(match => left.endsWith(match));
-
-					return foundMatch
-						? [
-							TextEdit.del(Range.create(
-								mvtDocument.positionAt( cursorPositionOffset - foundMatch.length ),
-								position
-							))
-						]
-						: [];
-				};
-
-				// Define additional text edits and add them to the completions items via a map
-				const additionalTextEdits = determineAdditionalTextEdits();
-
-				return CompletionList.create([
-					...additionalTextEdits.length > 0
-						? mvtTagCompletions.items.map(mvtTagCompletion => {
-							return {
-								...mvtTagCompletion,
-								additionalTextEdits
-							};
-						})
-						: mvtTagCompletions.items,
-					{
-						label: '@@@LANGUAGESESRVICE@@@' // To be replaced by that language's native service result
-					}
-				]);
+				return result;
 			},
 
 			async findDefinition( document: TextDocument, position: Position, settings: Settings ) {
