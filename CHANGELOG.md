@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.11.0
+
+- TBD
+
 ## v1.10.0
 
 * Updated function data for Miva Merchant 10.08.03.
