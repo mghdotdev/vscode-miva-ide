@@ -21,9 +21,7 @@ const baseItemParamLink: BaseItemParamData = {
 const baseItemParamFunction: BaseItemParamData = {
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.Function,
-	commitCharacters: [
-		'('
-	],
+	commitCharacters: [],
 	paramType: 'function'
 };
 

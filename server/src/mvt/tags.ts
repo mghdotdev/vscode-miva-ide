@@ -15,28 +15,21 @@ import itemsData from './items';
 const baseTag: BaseTagData = {
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.TypeParameter,
-	commitCharacters: [
-		'/'
-	]
+	commitCharacters: []
 };
 
 const baseAttribute: BaseTagAttributeData = {
 	required: true,
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.Enum,
-	commitCharacters: [
-		'=',
-		'"'
-	],
+	commitCharacters: [],
 	valueType: 'expression'
 };
 
 const baseAttributeValue: BaseTagAttributeValueData = {
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.Enum,
-	commitCharacters: [
-		"'"
-	]
+	commitCharacters: []
 };
 
 // Shared attribute references

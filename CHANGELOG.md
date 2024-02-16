@@ -1,5 +1,15 @@
 # Miva IDE CHANGELOG
 
+## v1.10.0
+
+* Updated function data for Miva Merchant 10.08.03.
+
+## v1.9.0
+
+* Tag attribute completions will now be limited by the current attributes on the existing tag.
+* Removed commit characters from tag completion data
+	* This was causing unintended issues when trying to write code while the completion window was open.
+
 ## v1.8.2
 
 * Fixed issue where the "module imports" variables were not referencing the correct member (`:module`).

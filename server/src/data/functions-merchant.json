@@ -1507,7 +1507,9 @@
 			{
 				"name": "Action_AddMultipleProductsToBasket_ProcessProduct",
 				"parameters": [
-					"product var"
+					"product var",
+					"items var",
+					"item_count var"
 				],
 				"returnValue": "l.void"
 			},
@@ -12829,7 +12831,8 @@
 				"parameters": [
 					"basket var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime_Discount_Basket and Runtime_Discount_Basket_LowLevel must be maintainted to be in sync with their JSON counterparts\n\nJSON_Runtime_Discount_Basket and JSON_Runtime_Discount_Basket_LowLevel which are located in json/runtime.mv"
 			},
 			{
 				"name": "Runtime_Discount_Basket_LowLevel",
@@ -13255,6 +13258,14 @@
 				"name": "DiscountState_CreateFromOrder",
 				"parameters": [
 					"order var",
+					"discount_state var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DiscountState_SetCustomerInformationFromBasket",
+				"parameters": [
+					"basket var",
 					"discount_state var"
 				],
 				"returnValue": "l.void"
@@ -33798,6 +33809,12 @@
 				"parameters": [],
 				"returnValue": "l.count",
 				"description": "Product Price Groups"
+			},
+			{
+				"name": "JSON_ProductShippingRules_Update",
+				"parameters": [],
+				"returnValue": "l.void",
+				"description": "Product Shipping Rules"
 			}
 		]
 	},
@@ -33892,6 +33909,13 @@
 				"parameters": [
 					"parts var",
 					"part_count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Input_Element_ProductVariant_Pricing",
+				"parameters": [
+					"pricing var"
 				],
 				"returnValue": "l.void"
 			},
@@ -34240,6 +34264,21 @@
 					"productimagedata_count",
 					"image_sizes var",
 					"imagesize_count"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_Discount_Basket",
+				"parameters": [
+					"basket var"
+				],
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_Discount_Basket and JSON_Runtime_Discount_Basket_LowLevel must be maintainted to be in sync with their PGR counterparts\n\nRuntime_Discount_Basket and Runtime_Discount_Basket_LowLevel which are located in pgr_rt.mv"
+			},
+			{
+				"name": "JSON_Runtime_Discount_Basket_LowLevel",
+				"parameters": [
+					"basket var"
 				],
 				"returnValue": "l.void"
 			},
@@ -41500,6 +41539,13 @@
 					"domain var"
 				],
 				"returnValue": "l.void"
+			},
+			{
+				"name": "Domain_Update_EngagementJDN",
+				"parameters": [
+					"domain var"
+				],
+				"returnValue": "l.void"
 			}
 		]
 	},
@@ -48573,7 +48619,9 @@
 			{
 				"name": "Action_AddMultipleProductsToBasket_ProcessProduct",
 				"parameters": [
-					"product var"
+					"product var",
+					"items var",
+					"item_count var"
 				],
 				"returnValue": "l.void"
 			},
