@@ -2,7 +2,10 @@
 
 ## v1.11.0
 
-- TBD
+* Added setting to disable documentation popover on hover (issue #80).
+	* `mivaIde.MVT.disableHoverDocumentation`
+	* `mivaIde.mivaScript.disableHoverDocumentation`
+* Updated documentation references to new developer documentation site.
 
 ## v1.10.0
 
