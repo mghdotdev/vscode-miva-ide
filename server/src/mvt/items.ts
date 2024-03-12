@@ -31,7 +31,7 @@ const itemsData: Record<string, ItemData> = {
 		documentation: `Custom Fields is a module that comes installed by default in the core software. In PR8U9, the custom fields module received a huge overhaul which now included many new features, and a new layout.
 
 One of the key new features was allowing store morph code to call functions directly inside the module through the use of \`<mvt:item />\` tags. The two main components are reading a custom field and writing to a custom field.`,
-		reference: 'https://docs.miva.com/template-language/custom-field-reference-documentation',
+		reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/',
 		version: '>=9.00.00',
 		label: 'customfields',
 		params: {
@@ -40,119 +40,119 @@ One of the key new features was allowing store morph code to call functions dire
 				documentation: `Outputs any errors that may have occurred, such as a non-existent product code.`,
 				insertText: "Debug()",
 				label: 'Debug',
-				reference: 'https://docs.miva.com/template-language-custom-field-debugging'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/debugging/'
 			},
 			read_category_code: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Category_Code( ${1:g.Category_Code}, '${2:code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )",
 				label: 'Read_Category_Code',
-				reference: 'https://docs.miva.com/template-language/custom-category-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_category_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Category_ID( ${1:g.Category_ID}, '${2:code}', ${4:l.settings:${3:category}:customfield_values:customfields:$2} )",
 				label: 'Read_Category_ID',
-				reference: 'https://docs.miva.com/template-language/custom-category-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_category_code: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Category_Code( ${1:g.Category_Code}, '${2:code}', ${3:value} )",
 				label: 'Write_Category_Code',
-				reference: 'https://docs.miva.com/template-language/custom-category-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_category_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Category_ID( ${1:g.Category_ID}, '${2:code}', ${3:value} )",
 				label: 'Write_Category_ID',
-				reference: 'https://docs.miva.com/template-language/custom-category-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_product_code: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Product_Code( ${1:g.Product_Code}, '${2:code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )",
 				label: 'Read_Product_Code',
-				reference: 'https://docs.miva.com/template-language/custom-product-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_product_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Product_ID( ${1:g.Product_ID}, '${2:code}', ${4:l.settings:${3:product}:customfield_values:customfields:$2} )",
 				label: 'Read_Product_ID',
-				reference: 'https://docs.miva.com/template-language/custom-product-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_product_code: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Product_Code( ${1:g.Product_Code}, '${2:code}', ${3:value} )",
 				label: 'Write_Product_Code',
-				reference: 'https://docs.miva.com/template-language/custom-product-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_product_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Product_ID( ${1:g.Product_ID}, '${2:code}', ${3:value} )",
 				label: 'Write_Product_ID',
-				reference: 'https://docs.miva.com/template-language/custom-product-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_basket: {
 				...baseItemParamFunction,
 				documentation: `Reads a basket custom field by code to a specific variable.`,
 				insertText: "Read_Basket( '${1:code}', ${2:g.Basket:customfields:$1} )",
 				label: 'Read_Basket',
-				reference: 'https://docs.miva.com/template-language/custom-basket-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/basket-custom-fields/'
 			},
 			write_basket: {
 				...baseItemParamFunction,
 				documentation: `Writes a custom field to the sNN_BasketInfo table.`,
 				insertText: "Write_Basket( '${1:code}', ${2:value} )",
 				label: 'Write_Basket',
-				reference: 'https://docs.miva.com/template-language/custom-basket-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/basket-custom-fields/'
 			},
 			read_customer_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Customer_ID( ${1:g.customer:id}, '${2:code}', ${3:l.settings:customer:customfield_values:customfields:$2} )",
 				label: 'Read_Customer_ID',
-				reference: 'https://docs.miva.com/template-language/custom-customer-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_customer_login: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Customer_Login( ${1:g.customer:login}, '${2:code}', ${3:l.settings:customer:customfield_values:customfields:$2} )",
 				label: 'Read_Customer_Login',
-				reference: 'https://docs.miva.com/template-language/custom-customer-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_customer_id: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Customer_ID( ${1:g.customer:id}, '${2:code}', ${3:value} )",
 				label: 'Write_Customer_ID',
-				reference: 'https://docs.miva.com/template-language/custom-customer-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_customer_login: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Customer_Login( ${1:g.customer:login}, '${2:code}', ${3:value} )",
 				label: 'Write_Customer_Login',
-				reference: 'https://docs.miva.com/template-language/custom-customer-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_order: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Read_Order( ${1:g.Order_ID}, '${2:code}', ${3:l.settings:order:customfield_values:customfields:$2} )",
 				label: 'Read_Order',
-				reference: 'https://docs.miva.com/template-language/custom-order-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_order: {
 				...baseItemParamFunction,
 				documentation: ``,
 				insertText: "Write_Order( ${1:g.Order_ID}, '${2:code}', ${value} )",
 				label: 'Write_Order',
-				reference: 'https://docs.miva.com/template-language/custom-order-fields'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_page_id: {
 				...baseItemParamFunction,
@@ -160,7 +160,7 @@ One of the key new features was allowing store morph code to call functions dire
 				insertText: "Read_Page_ID( ${1:g.Page_ID}, '${2:code}', ${4:l.settings:${3:page}:customfield_values:customfields:$2} )",
 				label: 'Read_Page_ID',
 				version: '>=10.05.00',
-				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			read_page_code: {
 				...baseItemParamFunction,
@@ -168,7 +168,7 @@ One of the key new features was allowing store morph code to call functions dire
 				insertText: "Read_Page_Code( ${1:g.Page_Code}, '${2:code}', ${4:l.settings:${3:page}:customfield_values:customfields:$2} )",
 				label: 'Read_Page_Code',
 				version: '>=10.05.00',
-				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_page_id: {
 				...baseItemParamFunction,
@@ -176,7 +176,7 @@ One of the key new features was allowing store morph code to call functions dire
 				insertText: "Write_Page_ID( ${1:g.Page_ID}, '${2:code}', ${3:value} )",
 				label: 'Write_Page_ID',
 				version: '>=10.05.00',
-				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			},
 			write_page_code: {
 				...baseItemParamFunction,
@@ -184,7 +184,7 @@ One of the key new features was allowing store morph code to call functions dire
 				insertText: "Write_Page_Code( ${1:g.Page_Code}, '${2:code}', ${3:value} )",
 				label: 'Write_Page_Code',
 				version: '>=10.05.00',
-				reference: 'https://docs.miva.com/miva10/reference-guide/custom-page-fields#template-functions'
+				reference: 'https://docs.miva.com/developer/developer-training/working-with-custom-fields/functions/'
 			}
 		}
 	},
@@ -193,7 +193,7 @@ One of the key new features was allowing store morph code to call functions dire
 		documentation: `ReadyThemes is functionality built into the core of Miva Merchant Version 9. It allows you build themes or integrate with an existing CSSUI store to better manage your Miva Merchant store from the admin. This includes updating your logo, managing social media links, managing promotional images, content, product lists, and navigation.
 
 There are 6 different tabs available within ReadyThemes which provide different functionality. Below are code samples and an item reference guide to help you build a new theme or customize an existing Miva Merchant store.`,
-		reference: 'https://docs.miva.com/template-language/readythemes-documentation',
+		reference: 'https://docs.miva.com/developer/developer-training/working-with-theme-components/',
 		version: '>=9.00.00',
 		label: 'readytheme',
 		params: {

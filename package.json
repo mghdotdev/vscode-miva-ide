@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.10.0",
+	"version": "1.11.0",
 	"engines": {
 		"vscode": "^1.77.0",
 		"node": ">=16"
@@ -108,6 +108,16 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show an error for the `toolkit` item's `tksl` param."
+				},
+				"MVT.disableHoverDocumentation": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disables documentation popover when hovering."
+				},
+				"mivaScript.disableHoverDocumentation": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disables documentation popover when hovering."
 				}
 			}
 		},

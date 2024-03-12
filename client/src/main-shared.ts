@@ -22,7 +22,7 @@ export function getClientOptions(): LanguageClientOptions {
 	const clientOptions: LanguageClientOptions = {
 		documentSelector,
 		synchronize: {
-			configurationSection: [ 'html', 'MVT', 'MV', 'LSK' ]
+			configurationSection: [ 'html', 'MVT', 'mivaScript', 'LSK' ]
 		},
 		initializationOptions: {
 			embeddedLanguages

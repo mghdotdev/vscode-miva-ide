@@ -1,5 +1,12 @@
 # Miva IDE CHANGELOG
 
+## v1.11.0
+
+* Added setting to disable documentation popover on hover (issue #80).
+	* `mivaIde.MVT.disableHoverDocumentation`
+	* `mivaIde.mivaScript.disableHoverDocumentation`
+* Updated documentation references to new developer documentation site.
+
 ## v1.10.0
 
 * Updated function data for Miva Merchant 10.08.03.

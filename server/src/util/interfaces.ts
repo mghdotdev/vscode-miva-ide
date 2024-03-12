@@ -21,7 +21,7 @@ import {
 export interface Settings {
 	LSK?: any;
 	MVT?: any;
-	MV?: any;
+	mivaScript?: any;
 }
 
 export interface Workspace {
@@ -226,7 +226,7 @@ export interface SystemVariableData extends BaseSystemVariableData {
 }
 
 export interface SymbolInformationWithDocumentation extends SymbolInformation {
-	documentation: MarkupContent;
+	documentation?: MarkupContent;
 };
 
 export interface BaseOperatorData {
