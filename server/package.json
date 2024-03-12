@@ -22,7 +22,6 @@
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.get": "^4.4.2",
 		"lodash.has": "^4.5.2",
-		"miva-expression-parser": "^0.2.0",
 		"set-immediate-shim": "^2.0.0",
 		"vscode-css-languageservice": "^6.2.11",
 		"vscode-html-languageservice": "^5.0.4",
