@@ -595,6 +595,14 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 			},
 
 			async onHover ( document: TextDocument, position: Position, settings: Settings ) {
+				const defaultReturnValue = {
+					contents: '@@@LANGUAGESESRVICE@@@'
+				};
+
+				// Check if hover has been disabled
+				if (settings.MVT?.disableHoverDocumentation) {
+					return defaultReturnValue;
+				}
 
 				buildTagCompletionData( settings );
 
@@ -779,10 +787,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					};
 				}
 
-				return {
-					contents: '@@@LANGUAGESESRVICE@@@'
-				};
-
+				return defaultReturnValue;
 			},
 
 			findDocumentSymbols ( document: TextDocument ) {
@@ -1169,113 +1174,52 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 			},
 
 			async onHover (document: TextDocument, position: Position, settings: Settings ) {
+				if (!settings?.mivaScript?.disableHoverDocumentation) {
+					const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
 
-				const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
+					await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
-				await _createMivaScriptWorkspaceSymbols(workspace, settings);
+					// Get word
+					const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
+					const word = getWordAtOffset( line, position.character );
 
-				// Get word
-				const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
-				const word = getWordAtOffset( line, position.character );
-
-				// Exit if word is null
-				if (!word) {
-					return null;
-				}
-
-				// Get lowercase version of word
-				const wordLower = word.toLowerCase();
-
-				// determine left side text range
-				const cursorPositionOffset = mvDocument.offsetAt( position );
-				const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
-				const leftRange = Range.create(
-					mvDocument.positionAt( leftOffset ),
-					position
-				);
-				const left = mvDocument.getText( leftRange ) || '';
-
-				// determine right side text range
-				const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
-				const rightRange = Range.create(
-					position,
-					mvDocument.positionAt( rightOffset )
-				);
-				const right = mvDocument.getText( rightRange ) || '';
-
-				// Check for various hover scenarios
-
-				// If in an expression `{ ... }`
-				if (
-					patterns.MV.LEFT_IN_EXPRESSION.test(left) &&
-					patterns.MV.RIGHT_IN_EXPRESSION.test(right)
-				) {
-
-					// If after `[].` notation
-					if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
-						const [, doFile] = safeMatch(left, patterns.MV.LEFT_DO_FILE_BRACKET_DOT);
-						const key = `${doFile?.trim()}@${word}`;
-
-						const foundDoHover = doValueHoverMap.get(key);
-						if (foundDoHover) {
-							return {
-								contents: foundDoHover
-							};
-						}
+					// Exit if word is null
+					if (!word) {
+						return null;
 					}
 
-					// Function Hover
-					if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
+					// Get lowercase version of word
+					const wordLower = word.toLowerCase();
 
-						// Builtin function lookup
-						const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
-						if (foundBuiltinHover) {
-							return {
-								contents: foundBuiltinHover
-							};
-						}
-					}
+					// determine left side text range
+					const cursorPositionOffset = mvDocument.offsetAt( position );
+					const leftOffset = cursorPositionOffset - BOUNDARY_AMOUNT;
+					const leftRange = Range.create(
+						mvDocument.positionAt( leftOffset ),
+						position
+					);
+					const left = mvDocument.getText( leftRange ) || '';
 
-					// System variable hover
-					if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
-						const foundSystemVariable = systemVariableData[wordLower];
-						if (foundSystemVariable) {
-							return {
-								contents: foundSystemVariable.documentation
-							};
-						}
-					}
+					// determine right side text range
+					const rightOffset = cursorPositionOffset + BOUNDARY_AMOUNT;
+					const rightRange = Range.create(
+						position,
+						mvDocument.positionAt( rightOffset )
+					);
+					const right = mvDocument.getText( rightRange ) || '';
 
-					// Operator lookup
-					const foundOperator = mvOperatorData[wordLower];
-					if (foundOperator) {
-						return {
-							contents: formatGenericDocumentation(foundOperator)
-						};
-					}
-				}
+					// Check for various hover scenarios
 
-				// Tag name hover
-				if (patterns.MV.LEFT_IN_MV_TAG.test( left )) {
-					// Determine which tag we are in
-					const [, tagName] = safeMatch(left, patterns.MV.LEFT_TAG_NAME);
-					const tagNameLower = tagName?.toLowerCase();
+					// If in an expression `{ ... }`
+					if (
+						patterns.MV.LEFT_IN_EXPRESSION.test(left) &&
+						patterns.MV.RIGHT_IN_EXPRESSION.test(right)
+					) {
 
-					// Attempt to get tag from name
-					const foundTagRegex = mvTagData[tagNameLower];
-
-					// Do stuff with found tag (via regex)
-					if (foundTagRegex) {
-
-						// Do functions
-						if (tagNameLower === 'mvdo') {
-							// Get item name
-							const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
-							const doFileNoExpression = doFile
-								.replace(/[\{\}]/g, '')
-								.trim();
-
-							const key = `${doFileNoExpression}@${word}`;
+						// If after `[].` notation
+						if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
+							const [, doFile] = safeMatch(left, patterns.MV.LEFT_DO_FILE_BRACKET_DOT);
+							const key = `${doFile?.trim()}@${word}`;
 
 							const foundDoHover = doValueHoverMap.get(key);
 							if (foundDoHover) {
@@ -1285,70 +1229,131 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 							}
 						}
 
-						// Find attribute data on found tag name
-						const foundAttributes = foundTagRegex.attributes;
-						if (foundAttributes) {
-							// Find attribute data with word
-							const foundAttribute = foundAttributes[wordLower];
+						// Function Hover
+						if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
 
-							// Return hover for attribute if found
-							if (foundAttribute) {
+							// Builtin function lookup
+							const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
+							if (foundBuiltinHover) {
 								return {
-									contents: formatTagAttributeDocumentation(foundTagRegex, foundAttribute)
+									contents: foundBuiltinHover
 								};
 							}
+						}
 
-							// Return hover for attribute value if found
-							if (patterns.SHARED.LEFT_IN_ATTR.test(left)) {
-								// Find attribute data with word
-								const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
-								const foundAttribute = foundAttributes[attributeName];
-								const foundAttributeValue = foundAttribute?.values?.[wordLower];
+						// System variable hover
+						if (patterns.SHARED.LEFT_VARIABLE_S.test(left)) {
+							const foundSystemVariable = systemVariableData[wordLower];
+							if (foundSystemVariable) {
+								return {
+									contents: foundSystemVariable.documentation
+								};
+							}
+						}
 
-								if (foundAttributeValue && foundAttributeValue.documentation) {
+						// Operator lookup
+						const foundOperator = mvOperatorData[wordLower];
+						if (foundOperator) {
+							return {
+								contents: formatGenericDocumentation(foundOperator)
+							};
+						}
+					}
+
+					// Tag name hover
+					if (patterns.MV.LEFT_IN_MV_TAG.test( left )) {
+						// Determine which tag we are in
+						const [, tagName] = safeMatch(left, patterns.MV.LEFT_TAG_NAME);
+						const tagNameLower = tagName?.toLowerCase();
+
+						// Attempt to get tag from name
+						const foundTagRegex = mvTagData[tagNameLower];
+
+						// Do stuff with found tag (via regex)
+						if (foundTagRegex) {
+
+							// Do functions
+							if (tagNameLower === 'mvdo') {
+								// Get item name
+								const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
+								const doFileNoExpression = doFile
+									.replace(/[\{\}]/g, '')
+									.trim();
+
+								const key = `${doFileNoExpression}@${word}`;
+
+								const foundDoHover = doValueHoverMap.get(key);
+								if (foundDoHover) {
 									return {
-										contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
+										contents: foundDoHover
 									};
+								}
+							}
+
+							// Find attribute data on found tag name
+							const foundAttributes = foundTagRegex.attributes;
+							if (foundAttributes) {
+								// Find attribute data with word
+								const foundAttribute = foundAttributes[wordLower];
+
+								// Return hover for attribute if found
+								if (foundAttribute) {
+									return {
+										contents: formatTagAttributeDocumentation(foundTagRegex, foundAttribute)
+									};
+								}
+
+								// Return hover for attribute value if found
+								if (patterns.SHARED.LEFT_IN_ATTR.test(left)) {
+									// Find attribute data with word
+									const [, attributeName] = safeMatch(left, patterns.SHARED.LEFT_ATTR_NAME);
+									const foundAttribute = foundAttributes[attributeName];
+									const foundAttributeValue = foundAttribute?.values?.[wordLower];
+
+									if (foundAttributeValue && foundAttributeValue.documentation) {
+										return {
+											contents: formatTagAttributeValueDocumentation(foundTagRegex, foundAttribute, foundAttributeValue)
+										};
+									}
 								}
 							}
 						}
 					}
-				}
 
-				// Do stuff with found tag (via word)
-				const foundTag = mvTagData[wordLower];
-				if (foundTag) {
-					return {
-						contents: formatTagDocumentation(foundTag)
-					};
-				}
+					// Do stuff with found tag (via word)
+					const foundTag = mvTagData[wordLower];
+					if (foundTag) {
+						return {
+							contents: formatTagDocumentation(foundTag)
+						};
+					}
 
-				// Variable / Symbol Hover Documentation
-				const symbols = [].concat( mivaScriptWorkspaceSymbols, documentSymbols );
-				const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
-				let symbolDocumentation = '';
+					// Variable / Symbol Hover Documentation
+					const symbols = [].concat( mivaScriptWorkspaceSymbols, documentSymbols );
+					const variable = getVariableAtOffset( line, position.character )?.toLowerCase();
+					let symbolDocumentation = '';
 
-				for (let symbol of symbols) {
-					const nameLower = symbol.name.toLowerCase();
-					const trimmedValue = symbol?.documentation?.value?.trim();
+					for (let symbol of symbols) {
+						const nameLower = symbol.name.toLowerCase();
+						const trimmedValue = symbol?.documentation?.value?.trim();
 
-					// Show variable hover docs
-					if (trimmedValue?.length > 0 && symbol.kind === SymbolKind.Variable && (nameLower === variable || nameLower === word)) {
-						symbolDocumentation += trimmedValue + '\n---\n';
+						// Show variable hover docs
+						if (trimmedValue?.length > 0 && symbol.kind === SymbolKind.Variable && (nameLower === variable || nameLower === word)) {
+							symbolDocumentation += trimmedValue + '\n---\n';
+						}
+					}
+
+					if (symbolDocumentation.length > 0) {
+						return {
+							contents: {
+								kind: 'markdown',
+								value: symbolDocumentation
+							}
+						};
 					}
 				}
 
-				if (symbolDocumentation.length > 0) {
-					return {
-						contents: {
-							kind: 'markdown',
-							value: symbolDocumentation
-						}
-					};
-				}
-
 				return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
-
 			}
 
 		};

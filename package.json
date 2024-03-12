@@ -108,6 +108,16 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show an error for the `toolkit` item's `tksl` param."
+				},
+				"MVT.disableHoverDocumentation": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disables documentation popover when hovering."
+				},
+				"mivaScript.disableHoverDocumentation": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disables documentation popover when hovering."
 				}
 			}
 		},

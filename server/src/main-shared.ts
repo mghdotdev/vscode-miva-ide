@@ -36,9 +36,9 @@ export function activate (connection: Connection, workspaceSymbolProvider?: Work
 		if ( !promise ) {
 
 			const scopeUri = textDocument.uri;
-			const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'LSK' }, { scopeUri, section: 'MVT' }, { scopeUri, section: 'MV' } ] };
+			const configRequestParam: ConfigurationParams = { items: [ { scopeUri, section: 'LSK' }, { scopeUri, section: 'MVT' }, { scopeUri, section: 'mivaScript' } ] };
 
-			promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { LSK: s[0], MVT: s[1], MV: s[2] } ) );
+			promise = connection.sendRequest( ConfigurationRequest.type, configRequestParam ).then( s => ( { LSK: s[0], MVT: s[1], mivaScript: s[2] } ) );
 
 			documentSettings[ textDocument.uri ] = promise;
 
