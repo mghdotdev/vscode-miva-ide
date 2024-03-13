@@ -14,10 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Pack
+    - name: Check version
+      id: check
+      uses: EndBug/version-check@v2
+    - name: Set up node
+      if: steps.check.outputs.changed == 'true'
       uses: actions/setup-node@v3
       with:
         node-version: 16
         cache: 'npm'
-    - run: npm ci
-    - run: npm run pack
+    - name: Install dependencies
+      if: steps.check.outputs.changed == 'true'
+      run: npm ci
+    - name: Pack
+      if: steps.check.outputs.changed == 'true'
+      run: npm run pack
