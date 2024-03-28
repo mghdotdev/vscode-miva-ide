@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+## v1.11.1
+
+* Fixed bug with Currency modules merchant functions file paths.
+
 ## v1.11.0
 
 * Added setting to disable documentation popover on hover (issue #80).

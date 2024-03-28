@@ -69982,7 +69982,7 @@
 		"moduleVar": "l.__module_cmp_cssui_breadcrumbs"
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
+		"distroPath": "g.Module_Store_Module_Currency",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70129,12 +70129,10 @@
 				],
 				"returnValue": "l.void"
 			}
-		],
-		"moduleCode": "usmoney",
-		"moduleVar": "l.__module_usmoney"
+		]
 	},
 	{
-		"distroPath": "g.Module_Root $ l.__module_usmoney:module",
+		"distroPath": "g.Module_Store_Module_Currency",
 		"functions": [
 			{
 				"name": "Module_Description",
@@ -70174,9 +70172,7 @@
 				],
 				"returnValue": "l.void"
 			}
-		],
-		"moduleCode": "usmoney",
-		"moduleVar": "l.__module_usmoney"
+		]
 	},
 	{
 		"distroPath": "g.Module_Root $ l.__module_discount_customerspecific:module",
