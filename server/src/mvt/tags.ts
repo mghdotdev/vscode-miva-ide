@@ -96,8 +96,20 @@ export const mvtSnippetData: Record<string, TagSnippet> = {
 		...baseTag,
 		documentation: '',
 		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
+		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|</pre>,-->|}",
 		label: 'mvt-debug-json'
+	},
+	debug_textarea: {
+		...baseTag,
+		documentation: '',
+		kind: CompletionItemKind.Function,
+		insertText: [
+			`<mvt:assign name="l.settings:_mvps_debug" value="glosub( miva_array_serialize( $\{1:variable\} ), ',', asciichar( 10 ) )" />`,
+			`<label for="_mvps_debug_$CURRENT_SECONDS_UNIX">@@debug $1</label>`,
+			`<textarea id="_mvps_debug_$CURRENT_SECONDS_UNIX" readonly>&mvt:_mvps_debug;</textarea>`,
+			`<script>(function () {var e = document.getElementById('_mvps_debug_$CURRENT_SECONDS_UNIX');e.value = decodeURIComponent(e.value);e.style = 'height:' + e.scrollHeight + 'px;overflow-y:hidden';})();</script>`
+		].join('\n'),
+		label: 'mvt-debug-textarea'
 	},
 	testuser: {
 		...baseTag,
