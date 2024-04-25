@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-# v1.12.0
+## v1.12.1 (latest)
+
+* Fixed issue with CHANGELOG.
+
+## v1.12.0
 
 * Updated mvt-debug snippet default wrap to `<pre>` tag instead of HTML comment.
 
