@@ -1,6 +1,13 @@
 # Miva IDE CHANGELOG
 
-## v1.12.1 (latest)
+## v1.13.0 (latest)
+
+* Added new `mvt-debug-textarea` snippet.
+	* Outputs a readonly textarea that resizes to fit content and decodes the debugged variable data.
+* Switched default output format to `<pre>` tag for `mvt-debug-json` snippet.
+* Switched debug variable to `_mvt_debug` from `_mvps_debug`.
+
+## v1.12.1
 
 * Fixed issue with CHANGELOG.
 
