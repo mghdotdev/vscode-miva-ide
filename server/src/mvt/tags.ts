@@ -89,7 +89,7 @@ export const mvtSnippetData: Record<string, TagSnippet> = {
 		...baseTag,
 		documentation: '',
 		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
+		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|</pre>,-->|}",
 		label: 'mvt-debug'
 	},
 	debug_json: {
