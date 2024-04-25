@@ -1,5 +1,9 @@
 # Miva IDE CHANGELOG
 
+# v1.12.0
+
+* Updated mvt-debug snippet default wrap to `<pre>` tag instead of HTML comment.
+
 ## v1.11.1
 
 * Fixed bug with Currency modules merchant functions file paths.
