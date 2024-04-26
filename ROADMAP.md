@@ -88,6 +88,13 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 - [x] Fix syntax issue for Miva Script expressions.
 	- See "LSK/src/features/prv/mmlsk-prv_ad.mv" for an example.
 
+### v1.14.0
+
+- [x] Create language specific debug snippets.
+	- mvtcss will only allow a css comment wrap
+	- mvtjs will only allow a json encoded console.log wrap
+	- mvt standard will allow the existing 3 (debug, debug-json, debug-textarea)
+
 ### v1.X.0
 
 - [ ] Fix indentation issues when running Reindent Lines.

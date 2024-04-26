@@ -33,7 +33,7 @@ import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
-import { generateMvtTags, mvtSnippetData } from './mvt/tags';
+import { generateMvtSnippets, generateMvtTags } from './mvt/tags';
 import {
 	filterTagData,
 	formatGenericDocumentation,
@@ -256,12 +256,13 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 			return symbols;
 		};
 
-		const buildTagCompletionData = (settings: Settings) => {
-			if (!settingsChanged) {
-				return;
+		const buildTagCompletionData = (settings: Settings, languageId: string) => {
+			mvtSnippetData = generateMvtSnippets(settings, languageId);
+
+			if (settingsChanged) {
+				mvtTagData = generateMvtTags(settings);
 			}
 
-			mvtTagData = generateMvtTags(settings);
 			mvtTagAndSnippetData = {
 				...mvtSnippetData,
 				...mvtTagData
@@ -286,6 +287,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 		// MVT-specific completion data
 		let mvtTagData: Record<string, TagData>;
+		let mvtSnippetData: Record<string, TagSnippet>;
 		let mvtTagAndSnippetData: Record<string, TagData | TagSnippet>;
 		let mvtTagCompletions: CompletionList;
 		const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
@@ -383,7 +385,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 			doCompletion( document: TextDocument, position: Position, settings: Settings ): CompletionList {
 
-				buildTagCompletionData( settings );
+				buildTagCompletionData( settings, document.languageId );
 
 				const {document: mvtDocument} = mvtDocuments.get( document );
 				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
@@ -604,7 +606,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					return defaultReturnValue;
 				}
 
-				buildTagCompletionData( settings );
+				buildTagCompletionData( settings, document.languageId );
 
 				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
