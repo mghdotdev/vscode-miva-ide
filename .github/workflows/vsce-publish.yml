@@ -34,7 +34,7 @@ jobs:
     - name: Pack
       if: steps.check.outputs.changed == 'true'
       run: npm run pack
-    - name: Get Package information
+    - name: Get Package Information
       if: steps.check.outputs.changed == 'true'
       id: package
       uses: codex-team/action-nodejs-package-info@v1.1
