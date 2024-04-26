@@ -1,6 +1,13 @@
 # Miva IDE CHANGELOG
 
-## v1.13.0 (latest)
+## v1.14.0 (latest)
+
+* Modified the `mvt-debug` snippet to be different for `mvtjs`, `mvtcss` and `mvt` languages.
+	* `mvtcss` will output a CSS block comment.
+	* `mvtjs` will output a `console.log()` call with a JSON string.
+	* `mvt` will retain existing functionality.
+
+## v1.13.0
 
 * Added new `mvt-debug-textarea` snippet.
 	* Outputs a readonly textarea that resizes to fit content and decodes the debugged variable data.

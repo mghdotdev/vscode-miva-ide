@@ -84,47 +84,79 @@ const tagItem = {
 
 // Snippet data structure
 
-export const mvtSnippetData: Record<string, TagSnippet> = {
-	debug: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
-		label: 'mvt-debug'
-	},
-	debug_json: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
-		label: 'mvt-debug-json'
-	},
-	debug_textarea: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: [
-			`<mvt:assign name="l.settings:_mvt_debug" value="glosub( miva_array_serialize( $\{1:variable\} ), ',', asciichar( 10 ) )" />`,
-			`<label for="_mvt_debug_$CURRENT_SECONDS_UNIX">@@debug $1</label>`,
-			`<textarea id="_mvt_debug_$CURRENT_SECONDS_UNIX" readonly>&mvt:_mvt_debug;</textarea>`,
-			`<script>(function () {var e = document.getElementById('_mvt_debug_$CURRENT_SECONDS_UNIX');e.value = decodeURIComponent(e.value);e.style = 'height:' + e.scrollHeight + 'px;overflow-y:hidden';})();</script>`
-		].join('\n'),
-		label: 'mvt-debug-textarea'
-	},
-	testuser: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvt-testuser'
-	},
-	testvar: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvt-testvar'
-	}
+export function generateMvtSnippets (settings: Settings, languageId: string): Record<string, TagSnippet> {
+	const getLanguageSpecificSnippets = (): Record<string, TagSnippet> => {
+		switch (languageId) {
+			case 'mvtcss':
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n/*\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n*/",
+						label: 'mvt-debug'
+					}
+				}
+			case 'mvtjs':
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\nconsole.log('@@debug $1', '&mvt:_mvt_debug;')",
+						label: 'mvt-debug'
+					}
+				}
+			case 'mvt':
+			default:
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
+						label: 'mvt-debug'
+					},
+					debug_json: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
+						label: 'mvt-debug-json'
+					},
+					debug_textarea: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: [
+							`<mvt:assign name="l.settings:_mvt_debug" value="glosub( miva_array_serialize( $\{1:variable\} ), ',', asciichar( 10 ) )" />`,
+							`<label for="_mvt_debug_$CURRENT_SECONDS_UNIX">@@debug $1</label>`,
+							`<textarea id="_mvt_debug_$CURRENT_SECONDS_UNIX" readonly>&mvt:_mvt_debug;</textarea>`,
+							`<script>(function () {var e = document.getElementById('_mvt_debug_$CURRENT_SECONDS_UNIX');e.value = decodeURIComponent(e.value);e.style = 'height:' + e.scrollHeight + 'px;overflow-y:hidden';})();</script>`
+						].join('\n'),
+						label: 'mvt-debug-textarea'
+					}
+				};
+		}
+	};
+
+	return {
+		...getLanguageSpecificSnippets(),
+		testuser: {
+			...baseTag,
+			documentation: '',
+			kind: CompletionItemKind.Function,
+			insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
+			label: 'mvt-testuser'
+		},
+		testvar: {
+			...baseTag,
+			documentation: '',
+			kind: CompletionItemKind.Function,
+			insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
+			label: 'mvt-testvar'
+		}
+	};
 };
 
 // Full tag data structure
