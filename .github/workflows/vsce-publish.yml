@@ -31,3 +31,18 @@ jobs:
     - name: Publish
       if: steps.check.outputs.changed == 'true'
       run: npm run release -- -p ${{ secrets.VSCE_PAT }}
+    - name: Pack
+      if: steps.check.outputs.changed == 'true'
+      run: npm run pack
+    - name: Get Package information
+      if: steps.check.outputs.changed == 'true'
+      id: package
+      uses: codex-team/action-nodejs-package-info@v1.1
+    - name: Create release
+      if: steps.check.outputs.changed == 'true'
+      uses: softprops/action-gh-release@v2
+      with:
+        files: ${{ github.workspace }}/${{ steps.package.outputs.name }}-${{ steps.check.outputs.version }}.vsix
+        tag_name: v${{ steps.check.outputs.version }}
+        make_latest: true
+        generate_release_notes: true
