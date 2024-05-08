@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.15.0 (latest)
+## v1.15.1 (latest)
+
+* Fixed issue with `miva_json_encode` function snippet.
+
+## v1.15.0
 
 * Added 10.09.00 LSK data.
 
