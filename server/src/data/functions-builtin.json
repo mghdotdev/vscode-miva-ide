@@ -3893,7 +3893,7 @@
 	},
 	{
 		"documentation": "\n```mv\n{ miva_json_encode( variable, 'pretty' ) }\n```\n---\n[miva_json_encode](https://www.mivascript.com/item/mivascript-functions/miva_json_encode.html)  \n\nConvert a Miva variable (array or structure) into a JSON string.",
-		"insertText": "miva_json_encode( ${1:variable}${2:, 'pretty'} )$0",
+		"insertText": "miva_json_encode( ${1:variable}, '${2:pretty}' )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "miva_json_encode"
