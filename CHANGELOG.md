@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.14.0 (latest)
+## v1.15.0 (latest)
+
+* Added 10.09.00 LSK data.
+
+## v1.14.0
 
 * Modified the `mvt-debug` snippet to be different for `mvtjs`, `mvtcss` and `mvt` languages.
 	* `mvtcss` will output a CSS block comment.
