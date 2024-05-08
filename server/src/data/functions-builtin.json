@@ -3904,5 +3904,124 @@
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "ternary"
+	},
+	{
+		"documentation": "\n```mv\n{ gethostbyname( hostname, ip var ) }\n```\n---\n\n\nThis function looks up the IP address associated with the given hostname\n\nParameters:\n- hostname: The host name to lookup\n- ip: An output value containing the IP address of the given hostname\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "gethostbyname( ${1:hostname}, ${2:ip var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gethostbyname"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_array_combine( array var, compare_callback, combine_callback, flags, data var ) }\n```\n---\n\n\nThis function will combine multiple elements within an array into a single element depending on the design of the compare and callback functions\n\nParameters:\n- array var: The array to iterate\n- compare_callback: The callback function that determines whether the 2 elements of the array should be combined\n- combine_callback: The callback function that defines the operation to perform on the 2 elements that are being combined\n- flags: Flags that dictate how the function behaves\n- data: Additional data passed to the compare and combine callback functions\n\nReturn Value:\n- The number of elements in the array\n\nFlags:\n- sorted: The array will be processed as if the elements are sorted in ascending fashion, stopping the comparison of the current element\nonce the next element does not match.  If the flag is omitted, the function will do a brute force\nsearch across the elements, meaning every element will be checked against every other element in the array.\n\nExample MivaScript code:\n<MvASSIGN NAME = \"l.combined_count\" VALUE = \"{ miva_array_combine( l.array, 'Compare_Callback', 'Combine_Callback', 'sorted', l.data ) }\">\n\n<MvFUNCTION NAME = \"Compare_Callback\" PARAMETERS = \"element1 var, element2 var, data var\" STANDARDOUTPUTLEVEL = \"\">\n<MvFUNCTIONRETURN VALUE = \"{ l.element1 EQ l.element2 }\">\n</MvFUNCTION>\n\n<MvFUNCTION NAME = \"Compare_Callback\" PARAMETERS = \"element1 var, element2 var, data var\" STANDARDOUTPUTLEVEL = \"\">\n<MvFUNCTIONRETURN VALUE = \"{ l.element1 + l.element2 }\">\n</MvFUNCTION>\n\nCompare_Callback( element1 var, element2 var, data var ):\nParameters:\n- element1: An array element\n- element2: An array element\n- data: The data that was passed to miva_array_combine\n\nReturn Value:\n- 1 if the elements should be combined, 0 otherwise\n\nCombined_Callback( element1 var, element2 var, data var ):\nParameters:\n- element1: An array element\n- element2: An array element\n- data: The data that was passed to miva_array_combine\n\nReturn Value:\n- The combined variable made up of element1 and element2\n\n",
+		"insertText": "miva_array_combine( ${1:array var}, ${2:compare_callback}, ${3:combine_callback}, ${4:flags}, ${5:data var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_array_combine"
+	},
+	{
+		"documentation": "\n```mv\n{ bzip2_compress( data var, block_size, compressed var ) }\n```\n---\n\n\nCompress the data using the bzip2 format\n\nParameters:\n- data: The data to be compressed\n- block_size: The block size to use for the compression (valid values are 1-9; 1 being faster and less efficient compression, 9 being slower and more efficient compression)\n- compressed: The data compressed in bzip2 format\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "bzip2_compress( ${1:data var}, ${2:block_size}, ${3:compressed var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "bzip2_compress"
+	},
+	{
+		"documentation": "\n```mv\n{ bzip2_decompress( compressed var, decompressed var ) }\n```\n---\n\n\nDecompress bzip2 data\n\nParameters:\n- compressed: The compressed bzip2 data\n- decompressed: The uncompressed data\n\nReturn Value:\n- 1 on success, 0 on failure",
+		"insertText": "bzip2_decompress( ${1:compressed var}, ${2:decompressed var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "bzip2_decompress"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_ip_version( ip ) }\n```\n---\n\n\nThis function returns the version of the IP address\n\nParameters:\n- ip: The IP address\n\nReturn Value:\n- 4 for IPv4, 6 for IPv6, 0 on failure\n\n",
+		"insertText": "miva_ip_version( ${1:ip} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_ip_version"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_ip_normalize( ip, normalized_ip var ) }\n```\n---\n\n\nThis function normalizes an IP address\n\nParameters:\n- ip: The IP address to normalize\n- ip: An output value containing the normalized IP address\n\nReturn Value:\n- 1 on success, 0 on failure",
+		"insertText": "miva_ip_normalize( ${1:ip}, ${2:normalized_ip var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_ip_normalize"
+	},
+	{
+		"documentation": "\n```mv\n{ gethostbyname( hostname, ip var ) }\n```\n---\n\n\nThis function looks up the IP address associated with the given hostname\n\nParameters:\n- hostname: The host name to lookup\n- ip: An output value containing the IP address of the given hostname\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "gethostbyname( ${1:hostname}, ${2:ip var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gethostbyname"
+	},
+	{
+		"documentation": "\n```mv\n{ mysql_get_client_info() }\n```\n---\n\n\nThis function returns a string that represents the MySQL client library version\n\nParameters:\n- None\n\nReturn Value:\n- A string that represents the MySQL client library version (for example, \"8.0.20\")\n\n",
+		"insertText": "mysql_get_client_info( ${1:} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "mysql_get_client_info"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_client_id( conn_id ) }\n```\n---\n\n\nThis function returns the Redis client ID associated with the connection.  This command is only available in\nRedis 5.0.0 and later.\n\nParameters:\n- conn_id: The internal reference ID\n\nReturn Value:\n- The Redis client ID\n\n",
+		"insertText": "redis_client_id( ${1:conn_id} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_client_id"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_connect_with_timeout( ip, port, timeout, conn_id var ) }\n```\n---\n\n\nConnects to Redis on the specified IP / hostname and port\n\nParameters:\n- ip / hostname: The IP address / hostname of the server Redis is on\n- port: The port number to connect on\n- timeout: The amount of time (in milliseconds) to spend connecting to the ip / hostname before timing out\n- conn_id: An output value containing a reference ID which is associated to the internal Redis connection\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "redis_connect_with_timeout( ${1:ip}, ${2:port}, ${3:timeout}, ${4:conn_id var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_connect_with_timeout"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_connect_unix( path, conn_id var ) }\n```\n---\n\n\nConnects to Reids over the named socket\n\nParameters:\n- path: Path to the named socket\n- conn_id: An output value containing a reference ID which is associated to the internal Redis connection\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "redis_connect_unix( ${1:path}, ${2:conn_id var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_connect_unix"
+	},
+	{
+		"documentation": "\n```mv\n{ rsa_public_encrypt_oaep( rsa, plaintext, encrypted var ) }\n```\n---\n\n\nThis function encrypts data using the public key portion of an RSA keypair using OAEP padding\n\nParameters:\n- rsa: The internal reference to the RSA public key used for encryption\n- plaintext: The data to be encrypted\n- encrypted: A variable which receives the encrypted ciphertext in raw binary format\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "rsa_public_encrypt_oaep( ${1:rsa}, ${2:plaintext}, ${3:encrypted var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "rsa_public_encrypt_oaep"
+	},
+	{
+		"documentation": "\n```mv\n{ rsa_private_decrypt_oaep( rsa, encrypted, plaintext var ) }\n```\n---\n\n\nThis function decrypts data previously encrypted using the public key portion of an RSA keypair\n\nParameters:\n- rsa: The internal reference to the RSA public key used for encryption\n- encrypted: The encrypted ciphertext, in raw binary format\n- plaintext: A variable which receives the decrypted plaintext\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
+		"insertText": "rsa_private_decrypt_oaep( ${1:rsa}, ${2:encrypted}, ${3:plaintext var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "rsa_private_decrypt_oaep"
+	},
+	{
+		"documentation": "\n```mv\n{ strcmp( left, right ) }\n```\n---\n\n\nThis function forces a string comparison between the left and right values\n\nParameters:\n- left: Value to be compared\n- right: Value to be compared\n\nReturn Value:\n- -1 when the left value is less than the right value, 0 when the left and right values are equal, and 1 when the left value is greater than the right value\n\n",
+		"insertText": "strcmp( ${1:left}, ${2:right} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "strcmp"
+	},
+	{
+		"documentation": "\n```mv\n{ strcasecmp( left, right ) }\n```\n---\n\n\nThis function converts the values into upper case and then forces a string comparison between the left and right values\n\nParameters:\n- left: Value to be compared\n- right: Value to be compared\n\nReturn Value:\n- -1 when the left value is less than the right value, 0 when the left and right values are equal, and 1 when the left value is greater than the right value\n\n",
+		"insertText": "strcasecmp( ${1:left}, ${2:right} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "strcasecmp"
+	},
+	{
+		"documentation": "\n```mv\n{ file_last_error() }\n```\n---\n\n\nThis function returns the last error message associated with any of the file builtin functions\n\nParameters:\n- None\n\nReturn Value:\n- A string representing the last error message related to the file builtin functions",
+		"insertText": "file_last_error( ${1:} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "file_last_error"
+	},
+	{
+		"documentation": "\n```mv\n{ pkcs7_get_signer_info( pkcs7 var, output var ) }\n```\n---\n\n\nGiven a structure reference such as returned from pkcs7_load_mem, return an array of structures containing signer info.\n\nParameters:\n- pkcs7 - Structure reference\n- output - Array of structures containing signing information. Each structure will contain members named \"version\", \"issuer\", \"issuerSerial\", \"messageDigest\" and \"signingTime\"\n\nReturn Value:\n- Count of array elements returned\n- -1 on failure\n\n",
+		"insertText": "pkcs7_get_signer_info( ${1:pkcs7 var}, ${2:output var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "pkcs7_get_signer_info"
 	}
 ]
