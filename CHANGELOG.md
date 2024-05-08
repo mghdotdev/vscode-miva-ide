@@ -1,6 +1,27 @@
 # Miva IDE CHANGELOG
 
-## v1.15.1 (latest)
+## v1.16.0 (latest)
+
+* Added missing builtin functions from prior Empressa versions.
+	- gethostbyname
+	- miva_array_combine
+	- bzip2_compress
+	- bzip2_decompress
+	- miva_ip_version
+	- miva_ip_normalize
+	- gethostbyname
+	- mysql_get_client_info
+	- redis_client_id
+	- redis_connect_with_timeout
+	- redis_connect_unix
+	- rsa_public_encrypt_oaep
+	- rsa_private_decrypt_oaep
+	- strcmp
+	- strcasecmp
+	- file_last_error
+	- pkcs7_get_signer_info
+
+## v1.15.1
 
 * Fixed issue with `miva_json_encode` function snippet.
 
