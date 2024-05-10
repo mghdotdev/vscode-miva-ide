@@ -1,8 +1,21 @@
 # Miva IDE CHANGELOG
 
-## v1.16.0 (latest)
+## v1.17.0 (latest)
 
-* Added missing builtin functions from prior Empressa versions.
+* Added missing builtin functions from Empressa versions 5.39-5.42:
+	- crypto_evp_sign_ctrl
+	- miva_lockfile_valid
+	- gdImageCreateFromWebp
+	- gdImageCreateFromWebpMem
+	- gdImageWebp
+	- gdImageWebpMem
+	- gdImageWebpOutput
+	- gdVersionString
+	- miva_member_delete
+
+## v1.16.0
+
+* Added missing builtin functions from Empressa versions 5.07-5.38:
 	- gethostbyname
 	- miva_array_combine
 	- bzip2_compress
