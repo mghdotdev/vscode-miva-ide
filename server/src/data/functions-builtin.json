@@ -4023,5 +4023,68 @@
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "pkcs7_get_signer_info"
+	},
+	{
+		"documentation": "\n```mv\n{ crypto_evp_sign_ctrl( digestname, privkey, ctrl, buffer, signature var ) }\n```\n---\n\n  Generates an RSA / ECDSA signature.  Facilitates RSA-PSS encryption scheme.\n\n  Parameters:\n    - digestname: Hash algorithm name, such as \"md5\" or \"sha256\". Supported digest algorithms will vary between OpenSSL installations\n    - privkey: EVP PKEY structure reference\n    - ctrl: A comma separated list of type:value pairs that are passed to EVP_PKEY_CTX_ctrl_str.  E.g. \"rsa_padding_mode=pss,rsa_pss_saltlen=32\"\n    - buffer: The data to sign\n    - signature: The signed output signature\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "crypto_evp_sign_ctrl( ${1:digestname}, ${2:privkey}, ${3:ctrl}, ${4:buffer}, ${5:signature var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "crypto_evp_sign_ctrl"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_lockfile_valid( path, location ) }\n```\n---\n\n  Determines if the specified file is a valid lockfile\n\n  Parameters:\n    - path: File path of the lockfile\n    - location: Location of the lockfile, valid values are \"script\" and \"data\"\n\n  Return Value:\n    - 1 if a subsequent MvLOCKFILE or miva_lockfile would block, 0 if the lock is non-existent, expired, or otherwise invalid\n\n",
+		"insertText": "miva_lockfile_valid( ${1:path}, ${2:location} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_lockfile_valid"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageCreateFromWebp( filename, location ) }\n```\n---\n\n  Loads a WebP image into memory\n\n  Parameters:\n    - filename: The file path to the image\n    - location: Location of the image, valid values are \"script\" and \"data\"\n\n  Return Value:\n    - -1 if function is not supported or input file does not exist, 0 if libgd failed to return an image, otherwise the internal reference ID\n\n",
+		"insertText": "gdImageCreateFromWebp( ${1:filename}, ${2:location} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageCreateFromWebp"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageCreateFromWebpMem( data var ) }\n```\n---\n\n  Loads a WebP image into memory\n\n  Parameters:\n    - data: The in-memory WebP image\n\n  Return Value:\n    - -1 if function is not supported or input file does not exist, 0 if libgd failed to return an image, otherwise the internal reference ID\n\n",
+		"insertText": "gdImageCreateFromWebpMem( ${1:data var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageCreateFromWebpMem"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageWebp( im, filename, location, quality ) }\n```\n---\n\n  Outputs the WebP image to a file\n\n  Parameters:\n    - im: The internal image reference ID\n    - filename: The filepath to save the file\n    - location: The location to save the file, valid values are \"script\" and \"data\"\n    - quality: The image quality, higher values typically result in larger files.  Values over 100 will create a lossless image (if the version of GD supports it)\n\n  Return Value:\n    - Nothing on success, -1 on error\n\n",
+		"insertText": "gdImageWebp( ${1:im}, ${2:filename}, ${3:location}, ${4:quality} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageWebp"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageWebpMem( im, output var, quality ) }\n```\n---\n\n  Outputs the WebP image to memory\n\n  Parameters:\n    - im: The internal image reference ID\n    - output: The variable to write the image to\n    - quality: The image quality, higher values typically result in larger files.  Values over 100 will create a lossless image (if the version of GD supports it)\n\n  Return Value:\n    - Nothing on success, -1 on error\n\n",
+		"insertText": "gdImageWebpMem( ${1:im}, ${2:output var}, ${3:quality} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageWebpMem"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageWebpOutput( im, quality ) }\n```\n---\n\n  Outputs the WebP image\n\n  Parameters:\n    - im: The internal image reference ID\n    - quality: The image quality, higher values typically result in larger files.  Values over 100 will create a lossless image (if the version of GD supports it)\n\n  Return Value:\n    - Nothing on success, -1 on error\n\n",
+		"insertText": "gdImageWebpOutput( ${1:im}, ${2:quality} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageWebpOutput"
+	},
+	{
+		"documentation": "\n```mv\n{ gdVersionString() }\n```\n---\n\n  Returns the version of GD in a major.minor.release format\n\n  Parameters:\n    - None\n\n  Return Value:\n    - String value containing the GD version",
+		"insertText": "gdVersionString( ${1:} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdVersionString"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_member_delete( struct var, member_name ) }\n```\n---\n\n  Fully removes a member from a structure.\n\n  Parameters:\n  - struct: A structure containing the member to be deleted\n  - member_name: The string of the member name to be deleted\n\n  Return Value:\n    - None",
+		"insertText": "miva_member_delete( ${1:struct var}, ${2:member_name} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_member_delete"
 	}
 ]
