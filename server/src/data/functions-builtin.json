@@ -3948,13 +3948,6 @@
 		"label": "miva_ip_normalize"
 	},
 	{
-		"documentation": "\n```mv\n{ gethostbyname( hostname, ip var ) }\n```\n---\n\n\nThis function looks up the IP address associated with the given hostname\n\nParameters:\n- hostname: The host name to lookup\n- ip: An output value containing the IP address of the given hostname\n\nReturn Value:\n- 1 on success, 0 on failure\n\n",
-		"insertText": "gethostbyname( ${1:hostname}, ${2:ip var} )$0",
-		"insertTextFormat": "Snippet",
-		"kind": "Function",
-		"label": "gethostbyname"
-	},
-	{
 		"documentation": "\n```mv\n{ mysql_get_client_info() }\n```\n---\n\n\nThis function returns a string that represents the MySQL client library version\n\nParameters:\n- None\n\nReturn Value:\n- A string that represents the MySQL client library version (for example, \"8.0.20\")\n\n",
 		"insertText": "mysql_get_client_info( ${1:} )$0",
 		"insertTextFormat": "Snippet",
