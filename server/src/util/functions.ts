@@ -507,7 +507,6 @@ export function asyncSpawn (command: string, args?: readonly string[], options?:
 		);
 
 		cmd.stdout.on('data', data => {
-			console.log('data', data.toString())
 			stdout += data.toString();
 		});
 
