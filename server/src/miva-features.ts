@@ -27,6 +27,7 @@ import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
+import type { MivaScriptCompilerDiagnosticProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import mvOperatorData from './mv/operators';
 import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import systemVariableData from './mv/system-variables';
@@ -64,13 +65,12 @@ import {
 	TagSnippet,
 	ValidationData,
 	ValidationDataType,
-	ValidationRule,
 	Workspace
 } from './util/interfaces';
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider) {
+export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerDiagnosticProvider) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -987,46 +987,12 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 		return {
 
 			// @ts-ignore
-			doValidation( document: TextDocument, settings: Settings ) {
+			async doValidation( document: TextDocument, settings: Settings ) {
+				if (!mivaScriptCompilerProvider) {
+					return [];
+				}
 
-				const {document: mvtDocument} = mvDocuments.get( document );
-
-				// get full text of the document
-				const text = mvtDocument.getText();
-
-				// build diagnostics array
-				return Promise.resolve(
-					// @ts-ignore
-					validationTests.reduce(( diagnostics: Diagnostic[], validation: ValidationRule ): Diagnostic[] => {
-
-						// validate configured setting to check - exit if not valid
-						if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
-							return diagnostics;
-						}
-
-						// create the pattern to match
-						const pattern = new RegExp( validation.match, 'igm' );
-						let match: RegExpExecArray;
-						let count = 0;
-						while ( (match = pattern.exec( text )) && count < 1000 ) {
-							count++;
-							diagnostics.push(
-								{
-									range: Range.create( mvtDocument.positionAt( match.index ), mvtDocument.positionAt( match.index + match[ validation.matchIndex ].length ) ),
-									message: `[${ validation.problem.type.toLowerCase() }] - ${ tokenize( validation.problem.message, match ) }`,
-									severity: DiagnosticSeverity[ validation.problem.type ],
-									source: 'Miva IDE',
-									data: validation.data,
-									code: validation.code,
-								}
-							);
-						}
-
-						return diagnostics;
-
-					}, [])
-				);
-
+				return mivaScriptCompilerProvider.provideDiagnostics(document);
 			},
 
 			doCompletion( document: TextDocument, position: Position ): CompletionList {

@@ -38,7 +38,7 @@ export interface Languages {
 
 export interface LanguageFeatures {
 
-	onConfigurationChange (): void;
+	onConfigurationChange? (): void;
 
 	doValidation?: ( document: TextDocument, settings?: Settings ) => Promise<Diagnostic[]> | Diagnostic[];
 
