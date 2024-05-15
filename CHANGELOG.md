@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.17.0 (latest)
+## v1.17.1 (latest)
+
+* Removed duplicate builtin snippet (`gethostbyname`).
+
+## v1.17.0
 
 * Added missing builtin functions from Empressa versions 5.39-5.42:
 	- crypto_evp_sign_ctrl
@@ -22,7 +26,6 @@
 	- bzip2_decompress
 	- miva_ip_version
 	- miva_ip_normalize
-	- gethostbyname
 	- mysql_get_client_info
 	- redis_client_id
 	- redis_connect_with_timeout
