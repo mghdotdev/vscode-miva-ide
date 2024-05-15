@@ -1,7 +1,8 @@
 import { platform } from 'os';
 import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { asyncSpawn, safeMatch } from '../../util/functions';
+import { asyncSpawn, folderContainsFile, safeMatch } from '../../util/functions';
+import { Settings } from '../../util/interfaces';
 
 export class MivaScriptCompilerDiagnosticProvider {
 	constructor () {}
@@ -73,9 +74,17 @@ export class MivaScriptCompilerDiagnosticProvider {
 		return diagnostics;
 	}
 
-	async provideDiagnostics (document: TextDocument): Promise<Diagnostic[]> {
+	async provideDiagnostics (document: TextDocument, settings: Settings): Promise<Diagnostic[]> {
 		// Strip file protocol
 		const filePath = document.uri.replace('file://', '');
+
+		// Determine if file is in the lsk folder
+		const isInLSKFolder = folderContainsFile(settings?.LSK?.path, filePath);
+
+		// Exit if compiler is not enabled or file is in LSK and LSK is disabled
+		if (!settings?.mivaScript?.mivaScriptCompiler?.enable || (settings?.mivaScript?.mivaScriptCompiler?.disableLSK && isInLSKFolder)) {
+			return [];
+		}
 
 		// Get command output
 		const output = await this.runCommand(filePath);

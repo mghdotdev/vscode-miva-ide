@@ -992,7 +992,7 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 					return [];
 				}
 
-				return mivaScriptCompilerProvider.provideDiagnostics(document);
+				return mivaScriptCompilerProvider.provideDiagnostics(document, settings);
 			},
 
 			doCompletion( document: TextDocument, position: Position ): CompletionList {
