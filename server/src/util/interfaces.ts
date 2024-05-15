@@ -226,7 +226,7 @@ export interface SystemVariableData extends BaseSystemVariableData {
 }
 
 export interface SymbolInformationWithDocumentation extends SymbolInformation {
-	documentation: MarkupContent;
+	documentation?: MarkupContent;
 };
 
 export interface BaseOperatorData {

@@ -1,6 +1,19 @@
-# Miva IDE README
+<div align="center">
+<h1>
+<b>vscode-miva-ide</b>
+</h1>
 
-A comprehensive syntax, autocompletion, and snippet package for Miva Script & MVT. This package will assist developers working within the Miva environment. Either module development with Miva Script, or site development with MVT.
+<b>A comprehensive syntax, autocompletion, and snippet package for Miva Script & MVT. This package will assist developers working within the Miva environment. Either module development with Miva Script, or site development with MVT.</b>
+
+[![Version](https://img.shields.io/visual-studio-marketplace/v/mhegler.vscode-miva-ide?style=for-the-badge&colorA=252525&colorB=F7394A)](https://marketplace.visualstudio.com/items?itemName=mhegler.vscode-miva-ide)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/mhegler.vscode-miva-ide?style=for-the-badge&colorA=252525&colorB=F7394A)](https://marketplace.visualstudio.com/items?itemName=mhegler.vscode-miva-ide)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/mhegler.vscode-miva-ide?style=for-the-badge&colorA=252525&colorB=F7394A)](https://marketplace.visualstudio.com/items?itemName=mhegler.vscode-miva-ide)
+[![Ratings](https://img.shields.io/visual-studio-marketplace/r/mhegler.vscode-miva-ide?style=for-the-badge&colorA=252525&colorB=F7394A)](https://marketplace.visualstudio.com/items?itemName=mhegler.vscode-miva-ide)
+
+[![VSCE Pack](https://github.com/mghdotdev/vscode-miva-ide/actions/workflows/vsce-pack.yml/badge.svg)](https://github.com/mghdotdev/vscode-miva-ide/actions/workflows/vsce-pack.yml)
+[![VSCE Publish](https://github.com/mghdotdev/vscode-miva-ide/actions/workflows/vsce-publish.yml/badge.svg)](https://github.com/mghdotdev/vscode-miva-ide/actions/workflows/vsce-publish.yml)
+
+</div>
 
 ## Features
 

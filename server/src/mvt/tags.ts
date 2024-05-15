@@ -15,28 +15,21 @@ import itemsData from './items';
 const baseTag: BaseTagData = {
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.TypeParameter,
-	commitCharacters: [
-		'/'
-	]
+	commitCharacters: []
 };
 
 const baseAttribute: BaseTagAttributeData = {
 	required: true,
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.Enum,
-	commitCharacters: [
-		'=',
-		'"'
-	],
+	commitCharacters: [],
 	valueType: 'expression'
 };
 
 const baseAttributeValue: BaseTagAttributeValueData = {
 	insertTextFormat: 'Snippet',
 	kind: CompletionItemKind.Enum,
-	commitCharacters: [
-		"'"
-	]
+	commitCharacters: []
 };
 
 // Shared attribute references
@@ -91,35 +84,79 @@ const tagItem = {
 
 // Snippet data structure
 
-export const mvtSnippetData: Record<string, TagSnippet> = {
-	debug: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
-		label: 'mvt-debug'
-	},
-	debug_json: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:assign name=\"l.settings:_mvps_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<!--,<pre>|}\r\n@@debug $1\r\n&mvt:_mvps_debug;\r\n${3|-->,</pre>|}",
-		label: 'mvt-debug-json'
-	},
-	testuser: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvt-testuser'
-	},
-	testvar: {
-		...baseTag,
-		documentation: '',
-		kind: CompletionItemKind.Function,
-		insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
-		label: 'mvt-testvar'
-	}
+export function generateMvtSnippets (settings: Settings, languageId: string): Record<string, TagSnippet> {
+	const getLanguageSpecificSnippets = (): Record<string, TagSnippet> => {
+		switch (languageId) {
+			case 'mvtcss':
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n/*\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n*/",
+						label: 'mvt-debug'
+					}
+				}
+			case 'mvtjs':
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\nconsole.log('@@debug $1', '&mvt:_mvt_debug;')",
+						label: 'mvt-debug'
+					}
+				}
+			case 'mvt':
+			default:
+				return {
+					debug: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"glosub( miva_array_serialize( ${1:variable} ), ',', asciichar( 10 ) )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
+						label: 'mvt-debug'
+					},
+					debug_json: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: "<mvt:assign name=\"l.settings:_mvt_debug\" value=\"miva_json_encode( ${1:variable}, 'pretty' )\" />\r\n${2|<pre>,<!--|}\r\n@@debug $1\r\n&mvt:_mvt_debug;\r\n${3|</pre>,-->|}",
+						label: 'mvt-debug-json'
+					},
+					debug_textarea: {
+						...baseTag,
+						documentation: '',
+						kind: CompletionItemKind.Function,
+						insertText: [
+							`<mvt:assign name="l.settings:_mvt_debug" value="glosub( miva_array_serialize( $\{1:variable\} ), ',', asciichar( 10 ) )" />`,
+							`<label for="_mvt_debug_$CURRENT_SECONDS_UNIX">@@debug $1</label>`,
+							`<textarea id="_mvt_debug_$CURRENT_SECONDS_UNIX" readonly>&mvt:_mvt_debug;</textarea>`,
+							`<script>(function () {var e = document.getElementById('_mvt_debug_$CURRENT_SECONDS_UNIX');e.value = decodeURIComponent(e.value);e.style = 'height:' + e.scrollHeight + 'px;overflow-y:hidden';})();</script>`
+						].join('\n'),
+						label: 'mvt-debug-textarea'
+					}
+				};
+		}
+	};
+
+	return {
+		...getLanguageSpecificSnippets(),
+		testuser: {
+			...baseTag,
+			documentation: '',
+			kind: CompletionItemKind.Function,
+			insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"g.customer:login EQ '${1:test}'\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
+			label: 'mvt-testuser'
+		},
+		testvar: {
+			...baseTag,
+			documentation: '',
+			kind: CompletionItemKind.Function,
+			insertText: "<mvt:comment> Start Testing Conditional </mvt:comment>\n<mvt:if expr=\"${1:g.test EQ 1}\">\n\n\n\n\n${2}\n\n\n\n\n${3:<mvt:else>}\n${0}\n</mvt:if>\n<mvt:comment> / end Testing Conditional </mvt:comment>",
+			label: 'mvt-testvar'
+		}
+	};
 };
 
 // Full tag data structure
@@ -131,7 +168,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Executes the expression contained within value and saves that value to the variable defined in the name attribute.`,
 			insertText: "<mvt:assign name=\"${1:l.variable}\" value=\"${2:l.value}\" />$0",
 			label: 'mvt:assign',
-			reference: 'https://docs.miva.com/template-language/mvtassign',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtassign',
 			engine: '>=5.18',
 			selfClosing: true,
 			void: true,
@@ -158,7 +195,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 	- Use \`<mvt:callcontinue />\` to continue reading the response.`,
 			insertText: "<mvt:call action=\"$1\" method=\"'${2:GET}'\">\n\t${3:<mvt:eval expr=\"s.callvalue\" />}\n</mvt:call>$0",
 			label: 'mvt:call',
-			reference: 'https://docs.miva.com/template-language/mvtcall',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtcall',
 			engine: '>=5.22',
 			selfClosing: false,
 			void: false,
@@ -386,7 +423,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Only used within a \`<mvt:call>\` tag. Terminates execution of any statements after and continues to the next iteration instead.`,
 			insertText: "<mvt:callcontinue />",
 			label: 'mvt:callcontinue',
-			reference: 'https://docs.miva.com/template-language/mvtcall',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtcall',
 			engine: '>=5.22',
 			selfClosing: true,
 			void: false
@@ -396,7 +433,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Only used within a \`<mvt:call>\` tag. Terminates the current \`<mvt:call>\` loop.`,
 			insertText: "<mvt:callstop />",
 			label: 'mvt:callstop',
-			reference: 'https://docs.miva.com/template-language/mvtcall',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtcall',
 			engine: '>=5.22',
 			selfClosing: true,
 			void: false
@@ -406,7 +443,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `This tag takes the evaluated contents between the mvt:capture tags and saves it to a variable`,
 			insertText: "<mvt:capture variable=\"${1}\">$2</mvt:capture>$0",
 			label: 'mvt:capture',
-			reference: 'https://docs.miva.com/template-language/mvtcapture',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtcapture',
 			engine: '>=5.33',
 			selfClosing: false,
 			void: false,
@@ -433,7 +470,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Provides access to call native Miva Script functions in compiled .mvc files. This allows access to all built in Miva functions that makeup the core software.`,
 			insertText: "<mvt:do file=\"$3\" name=\"$2\" value=\"$1\" />$0",
 			label: 'mvt:do',
-			reference: 'https://docs.miva.com/template-language/mvtdo',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvtdo',
 			engine: '>=5.22',
 			selfClosing: true,
 			void: false,
@@ -476,7 +513,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			...baseTag,
 			documentation: `Must be used within an \`<mvt:if>\` tag. Executes the following block of code when all previous if/elseif conditions are falsy.`,
 			label: 'mvt:else',
-			reference: 'https://docs.miva.com/template-language/if-else',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/conditional_statements_if_elseif_else/',
 			selfClosing: true,
 			void: true,
 			...settings?.MVT?.enableLegacyElseSnippets
@@ -501,7 +538,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			...baseTag,
 			documentation: `Must be used within an \`<mvt:if>\` tag. Executes the following block of code if the expression is truthy and the previous if/elseif conditions are falsy.`,
 			label: 'mvt:elseif',
-			reference: 'https://docs.miva.com/template-language/if-else',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/conditional_statements_if_elseif_else/',
 			selfClosing: true,
 			void: true,
 			attributes: {
@@ -530,7 +567,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Executes the expression contained within expr attribute and outputs the expression's value directly to the page. It operates just like \`mvt:assign\` except that instead of saving the value/expression to a variable, it will output it directly to the page.`,
 			insertText: "<mvt:eval expr=\"${1:l.value}\" />$0",
 			label: 'mvt:eval',
-			reference: 'https://docs.miva.com/template-language/mvteval',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/mvteval',
 			engine: '>=5.18',
 			selfClosing: true,
 			void: false,
@@ -551,7 +588,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Runs the code block within the \`<mvt:foreach>\` tag as many times as there are items in the \`array\` attribute.`,
 			insertText: "<mvt:foreach iterator=\"${1}\" array=\"${2}\">\n\t${3}\n</mvt:foreach>$0",
 			label: 'mvt:foreach',
-			reference: 'https://docs.miva.com/template-language/foreach',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/for_each_loops/',
 			selfClosing: false,
 			void: false,
 			attributes: {
@@ -577,7 +614,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Skips the current foreach iteration.`,
 			insertText: "<mvt:foreachcontinue />",
 			label: 'mvt:foreachcontinue',
-			reference: 'https://docs.miva.com/template-language/foreach',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/for_each_loops/',
 			selfClosing: true,
 			void: false
 		},
@@ -587,7 +624,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Exits the current foreach iteration and does not continue to the next iteration.`,
 			insertText: "<mvt:foreachstop />",
 			label: 'mvt:foreachstop',
-			reference: 'https://docs.miva.com/template-language/foreach',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/for_each_loops/',
 			selfClosing: true,
 			void: false
 		},
@@ -596,7 +633,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Runs the following code block if the expression condition is true.`,
 			insertText: "<mvt:if expr=\"$1\">\n\t$2\n</mvt:if>$0",
 			label: 'mvt:if',
-			reference: 'https://docs.miva.com/template-language/if-statement',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/conditional_statements_if_elseif_else/',
 			selfClosing: false,
 			void: false,
 			attributes: {
@@ -717,7 +754,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Continues to run the following code block as long as the \`expr\` condition is true.`,
 			insertText: "<mvt:while expr=\"${1}\">\n\t${2}\n</mvt:while>$0",
 			label: 'mvt:while',
-			reference: 'https://docs.miva.com/template-language/while',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/while_loops/',
 			selfClosing: false,
 			void: false,
 			attributes: {
@@ -730,7 +767,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Skips the current while iteration.`,
 			insertText: "<mvt:whilecontinue />",
 			label: 'mvt:whilecontinue',
-			reference: 'https://docs.miva.com/template-language/while',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/while_loops/',
 			selfClosing: true,
 			void: false
 		},
@@ -740,7 +777,7 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			documentation: `Exits the current while iteration and does not continue to the next iteration.`,
 			insertText: "<mvt:whilestop />",
 			label: 'mvt:whilestop',
-			reference: 'https://docs.miva.com/template-language/while',
+			reference: 'https://docs.miva.com/developer/developer-training/template-language/while_loops/',
 			selfClosing: true,
 			void: false
 		}

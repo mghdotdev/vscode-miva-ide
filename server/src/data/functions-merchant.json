@@ -1148,6 +1148,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_Filter_MivaScript_Callback_With_CustomFields",
+				"parameters": [
+					"expression var",
+					"filterlist var",
+					"variablelist",
+					"callback_filename",
+					"callback_filter",
+					"callback_search",
+					"callback_search_customfields",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_Filter_MivaScript_LowLevel",
 				"parameters": [
 					"expression var",
@@ -1361,6 +1375,137 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_Search_Filter_MivaScript_Compare",
+				"parameters": [
+					"expression var",
+					"field_count var",
+					"inner_joining_clause",
+					"variable",
+					"type",
+					"search_field",
+					"search_operator",
+					"search_value"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NULL",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_EQ",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_GT",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_GE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LT",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_CO",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NC",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LIKE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NOTLIKE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_TRUE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_FALSE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList",
 				"parameters": [
 					"expression var",
@@ -1375,6 +1520,19 @@
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Join",
 				"parameters": [
 					"expression var",
+					"joining_clause",
+					"variable",
+					"filter_name",
+					"filter_operator",
+					"filter_value"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Type",
+				"parameters": [
+					"expression var",
+					"type",
 					"joining_clause",
 					"variable",
 					"filter_name",
@@ -1507,7 +1665,9 @@
 			{
 				"name": "Action_AddMultipleProductsToBasket_ProcessProduct",
 				"parameters": [
-					"product var"
+					"product var",
+					"items var",
+					"item_count var"
 				],
 				"returnValue": "l.void"
 			},
@@ -3696,10 +3856,16 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "v10_AvailGroupXProduct_Insert",
+				"parameters": [
+					"availgroupxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "AvailGroupXProduct_Insert_LowLevel",
 				"parameters": [
-					"agrp_id",
-					"product_id"
+					"availgroupxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -3708,6 +3874,13 @@
 				"parameters": [
 					"agrp_id",
 					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "v10_AvailGroupXProduct_Delete",
+				"parameters": [
+					"availgroupxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -3982,6 +4155,136 @@
 					"availabilitygroups var"
 				],
 				"returnValue": "l.count"
+			},
+			{
+				"name": "AvailGroupXCollection_Read",
+				"parameters": [
+					"availgroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Load",
+				"parameters": [
+					"agrp_id",
+					"col_id",
+					"availgroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Load_AvailabilityGroup",
+				"parameters": [
+					"agrp_id",
+					"availgroupxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Load_Collection",
+				"parameters": [
+					"col_id",
+					"availgroupxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Count_Collection",
+				"parameters": [
+					"col_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Insert",
+				"parameters": [
+					"availgroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Delete",
+				"parameters": [
+					"agrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Delete_All_AvailabilityGroup",
+				"parameters": [
+					"agrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXCollection_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Read",
+				"parameters": [
+					"availgroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Load",
+				"parameters": [
+					"agrp_id",
+					"product_id",
+					"availgroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Load_AvailabilityGroup",
+				"parameters": [
+					"agrp_id",
+					"availgroupxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Load_Product",
+				"parameters": [
+					"product_id",
+					"availgroupxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Insert",
+				"parameters": [
+					"availgroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Delete",
+				"parameters": [
+					"agrp_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Delete_All_AvailabilityGroup",
+				"parameters": [
+					"agrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroupXProductCollectionExclusion_Delete_All_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
 			}
 		]
 	},
@@ -10799,10 +11102,16 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "v10_PriceGroupXProduct_Insert",
+				"parameters": [
+					"pricegroupxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "PriceGroupXProduct_Insert_LowLevel",
 				"parameters": [
-					"pgrp_id",
-					"product_id"
+					"pricegroupxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -10811,6 +11120,13 @@
 				"parameters": [
 					"pgrp_id",
 					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "v10_PriceGroupXProduct_Delete",
+				"parameters": [
+					"pricegroupxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -10885,10 +11201,16 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "v10_PriceGroupXExcludedProduct_Insert",
+				"parameters": [
+					"pricegroupxexcludedproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "PriceGroupXExcludedProduct_Insert_LowLevel",
 				"parameters": [
-					"pgrp_id",
-					"product_id"
+					"pricegroupxexcludedproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -10897,6 +11219,13 @@
 				"parameters": [
 					"pgrp_id",
 					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "v10_PriceGroupXExcludedProduct_Delete",
+				"parameters": [
+					"pricegroupxexcludedproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -10955,10 +11284,16 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "v10_PriceGroupXQualifyingProduct_Insert",
+				"parameters": [
+					"pricegroupxqualifyingproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "PriceGroupXQualifyingProduct_Insert_LowLevel",
 				"parameters": [
-					"pgrp_id",
-					"product_id"
+					"pricegroupxqualifyingproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -10967,6 +11302,13 @@
 				"parameters": [
 					"pgrp_id",
 					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "v10_PriceGroupXQualifyingProduct_Delete",
+				"parameters": [
+					"pricegroupxqualifyingproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -11255,6 +11597,420 @@
 				"parameters": [
 					"product_id",
 					"subterm_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Read",
+				"parameters": [
+					"pricegroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Load",
+				"parameters": [
+					"pgrp_id",
+					"col_id",
+					"pricegroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Load_Collection",
+				"parameters": [
+					"col_id",
+					"pricegroupxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Count_Collection",
+				"parameters": [
+					"col_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Insert",
+				"parameters": [
+					"pricegroupxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Copy_All_PriceGroup",
+				"parameters": [
+					"source_pgrp_id",
+					"dest_pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Delete",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXCollection_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Read",
+				"parameters": [
+					"pricegroupxexcludedcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Load",
+				"parameters": [
+					"pgrp_id",
+					"col_id",
+					"pricegroupxexcludedcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxexcludedcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Load_Collection",
+				"parameters": [
+					"col_id",
+					"pricegroupxexcludedcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Count_Collection",
+				"parameters": [
+					"col_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Insert",
+				"parameters": [
+					"pricegroupxexcludedcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Copy_All_PriceGroup",
+				"parameters": [
+					"source_pgrp_id",
+					"dest_pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Delete",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedCollection_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Read",
+				"parameters": [
+					"pricegroupxqualifyingcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Load",
+				"parameters": [
+					"pgrp_id",
+					"col_id",
+					"pricegroupxqualifyingcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxqualifyingcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Load_Collection",
+				"parameters": [
+					"col_id",
+					"pricegroupxqualifyingcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Count_Collection",
+				"parameters": [
+					"col_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Insert",
+				"parameters": [
+					"pricegroupxqualifyingcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Copy_All_PriceGroup",
+				"parameters": [
+					"source_pgrp_id",
+					"dest_pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Delete",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingCollection_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Read",
+				"parameters": [
+					"pricegroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Load",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"pricegroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Load_Product",
+				"parameters": [
+					"product_id",
+					"pricegroupxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Insert",
+				"parameters": [
+					"pricegroupxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXProductCollectionExclusion_Delete_All_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Read",
+				"parameters": [
+					"pricegroupxexcludedproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Load",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"pricegroupxexcludedproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxexcludedproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Load_Product",
+				"parameters": [
+					"product_id",
+					"pricegroupxexcludedproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Insert",
+				"parameters": [
+					"pricegroupxexcludedproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXExcludedProductCollectionExclusion_Delete_All_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Read",
+				"parameters": [
+					"pricegroupxqualifyingproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Load",
+				"parameters": [
+					"pgrp_id",
+					"product_id",
+					"pricegroupxqualifyingproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Load_PriceGroup",
+				"parameters": [
+					"pgrp_id",
+					"pricegroupxqualifyingproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Load_Product",
+				"parameters": [
+					"product_id",
+					"pricegroupxqualifyingproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Insert",
+				"parameters": [
+					"pricegroupxqualifyingproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Delete",
+				"parameters": [
+					"pgrp_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Delete_All_PriceGroup",
+				"parameters": [
+					"pgrp_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroupXQualifyingProductCollectionExclusion_Delete_All_Product",
+				"parameters": [
+					"product_id"
 				],
 				"returnValue": "l.void"
 			},
@@ -12494,6 +13250,66 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_PriceGroupCollectionIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupCollectionList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_PriceGroupCollection_Add",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupCollection_Remove",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupExcludedCollectionIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupExcludedCollectionList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_PriceGroupExcludedCollection_Add",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupExcludedCollection_Remove",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupQualifyingCollectionIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupQualifyingCollectionList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_PriceGroupQualifyingCollection_Add",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PriceGroupQualifyingCollection_Remove",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_PriceGroupProductIndex_Load_ID",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -12829,7 +13645,8 @@
 				"parameters": [
 					"basket var"
 				],
-				"returnValue": "l.void"
+				"returnValue": "l.void",
+				"description": "Runtime_Discount_Basket and Runtime_Discount_Basket_LowLevel must be maintainted to be in sync with their JSON counterparts\n\nJSON_Runtime_Discount_Basket and JSON_Runtime_Discount_Basket_LowLevel which are located in json/runtime.mv"
 			},
 			{
 				"name": "Runtime_Discount_Basket_LowLevel",
@@ -13255,6 +14072,14 @@
 				"name": "DiscountState_CreateFromOrder",
 				"parameters": [
 					"order var",
+					"discount_state var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DiscountState_SetCustomerInformationFromBasket",
+				"parameters": [
+					"basket var",
 					"discount_state var"
 				],
 				"returnValue": "l.void"
@@ -16636,11 +17461,123 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "PRV_Action_Provision_Domain_Module",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "PRV_URISettings_Regenerate_Handler",
 				"parameters": [
 					"provide_xml var",
 					"tag_name",
 					"output var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_Collection_Add",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_Collection_Update",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_Collection_Delete",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CategoryCollection_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CategoryCollection_Unassign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CollectionProduct_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_CollectionProduct_Unassign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupCollection_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupCollection_Unassign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupExcludedCollection_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupExcludedCollection_Unassign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupQualifyingCollection_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_PriceGroupQualifyingCollection_Unassign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_AvailabilityGroupCollection_Assign",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_Action_Provision_Store_AvailabilityGroupCollection_Unassign",
+				"parameters": [
+					"provide_xml var"
 				],
 				"returnValue": "l.void"
 			},
@@ -17464,6 +18401,72 @@
 					"searchablecustomfields var"
 				],
 				"returnValue": "l.count"
+			},
+			{
+				"name": "SearchLogEntry_Read",
+				"parameters": [
+					"searchlogentry var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Load_ID",
+				"parameters": [
+					"id",
+					"searchlogentry var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Insert",
+				"parameters": [
+					"searchlogentry var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Update_SearchSession_Customer",
+				"parameters": [
+					"srchses_id",
+					"cust_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Update_SearchSession_Order",
+				"parameters": [
+					"srchses_id",
+					"order_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Delete",
+				"parameters": [
+					"searchlogentry var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Delete_Anonymous_OlderThan",
+				"parameters": [
+					"dtstamp"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Delete_Customer_OlderThan",
+				"parameters": [
+					"dtstamp"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Delete_Order_OlderThan",
+				"parameters": [
+					"dtstamp"
+				],
+				"returnValue": "l.void"
 			}
 		]
 	},
@@ -17519,6 +18522,49 @@
 			},
 			{
 				"name": "JSON_SearchableCustomField_Update",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_SearchLogEntryList_Joins",
+				"parameters": [
+					"filter var",
+					"sort var",
+					"ondemandcolumns var",
+					"joins var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_SearchLogEntryList_Load_Query_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_value",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_SearchLogEntry",
+				"parameters": [
+					"searchlogentry var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_SearchLogEntryList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CustomerSearchLogEntryList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_SearchLogEntryList_Delete",
 				"parameters": [],
 				"returnValue": "l.void"
 			}
@@ -17602,6 +18648,29 @@
 					"searchsettings var",
 					"searchablecustomfields var",
 					"searchablecustomfield_count"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Process_Runtime_Search",
+				"parameters": [
+					"search",
+					"total_count",
+					"origin"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Process_Customer_Login",
+				"parameters": [
+					"cust_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLogEntry_Process_Order",
+				"parameters": [
+					"order var"
 				],
 				"returnValue": "l.void"
 			},
@@ -20299,6 +21368,15 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Page_Load_Branch_Code_Cached",
+				"parameters": [
+					"branch_id",
+					"page_code",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Page_Load_ID",
 				"parameters": [
 					"id",
@@ -21174,6 +22252,23 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "ItemCount_Load_Module",
+				"parameters": [
+					"module_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ItemCount_Load_Branch_Module",
+				"parameters": [
+					"branch_id",
+					"module_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "ItemModuleList_Load_Page",
 				"parameters": [
 					"page_id",
@@ -21788,6 +22883,14 @@
 				"name": "Branch_Load_Name",
 				"parameters": [
 					"name",
+					"branch var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Branch_Load_BranchKey_Cached",
+				"parameters": [
+					"branchkey",
 					"branch var"
 				],
 				"returnValue": "l.void"
@@ -27843,6 +28946,15 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "TemplateManager_Render_Page_URIData_Callback",
+				"parameters": [
+					"uridata var",
+					"member",
+					"settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "TemplateManager_Render_Page_Cache",
 				"parameters": [
 					"code"
@@ -28765,6 +29877,13 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "TemplateManager_Set_Working_Branch_ID",
+				"parameters": [
+					"branch_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "TemplateManager_Set_BranchCookie",
 				"parameters": [
 					"branch var"
@@ -28823,6 +29942,11 @@
 			},
 			{
 				"name": "TemplateManager_Working_Branch_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Primary_Branch_ID",
 				"parameters": [],
 				"returnValue": "l.void"
 			},
@@ -30261,12 +31385,19 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "URISettings_Insert",
+				"name": "URISettings_Read",
 				"parameters": [
 					"urisettings var"
 				],
 				"returnValue": "l.void",
 				"description": "URISettings"
+			},
+			{
+				"name": "URISettings_Insert",
+				"parameters": [
+					"urisettings var"
+				],
+				"returnValue": "l.void"
 			},
 			{
 				"name": "URISettings_Update",
@@ -30715,6 +31846,40 @@
 		"distroPath": "g.Module_Feature_URI_UT",
 		"functions": [
 			{
+				"name": "URI_Dispatch_Request",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Dispatch_Request_LowLevel",
+				"parameters": [
+					"urisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Dispatch_Redirect",
+				"parameters": [
+					"uri var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Parse_Request",
+				"parameters": [
+					"uri"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Parse_Request_LowLevel",
+				"parameters": [
+					"urisettings var",
+					"uri"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Default_Settings",
 				"parameters": [
 					"settings var"
@@ -30730,8 +31895,26 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Generate_Screen_New_LowLevel",
+				"parameters": [
+					"pg_gen",
+					"code",
+					"name"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Screen_Update",
 				"parameters": [
+					"code",
+					"name"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Screen_Update_WithPageRegenerate",
+				"parameters": [
+					"pg_regen",
 					"code",
 					"name"
 				],
@@ -30749,6 +31932,14 @@
 			{
 				"name": "URI_Generate_Page_New",
 				"parameters": [
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Page_New_WithPageGenerate",
+				"parameters": [
+					"pg_gen",
 					"page var"
 				],
 				"returnValue": "l.void"
@@ -30793,8 +31984,25 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Handle_Page_Code_Change_LowLevel",
+				"parameters": [
+					"original_page var",
+					"new_page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Handle_Primary_Branch_Change",
 				"parameters": [
+					"original_primary_branch_id",
+					"new_primary_branch_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Handle_Primary_Branch_Change_LowLevel",
+				"parameters": [
+					"pg_gen",
 					"original_primary_branch_id",
 					"new_primary_branch_id"
 				],
@@ -30808,6 +32016,46 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Page_Delete_LowLevel",
+				"parameters": [
+					"pg_delete",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Branch_Page_New",
+				"parameters": [
+					"dest_branch var",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Branch_Page_New_LowLevel",
+				"parameters": [
+					"pg_gen",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Branch_Page_Update",
+				"parameters": [
+					"dest_branch var",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Branch_Page_Update_LowLevel",
+				"parameters": [
+					"pg_regen",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Category_New",
 				"parameters": [
 					"category var"
@@ -30815,8 +32063,24 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Generate_Category_New_LowLevel",
+				"parameters": [
+					"ct_gen",
+					"category var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Category_Update",
 				"parameters": [
+					"category var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Category_Update_WithCategoryRegenerate",
+				"parameters": [
+					"ct_regen",
 					"category var"
 				],
 				"returnValue": "l.void"
@@ -30837,6 +32101,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Category_Delete_LowLevel",
+				"parameters": [
+					"ct_delete",
+					"category var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Product_New",
 				"parameters": [
 					"product var"
@@ -30844,8 +32116,24 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Generate_Product_New_LowLevel",
+				"parameters": [
+					"pr_gen",
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URI_Generate_Product_Update",
 				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Generate_Product_Update_WithProductRegenerate",
+				"parameters": [
+					"pr_regen",
 					"product var"
 				],
 				"returnValue": "l.void"
@@ -30861,6 +32149,14 @@
 			{
 				"name": "URI_Product_Delete",
 				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URI_Product_Delete_LowLevel",
+				"parameters": [
+					"pr_delete",
 					"product var"
 				],
 				"returnValue": "l.void"
@@ -30935,9 +32231,25 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URL_Base_WithFlags",
+				"parameters": [
+					"urisettings var",
+					"flags"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URL_Base_Secure",
 				"parameters": [
 					"urisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URL_Base_Secure_WithFlags",
+				"parameters": [
+					"urisettings var",
+					"flags"
 				],
 				"returnValue": "l.void"
 			},
@@ -30949,6 +32261,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URL_Base_RR_WithFlags",
+				"parameters": [
+					"urisettings var",
+					"flags"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URL_Build_Flags",
 				"parameters": [
 					"flags_string"
@@ -30956,7 +32276,25 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URL_Build_Flags_With_Context",
+				"parameters": [
+					"flags_string",
+					"context_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "URL_Build_URI",
+				"parameters": [
+					"urisettings var",
+					"flags",
+					"uri",
+					"parameters"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URL_Build_URI_LowLevel",
 				"parameters": [
 					"urisettings var",
 					"flags",
@@ -31035,8 +32373,24 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "URI_Session_Data",
+				"parameters": [
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Store_Screen_URL",
 				"parameters": [
+					"screen",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_Screen_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
 					"screen",
 					"flags var"
 				],
@@ -31051,8 +32405,26 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Store_Page_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
+					"page var",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Store_Page_Code_URL",
 				"parameters": [
+					"page_code",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_Page_Code_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
 					"page_code",
 					"flags var"
 				],
@@ -31067,8 +32439,26 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Store_Category_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
+					"category var",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Store_Category_Code_URL",
 				"parameters": [
+					"category_code",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_Category_Code_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
 					"category_code",
 					"flags var"
 				],
@@ -31083,8 +32473,26 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Store_Product_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
+					"product var",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Store_Product_Code_URL",
 				"parameters": [
+					"product_code",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_Product_Code_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
 					"product_code",
 					"flags var"
 				],
@@ -31099,8 +32507,36 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Store_Feed_URL_LowLevel",
+				"parameters": [
+					"urisettings var",
+					"feed var",
+					"flags var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_URL_Context_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Store_URL_Context_List",
+				"parameters": [
+					"contexts var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Domain_NonSecure_Origin",
 				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "URISettings_Source_Is_Valid_Module",
+				"parameters": [
+					"urisettings var"
+				],
 				"returnValue": "l.void"
 			}
 		]
@@ -31920,6 +33356,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_BaseCategoryList_Category_Read",
+				"parameters": [
+					"category var",
+					"ondemandcolumns var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_Category_CustomFieldsList_Load_Cached",
 				"parameters": [
 					"fields var"
@@ -32097,6 +33541,26 @@
 			},
 			{
 				"name": "JSON_CategoryList_BatchSort",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CategoryCollectionIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CategoryCollectionList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CategoryCollection_Add",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CategoryCollection_Remove",
 				"parameters": [],
 				"returnValue": "l.void"
 			},
@@ -33798,6 +35262,12 @@
 				"parameters": [],
 				"returnValue": "l.count",
 				"description": "Product Price Groups"
+			},
+			{
+				"name": "JSON_ProductShippingRules_Update",
+				"parameters": [],
+				"returnValue": "l.void",
+				"description": "Product Shipping Rules"
 			}
 		]
 	},
@@ -33879,7 +35349,7 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "JSON_ProductVariant_Attributes_Load",
+				"name": "JSON_Input_Element_ProductVariant_Attributes",
 				"parameters": [
 					"product var",
 					"attributes var",
@@ -33888,7 +35358,7 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "JSON_ProductVariant_Parts_Load",
+				"name": "JSON_Input_Element_ProductVariant_Parts",
 				"parameters": [
 					"parts var",
 					"part_count var"
@@ -33896,7 +35366,14 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "JSON_ProductVariant_Attribute_Limits_Load",
+				"name": "JSON_Input_Element_ProductVariant_Pricing",
+				"parameters": [
+					"pricing var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Input_Element_ProductVariant_Attribute_Limits",
 				"parameters": [
 					"product var",
 					"limits var",
@@ -33905,7 +35382,7 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "JSON_ProductVariant_Attribute_Exclusions_Load",
+				"name": "JSON_Input_Element_ProductVariant_Attribute_Exclusions",
 				"parameters": [
 					"product var",
 					"exclusions var",
@@ -34240,6 +35717,21 @@
 					"productimagedata_count",
 					"image_sizes var",
 					"imagesize_count"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_Discount_Basket",
+				"parameters": [
+					"basket var"
+				],
+				"returnValue": "l.void",
+				"description": "JSON_Runtime_Discount_Basket and JSON_Runtime_Discount_Basket_LowLevel must be maintainted to be in sync with their PGR counterparts\n\nRuntime_Discount_Basket and Runtime_Discount_Basket_LowLevel which are located in pgr_rt.mv"
+			},
+			{
+				"name": "JSON_Runtime_Discount_Basket_LowLevel",
+				"parameters": [
+					"basket var"
 				],
 				"returnValue": "l.void"
 			},
@@ -36325,10 +37817,24 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "v10_CategoryXProduct_Insert",
+				"parameters": [
+					"categoryxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "CategoryXProduct_Delete",
 				"parameters": [
 					"cat_id",
 					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "v10_CategoryXProduct_Delete",
+				"parameters": [
+					"categoryxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -37933,6 +39439,35 @@
 		"distroPath": "g.Module_Library_DB",
 		"functions": [
 			{
+				"name": "Product_Transaction_Begin",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Transaction_Commit",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Transaction_Commit_PreserveError",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Transaction_Finalize_Insert",
+				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Transaction_Finalize_Update",
+				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Product_Insert",
 				"parameters": [
 					"product var"
@@ -38931,6 +40466,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Runtime_BasketItemList_Process_ShouldDeleteUpsold",
+				"parameters": [
+					"items var",
+					"item_count"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Runtime_Product_Load_BasketItem",
 				"parameters": [
 					"basketitem var",
@@ -39268,6 +40811,14 @@
 					"searchsettings var",
 					"customfield var",
 					"term"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Runtime_ProductList_Build_Query_Search_Origin",
+				"parameters": [
+					"query var",
+					"origin"
 				],
 				"returnValue": "l.void"
 			},
@@ -40025,6 +41576,25 @@
 				"name": "SQL_Query_Total_Join_Count",
 				"parameters": [
 					"query var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SQL_Query_LEFT_OUTER_JOIN_ON",
+				"parameters": [
+					"query var",
+					"correlation_name",
+					"on_clause",
+					"fields"
+				],
+				"returnValue": "l.void",
+				"description": "SQL_Query_LEFT_OUTER_JOIN_ON appends to an existing left join on clause and fields"
+			},
+			{
+				"name": "SQL_Query_Correlation_Is_LEFT_OUTER_JOIN",
+				"parameters": [
+					"query var",
+					"correlation_name"
 				],
 				"returnValue": "l.void"
 			}
@@ -41274,6 +42844,80 @@
 		"distroPath": "g.Module_Library_DB",
 		"functions": [
 			{
+				"name": "CategoryXCollection_Read",
+				"parameters": [
+					"categoryxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Load",
+				"parameters": [
+					"cat_id",
+					"col_id",
+					"categoryxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Load_Category",
+				"parameters": [
+					"cat_id",
+					"categoryxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Load_Collection",
+				"parameters": [
+					"col_id",
+					"categoryxcollections var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Count_Collection",
+				"parameters": [
+					"col_id",
+					"count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Insert",
+				"parameters": [
+					"categoryxcollection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Delete",
+				"parameters": [
+					"cat_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Delete_All_Category",
+				"parameters": [
+					"cat_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXCollection_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Library_DB",
+		"functions": [
+			{
 				"name": "CategoryXProduct_Read",
 				"parameters": [
 					"categoryxproduct var"
@@ -41283,8 +42927,7 @@
 			{
 				"name": "CategoryXProduct_Insert_LowLevel",
 				"parameters": [
-					"cat_id",
-					"product_id"
+					"categoryxproduct var"
 				],
 				"returnValue": "l.void"
 			},
@@ -41338,6 +42981,72 @@
 			},
 			{
 				"name": "CategoryXProduct_Delete_All_Product_LowLevel",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Library_DB",
+		"functions": [
+			{
+				"name": "CategoryXProductCollectionExclusion_Read",
+				"parameters": [
+					"categoryxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Load",
+				"parameters": [
+					"cat_id",
+					"product_id",
+					"categoryxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Load_Category",
+				"parameters": [
+					"cat_id",
+					"categoryxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Load_Product",
+				"parameters": [
+					"product_id",
+					"categoryxproductcollectionexclusions var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Insert",
+				"parameters": [
+					"categoryxproductcollectionexclusion var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Delete",
+				"parameters": [
+					"cat_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Delete_All_Category",
+				"parameters": [
+					"cat_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CategoryXProductCollectionExclusion_Delete_All_Product",
 				"parameters": [
 					"product_id"
 				],
@@ -41496,6 +43205,13 @@
 			},
 			{
 				"name": "Domain_Update_SessionHighActive",
+				"parameters": [
+					"domain var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Domain_Update_EngagementJDN",
 				"parameters": [
 					"domain var"
 				],
@@ -42930,6 +44646,15 @@
 				"name": "OrderSourceList_Load_Order",
 				"parameters": [
 					"order_id",
+					"ordersources var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "OrderSourceList_Load_Order_Source",
+				"parameters": [
+					"order_id",
+					"source",
 					"ordersources var"
 				],
 				"returnValue": "l.count"
@@ -46349,6 +48074,16 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Image_Dimensions_WebP",
+				"parameters": [
+					"filepath",
+					"location",
+					"width var",
+					"height var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Image_ResizeIntoBoundingBox_gdImage",
 				"parameters": [
 					"source_gdimage var",
@@ -48214,6 +49949,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_Filter_MivaScript_Callback_With_CustomFields",
+				"parameters": [
+					"expression var",
+					"filterlist var",
+					"variablelist",
+					"callback_filename",
+					"callback_filter",
+					"callback_search",
+					"callback_search_customfields",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_Filter_MivaScript_LowLevel",
 				"parameters": [
 					"expression var",
@@ -48427,6 +50176,137 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_Search_Filter_MivaScript_Compare",
+				"parameters": [
+					"expression var",
+					"field_count var",
+					"inner_joining_clause",
+					"variable",
+					"type",
+					"search_field",
+					"search_operator",
+					"search_value"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NULL",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_EQ",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_GT",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_GE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LT",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_CO",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NC",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_LIKE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_NOTLIKE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_TRUE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_Compare_FALSE",
+				"parameters": [
+					"type",
+					"variable",
+					"value_variable"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList",
 				"parameters": [
 					"expression var",
@@ -48441,6 +50321,19 @@
 				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Join",
 				"parameters": [
 					"expression var",
+					"joining_clause",
+					"variable",
+					"filter_name",
+					"filter_operator",
+					"filter_value"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Search_Filter_MivaScript_CommaSeparatedList_With_Type",
+				"parameters": [
+					"expression var",
+					"type",
 					"joining_clause",
 					"variable",
 					"filter_name",
@@ -48573,7 +50466,9 @@
 			{
 				"name": "Action_AddMultipleProductsToBasket_ProcessProduct",
 				"parameters": [
-					"product var"
+					"product var",
+					"items var",
+					"item_count var"
 				],
 				"returnValue": "l.void"
 			},
@@ -75903,14 +77798,14 @@
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_PaymentCard",
+				"name": "TemplateOrderEmailList_Load_Enabled_PaymentCard",
 				"parameters": [
 					"emails var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_PaymentCard_Sort_Callback",
+				"name": "TemplateOrderEmailList_Load_Enabled_PaymentCard_Sort_Callback",
 				"parameters": [
 					"left var",
 					"right var",
@@ -75919,14 +77814,14 @@
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_AbandonedBasket",
+				"name": "TemplateOrderEmailList_Load_Enabled_AbandonedBasket",
 				"parameters": [
 					"emails var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_AbandonedBasket_Sort_Callback",
+				"name": "TemplateOrderEmailList_Load_Enabled_AbandonedBasket_Sort_Callback",
 				"parameters": [
 					"left var",
 					"right var",
@@ -75935,14 +77830,14 @@
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_SubscriptionPending",
+				"name": "TemplateOrderEmailList_Load_Enabled_SubscriptionPending",
 				"parameters": [
 					"emails var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "TemplateOrderEmailList_Load_SubscriptionPending_Sort_Callback",
+				"name": "TemplateOrderEmailList_Load_Enabled_SubscriptionPending_Sort_Callback",
 				"parameters": [
 					"left var",
 					"right var",
@@ -76006,19 +77901,22 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "TemplateOrderEmailXPaymentCard_Insert",
+				"name": "TemplateOrderEmailXPaymentCard_InsertOrUpdate",
 				"parameters": [
-					"email_code",
-					"custpc_id",
-					"sentdate"
+					"templateorderemailxpaymentcard var"
 				],
 				"returnValue": "l.void"
 			},
 			{
-				"name": "TemplateOrderEmailXPaymentCard_Load",
+				"name": "TemplateOrderEmailXPaymentCard_Insert",
 				"parameters": [
-					"email_code",
-					"custpc_id",
+					"templateorderemailxpaymentcard var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmailXPaymentCard_Update",
+				"parameters": [
 					"templateorderemailxpaymentcard var"
 				],
 				"returnValue": "l.void"
@@ -76031,47 +77929,61 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "TemplateOrderEmailXBasket_Insert",
+				"name": "TemplateOrderEmailXBasket_InsertOrUpdate",
 				"parameters": [
-					"email_code",
-					"basket_id",
-					"sentdate"
+					"templateorderemailxbasket var"
 				],
 				"returnValue": "l.void"
 			},
 			{
-				"name": "TemplateOrderEmailXBasket_Load",
+				"name": "TemplateOrderEmailXBasket_Insert",
 				"parameters": [
-					"email_code",
-					"basket_id",
 					"templateorderemailxbasket var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmailXBasket_Update",
+				"parameters": [
+					"templateorderemailxbasket var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmailXBasket_Update_EmailSent",
+				"parameters": [
+					"basket_id",
+					"lastupdate",
+					"email_sent",
+					"ab_time"
 				],
 				"returnValue": "l.void"
 			},
 			{
 				"name": "TemplateOrderEmailXSubscription_Read",
 				"parameters": [
-					"templateorderemailxpaymentcard var"
+					"templateorderemailxsubscription var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmailXSubscription_InsertOrUpdate",
+				"parameters": [
+					"templateorderemailxsubscription var"
 				],
 				"returnValue": "l.void"
 			},
 			{
 				"name": "TemplateOrderEmailXSubscription_Insert",
 				"parameters": [
-					"email_code",
-					"subscrp_id",
-					"termproc",
-					"sentdate"
+					"templateorderemailxsubscription var"
 				],
 				"returnValue": "l.void"
 			},
 			{
-				"name": "TemplateOrderEmailXSubscription_Load",
+				"name": "TemplateOrderEmailXSubscription_Update",
 				"parameters": [
-					"email_code",
-					"subscrp_id",
-					"termproc",
-					"templateorderemailxpaymentcard var"
+					"templateorderemailxsubscription var"
 				],
 				"returnValue": "l.void"
 			},
@@ -76832,7 +78744,27 @@
 			{
 				"name": "ScheduledTaskModule_Execute_PaymentCard_Expiring",
 				"parameters": [
+					"module var",
 					"task var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ScheduledTaskModule_Execute_PaymentCard_Expiring_SendEmail",
+				"parameters": [
+					"email var",
+					"paymentcard var",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmails_Process_PaymentCard_Expiring",
+				"parameters": [
+					"asof",
+					"callback_filename",
+					"callback_function",
+					"data var"
 				],
 				"returnValue": "l.void"
 			},
@@ -76842,6 +78774,7 @@
 					"email_code",
 					"month",
 					"year",
+					"pc_days",
 					"paymentcards var"
 				],
 				"returnValue": "l.count"
@@ -76852,6 +78785,7 @@
 					"email_code",
 					"month",
 					"year",
+					"pc_days",
 					"paymentcards var"
 				],
 				"returnValue": "l.count"
@@ -76862,6 +78796,7 @@
 					"email_code",
 					"month",
 					"year",
+					"pc_days",
 					"linked_to_subscription",
 					"paymentcards var"
 				],
@@ -76875,10 +78810,21 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "BasketList_Load_AbandonedBillEmail",
+				"name": "BasketList_Load_Abandoned_Tracked",
 				"parameters": [
-					"email_code",
-					"abandoned_time",
+					"email var",
+					"min_lastupdate",
+					"max_lastupdate",
+					"baskets var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "BasketList_Load_Abandoned_Untracked",
+				"parameters": [
+					"email var",
+					"min_lastupdate",
+					"max_lastupdate",
 					"baskets var"
 				],
 				"returnValue": "l.count"
@@ -76886,9 +78832,41 @@
 			{
 				"name": "ScheduledTaskModule_Execute_Subscription_Pending",
 				"parameters": [
+					"module var",
 					"task var"
 				],
 				"returnValue": "l.void"
+			},
+			{
+				"name": "ScheduledTaskModule_Execute_Subscription_Pending_SendEmail",
+				"parameters": [
+					"email var",
+					"subscriptions var",
+					"subscription_count",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateOrderEmails_Process_SubscriptionPending",
+				"parameters": [
+					"asof",
+					"callback_filename",
+					"callback_function",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SubscriptionList_Load_Pending",
+				"parameters": [
+					"email_code",
+					"sub_days",
+					"min_nextdate",
+					"max_nextdate",
+					"subscriptions var"
+				],
+				"returnValue": "l.count"
 			},
 			{
 				"name": "Module_Cleanup_Store",
@@ -84320,6 +86298,149 @@
 		"moduleVar": "l.__module_report_sales"
 	},
 	{
+		"distroPath": "g.Module_Root $ l.__module_report_searchlog:module",
+		"functions": [
+			{
+				"name": "Module_Description",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Capabilities",
+				"parameters": [
+					"module var",
+					"capabilities var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Fields",
+				"parameters": [
+					"module var",
+					"report var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Invalid",
+				"parameters": [
+					"module var",
+					"field_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Prompt",
+				"parameters": [
+					"module var",
+					"field_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Field",
+				"parameters": [
+					"module var",
+					"field_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Validate",
+				"parameters": [
+					"module var",
+					"report var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Update",
+				"parameters": [
+					"module var",
+					"report var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Calculate_DateRange_All",
+				"parameters": [
+					"module var",
+					"report var",
+					"time_t_start var",
+					"time_t_end var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Run_DateRange",
+				"parameters": [
+					"module var",
+					"report var",
+					"time_t_start",
+					"time_t_end"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Display",
+				"parameters": [
+					"module var",
+					"report var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Tabular_Definition",
+				"parameters": [
+					"module var",
+					"report var",
+					"definition var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Provision_Settings",
+				"parameters": [
+					"module var",
+					"report var",
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ReportModule_Delete",
+				"parameters": [
+					"module var",
+					"report var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLog_Run",
+				"parameters": [
+					"report var",
+					"time_t_start",
+					"time_t_end"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "SearchLog_Add_Tabular_Column",
+				"parameters": [
+					"definition var",
+					"values var",
+					"label",
+					"member"
+				],
+				"returnValue": "l.void"
+			}
+		],
+		"moduleCode": "report_searchlog",
+		"moduleVar": "l.__module_report_searchlog"
+	},
+	{
 		"distroPath": "g.Module_Root $ l.__module_report_stats:module",
 		"functions": [
 			{
@@ -91702,6 +93823,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "StoreUIModule_Screens",
+				"parameters": [
+					"module var",
+					"screens var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "StoreUIModule_Screen_Secure",
 				"parameters": [
 					"module var",
@@ -93253,6 +95382,13 @@
 			},
 			{
 				"name": "JSON_CombinationFacetAndFieldList_Load_Query",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CombinationFacetAndFieldList_Load_All",
 				"parameters": [
 					"module var"
 				],
@@ -97074,6 +99210,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "CustomFields_Generic_Query_SELECT",
+				"parameters": [
+					"query var",
+					"code"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "CustomFields_Generic_Query",
 				"parameters": [
 					"data var",
@@ -100208,6 +102352,14 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Module_Provision_Store_ProductDataSettings_Update",
+				"parameters": [
+					"module var",
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Provision_Store_ProductDataField_Add",
 				"parameters": [
 					"module var",
@@ -101645,6 +103797,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_ProductDataSettings_Load",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_ProductDataSettings_Update",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_ProductDataField_Load",
 				"parameters": [
 					"productdatafield var"
@@ -101803,6 +103969,41 @@
 				"name": "ProductDataFieldLookup_Load_Notification",
 				"parameters": [
 					"lookup var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ProductDataSettings_Read",
+				"parameters": [
+					"productdatasettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ProductDataSettings_Insert",
+				"parameters": [
+					"productdatasettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ProductDataSettings_Update",
+				"parameters": [
+					"productdatasettings"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ProductDataSettings_Load",
+				"parameters": [
+					"productdatasettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ProductDataSettings_Load_Cached",
+				"parameters": [
+					"productdatasettings var"
 				],
 				"returnValue": "l.void"
 			},
@@ -106609,6 +108810,20 @@
 			},
 			{
 				"name": "StandardScheduledTasks_PriceGroupValidityNotifications",
+				"parameters": [
+					"task var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "StandardScheduledTasks_RebuildCollections",
+				"parameters": [
+					"task var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "StandardScheduledTasks_SearchLogMaintenance",
 				"parameters": [
 					"task var"
 				],

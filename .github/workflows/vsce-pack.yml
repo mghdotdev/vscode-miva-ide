@@ -1,0 +1,33 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: VSCE Pack
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  pack:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Check version
+      id: check
+      uses: EndBug/version-check@v2
+      with:
+        diff-search: true
+    - name: Set up node
+      if: steps.check.outputs.changed == 'true'
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+    - name: Install dependencies
+      if: steps.check.outputs.changed == 'true'
+      run: npm ci
+    - name: Pack
+      if: steps.check.outputs.changed == 'true'
+      run: npm run pack

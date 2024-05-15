@@ -1,5 +1,93 @@
 # Miva IDE CHANGELOG
 
+## v1.17.1 (latest)
+
+* Removed duplicate builtin snippet (`gethostbyname`).
+
+## v1.17.0
+
+* Added missing builtin functions from Empressa versions 5.39-5.42:
+	- crypto_evp_sign_ctrl
+	- miva_lockfile_valid
+	- gdImageCreateFromWebp
+	- gdImageCreateFromWebpMem
+	- gdImageWebp
+	- gdImageWebpMem
+	- gdImageWebpOutput
+	- gdVersionString
+	- miva_member_delete
+
+## v1.16.0
+
+* Added missing builtin functions from Empressa versions 5.07-5.38:
+	- gethostbyname
+	- miva_array_combine
+	- bzip2_compress
+	- bzip2_decompress
+	- miva_ip_version
+	- miva_ip_normalize
+	- mysql_get_client_info
+	- redis_client_id
+	- redis_connect_with_timeout
+	- redis_connect_unix
+	- rsa_public_encrypt_oaep
+	- rsa_private_decrypt_oaep
+	- strcmp
+	- strcasecmp
+	- file_last_error
+	- pkcs7_get_signer_info
+
+## v1.15.1
+
+* Fixed issue with `miva_json_encode` function snippet.
+
+## v1.15.0
+
+* Added 10.09.00 LSK data.
+
+## v1.14.0
+
+* Modified the `mvt-debug` snippet to be different for `mvtjs`, `mvtcss` and `mvt` languages.
+	* `mvtcss` will output a CSS block comment.
+	* `mvtjs` will output a `console.log()` call with a JSON string.
+	* `mvt` will retain existing functionality.
+
+## v1.13.0
+
+* Added new `mvt-debug-textarea` snippet.
+	* Outputs a readonly textarea that resizes to fit content and decodes the debugged variable data.
+* Switched default output format to `<pre>` tag for `mvt-debug-json` snippet.
+* Switched debug variable to `_mvt_debug` from `_mvps_debug`.
+
+## v1.12.1
+
+* Fixed issue with CHANGELOG.
+
+## v1.12.0
+
+* Updated mvt-debug snippet default wrap to `<pre>` tag instead of HTML comment.
+
+## v1.11.1
+
+* Fixed bug with Currency modules merchant functions file paths.
+
+## v1.11.0
+
+* Added setting to disable documentation popover on hover (issue #80).
+	* `mivaIde.MVT.disableHoverDocumentation`
+	* `mivaIde.mivaScript.disableHoverDocumentation`
+* Updated documentation references to new developer documentation site.
+
+## v1.10.0
+
+* Updated function data for Miva Merchant 10.08.03.
+
+## v1.9.0
+
+* Tag attribute completions will now be limited by the current attributes on the existing tag.
+* Removed commit characters from tag completion data
+	* This was causing unintended issues when trying to write code while the completion window was open.
+
 ## v1.8.2
 
 * Fixed issue where the "module imports" variables were not referencing the correct member (`:module`).
