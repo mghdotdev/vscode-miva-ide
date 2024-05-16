@@ -1,3 +1,4 @@
+import { existsSync } from 'fs';
 import { readFile, readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { TextDocument } from 'vscode-languageserver-textdocument';
@@ -53,6 +54,11 @@ export class WorkspaceSymbolProvider {
 	private async gatherMivaScriptFilePathsFromWorkspace (): Promise<string[]> {
 		const files = await Promise.all(this.workspace.folders.map(async (workspaceFolder) => {
 			const workspaceFolderPath = uriToFsPath(workspaceFolder.uri);
+
+			// Check if path exists
+			if (!existsSync(workspaceFolderPath)) {
+				return [];
+			}
 
 			// Set new root path and attempt to detect
 			this.lskDetector.setRootPath(workspaceFolderPath);
