@@ -22,12 +22,12 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI } from 'vscode-uri';
 import { activateFeatures } from './miva-features';
-import type { MivaScriptCompilerDiagnosticProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
+import type { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { Languages, Settings, Workspace } from './util/interfaces';
 
-export function activate (connection: Connection, workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerDiagnosticProvider) {
+export function activate (connection: Connection, workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerProvider) {
 	// ================================================================================================================================ //
 
 	function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {

@@ -4,7 +4,7 @@ import { TextDocument } from 'vscode-languageserver-textdocument';
 import { asyncSpawn, folderContainsFile, safeMatch, uriToFsPath } from '../../util/functions';
 import { Settings } from '../../util/interfaces';
 
-export class MivaScriptCompilerDiagnosticProvider {
+export class MivaScriptCompilerProvider {
 	constructor () {}
 
 	private async runCommand (filePath: string): Promise<string> {

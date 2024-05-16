@@ -1,6 +1,6 @@
 import { Connection, ProposedFeatures, createConnection } from 'vscode-languageserver/node';
 import { activate } from './main-shared';
-import { MivaScriptCompilerDiagnosticProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
+import { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import { formatError } from './util/functions';
 
@@ -15,4 +15,4 @@ process.on('uncaughtException', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
 });
 
-activate(connection, new WorkspaceSymbolProvider(), new MivaScriptCompilerDiagnosticProvider());
+activate(connection, new WorkspaceSymbolProvider(), new MivaScriptCompilerProvider());
