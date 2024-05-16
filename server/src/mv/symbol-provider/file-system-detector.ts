@@ -1,4 +1,4 @@
-import { lstatSync } from 'fs';
+import { existsSync, lstatSync } from 'fs';
 import { readdir } from 'fs/promises';
 import { parse } from 'path';
 
@@ -38,6 +38,10 @@ export class FileSystemDetector {
 	constructor (private config: FileSystemDetectorConfig) {}
 
 	private ensurePathIsDirectory (path: string = this.config.rootPath): boolean {
+		if (!existsSync(path)) {
+			return false;
+		}
+
 		return lstatSync(path).isDirectory();
 	}
 
