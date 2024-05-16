@@ -89,6 +89,12 @@ export class MivaScriptCompilerDiagnosticProvider {
 		// Get command output
 		const output = await this.runCommand(filePath);
 
-		return this.parseCommandOutput(output);
+		// Parse output into diagnostics
+		const diagnostics = this.parseCommandOutput(output);
+
+		// If no diagnostics are found alert with output instead
+		console.error(output);
+
+		return diagnostics;
 	}
 }
