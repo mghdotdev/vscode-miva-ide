@@ -1,7 +1,7 @@
 import { platform } from 'os';
 import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { asyncSpawn, folderContainsFile, safeMatch } from '../../util/functions';
+import { asyncSpawn, folderContainsFile, safeMatch, uriToFsPath } from '../../util/functions';
 import { Settings } from '../../util/interfaces';
 
 export class MivaScriptCompilerDiagnosticProvider {
@@ -11,9 +11,8 @@ export class MivaScriptCompilerDiagnosticProvider {
 		switch (platform()) {
 			case 'win32': {
 				const {stderr} = await asyncSpawn(
-					'cmd.exe',
+					'mvc',
 					[
-						'mvc',
 						'-W all',
 						'-o NUL',
 						filePath
@@ -80,7 +79,7 @@ export class MivaScriptCompilerDiagnosticProvider {
 		}
 
 		// Strip file protocol
-		const filePath = document.uri.replace('file://', '');
+		const filePath = uriToFsPath(document.uri);
 
 		// Determine if file is in the lsk folder
 		const isInLSKFolder = folderContainsFile(settings?.LSK?.path, filePath);
