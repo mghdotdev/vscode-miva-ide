@@ -75,6 +75,10 @@ export class MivaScriptCompilerDiagnosticProvider {
 	}
 
 	async provideDiagnostics (document: TextDocument, settings: Settings): Promise<Diagnostic[]> {
+		if (!document.uri.startsWith('file://')) {
+			return [];
+		}
+
 		// Strip file protocol
 		const filePath = document.uri.replace('file://', '');
 
