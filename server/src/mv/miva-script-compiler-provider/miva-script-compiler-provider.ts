@@ -96,7 +96,9 @@ export class MivaScriptCompilerDiagnosticProvider {
 		const diagnostics = this.parseCommandOutput(output);
 
 		// If no diagnostics are found alert with output instead
-		console.error(output);
+		if (!diagnostics || diagnostics.length === 0) {
+			console.error(output);
+		}
 
 		return diagnostics;
 	}
