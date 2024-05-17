@@ -1,7 +1,8 @@
 import { platform } from 'os';
 import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { asyncSpawn, folderContainsFile, safeMatch, uriToFsPath } from '../../util/functions';
+import { folderContainsFile, safeMatch, uriToFsPath } from '../../util/functions';
+import { asyncSpawn } from '../../util/functions-node';
 import { Settings } from '../../util/interfaces';
 
 export class MivaScriptCompilerProvider {
