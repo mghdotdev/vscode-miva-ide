@@ -33,7 +33,7 @@
 	- Warns users about using `toolkit` module functions.
 	- Warns users about using `toolbelt` module functions.
 	- Throws error about assigning `g.null` to a new value.
-- Automatic error highlighting for Miva Script syntax. Requires the [https://www.miva.com/support/downloads](Miva Script Compiler) to be installed.
+- Automatic error highlighting for Miva Script syntax. Requires the [Miva Script Compiler](https://www.miva.com/support/downloads) to be installed.
 
 ## Requirements
 
