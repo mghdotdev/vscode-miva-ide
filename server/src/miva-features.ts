@@ -27,6 +27,7 @@ import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
+import type { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import mvOperatorData from './mv/operators';
 import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import systemVariableData from './mv/system-variables';
@@ -69,7 +70,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider) {
+export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerProvider) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -984,6 +985,15 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 		const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( { ...mvSnippetData, ...filterTagData(mvTagData, ([, tagData]) => !tagData.parent) } ) ) );
 
 		return {
+
+			// @ts-ignore
+			async doValidation( document: TextDocument, settings: Settings ) {
+				if (!mivaScriptCompilerProvider) {
+					return [];
+				}
+
+				return mivaScriptCompilerProvider.provideDiagnostics(document, settings);
+			},
 
 			doCompletion( document: TextDocument, position: Position ): CompletionList {
 

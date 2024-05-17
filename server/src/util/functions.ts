@@ -494,6 +494,10 @@ export function isTagSelfClosing (tagName: string): boolean {
 	}
 }
 
+export function folderContainsFile (folderUri: string, fileUri: string): boolean {
+	return fileUri.startsWith(folderUri);
+}
+
 export function filterTagData (tagData: Record<string, TagData>, callback: (value: [string, TagData]) => boolean): Record<string, TagData> {
 	return Object.fromEntries(
 		Object.entries(tagData)

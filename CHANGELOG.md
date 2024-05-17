@@ -1,6 +1,13 @@
 # Miva IDE CHANGELOG
 
-## v1.17.1 (latest)
+## v1.18.0 (latest)
+
+- Added error diagnostics via the [Miva Script Compiler](https://www.miva.com/support/downloads) when using Miva Script syntax.
+- Added new settings:
+	- `mivaScript.mivaScriptCompiler.enable`
+	- `mivaScript.mivaScriptCompiler.disableLSK`
+
+## v1.17.1
 
 * Removed duplicate builtin snippet (`gethostbyname`).
 

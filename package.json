@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.17.1",
+	"version": "1.18.0",
 	"engines": {
 		"vscode": "^1.77.0",
 		"node": ">=16"
@@ -87,6 +87,13 @@
 						"Outputs a variable with 'javascript' encoding. Suitable for embedded JavaScript sections within an HTML page or JSON.",
 						"Outputs a variable with 'slugify' encoding. Suitable for URL slugs or codes."
 					],
+					"enumItemLabels": [
+						"None",
+						"Attribute",
+						"Entity",
+						"JavaScript",
+						"Slugify"
+					],
 					"description": "The encoding type that will be used when converting a variable to an entity."
 				},
 				"MVT.lint.showWarningOnToolkitUsage": {
@@ -103,6 +110,19 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Show a warning when unencoded entities and 'evals' are referenced within the file."
+				},
+				"mivaScript.mivaScriptCompiler.enable": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enables automatic error reporting for Miva Script files using the Miva Script Compiler. Download the compiler [here](https://www.miva.com/support/downloads)."
+				},
+				"mivaScript.mivaScriptCompiler.disableLSK": {
+					"type": "boolean",
+					"default": true,
+					"description": "Disable automatic error reporting for files contained within the configured LSK path.",
+					"dependencies": [
+						"LSK.path"
+					]
 				},
 				"MVT.lint.showErrorForTksl": {
 					"type": "boolean",

@@ -33,6 +33,7 @@
 	- Warns users about using `toolkit` module functions.
 	- Warns users about using `toolbelt` module functions.
 	- Throws error about assigning `g.null` to a new value.
+- Automatic error highlighting for Miva Script syntax. Requires the [Miva Script Compiler](https://www.miva.com/support/downloads) to be installed.
 
 ## Requirements
 
@@ -47,15 +48,19 @@ Enable support for goto function definition by following the steps below. This w
 
 Miva IDE contributes the following settings:
 
-- `enableTriggerSuggestAfterPaste` &mdash; Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor.
-- `showChangelogOnUpdate` &mdash; Show CHANGELOG after updating to the latest version.
-- `LSK.path` &mdash; Path to your LSK folder. Used for Goto Definition support.
-- `MVT.enableLegacyElseSnippets` &mdash; Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets.
-- `mivaIde.MVT.defaultEncodingForVariableConversions` &mdash; The encoding type that will be used when converting a variable to an entity.
-- `mivaIde.MVT.lint.showWarningOnToolkitUsage` &mdash; Show a warning when the 'toolkit' item is referenced within the template.
-- `mivaIde.MVT.lint.showWarningOnToolbeltUsage` &mdash; Show a warning when the 'toolbelt' item is referenced within the template.
-- `mivaIde.MVT.lint.showWarningForUnencodedVariables` &mdash; Show a warning when unencoded entities and 'evals' are referenced within the file.
-- `MVT.lint.showErrorForTksl` &mdash; Show an error for the `toolkit` item's `tksl` param.
+| Setting | Default | Description |
+| --- | --- | --- |
+| enableTriggerSuggestAfterPaste | false | Enable triggering the suggestion popover after pasting text into a Miva Script or MVT editor. |
+| showChangelogOnUpdate | true | Show CHANGELOG after updating to the latest version. |
+| LSK.path | '' | Path to your LSK folder. Used for Goto Definition support. |
+| MVT.enableLegacyElseSnippets | false | Enable legacy `<mvt:else>` and `<mvt:elseif>` snippets. |
+| mivaIde.MVT.defaultEncodingForVariableConversions | Entity (e) | The encoding type that will be used when converting a variable to an entity. |
+| mivaIde.MVT.lint.showWarningOnToolkitUsage | true | Show a warning when the 'toolkit' item is referenced within the template. |
+| mivaIde.MVT.lint.showWarningOnToolbeltUsage | true | Show a warning when the 'toolbelt' item is referenced within the template. |
+| mivaIde.MVT.lint.showWarningForUnencodedVariables | true | Show a warning when unencoded entities and 'evals' are referenced within the file. |
+| MVT.lint.showErrorForTksl | true | Show an error for the `toolkit` item's `tksl` param. |
+| mivaScript.mivaScriptCompiler.enable | true | Enables automatic error reporting for Miva Script files using the Miva Script Compiler. Download the compiler [here](https://www.miva.com/support/downloads). |
+| mivaScript.mivaScriptCompiler.disableLSK | true | Disable automatic error reporting for files contained within the configured LSK path. |
 
 ## Integrations
 
