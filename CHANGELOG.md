@@ -1,8 +1,12 @@
 # Miva IDE CHANGELOG
 
-## v1.18.1 (latest)
+## v1.19.0 (latest)
 
-- Fixed improper Miva Script Compiler errors. The cwd will now be set to the file's root path instead of the workspace.
+* Added document link feature for `MvINCLUDE` tags within Miva Script.
+
+## v1.18.1
+
+* Fixed improper Miva Script Compiler errors. The cwd will now be set to the file's root path instead of the workspace.
 
 ## v1.18.0
 
