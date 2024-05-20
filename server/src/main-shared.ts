@@ -25,7 +25,7 @@ import { activateFeatures } from './miva-features';
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { ActivationProviders, Languages, Settings, Workspace } from './util/interfaces';
 
-export function activate (connection: Connection, {workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
+export function activate (connection: Connection, {workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders = {}) {
 	// ================================================================================================================================ //
 
 	function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
