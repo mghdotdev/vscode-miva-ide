@@ -2,6 +2,7 @@ import {
 	CodeAction,
 	CodeActionContext,
 	Command,
+	CompletionItem,
 	CompletionItemKind,
 	CompletionList,
 	Definition,
@@ -65,6 +66,8 @@ export interface LanguageFeatures {
 export interface MvLanguageModel {
 	links: DocumentLink[];
 	symbols: SymbolInformationWithDocumentation[];
+	functions: MivaScriptFunction[];
+	functionCompletionItems: CompletionItem[];
 	document: TextDocument;
 }
 
@@ -251,4 +254,19 @@ export interface OperatorData extends BaseOperatorData {
 	engine?: string;
 	detail?: string;
 	example?: string;
+}
+
+export interface MivaScriptFunction {
+	uri: string;
+	name: string;
+	parameters: string[];
+	description?: string;
+	returnValue?: string;
+};
+
+export interface MivaScriptFunctionFile {
+	distroPath: string;
+	functions: MivaScriptFunction[];
+	moduleCode?: string;
+	moduleVar?: string;
 }

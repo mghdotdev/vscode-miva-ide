@@ -1,11 +1,12 @@
 import _cloneDeep from 'lodash.clonedeep';
 import setImmediateShim from 'set-immediate-shim';
-import { HTMLDocument, Node } from 'vscode-html-languageservice';
+import { HTMLDocument, Node, TextDocument } from 'vscode-html-languageservice';
 import {
 	CancellationToken,
 	CompletionItem,
 	CompletionItemKind,
 	CompletionList,
+	DocumentLink,
 	ErrorCodes,
 	InsertTextFormat,
 	MarkupContent,
@@ -13,7 +14,7 @@ import {
 	ResponseError
 } from 'vscode-languageserver';
 import { URI } from 'vscode-uri';
-import { ItemData, ItemParamData, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
+import { ItemData, ItemParamData, MivaScriptFunction, MivaScriptFunctionFile, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string, err: any ): string {
 
@@ -110,9 +111,9 @@ function wrapSpaces (str: string, wrap: boolean): string {
 		: str;
 }
 
-function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
+export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScriptFunctionFile ): CompletionItem {
 
-	const parameters = fn.parameters.reduce(( all: string, param: any, index: number, arr: any[] )=> {
+	const parameters = fn.parameters.reduce(( all: string, param: string, index: number, arr: string[] ) => {
 
 		return `${ all }${ ( index == 0 ) ? ' ' : ', ' }\$\{${ index + 1 }:${ param }\}${ ( index == (arr.length - 1) ) ? ' ' : '' }`;
 
@@ -123,13 +124,12 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 		insertText: `${ fn.name }(${ parameters })`,
 		insertTextFormat: InsertTextFormat.Snippet,
 		kind: CompletionItemKind.Function,
-		detail: file.distroPath,
 		documentation: {
 			kind: 'markdown',
 			value: [
 				'',
 				'```mv',
-				`{ [ ${file.distroPath} ].${formatFunctionDocumentation(fn.name, fn.parameters)} }`,
+				`${file ? `{ [ ${file.distroPath} ].` : ''}${formatFunctionDocumentation(fn.name, fn.parameters)} }`,
 				'```',
 				`---`,
 				'',
@@ -146,20 +146,25 @@ function formatDoValueCompletion( fn: any, file: any ): CompletionItem {
 				`@returns \`${fn.returnValue}\``
 			].join('\n')
 		},
-		command: {
-			title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute. Also, inject module import if available.`,
-			command: 'mivaIde.chooseFile',
-			arguments: [
-				{
-					files: [{
-						distroPath: file.distroPath,
-						moduleCode: file.moduleCode,
-						moduleVar: file.moduleVar
-					}],
-					returnValue: fn.returnValue
+		...file
+			? {
+				detail: file.distroPath,
+				command: {
+					title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute. Also, inject module import if available.`,
+					command: 'mivaIde.chooseFile',
+					arguments: [
+						{
+							files: [{
+								distroPath: file.distroPath,
+								moduleCode: file.moduleCode,
+								moduleVar: file.moduleVar
+							}],
+							returnValue: fn.returnValue
+						}
+					]
 				}
-			]
-		}
+			}
+			: {}
 	};
 
 }
@@ -522,4 +527,10 @@ export function uriToFsPath (uri: URI | string) {
 	}
 
 	return uri.fsPath;
+}
+
+export function getParentUriFromLinks (document: TextDocument, links: DocumentLink[]): string {
+	const {data} = links.find(link => link.target === document.uri);
+
+	return data;
 }
