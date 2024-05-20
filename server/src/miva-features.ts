@@ -13,6 +13,7 @@ import {
 	CompletionList,
 	Diagnostic,
 	DiagnosticSeverity,
+	DocumentLink,
 	Location,
 	MarkupContent,
 	Position,
@@ -27,9 +28,7 @@ import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
-import type { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import mvOperatorData from './mv/operators';
-import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
@@ -56,6 +55,7 @@ import {
 	unique
 } from './util/functions';
 import {
+	ActivationProviders,
 	LanguageFeatures,
 	MvLanguageModel,
 	MvtLanguageModel,
@@ -70,7 +70,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerProvider) {
+export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -89,9 +89,10 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 	// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 	const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
-		const symbols = _mvFindDocumentSymbols(document);
+		const {symbols, links} = _mvFindDocumentSymbols(document);
 
 		return {
+			links,
 			symbols,
 			document
 		};
@@ -881,15 +882,23 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 				settings: settings
 			});
 
-			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols(_mvFindDocumentSymbols);
+			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols((document) => {
+				const {symbols} = _mvFindDocumentSymbols(document);
+
+				return symbols;
+			});
 		}
 
 		return true;
 	}
 
-	function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWithDocumentation[] {
+	function _mvFindDocumentSymbols( document: TextDocument ): {
+		symbols: SymbolInformationWithDocumentation[],
+		links: DocumentLink[]
+	} {
 
 		const symbols: SymbolInformationWithDocumentation[] = [];
+		const links: DocumentLink[] = [];
 
 		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 		let token = scanner.scan();
@@ -914,9 +923,9 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 				case TokenType.AttributeValue:
 
-					const name = scanner.getTokenText().replace( /"/g, '' );
+					const attributeValue = scanner.getTokenText().replace( /"/g, '' );
 
-					if (name) {
+					if (attributeValue) {
 						const range = Range.create(
 							document.positionAt( scanner.getTokenOffset() + 1 ),
 							document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
@@ -934,14 +943,14 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 										'',
 										'```mv',
 										lastTagName === 'mvassign'
-											? `<${originalLastTagName} ${originalLastAttributeName} = "${name}" />`
-											: `<${originalLastTagName} ${originalLastAttributeName} = "${name}">\n\t...\n</${originalLastTagName}>`,
+											? `<${originalLastTagName} ${originalLastAttributeName} = "${attributeValue}" />`
+											: `<${originalLastTagName} ${originalLastAttributeName} = "${attributeValue}">\n\t...\n</${originalLastTagName}>`,
 										'```',
 										''
 									].join('\n')
 								},
 								kind: SymbolKind.Variable,
-								name,
+								name: attributeValue,
 								location: Location.create(
 									document.uri,
 									range
@@ -957,13 +966,22 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 									value: ''
 								},
 								kind: SymbolKind.Function,
-								name,
+								name: attributeValue,
 								location: Location.create(
 									document.uri,
 									range
 								)
 							});
 
+						}
+						else if ( lastTagName === 'mvinclude' && lastAttributeName === 'file' ) {
+							// Get dirname to be joined with the attribute value
+							const dirnameUri = Utils.dirname(URI.parse(document.uri));
+
+							links.push({
+								range,
+								target: Utils.joinPath(dirnameUri, attributeValue).toString()
+							});
 						}
 					}
 
@@ -975,8 +993,10 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 
 		}
 
-		return symbols;
-
+		return {
+			symbols,
+			links
+		};
 	}
 
 	function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
@@ -985,7 +1005,6 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 		const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( { ...mvSnippetData, ...filterTagData(mvTagData, ([, tagData]) => !tagData.parent) } ) ) );
 
 		return {
-
 			// @ts-ignore
 			async doValidation( document: TextDocument, settings: Settings ) {
 				if (!mivaScriptCompilerProvider) {
@@ -1159,7 +1178,6 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 				const {symbols} = mvDocuments.get( document )
 
 				return symbols;
-
 			},
 
 			async findDefinition( document: TextDocument, position: Position, settings: Settings ) {
@@ -1366,8 +1384,13 @@ export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvid
 				}
 
 				return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
-			}
+			},
 
+			onDocumentLinks (document: TextDocument): DocumentLink[] {
+				const mvDocument = mvDocuments.get(document);
+
+				return mvDocument.links;
+			}
 		};
 
 	}
