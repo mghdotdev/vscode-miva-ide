@@ -1,9 +1,13 @@
 # Miva IDE CHANGELOG
 
-## v1.18.0 (latest)
+## v1.18.1 (latest)
 
-- Added error diagnostics via the [Miva Script Compiler](https://www.miva.com/support/downloads) when using Miva Script syntax.
-- Added new settings:
+- Fixed improper Miva Script Compiler errors. The cwd will now be set to the file's root path instead of the workspace.
+
+## v1.18.0
+
+* Added error diagnostics via the [Miva Script Compiler](https://www.miva.com/support/downloads) when using Miva Script syntax.
+* Added new settings:
 	- `mivaScript.mivaScriptCompiler.enable`
 	- `mivaScript.mivaScriptCompiler.disableLSK`
 
