@@ -70,7 +70,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider, mivaScriptDocumentLinksProvider}: ActivationProviders) {
+export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -89,9 +89,10 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 	const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
-		const symbols = _mvFindDocumentSymbols(document);
+		const {symbols, links} = _mvFindDocumentSymbols(document);
 
 		return {
+			links,
 			symbols,
 			document
 		};
@@ -881,15 +882,23 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				settings: settings
 			});
 
-			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols(_mvFindDocumentSymbols);
+			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols((document) => {
+				const {symbols} = _mvFindDocumentSymbols(document);
+
+				return symbols;
+			});
 		}
 
 		return true;
 	}
 
-	function _mvFindDocumentSymbols( document: TextDocument ): SymbolInformationWithDocumentation[] {
+	function _mvFindDocumentSymbols( document: TextDocument ): {
+		symbols: SymbolInformationWithDocumentation[],
+		links: DocumentLink[]
+	} {
 
 		const symbols: SymbolInformationWithDocumentation[] = [];
+		const links: DocumentLink[] = [];
 
 		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 		let token = scanner.scan();
@@ -914,9 +923,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 				case TokenType.AttributeValue:
 
-					const name = scanner.getTokenText().replace( /"/g, '' );
+					const attributeValue = scanner.getTokenText().replace( /"/g, '' );
 
-					if (name) {
+					if (attributeValue) {
 						const range = Range.create(
 							document.positionAt( scanner.getTokenOffset() + 1 ),
 							document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
@@ -934,14 +943,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 										'',
 										'```mv',
 										lastTagName === 'mvassign'
-											? `<${originalLastTagName} ${originalLastAttributeName} = "${name}" />`
-											: `<${originalLastTagName} ${originalLastAttributeName} = "${name}">\n\t...\n</${originalLastTagName}>`,
+											? `<${originalLastTagName} ${originalLastAttributeName} = "${attributeValue}" />`
+											: `<${originalLastTagName} ${originalLastAttributeName} = "${attributeValue}">\n\t...\n</${originalLastTagName}>`,
 										'```',
 										''
 									].join('\n')
 								},
 								kind: SymbolKind.Variable,
-								name,
+								name: attributeValue,
 								location: Location.create(
 									document.uri,
 									range
@@ -957,13 +966,22 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 									value: ''
 								},
 								kind: SymbolKind.Function,
-								name,
+								name: attributeValue,
 								location: Location.create(
 									document.uri,
 									range
 								)
 							});
 
+						}
+						else if ( lastTagName === 'mvinclude' && lastAttributeName === 'file' ) {
+							// Get dirname to be joined with the attribute value
+							const dirnameUri = Utils.dirname(URI.parse(document.uri));
+
+							links.push({
+								range,
+								target: Utils.joinPath(dirnameUri, attributeValue).toString()
+							});
 						}
 					}
 
@@ -975,8 +993,10 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 		}
 
-		return symbols;
-
+		return {
+			symbols,
+			links
+		};
 	}
 
 	function getMVFeatures( workspace: Workspace, clientCapabilities: ClientCapabilities ): LanguageFeatures {
@@ -1367,13 +1387,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 			},
 
 			onDocumentLinks (document: TextDocument): DocumentLink[] {
-				if (!mivaScriptDocumentLinksProvider) {
-					return [];
-				}
-
 				const mvDocument = mvDocuments.get(document);
 
-				return mivaScriptDocumentLinksProvider.provideDocumentLinks(mvDocument);
+				return mvDocument.links;
 			}
 		};
 
