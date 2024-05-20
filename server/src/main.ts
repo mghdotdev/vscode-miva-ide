@@ -1,7 +1,6 @@
 import { Connection, ProposedFeatures, createConnection } from 'vscode-languageserver/node';
 import { activate } from './main-shared';
-import { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
-import { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
+import { MivaScriptCompilerProvider, MivaScriptDocumentLinksProvider, WorkspaceSymbolProvider } from './mv/providers';
 import { formatError } from './util/functions';
 
 // Create a connection for the server
@@ -17,5 +16,6 @@ process.on('uncaughtException', ( e: any ) => {
 
 activate(connection, {
 	workspaceSymbolProvider: new WorkspaceSymbolProvider(),
-	mivaScriptCompilerProvider: new MivaScriptCompilerProvider()
+	mivaScriptCompilerProvider: new MivaScriptCompilerProvider(),
+	mivaScriptDocumentLinksProvider: new MivaScriptDocumentLinksProvider()
 });

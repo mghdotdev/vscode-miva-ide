@@ -13,6 +13,7 @@ import {
 	CompletionList,
 	Diagnostic,
 	DiagnosticSeverity,
+	DocumentLink,
 	Location,
 	MarkupContent,
 	Position,
@@ -69,7 +70,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
+export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider, mivaScriptDocumentLinksProvider}: ActivationProviders) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -984,7 +985,6 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		const mvTagCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( { ...mvSnippetData, ...filterTagData(mvTagData, ([, tagData]) => !tagData.parent) } ) ) );
 
 		return {
-
 			// @ts-ignore
 			async doValidation( document: TextDocument, settings: Settings ) {
 				if (!mivaScriptCompilerProvider) {
@@ -1158,7 +1158,6 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				const {symbols} = mvDocuments.get( document )
 
 				return symbols;
-
 			},
 
 			async findDefinition( document: TextDocument, position: Position, settings: Settings ) {
@@ -1365,8 +1364,17 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				}
 
 				return htmlLanguageService.doHover(document, position, htmlLanguageService.parseHTMLDocument(document));
-			}
+			},
 
+			onDocumentLinks (document: TextDocument): DocumentLink[] {
+				if (!mivaScriptDocumentLinksProvider) {
+					return [];
+				}
+
+				const mvDocument = mvDocuments.get(document);
+
+				return mivaScriptDocumentLinksProvider.provideDocumentLinks(mvDocument);
+			}
 		};
 
 	}

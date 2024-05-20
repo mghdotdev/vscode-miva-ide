@@ -6,8 +6,6 @@ import { asyncSpawn } from '../../util/functions-node';
 import { Settings } from '../../util/interfaces';
 
 export class MivaScriptCompilerProvider {
-	constructor () {}
-
 	private async runCommand (filePath: string): Promise<string> {
 		switch (platform()) {
 			case 'win32': {
