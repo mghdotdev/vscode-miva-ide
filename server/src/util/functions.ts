@@ -142,7 +142,7 @@ export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScri
 					: [''],
 				...fn.parameters?.map(param => `@param \`${param}\`\n`),
 				'',
-				`@returns \`${fn.returnValue}\``
+				fn.returnValue ? `@returns \`${fn.returnValue}\`` : ''
 			].join('\n')
 		},
 		...file

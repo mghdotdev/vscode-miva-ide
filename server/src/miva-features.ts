@@ -93,12 +93,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 	const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
 		const {symbols, links, functions} = _mvFindDocumentSymbols(document);
 		const functionCompletionItems = functions?.map(fn => formatDoValueCompletion(fn));
+		const functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
 
 		return {
 			links,
 			symbols,
 			functions,
 			functionCompletionItems,
+			functionCompletionMap,
 			document
 		};
 	});
@@ -1239,7 +1241,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			async onHover (document: TextDocument, position: Position, settings: Settings ) {
 				if (!settings?.mivaScript?.disableHoverDocumentation) {
-					const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
+					const {document: mvDocument, symbols: documentSymbols, functionCompletionMap} = mvDocuments.get( document );
 
 					await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
@@ -1295,12 +1297,19 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 						// Function Hover
 						if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-
 							// Builtin function lookup
 							const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
 							if (foundBuiltinHover) {
 								return {
 									contents: foundBuiltinHover
+								};
+							}
+
+							// Self defined function lookup
+							const functionHover = functionCompletionMap.get(word);
+							if (functionHover) {
+								return {
+									contents: functionHover
 								};
 							}
 						}

@@ -68,6 +68,7 @@ export interface MvLanguageModel {
 	symbols: SymbolInformationWithDocumentation[];
 	functions: MivaScriptFunction[];
 	functionCompletionItems: CompletionItem[];
+	functionCompletionMap: Map<string, MarkupContent>;
 	document: TextDocument;
 }
 
