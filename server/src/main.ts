@@ -15,4 +15,7 @@ process.on('uncaughtException', ( e: any ) => {
 	console.error( formatError( `Unhandled exception`, e ) );
 });
 
-activate(connection, new WorkspaceSymbolProvider(), new MivaScriptCompilerProvider());
+activate(connection, {
+	workspaceSymbolProvider: new WorkspaceSymbolProvider(),
+	mivaScriptCompilerProvider: new MivaScriptCompilerProvider()
+});

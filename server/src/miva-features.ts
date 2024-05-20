@@ -27,9 +27,7 @@ import { URI, Utils } from 'vscode-uri';
 import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
-import type { MivaScriptCompilerProvider } from './mv/miva-script-compiler-provider/miva-script-compiler-provider';
 import mvOperatorData from './mv/operators';
-import type { WorkspaceSymbolProvider } from './mv/symbol-provider/symbol-provider';
 import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
@@ -56,6 +54,7 @@ import {
 	unique
 } from './util/functions';
 import {
+	ActivationProviders,
 	LanguageFeatures,
 	MvLanguageModel,
 	MvtLanguageModel,
@@ -70,7 +69,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures(workspaceSymbolProvider?: WorkspaceSymbolProvider, mivaScriptCompilerProvider?: MivaScriptCompilerProvider) {
+export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();

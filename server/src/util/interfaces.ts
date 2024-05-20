@@ -17,6 +17,8 @@ import {
 	Range,
 	TextDocument
 } from 'vscode-languageserver-textdocument';
+import type { MivaScriptCompilerProvider } from '../mv/miva-script-compiler-provider/miva-script-compiler-provider';
+import type { WorkspaceSymbolProvider } from '../mv/symbol-provider/symbol-provider';
 
 export interface Settings {
 	LSK?: any;
@@ -35,6 +37,11 @@ export interface Languages {
 	mvtcss: LanguageFeatures;
 	mvtjs: LanguageFeatures;
 }
+
+export interface ActivationProviders {
+	workspaceSymbolProvider?: WorkspaceSymbolProvider,
+	mivaScriptCompilerProvider?: MivaScriptCompilerProvider
+};
 
 export interface LanguageFeatures {
 
