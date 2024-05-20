@@ -1,4 +1,5 @@
 import { platform } from 'os';
+import { dirname } from 'path';
 import { Diagnostic, DiagnosticSeverity, Position, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { folderContainsFile, safeMatch, uriToFsPath } from '../../util/functions';
@@ -9,6 +10,8 @@ export class MivaScriptCompilerProvider {
 	constructor () {}
 
 	private async runCommand (filePath: string): Promise<string> {
+		const cwd = dirname(filePath);
+
 		switch (platform()) {
 			case 'win32': {
 				const {stderr} = await asyncSpawn(
@@ -19,7 +22,8 @@ export class MivaScriptCompilerProvider {
 						filePath
 					],
 					{
-						shell: true
+						shell: true,
+						cwd
 					}
 				);
 
@@ -34,7 +38,8 @@ export class MivaScriptCompilerProvider {
 						filePath
 					],
 					{
-						shell: true
+						shell: true,
+						cwd
 					}
 				);
 
