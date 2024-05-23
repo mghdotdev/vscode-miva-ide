@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.19.0 (latest)
+## v1.19.1 (latest)
+
+* Fixed global variable encoding diagnostic warning for local variables starting with `global` ([#102](https://github.com/mghdotdev/vscode-miva-ide/issues/102)).
+
+## v1.19.0
 
 * Added document link feature for `MvINCLUDE` tags within Miva Script.
 
