@@ -79,7 +79,7 @@
 		}
 	},
 	{
-		"match": "(?<=&)mvt(?=:global)",
+		"match": "(?<=&)mvt(?=:global:)",
 		"matchIndex": 0,
 		"checkSetting": "MVT.lint.showWarningForUnencodedVariables",
 		"problem": {
