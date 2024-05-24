@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.19.1 (latest)
+## v1.19.2 (latest)
+
+* Fixed variable conversion issue for global variables ([#100](https://github.com/mghdotdev/vscode-miva-ide/issues/100)).
+
+## v1.19.1
 
 * Fixed global variable encoding diagnostic warning for local variables starting with `global` ([#102](https://github.com/mghdotdev/vscode-miva-ide/issues/102)).
 
