@@ -1096,6 +1096,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						return variableCompletions;
 					}
 
+					// Show completion list for operators, builtin functions and document functions
 					return CompletionList.create([
 						...operatorCompletions.items,
 						...builtinFunctionCompletions.items,
