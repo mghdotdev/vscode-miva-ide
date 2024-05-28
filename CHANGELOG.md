@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.19.2 (latest)
+## v1.20.0 (latest)
+
+* Added autocompletion for Miva Script functions defined within the same file.
+
+## v1.19.2
 
 * Fixed variable conversion issue for global variables ([#100](https://github.com/mghdotdev/vscode-miva-ide/issues/100)).
 

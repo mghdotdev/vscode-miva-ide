@@ -36,6 +36,7 @@ import mvtItemData from './mvt/items';
 import { generateMvtSnippets, generateMvtTags } from './mvt/tags';
 import {
 	filterTagData,
+	formatDoValueCompletion,
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
 	formatTagAttributeDocumentation,
@@ -57,6 +58,7 @@ import {
 import {
 	ActivationProviders,
 	LanguageFeatures,
+	MivaScriptFunction,
 	MvLanguageModel,
 	MvtLanguageModel,
 	Settings,
@@ -89,11 +91,16 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
 	const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
-		const {symbols, links} = _mvFindDocumentSymbols(document);
+		const {symbols, links, functions} = _mvFindDocumentSymbols(document);
+		const functionCompletionItems = functions?.map(fn => formatDoValueCompletion(fn));
+		const functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
 
 		return {
 			links,
 			symbols,
+			functions,
+			functionCompletionItems,
+			functionCompletionMap,
 			document
 		};
 	});
@@ -894,11 +901,13 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	function _mvFindDocumentSymbols( document: TextDocument ): {
 		symbols: SymbolInformationWithDocumentation[],
-		links: DocumentLink[]
+		links: DocumentLink[],
+		functions: MivaScriptFunction[]
 	} {
 
 		const symbols: SymbolInformationWithDocumentation[] = [];
 		const links: DocumentLink[] = [];
+		const functions: Map<string, MivaScriptFunction> = new Map();
 
 		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 		let token = scanner.scan();
@@ -906,12 +915,16 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		let originalLastTagName: string | undefined = undefined;
 		let lastAttributeName: string | undefined = undefined;
 		let originalLastAttributeName: string | undefined = undefined;
+		let lastFunctionName: string | undefined = undefined;
+		let lastFunctionParameters: string[] | undefined = undefined;
 
 		while ( token !== TokenType.EOS ) {
 
 			switch ( token ) {
 
 				case TokenType.StartTag:
+					lastFunctionName = undefined;
+					lastFunctionParameters = undefined;
 					originalLastTagName = scanner.getTokenText();
 					lastTagName = originalLastTagName.toLowerCase();
 					break;
@@ -959,6 +972,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 						}
 						else if ( lastTagName === 'mvfunction' && lastAttributeName === 'name' ) {
+							lastFunctionName = attributeValue;
 
 							symbols.push({
 								documentation: {
@@ -973,6 +987,24 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								)
 							});
 
+							// Push into functions object
+
+							// Check if function already exists
+							if (!functions.has(attributeValue)) {
+								functions.set(attributeValue, {
+									name: attributeValue,
+									parameters: lastFunctionParameters ?? [],
+									uri: document.uri
+								});
+							}
+						}
+						else if ( lastTagName === 'mvfunction' && lastAttributeName === 'parameters' ) {
+							lastFunctionParameters = attributeValue?.split(',')?.map(parameter => parameter.trim());
+
+							const lastFunction = functions.get(lastFunctionName);
+							if (lastFunction) {
+								lastFunction.parameters = lastFunctionParameters;
+							}
 						}
 						else if ( lastTagName === 'mvinclude' && lastAttributeName === 'file' ) {
 							// Get dirname to be joined with the attribute value
@@ -980,7 +1012,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 							links.push({
 								range,
-								target: Utils.joinPath(dirnameUri, attributeValue).toString()
+								target: Utils.joinPath(dirnameUri, attributeValue).toString(),
+								data: document.uri
 							});
 						}
 					}
@@ -995,7 +1028,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 		return {
 			symbols,
-			links
+			links,
+			functions: Array.from(functions.values())
 		};
 	}
 
@@ -1016,7 +1050,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			doCompletion( document: TextDocument, position: Position ): CompletionList {
 
-				const {document: mvDocument} = mvDocuments.get( document );
+				const {document: mvDocument, functionCompletionItems} = mvDocuments.get( document );
 				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
 				// determine left side text range
@@ -1064,9 +1098,11 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						return variableCompletions;
 					}
 
+					// Show completion list for operators, builtin functions and document functions
 					return CompletionList.create([
 						...operatorCompletions.items,
-						...builtinFunctionCompletions.items
+						...builtinFunctionCompletions.items,
+						...functionCompletionItems
 					]);
 
 				}
@@ -1205,7 +1241,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			async onHover (document: TextDocument, position: Position, settings: Settings ) {
 				if (!settings?.mivaScript?.disableHoverDocumentation) {
-					const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
+					const {document: mvDocument, symbols: documentSymbols, functionCompletionMap} = mvDocuments.get( document );
 
 					await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
@@ -1261,12 +1297,19 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 						// Function Hover
 						if (patterns.SHARED.RIGHT_IS_OPEN_PAREN.test(right)) {
-
 							// Builtin function lookup
 							const foundBuiltinHover = builtinFunctionHoverMap.get(wordLower);
 							if (foundBuiltinHover) {
 								return {
 									contents: foundBuiltinHover
+								};
+							}
+
+							// Self defined function lookup
+							const functionHover = functionCompletionMap.get(word);
+							if (functionHover) {
+								return {
+									contents: functionHover
 								};
 							}
 						}
