@@ -1,12 +1,11 @@
 import _cloneDeep from 'lodash.clonedeep';
 import setImmediateShim from 'set-immediate-shim';
-import { HTMLDocument, Node, TextDocument } from 'vscode-html-languageservice';
+import { HTMLDocument, Node } from 'vscode-html-languageservice';
 import {
 	CancellationToken,
 	CompletionItem,
 	CompletionItemKind,
 	CompletionList,
-	DocumentLink,
 	ErrorCodes,
 	InsertTextFormat,
 	MarkupContent,
@@ -527,10 +526,4 @@ export function uriToFsPath (uri: URI | string) {
 	}
 
 	return uri.fsPath;
-}
-
-export function getParentUriFromLinks (document: TextDocument, links: DocumentLink[]): string {
-	const {data} = links.find(link => link.target === document.uri);
-
-	return data;
 }
