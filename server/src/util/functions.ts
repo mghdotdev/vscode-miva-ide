@@ -12,7 +12,7 @@ import {
 	MarkupKind,
 	ResponseError
 } from 'vscode-languageserver';
-import { URI } from 'vscode-uri';
+import { URI, Utils } from 'vscode-uri';
 import { ItemData, ItemParamData, MivaScriptFunction, MivaScriptFunctionFile, TagAttributeData, TagAttributeValueData, TagData } from './interfaces';
 
 export function formatError( message: string, err: any ): string {
@@ -111,6 +111,9 @@ function wrapSpaces (str: string, wrap: boolean): string {
 }
 
 export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScriptFunctionFile ): CompletionItem {
+	const detail = fn?.uri
+		? Utils.basename(URI.parse(fn.uri))
+		: file?.distroPath;
 
 	const parameters = fn.parameters.reduce(( all: string, param: string, index: number, arr: string[] ) => {
 
@@ -119,6 +122,10 @@ export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScri
 	}, '');
 
 	return {
+		labelDetails: {
+			description: detail,
+			detail: ''
+		},
 		label: fn.name,
 		insertText: `${ fn.name }(${ parameters })`,
 		insertTextFormat: InsertTextFormat.Snippet,
@@ -147,7 +154,6 @@ export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScri
 		},
 		...file
 			? {
-				detail: file.distroPath,
 				command: {
 					title: `Inject "${ file.distroPath }" into file attribute and inject "${ fn.returnValue }" into name attribute. Also, inject module import if available.`,
 					command: 'mivaIde.chooseFile',
