@@ -129,7 +129,7 @@ export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScri
 			value: [
 				'',
 				'```mv',
-				`${file ? `{ [ ${file.distroPath} ].` : ''}${formatFunctionDocumentation(fn.name, fn.parameters)} }`,
+				`{ ${file ? `[ ${file.distroPath} ].` : ''}${formatFunctionDocumentation(fn.name, fn.parameters)} }`,
 				'```',
 				`---`,
 				'',
