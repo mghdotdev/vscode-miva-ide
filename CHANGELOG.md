@@ -1,6 +1,13 @@
 # Miva IDE CHANGELOG
 
-## v1.20.0 (latest)
+## v1.21.0 (latest)
+
+#### Miva Script
+
+* Added autocompletion for functions defined in files linked via `<MvINCLUDE>` tags.
+* Added hover documentation for functions defined in files linked via `<MvINCLUDE>` tags.
+
+## v1.20.0
 
 * Added autocompletion for Miva Script functions defined within the same file.
 
@@ -14,7 +21,7 @@
 
 ## v1.19.0
 
-* Added document link feature for `MvINCLUDE` tags within Miva Script.
+* Added document link feature for `<MvINCLUDE>` tags within Miva Script.
 
 ## v1.18.1
 

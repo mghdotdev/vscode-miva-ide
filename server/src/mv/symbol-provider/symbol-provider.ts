@@ -29,6 +29,11 @@ async function walk (dir: string, fileExtension: string): string[] {
 		.reduce((all, folderContents) => all.concat(folderContents), [])
 }
 
+interface Folder {
+	filePaths: string[];
+	lsk: boolean;
+};
+
 export class WorkspaceSymbolProvider {
 	private workspace: Workspace;
 	private detectedLskPath: string;
@@ -51,13 +56,16 @@ export class WorkspaceSymbolProvider {
 		return TextDocument.create(path, 'mv', 1, fileContents);
 	}
 
-	private async gatherMivaScriptFilePathsFromWorkspace (): Promise<string[]> {
-		const files = await Promise.all(this.workspace.folders.map(async (workspaceFolder) => {
+	private async gatherMivaScriptFoldersFromWorkspace (): Promise<Folder[]> {
+		return Promise.all(this.workspace.folders.map(async (workspaceFolder) => {
 			const workspaceFolderPath = uriToFsPath(workspaceFolder.uri);
 
 			// Check if path exists
 			if (!existsSync(workspaceFolderPath)) {
-				return [];
+				return {
+					filePaths: [],
+					lsk: false
+				};
 			}
 
 			// Set new root path and attempt to detect
@@ -69,24 +77,32 @@ export class WorkspaceSymbolProvider {
 				this.detectedLskPath = workspaceFolderPath;
 			}
 			if (lskDetected && workspaceFolderPath !== this.detectedLskPath) {
-				return [];
+				return {
+					filePaths: [],
+					lsk: lskDetected
+				};
 			}
 
-			return walk(workspaceFolderPath, '.mv');
+			return {
+				filePaths: walk(workspaceFolderPath, '.mv'),
+				lsk: lskDetected
+			};
 		}));
-
-		return files.flat();
 	}
 
-	async provideSymbols (iterator: ( document: TextDocument ) => SymbolInformationWithDocumentation[]): Promise<SymbolInformationWithDocumentation[]> {
-		const filePaths = await this.gatherMivaScriptFilePathsFromWorkspace();
-		const symbols = await Promise.all(filePaths.map(async (filePath) => {
-			const document = await this.createTextDocumentFromPath(filePath);
+	async provideSymbols (iterator: ( document: TextDocument, lsk: boolean ) => SymbolInformationWithDocumentation[]): Promise<SymbolInformationWithDocumentation[]> {
+		let symbols = [];
+		const folders = await this.gatherMivaScriptFoldersFromWorkspace();
 
-			return iterator(document);
-		}));
+		for (let {filePaths, lsk} of folders) {
+			symbols = symbols.concat((await filePaths)?.map(async (filePath) => {
+				const document = await this.createTextDocumentFromPath(filePath);
 
-		return symbols.flat();
+				return iterator(document, lsk);
+			})) ?? [];
+		}
+
+		return symbols;
 	}
 
 	setWorkspace (workspace: Workspace): void {
