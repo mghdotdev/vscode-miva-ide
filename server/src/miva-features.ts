@@ -1449,7 +1449,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					let symbolDocumentation = '';
 
 					for (let symbol of symbols) {
-						const nameLower = symbol.name.toLowerCase();
+						const nameLower = symbol?.name?.toLowerCase();
 						const trimmedValue = symbol?.documentation?.value?.trim();
 
 						// Show variable hover docs
