@@ -599,7 +599,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					...mivaScriptWorkspaceSymbols
 				]
 					?.filter(( symbol ) => {
-						const nameLower: string = symbol.name.toLowerCase();
+						const nameLower: string = symbol?.name?.toLowerCase();
 						return nameLower === entity || nameLower === variable || nameLower === word;
 					})
 					?.map( symbol => symbol.location );
@@ -1260,7 +1260,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					...mivaScriptWorkspaceSymbols
 				]
 					?.filter(( symbol ) => {
-						const nameLower: string = symbol.name.toLowerCase();
+						const nameLower: string = symbol?.name?.toLowerCase();
 						return nameLower === variable || nameLower === word;
 					})
 					?.map( symbol => symbol.location );
