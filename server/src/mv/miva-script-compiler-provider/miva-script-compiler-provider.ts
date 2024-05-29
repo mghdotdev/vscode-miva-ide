@@ -53,8 +53,14 @@ export class MivaScriptCompilerProvider {
 			.trim()
 			.split('\n');
 
-		for (let rawErrorLine of rawErrorLines) {
-			const [, lineNumber] = safeMatch(rawErrorLine, /[^\:]+:([0-9]+)/i);
+		for (let i = 0, len = rawErrorLines.length; i < len; i++) {
+			const rawErrorLine = rawErrorLines[i];
+			const previousRawErrorLine = rawErrorLines[i-1];
+			const includedFile = previousRawErrorLine?.startsWith('In file included from ') ?? false;
+
+			const [, lineNumber] = includedFile
+				? safeMatch(previousRawErrorLine, /at line ([0-9]+)$/i)
+				: safeMatch(rawErrorLine, /[^\:]+:([0-9]+)/i);
 			const [, errorMessage] = safeMatch(rawErrorLine, /(?<=[a-z]+_[0-9]+:\s)(.*)$/i);
 			const [, errorCode] = safeMatch(rawErrorLine, /\b([a-z]+_[0-9]+):/i);
 
