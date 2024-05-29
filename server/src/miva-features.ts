@@ -10,6 +10,7 @@ import {
 	ClientCapabilities,
 	CodeAction,
 	CodeActionKind,
+	CompletionItem,
 	CompletionList,
 	Diagnostic,
 	DiagnosticSeverity,
@@ -90,10 +91,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 	const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
 
 	// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
+	const mvDocumentFunctions: Map<string, {functionCompletionItems: CompletionItem[], functionCompletionMap: Map<string, MarkupContent>}> = new Map();
 	const mvDocuments = getLanguageModelCache<MvLanguageModel>( 500, 60, (document: TextDocument) => {
-		const {symbols, links, functions} = _mvFindDocumentSymbols(document);
-		const functionCompletionItems = functions?.map(fn => formatDoValueCompletion(fn));
-		const functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
+		const {symbols, links, functions, functionCompletionItems, functionCompletionMap} = _mvFindDocumentSymbols(document);
 
 		return {
 			links,
@@ -902,7 +902,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 	function _mvFindDocumentSymbols( document: TextDocument ): {
 		symbols: SymbolInformationWithDocumentation[],
 		links: DocumentLink[],
-		functions: MivaScriptFunction[]
+		functions: MivaScriptFunction[],
+		functionCompletionItems: CompletionItem[],
+		functionCompletionMap: Map<string, MarkupContent>
 	} {
 
 		const symbols: SymbolInformationWithDocumentation[] = [];
@@ -1026,10 +1028,22 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 		}
 
+		const functionsArray = Array.from(functions.values());
+		const functionCompletionItems = functionsArray?.map(fn => formatDoValueCompletion(fn));
+		const functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
+
+		// Assign to global map
+		mvDocumentFunctions.set(URI.parse(document.uri).toString(), {
+			functionCompletionItems,
+			functionCompletionMap
+		});
+
 		return {
 			symbols,
 			links,
-			functions: Array.from(functions.values())
+			functions: functionsArray,
+			functionCompletionItems,
+			functionCompletionMap
 		};
 	}
 
@@ -1041,6 +1055,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		return {
 			// @ts-ignore
 			async doValidation( document: TextDocument, settings: Settings ) {
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
+
 				if (!mivaScriptCompilerProvider) {
 					return [];
 				}
@@ -1050,7 +1066,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			doCompletion( document: TextDocument, position: Position ): CompletionList {
 
-				const {document: mvDocument, functionCompletionItems} = mvDocuments.get( document );
+				const {document: mvDocument, links, functionCompletionItems} = mvDocuments.get( document );
 				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
 
 				// determine left side text range
@@ -1098,11 +1114,19 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						return variableCompletions;
 					}
 
-					// Show completion list for operators, builtin functions and document functions
+					// Show completion list for operators, builtin functions and document functions (mvincludes too)
 					return CompletionList.create([
 						...operatorCompletions.items,
 						...builtinFunctionCompletions.items,
-						...functionCompletionItems
+						...functionCompletionItems,
+						// Linked functions via mvinclude
+						...links
+							?.map(link => {
+								const {functionCompletionItems} = mvDocumentFunctions.get(link.target) ?? {};
+
+								return functionCompletionItems ?? [];
+							})
+							?.flat()
 					]);
 
 				}
@@ -1217,10 +1241,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 			},
 
 			async findDefinition( document: TextDocument, position: Position, settings: Settings ) {
+				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				const {document: mvDocument, symbols: documentSymbols} = mvDocuments.get( document );
-
-				await _createMivaScriptWorkspaceSymbols(workspace, settings);
 
 				// Get word
 				const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -1241,9 +1264,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			async onHover (document: TextDocument, position: Position, settings: Settings ) {
 				if (!settings?.mivaScript?.disableHoverDocumentation) {
-					const {document: mvDocument, symbols: documentSymbols, functionCompletionMap} = mvDocuments.get( document );
-
 					await _createMivaScriptWorkspaceSymbols(workspace, settings);
+
+					const {document: mvDocument, symbols: documentSymbols, links, functionCompletionMap} = mvDocuments.get( document );
 
 					// Get word
 					const line = mvDocument.getText( Range.create( position.line, 0, position.line, MAX_LINE_LENGTH ) );
@@ -1311,6 +1334,20 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								return {
 									contents: functionHover
 								};
+							}
+
+							// Loop through linked files and attempt to get hover content
+							for (let link of links) {
+								const {functionCompletionMap} = mvDocumentFunctions.get(link.target) ?? {};
+
+								if (functionCompletionMap) {
+									const foundLinkedFunctionHover = functionCompletionMap.get(word);
+									if (foundLinkedFunctionHover) {
+										return {
+											contents: foundLinkedFunctionHover
+										};
+									}
+								}
 							}
 						}
 
