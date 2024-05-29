@@ -889,8 +889,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				settings: settings
 			});
 
-			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols((document) => {
-				const {symbols} = _mvFindDocumentSymbols(document);
+			mivaScriptWorkspaceSymbols = await workspaceSymbolProvider.provideSymbols((document, lsk) => {
+				const {symbols} = _mvFindDocumentSymbols(document, lsk);
 
 				return symbols;
 			});
@@ -899,17 +899,20 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		return true;
 	}
 
-	function _mvFindDocumentSymbols( document: TextDocument ): {
+	function _mvFindDocumentSymbols( document: TextDocument, lsk?: boolean ): {
 		symbols: SymbolInformationWithDocumentation[],
 		links: DocumentLink[],
-		functions: MivaScriptFunction[],
-		functionCompletionItems: CompletionItem[],
-		functionCompletionMap: Map<string, MarkupContent>
+		functions?: MivaScriptFunction[],
+		functionCompletionItems?: CompletionItem[],
+		functionCompletionMap?: Map<string, MarkupContent>
 	} {
 
 		const symbols: SymbolInformationWithDocumentation[] = [];
 		const links: DocumentLink[] = [];
 		const functions: Map<string, MivaScriptFunction> = new Map();
+		let functionsArray = void 0;
+		let functionCompletionItems = void 0;
+		let functionCompletionMap = void 0;
 
 		const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 		let token = scanner.scan();
@@ -1028,15 +1031,17 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 		}
 
-		const functionsArray = Array.from(functions.values());
-		const functionCompletionItems = functionsArray?.map(fn => formatDoValueCompletion(fn));
-		const functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
-
 		// Assign to global map
-		mvDocumentFunctions.set(URI.parse(document.uri).toString(), {
-			functionCompletionItems,
-			functionCompletionMap
-		});
+		if (!lsk) {
+			functionsArray = Array.from(functions.values());
+			functionCompletionItems = functionsArray?.map(fn => formatDoValueCompletion(fn));
+			functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
+
+			mvDocumentFunctions.set(URI.parse(document.uri).toString(), {
+				functionCompletionItems,
+				functionCompletionMap
+			});
+		}
 
 		return {
 			symbols,
