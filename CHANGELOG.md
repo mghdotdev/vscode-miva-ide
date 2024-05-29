@@ -6,7 +6,7 @@
 
 * Fixed issue where the script compiler would display errors from included files in the main file. Fixes [#109](https://github.com/mghdotdev/vscode-miva-ide/issues/109).
 
-## v1.21.0 (latest)
+## v1.21.0
 
 #### Miva Script
 
