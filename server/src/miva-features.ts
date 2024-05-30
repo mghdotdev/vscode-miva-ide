@@ -842,8 +842,6 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, document, workspace)) ?? [];
 
-				console.log('links', links);
-
 				return links;
 			}
 
