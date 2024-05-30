@@ -68,15 +68,17 @@ export class WorkspaceSymbolProvider {
 	}
 
 	async provideSymbols (iterator: ( document: TextDocument, lsk: boolean ) => SymbolInformationWithDocumentation[]): Promise<SymbolInformationWithDocumentation[]> {
-		let symbols = [];
+		let symbols: SymbolInformationWithDocumentation[] = [];
 		const folders = await this.gatherMivaScriptFoldersFromWorkspace();
 
 		for (let {filePaths, lsk} of folders) {
-			symbols = symbols.concat((await filePaths)?.map(async (filePath) => {
+			const awaitedSymbols = await Promise.all((await filePaths)?.map(async (filePath) => {
 				const document = await this.createTextDocumentFromPath(filePath);
 
 				return iterator(document, lsk);
 			})) ?? [];
+
+			symbols = symbols.concat(awaitedSymbols.flat());
 		}
 
 		return symbols;
