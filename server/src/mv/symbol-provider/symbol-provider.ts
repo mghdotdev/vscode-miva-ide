@@ -2,9 +2,9 @@ import { existsSync } from 'fs';
 import { readFile, readdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { TextDocument } from 'vscode-languageserver-textdocument';
+import { FileSystemDetector } from '../../util/file-system-detector';
 import { uriToFsPath } from '../../util/functions';
 import { SymbolInformationWithDocumentation, Workspace } from '../../util/interfaces';
-import { FileSystemDetector } from './file-system-detector';
 
 // @ts-ignore
 async function walk (dir: string, fileExtension: string): string[] {
