@@ -51,10 +51,33 @@ export class MivaMangedTemplatesProvider {
 
 		for (let parsedItem of parsedItems) {
 			switch (parsedItem.name) {
+				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
 				case 'hdft': {
+					const relativePath = `./templates/cssui-${parsedItem.param.replace(/_/g, '-')}.mvt`;
+					const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+					links.push({
+						range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+						target
+					});
 
 					break;
 				}
+				// <mvt:item name="head" param="head_tag" />
+				case 'head': {
+					if (parsedItem.param === 'head_tag') {
+						const relativePath = `./templates/cssui-global-head.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+							target
+						});
+					}
+
+					break;
+				}
+				// <mvt:item name="html_profile" />
 				case 'html_profile': {
 					if (parsedItem.range) {
 						const relativePath = `./templates/cssui-${parsedItem.name.replace(/_/g, '-')}.mvt`;
