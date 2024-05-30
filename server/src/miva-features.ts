@@ -268,7 +268,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 								parsedItems.push({
 									name: lastItemValue,
-									param: parsedExpression
+									param: attributeValue,
+									expression: parsedExpression
 								});
 							}
 						}

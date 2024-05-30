@@ -45,8 +45,19 @@ export class MivaMangedTemplatesProvider {
 
 		for (let parsedItem of parsedItems) {
 			switch (parsedItem.name) {
+				case 'buttons': {
+					const relativePath = `./properties/cssui_button/${parsedItem.param}.mvt`;
+					const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+
+					links.push({
+						range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+						target
+					});
+
+					break;
+				}
 				case 'readytheme': {
-					for (let fn of parsedItem?.param?.functions) {
+					for (let fn of parsedItem?.expression?.functions) {
 						const fnTextLower = fn.text?.toLowerCase();
 
 						switch (fnTextLower) {
