@@ -1,3 +1,4 @@
+import { MivaExpression } from 'miva-expression-parser';
 import {
 	CodeAction,
 	CodeActionContext,
@@ -11,14 +12,15 @@ import {
 	Hover,
 	MarkupContent,
 	Position,
+	Range,
 	SymbolInformation,
 	WorkspaceFolder
 } from 'vscode-languageserver';
 import {
-	Range,
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 import { MivaScriptCompilerProvider, WorkspaceSymbolProvider } from '../mv/providers';
+import { MivaMangedTemplatesProvider } from '../mvt/providers';
 
 export interface Settings {
 	LSK?: any;
@@ -40,10 +42,13 @@ export interface Languages {
 
 export interface ActivationProviders {
 	workspaceSymbolProvider?: WorkspaceSymbolProvider,
-	mivaScriptCompilerProvider?: MivaScriptCompilerProvider
+	mivaScriptCompilerProvider?: MivaScriptCompilerProvider,
+	mivaManagedTemplatesProvider?: MivaMangedTemplatesProvider
 };
 
 export interface LanguageFeatures {
+
+	onWorkspaceChange? (): void;
 
 	onConfigurationChange? (): void;
 
@@ -59,7 +64,7 @@ export interface LanguageFeatures {
 
 	doCodeAction?: ( document: TextDocument, range: Range, context: CodeActionContext ) => CodeAction[];
 
-	onDocumentLinks?: ( document: TextDocument ) => DocumentLink[];
+	onDocumentLinks?: ( document: TextDocument ) => Promise<DocumentLink[]> | DocumentLink[];
 
 }
 
@@ -75,6 +80,7 @@ export interface MvLanguageModel {
 export interface MvtLanguageModel {
 	symbols: SymbolInformationWithDocumentation[];
 	document: TextDocument;
+	parsedItems: MivaTemplateLanguageParsedItem[];
 }
 
 
@@ -270,4 +276,9 @@ export interface MivaScriptFunctionFile {
 	functions: MivaScriptFunction[];
 	moduleCode?: string;
 	moduleVar?: string;
-}
+};
+
+export interface MivaTemplateLanguageParsedItem {
+	name: string;
+	param: MivaExpression;
+};

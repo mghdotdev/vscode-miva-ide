@@ -1,33 +1,10 @@
 import { existsSync } from 'fs';
-import { readFile, readdir, stat } from 'fs/promises';
-import { join } from 'path';
+import { readFile } from 'fs/promises';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { FileSystemDetector } from '../../util/file-system-detector';
 import { uriToFsPath } from '../../util/functions';
+import { walk } from '../../util/functions-node';
 import { SymbolInformationWithDocumentation, Workspace } from '../../util/interfaces';
-
-// @ts-ignore
-async function walk (dir: string, fileExtension: string): string[] {
-	let files = await readdir(dir);
-
-	// @ts-ignore
-	files = await Promise.all(files.map(async file => {
-		const filePath = join(dir, file);
-		const stats = await stat(filePath);
-
-		if (stats.isDirectory()) {
-			return walk(filePath, fileExtension);
-		}
-		else if (stats.isFile() && file.endsWith(fileExtension)) {
-			return filePath;
-		}
-	}));
-
-	// Filter out undefined entries before concatenating
-	return files
-		.filter(Boolean)
-		.reduce((all, folderContents) => all.concat(folderContents), [])
-}
 
 interface Folder {
 	filePaths: string[];
@@ -84,7 +61,7 @@ export class WorkspaceSymbolProvider {
 			}
 
 			return {
-				filePaths: walk(workspaceFolderPath, '.mv'),
+				filePaths: (await walk(workspaceFolderPath, '.mv')),
 				lsk: lskDetected
 			};
 		}));
