@@ -35,6 +35,10 @@ export class MivaMangedTemplatesProvider {
 		}
 	}
 
+	private getTargetFromRelativePath (relativePath: string, mmtPath: string): string {
+		return URI.parse(resolve(mmtPath, relativePath)).toString();
+	}
+
 	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], document: TextDocument, workspace: Workspace): Promise<DocumentLink[]> {
 		const mmtPath = this.getPath(document.uri);
 		if (!mmtPath) {
@@ -47,11 +51,14 @@ export class MivaMangedTemplatesProvider {
 
 		for (let parsedItem of parsedItems) {
 			switch (parsedItem.name) {
+				case 'hdft': {
+
+					break;
+				}
 				case 'html_profile': {
 					if (parsedItem.range) {
 						const relativePath = `./templates/cssui-${parsedItem.name.replace(/_/g, '-')}.mvt`;
-						const target = URI.parse(resolve(mmtPath, relativePath)).toString();
-
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 						links.push({
 							range: parsedItem.range,
 							target
@@ -62,7 +69,7 @@ export class MivaMangedTemplatesProvider {
 				}
 				case 'buttons': {
 					const relativePath = `./properties/cssui_button/${parsedItem.param}.mvt`;
-					const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+					const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 					links.push({
 						range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
@@ -74,7 +81,7 @@ export class MivaMangedTemplatesProvider {
 				case 'breadcrumbs': {
 					if (parsedItem.range) {
 						const relativePath = `./templates/cssui-${parsedItem.name}.mvt`;
-						const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
 							range: parsedItem.range,
@@ -97,7 +104,7 @@ export class MivaMangedTemplatesProvider {
 
 								if (firstParameterString) {
 									const relativePath = `./properties/readytheme_${fnTextLower?.replace('load_', '')}/${firstParameterString?.text}.mvt`;
-									const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+									const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 									links.push({
 										range: Range.create(document.positionAt(firstParameterString.start), document.positionAt(firstParameterString.end)),
