@@ -59,6 +59,7 @@ export class MivaMangedTemplatesProvider {
 					if (parsedItem.range) {
 						const relativePath = `./templates/cssui-${parsedItem.name.replace(/_/g, '-')}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
 						links.push({
 							range: parsedItem.range,
 							target
