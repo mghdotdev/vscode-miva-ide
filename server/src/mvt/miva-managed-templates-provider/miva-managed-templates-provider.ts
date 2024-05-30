@@ -50,8 +50,8 @@ export class MivaMangedTemplatesProvider {
 						const fnTextLower = fn.text?.toLowerCase();
 
 						switch (fnTextLower) {
-							case 'load_navigation':
-							case 'navigation':
+							case 'load_navigationset':
+							case 'navigationset':
 							case 'load_contentsection':
 							case 'contentsection': {
 								const firstParameterString = fn?.parameters?.[0]?.strings?.[0];
@@ -80,6 +80,6 @@ export class MivaMangedTemplatesProvider {
 			}
 		}
 
-		return [];
+		return links;
 	}
 }
