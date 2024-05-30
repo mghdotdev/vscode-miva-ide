@@ -280,6 +280,7 @@ export interface MivaScriptFunctionFile {
 
 export interface MivaTemplateLanguageParsedItem {
 	name: string;
-	param: string;
-	expression: MivaExpression;
+	param?: string;
+	expression?: MivaExpression;
+	range?: Range;
 };

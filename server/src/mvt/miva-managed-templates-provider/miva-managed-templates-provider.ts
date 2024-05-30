@@ -1,7 +1,7 @@
 import { dirname, resolve } from 'path';
 import { DocumentLink, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { URI } from 'vscode-uri';
+import { URI, Utils } from 'vscode-uri';
 import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
 import { MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
@@ -41,9 +41,12 @@ export class MivaMangedTemplatesProvider {
 			return [];
 		}
 
+		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '');
+
 		const links: DocumentLink[] = [];
 
 		for (let parsedItem of parsedItems) {
+
 			switch (parsedItem.name) {
 				case 'buttons': {
 					const relativePath = `./properties/cssui_button/${parsedItem.param}.mvt`;
@@ -53,6 +56,19 @@ export class MivaMangedTemplatesProvider {
 						range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
 						target
 					});
+
+					break;
+				}
+				case 'breadcrumbs': {
+					if (parsedItem.range) {
+						const relativePath = `./templates/cssui-${parsedItem.name}.mvt`;
+						const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
 
 					break;
 				}
