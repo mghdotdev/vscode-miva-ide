@@ -51,6 +51,20 @@ export class MivaMangedTemplatesProvider {
 
 		for (let parsedItem of parsedItems) {
 			switch (parsedItem.name) {
+				case 'product_display_imagemachine': {
+					const param = parsedItem.param?.replace('_deferred', '');
+
+					if (param === 'head') {
+						const relativePath = `./templates/${fileName}-${parsedItem.name}-${param}.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+							target
+						});
+					}
+					break;
+				}
 				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
 				case 'hdft': {
 					const relativePath = `./templates/cssui-${parsedItem.param.replace(/_/g, '-')}.mvt`;
