@@ -46,8 +46,20 @@ export class MivaMangedTemplatesProvider {
 		const links: DocumentLink[] = [];
 
 		for (let parsedItem of parsedItems) {
-
 			switch (parsedItem.name) {
+				case 'html_profile': {
+					if (parsedItem.range) {
+						const relativePath = `./templates/cssui-${parsedItem.name.replace(/_/g, '-')}.mvt`;
+						const target = URI.parse(resolve(mmtPath, relativePath)).toString();
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
+
+					break;
+				}
 				case 'buttons': {
 					const relativePath = `./properties/cssui_button/${parsedItem.param}.mvt`;
 					const target = URI.parse(resolve(mmtPath, relativePath)).toString();

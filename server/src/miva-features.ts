@@ -283,12 +283,16 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						}
 						break;
 
-					case TokenType.EndTag:
+					case TokenType.StartTagSelfClose:
 						if (lastTagName === 'mvt:item' && lastItemValue && !lastItemParam) {
 							parsedItems.push({
 								name: lastItemValue,
 								range: lastItemValueRange
 							});
+
+							lastItemValue = undefined;
+							lastItemValueRange = undefined;
+							lastItemParam = undefined;
 						}
 						break;
 				}
