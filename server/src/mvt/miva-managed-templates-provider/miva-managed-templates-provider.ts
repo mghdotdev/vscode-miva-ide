@@ -197,6 +197,45 @@ export class MivaMangedTemplatesProvider {
 
 					break;
 				}
+				case 'facets': {
+					if (parsedItem.range) {
+						const relativePath = `./templates/cssui-prodlist-facets.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
+
+					break;
+				}
+				case 'navbar': {
+					if (parsedItem.range) {
+						const relativePath = `./templates/cssui-navbar.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
+
+					break;
+				}
+				case 'category_tree': {
+					if (parsedItem.range) {
+						const relativePath = `./templates/cattree.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
+
+					break;
+				}
 				default: {
 					if (!parsedItem.param && firstFolder === 'templates') {
 						const relativePath = `./templates/${fileNameRoot}-${parsedItem.name}.mvt`;
