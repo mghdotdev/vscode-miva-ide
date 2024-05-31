@@ -1,4 +1,4 @@
-import { dirname, resolve } from 'path';
+import { dirname, relative, resolve, sep } from 'path';
 import { DocumentLink, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
@@ -25,9 +25,7 @@ export class MivaMangedTemplatesProvider {
 		}
 	}
 
-	getPath (documentUri: string): string {
-		const documentPath = uriToFsPath(documentUri);
-
+	getPath (documentPath: string): string {
 		for (let mmtPath of this.mmtPaths) {
 			if (fileIsInFolder(documentPath, mmtPath)) {
 				return mmtPath;
@@ -39,13 +37,26 @@ export class MivaMangedTemplatesProvider {
 		return URI.parse(resolve(mmtPath, relativePath)).toString();
 	}
 
-	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], document: TextDocument, workspace: Workspace): Promise<DocumentLink[]> {
-		const mmtPath = this.getPath(document.uri);
+	private getMmtPathParts (documentPath: string, mmtPath: string): string[] {
+		const relativePath = relative(mmtPath, documentPath);
+
+		return relativePath?.split(new RegExp(sep, 'g'));
+	}
+
+	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], document: TextDocument): Promise<DocumentLink[]> {
+		const documentPath = uriToFsPath(document.uri);
+		const mmtPath = this.getPath(documentPath);
 		if (!mmtPath) {
 			return [];
 		}
 
 		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '');
+		const fileNameFirstPart = fileName.slice(0, fileName.indexOf('-'));
+		const fileNameRoot = fileNameFirstPart === fileName
+			? fileName
+			: fileNameFirstPart;
+
+		const [firstFolder] = this.getMmtPathParts(documentPath, mmtPath) ?? [];
 
 		const links: DocumentLink[] = [];
 
@@ -55,7 +66,7 @@ export class MivaMangedTemplatesProvider {
 					const param = parsedItem.param?.replace('_deferred', '');
 
 					if (param === 'head') {
-						const relativePath = `./templates/${fileName}-${parsedItem.name}-${param}.mvt`;
+						const relativePath = `./templates/${fileNameRoot}-${parsedItem.name}-${param}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
@@ -63,17 +74,25 @@ export class MivaMangedTemplatesProvider {
 							target
 						});
 					}
+
 					break;
 				}
 				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
 				case 'hdft': {
-					const relativePath = `./templates/cssui-${parsedItem.param.replace(/_/g, '-')}.mvt`;
-					const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+					switch (parsedItem.param) {
+						case 'global_header':
+						case 'global_footer': {
+							const relativePath = `./templates/cssui-${parsedItem.param.replace(/_/g, '-')}.mvt`;
+							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
-					links.push({
-						range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
-						target
-					});
+							links.push({
+								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+								target
+							});
+						}
+						default:
+							break;
+					}
 
 					break;
 				}
@@ -159,10 +178,21 @@ export class MivaMangedTemplatesProvider {
 
 					break;
 				}
-				default:
+				default: {
+					if (!parsedItem.param && firstFolder === 'templates') {
+						const relativePath = `./templates/${fileNameRoot}-${parsedItem.name}.mvt`;
+						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+						links.push({
+							range: parsedItem.range,
+							target
+						});
+					}
+
 					break;
-			}
+				}
 		}
+	}
 
 		return links;
 	}
