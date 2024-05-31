@@ -51,7 +51,8 @@ export class MivaMangedTemplatesProvider {
 		}
 
 		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '');
-		const fileNameFirstPart = fileName.slice(0, fileName.indexOf('-'));
+		const foundDashIndex = fileName.indexOf('-');
+		const fileNameFirstPart = fileName.slice(0, foundDashIndex === -1 ? undefined : foundDashIndex);
 		const fileNameRoot = fileNameFirstPart === fileName
 			? fileName
 			: fileNameFirstPart;
