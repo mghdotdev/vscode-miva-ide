@@ -171,6 +171,24 @@ export class MivaMangedTemplatesProvider {
 
 								break;
 							}
+							case 'load_banner':
+							case 'banner':
+							case 'load_image':
+							case 'image': {
+								const firstParameterString = fn?.parameters?.[0]?.strings?.[0];
+
+								if (firstParameterString) {
+									const relativePath = `./properties/readytheme_${fnTextLower?.replace('load_', '')}/${firstParameterString?.text}.json`;
+									const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+									links.push({
+										range: Range.create(document.positionAt(firstParameterString.start), document.positionAt(firstParameterString.end)),
+										target
+									});
+								}
+
+								break;
+							}
 							default:
 								break;
 						}
