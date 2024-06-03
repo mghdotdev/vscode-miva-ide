@@ -1,6 +1,11 @@
 # Miva IDE CHANGELOG
 
-## v1.22.0 (latest)
+## v1.22.1 (latest)
+
+* __MVT:__ Fixed bug where `cssui-` templates were creating links via `<mvt:item>` tags to files that did not exist.
+* __MVT:__ Force lower caseing for template file names when linking.
+
+## v1.22.0
 
 * __MVT:__ Added document links for `<mvt:item>` tags if an [mmt](https://docs.miva.com/miva10/reference-guide/template-branches/template-branches-overview#mmt_overview) folder is detected within the workspace. The list of supported items are:
 	- product_display_imagemachine

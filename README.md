@@ -17,23 +17,23 @@
 
 ## Features
 
-- Syntax highlighting for Miva Script and MVT languages.
-- Syntax highlighting for MVT embedded in CSS and MVT embedded in JavaScript (MVTCSS, MVTJS)
-- Autocompletion for Miva Script and MVT tags.
-- Autocompletion for `<mvt:do>`/`<MvDO>` functions with automatic file path injection.
-- Goto defintion/peek support for `<mvt:do>`/`<MvDO>` functions (requires copy of LSK on your computer).
-- Autocompletion for system variables, global variables and local variables with automatic parsing of open files.
-- Documentation is displayed inline when hovering over variables, functions and tags.
-- Custom tag folding.
-- Snippets for common MVT features including custom fields, readytheme and more.
-- Function that converts entities => variables and variables => entities.
-- Function that calculates the current `l.posX` variable at your current cursor position.
-- Provides warning and error messages and hints users about Miva best practices:
-	- Warns user about XSS vulnerabilities by outputting (via entity or `mvt:eval`) unencoded global variables within their files.
-	- Warns users about using `toolkit` module functions.
-	- Warns users about using `toolbelt` module functions.
-	- Throws error about assigning `g.null` to a new value.
-- Automatic error highlighting for Miva Script syntax. Requires the [Miva Script Compiler](https://www.miva.com/support/downloads) to be installed.
+* Syntax highlighting for Miva Script and MVT languages.
+* Syntax highlighting for MVT embedded in CSS and MVT embedded in JavaScript (MVTCSS, MVTJS)
+* Autocompletion for Miva Script and MVT tags.
+* Autocompletion for `<mvt:do>`/`<MvDO>` functions with automatic file path injection.
+* Goto defintion/peek support for `<mvt:do>`/`<MvDO>` functions (requires copy of LSK on your computer).
+* Autocompletion for system variables, global variables and local variables with automatic parsing of open files.
+* Documentation is displayed inline when hovering over variables, functions and tags.
+* Custom tag folding.
+* Snippets for common MVT features including custom fields, readytheme and more.
+* Function that converts entities => variables and variables => entities.
+* Function that calculates the current `l.posX` variable at your current cursor position.
+* Provides warning and error messages and hints users about Miva best practices:
+	* Warns user about XSS vulnerabilities by outputting (via entity or `mvt:eval`) unencoded global variables within their files.
+	* Warns users about using `toolkit` module functions.
+	* Warns users about using `toolbelt` module functions.
+	* Throws error about assigning `g.null` to a new value.
+* Automatic error highlighting for Miva Script syntax. Requires the [Miva Script Compiler](https://www.miva.com/support/downloads) to be installed.
 
 ## Requirements
 

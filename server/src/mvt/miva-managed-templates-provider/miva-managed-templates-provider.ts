@@ -62,12 +62,15 @@ export class MivaMangedTemplatesProvider {
 		const links: DocumentLink[] = [];
 
 		for (let parsedItem of parsedItems) {
-			switch (parsedItem.name) {
+			const nameLower = parsedItem.name?.toLowerCase();
+			const paramNameLower = parsedItem?.param?.toLowerCase();
+
+			switch (nameLower) {
 				case 'product_display_imagemachine': {
-					const param = parsedItem.param?.replace('_deferred', '');
+					const param = paramNameLower?.replace('_deferred', '');
 
 					if (param === 'head') {
-						const relativePath = `./templates/${fileNameRoot}-${parsedItem.name}-${param}.mvt`;
+						const relativePath = `./templates/${fileNameRoot}-${nameLower}-${param}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
@@ -80,10 +83,10 @@ export class MivaMangedTemplatesProvider {
 				}
 				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
 				case 'hdft': {
-					switch (parsedItem.param) {
+					switch (paramNameLower) {
 						case 'global_header':
 						case 'global_footer': {
-							const relativePath = `./templates/cssui-${parsedItem.param.replace(/_/g, '-')}.mvt`;
+							const relativePath = `./templates/cssui-${paramNameLower.replace(/_/g, '-')}.mvt`;
 							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 							links.push({
@@ -99,7 +102,7 @@ export class MivaMangedTemplatesProvider {
 				}
 				// <mvt:item name="head" param="head_tag" />
 				case 'head': {
-					if (parsedItem.param === 'head_tag') {
+					if (paramNameLower === 'head_tag') {
 						const relativePath = `./templates/cssui-global-head.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
@@ -108,13 +111,29 @@ export class MivaMangedTemplatesProvider {
 							target
 						});
 					}
+					// <mvt:item name="head" param="css:mmx-text" />
+					else {
+						const firstColonIndex = paramNameLower.indexOf(':');
+						if (firstColonIndex !== -1) {
+							const resourceType = paramNameLower.slice(0, firstColonIndex);
+							const resourceName = paramNameLower.slice(firstColonIndex + 1);
+
+							const relativePath = `./${resourceType}/${resourceName}.json`;
+							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+							links.push({
+								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+								target
+							});
+						}
+					}
 
 					break;
 				}
 				// <mvt:item name="html_profile" />
 				case 'html_profile': {
 					if (parsedItem.range) {
-						const relativePath = `./templates/cssui-${parsedItem.name.replace(/_/g, '-')}.mvt`;
+						const relativePath = `./templates/cssui-${nameLower.replace(/_/g, '-')}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
@@ -126,7 +145,7 @@ export class MivaMangedTemplatesProvider {
 					break;
 				}
 				case 'buttons': {
-					const relativePath = `./properties/cssui_button/${parsedItem.param}.mvt`;
+					const relativePath = `./properties/cssui_button/${paramNameLower}.mvt`;
 					const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 					links.push({
@@ -138,7 +157,7 @@ export class MivaMangedTemplatesProvider {
 				}
 				case 'breadcrumbs': {
 					if (parsedItem.range) {
-						const relativePath = `./templates/cssui-${parsedItem.name}.mvt`;
+						const relativePath = `./templates/cssui-${nameLower}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
@@ -237,8 +256,8 @@ export class MivaMangedTemplatesProvider {
 					break;
 				}
 				default: {
-					if (!parsedItem.param && firstFolder === 'templates') {
-						const relativePath = `./templates/${fileNameRoot}-${parsedItem.name}.mvt`;
+					if (!paramNameLower && firstFolder === 'templates' && fileNameFirstPart !== 'cssui') {
+						const relativePath = `./templates/${fileNameRoot}-${nameLower}.mvt`;
 						const target = this.getTargetFromRelativePath(relativePath, mmtPath);
 
 						links.push({
