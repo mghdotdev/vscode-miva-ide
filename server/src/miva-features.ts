@@ -109,6 +109,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Lsk Symbols array
 	let mivaScriptWorkspaceSymbols: SymbolInformationWithDocumentation[] = [];
+	let mivaScriptWorkspaceSymbolsLoading: boolean = false;
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
@@ -344,14 +345,19 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		let mvtTagCompletions: CompletionList;
 		const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
 
+		_createMivaScriptWorkspaceSymbols(workspace, workspace.settings);
+
 		return {
 
 			onWorkspaceChange () {
 				mivaManagedTemplatesProvider?.setPaths(workspace);
+
+				mivaScriptWorkspaceSymbolsLoading = false;
 			},
 
 			onConfigurationChange () {
 				settingsChanged = true;
+				mivaScriptWorkspaceSymbolsLoading = false;
 			},
 
 			doValidation( document: TextDocument, settings: Settings ) {
@@ -932,7 +938,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 			return false;
 		}
 
-		if (mivaScriptWorkspaceSymbols && (mivaScriptWorkspaceSymbols.length === 0 || force)) {
+		if (mivaScriptWorkspaceSymbolsLoading === false || force) {
+			mivaScriptWorkspaceSymbolsLoading = true;
+
 			workspaceSymbolProvider.setWorkspace({
 				folders: [
 					...workspace.folders,

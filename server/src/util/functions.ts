@@ -210,8 +210,8 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 export function getHoverMapFromCompletionFile ( completions: any[], forceLowerCase = false, allowDetailChaning = true ): Map<string, MarkupContent> {
 	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
-		const label = allowDetailChaning && completionItem.detail
-			? `${completionItem.detail}@${completionItem.label}`
+		const label = allowDetailChaning && completionItem?.labelDetails?.description
+			? `${completionItem.labelDetails.description}@${completionItem.label}`
 			: completionItem.label;
 
 		return map.set(
