@@ -4289,6 +4289,96 @@
 		]
 	},
 	{
+		"distroPath": "g.Module_Feature_AI_AD",
+		"functions": [
+			{
+				"name": "AI_StoreSettings_Validate",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AI_StoreSettings_Update",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AI_StoreSettings_Tabs",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AI_StoreSettings_Head",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AI_StoreSettings_Content",
+				"parameters": [],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_AI_DB",
+		"functions": [
+			{
+				"name": "AI_Store_Create",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AI_Store_Delete",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AISettings_Read",
+				"parameters": [
+					"aisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AISettings_Load",
+				"parameters": [
+					"aisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AISettings_Load_Cached",
+				"parameters": [
+					"aisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AISettings_Insert",
+				"parameters": [
+					"aisettings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AISettings_Update",
+				"parameters": [
+					"aisettings var"
+				],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_AI_JSON",
+		"functions": [
+			{
+				"name": "JSON_AIGenerateText",
+				"parameters": [],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
 		"distroPath": "g.Module_Feature_ATT_DB",
 		"functions": [
 			{
@@ -4840,6 +4930,805 @@
 			},
 			{
 				"name": "JSON_AttributeTemplateProduct_Update_Assigned",
+				"parameters": [],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_COL_AD",
+		"functions": [
+			{
+				"name": "Collections_Catalog_Tabs",
+				"parameters": [],
+				"returnValue": "l.void",
+				"description": "Catalog Display"
+			},
+			{
+				"name": "Collections_Catalog_Head",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collections_Catalog_Content",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Action_Collection_Update",
+				"parameters": [],
+				"returnValue": "l.void",
+				"description": "Collection Display"
+			},
+			{
+				"name": "Action_Collection_Delete",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Screen_Collections",
+				"parameters": [],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_COL_DB",
+		"functions": [
+			{
+				"name": "COL_Store_Create",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "COL_Store_Delete",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Read",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Load_ID",
+				"parameters": [
+					"id",
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Load_Code",
+				"parameters": [
+					"code",
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Insert",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Update",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Update_LastRebuild",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Delete_ID",
+				"parameters": [
+					"id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Delete",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Read",
+				"parameters": [
+					"collectionxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Load",
+				"parameters": [
+					"col_id",
+					"product_id",
+					"collectionxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Insert",
+				"parameters": [
+					"collectionxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Update",
+				"parameters": [
+					"collectionxproduct var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Replace_Status_Collection",
+				"parameters": [
+					"col_id",
+					"old_status",
+					"new_status"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Delete",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Delete_All_Collection",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Delete_All_Collection_Status",
+				"parameters": [
+					"col_id",
+					"status"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Delete_All_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionXProduct_Count_Collection",
+				"parameters": [
+					"col_id",
+					"counts var"
+				],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_COL_JSON",
+		"functions": [
+			{
+				"name": "JSON_Collection_Load",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Collection_OnDemandColumns",
+				"parameters": [
+					"collection var",
+					"ondemandcolumns var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_BaseCollectionList_Filters",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_BaseCollectionList_OrderBy",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_BaseCollectionList_Collection_Read",
+				"parameters": [
+					"collection var",
+					"ondemandcolumns var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_BaseCollectionList_Load_Query",
+				"parameters": [
+					"filter var",
+					"sort",
+					"default_sort",
+					"search_query var",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_BaseCollectionList_Load_Query_LowLevel",
+				"parameters": [
+					"filter var",
+					"sort",
+					"filter_columns",
+					"orderby_columns",
+					"default_sort",
+					"callback_filename",
+					"callback_filter",
+					"search_query var",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_BaseCollectionIndex_Load_ID",
+				"parameters": [
+					"filter var",
+					"sort",
+					"default_sort",
+					"query var",
+					"record var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_BaseCollectionIndex_Load_ID_LowLevel",
+				"parameters": [
+					"filter var",
+					"sort",
+					"filter_columns",
+					"orderby_columns",
+					"default_sort",
+					"callback_filename",
+					"callback_filter",
+					"query var",
+					"record var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CollectionList_Load_Query_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_value",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CollectionIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CollectionList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_Collection_Rebuild",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Collection_Metrics",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Collection_Insert",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Collection_Delete",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CollectionProductIndex_Load_ID",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CollectionProductList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CollectionProduct_Update_Assigned",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CollectionProduct_Restore_Automatic",
+				"parameters": [],
+				"returnValue": "l.void"
+			}
+		]
+	},
+	{
+		"distroPath": "g.Module_Feature_COL_UT",
+		"functions": [
+			{
+				"name": "Collection_Rebuild_Products",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void",
+				"description": "Rebuild Functions"
+			},
+			{
+				"name": "Collection_Rebuild_Products_Prepare",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Rebuild_Products_Apply_Filter",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Rebuild_Products_Process_Additions",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Rebuild_Products_Process_Deletions",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Rebuild_Products_Process_Unused",
+				"parameters": [
+					"collection var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections",
+				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Process_Addition",
+				"parameters": [
+					"collection var",
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Process_Deletion",
+				"parameters": [
+					"collection var",
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Process_Unused",
+				"parameters": [
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Apply_Filter",
+				"parameters": [
+					"collection var",
+					"product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Apply_Filter_CustomFields_Filter",
+				"parameters": [
+					"expression var",
+					"field_count var",
+					"outer_joining_clause",
+					"inner_joining_clause",
+					"module var",
+					"search_field",
+					"search_operator",
+					"search_value",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Product_Evaluate_Collections_Apply_Filter_CustomField_Value",
+				"parameters": [
+					"product var",
+					"module var",
+					"field_code"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionCategories_Add_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void",
+				"description": "Product Category Collection Assign/Unassign Helper Functions"
+			},
+			{
+				"name": "CollectionCategories_Remove_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Category_Remove_Unused_Collection_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionCategories_Rebuild_Add_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionCategories_Rebuild_Remove_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionCategories_Rebuild_Remove_Unused_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Add_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void",
+				"description": "Product Price Group Collection Assign/Unassign Helper Functions"
+			},
+			{
+				"name": "CollectionPriceGroups_Remove_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Unused_Collection_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Add_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_Unused_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Add_ExcludedProduct",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void",
+				"description": "Product Price Group Exclusion Collection Assign/Unassign Helper Functions"
+			},
+			{
+				"name": "CollectionPriceGroups_Remove_ExcludedProduct",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Unused_Collection_ExcludedProduct",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Add_ExcludedProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_ExcludedProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_Unused_ExcludedProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Add_QualifyingProduct",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void",
+				"description": "Product Price Group Qualifying Collection Assign/Unassign Helper Functions"
+			},
+			{
+				"name": "CollectionPriceGroups_Remove_QualifyingProduct",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Unused_Collection_QualifyingProduct",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Add_QualifyingProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_QualifyingProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionPriceGroups_Rebuild_Remove_Unused_QualifyingProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionAvailGroups_Add_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void",
+				"description": "Product Availability Group Assign/Unassign Helper Functions"
+			},
+			{
+				"name": "CollectionAvailGroups_Remove_Product",
+				"parameters": [
+					"col_id",
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroup_Remove_Unused_Collection_Product",
+				"parameters": [
+					"product_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionAvailGroups_Rebuild_Add_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionAvailGroups_Rebuild_Remove_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CollectionAvailGroups_Rebuild_Remove_Unused_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Category_Add_Collection_Products",
+				"parameters": [
+					"cat_id",
+					"col_id"
+				],
+				"returnValue": "l.void",
+				"description": "Downstream Object Assign / Unassign Helper Functions"
+			},
+			{
+				"name": "Category_Remove_Collection_Products",
+				"parameters": [
+					"cat_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Remove_All_Category_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Add_Collection_Products",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Collection_Products",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Remove_All_PriceGroup_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Add_Collection_ExcludedProducts",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Collection_ExcludedProducts",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Remove_All_PriceGroup_ExcludedProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Add_Collection_QualifyingProducts",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PriceGroup_Remove_Collection_QualifyingProducts",
+				"parameters": [
+					"pgrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Remove_All_PriceGroup_QualifyingProducts",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroup_Add_Collection_Products",
+				"parameters": [
+					"agrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "AvailGroup_Remove_Collection_Products",
+				"parameters": [
+					"agrp_id",
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Remove_All_AvailGroup_Products",
+				"parameters": [
+					"col_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_Filters",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Collection_MivaScript_Filters",
 				"parameters": [],
 				"returnValue": "l.void"
 			}
@@ -56212,7 +57101,8 @@
 				"name": "StoreCountry_Select",
 				"parameters": [
 					"name",
-					"default"
+					"default",
+					"countries var"
 				],
 				"returnValue": "l.void"
 			},
@@ -61595,7 +62485,8 @@
 				"name": "State_Select",
 				"parameters": [
 					"name",
-					"default"
+					"default",
+					"states var"
 				],
 				"returnValue": "l.void"
 			}
@@ -66422,6 +67313,39 @@
 				"parameters": [
 					"cssresourceversion var",
 					"xref_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexComponent_InitializationTemplate_Create_ManagedTemplate_NoDuplicates",
+				"parameters": [
+					"flex_code",
+					"source var",
+					"settings var",
+					"output_file var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexComponent_InstanceTemplate_Create_ManagedTemplate_NoDuplicates",
+				"parameters": [
+					"flex_code",
+					"source var",
+					"settings var",
+					"output_file var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexComponent_ManagedPropertyVersion_Load_Reuse",
+				"parameters": [
+					"type",
+					"code",
+					"product_id",
+					"cat_id",
+					"sync",
+					"has_template",
+					"managedpropertyversion var"
 				],
 				"returnValue": "l.void"
 			}
