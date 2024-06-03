@@ -95,6 +95,11 @@ This is the existing development flow. When new LSK or Empressa versions are rel
 	- mvtjs will only allow a json encoded console.log wrap
 	- mvt standard will allow the existing 3 (debug, debug-json, debug-textarea)
 
+
+### v1.22.0-rc (next)
+
+* Fixing MivaExpressionParser error for `image` readytheme functions.
+
 ### v1.X.0
 
 - [ ] Fix indentation issues when running Reindent Lines.

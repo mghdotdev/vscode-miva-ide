@@ -1,4 +1,5 @@
 import _get from 'lodash.get';
+import { MivaExpressionParser } from 'miva-expression-parser/dist/esm';
 import {
 	getCSSLanguageService
 } from 'vscode-css-languageservice/lib/esm/cssLanguageService';
@@ -60,6 +61,7 @@ import {
 	ActivationProviders,
 	LanguageFeatures,
 	MivaScriptFunction,
+	MivaTemplateLanguageParsedItem,
 	MvLanguageModel,
 	MvtLanguageModel,
 	Settings,
@@ -73,7 +75,7 @@ import {
 import { getLanguageModelCache } from './util/language-model-cache';
 import patterns from './util/patterns';
 
-export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders) {
+export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerProvider, mivaManagedTemplatesProvider}: ActivationProviders) {
 
 	// Define HTML Language Service helper
 	const htmlLanguageService = getLanguageService();
@@ -185,13 +187,17 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	function baseMVTFeatures(workspace: Workspace, clientCapabilities: ClientCapabilities): LanguageFeatures {
 
-		const findDocumentSymbols = ( document: TextDocument ) => {
+		const parseMvtDocument = ( document: TextDocument ) => {
 			const symbols: SymbolInformationWithDocumentation[] = [];
+			const parsedItems: MivaTemplateLanguageParsedItem[] = [];
 
 			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 			let token = scanner.scan();
 			let lastTagName: string | undefined = undefined;
 			let lastAttributeName: string | undefined = undefined;
+			let lastItemValue: string | undefined = undefined;
+			let lastItemValueRange: Range | undefined = undefined;
+			let lastItemParam: string | undefined = undefined;
 
 			while ( token !== TokenType.EOS ) {
 
@@ -199,6 +205,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 					case TokenType.StartTag:
 						lastTagName = scanner.getTokenText().toLowerCase();
+						lastItemValue = undefined;
+						lastItemValueRange = undefined;
+						lastItemParam = undefined;
 						break;
 
 					case TokenType.AttributeName:
@@ -206,25 +215,25 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						break;
 
 					case TokenType.AttributeValue:
+						// Get attributeValue
+						let attributeValue = scanner.getTokenText().replace( /"/g, '' );
+
+						// Create range
+						const range = Range.create(
+							document.positionAt( scanner.getTokenOffset() + 1 ),
+							document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
+						);
+
 						if ( ( lastTagName === 'mvt:assign' || lastTagName === 'mvt:capture' || lastTagName === 'mvt:do' || lastTagName === 'mvt:foreach' ) && ( lastAttributeName === 'name' || lastAttributeName === 'variable' || lastAttributeName === 'iterator' ) ) {
-
-							// Get name
-							let name = scanner.getTokenText().replace( /"/g, '' );
-
-							// Only push if name is truthy
-							if (name) {
+							// Only push if attributeValue is truthy
+							if (attributeValue) {
 
 								// Add l.settings to iterator value
 								if (lastAttributeName === 'iterator') {
-									name = `l.settings:${name}`;
+									attributeValue = `l.settings:${attributeValue}`;
 								}
 
 								const selfClosing = isTagSelfClosing(lastTagName);
-
-								const range = Range.create(
-									document.positionAt( scanner.getTokenOffset() + 1 ),
-									document.positionAt( scanner.getTokenOffset() + scanner.getTokenLength() - 1 )
-								);
 
 								// Create references to variable symbols
 								symbols.push(
@@ -237,14 +246,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 												'',
 												'```mvt',
 												selfClosing
-													? `<${lastTagName} ${lastAttributeName}="${name}" />`
-													: `<${lastTagName} ${lastAttributeName}="${name}">\n\t...\n</${lastTagName}>`,
+													? `<${lastTagName} ${lastAttributeName}="${attributeValue}" />`
+													: `<${lastTagName} ${lastAttributeName}="${attributeValue}">\n\t...\n</${lastTagName}>`,
 												'```',
 												''
 											].join('\n')
 										},
 										kind: SymbolKind.Variable,
-										name,
+										name: attributeValue,
 										location: Location.create(
 											document.uri,
 											range
@@ -254,15 +263,48 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 							}
 
 						}
+						else if ( lastTagName === 'mvt:item' ) {
+							if (lastAttributeName === 'name') {
+								lastItemValue = attributeValue;
+								lastItemValueRange = range;
+							}
+							else if (lastItemValue && lastAttributeName === 'param') {
+								lastItemParam = attributeValue;
+
+								const parser = new MivaExpressionParser();
+								const parsedExpression = parser.parse(attributeValue, scanner.getTokenOffset() + 1);
+
+								parsedItems.push({
+									name: lastItemValue,
+									param: attributeValue,
+									expression: parsedExpression
+								});
+							}
+						}
 						break;
 
+					case TokenType.StartTagSelfClose:
+						if (lastTagName === 'mvt:item' && lastItemValue && !lastItemParam) {
+							parsedItems.push({
+								name: lastItemValue,
+								range: lastItemValueRange
+							});
+
+							lastItemValue = undefined;
+							lastItemValueRange = undefined;
+							lastItemParam = undefined;
+						}
+						break;
 				}
 
 				token = scanner.scan();
 
 			}
 
-			return symbols;
+			return {
+				symbols,
+				parsedItems
+			};
 		};
 
 		const buildTagCompletionData = (settings: Settings, languageId: string) => {
@@ -283,11 +325,12 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		};
 
 		const mvtDocuments = getLanguageModelCache<MvtLanguageModel>( 10, 60, (document: TextDocument) => {
-			const symbols = findDocumentSymbols( document );
+			const {symbols, parsedItems} = parseMvtDocument( document );
 
 			return {
 				symbols,
-				document
+				document,
+				parsedItems
 			};
 		});
 
@@ -302,6 +345,10 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		const entityCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvtEntityData ) ) );
 
 		return {
+
+			onWorkspaceChange () {
+				mivaManagedTemplatesProvider?.setPaths(workspace);
+			},
 
 			onConfigurationChange () {
 				settingsChanged = true;
@@ -780,7 +827,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				let symbolDocumentation = '';
 
 				for (let symbol of symbols) {
-					const nameLower = symbol.name.toLowerCase();
+					const nameLower = symbol?.name?.toLowerCase();
 					const trimmedValue = symbol?.documentation?.value?.trim();
 
 					// Show variable hover docs
@@ -805,6 +852,18 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				const {symbols} = mvtDocuments.get( document );
 
 				return symbols;
+			},
+
+			async onDocumentLinks ( document: TextDocument ) {
+				if (!mivaManagedTemplatesProvider) {
+					return [];
+				}
+
+				const {parsedItems} = mvtDocuments.get( document );
+
+				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, document)) ?? [];
+
+				return links;
 			}
 
 		};

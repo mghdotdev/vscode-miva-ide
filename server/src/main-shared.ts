@@ -25,7 +25,7 @@ import { activateFeatures } from './miva-features';
 import { formatError, pushAll, runSafe, runSafeAsync } from './util/functions';
 import { ActivationProviders, Languages, Settings, Workspace } from './util/interfaces';
 
-export function activate (connection: Connection, {workspaceSymbolProvider, mivaScriptCompilerProvider}: ActivationProviders = {}) {
+export function activate (connection: Connection, {workspaceSymbolProvider, mivaScriptCompilerProvider, mivaManagedTemplatesProvider}: ActivationProviders = {}) {
 	// ================================================================================================================================ //
 
 	function getDocumentSettings( textDocument: TextDocument ): Thenable<Settings> {
@@ -131,7 +131,8 @@ export function activate (connection: Connection, {workspaceSymbolProvider, miva
 
 		const { baseMVTFeatures, getMVFeatures, getMVTCSSFeatures, getMVTFeatures } = activateFeatures({
 			workspaceSymbolProvider,
-			mivaScriptCompilerProvider
+			mivaScriptCompilerProvider,
+			mivaManagedTemplatesProvider
 		});
 
 		const baseFeatures = baseMVTFeatures( workspace, params.capabilities );
@@ -183,6 +184,11 @@ export function activate (connection: Connection, {workspaceSymbolProvider, miva
 
 			connection.client.register( DidChangeWorkspaceFoldersNotification.type );
 
+			// Trigger workspace change function on every language
+			for (let language in languages) {
+				languages[language]?.onWorkspaceChange?.();
+			}
+
 			connection.onNotification(
 				DidChangeWorkspaceFoldersNotification.type,
 				e => {
@@ -201,6 +207,11 @@ export function activate (connection: Connection, {workspaceSymbolProvider, miva
 
 					workspaceFolders = updatedFolders.concat( toAdd );
 					documents.all().forEach( triggerValidation );
+
+					// Trigger workspace change function on every language
+					for (let language in languages) {
+						languages[language]?.onWorkspaceChange?.();
+					}
 
 				}
 			);

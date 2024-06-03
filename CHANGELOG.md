@@ -1,17 +1,28 @@
 # Miva IDE CHANGELOG
 
-## v1.21.1 (latest)
+## v1.22.0 (latest)
 
-#### Miva Script
+* __MVT:__ Added document links for `<mvt:item>` tags if an [mmt](https://docs.miva.com/miva10/reference-guide/template-branches/template-branches-overview#mmt_overview) folder is detected within the workspace. The list of supported items are:
+	- product_display_imagemachine
+	- hdft
+	- head
+	- html_profile
+	- buttons
+	- breadcrumbs
+	- readytheme
+	- facets
+	- navbar
+	- category_tree
+* Fixed bug where Miva Script symbols, including LSK ones, were no longer available.
 
-* Fixed issue where the script compiler would display errors from included files in the main file. Fixes [#109](https://github.com/mghdotdev/vscode-miva-ide/issues/109).
+## v1.21.1
+
+* __Miva Script:__ Fixed issue where the script compiler would display errors from included files in the main file. Fixes [#109](https://github.com/mghdotdev/vscode-miva-ide/issues/109).
 
 ## v1.21.0
 
-#### Miva Script
-
-* Added autocompletion for functions defined in files linked via `<MvINCLUDE>` tags.
-* Added hover documentation for functions defined in files linked via `<MvINCLUDE>` tags.
+* __Miva Script:__ Added autocompletion for functions defined in files linked via `<MvINCLUDE>` tags.
+* __Miva Script:__ Added hover documentation for functions defined in files linked via `<MvINCLUDE>` tags.
 
 ## v1.20.0
 

@@ -1,33 +1,10 @@
 import { existsSync } from 'fs';
-import { readFile, readdir, stat } from 'fs/promises';
-import { join } from 'path';
+import { readFile } from 'fs/promises';
 import { TextDocument } from 'vscode-languageserver-textdocument';
+import { FileSystemDetector } from '../../util/file-system-detector';
 import { uriToFsPath } from '../../util/functions';
+import { walk } from '../../util/functions-node';
 import { SymbolInformationWithDocumentation, Workspace } from '../../util/interfaces';
-import { FileSystemDetector } from './file-system-detector';
-
-// @ts-ignore
-async function walk (dir: string, fileExtension: string): string[] {
-	let files = await readdir(dir);
-
-	// @ts-ignore
-	files = await Promise.all(files.map(async file => {
-		const filePath = join(dir, file);
-		const stats = await stat(filePath);
-
-		if (stats.isDirectory()) {
-			return walk(filePath, fileExtension);
-		}
-		else if (stats.isFile() && file.endsWith(fileExtension)) {
-			return filePath;
-		}
-	}));
-
-	// Filter out undefined entries before concatenating
-	return files
-		.filter(Boolean)
-		.reduce((all, folderContents) => all.concat(folderContents), [])
-}
 
 interface Folder {
 	filePaths: string[];
@@ -84,22 +61,24 @@ export class WorkspaceSymbolProvider {
 			}
 
 			return {
-				filePaths: walk(workspaceFolderPath, '.mv'),
+				filePaths: (await walk(workspaceFolderPath, '.mv')),
 				lsk: lskDetected
 			};
 		}));
 	}
 
 	async provideSymbols (iterator: ( document: TextDocument, lsk: boolean ) => SymbolInformationWithDocumentation[]): Promise<SymbolInformationWithDocumentation[]> {
-		let symbols = [];
+		let symbols: SymbolInformationWithDocumentation[] = [];
 		const folders = await this.gatherMivaScriptFoldersFromWorkspace();
 
 		for (let {filePaths, lsk} of folders) {
-			symbols = symbols.concat((await filePaths)?.map(async (filePath) => {
+			const awaitedSymbols = await Promise.all((await filePaths)?.map(async (filePath) => {
 				const document = await this.createTextDocumentFromPath(filePath);
 
 				return iterator(document, lsk);
 			})) ?? [];
+
+			symbols = symbols.concat(awaitedSymbols.flat());
 		}
 
 		return symbols;
