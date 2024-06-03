@@ -1,6 +1,11 @@
 # Miva IDE CHANGELOG
 
-## v1.22.1 (latest)
+## v1.22.2 (latest)
+
+* Fixed issue where Miva Merchant functions were not providing hover documentation.
+* Fixed performance issue when initializing the workspace.
+
+## v1.22.1
 
 * __MVT:__ Fixed bug where `cssui-` templates were creating links via `<mvt:item>` tags to files that did not exist.
 * __MVT:__ Force lower caseing for template file names when linking.
