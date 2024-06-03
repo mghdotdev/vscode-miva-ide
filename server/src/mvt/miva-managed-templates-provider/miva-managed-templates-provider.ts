@@ -111,6 +111,22 @@ export class MivaMangedTemplatesProvider {
 							target
 						});
 					}
+					// <mvt:item name="head" param="css:mmx-text" />
+					else {
+						const firstColonIndex = paramNameLower.indexOf(':');
+						if (firstColonIndex !== -1) {
+							const resourceType = paramNameLower.slice(0, firstColonIndex);
+							const resourceName = paramNameLower.slice(firstColonIndex + 1);
+
+							const relativePath = `./${resourceType}/${resourceName}.json`;
+							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+							links.push({
+								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+								target
+							});
+						}
+					}
 
 					break;
 				}
