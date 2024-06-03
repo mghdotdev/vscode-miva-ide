@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.22.2 (latest)
+## v1.23.0 (latest)
+
+* Added Miva Merchant 10.09.01 LSK data.
+
+## v1.22.2
 
 * Fixed issue where Miva Merchant functions were not providing hover documentation.
 * Fixed performance issue when initializing the workspace.
