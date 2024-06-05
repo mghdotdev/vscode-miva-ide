@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.23.0 (latest)
+## v1.23.1 (latest)
+
+* Currency module functions will use global variable for file attribute now. Fixes issue [#117](https://github.com/mghdotdev/vscode-miva-ide/issues/117).
+
+## v1.23.0
 
 * Added Miva Merchant 10.09.01 LSK data.
 

@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.23.0",
+	"version": "1.23.1",
 	"engines": {
 		"vscode": "^1.77.0",
 		"node": ">=16"
@@ -353,7 +353,7 @@
 		"esbuild": "^0.19.5",
 		"glob": "^7.2.2",
 		"js-yaml": "^3.14.0",
-		"miva-lsk-tools": "^1.7.0",
+		"miva-lsk-tools": "^1.8.0",
 		"typescript": "^5.0.4"
 	}
 }
