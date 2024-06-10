@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.23.1 (latest)
+## v1.23.2 (latest)
+
+* Updated `miva-expression-parser` to `v0.3.0`. This should resolve an issue with `image` and `load_image` ReadyTheme functions not being parsed correctly.
+
+## v1.23.1
 
 * Currency module functions will use global variable for file attribute now. Fixes issue [#117](https://github.com/mghdotdev/vscode-miva-ide/issues/117).
 
