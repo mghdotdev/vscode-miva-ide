@@ -27,9 +27,9 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
-import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
+import validationTests from './data/mvt/validation.json';
 import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
