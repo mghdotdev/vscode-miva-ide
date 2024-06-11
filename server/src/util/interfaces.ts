@@ -242,6 +242,16 @@ export interface SystemVariableData extends BaseSystemVariableData {
 	documentation: string;
 }
 
+export interface BaseGlobalVariableData {
+	kind: CompletionItemKind;
+}
+
+export interface GlobalVariableData extends BaseGlobalVariableData {
+	label: string;
+	detail: string;
+	documentation: string;
+}
+
 export interface SymbolInformationWithDocumentation extends SymbolInformation {
 	documentation?: MarkupContent;
 };
