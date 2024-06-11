@@ -1,4 +1,5 @@
 import _cloneDeep from 'lodash.clonedeep';
+import { MivaExpressionDataFunction, MivaExpressionDataFunctionSource, MivaExpressionDataParameterType } from 'miva-expression-parser/dist/esm';
 import setImmediateShim from 'set-immediate-shim';
 import { HTMLDocument, Node } from 'vscode-html-languageservice';
 import {
@@ -174,7 +175,7 @@ export function formatDoValueCompletion( fn: MivaScriptFunction, file?: MivaScri
 
 }
 
-export function getDoValueCompletions( merchantFunctionFiles: any[] ): CompletionList {
+export function getDoValueCompletions( merchantFunctionFiles: MivaScriptFunctionFile[] ): CompletionList {
 
 	let doValueCompletions: Map<string, CompletionItem> = new Map();
 
@@ -208,6 +209,19 @@ export function getDoValueCompletions( merchantFunctionFiles: any[] ): Completio
 
 }
 
+export function getDoFileCompletions(merchantFunctionFiles: MivaScriptFunctionFile[]): CompletionList {
+	let completions: Map<string, CompletionItem> = new Map();
+
+	for (let file of merchantFunctionFiles) {
+		completions.set(file.distroPath, {
+			label: file.distroPath,
+			kind: CompletionItemKind.File
+		});
+	}
+
+	return CompletionList.create(Array.from(completions.values()));
+}
+
 export function getHoverMapFromCompletionFile ( completions: any[], forceLowerCase = false, allowDetailChaning = true ): Map<string, MarkupContent> {
 	return completions.reduce((map: Map<string, MarkupContent>, completionItem: CompletionItem) => {
 		const label = allowDetailChaning && completionItem?.labelDetails?.description
@@ -221,6 +235,32 @@ export function getHoverMapFromCompletionFile ( completions: any[], forceLowerCa
 			completionItem.documentation as MarkupContent
 		);
 	}, new Map());
+}
+
+export function getDoDataManagerFunctions ( merchantFunctionFiles: MivaScriptFunctionFile[] ): MivaExpressionDataFunction[] {
+	const functions: MivaExpressionDataFunction[] = [];
+
+	for (let functionFile of merchantFunctionFiles) {
+		for (let fn of functionFile.functions) {
+			functions.push({
+				name: fn.name,
+				source: MivaExpressionDataFunctionSource.MivaMerchant,
+				parameters: fn.parameters.map(parameter => {
+					const isVar = parameter.endsWith(' var');
+
+					return {
+						name: parameter,
+						definition: isVar,
+						type: isVar
+							? MivaExpressionDataParameterType.Variable
+							: MivaExpressionDataParameterType.Literal
+					};
+				})
+			});
+		}
+	}
+
+	return functions;
 }
 
 export function parseCompletion( input: any ) {

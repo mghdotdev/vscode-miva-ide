@@ -264,7 +264,7 @@ export interface OperatorData extends BaseOperatorData {
 }
 
 export interface MivaScriptFunction {
-	uri: string;
+	uri?: string;
 	name: string;
 	parameters: string[];
 	description?: string;
