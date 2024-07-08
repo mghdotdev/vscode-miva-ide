@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.23.2 (latest)
+## v1.23.3 (latest)
+
+* Resolved issue where hovering a function may not work due to a reference being a different case than the stored data.
+
+## v1.23.2
 
 * Updated `miva-expression-parser` to `v0.3.0`. This should resolve an issue with `image` and `load_image` ReadyTheme functions not being parsed correctly.
 
