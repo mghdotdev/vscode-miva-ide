@@ -86,9 +86,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Completion data
 	const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
-	const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items );
+	const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items, true );
 	const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
-	const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
+	const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData, false );
 	const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
 	const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
 
@@ -748,7 +748,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						if (tagNameLower === 'do') {
 							// Get item name
 							const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
-							const key = `${doFile}@${word}`;
+							const key = `${doFile?.trim()?.toLowerCase()}@${wordLower}`;
 
 							const foundDoHover = doValueHoverMap.get(key);
 							if (foundDoHover) {
@@ -1102,7 +1102,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		if (!lsk) {
 			functionsArray = Array.from(functions.values());
 			functionCompletionItems = functionsArray?.map(fn => formatDoValueCompletion(fn));
-			functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
+			functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems, true, false );
 
 			mvDocumentFunctions.set(URI.parse(document.uri).toString(), {
 				functionCompletionItems,
@@ -1380,7 +1380,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						// If after `[].` notation
 						if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
 							const [, doFile] = safeMatch(left, patterns.MV.LEFT_DO_FILE_BRACKET_DOT);
-							const key = `${doFile?.trim()}@${word}`;
+							const key = `${doFile?.trim()?.toLowerCase()}@${wordLower}`;
 
 							const foundDoHover = doValueHoverMap.get(key);
 							if (foundDoHover) {
@@ -1401,7 +1401,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 							}
 
 							// Self defined function lookup
-							const functionHover = functionCompletionMap.get(word);
+							const functionHover = functionCompletionMap.get(wordLower);
 							if (functionHover) {
 								return {
 									contents: functionHover
@@ -1413,7 +1413,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								const {functionCompletionMap} = mvDocumentFunctions.get(link.target) ?? {};
 
 								if (functionCompletionMap) {
-									const foundLinkedFunctionHover = functionCompletionMap.get(word);
+									const foundLinkedFunctionHover = functionCompletionMap.get(wordLower);
 									if (foundLinkedFunctionHover) {
 										return {
 											contents: foundLinkedFunctionHover
@@ -1459,10 +1459,11 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								// Get item name
 								const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
 								const doFileNoExpression = doFile
-									.replace(/[\{\}]/g, '')
-									.trim();
+									?.replace(/[\{\}]/g, '')
+									?.trim()
+									?.toLowerCase();
 
-								const key = `${doFileNoExpression}@${word}`;
+								const key = `${doFileNoExpression}@${wordLower}`;
 
 								const foundDoHover = doValueHoverMap.get(key);
 								if (foundDoHover) {
