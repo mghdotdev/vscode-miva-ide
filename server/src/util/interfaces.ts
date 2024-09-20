@@ -81,6 +81,7 @@ export interface MvtLanguageModel {
 	symbols: SymbolInformationWithDocumentation[];
 	document: TextDocument;
 	parsedItems: MivaTemplateLanguageParsedItem[];
+	parsedFragments: MivaTemplateLanguageParsedFragment[];
 }
 
 
@@ -284,3 +285,8 @@ export interface MivaTemplateLanguageParsedItem {
 	expression?: MivaExpression;
 	range?: Range;
 };
+
+export interface MivaTemplateLanguageParsedFragment {
+	code: string;
+	range: Range;
+}

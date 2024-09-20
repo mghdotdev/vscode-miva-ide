@@ -61,6 +61,7 @@ import {
 	ActivationProviders,
 	LanguageFeatures,
 	MivaScriptFunction,
+	MivaTemplateLanguageParsedFragment,
 	MivaTemplateLanguageParsedItem,
 	MvLanguageModel,
 	MvtLanguageModel,
@@ -191,6 +192,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		const parseMvtDocument = ( document: TextDocument ) => {
 			const symbols: SymbolInformationWithDocumentation[] = [];
 			const parsedItems: MivaTemplateLanguageParsedItem[] = [];
+			const parsedFragments: MivaTemplateLanguageParsedFragment[] = [];
 
 			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 			let token = scanner.scan();
@@ -282,6 +284,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								});
 							}
 						}
+						else if ( lastTagName === 'mvt:fragment' ) {
+							if (lastAttributeName === 'code') {
+								parsedFragments.push({
+									code: attributeValue,
+									range: range
+								});
+							}
+						}
 						break;
 
 					case TokenType.StartTagSelfClose:
@@ -304,7 +314,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			return {
 				symbols,
-				parsedItems
+				parsedItems,
+				parsedFragments
 			};
 		};
 
@@ -326,12 +337,13 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		};
 
 		const mvtDocuments = getLanguageModelCache<MvtLanguageModel>( 10, 60, (document: TextDocument) => {
-			const {symbols, parsedItems} = parseMvtDocument( document );
+			const {symbols, parsedItems, parsedFragments} = parseMvtDocument( document );
 
 			return {
 				symbols,
 				document,
-				parsedItems
+				parsedItems,
+				parsedFragments
 			};
 		});
 
@@ -865,9 +877,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					return [];
 				}
 
-				const {parsedItems} = mvtDocuments.get( document );
+				const {parsedItems, parsedFragments} = mvtDocuments.get( document );
 
-				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, document)) ?? [];
+				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, parsedFragments, document)) ?? [];
 
 				return links;
 			}
