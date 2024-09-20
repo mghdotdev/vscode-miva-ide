@@ -243,6 +243,11 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_MaintenanceMode_Bypass",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_MaintenanceMode_StoreClosed",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -915,6 +920,20 @@
 					"query var",
 					"params var",
 					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Filter_Search_Is_Conjunctive",
+				"parameters": [
+					"filterlist var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Filter_Search_Is_Conjunctive_Child",
+				"parameters": [
+					"value var"
 				],
 				"returnValue": "l.void"
 			},
@@ -2080,6 +2099,11 @@
 			},
 			{
 				"name": "DrawButton_CopyLayout",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DrawButton_CopyFragment",
 				"parameters": [],
 				"returnValue": "l.void"
 			},
@@ -11342,9 +11366,28 @@
 			{
 				"name": "JSON_PageBuilderPage_Update_LowLevel",
 				"parameters": [
-					"page_id",
-					"updatedmanagedtemplateversion var"
+					"page_id"
 				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilderPreviewSessionFragmentKey_Generate",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilderPreviewSessionFragmentKey_KeepAlive",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilderPreviewSessionFragmentKey_Cleanup",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_MaintenanceMode_Bypass_PageBuilderPage_Preview",
+				"parameters": [],
 				"returnValue": "l.void"
 			},
 			{
@@ -11354,14 +11397,18 @@
 			},
 			{
 				"name": "JSON_PageBuilderPage_Preview_ValidatePreviewSession",
-				"parameters": [],
+				"parameters": [
+					"pagebuilderpreviewsession var",
+					"pagebuilderpreviewsessionfragmentkey var"
+				],
 				"returnValue": "l.void"
 			},
 			{
 				"name": "JSON_PageBuilderPage_Preview_LowLevel",
 				"parameters": [
 					"page_id",
-					"page var"
+					"pagebuilderpreviewsession var",
+					"pagebuilderpreviewsessionfragmentkey var"
 				],
 				"returnValue": "l.void"
 			},
@@ -11385,7 +11432,9 @@
 					"data var",
 					"page var",
 					"managedtemplate var",
-					"managedtemplateversion var"
+					"managedtemplateversion var",
+					"global_components var",
+					"global_component_count var"
 				],
 				"returnValue": "l.void"
 			},
@@ -11404,6 +11453,17 @@
 				"parameters": [
 					"input_settings var",
 					"properties var",
+					"output_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilder_Element_Validate_Property_WithVisibilityConditions",
+				"parameters": [
+					"input_settings var",
+					"properties var",
+					"property var",
+					"processed_properties var",
 					"output_settings var"
 				],
 				"returnValue": "l.void"
@@ -11526,7 +11586,43 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_PageBuilder_Element_Validate_Property_ProductCustomFieldLookup",
+				"parameters": [
+					"input_settings var",
+					"property var",
+					"output_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_PageBuilder_Element_Validate_Property_Category",
+				"parameters": [
+					"input_settings var",
+					"property var",
+					"output_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilder_Element_Validate_Property_CustomLookup",
+				"parameters": [
+					"input_settings var",
+					"property var",
+					"output_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilder_Element_Validate_Property_Fragment",
+				"parameters": [
+					"input_settings var",
+					"property var",
+					"output_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_PageBuilder_Element_Validate_Property_ImageType",
 				"parameters": [
 					"input_settings var",
 					"property var",
@@ -11605,6 +11701,69 @@
 				"parameters": [
 					"pagebuilderpreviewsession var"
 				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreviewSessionFragmentKey_Generate",
+				"parameters": [
+					"pagebuilderpreviewsession var",
+					"pagebuilderpreviewsessionfragmentkey var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_Start",
+				"parameters": [
+					"pagebuilderpreviewsession var",
+					"pagebuilderpreviewsessionfragmentkey var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_Active",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_FragmentKey",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_FragmentReplacementToken",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_StoreFragmentSettings",
+				"parameters": [
+					"page_code",
+					"settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_OverrideFragmentSettings",
+				"parameters": [
+					"fragment var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_RenderPage",
+				"parameters": [
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilderPreview_End",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PageBuilder_CMark_Supported",
+				"parameters": [],
 				"returnValue": "l.void"
 			}
 		]
@@ -14089,9 +14248,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_PriceGroupExclusions_Validate",
+				"parameters": [
+					"pricegroup var",
+					"pricegroupexclusions var",
+					"pricegroupexclusion_count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_PriceGroupExclusions_Insert",
 				"parameters": [
-					"pricegroup var"
+					"pricegroup var",
+					"pricegroupexclusions var",
+					"pricegroupexclusion_count"
 				],
 				"returnValue": "l.void"
 			},
@@ -16550,10 +16720,21 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "PRV_PriceGroup_Exclusions",
+				"name": "PRV_PriceGroup_Exclusions_Validate",
 				"parameters": [
 					"provide_xml var",
-					"pricegroup var"
+					"pricegroup var",
+					"pricegroupexclusions var",
+					"pricegroupexclusion_count var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "PRV_PriceGroup_Exclusions_Insert",
+				"parameters": [
+					"pricegroup var",
+					"pricegroupexclusions var",
+					"pricegroupexclusion_count var"
 				],
 				"returnValue": "l.void"
 			},
@@ -22311,9 +22492,8 @@
 			{
 				"name": "Page_Load_Reuse",
 				"parameters": [
-					"code",
-					"admin",
-					"page var"
+					"existing_page var",
+					"reused_page var"
 				],
 				"returnValue": "l.void"
 			},
@@ -22321,9 +22501,8 @@
 				"name": "Page_Load_Branch_Reuse",
 				"parameters": [
 					"branch_id",
-					"code",
-					"admin",
-					"page var"
+					"existing_page var",
+					"reused_page var"
 				],
 				"returnValue": "l.void"
 			},
@@ -22331,18 +22510,16 @@
 				"name": "Page_Load_Reuse_Existing_OtherBranch",
 				"parameters": [
 					"branch_id",
-					"code",
-					"admin",
-					"page var"
+					"existing_page var",
+					"reused_page var"
 				],
 				"returnValue": "l.void"
 			},
 			{
 				"name": "Page_Load_Reuse_Deleted",
 				"parameters": [
-					"code",
-					"admin",
-					"page var"
+					"existing_page var",
+					"reused_page var"
 				],
 				"returnValue": "l.void"
 			},
@@ -22454,6 +22631,21 @@
 			},
 			{
 				"name": "PageList_Load_Branch_All_Layout",
+				"parameters": [
+					"branch_id",
+					"pages var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "PageList_Load_All_Fragment",
+				"parameters": [
+					"pages var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "PageList_Load_Branch_All_Fragment",
 				"parameters": [
 					"branch_id",
 					"pages var"
@@ -23209,6 +23401,23 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "ItemModuleList_Load_Fragment_Render",
+				"parameters": [
+					"page_id",
+					"items var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "ItemModuleList_Load_Branch_Fragment_Render",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"items var"
+				],
+				"returnValue": "l.count"
+			},
+			{
 				"name": "ItemExtensionModuleList_Load_Page_Render",
 				"parameters": [
 					"page_id",
@@ -23218,6 +23427,23 @@
 			},
 			{
 				"name": "ItemExtensionModuleList_Load_Branch_Page_Render",
+				"parameters": [
+					"branch_id",
+					"page_id",
+					"items var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "ItemExtensionModuleList_Load_Fragment_Render",
+				"parameters": [
+					"page_id",
+					"items var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "ItemExtensionModuleList_Load_Branch_Fragment_Render",
 				"parameters": [
 					"branch_id",
 					"page_id",
@@ -28151,6 +28377,17 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "JSON_PageItemList_Load_Query_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_value",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
 				"name": "JSON_PageItemList_Load_Query",
 				"parameters": [],
 				"returnValue": "l.count"
@@ -29328,6 +29565,38 @@
 				"name": "JSON_CopyPageRulesSettings_Update_Assigned",
 				"parameters": [],
 				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Branch_Session_Filename",
+				"parameters": [
+					"prefix",
+					"session_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Branch_Session_Serialize",
+				"parameters": [
+					"filename",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Branch_Session_Deserialize",
+				"parameters": [
+					"filename",
+					"session_id",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Page_Type",
+				"parameters": [
+					"page var"
+				],
+				"returnValue": "l.void"
 			}
 		]
 	},
@@ -29476,6 +29745,18 @@
 			},
 			{
 				"name": "TemplateManager_Create_Page_Layout",
+				"parameters": [
+					"code",
+					"name",
+					"ui_id",
+					"template",
+					"settings var",
+					"page var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Create_Page_Fragment",
 				"parameters": [
 					"code",
 					"name",
@@ -29994,6 +30275,32 @@
 					"settings var",
 					"item",
 					"param"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Fragment_Render",
+				"parameters": [
+					"page_settings var",
+					"code",
+					"share var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Fragment_Render_LowLevel",
+				"parameters": [
+					"page_settings var",
+					"fragment var",
+					"share var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Item_Initialized",
+				"parameters": [
+					"all_settings var",
+					"item_code"
 				],
 				"returnValue": "l.void"
 			},
@@ -30906,6 +31213,47 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "TemplateManager_Create_Branch_Session_Init",
+				"parameters": [
+					"parent_branch var",
+					"parent_changeset var",
+					"branch var",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Create_Branch_Session_Init_LowLevel",
+				"parameters": [
+					"parent_branch var",
+					"parent_changeset var",
+					"branch var",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Create_Branch_Session_Process",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Create_Branch_Session_Process_LowLevel",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Create_Branch_Session_Finalize",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "TemplateManager_Copy_Branch",
 				"parameters": [
 					"source_branch var",
@@ -30913,6 +31261,49 @@
 					"dest_branch var",
 					"notes",
 					"dest_changeset var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Session_Init",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
+					"notes",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Session_Init_LowLevel",
+				"parameters": [
+					"source_branch var",
+					"source_changeset var",
+					"dest_branch var",
+					"notes",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Session_Process",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Session_Process_LowLevel",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Copy_Branch_Session_Finalize",
+				"parameters": [
+					"session var"
 				],
 				"returnValue": "l.void"
 			},
@@ -30984,6 +31375,49 @@
 					"dest_branch var",
 					"notes",
 					"dest_changeset var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Merge_Changesets_Session_Init",
+				"parameters": [
+					"source_changesets var",
+					"source_changeset_count",
+					"dest_branch var",
+					"notes",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Merge_Changesets_Session_Init_LowLevel",
+				"parameters": [
+					"source_changesets var",
+					"source_changeset_count",
+					"dest_branch var",
+					"notes",
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Merge_Changesets_Session_Process",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Merge_Changesets_Session_Process_LowLevel",
+				"parameters": [
+					"session var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Merge_Changesets_Session_Finalize",
+				"parameters": [
+					"session var"
 				],
 				"returnValue": "l.void"
 			},
@@ -31391,6 +31825,11 @@
 					"sha1 var",
 					"script var"
 				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "TemplateManager_Session_Recycle_Recommended",
+				"parameters": [],
 				"returnValue": "l.void"
 			}
 		]
@@ -32162,6 +32601,18 @@
 			},
 			{
 				"name": "CopyPage_Copy_Cacheset",
+				"parameters": [
+					"copypagerules var",
+					"source_branch var",
+					"source_page var",
+					"dest_branch var",
+					"dest_page var",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CopyPage_Copy_Public",
 				"parameters": [
 					"copypagerules var",
 					"source_branch var",
@@ -35701,6 +36152,11 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "JSON_ProductCustomFieldList_Load_Query",
+				"parameters": [],
+				"returnValue": "l.count"
+			},
+			{
 				"name": "JSON_Product_Loaders_Present",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -36157,6 +36613,16 @@
 				"parameters": [],
 				"returnValue": "l.void",
 				"description": "Product Shipping Rules"
+			},
+			{
+				"name": "ProductCustomFieldList_Sort_Callback",
+				"parameters": [
+					"left var",
+					"right var",
+					"sort var"
+				],
+				"returnValue": "l.void",
+				"description": "Helper functions"
 			}
 		]
 	},
@@ -36942,6 +37408,14 @@
 				"name": "JSON_Runtime_Product",
 				"parameters": [
 					"product var",
+					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_Product_Fragments",
+				"parameters": [
+					"json_product var",
 					"data var"
 				],
 				"returnValue": "l.void"
@@ -45060,6 +45534,15 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "OrderPaymentList_Load_Order_Module_Capture",
+				"parameters": [
+					"order_id",
+					"module_id",
+					"orderpayments var"
+				],
+				"returnValue": "l.count"
+			},
+			{
 				"name": "OrderPayment_Update_Amounts",
 				"parameters": [
 					"orderpayment var"
@@ -46823,11 +47306,6 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "Pack",
-				"parameters": [],
-				"returnValue": "l.void"
-			},
-			{
 				"name": "DB_Index_DESC",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -46907,6 +47385,27 @@
 					"table",
 					"index",
 					"exists var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_TableList_Load",
+				"parameters": [
+					"tables var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "DB_Table_Optimize",
+				"parameters": [
+					"table"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_Table_Analyze",
+				"parameters": [
+					"table"
 				],
 				"returnValue": "l.void"
 			},
@@ -47161,11 +47660,6 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "Pack",
-				"parameters": [],
-				"returnValue": "l.void"
-			},
-			{
 				"name": "DB_Index_DESC",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -47236,6 +47730,27 @@
 				"parameters": [
 					"table",
 					"index"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_TableList_Load",
+				"parameters": [
+					"tables var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "DB_Table_Optimize",
+				"parameters": [
+					"table"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_Table_Analyze",
+				"parameters": [
+					"table"
 				],
 				"returnValue": "l.void"
 			},
@@ -47499,11 +48014,6 @@
 				"returnValue": "l.void"
 			},
 			{
-				"name": "Pack",
-				"parameters": [],
-				"returnValue": "l.void"
-			},
-			{
 				"name": "DB_Index_DESC",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -47583,6 +48093,27 @@
 					"table",
 					"index",
 					"exists var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_TableList_Load",
+				"parameters": [
+					"tables var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "DB_Table_Optimize",
+				"parameters": [
+					"table"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "DB_Table_Analyze",
+				"parameters": [
+					"table"
 				],
 				"returnValue": "l.void"
 			},
@@ -49933,6 +50464,11 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_MaintenanceMode_Bypass",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_MaintenanceMode_StoreClosed",
 				"parameters": [],
 				"returnValue": "l.void"
@@ -50605,6 +51141,20 @@
 					"query var",
 					"params var",
 					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Filter_Search_Is_Conjunctive",
+				"parameters": [
+					"filterlist var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Filter_Search_Is_Conjunctive_Child",
+				"parameters": [
+					"value var"
 				],
 				"returnValue": "l.void"
 			},
@@ -63166,6 +63716,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "ComponentModule_Initialize_Fragment",
+				"parameters": [
+					"module var",
+					"item",
+					"page_all_settings var",
+					"page_item_settings var",
+					"fragment_all_settings var",
+					"fragment_item_settings var",
+					"merged_all_settings var",
+					"merged_item_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "CSSUI_URL_Callback",
 				"parameters": [
 					"urls var",
@@ -65236,7 +65800,24 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "FlexItemSettings_Upgrade",
+				"parameters": [
+					"module var",
+					"managedproperty var",
+					"settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "FlexItemSettings_Extend_Defaults",
+				"parameters": [
+					"managedproperty var",
+					"settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexItemSettings_Extend_Defaults_LowLevel",
 				"parameters": [
 					"properties var",
 					"defaults var",
@@ -65344,7 +65925,43 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "FlexItemSettings_Extend_Defaults_Property_ProductCustomFieldLookup",
+				"parameters": [
+					"property var",
+					"property_defaults var",
+					"property_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "FlexItemSettings_Extend_Defaults_Property_Category",
+				"parameters": [
+					"property var",
+					"property_defaults var",
+					"property_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexItemSettings_Extend_Defaults_Property_CustomLookup",
+				"parameters": [
+					"property var",
+					"property_defaults var",
+					"property_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexItemSettings_Extend_Defaults_Property_Fragment",
+				"parameters": [
+					"property var",
+					"property_defaults var",
+					"property_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexItemSettings_Extend_Defaults_Property_ImageType",
 				"parameters": [
 					"property var",
 					"property_defaults var",
@@ -65512,7 +66129,39 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "ComponentModule_Initialize_JSON_Callback_Property_ProductCustomFieldLookup",
+				"parameters": [
+					"property_settings var",
+					"property var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "ComponentModule_Initialize_JSON_Callback_Property_Category",
+				"parameters": [
+					"property_settings var",
+					"property var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ComponentModule_Initialize_JSON_Callback_Property_CustomLookup",
+				"parameters": [
+					"property_settings var",
+					"property var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ComponentModule_Initialize_JSON_Callback_Property_Fragment",
+				"parameters": [
+					"property_settings var",
+					"property var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ComponentModule_Initialize_JSON_Callback_Property_ImageType",
 				"parameters": [
 					"property_settings var",
 					"property var"
@@ -65575,6 +66224,18 @@
 					"all_settings var",
 					"settings var",
 					"properties var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ComponentModule_Initialize_TextArea",
+				"parameters": [
+					"module var",
+					"item",
+					"all_settings var",
+					"settings var",
+					"property var",
+					"property_settings var"
 				],
 				"returnValue": "l.void"
 			},
@@ -65713,6 +66374,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "ComponentModule_Initialize_Fragment",
+				"parameters": [
+					"module var",
+					"item",
+					"page_all_settings var",
+					"page_item_settings var",
+					"fragment_all_settings var",
+					"fragment_item_settings var",
+					"merged_all_settings var",
+					"merged_item_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "ComponentModule_Provision",
 				"parameters": [
 					"module var",
@@ -65838,6 +66513,7 @@
 				"parameters": [
 					"module var",
 					"settings var",
+					"component var",
 					"element var"
 				],
 				"returnValue": "l.void"
@@ -65847,7 +66523,9 @@
 				"parameters": [
 					"module var",
 					"settings var",
+					"original_component var",
 					"original_element var",
+					"component var",
 					"element var"
 				],
 				"returnValue": "l.void"
@@ -66570,6 +67248,7 @@
 			{
 				"name": "JSON_FlexItem_Insert_LowLevel",
 				"parameters": [
+					"module var",
 					"flex_item var"
 				],
 				"returnValue": "l.void"
@@ -66584,6 +67263,7 @@
 			{
 				"name": "JSON_FlexItem_Update_LowLevel",
 				"parameters": [
+					"module var",
 					"flex_item var"
 				],
 				"returnValue": "l.void"
@@ -67313,6 +67993,16 @@
 				"parameters": [
 					"cssresourceversion var",
 					"xref_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "FlexComponent_UpgradeTemplate_Create_ManagedTemplate_NoDuplicates",
+				"parameters": [
+					"flex_code",
+					"source var",
+					"settings var",
+					"output_file var"
 				],
 				"returnValue": "l.void"
 			},
@@ -70519,6 +71209,20 @@
 					"all_settings var",
 					"settings var",
 					"param"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "ComponentModule_Initialize_Fragment",
+				"parameters": [
+					"module var",
+					"item",
+					"page_all_settings var",
+					"page_item_settings var",
+					"fragment_all_settings var",
+					"fragment_item_settings var",
+					"merged_all_settings var",
+					"merged_item_settings var"
 				],
 				"returnValue": "l.void"
 			},
@@ -79790,6 +80494,13 @@
 			},
 			{
 				"name": "Module_Cleanup_Store",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Cleanup_Baskets",
 				"parameters": [
 					"module var"
 				],
@@ -95988,12 +96699,33 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Module_Product_Field_Value_Fitment",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code",
+					"facet var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Product_Field_Value_Array",
 				"parameters": [
 					"module var",
 					"product_id",
 					"code",
 					"values var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Product_Field_Value_Array_Application",
+				"parameters": [
+					"module var",
+					"product_id",
+					"code",
+					"values var",
+					"facet var"
 				],
 				"returnValue": "l.void"
 			},
@@ -96261,6 +96993,13 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Module_Provision_Store_CombinationFacetCustomerApplication_Add",
+				"parameters": [
+					"provide_xml var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Clientside",
 				"parameters": [
 					"module var"
@@ -96301,6 +97040,13 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_CombinationFacet",
+				"parameters": [
+					"facet var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "JSON_CombinationFacetAndFieldList_Load_Query",
 				"parameters": [
 					"module var"
@@ -96308,35 +97054,35 @@
 				"returnValue": "l.count"
 			},
 			{
-				"name": "JSON_CombinationFacetAndFieldList_Load_All",
+				"name": "JSON_Runtime_CombinationFacetAndFieldList_Load_All",
 				"parameters": [
 					"module var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "JSON_CombinationFacetValueList_Load_Field",
+				"name": "JSON_Runtime_CombinationFacetValueList_Load_Field",
 				"parameters": [
 					"module var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "JSON_CombinationFacetAppliedValueList_Load_Cookie",
+				"name": "JSON_Runtime_CombinationFacetAppliedValueList_Load_Cookie",
 				"parameters": [
 					"module var"
 				],
 				"returnValue": "l.count"
 			},
 			{
-				"name": "JSON_CombinationFacetAppliedValueList_Set_Cookie",
+				"name": "JSON_Runtime_CombinationFacetAppliedValueList_Set_Cookie",
 				"parameters": [
 					"module var"
 				],
 				"returnValue": "l.void"
 			},
 			{
-				"name": "JSON_CombinationFacetAppliedValueList_Clear_Cookie",
+				"name": "JSON_Runtime_CombinationFacetAppliedValueList_Clear_Cookie",
 				"parameters": [
 					"module var"
 				],
@@ -96344,13 +97090,6 @@
 			},
 			{
 				"name": "JSON_CombinationFacet_Load",
-				"parameters": [
-					"facet var"
-				],
-				"returnValue": "l.void"
-			},
-			{
-				"name": "JSON_CombinationFacet_Validate",
 				"parameters": [
 					"facet var"
 				],
@@ -96379,6 +97118,13 @@
 			},
 			{
 				"name": "JSON_CombinationFacet_Update_IncludeOtherProducts",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CombinationFacet_Update_CreateFitmentIndicator",
 				"parameters": [
 					"module var"
 				],
@@ -96473,11 +97219,317 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "JSON_PageBuilder_CombinationFacetList_Load_Query",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_Runtime_Fitment_Load_Product_Variant",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CombinationFacetCustomerApplication_Load",
+				"parameters": [
+					"application var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CombinationFacetCustomerApplication",
+				"parameters": [
+					"application var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetCustomerApplicationList_Load",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetCustomerApplication_Insert",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetCustomerApplication_Update",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetCustomerApplication_Delete",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetCustomerApplication_Set_Cookie",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacetData_Load",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_CombinationFacetApplicationList_Load_Query",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_CombinationFacetCustomerApplicationList_Load_Query",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_Runtime_CombinationFacet_Customer_Session_Exists",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Copy_Product",
 				"parameters": [
 					"module var",
 					"source_product var",
 					"dest_product var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Insert_Validate",
+				"parameters": [
+					"module var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Insert",
+				"parameters": [
+					"module var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Update_Validate",
+				"parameters": [
+					"module var",
+					"original_basketitem var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Update",
+				"parameters": [
+					"module var",
+					"original_basketitem var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Delete_Validate",
+				"parameters": [
+					"module var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Runtime_BasketItem_Delete",
+				"parameters": [
+					"module var",
+					"basketitem var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Tabs",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Head",
+				"parameters": [
+					"module var",
+					"tab",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Insert",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Delete",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Update",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_Validate",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Tabs",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Head",
+				"parameters": [
+					"module var",
+					"tab"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Content",
+				"parameters": [
+					"module var",
+					"tab",
+					"load_fields"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Delete",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Update",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Customer_BatchEdit_Validate",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Notify_Customer_Insert",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Notify_Customer_Update",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "Module_Notify_Customer_Delete",
+				"parameters": [
+					"module var",
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "LogModule_Action",
+				"parameters": [
+					"module var",
+					"action"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "LogModule_Action_Login",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "LogModule_Action_AccountCreation",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "LogModule_Screen",
+				"parameters": [
+					"module var",
+					"screen"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "LogModule_UIException",
+				"parameters": [
+					"module var",
+					"code"
 				],
 				"returnValue": "l.void"
 			},
@@ -96550,6 +97602,84 @@
 				"name": "CombinationFacet_Template_Filename",
 				"parameters": [
 					"facet var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_Load_CustomFieldCode_Cached",
+				"parameters": [
+					"customfield_code",
+					"field_type var",
+					"facet var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_CustomFieldCode_IsFitment",
+				"parameters": [
+					"code",
+					"resolved_code var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_CustomFieldCode_IsApplication",
+				"parameters": [
+					"code",
+					"resolved_code var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_ReadAllCookieValues",
+				"parameters": [
+					"facets var",
+					"facet_count"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_ReadCookieValues",
+				"parameters": [
+					"facet var",
+					"facet_cookie_value",
+					"values var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_Product_Fitment_Value",
+				"parameters": [
+					"facet var",
+					"product_id",
+					"variant_id",
+					"values var",
+					"value_count",
+					"fitment var"
+				],
+				"returnValue": "l.void",
+				"description": "Fitment Determination Helper Functions"
+			},
+			{
+				"name": "CombinationFacet_Product_Fitment_Value_Master",
+				"parameters": [
+					"facet var",
+					"product_id",
+					"values var",
+					"value_count",
+					"fitment var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacet_Product_Fitment_Value_Parts",
+				"parameters": [
+					"facet var",
+					"product_id",
+					"variant_id",
+					"values var",
+					"value_count",
+					"fitment var"
 				],
 				"returnValue": "l.void"
 			},
@@ -96863,6 +97993,162 @@
 				"parameters": [
 					"facet_id",
 					"fields var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Read",
+				"parameters": [
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void",
+				"description": "Database functions: CombinationFacetCustomerApplications"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Customer_Read",
+				"parameters": [
+					"customer var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Insert",
+				"parameters": [
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Update",
+				"parameters": [
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Load_ID",
+				"parameters": [
+					"id",
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Delete",
+				"parameters": [
+					"application var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Delete_All_Customer",
+				"parameters": [
+					"cust_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Delete_LowLevel",
+				"parameters": [
+					"id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Delete_All_Facet",
+				"parameters": [
+					"facet_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Update_LastUsed",
+				"parameters": [
+					"application var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationList_Load_All_Customer",
+				"parameters": [
+					"cust_id",
+					"combinationfacetapplications var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationList_Load_All_Customer_And_Facet",
+				"parameters": [
+					"cust_id",
+					"facet_id",
+					"combinationfacetcustomerapplications var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Load_LastUsed",
+				"parameters": [
+					"cust_id",
+					"facet_id",
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplication_Load_Existing",
+				"parameters": [
+					"cust_id",
+					"facet var",
+					"facet_fields var",
+					"facet_field_count",
+					"values var",
+					"value_count",
+					"set_field_count var",
+					"combinationfacetcustomerapplication var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationField_Read",
+				"parameters": [
+					"combinationfacetapplicationfield var"
+				],
+				"returnValue": "l.void",
+				"description": "Database functions: CombinationFacetCustomerApplicationFields"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationField_Insert",
+				"parameters": [
+					"combinationfacetcustomerapplicationfield var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationFieldList_Load_All",
+				"parameters": [
+					"appl_id",
+					"combinationfacetapplicationfields var"
+				],
+				"returnValue": "l.count"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationField_Delete_All_Facet",
+				"parameters": [
+					"facet_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationField_Delete_All_Field",
+				"parameters": [
+					"field_id"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CombinationFacetCustomerApplicationField_Delete_All_Application",
+				"parameters": [
+					"appl_id"
 				],
 				"returnValue": "l.void"
 			}
@@ -98512,6 +99798,20 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "ComponentModule_Initialize_Fragment",
+				"parameters": [
+					"module var",
+					"item",
+					"page_all_settings var",
+					"page_item_settings var",
+					"fragment_all_settings var",
+					"fragment_item_settings var",
+					"merged_all_settings var",
+					"merged_item_settings var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Notify_SearchSettings",
 				"parameters": [
 					"module var",
@@ -100147,6 +101447,18 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "CustomFields_Generic_Query_With_Search",
+				"parameters": [
+					"data var",
+					"query var",
+					"code",
+					"operator",
+					"value",
+					"is_conjunctive var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "CustomFields_Generic_Query_Search",
 				"parameters": [
 					"data var",
@@ -100266,6 +101578,17 @@
 				"parameters": [
 					"code",
 					"data var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "CustomFields_Generic_Search_Is_Conjunctive",
+				"parameters": [
+					"data var",
+					"query var",
+					"code",
+					"operator",
+					"value"
 				],
 				"returnValue": "l.void"
 			},
@@ -106305,6 +107628,13 @@
 				"returnValue": "l.void"
 			},
 			{
+				"name": "Module_Cleanup_Baskets",
+				"parameters": [
+					"module var"
+				],
+				"returnValue": "l.void"
+			},
+			{
 				"name": "Module_Clientside",
 				"parameters": [
 					"module var"
@@ -108179,6 +109509,17 @@
 				"returnValue": "l.count"
 			},
 			{
+				"name": "JSON_ReviewBaskets_BasketList_Load_Query_Filter",
+				"parameters": [
+					"query var",
+					"field_count var",
+					"filter_name",
+					"filter_value",
+					"data var"
+				],
+				"returnValue": "l.count"
+			},
+			{
 				"name": "JSON_ReviewBaskets_BasketList_Load_Query_Advanced_Filter",
 				"parameters": [
 					"query var",
@@ -108189,6 +109530,16 @@
 					"data var"
 				],
 				"returnValue": "l.count"
+			},
+			{
+				"name": "JSON_ReviewBaskets_Filters",
+				"parameters": [],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "JSON_ReviewBaskets_OrderBy",
+				"parameters": [],
+				"returnValue": "l.void"
 			},
 			{
 				"name": "JSON_ReviewBaskets_Basket_Delete_All",
@@ -109744,6 +111095,20 @@
 			},
 			{
 				"name": "StandardScheduledTasks_SearchLogMaintenance",
+				"parameters": [
+					"task var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "StandardScheduledTasks_OptimizeTables",
+				"parameters": [
+					"task var"
+				],
+				"returnValue": "l.void"
+			},
+			{
+				"name": "StandardScheduledTasks_AnalyzeTables",
 				"parameters": [
 					"task var"
 				],

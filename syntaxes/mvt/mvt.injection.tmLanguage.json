@@ -63,6 +63,9 @@
           "include": "#tag-foreach"
         },
         {
+          "include": "#tag-fragment"
+        },
+        {
           "include": "#tag-if"
         },
         {
@@ -412,6 +415,45 @@
             },
             {
               "include": "#iterator-attribute"
+            },
+            {
+              "include": "#illegal-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-fragment": {
+      "patterns": [
+        {
+          "begin": "(?i)(<)(mvt)(:)(fragment)(?=\\s|/?>)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.mvt meta.preprocessor.begin.mvt"
+            },
+            "2": {
+              "name": "storage.type.namespace.mvt meta.preprocessor.namespace.mvt"
+            },
+            "3": {
+              "name": "storage.type.namespace.separator.mvt meta.preprocessor.namespace.separator.mvt"
+            },
+            "4": {
+              "name": "storage.type.localname.mvt meta.preprocessor.localname.mvt"
+            }
+          },
+          "end": "/?>",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.mvt meta.preprocessor.end.mvt"
+            }
+          },
+          "name": "meta.tag.inline.$4.mvt",
+          "patterns": [
+            {
+              "include": "#code-attribute"
+            },
+            {
+              "include": "#share-attribute"
             },
             {
               "include": "#illegal-attributes"
@@ -1073,6 +1115,31 @@
         }
       ]
     },
+    "share-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(share)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.$1.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.$1.mvt source.mvt variable.language.implied.mvt"
+        }
+      ]
+    },
     "iterator-attribute": {
       "patterns": [
         {
@@ -1128,6 +1195,31 @@
               "include": "#source-functions-builtins"
             }
           ]
+        }
+      ]
+    },
+    "code-attribute": {
+      "patterns": [
+        {
+          "begin": "(?i)(?<=[^=])\\b(code)\\s*(=?)\\s*(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.other.attribute-name.$1.mvt"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.mvt"
+            },
+            "3": {
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.begin.mvt"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "attribute-value.$1.mvt source.mvt punctuation.definition.string.end.mvt"
+            }
+          },
+          "contentName": "attribute-value.$1.mvt string.quoted.double.mvt"
         }
       ]
     },
