@@ -4082,7 +4082,7 @@
 	},
 	{
 		"documentation": "\n```mv\n{ cmark_version() }\n```\n---\n\n  Returns the cmark library version as an integer\n\n  Return Value:\n    - Returns the cmark library version (bits 16-23 contain the major version, bits 8-15 contain the minor version, bits 0-7 contain the patchlevel).  In the case the cmark library is not registered, 0 will be returned.\n\n",
-		"insertText": "cmark_version( ${1:} )$0",
+		"insertText": "cmark_version()$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "cmark_version"
