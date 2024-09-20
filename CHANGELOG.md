@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.24.0 (latest)
+## v1.25.0 (latest)
+
+* Added document linking for `<mvt:fragment />` tags.
+
+## v1.24.0
 
 * Added `<mvt:fragment />` tag snippet and syntax support.
 * Added Miva Merchant 10.10.00 LSK data.
