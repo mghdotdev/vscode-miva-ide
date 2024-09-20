@@ -4,7 +4,7 @@ import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
 import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
-import { MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
+import { MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
 
 export class MivaMangedTemplatesProvider {
 	private mmtPaths: Set<string> = new Set();
@@ -43,7 +43,7 @@ export class MivaMangedTemplatesProvider {
 		return relativePath?.split(new RegExp(sep, 'g'));
 	}
 
-	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], document: TextDocument): Promise<DocumentLink[]> {
+	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], parsedFragments: MivaTemplateLanguageParsedFragment[], document: TextDocument): Promise<DocumentLink[]> {
 		const documentPath = uriToFsPath(document.uri);
 		const mmtPath = this.getPath(documentPath);
 		if (!mmtPath) {
@@ -269,7 +269,19 @@ export class MivaMangedTemplatesProvider {
 					break;
 				}
 		}
-	}
+		}
+
+		for (let parsedFragment of parsedFragments) {
+			const codeLower = parsedFragment.code.toLowerCase();
+
+			const relativePath = `./templates/${codeLower}.mvt`;
+			const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+			links.push({
+				range: parsedFragment.range,
+				target
+			});
+		}
 
 		return links;
 	}
