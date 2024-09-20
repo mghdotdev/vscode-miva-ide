@@ -3892,14 +3892,14 @@
 		"label": "miva_struct_member_callback"
 	},
 	{
-		"documentation": "\n```mv\n{ miva_json_encode( variable, 'pretty' ) }\n```\n---\n[miva_json_encode](https://www.mivascript.com/item/mivascript-functions/miva_json_encode.html)  \n\nConvert a Miva variable (array or structure) into a JSON string.",
-		"insertText": "miva_json_encode( ${1:variable}, '${2:pretty}' )$0",
+		"documentation": "\n```mv\n{ miva_json_encode( input var, flags ) }\n```\n---\n\n  Generates a valid JSON formatted blob based on the passed in data\n\n  Parameters:\n  \t- input var: The data that should be encoded.  Can be a value, structure, or array.\n  \t- flags: A comma separated list of the following options:\n  \t\t- pretty: Formats the JSON blob with new lines, tabs, etc..\n\n  Return Value:\n  \t- The generated JSON blob",
+		"insertText": "miva_json_encode( ${1:input var}, '${2:pretty}' )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "miva_json_encode"
 	},
 	{
-		"documentation": "\n```mv\n{ ternary( condition, if_true, if_false ) }\n```\n---\n[ternary](https://www.mivascript.com/item/mivascript-functions/ternary.html)  \n\nTests the condition to determine whether if_true or if_false should be returned. It should be noted that the if_true and if_false values will always be evaluated even when the condition is not met, but only the met condition will be returned.",
+		"documentation": "\n```mv\n{ ternary( condition, if_true, if_false ) }\n```\n---\n\n  Tests the condition to determine whether if_true or if_false should be returned.  It should be noted\n  that the if_true and if_false values will always be evaluated even when the condition is not met, but\n  only the met condition will be returned.\n\n  Parameters:\n\t- condition: A value that will be tested\n\t- if_true: The value to return when the condition is true\n\t- if_false: The value to return when the condition is false\n\n  Return Value:\n  \t- if_true value when condition is true, otherwise the if_false value\n\n",
 		"insertText": "ternary( ${1:condition}, ${2:if_true}, ${3:if_false} )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
@@ -4079,5 +4079,19 @@
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "miva_member_delete"
+	},
+	{
+		"documentation": "\n```mv\n{ cmark_version() }\n```\n---\n\n  Returns the cmark library version as an integer\n\n  Return Value:\n    - Returns the cmark library version (bits 16-23 contain the major version, bits 8-15 contain the minor version, bits 0-7 contain the patchlevel).  In the case the cmark library is not registered, 0 will be returned.\n\n",
+		"insertText": "cmark_version( ${1:} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "cmark_version"
+	},
+	{
+		"documentation": "\n```mv\n{ cmark_markdown_to_html( text var, flags ) }\n```\n---\n\n  Passthrough function to cmark's cmark_markdown_to_html library function\n\n  Parameters:\n    - text: The text to be converted to HTML\n    - flags: A comma-separated list of flag strings.  If flags is empty, CMARK_OPT_DEFAULT is used\n        - sourcepos: CMARK_OPT_SOURCEPOS\n        - hardbreaks: CMARK_OPT_HARDBREAKS\n        - safe: CMARK_OPT_SAFE\n        - unsafe: CMARK_OPT_UNSAFE\n        - nobreaks: CMARK_OPT_NOBREAKS\n        - validate_utf8: CMARK_OPT_VALIDATE_UTF8\n        - smart: CMARK_OPT_SMART\n\n  Return Value:\n    The value returned by cmark's cmark_markdown_to_html function.  In the case the cmark library is not registered, an empty string will be returned.",
+		"insertText": "cmark_markdown_to_html( ${1:text var}, ${2:flags} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "cmark_markdown_to_html"
 	}
 ]
