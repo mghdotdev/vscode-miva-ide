@@ -4089,7 +4089,7 @@
 	},
 	{
 		"documentation": "\n```mv\n{ cmark_markdown_to_html( text var, flags ) }\n```\n---\n\n  Passthrough function to cmark's cmark_markdown_to_html library function\n\n  Parameters:\n    - text: The text to be converted to HTML\n    - flags: A comma-separated list of flag strings.  If flags is empty, CMARK_OPT_DEFAULT is used\n        - sourcepos: CMARK_OPT_SOURCEPOS\n        - hardbreaks: CMARK_OPT_HARDBREAKS\n        - safe: CMARK_OPT_SAFE\n        - unsafe: CMARK_OPT_UNSAFE\n        - nobreaks: CMARK_OPT_NOBREAKS\n        - validate_utf8: CMARK_OPT_VALIDATE_UTF8\n        - smart: CMARK_OPT_SMART\n\n  Return Value:\n    The value returned by cmark's cmark_markdown_to_html function.  In the case the cmark library is not registered, an empty string will be returned.",
-		"insertText": "cmark_markdown_to_html( ${1:text var}, ${2:flags} )$0",
+		"insertText": "cmark_markdown_to_html( ${1:text var}, ${2:''} )$0",
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "cmark_markdown_to_html"
