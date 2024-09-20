@@ -1,6 +1,14 @@
 # Miva IDE CHANGELOG
 
-## v1.23.3 (latest)
+## v1.24.0 (latest)
+
+* Added `<mvt:fragment />` tag snippet and syntax support.
+* Added Miva Merchant 10.10.00 LSK data.
+* Added new functions from Empressa v5.45:
+	* cmark_version
+	* cmark_markdown_to_html
+
+## v1.23.3
 
 * Resolved issue where hovering a function may not work due to a reference being a different case than the stored data.
 
