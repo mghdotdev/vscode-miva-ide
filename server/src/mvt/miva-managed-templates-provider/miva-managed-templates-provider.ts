@@ -51,9 +51,13 @@ export class MivaMangedTemplatesProvider {
 		}
 
 		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '');
+		const reservedFirstParts = [
+			'cssui',
+			'email'
+		];
 		const foundDashIndex = fileName.indexOf('-');
 		const fileNameFirstPart = fileName.slice(0, foundDashIndex === -1 ? undefined : foundDashIndex);
-		const fileNameRoot = fileNameFirstPart === fileName
+		const fileNameRoot = (fileNameFirstPart === fileName || !reservedFirstParts.every(firstPart => fileNameFirstPart === firstPart))
 			? fileName
 			: fileNameFirstPart;
 
@@ -112,7 +116,7 @@ export class MivaMangedTemplatesProvider {
 
 					break;
 				}
-				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
+				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" /> | <mvt:item name="hdft" param="header" /> | <mvt:item name="hdft" param="footer" />
 				case 'hdft': {
 					switch (paramNameLower) {
 						case 'global_header':
