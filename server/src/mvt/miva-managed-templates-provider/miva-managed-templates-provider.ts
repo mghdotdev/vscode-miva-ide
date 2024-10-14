@@ -66,6 +66,37 @@ export class MivaMangedTemplatesProvider {
 			const paramNameLower = parsedItem?.param?.toLowerCase();
 
 			switch (nameLower) {
+				case 'templatefeed': {
+					if (parsedItem.range) {
+						const fileNameLower = fileName?.toLowerCase();
+						const relativePaths = [
+							{
+								tooltip: 'Follow link to iterator template',
+								path: `./templates/TEMPLATEFEED_iterator-${fileNameLower}-templatefeed.mvt`
+							},
+							{
+								tooltip: 'Follow link to footer template',
+								path: `./templates/TEMPLATEFEED_footer-${fileNameLower}-templatefeed.mvt`
+							},
+							{
+								tooltip: 'Follow link to settings template',
+								path: `./templates/TEMPLATEFEED_settings-${fileNameLower}-templatefeed.mvt`
+							}
+						];
+
+						for (let relativePath of relativePaths) {
+							const target = this.getTargetFromRelativePath(relativePath.path, mmtPath);
+
+							links.push({
+								tooltip: relativePath.tooltip,
+								range: parsedItem.range,
+								target
+							});
+						}
+					}
+
+					break;
+				}
 				case 'product_display_imagemachine': {
 					const param = paramNameLower?.replace('_deferred', '');
 
