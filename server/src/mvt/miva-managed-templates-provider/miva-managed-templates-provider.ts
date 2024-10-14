@@ -124,6 +124,20 @@ export class MivaMangedTemplatesProvider {
 								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
 								target
 							});
+
+							break;
+						}
+						case 'header':
+						case 'footer': {
+							const relativePath = `./templates/${fileNameRoot}-${paramNameLower}.mvt`;
+							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+							links.push({
+								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+								target
+							});
+
+							break;
 						}
 						default:
 							break;
