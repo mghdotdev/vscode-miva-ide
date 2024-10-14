@@ -1,6 +1,14 @@
 # Miva IDE CHANGELOG
 
-## v1.25.0 (latest)
+## v1.26.0 (latest)
+
+* Added document linking support for the following items:
+	* `templatefeed`
+	* `hdft:header`
+	* `hdft:footer`
+* Fixed issue where template files with a dash character in the name was not linking templates correctly.
+
+## v1.25.0
 
 * Added document linking for `<mvt:fragment />` tags.
 
