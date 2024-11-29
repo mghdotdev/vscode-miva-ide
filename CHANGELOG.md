@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.26.0 (latest)
+## v1.27.0 (latest)
+
+* Added tag mismatch validation for mvt tags.
+
+## v1.26.0
 
 * Added document linking support for the following items:
 	* `templatefeed`
