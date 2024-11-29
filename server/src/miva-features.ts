@@ -38,6 +38,7 @@ import { generateMvtSnippets, generateMvtTags } from './mvt/tags';
 import validationTests from './mvt/validation.json';
 import {
 	filterTagData,
+	findOpenTag,
 	formatDoValueCompletion,
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
@@ -374,13 +375,28 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			doValidation( document: TextDocument, settings: Settings ) {
 
+				buildTagCompletionData( settings, document.languageId );
+
 				const {document: mvtDocument} = mvtDocuments.get( document );
 
 				// get full text of the document
 				const text = mvtDocument.getText();
 
+				// Check if any mvt tags are mismatched
+				const mismatchedTags: Diagnostic[] = [];
+				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
+				const blockTagList = Object.values(mvtTagData).filter(td => !td?.selfClosing).map(td => td?.label?.toLowerCase());
+				const openTag = findOpenTag(parsedDocument.roots, blockTagList);
+				if (openTag) {
+					mismatchedTags.push({
+						range: Range.create(document.positionAt(openTag.start), document.positionAt(openTag.startTagEnd)),
+						message: `Missing closing ${openTag.tag} tag.`,
+						source: 'Miva IDE'
+					});
+				}
+
 				// build diagnostics array
-				return validationTests.reduce(( diagnostics: Diagnostic[], validation: any ) => {
+				const validationJsonDiagnostics = validationTests.reduce(( diagnostics: Diagnostic[], validation: any ) => {
 
 					// validate configured setting to check - exit if not valid
 					if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
@@ -409,6 +425,10 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 				}, []);
 
+				return [
+					...validationJsonDiagnostics,
+					...mismatchedTags
+				];
 			},
 
 			doCodeAction( document, codeActionRange, context ) {
