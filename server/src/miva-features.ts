@@ -27,7 +27,6 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
-import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
 import mvOperatorData from './mv/operators';
@@ -36,6 +35,7 @@ import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import { generateMvtSnippets, generateMvtTags } from './mvt/tags';
+import validationTests from './mvt/validation.json';
 import {
 	filterTagData,
 	formatDoValueCompletion,
