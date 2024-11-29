@@ -390,6 +390,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				if (openTag) {
 					mismatchedTags.push({
 						range: Range.create(document.positionAt(openTag.start), document.positionAt(openTag.startTagEnd)),
+						severity: DiagnosticSeverity.Error,
 						message: `Missing closing ${openTag.tag} tag.`,
 						source: 'Miva IDE'
 					});
