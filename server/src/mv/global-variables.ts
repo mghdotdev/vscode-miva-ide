@@ -6,6 +6,12 @@ const baseGlobalVariableData: BaseGlobalVariableData = {
 };
 
 const globalVariableData: Record<string, GlobalVariableData> = {
+	action: {
+		...baseGlobalVariableData,
+		label: 'Action',
+		detail: 'Action',
+		documentation: ``
+	},
 	order_id: {
 		...baseGlobalVariableData,
 		label: 'Order_ID',
@@ -52,42 +58,60 @@ const globalVariableData: Record<string, GlobalVariableData> = {
 		...baseGlobalVariableData,
 		label: 'MvDO_Error',
 		detail: 'MvDO Error Message',
-		documentation: ``
+		documentation: `Error message from the last ran \`<mvt:do>\` tag.`
 	},
 	mvcall_error: {
 		...baseGlobalVariableData,
 		label: 'MvCALL_Error',
 		detail: 'MvCALL Error Message',
+		documentation: `Error message from the last ran \`<mvt:call>\` tag.`
+	},
+	screen: {
+		...baseGlobalVariableData,
+		label: 'Screen',
+		detail: 'Screen',
 		documentation: ``
 	},
 	session_type: {
 		...baseGlobalVariableData,
-		label: 'session_type',
+		label: 'Session_Type',
 		detail: 'Session Type',
 		documentation: ``
 	},
 	session_id: {
 		...baseGlobalVariableData,
-		label: 'session_id',
+		label: 'Session_ID',
 		detail: 'Session ID',
 		documentation: ``
+	},
+	merchant_local_timezone: {
+		...baseGlobalVariableData,
+		label: 'Merchant_Local_Timezone',
+		detail: 'Merchant Local Timezone',
+		documentation: `Timezone of the server.`
 	},
 	module_root_versionless: {
 		...baseGlobalVariableData,
 		label: 'Module_Root_Versionless',
-		detail: '',
-		documentation: ``
+		detail: 'Module Root Versionless',
+		documentation: `Example: \`/mm5/\``
 	},
 	module_root: {
 		...baseGlobalVariableData,
 		label: 'Module_Root',
-		detail: '',
+		detail: 'Module Root',
+		documentation: `Example: \`/mm5/5.00/\``
+	},
+	customer_session_id: {
+		...baseGlobalVariableData,
+		label: 'Customer_Session_ID',
+		detail: 'Customer Session ID',
 		documentation: ``
 	},
 	customer_session_verified: {
 		...baseGlobalVariableData,
 		label: 'Customer_Session_Verified',
-		detail: '',
+		detail: 'Customer Session Verified',
 		documentation: ``
 	}
 };
