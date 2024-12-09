@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## 1.28.0 (latest)
+## v1.28.1 (latest)
+
+* Fixed issue with changelog formatting.
+
+## v1.28.0
 
 * Added global variable autocompletion.
 
