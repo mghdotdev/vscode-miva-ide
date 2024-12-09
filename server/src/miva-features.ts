@@ -27,7 +27,6 @@ import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
-import validationTests from './data/MVT/validation.json';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
 import globalVariableData from './mv/global-variables';
@@ -37,8 +36,10 @@ import { mvSnippetData, mvTagData } from './mv/tags';
 import mvtEntityData from './mvt/entities';
 import mvtItemData from './mvt/items';
 import { generateMvtSnippets, generateMvtTags } from './mvt/tags';
+import validationTests from './mvt/validation.json';
 import {
 	filterTagData,
+	findOpenTag,
 	formatDoValueCompletion,
 	formatGenericDocumentation,
 	formatItemParamDocumentation,
@@ -62,6 +63,7 @@ import {
 	ActivationProviders,
 	LanguageFeatures,
 	MivaScriptFunction,
+	MivaTemplateLanguageParsedFragment,
 	MivaTemplateLanguageParsedItem,
 	MvLanguageModel,
 	MvtLanguageModel,
@@ -87,9 +89,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Completion data
 	const doValueCompletions: CompletionList = getDoValueCompletions( merchantFunctionFiles );
-	const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items );
+	const doValueHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( doValueCompletions.items, true );
 	const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
-	const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData );
+	const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData, false );
 	const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
 	const globalVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( globalVariableData ) ) );
 	const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
@@ -196,6 +198,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		const parseMvtDocument = ( document: TextDocument ) => {
 			const symbols: SymbolInformationWithDocumentation[] = [];
 			const parsedItems: MivaTemplateLanguageParsedItem[] = [];
+			const parsedFragments: MivaTemplateLanguageParsedFragment[] = [];
 
 			const scanner = htmlLanguageService.createScanner( document.getText(), 0 );
 			let token = scanner.scan();
@@ -287,6 +290,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								});
 							}
 						}
+						else if ( lastTagName === 'mvt:fragment' ) {
+							if (lastAttributeName === 'code') {
+								parsedFragments.push({
+									code: attributeValue,
+									range: range
+								});
+							}
+						}
 						break;
 
 					case TokenType.StartTagSelfClose:
@@ -309,7 +320,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			return {
 				symbols,
-				parsedItems
+				parsedItems,
+				parsedFragments
 			};
 		};
 
@@ -331,12 +343,13 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		};
 
 		const mvtDocuments = getLanguageModelCache<MvtLanguageModel>( 10, 60, (document: TextDocument) => {
-			const {symbols, parsedItems} = parseMvtDocument( document );
+			const {symbols, parsedItems, parsedFragments} = parseMvtDocument( document );
 
 			return {
 				symbols,
 				document,
-				parsedItems
+				parsedItems,
+				parsedFragments
 			};
 		});
 
@@ -367,13 +380,29 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			doValidation( document: TextDocument, settings: Settings ) {
 
+				buildTagCompletionData( settings, document.languageId );
+
 				const {document: mvtDocument} = mvtDocuments.get( document );
 
 				// get full text of the document
 				const text = mvtDocument.getText();
 
+				// Check if any mvt tags are mismatched
+				const mismatchedTags: Diagnostic[] = [];
+				const parsedDocument = htmlLanguageService.parseHTMLDocument(document);
+				const blockTagList = Object.values(mvtTagData).filter(td => !td?.selfClosing).map(td => td?.label?.toLowerCase());
+				const openTag = findOpenTag(parsedDocument.roots, blockTagList);
+				if (openTag) {
+					mismatchedTags.push({
+						range: Range.create(document.positionAt(openTag.start), document.positionAt(openTag.startTagEnd)),
+						severity: DiagnosticSeverity.Error,
+						message: `Missing closing ${openTag.tag} tag.`,
+						source: 'Miva IDE'
+					});
+				}
+
 				// build diagnostics array
-				return validationTests.reduce(( diagnostics: Diagnostic[], validation: any ) => {
+				const validationJsonDiagnostics = validationTests.reduce(( diagnostics: Diagnostic[], validation: any ) => {
 
 					// validate configured setting to check - exit if not valid
 					if ( validation.checkSetting != null && !_get( settings, validation.checkSetting ) ) {
@@ -402,6 +431,10 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 				}, []);
 
+				return [
+					...validationJsonDiagnostics,
+					...mismatchedTags
+				];
 			},
 
 			doCodeAction( document, codeActionRange, context ) {
@@ -763,7 +796,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						if (tagNameLower === 'do') {
 							// Get item name
 							const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
-							const key = `${doFile}@${word}`;
+							const key = `${doFile?.trim()?.toLowerCase()}@${wordLower}`;
 
 							const foundDoHover = doValueHoverMap.get(key);
 							if (foundDoHover) {
@@ -880,9 +913,9 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					return [];
 				}
 
-				const {parsedItems} = mvtDocuments.get( document );
+				const {parsedItems, parsedFragments} = mvtDocuments.get( document );
 
-				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, document)) ?? [];
+				const links = (await mivaManagedTemplatesProvider.provideLinks(parsedItems, parsedFragments, document)) ?? [];
 
 				return links;
 			}
@@ -1117,7 +1150,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 		if (!lsk) {
 			functionsArray = Array.from(functions.values());
 			functionCompletionItems = functionsArray?.map(fn => formatDoValueCompletion(fn));
-			functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems );
+			functionCompletionMap = getHoverMapFromCompletionFile( functionCompletionItems, true, false );
 
 			mvDocumentFunctions.set(URI.parse(document.uri).toString(), {
 				functionCompletionItems,
@@ -1395,7 +1428,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 						// If after `[].` notation
 						if (patterns.MV.LEFT_AFTER_BRACKET_DOT.test( left )) {
 							const [, doFile] = safeMatch(left, patterns.MV.LEFT_DO_FILE_BRACKET_DOT);
-							const key = `${doFile?.trim()}@${word}`;
+							const key = `${doFile?.trim()?.toLowerCase()}@${wordLower}`;
 
 							const foundDoHover = doValueHoverMap.get(key);
 							if (foundDoHover) {
@@ -1416,7 +1449,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 							}
 
 							// Self defined function lookup
-							const functionHover = functionCompletionMap.get(word);
+							const functionHover = functionCompletionMap.get(wordLower);
 							if (functionHover) {
 								return {
 									contents: functionHover
@@ -1428,7 +1461,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								const {functionCompletionMap} = mvDocumentFunctions.get(link.target) ?? {};
 
 								if (functionCompletionMap) {
-									const foundLinkedFunctionHover = functionCompletionMap.get(word);
+									const foundLinkedFunctionHover = functionCompletionMap.get(wordLower);
 									if (foundLinkedFunctionHover) {
 										return {
 											contents: foundLinkedFunctionHover
@@ -1474,10 +1507,11 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 								// Get item name
 								const [,, doFile] = left.match(patterns.SHARED.LEFT_DO_FILE) || right.match(patterns.SHARED.RIGHT_DO_FILE) || [];
 								const doFileNoExpression = doFile
-									.replace(/[\{\}]/g, '')
-									.trim();
+									?.replace(/[\{\}]/g, '')
+									?.trim()
+									?.toLowerCase();
 
-								const key = `${doFileNoExpression}@${word}`;
+								const key = `${doFileNoExpression}@${wordLower}`;
 
 								const foundDoHover = doValueHoverMap.get(key);
 								if (foundDoHover) {

@@ -526,6 +526,20 @@ export function getNodeAtOffset (offset: number, parsedDocument: HTMLDocument): 
 	}
 }
 
+export function findOpenTag (nodes: Node[], blockTagList: string[]): Node {
+	for (let node of nodes) {
+		// @ts-expect-error
+		if (!node.closed && blockTagList.includes(node.tag.toLowerCase())) {
+			return node;
+		}
+
+		const found = findOpenTag(node.children, blockTagList);
+		if (found) {
+			return found;
+		}
+	}
+}
+
 export function uriToFsPath (uri: URI | string) {
 	if (typeof uri === 'string') {
 		return URI.parse(uri).fsPath;

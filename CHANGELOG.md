@@ -1,6 +1,34 @@
 # Miva IDE CHANGELOG
 
-## v1.23.2 (latest)
+## v1.27.0 (latest)
+
+* Added tag mismatch validation for mvt tags.
+
+## v1.26.0
+
+* Added document linking support for the following items:
+	* `templatefeed`
+	* `hdft:header`
+	* `hdft:footer`
+* Fixed issue where template files with a dash character in the name was not linking templates correctly.
+
+## v1.25.0
+
+* Added document linking for `<mvt:fragment />` tags.
+
+## v1.24.0
+
+* Added `<mvt:fragment />` tag snippet and syntax support.
+* Added Miva Merchant 10.10.00 LSK data.
+* Added new functions from Empressa v5.45:
+	* cmark_version
+	* cmark_markdown_to_html
+
+## v1.23.3
+
+* Resolved issue where hovering a function may not work due to a reference being a different case than the stored data.
+
+## v1.23.2
 
 * Updated `miva-expression-parser` to `v0.3.0`. This should resolve an issue with `image` and `load_image` ReadyTheme functions not being parsed correctly.
 

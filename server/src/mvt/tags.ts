@@ -628,6 +628,33 @@ export function generateMvtTags (settings: Settings): Record<string, TagData> {
 			selfClosing: true,
 			void: false
 		},
+		fragment: {
+			...baseTag,
+			engine: '>=5.45',
+			documentation: '',
+			insertText: '<mvt:fragment code="${1:code}" ${2:share="${3:member}" }/>',
+			label: 'mvt:fragment',
+			reference: 'https://docs.miva.com/developer/developer-resources/miva-feature-implementation/page-fragments',
+			selfClosing: true,
+			void: false,
+			attributes: {
+				code: {
+					...baseAttribute,
+					documentation: `This value represents the fragment code.`,
+					insertText: 'code="${0}"',
+					label: 'code',
+					valueType: 'string'
+				},
+				share: {
+					...baseAttribute,
+					documentation: `Variable to be used to share data between the page and fragment. Data can be shared bidirectionally.`,
+					reference: 'https://docs.miva.com/developer/developer-resources/miva-feature-implementation/page-fragments/?h=fragment#share-attribute',
+					insertText: 'share="${0}"',
+					label: 'share',
+					valueType: 'string'
+				}
+			}
+		},
 		if: {
 			...baseTag,
 			documentation: `Runs the following code block if the expression condition is true.`,

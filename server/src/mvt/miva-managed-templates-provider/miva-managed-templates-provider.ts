@@ -4,7 +4,7 @@ import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
 import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
-import { MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
+import { MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
 
 export class MivaMangedTemplatesProvider {
 	private mmtPaths: Set<string> = new Set();
@@ -43,7 +43,7 @@ export class MivaMangedTemplatesProvider {
 		return relativePath?.split(new RegExp(sep, 'g'));
 	}
 
-	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], document: TextDocument): Promise<DocumentLink[]> {
+	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], parsedFragments: MivaTemplateLanguageParsedFragment[], document: TextDocument): Promise<DocumentLink[]> {
 		const documentPath = uriToFsPath(document.uri);
 		const mmtPath = this.getPath(documentPath);
 		if (!mmtPath) {
@@ -51,9 +51,13 @@ export class MivaMangedTemplatesProvider {
 		}
 
 		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '');
+		const reservedFirstParts = [
+			'cssui',
+			'email'
+		];
 		const foundDashIndex = fileName.indexOf('-');
 		const fileNameFirstPart = fileName.slice(0, foundDashIndex === -1 ? undefined : foundDashIndex);
-		const fileNameRoot = fileNameFirstPart === fileName
+		const fileNameRoot = (fileNameFirstPart === fileName || !reservedFirstParts.every(firstPart => fileNameFirstPart === firstPart))
 			? fileName
 			: fileNameFirstPart;
 
@@ -66,6 +70,37 @@ export class MivaMangedTemplatesProvider {
 			const paramNameLower = parsedItem?.param?.toLowerCase();
 
 			switch (nameLower) {
+				case 'templatefeed': {
+					if (parsedItem.range) {
+						const fileNameLower = fileName?.toLowerCase();
+						const relativePaths = [
+							{
+								tooltip: 'Follow link to iterator template',
+								path: `./templates/TEMPLATEFEED_iterator-${fileNameLower}-templatefeed.mvt`
+							},
+							{
+								tooltip: 'Follow link to footer template',
+								path: `./templates/TEMPLATEFEED_footer-${fileNameLower}-templatefeed.mvt`
+							},
+							{
+								tooltip: 'Follow link to settings template',
+								path: `./templates/TEMPLATEFEED_settings-${fileNameLower}-templatefeed.mvt`
+							}
+						];
+
+						for (let relativePath of relativePaths) {
+							const target = this.getTargetFromRelativePath(relativePath.path, mmtPath);
+
+							links.push({
+								tooltip: relativePath.tooltip,
+								range: parsedItem.range,
+								target
+							});
+						}
+					}
+
+					break;
+				}
 				case 'product_display_imagemachine': {
 					const param = paramNameLower?.replace('_deferred', '');
 
@@ -81,7 +116,7 @@ export class MivaMangedTemplatesProvider {
 
 					break;
 				}
-				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" />
+				// <mvt:item name="hdft" param="global_header" /> | <mvt:item name="hdft" param="global_footer" /> | <mvt:item name="hdft" param="header" /> | <mvt:item name="hdft" param="footer" />
 				case 'hdft': {
 					switch (paramNameLower) {
 						case 'global_header':
@@ -93,6 +128,20 @@ export class MivaMangedTemplatesProvider {
 								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
 								target
 							});
+
+							break;
+						}
+						case 'header':
+						case 'footer': {
+							const relativePath = `./templates/${fileNameRoot}-${paramNameLower}.mvt`;
+							const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+							links.push({
+								range: Range.create(document.positionAt(parsedItem.expression.start), document.positionAt(parsedItem.expression.end)),
+								target
+							});
+
+							break;
 						}
 						default:
 							break;
@@ -269,7 +318,19 @@ export class MivaMangedTemplatesProvider {
 					break;
 				}
 		}
-	}
+		}
+
+		for (let parsedFragment of parsedFragments) {
+			const codeLower = parsedFragment.code.toLowerCase();
+
+			const relativePath = `./templates/${codeLower}.mvt`;
+			const target = this.getTargetFromRelativePath(relativePath, mmtPath);
+
+			links.push({
+				range: parsedFragment.range,
+				target
+			});
+		}
 
 		return links;
 	}
