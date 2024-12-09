@@ -29,6 +29,7 @@ import {
 import { URI, Utils } from 'vscode-uri';
 import builtinFunctionData from './data/functions-builtin.json';
 import merchantFunctionFiles from './data/functions-merchant.json';
+import globalVariableData from './mv/global-variables';
 import mvOperatorData from './mv/operators';
 import systemVariableData from './mv/system-variables';
 import { mvSnippetData, mvTagData } from './mv/tags';
@@ -92,6 +93,7 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 	const builtinFunctionCompletions: CompletionList = CompletionList.create( parseCompletionFile( builtinFunctionData ) );
 	const builtinFunctionHoverMap: Map<string, MarkupContent> = getHoverMapFromCompletionFile( builtinFunctionData, false );
 	const systemVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( systemVariableData ) ) );
+	const globalVariableCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( globalVariableData ) ) );
 	const operatorCompletions: CompletionList = CompletionList.create( parseCompletionFile( Object.values( mvOperatorData ) ) );
 
 	// Document cache for Miva Script (this is globally defined since we use .mv documents in MVT for LSK lookups)
@@ -140,15 +142,18 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				?.map(_variable => _variable.replace(foundVariableRegex, ''));
 
 			return CompletionList.create(
-				foundVariables.map((variable) => {
-					return parseCompletion({
-						"label": variable,
-						"kind": "Variable",
-						"detail": variable,
-						"documentation": "",
-						"commitCharacters": []
-					});
-				})
+				[
+					...globalVariableCompletions.items,
+					...foundVariables.map((variable) => {
+						return parseCompletion({
+							"label": variable,
+							"kind": "Variable",
+							"detail": variable,
+							"documentation": "",
+							"commitCharacters": []
+						});
+					})
+				]
 			);
 
 		}
@@ -744,6 +749,16 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 					if (foundSystemVariable) {
 						return {
 							contents: foundSystemVariable.documentation
+						};
+					}
+				}
+
+				// System variable hover
+				if (patterns.SHARED.LEFT_VARIABLE_G.test(left)) {
+					const foundGlobalVariable = globalVariableData[wordLower];
+					if (foundGlobalVariable) {
+						return {
+							contents: foundGlobalVariable.documentation
 						};
 					}
 				}

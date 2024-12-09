@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.27.0 (latest)
+## 1.28.0 (latest)
+
+* Added global variable autocompletion.
+
+## v1.27.0
 
 * Added tag mismatch validation for mvt tags.
 
