@@ -62,6 +62,7 @@ import {
 import {
 	ActivationProviders,
 	LanguageFeatures,
+	MivaMangedTemplatesProviderCompletionType,
 	MivaScriptFunction,
 	MivaTemplateLanguageParsedFragment,
 	MivaTemplateLanguageParsedItem,
@@ -117,6 +118,8 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 	// Helper function for "variable" completion target list
 	const getVariableCompletions = (left: string, mivaDocument: TextDocument): CompletionList | null => {
+		const providerCompletionsAllTypes = mivaManagedTemplatesProvider?.provideCompletions(mivaDocument, MivaMangedTemplatesProviderCompletionType.Variable) || [];
+
 		// system variables
 		if ( patterns.SHARED.LEFT_VARIABLE_S.test( left ) ) {
 			return systemVariableCompletions;
@@ -135,7 +138,15 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 
 			const foundVariables = [].concat(
 				mivaDocumentText.match( patterns.SHARED.VARIABLES_G ) || [],
-				mivaDocumentText.match( patterns.MVT.ENTITIES_G ) || []
+				mivaDocumentText.match( patterns.MVT.ENTITIES_G ) || [],
+				providerCompletionsAllTypes
+					.map(completion => {
+						const matchedCompletion = completion.match(patterns.SHARED.LEFT_VARIABLE_G) || [];
+
+						if (matchedCompletion) {
+							return matchedCompletion[0] || '';
+						}
+					})
 			)
 				?.filter( unique )
 				?.filter(_variable => foundVariableRegex.test(_variable))
@@ -170,7 +181,15 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				mivaDocumentText.match( patterns.SHARED.VARIABLES_L ) || [],
 				foundVariable.startsWith('settings')
 					? (mivaDocumentText.match( patterns.SHARED.VARIABLES_LSETTINGS ) || []).map(_variable => 'settings:' + _variable)
-					: []
+					: [],
+				providerCompletionsAllTypes
+					.map(completion => {
+						const matchedCompletion = completion.match(patterns.SHARED.LEFT_VARIABLE_L) || [];
+
+						if (matchedCompletion) {
+							return matchedCompletion[0] || '';
+						}
+					})
 			)
 				?.filter( unique )
 				?.filter(_variable => foundVariableRegex.test(_variable))

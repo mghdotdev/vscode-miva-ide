@@ -1,10 +1,55 @@
-import { dirname, relative, resolve, sep } from 'path';
+import { readFileSync } from 'fs';
+import { dirname, join, relative, resolve, sep } from 'path';
 import { DocumentLink, Range } from 'vscode-languageserver';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
 import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
-import { MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
+import { MivaMangedTemplatesProviderCompletionType, MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
+
+const buildFlexComponentPropertyPaths = (properties: any[], prefix: string, previousParent: string[] = []): string[] => {
+	let parent = previousParent;
+	let paths = [];
+
+	for (let property of properties) {
+		if (property.type === 'group') {
+			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, property.code]));
+
+		}
+		else if (property.type === 'list') {
+			paths = paths.concat(finalizeFlexComponentPropertyPath([...parent, `${property.code}:children`], prefix, property.type), buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, `${property.code}:children[1]`]));
+		}
+		else {
+			paths = paths.concat(finalizeFlexComponentPropertyPath([...parent, property.code], prefix, property.type));
+		}
+	}
+
+	return paths;
+};
+
+const finalizeFlexComponentPropertyPathSuffix = (type: string): string[] => {
+	switch (type) {
+		case 'link':
+			return [
+				'url',
+				'new_tab',
+				'type',
+				'value'
+			];
+
+		case 'list':
+			return [''];
+
+		default:
+			return ['value'];
+	}
+};
+
+const finalizeFlexComponentPropertyPath = (propertyPath: string[], prefix: string, type: string): string[] => {
+	const suffixes = finalizeFlexComponentPropertyPathSuffix(type);
+
+	return suffixes.map(suffix => `${prefix}:${propertyPath.join(':')}${suffix.length ? `:${suffix}` : ''}`);
+};
 
 export class MivaMangedTemplatesProvider {
 	private mmtPaths: Set<string> = new Set();
@@ -33,6 +78,12 @@ export class MivaMangedTemplatesProvider {
 		}
 	}
 
+	getFileContents (mmtPath: string, documentPath: string): string {
+		const fullPath = join(mmtPath, documentPath);
+
+		return readFileSync(fullPath, 'utf-8');
+	}
+
 	private getTargetFromRelativePath (relativePath: string, mmtPath: string): string {
 		return URI.parse(resolve(mmtPath, relativePath)).toString();
 	}
@@ -40,7 +91,9 @@ export class MivaMangedTemplatesProvider {
 	private getMmtPathParts (documentPath: string, mmtPath: string): string[] {
 		const relativePath = relative(mmtPath, documentPath);
 
-		return relativePath?.split(new RegExp(sep, 'g'));
+		return relativePath
+			?.split(new RegExp(sep, 'g'))
+			?.map(split => split?.toLowerCase());
 	}
 
 	async provideLinks (parsedItems: MivaTemplateLanguageParsedItem[], parsedFragments: MivaTemplateLanguageParsedFragment[], document: TextDocument): Promise<DocumentLink[]> {
@@ -333,5 +386,55 @@ export class MivaMangedTemplatesProvider {
 		}
 
 		return links;
+	}
+
+	provideCompletions (document: TextDocument, type: MivaMangedTemplatesProviderCompletionType): string[] {
+		const documentPath = uriToFsPath(document.uri);
+		const mmtPath = this.getPath(documentPath);
+		if (!mmtPath) {
+			return [];
+		}
+
+		const fileName = Utils.basename(URI.parse(document.uri))?.replace('.mvt', '')?.toLowerCase();
+		const [firstFolder] = this.getMmtPathParts(documentPath, mmtPath) ?? [];
+
+		const completions: string[] = [];
+
+		switch (type) {
+			case MivaMangedTemplatesProviderCompletionType.Variable: {
+				// Flex Components
+				if (firstFolder === 'templates') {
+					const flexComponentInstanceTemplatePrefix = 'flex-instance-template-';
+
+					if (fileName.startsWith(flexComponentInstanceTemplatePrefix)) {
+						// Isolate the flex component code
+						const flexComponentCode = fileName.replace(flexComponentInstanceTemplatePrefix, '');
+
+						if (flexComponentCode) {
+							const flexComponentJson = this.getFileContents(mmtPath, `properties/flex/${flexComponentCode}.json`);
+
+							if (flexComponentJson) {
+								const parsedFlexComponentJson = JSON.parse(flexComponentJson);
+
+								if (parsedFlexComponentJson) {
+									const propertyPaths = buildFlexComponentPropertyPaths(parsedFlexComponentJson.properties, 'l.settings:instance');
+									const advancedPropertyPaths = buildFlexComponentPropertyPaths(parsedFlexComponentJson.advanced_properties, 'l.settings:instance:advanced');
+
+									return [
+										...propertyPaths,
+										...advancedPropertyPaths
+									];
+								}
+							}
+						}
+					}
+				}
+
+				return completions;
+			}
+
+			default:
+				return completions;
+		}
 	}
 }

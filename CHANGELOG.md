@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.28.1 (latest)
+## v1.29.0 (latest)
+
+* Added variable autocompletion for flex instance templates.
+
+## v1.28.1
 
 * Fixed issue with changelog formatting.
 
