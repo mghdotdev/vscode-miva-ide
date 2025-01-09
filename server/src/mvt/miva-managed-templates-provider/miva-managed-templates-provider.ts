@@ -17,28 +17,38 @@ const buildFlexComponentPropertyPaths = (properties: any[], prefix: string, prev
 
 		}
 		else if (property.type === 'list') {
-			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, `${property.code}[1]`]));
+			paths = paths.concat(finalizeFlexComponentPropertyPath([...parent, `${property.code}:children`], prefix, property.type), buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, `${property.code}:children[1]`]));
 		}
 		else {
-			paths.push(finalizeFlexComponentPropertyPath([...parent, property.code], prefix, property.type));
+			paths = paths.concat(finalizeFlexComponentPropertyPath([...parent, property.code], prefix, property.type));
 		}
 	}
 
 	return paths;
 };
 
-const finalizeFlexComponentPropertyPathSuffix = (type: string): string => {
+const finalizeFlexComponentPropertyPathSuffix = (type: string): string[] => {
 	switch (type) {
 		case 'link':
-			return 'url';
+			return [
+				'url',
+				'new_tab',
+				'type',
+				'value'
+			];
+
+		case 'list':
+			return [''];
 
 		default:
-			return 'value';
+			return ['value'];
 	}
 };
 
-const finalizeFlexComponentPropertyPath = (propertyPath: string[], prefix: string, type: string): string => {
-	return `${prefix}:${propertyPath.join(':')}:${finalizeFlexComponentPropertyPathSuffix(type)}`;
+const finalizeFlexComponentPropertyPath = (propertyPath: string[], prefix: string, type: string): string[] => {
+	const suffixes = finalizeFlexComponentPropertyPathSuffix(type);
+
+	return suffixes.map(suffix => `${prefix}:${propertyPath.join(':')}${suffix.length ? `:${suffix}` : ''}`);
 };
 
 export class MivaMangedTemplatesProvider {
