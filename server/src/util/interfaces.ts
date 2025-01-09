@@ -44,7 +44,7 @@ export interface ActivationProviders {
 	workspaceSymbolProvider?: WorkspaceSymbolProvider,
 	mivaScriptCompilerProvider?: MivaScriptCompilerProvider,
 	mivaManagedTemplatesProvider?: MivaMangedTemplatesProvider
-};
+}
 
 export interface LanguageFeatures {
 
@@ -98,7 +98,7 @@ export namespace ValidationCode {
 	export const GLOBAL_NULL_ASSIGNMENT = 'GLOBAL_NULL_ASSIGNMENT';
 	export const GLOBAL_ENCODING_ENTITY = 'GLOBAL_ENCODING_ENTITY';
 	export const GLOBAL_ENCODING_EVAL = 'GLOBAL_ENCODING_EVAL';
-};
+}
 export type ValidationCode = 'NO_TOOLKIT' | 'NO_TOOLBELT' | 'FOREACH_LSETTINGS' | 'FOREACH_GLOBAL' | 'GLOBAL_NULL_ASSIGNMENT' | 'GLOBAL_ENCODING_ENTITY' | 'GLOBAL_ENCODING_EVAL';
 
 export interface ValidationDataReplacement {
@@ -109,7 +109,7 @@ export interface ValidationDataReplacement {
 
 export namespace ValidationDataType {
 	export const REPLACEMENT = 'REPLACEMENT';
-};
+}
 export type ValidationDataType = 'REPLACEMENT';
 
 export interface ValidationData {
@@ -280,23 +280,27 @@ export interface MivaScriptFunction {
 	parameters: string[];
 	description?: string;
 	returnValue?: string;
-};
+}
 
 export interface MivaScriptFunctionFile {
 	distroPath: string;
 	functions: MivaScriptFunction[];
 	moduleCode?: string;
 	moduleVar?: string;
-};
+}
 
 export interface MivaTemplateLanguageParsedItem {
 	name: string;
 	param?: string;
 	expression?: MivaExpression;
 	range?: Range;
-};
+}
 
 export interface MivaTemplateLanguageParsedFragment {
 	code: string;
 	range: Range;
+}
+
+export enum MivaMangedTemplatesProviderCompletionType {
+	Variable
 }
