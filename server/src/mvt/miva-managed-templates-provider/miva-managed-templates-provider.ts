@@ -7,20 +7,20 @@ import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
 import { MivaMangedTemplatesProviderCompletionType, MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
 
-const buildFlexComponentPropertyPaths = (properties: any[], previousParent: string[] = []): string[] => {
+const buildFlexComponentPropertyPaths = (properties: any[], prefix: string, previousParent: string[] = []): string[] => {
 	let parent = previousParent;
 	let paths = [];
 
 	for (let property of properties) {
 		if (property.type === 'group') {
-			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, [...parent, property.code]));
+			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, property.code]));
 
 		}
 		else if (property.type === 'list') {
-			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, [...parent, `${property.code}[1]`]));
+			paths = paths.concat(buildFlexComponentPropertyPaths(property.properties, prefix, [...parent, `${property.code}[1]`]));
 		}
 		else {
-			paths.push(finalizeFlexComponentPropertyPath([...parent, property.code], property.type));
+			paths.push(finalizeFlexComponentPropertyPath([...parent, property.code], prefix, property.type));
 		}
 	}
 
@@ -37,8 +37,8 @@ const finalizeFlexComponentPropertyPathSuffix = (type: string): string => {
 	}
 };
 
-const finalizeFlexComponentPropertyPath = (propertyPath: string[], type: string): string => {
-	return `l.settings:instance:${propertyPath.join(':')}:${finalizeFlexComponentPropertyPathSuffix(type)}`;
+const finalizeFlexComponentPropertyPath = (propertyPath: string[], prefix: string, type: string): string => {
+	return `${prefix}:${propertyPath.join(':')}:${finalizeFlexComponentPropertyPathSuffix(type)}`;
 };
 
 export class MivaMangedTemplatesProvider {
@@ -407,9 +407,13 @@ export class MivaMangedTemplatesProvider {
 								const parsedFlexComponentJson = JSON.parse(flexComponentJson);
 
 								if (parsedFlexComponentJson) {
-									const propertyPaths = buildFlexComponentPropertyPaths(parsedFlexComponentJson.properties);
+									const propertyPaths = buildFlexComponentPropertyPaths(parsedFlexComponentJson.properties, 'l.settings:instance');
+									const advancedPropertyPaths = buildFlexComponentPropertyPaths(parsedFlexComponentJson.advanced_properties, 'l.settings:instance:advanced');
 
-									return propertyPaths;
+									return [
+										...propertyPaths,
+										...advancedPropertyPaths
+									];
 								}
 							}
 						}
