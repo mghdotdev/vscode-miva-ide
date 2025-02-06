@@ -1,6 +1,19 @@
 # Miva IDE CHANGELOG
 
-## v1.29.0 (latest)
+## v1.30.0 (latest)
+
+* Added Miva Script command to insert next error code based off of "Prefix" and "Next Error Code" comment block.
+
+	```
+	<MvCOMMENT>
+	|
+	| Prefix         : AAA-AAA-AAA-
+	| Next Error Code: 10
+	|
+	</MvCOMMENT>
+	```
+
+## v1.29.0
 
 * Added variable autocompletion for flex instance templates.
 

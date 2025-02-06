@@ -2,7 +2,7 @@
 	"name": "vscode-miva-ide",
 	"displayName": "Miva IDE",
 	"description": "Syntax highlighting, snippets and tools for building websites with Miva.",
-	"version": "1.29.0",
+	"version": "1.30.0",
 	"engines": {
 		"vscode": "^1.77.0",
 		"node": ">=16"
@@ -177,6 +177,12 @@
 				"title": "Convert Variable ↔ Entity & Copy",
 				"category": "MVT",
 				"enablement": "(editorHasSelection || editorHasMultipleSelections) && (editorLangId == mv || editorLangId == mvt || editorLangId == mvtcss || editorLangId == mvtjs)"
+			},
+			{
+				"command": "mivaIde.MV.insertNextErrorCode",
+				"title": "Insert Next Error Code",
+				"category": "Miva Script",
+				"enablement": "editorLangId == mv"
 			},
 			{
 				"command": "mivaIde.MVT.convertToEntity",
