@@ -155,6 +155,47 @@ const insertModuleImportCommand = commands.registerTextEditorCommand( 'mivaIde.i
 	}
 });
 
+const insertNextErrorCodeCommand = commands.registerTextEditorCommand('mivaIde.MV.insertNextErrorCode', (textEditor: TextEditor, edit: TextEditorEdit) => {
+	// exit if not Miva Script
+	if (textEditor.document.languageId !== 'mv') {
+		return;
+	}
+
+	const documentText = textEditor.document.getText();
+
+	// Get error code "Prefix"
+	const [,, prefixBlock] = documentText?.match(/(?<=<mvcomment>)([^<]*)(\s*\|\s*prefix\s*:.*)/i) || [];
+	const [, rawPrefix] = prefixBlock?.split(':') || [];
+	if (!rawPrefix) {
+		window.showWarningMessage( 'Unable to find "Prefix" comment definition.' );
+
+		return;
+	}
+	const prefix = rawPrefix.trim();
+
+	// Get "Next Error Code"
+	const [, match, rawErrorCode] = /([\s\S]*<mvcomment>[^<]*\s*\|\s*next error code\s*:\s*)([0-9]+)/i.exec(documentText) || [];
+	if (!rawErrorCode) {
+		window.showWarningMessage( 'Unable to find "Next Error Code" comment definition.' );
+
+		return;
+	}
+	let errorCode = parseInt(rawErrorCode.trim()) || 1;
+
+	textEditor.selections.forEach(( selection ) => {
+		const range = new Range(selection.start, selection.end);
+
+		edit.replace(range, `${prefix}${String(errorCode).padStart(5, '0')}`);
+
+		errorCode++;
+	});
+
+	// Update next error code comment block
+	const startPosition = textEditor.document.positionAt(match.length);
+	const nextErrorCodeRange = new Range(startPosition, startPosition.translate(0, String(errorCode).length));
+	edit.replace(nextErrorCodeRange, String(errorCode));
+});
+
 function convertEntityToVariable( entity: string, showMessage: boolean = true ) {
 
 	const globalMatch = patterns.MVT.ENTITY_GLOBAL.exec( entity );
@@ -361,6 +402,7 @@ export default [
 	chooseFileCommand,
 	insertFileNameCommand,
 	insertModuleImportCommand,
+	insertNextErrorCodeCommand,
 	convertAndCopyCommand,
 	convertToEntityCommand,
 	convertToVariableCommand,
