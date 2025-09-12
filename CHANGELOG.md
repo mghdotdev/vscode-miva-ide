@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.34.0 (latest)
+## v1.34.1 (latest)
+
+* Fixed bug where latest LSK data was missing functions.
+
+## v1.34.0
 
 * Updated LSK data to latest version (10.12.03).
 
