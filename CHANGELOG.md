@@ -1,6 +1,27 @@
 # Miva IDE CHANGELOG
 
-## v1.34.1 (latest)
+## v1.35.0 (latest)
+
+* Added new builtin functions for Miva Empressa v5.45-5.51:
+	- enocdejavascriptboolean
+	- enocdejavascriptnumber
+	- gdImageAvif
+	- gdImageAvifMem
+	- gdImageAvifOutput
+	- gdImageCreateFromAvif
+	- gdImageCreateFromAvifMem
+	- miva_decimal_precision
+	- miva_decimal_scale
+	- pkcs12_load_mem
+	- redis_ft_create
+	- redis_ft_dropindex
+	- redis_ft_info
+	- redis_ft_search
+	- redis_pack_f32
+	- sd_journal_send
+	- x509_save_mem
+
+## v1.34.1
 
 * Fixed bug where latest LSK data was missing functions.
 
@@ -19,8 +40,8 @@
 ## v1.31.0
 
 * Added Miva Script debug snippets.
-	* `mv-debug`
-	* 'mv-debug-json'
+	- `mv-debug`
+	- `mv-debug-json`
 
 ## v1.30.0
 
