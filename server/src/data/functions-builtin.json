@@ -4093,5 +4093,124 @@
 		"insertTextFormat": "Snippet",
 		"kind": "Function",
 		"label": "cmark_markdown_to_html"
+	},
+	{
+		"documentation": "\n```mv\n{ enocdejavascriptboolean( value ) }\n```\n---\n\n  Encodes \"value\" in a format suitable for use inside a JavaScript boolean declaration\n\n  Parameters:\n    - value: The value to convert to a boolean\n\n  Return Value:\n    - Returns \"false\" if the value is blank or 0, \"true\" otherwise",
+		"insertText": "enocdejavascriptboolean( ${1:value} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "enocdejavascriptboolean"
+	},
+	{
+		"documentation": "\n```mv\n{ enocdejavascriptnumber( value ) }\n```\n---\n\n  Encodes \"value\" in a format suitable for use inside a JavaScript number declaration\n\n  Parameters:\n    - value: The value to convert to a number\n\n  Return Value:\n    - Returns the passed in value as a number, using 0 if the value could not be converted to a number\n\n",
+		"insertText": "enocdejavascriptnumber( ${1:value} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "enocdejavascriptnumber"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageAvif( im, filename, location, quality, speed ) }\n```\n---\n\n  Outputs the AVIF image to a file\n\n  Parameters:\n    - im: The internal image reference ID\n    - filename: The filepath to save the file\n    - location: The location to save the file, valid values are \"script\" and \"data\"\n    - quality: Compression quality (0-100).  0 is lowest-quality, 100 is highest\n    - speed: The speed of compression (0-10).  0 is slowest, 10 is fastest.\n\n  Return Value:\n    - Nothing on success, -1 on error\n\n",
+		"insertText": "gdImageAvif( ${1:im}, ${2:filename}, ${3:location}, ${4:quality}, ${5:speed} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageAvif"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageAvifMem( im, output var, quality, speed ) }\n```\n---\n\n  Outputs the AVIF image to memory\n\n  Parameters:\n    - im: The internal image reference ID\n    - output: The variable to write the image to\n    - quality: Compression quality (0-100).  0 is lowest-quality, 100 is highest\n    - speed: The speed of compression (0-10).  0 is slowest, 10 is fastest.\n\n  Return Value:\n    - Nothing on success, -1 on error\n\n",
+		"insertText": "gdImageAvifMem( ${1:im}, ${2:output var}, ${3:quality}, ${4:speed} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageAvifMem"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageAvifOutput( im, quality, speed ) }\n```\n---\n\n  Outputs the AVIF image\n\n  Parameters:\n    - im: The internal image reference ID\n    - quality: Compression quality (0-100).  0 is lowest-quality, 100 is highest\n    - speed: The speed of compression (0-10).  0 is slowest, 10 is fastest.\n\n  Return Value:\n    - Nothing on success, -1 on error",
+		"insertText": "gdImageAvifOutput( ${1:im}, ${2:quality}, ${3:speed} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageAvifOutput"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageCreateFromAvif( filename, location ) }\n```\n---\n\n  Loads an AVIF image into memory\n\n  Parameters:\n    - filename: The file path to the image\n    - location: Location of the image, valid values are \"script\" and \"data\"\n\n  Return Value:\n    - -1 if function is not supported or input file does not exist, 0 if libgd failed to return an image, otherwise the internal reference ID\n\n",
+		"insertText": "gdImageCreateFromAvif( ${1:filename}, ${2:location} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageCreateFromAvif"
+	},
+	{
+		"documentation": "\n```mv\n{ gdImageCreateFromAvifMem( data var ) }\n```\n---\n\n  Loads an AVIF image into memory\n\n  Parameters:\n    - data: The in-memory AVIF image\n\n  Return Value:\n    - -1 if function is not supported or input file does not exist, 0 if libgd failed to return an image, otherwise the internal reference ID\n\n",
+		"insertText": "gdImageCreateFromAvifMem( ${1:data var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "gdImageCreateFromAvifMem"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_decimal_precision( value ) }\n```\n---\n\n  Determines the total number of significant digits, whether to the left or the right of the decimal place\n\n  Parameters:\n    - value: The value used to calculate the significant digits\n\n  Return Value:\n    - Returns -1 when the value is not number, otherwise the total number number of significant digits\n\n",
+		"insertText": "miva_decimal_precision( ${1:value} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_decimal_precision"
+	},
+	{
+		"documentation": "\n```mv\n{ miva_decimal_scale( value ) }\n```\n---\n\n  Determines the total number of significant digits to the right of the decimal point.  Trailing zeros are ignored.\n\n  Parameters:\n    - value: The value used to calculate the significant digits\n\n  Return Value:\n    - Returns -1 when the value is not number, otherwise the total number number of significant digits to the right of the decimal place",
+		"insertText": "miva_decimal_scale( ${1:value} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "miva_decimal_scale"
+	},
+	{
+		"documentation": "\n```mv\n{ pkcs12_load_mem( data, passphrase, pkey var, cert var, ca_certs var ) }\n```\n---\n\n    This function shall parse PKCS12 data into its constituent parts using OpenSSL function PKCS12_parse.\n\n  Parameters:\n    - data: Binary PKCS12 data\n    - passphrase: Encrytion passphrase, used to decrypt the PKCS12 data\n    - pkey: Crypto_EVP_PKEY slot reference of the loaded private key, suitable for passing to any of the existing evp functions\n    - cert: Crypto_X509 slot reference of the primary certificate, suitable for passing to any of the existing x509 functions\n    - ca_certs: An array of Crypto_X509 slot references for any additional certificates contained in the PKCS12 file.\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "pkcs12_load_mem( ${1:data}, ${2:passphrase}, ${3:pkey var}, ${4:cert var}, ${5:ca_certs var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "pkcs12_load_mem"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_ft_create( conn_id, index, schema var, options var ) }\n```\n---\n\n    Issues an FT.CREATE command: https://redis.io/docs/latest/commands/ft.create/\n\n  Parameters:\n    - conn_id: The internal reference ID\n    - index: The name of the index\n    - schema: A structure used to generate the schema fields for the command\n    - options: A structure used to generate the options fields for the command\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "redis_ft_create( ${1:conn_id}, ${2:index}, ${3:schema var}, ${4:options var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_ft_create"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_ft_dropindex( conn_id, index, options var ) }\n```\n---\n\n    Issues an FT.SEARCH command: https://redis.io/docs/latest/commands/ft.dropindex/\n\n  Parameters:\n    - conn_id: The internal reference ID\n    - index: The name of the index\n    - options: A structure used to generate the options fields for the command\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "redis_ft_dropindex( ${1:conn_id}, ${2:index}, ${3:options var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_ft_dropindex"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_ft_info( conn_id, index, output var ) }\n```\n---\n\n    Issues an FT.INFO command: https://redis.io/docs/latest/commands/ft.info/\n\n  Parameters:\n    - conn_id: The internal reference ID\n    - index: The name of the index\n    - output: An array of elements returned from Redis\n\n  Return Value:\n    - The number of elements in the output array\n\n",
+		"insertText": "redis_ft_info( ${1:conn_id}, ${2:index}, ${3:output var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_ft_info"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_ft_search( conn_id, index, query, options var, output var ) }\n```\n---\n\n    Issues an FT.SEARCH command: https://redis.io/docs/latest/commands/ft.search/\n\n  Parameters:\n    - conn_id: The internal reference ID\n    - index: The name of the index\n    - query: The search query\n    - options: A structure used to generate the options fields for the command\n    - output: An array of elements returned from Redis\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "redis_ft_search( ${1:conn_id}, ${2:index}, ${3:query}, ${4:options var}, ${5:output var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_ft_search"
+	},
+	{
+		"documentation": "\n```mv\n{ redis_pack_f32( array var ) }\n```\n---\n\n    Packs array, containing numbers, into a binary block of 32-bit floating point numbers.\n\n  Parameters:\n    - array: Array of numbers.  Any non-numeric values will be treated as 0.0\n\n  Return Value:\n    - Returns binary data.  If the input array is not an array, an empty value is returned.\n\n",
+		"insertText": "redis_pack_f32( ${1:array var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "redis_pack_f32"
+	},
+	{
+		"documentation": "\n```mv\n{ sd_journal_send( fields var ) }\n```\n---\n\n  This function will use the underlying library function sd_journal_sendv to send a list of fields in structured data format to the systemd journal\n\n  Parameters:\n    - fields: An array of fields to send to the systemd library.  Format should be NAME=value\n\n  Return Value:\n    - Returns 1 on success, 0 if the systemd system library is not registered or could not be loaded, or a negative value if sd_journal_sendv returns < 0\n\n",
+		"insertText": "sd_journal_send( ${1:fields var} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "sd_journal_send"
+	},
+	{
+		"documentation": "\n```mv\n{ x509_save_mem( output var, x509 var, format ) }\n```\n---\n\n    This function shall output a loaded X509 structure in the specified format.\n\n  Parameters:\n    - output: Variable that receives the data\n    - x509: Crypto_X509 slot reference of the certificate to be output\n    - format: One of \"DER\" or \"PEM\"\n\n  Return Value:\n    - 1 on success, 0 on failure\n\n",
+		"insertText": "x509_save_mem( ${1:output var}, ${2:x509 var}, ${3:format} )$0",
+		"insertTextFormat": "Snippet",
+		"kind": "Function",
+		"label": "x509_save_mem"
 	}
 ]
