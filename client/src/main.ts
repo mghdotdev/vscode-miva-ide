@@ -30,6 +30,15 @@ export function activate( context: ExtensionContext ) {
 	// Create the language client and start the client.
 	client = new LanguageClient( 'miva', 'Miva IDE Language Server', serverOptions, clientOptions );
 	client.registerProposedFeatures();
+
+	const mmtListener = client.onNotification('mmt/updateStatusBar', config => {
+		if (config) {
+
+		}
+	});
+
+	context.subscriptions.push( mmtListener );
+
 	client.start();
 
 	// Push client to subscriptions

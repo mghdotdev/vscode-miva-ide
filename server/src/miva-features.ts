@@ -397,9 +397,14 @@ export function activateFeatures({workspaceSymbolProvider, mivaScriptCompilerPro
 				mivaScriptWorkspaceSymbolsLoading = false;
 			},
 
-			doValidation( document: TextDocument, settings: Settings ) {
+			doValidation( document: TextDocument, settings: Settings, connection ) {
 
 				buildTagCompletionData( settings, document.languageId );
+
+				const mmtConfig = mivaManagedTemplatesProvider?.getConfig(document);
+				if (mmtConfig) {
+					connection?.sendNotification('mmt/updateStatusBar', mmtConfig);
+				}
 
 				const {document: mvtDocument} = mvtDocuments.get( document );
 
