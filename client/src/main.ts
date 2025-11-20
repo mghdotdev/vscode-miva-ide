@@ -56,6 +56,11 @@ export function activate( context: ExtensionContext ) {
 
 			mmtBranchKeyStatusBar.text = `MMT - $(source-control) BranchKey: ${config.branch_key}`;
 			mmtBranchKeyStatusBar.tooltip = 'Click to copy branch key.';
+			mmtBranchKeyStatusBar.command = {
+				command: 'mivaIde.mmt.copyBranchKey',
+				arguments: [config.branch_key],
+				title: 'Copy Branch Key'
+			};
 			mmtBranchKeyStatusBar.show();
 		}
 	});

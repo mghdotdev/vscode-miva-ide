@@ -398,6 +398,12 @@ const clipboardPasteCommand = commands.registerTextEditorCommand('mivaIde.clipbo
 	});
 });
 
+const copyMMTBranchKey = commands.registerCommand('mivaIde.mmt.copyBranchKey', async (branchKey: string) => {
+	await env.clipboard.writeText(branchKey);
+
+	window.showInformationMessage(`Copied branch key ${branchKey}...`);
+});
+
 export default [
 	chooseFileCommand,
 	insertFileNameCommand,
@@ -408,5 +414,6 @@ export default [
 	convertToVariableCommand,
 	insertHtmlComment,
 	calculatePosNumberCommand,
-	clipboardPasteCommand
+	clipboardPasteCommand,
+	copyMMTBranchKey
 ];
