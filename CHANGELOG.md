@@ -1,6 +1,10 @@
 # Miva IDE CHANGELOG
 
-## v1.35.0 (latest)
+## v1.36.0 (latest)
+
+* Added status bars to show `mmt` information when within a workspace containing an `mmt` directory.
+
+## v1.35.0
 
 * Added new builtin functions for Miva Empressa v5.45-5.51:
 	- enocdejavascriptboolean
