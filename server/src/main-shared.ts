@@ -74,7 +74,7 @@ export function activate (connection: Connection, {workspaceSymbolProvider, miva
 
 			if ( features && features.doValidation ) {
 
-				pushAll( diagnostics, await features.doValidation( textDocument, settings ) );
+				pushAll( diagnostics, await features.doValidation( textDocument, settings, connection ) );
 
 			}
 

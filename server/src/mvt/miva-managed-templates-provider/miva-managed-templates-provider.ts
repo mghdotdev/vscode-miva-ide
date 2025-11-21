@@ -5,7 +5,7 @@ import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI, Utils } from 'vscode-uri';
 import { uriToFsPath } from '../../util/functions';
 import { fileIsInFolder, walk } from '../../util/functions-node';
-import { MivaMangedTemplatesProviderCompletionType, MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
+import { MivaManagedTemplatesConfig, MivaMangedTemplatesProviderCompletionType, MivaTemplateLanguageParsedFragment, MivaTemplateLanguageParsedItem, Workspace } from '../../util/interfaces';
 
 const buildFlexComponentPropertyPaths = (properties: any[], prefix: string, previousParent: string[] = []): string[] => {
 	let parent = previousParent;
@@ -82,6 +82,21 @@ export class MivaMangedTemplatesProvider {
 		const fullPath = join(mmtPath, documentPath);
 
 		return readFileSync(fullPath, 'utf-8');
+	}
+
+	getConfig (document: TextDocument): MivaManagedTemplatesConfig {
+		const documentPath = uriToFsPath(document.uri);
+		const mmtPath = this.getPath(documentPath);
+		if (!mmtPath) {
+			return void 0;
+		}
+
+		const configFileContents = this.getFileContents(mmtPath, '.mmt/config.json');
+		if (!configFileContents) {
+			return void 0;
+		}
+
+		return JSON.parse(configFileContents);
 	}
 
 	private getTargetFromRelativePath (relativePath: string, mmtPath: string): string {

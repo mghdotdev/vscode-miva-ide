@@ -6,6 +6,7 @@ import {
 	CompletionItem,
 	CompletionItemKind,
 	CompletionList,
+	Connection,
 	Definition,
 	Diagnostic,
 	DocumentLink,
@@ -52,7 +53,7 @@ export interface LanguageFeatures {
 
 	onConfigurationChange? (): void;
 
-	doValidation?: ( document: TextDocument, settings?: Settings ) => Promise<Diagnostic[]> | Diagnostic[];
+	doValidation?: ( document: TextDocument, settings?: Settings, connection?: Connection ) => Promise<Diagnostic[]> | Diagnostic[];
 
 	doCompletion?: ( document: TextDocument, position: Position, settings?: Settings ) => CompletionList;
 
@@ -305,4 +306,16 @@ export interface MivaTemplateLanguageParsedFragment {
 
 export enum MivaMangedTemplatesProviderCompletionType {
 	Variable
+}
+
+export interface MivaManagedTemplatesConfig {
+	version: number;
+	remote_key: string;
+	ignore_unsynced_templates: boolean;
+	ignore_unsynced_properties: boolean;
+	include_hidden_settings: boolean;
+	branch_id: number;
+	branch_name: string;
+	branch_key: string;
+	branch_tags: string[];
 }
